@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/RuleTheStyle.iml" filepath="$PROJECT_DIR$/RuleTheStyle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RuleTheStyle.iml" filepath="$PROJECT_DIR$/RuleTheStyle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../libcocos2dx/libcocos2dx.iml" filepath="$PROJECT_DIR$/../libcocos2dx/libcocos2dx.iml" />
       <module fileurl="file://$PROJECT_DIR$/../libcocos2dx/libcocos2dx.iml" filepath="$PROJECT_DIR$/../libcocos2dx/libcocos2dx.iml" />
       <module fileurl="file://$PROJECT_DIR$/../proj.android-studio121212.iml" filepath="$PROJECT_DIR$/../proj.android-studio121212.iml" />
     </modules>

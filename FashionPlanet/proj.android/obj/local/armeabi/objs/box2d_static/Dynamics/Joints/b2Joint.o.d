@@ -3,30 +3,30 @@ obj/local/armeabi/objs/box2d_static/Dynamics/Joints/b2Joint.o: \
  jni/../../cocos2d/external/Box2D/../Box2D/Dynamics/Joints/b2Joint.h \
  jni/../../cocos2d/external/Box2D/../Box2D/Common/b2Math.h \
  jni/../../cocos2d/external/Box2D/../Box2D/Common/b2Settings.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/assert.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/sys/cdefs.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/android/api-level.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/math.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/sys/types.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/stdint.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/sys/_types.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/machine/_types.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/linux/posix_types.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/linux/stddef.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/linux/compiler.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/asm/posix_types.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/asm/types.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/linux/types.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/machine/kernel.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/limits.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/sys/limits.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/linux/limits.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/machine/internal_types.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/machine/limits.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/sys/syslimits.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/asm/page.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/assert.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/sys/cdefs.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/android/api-level.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/math.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/sys/types.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/stdint.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/sys/_types.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/machine/_types.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/linux/posix_types.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/linux/stddef.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/linux/compiler.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/asm/posix_types.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/asm/types.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/linux/types.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/machine/kernel.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/limits.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/sys/limits.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/linux/limits.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/machine/internal_types.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/machine/limits.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/sys/syslimits.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/asm/page.h \
  jni/../../cocos2d/external/Box2D/../Box2D/Dynamics/Joints/b2DistanceJoint.h \
  jni/../../cocos2d/external/Box2D/../Box2D/Dynamics/Joints/b2WheelJoint.h \
  jni/../../cocos2d/external/Box2D/../Box2D/Dynamics/Joints/b2MouseJoint.h \
@@ -42,15 +42,15 @@ obj/local/armeabi/objs/box2d_static/Dynamics/Joints/b2Joint.o: \
  jni/../../cocos2d/external/Box2D/../Box2D/Collision/Shapes/b2Shape.h \
  jni/../../cocos2d/external/Box2D/../Box2D/Common/b2BlockAllocator.h \
  jni/../../cocos2d/external/Box2D/../Box2D/Collision/b2Collision.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/memory \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.8/include/memory \
  jni/../../cocos2d/external/Box2D/../Box2D/Dynamics/b2World.h \
  jni/../../cocos2d/external/Box2D/../Box2D/Common/b2StackAllocator.h \
  jni/../../cocos2d/external/Box2D/../Box2D/Dynamics/b2ContactManager.h \
  jni/../../cocos2d/external/Box2D/../Box2D/Collision/b2BroadPhase.h \
  jni/../../cocos2d/external/Box2D/../Box2D/Collision/b2DynamicTree.h \
  jni/../../cocos2d/external/Box2D/../Box2D/Common/b2GrowableStack.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/memory.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/algorithm \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/memory.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.8/include/algorithm \
  jni/../../cocos2d/external/Box2D/../Box2D/Dynamics/b2WorldCallbacks.h \
  jni/../../cocos2d/external/Box2D/../Box2D/Dynamics/b2TimeStep.h
 
@@ -60,53 +60,53 @@ jni/../../cocos2d/external/Box2D/../Box2D/Common/b2Math.h:
 
 jni/../../cocos2d/external/Box2D/../Box2D/Common/b2Settings.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/assert.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/assert.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/sys/cdefs.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/sys/cdefs.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/android/api-level.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/android/api-level.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/math.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/math.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/sys/types.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/sys/types.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/stdint.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/stdint.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/sys/_types.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/sys/_types.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/machine/_types.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/machine/_types.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/linux/posix_types.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/linux/posix_types.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/linux/stddef.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/linux/stddef.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/linux/compiler.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/linux/compiler.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/asm/posix_types.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/asm/posix_types.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/asm/types.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/asm/types.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/linux/types.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/linux/types.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/machine/kernel.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/machine/kernel.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/limits.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/limits.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/sys/limits.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/sys/limits.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/linux/limits.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/linux/limits.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/machine/internal_types.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/machine/internal_types.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/machine/limits.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/machine/limits.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/sys/syslimits.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/sys/syslimits.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/asm/page.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/asm/page.h:
 
 jni/../../cocos2d/external/Box2D/../Box2D/Dynamics/Joints/b2DistanceJoint.h:
 
@@ -138,7 +138,7 @@ jni/../../cocos2d/external/Box2D/../Box2D/Common/b2BlockAllocator.h:
 
 jni/../../cocos2d/external/Box2D/../Box2D/Collision/b2Collision.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/memory:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.8/include/memory:
 
 jni/../../cocos2d/external/Box2D/../Box2D/Dynamics/b2World.h:
 
@@ -152,9 +152,9 @@ jni/../../cocos2d/external/Box2D/../Box2D/Collision/b2DynamicTree.h:
 
 jni/../../cocos2d/external/Box2D/../Box2D/Common/b2GrowableStack.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/memory.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/memory.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/algorithm:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.8/include/algorithm:
 
 jni/../../cocos2d/external/Box2D/../Box2D/Dynamics/b2WorldCallbacks.h:
 

@@ -6,7 +6,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '25.0.0'
     defaultConfig {
         applicationId "com.bluefi.dev.fashionplanet"
         minSdkVersion 16
@@ -33,17 +33,21 @@ android {
     }
     signingConfigs {
         release {
-            keyAlias 'release_key'
+            keyAlias 'bluefi'
             keyPassword '2015fifi'
             //storeFile file('/Users/DaeHo/Documents/cocos2d-x-3.4/Projects/RuleTheStyle/proj.android-studio/bluefikey')
-            storeFile file('/Users/LeeJaeWon/Desktop/project/FashionPlanet/cocos2d-x-3.4/Projects/FashionPlanet/proj.android-studio121212/release_key.keystore')
+//            storeFile file('/Users/LeeJaeWon/Desktop/project/FashionPlanet/cocos2d-x-3.4/Projects/FashionPlanet/proj.android-studio121212/release_key.keystore')
+//            storePassword '2015fifi'
+            storeFile file('/Users/kby5686/Documents/cocos2d-x-3.4/Projects/WorkSpace/FashionPlanet/proj.android-studio121212/bluefikey')
             storePassword '2015fifi'
         }
         debug {
-            keyAlias 'release_key'
+            keyAlias 'bluefi'
             keyPassword '2015fifi'
             //storeFile file('/Users/DaeHo/Documents/cocos2d-x-3.4/Projects/RuleTheStyle/proj.android-studio/bluefikey')
-            storeFile file('/Users/LeeJaeWon/Desktop/project/FashionPlanet/cocos2d-x-3.4/Projects/FashionPlanet/proj.android-studio121212/release_key.keystore')
+//            storeFile file('/Users/LeeJaeWon/Desktop/project/FashionPlanet/cocos2d-x-3.4/Projects/FashionPlanet/proj.android-studio121212/release_key.keystore')
+//            storePassword '2015fifi'
+            storeFile file('/Users/kby5686/Documents/cocos2d-x-3.4/Projects/WorkSpace/FashionPlanet/proj.android-studio121212/bluefikey')
             storePassword '2015fifi'
         }
     }
@@ -70,9 +74,12 @@ android {
     copy {
         //from "/Users/DaeHo/Documents/cocos2d-x-3.4/Projects/RuleTheStyle/proj.android/libs/armeabi"
         //into "/Users/DaeHo/Documents/cocos2d-x-3.4/Projects/RuleTheStyle/proj.android-studio/RuleTheStyle/libs/armeabi"
-        from "/Users/LeeJaeWon/Desktop/project/FashionPlanet/cocos2d-x-3.4/Projects/FashionPlanet/proj.android/libs/armeabi"
-        into "/Users/LeeJaeWon/Desktop/project/FashionPlanet/cocos2d-x-3.4/Projects/FashionPlanet/proj.android-studio121212/RuleTheStyle/libs/armeabi"
+        from "/Users/kby5686/Documents/cocos2d-x-3.4/Projects/WorkSpace/FashionPlanet/proj.android/libs/armeabi"
+        into "/Users/kby5686/Documents/cocos2d-x-3.4/Projects/WorkSpace/FashionPlanet/proj.android-studio121212/RuleTheStyle/libs/armeabi"
+//        from "/Users/LeeJaeWon/Desktop/project/FashionPlanet/cocos2d-x-3.4/Projects/FashionPlanet/proj.android/libs/armeabi"
+//        into "/Users/LeeJaeWon/Desktop/project/FashionPlanet/cocos2d-x-3.4/Projects/FashionPlanet/proj.android-studio121212/RuleTheStyle/libs/armeabi"
         //python /Users/kby5686/Documents/cocos2d-x-3.4/Projects/RuleTheStyle/proj.android/build_native.py
+
     }
     productFlavors {
     }
@@ -104,6 +111,5 @@ repositories {
     flatDir {
         dirs 'libs'
     }
-    google()
 }
 

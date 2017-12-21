@@ -1,38 +1,38 @@
 obj/local/armeabi/objs/cocos3d_static/CCBundleReader.o: \
  jni/../../cocos2d/cocos/3d/CCBundleReader.cpp \
  jni/../../cocos2d/cocos/3d/CCBundleReader.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/string \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/vector \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.8/include/string \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.8/include/vector \
  jni/../../cocos2d/cocos/3d/../base/CCRef.h \
  jni/../../cocos2d/cocos/3d/../platform/CCPlatformMacros.h \
  jni/../../cocos2d/cocos/3d/../base/ccConfig.h \
  jni/../../cocos2d/cocos/3d/../platform/CCPlatformConfig.h \
  jni/../../cocos2d/cocos/3d/../platform/CCPlatformDefine.h \
  jni/../../cocos2d/cocos/3d/../platform/android/CCPlatformDefine-android.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/android/log.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/android/log.h \
  jni/../../cocos2d/cocos/3d/../base/CCConsole.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/sys/select.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/thread \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/map \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/mutex \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/sys/select.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.8/include/thread \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.8/include/map \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.8/include/mutex \
  jni/../../cocos2d/cocos/3d/../base/ccMacros.h \
  jni/../../cocos2d/cocos/3d/../platform/CCStdC.h \
  jni/../../cocos2d/cocos/3d/../platform/android/CCStdC-android.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/math.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/stdlib.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/alloca.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/strings.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/memory.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/cassert \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/math.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/stdlib.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/alloca.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/strings.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/memory.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.8/include/cassert \
  jni/../../cocos2d/cocos/3d/../base/ccRandom.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/random \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.8/include/random \
  jni/../../cocos2d/cocos/3d/../platform/CCFileUtils.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/unordered_map \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.8/include/unordered_map \
  jni/../../cocos2d/cocos/3d/../base/ccTypes.h \
  jni/../../cocos2d/cocos/3d/../math/CCGeometry.h \
  jni/../../cocos2d/cocos/3d/../math/CCMath.h \
  jni/../../cocos2d/cocos/3d/../math/Vec2.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/algorithm \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.8/include/algorithm \
  jni/../../cocos2d/cocos/3d/../math/CCMathBase.h \
  jni/../../cocos2d/cocos/3d/../math/Vec2.inl \
  jni/../../cocos2d/cocos/3d/../math/Vec2.h \
@@ -49,18 +49,18 @@ obj/local/armeabi/objs/cocos3d_static/CCBundleReader.o: \
  jni/../../cocos2d/cocos/3d/../math/Quaternion.inl \
  jni/../../cocos2d/cocos/3d/../platform/CCGL.h \
  jni/../../cocos2d/cocos/3d/../platform/android/CCGL-android.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/GLES2/gl2platform.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/KHR/khrplatform.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/GLES2/gl2.h \
- /Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/GLES2/gl2ext.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/GLES2/gl2platform.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/KHR/khrplatform.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/GLES2/gl2.h \
+ /Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/GLES2/gl2ext.h \
  jni/../../cocos2d/cocos/3d/../base/CCValue.h \
  jni/../../cocos2d/cocos/3d/../base/CCData.h
 
 jni/../../cocos2d/cocos/3d/CCBundleReader.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/string:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.8/include/string:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/vector:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.8/include/vector:
 
 jni/../../cocos2d/cocos/3d/../base/CCRef.h:
 
@@ -74,17 +74,17 @@ jni/../../cocos2d/cocos/3d/../platform/CCPlatformDefine.h:
 
 jni/../../cocos2d/cocos/3d/../platform/android/CCPlatformDefine-android.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/android/log.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/android/log.h:
 
 jni/../../cocos2d/cocos/3d/../base/CCConsole.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/sys/select.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/sys/select.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/thread:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.8/include/thread:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/map:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.8/include/map:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/mutex:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.8/include/mutex:
 
 jni/../../cocos2d/cocos/3d/../base/ccMacros.h:
 
@@ -92,25 +92,25 @@ jni/../../cocos2d/cocos/3d/../platform/CCStdC.h:
 
 jni/../../cocos2d/cocos/3d/../platform/android/CCStdC-android.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/math.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/math.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/stdlib.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/stdlib.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/alloca.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/alloca.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/strings.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/strings.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/memory.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/memory.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/cassert:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.8/include/cassert:
 
 jni/../../cocos2d/cocos/3d/../base/ccRandom.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/random:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.8/include/random:
 
 jni/../../cocos2d/cocos/3d/../platform/CCFileUtils.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/unordered_map:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.8/include/unordered_map:
 
 jni/../../cocos2d/cocos/3d/../base/ccTypes.h:
 
@@ -120,7 +120,7 @@ jni/../../cocos2d/cocos/3d/../math/CCMath.h:
 
 jni/../../cocos2d/cocos/3d/../math/Vec2.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/algorithm:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.8/include/algorithm:
 
 jni/../../cocos2d/cocos/3d/../math/CCMathBase.h:
 
@@ -154,13 +154,13 @@ jni/../../cocos2d/cocos/3d/../platform/CCGL.h:
 
 jni/../../cocos2d/cocos/3d/../platform/android/CCGL-android.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/GLES2/gl2platform.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/GLES2/gl2platform.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/KHR/khrplatform.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/KHR/khrplatform.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/GLES2/gl2.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/GLES2/gl2.h:
 
-/Users/LeeJaeWon/Documents/ADT/android-ndk-r9d/platforms/android-9/arch-arm/usr/include/GLES2/gl2ext.h:
+/Users/kby5686/Documents/ADT/android-ndk-r9b/platforms/android-9/arch-arm/usr/include/GLES2/gl2ext.h:
 
 jni/../../cocos2d/cocos/3d/../base/CCValue.h:
 

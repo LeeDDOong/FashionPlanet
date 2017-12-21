@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "/Users/kby5686/Documents/cocos2d-x-3.4/Projects/WorkSpace/FashionPlanet/proj.android-studio121212/libcocos2dx/build/intermediates/res/merged/androidTest/debug/anim/abc_slide_in_bottom.xml",
+        "source": "/Users/kby5686/.android/build-cache/3ae4815fb9bb6148ee2e94525aadc2fd9ff9ca37/output/res/anim/abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "/Users/kby5686/Documents/cocos2d-x-3.4/Projects/WorkSpace/FashionPlanet/proj.android-studio121212/libcocos2dx/build/intermediates/res/merged/androidTest/debug/anim/abc_popup_enter.xml",
+        "source": "/Users/kby5686/.android/build-cache/3ae4815fb9bb6148ee2e94525aadc2fd9ff9ca37/output/res/anim/abc_popup_enter.xml"
+    },
+    {
+        "merged": "/Users/kby5686/Documents/cocos2d-x-3.4/Projects/WorkSpace/FashionPlanet/proj.android-studio121212/libcocos2dx/build/intermediates/res/merged/androidTest/debug/anim/abc_grow_fade_in_from_bottom.xml",
+        "source": "/Users/kby5686/.android/build-cache/3ae4815fb9bb6148ee2e94525aadc2fd9ff9ca37/output/res/anim/abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/kby5686/Documents/cocos2d-x-3.4/Projects/WorkSpace/FashionPlanet/proj.android-studio121212/libcocos2dx/build/intermediates/res/merged/androidTest/debug/anim/abc_fade_out.xml",
+        "source": "/Users/kby5686/.android/build-cache/3ae4815fb9bb6148ee2e94525aadc2fd9ff9ca37/output/res/anim/abc_fade_out.xml"
+    },
+    {
+        "merged": "/Users/kby5686/Documents/cocos2d-x-3.4/Projects/WorkSpace/FashionPlanet/proj.android-studio121212/libcocos2dx/build/intermediates/res/merged/androidTest/debug/anim/abc_shrink_fade_out_from_bottom.xml",
+        "source": "/Users/kby5686/.android/build-cache/3ae4815fb9bb6148ee2e94525aadc2fd9ff9ca37/output/res/anim/abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/kby5686/Documents/cocos2d-x-3.4/Projects/WorkSpace/FashionPlanet/proj.android-studio121212/libcocos2dx/build/intermediates/res/merged/androidTest/debug/anim/abc_slide_out_top.xml",
+        "source": "/Users/kby5686/.android/build-cache/3ae4815fb9bb6148ee2e94525aadc2fd9ff9ca37/output/res/anim/abc_slide_out_top.xml"
+    },
+    {
+        "merged": "/Users/kby5686/Documents/cocos2d-x-3.4/Projects/WorkSpace/FashionPlanet/proj.android-studio121212/libcocos2dx/build/intermediates/res/merged/androidTest/debug/anim/abc_slide_out_bottom.xml",
+        "source": "/Users/kby5686/.android/build-cache/3ae4815fb9bb6148ee2e94525aadc2fd9ff9ca37/output/res/anim/abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "/Users/kby5686/Documents/cocos2d-x-3.4/Projects/WorkSpace/FashionPlanet/proj.android-studio121212/libcocos2dx/build/intermediates/res/merged/androidTest/debug/anim/abc_popup_exit.xml",
+        "source": "/Users/kby5686/.android/build-cache/3ae4815fb9bb6148ee2e94525aadc2fd9ff9ca37/output/res/anim/abc_popup_exit.xml"
+    },
+    {
+        "merged": "/Users/kby5686/Documents/cocos2d-x-3.4/Projects/WorkSpace/FashionPlanet/proj.android-studio121212/libcocos2dx/build/intermediates/res/merged/androidTest/debug/anim/abc_slide_in_top.xml",
+        "source": "/Users/kby5686/.android/build-cache/3ae4815fb9bb6148ee2e94525aadc2fd9ff9ca37/output/res/anim/abc_slide_in_top.xml"
+    },
+    {
+        "merged": "/Users/kby5686/Documents/cocos2d-x-3.4/Projects/WorkSpace/FashionPlanet/proj.android-studio121212/libcocos2dx/build/intermediates/res/merged/androidTest/debug/anim/abc_fade_in.xml",
+        "source": "/Users/kby5686/.android/build-cache/3ae4815fb9bb6148ee2e94525aadc2fd9ff9ca37/output/res/anim/abc_fade_in.xml"
+    }
+]

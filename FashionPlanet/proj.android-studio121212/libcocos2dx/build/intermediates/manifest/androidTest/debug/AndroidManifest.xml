@@ -13,7 +13,7 @@
         android:label="Tests for org.cocos2dx.lib.test"
         android:targetPackage="org.cocos2dx.lib.test" />
 
-    <application android:debuggable="true" >
+    <application>
         <uses-library android:name="android.test.runner" />
     </application>
 
