@@ -1,0 +1,174 @@
+{"frames": [
+
+{
+	"filename": "modelhelp0.png",
+	"frame": {"x":0,"y":0,"w":517,"h":487},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":517,"h":487},
+	"sourceSize": {"w":517,"h":487},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelhelp1.png",
+	"frame": {"x":519,"y":0,"w":465,"h":295},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":465,"h":295},
+	"sourceSize": {"w":465,"h":295},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelhelp2.png",
+	"frame": {"x":519,"y":297,"w":465,"h":295},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":465,"h":295},
+	"sourceSize": {"w":465,"h":295},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelhelp3.png",
+	"frame": {"x":174,"y":928,"w":162,"h":78},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":162,"h":78},
+	"sourceSize": {"w":162,"h":78},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelhelp4.png",
+	"frame": {"x":338,"y":928,"w":167,"h":65},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":167,"h":65},
+	"sourceSize": {"w":167,"h":65},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelhelp5.png",
+	"frame": {"x":0,"y":935,"w":172,"h":78},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":172,"h":78},
+	"sourceSize": {"w":172,"h":78},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelhelpcandyicon0.png",
+	"frame": {"x":113,"y":489,"w":66,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":60},
+	"sourceSize": {"w":66,"h":60},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelhelpexpicon0.png",
+	"frame": {"x":181,"y":489,"w":66,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":60},
+	"sourceSize": {"w":66,"h":60},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelhelpexpicon1.png",
+	"frame": {"x":249,"y":489,"w":66,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":60},
+	"sourceSize": {"w":66,"h":60},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelhelpexpicon2.png",
+	"frame": {"x":317,"y":489,"w":66,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":60},
+	"sourceSize": {"w":66,"h":60},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelhelpgoldicon0.png",
+	"frame": {"x":389,"y":556,"w":66,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":60},
+	"sourceSize": {"w":66,"h":60},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelhelpgoldicon1.png",
+	"frame": {"x":389,"y":759,"w":66,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":60},
+	"sourceSize": {"w":66,"h":60},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelhelpgoldicon2.png",
+	"frame": {"x":389,"y":821,"w":66,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":60},
+	"sourceSize": {"w":66,"h":60},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelhelplookicon0.png",
+	"frame": {"x":457,"y":759,"w":66,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":60},
+	"sourceSize": {"w":66,"h":60},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelhelplookicon1.png",
+	"frame": {"x":389,"y":489,"w":92,"h":65},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":92,"h":65},
+	"sourceSize": {"w":92,"h":65},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelmainslotlv0.png",
+	"frame": {"x":0,"y":489,"w":111,"h":444},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":111,"h":444},
+	"sourceSize": {"w":111,"h":444},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelupgrade0.png",
+	"frame": {"x":113,"y":594,"w":274,"h":332},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":274,"h":332},
+	"sourceSize": {"w":274,"h":332},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelupgrade1.png",
+	"frame": {"x":389,"y":618,"w":247,"h":139},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":247,"h":139},
+	"sourceSize": {"w":247,"h":139},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "packimg15.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:c0cc238b7bc8aca98709833e3ed36243:cbb93f57f12477c00a4c5e983d0ff9f5:dd1d22aeae22a949e8344bd60dad57f5$"
+}
+}

@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "/Users/kby5686/Documents/cocos2d-x-3.4/Projects/RuleTheStyle/proj.android-studio121212/libcocos2dx/build/intermediates/incremental/mergeDebugResources/merged.dir/values-w360dp-v13/values-w360dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 54,
+                    "endOffset": 105
+                },
+                "from": {
+                    "file": "/Users/kby5686/.android/build-cache/3ae4815fb9bb6148ee2e94525aadc2fd9ff9ca37/output/res/values-w360dp/values-w360dp.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 294,
+                        "endColumn": 54,
+                        "endOffset": 344
+                    }
+                }
+            }
+        ]
+    }
+]

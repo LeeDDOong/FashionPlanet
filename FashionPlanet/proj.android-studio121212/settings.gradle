@@ -1,0 +1,2 @@
+include ':RuleTheStyle'
+include ':libcocos2dx'

@@ -1,0 +1,93 @@
+{"frames": [
+
+{
+	"filename": "optionbar0.png",
+	"frame": {"x":909,"y":0,"w":104,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":40},
+	"sourceSize": {"w":104,"h":40},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "optionbar1.png",
+	"frame": {"x":838,"y":131,"w":32,"h":33},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":33},
+	"sourceSize": {"w":32,"h":33},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "optionbg.png",
+	"frame": {"x":0,"y":0,"w":523,"h":571},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":523,"h":571},
+	"sourceSize": {"w":523,"h":571},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "optiononoff.png",
+	"frame": {"x":752,"y":0,"w":155,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":155,"h":84},
+	"sourceSize": {"w":155,"h":84},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "optionsubbg0.png",
+	"frame": {"x":0,"y":573,"w":374,"h":445},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":374,"h":445},
+	"sourceSize": {"w":374,"h":445},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "optionsubbg1.png",
+	"frame": {"x":376,"y":573,"w":374,"h":445},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":374,"h":445},
+	"sourceSize": {"w":374,"h":445},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "optiontab.png",
+	"frame": {"x":909,"y":42,"w":91,"h":90},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":91,"h":90},
+	"sourceSize": {"w":91,"h":90},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "optiontabicon.png",
+	"frame": {"x":752,"y":86,"w":84,"h":170},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":84,"h":170},
+	"sourceSize": {"w":84,"h":170},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "optionv.png",
+	"frame": {"x":838,"y":86,"w":53,"h":43},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":53,"h":43},
+	"sourceSize": {"w":53,"h":43},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "packimg5.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:0259062e96ade9d73d1a7f82d30cc5df:2d68228cacd3e906e8d61377c86694da:31fa50b7996274727bdda9bafbb401d0$"
+}
+}

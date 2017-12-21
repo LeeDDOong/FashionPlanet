@@ -1,0 +1,345 @@
+{"frames": [
+
+{
+	"filename": "modelbg0.png",
+	"frame": {"x":0,"y":642,"w":1136,"h":522},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1136,"h":522},
+	"sourceSize": {"w":1136,"h":522},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelbg1.png",
+	"frame": {"x":0,"y":1967,"w":172,"h":76},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":172,"h":76},
+	"sourceSize": {"w":172,"h":76},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelcastingbtn0.png",
+	"frame": {"x":1608,"y":1829,"w":202,"h":87},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":202,"h":87},
+	"sourceSize": {"w":202,"h":87},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelcastingbtn1.png",
+	"frame": {"x":174,"y":1967,"w":172,"h":62},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":172,"h":62},
+	"sourceSize": {"w":172,"h":62},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelcastingbtn2.png",
+	"frame": {"x":1824,"y":1183,"w":172,"h":310},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":172,"h":310},
+	"sourceSize": {"w":172,"h":310},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelcastingbtn4.png",
+	"frame": {"x":509,"y":1166,"w":424,"h":439},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":424,"h":439},
+	"sourceSize": {"w":424,"h":439},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelcastingbtn5.png",
+	"frame": {"x":1824,"y":1495,"w":172,"h":202},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":172,"h":202},
+	"sourceSize": {"w":172,"h":202},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelcastingbtn6.png",
+	"frame": {"x":1160,"y":1511,"w":172,"h":202},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":172,"h":202},
+	"sourceSize": {"w":172,"h":202},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modeleditbtn.png",
+	"frame": {"x":1505,"y":1630,"w":173,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":173,"h":84},
+	"sourceSize": {"w":173,"h":84},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelfriendbg0.png",
+	"frame": {"x":1138,"y":578,"w":821,"h":603},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":821,"h":603},
+	"sourceSize": {"w":821,"h":603},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelfriendbg1.png",
+	"frame": {"x":1086,"y":1183,"w":527,"h":162},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":527,"h":162},
+	"sourceSize": {"w":527,"h":162},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelfriendbg2.png",
+	"frame": {"x":348,"y":1954,"w":156,"h":68},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":156,"h":68},
+	"sourceSize": {"w":156,"h":68},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelfriendbg3.png",
+	"frame": {"x":1086,"y":1347,"w":527,"h":162},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":527,"h":162},
+	"sourceSize": {"w":527,"h":162},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelfriendbg4.png",
+	"frame": {"x":1961,"y":578,"w":63,"h":120},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":63,"h":120},
+	"sourceSize": {"w":63,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelfriendbg6.png",
+	"frame": {"x":1961,"y":724,"w":34,"h":34},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":34,"h":34},
+	"sourceSize": {"w":34,"h":34},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelfriendbtn0.png",
+	"frame": {"x":1331,"y":1717,"w":147,"h":178},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":147,"h":178},
+	"sourceSize": {"w":147,"h":178},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelguestslot.png",
+	"frame": {"x":1961,"y":700,"w":58,"h":22},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":58,"h":22},
+	"sourceSize": {"w":58,"h":22},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelinfo0.png",
+	"frame": {"x":0,"y":1166,"w":507,"h":579},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":507,"h":579},
+	"sourceSize": {"w":507,"h":579},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelinfo1.png",
+	"frame": {"x":1160,"y":1921,"w":222,"h":110},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":222,"h":110},
+	"sourceSize": {"w":222,"h":110},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelinfo2.png",
+	"frame": {"x":1384,"y":1897,"w":222,"h":110},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":222,"h":110},
+	"sourceSize": {"w":222,"h":110},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelinfo3.png",
+	"frame": {"x":1480,"y":1717,"w":222,"h":110},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":222,"h":110},
+	"sourceSize": {"w":222,"h":110},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelinfo4.png",
+	"frame": {"x":2031,"y":0,"w":17,"h":8},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":8},
+	"sourceSize": {"w":17,"h":8},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modellistbtn.png",
+	"frame": {"x":506,"y":1967,"w":172,"h":62},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":172,"h":62},
+	"sourceSize": {"w":172,"h":62},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelmainbg0.png",
+	"frame": {"x":0,"y":0,"w":1136,"h":640},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1136,"h":640},
+	"sourceSize": {"w":1136,"h":640},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelmainbg1.png",
+	"frame": {"x":1334,"y":1511,"w":169,"h":204},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":169,"h":204},
+	"sourceSize": {"w":169,"h":204},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelmainbg2.png",
+	"frame": {"x":1160,"y":1715,"w":169,"h":204},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":169,"h":204},
+	"sourceSize": {"w":169,"h":204},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelmainbg3.png",
+	"frame": {"x":1505,"y":1543,"w":238,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":238,"h":85},
+	"sourceSize": {"w":238,"h":85},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelmainbg4.png",
+	"frame": {"x":935,"y":1537,"w":223,"h":509},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":223,"h":509},
+	"sourceSize": {"w":223,"h":509},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelmainempty.png",
+	"frame": {"x":680,"y":1967,"w":144,"h":34},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":144,"h":34},
+	"sourceSize": {"w":144,"h":34},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelmaingage0.png",
+	"frame": {"x":1704,"y":1699,"w":172,"h":89},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":172,"h":89},
+	"sourceSize": {"w":172,"h":89},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelmaingage1.png",
+	"frame": {"x":935,"y":1166,"w":149,"h":369},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":369},
+	"sourceSize": {"w":149,"h":369},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelmaingage2.png",
+	"frame": {"x":348,"y":1747,"w":149,"h":205},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":205},
+	"sourceSize": {"w":149,"h":205},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelupgradebg.png",
+	"frame": {"x":1138,"y":0,"w":891,"h":576},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":891,"h":576},
+	"sourceSize": {"w":891,"h":576},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelupgradeslot0.png",
+	"frame": {"x":509,"y":1607,"w":207,"h":358},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":207,"h":358},
+	"sourceSize": {"w":207,"h":358},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelupgradeslot1.png",
+	"frame": {"x":718,"y":1607,"w":207,"h":358},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":207,"h":358},
+	"sourceSize": {"w":207,"h":358},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "modelupgradeslot2.png",
+	"frame": {"x":1615,"y":1183,"w":207,"h":358},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":207,"h":358},
+	"sourceSize": {"w":207,"h":358},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "upgragebtn.png",
+	"frame": {"x":0,"y":1747,"w":210,"h":190},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":190},
+	"sourceSize": {"w":210,"h":190},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "packimg6.png",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":2048},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:d8934397f3b9b1c429ecf9558322c8ce:21935318b954dcc95dfc5e003a07ab93:ed3097c06efde562a4606a8cc36aad37$"
+}
+}

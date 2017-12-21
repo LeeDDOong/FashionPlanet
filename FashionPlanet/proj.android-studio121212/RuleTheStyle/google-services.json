@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1045598487268",
+    "project_id": "fashionplanet-ad867"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1045598487268:android:0cda817326c7b169",
+        "android_client_info": {
+          "package_name": "com.bluefi.dev.fashionplanet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1045598487268-6fhtvlkh19193lc7mkf4mml8rjh6vbkd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bluefi.dev.fashionplanet",
+            "certificate_hash": "798b25837db725883738ae33fd24034f81d7716e"
+          }
+        },
+        {
+          "client_id": "1045598487268-u6d02g9n32otfv68r0pgi2u4ge6cef4l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEcB87XyohoMnPqUhKdYeAzpgeD08fUQs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

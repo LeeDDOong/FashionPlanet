@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/LeeJaeWon/Desktop/project/FashionPlanet/cocos2d-x-3.4/Projects/FashionPlanet/proj.android-studio121212/libcocos2dx/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-h720dp-v13/values-h720dp-v13.xml",
+            "map": [
+                {
+                    "source": "/Users/LeeJaeWon/.gradle/caches/transforms-1/files-1.1/appcompat-v7-22.2.1.aar/8aa421fe7bed7762ee0be3a5956f9290/res/values-h720dp/values-h720dp.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "4",
+                        "startOffsets": "294",
+                        "endColumns": "66",
+                        "endOffsets": "356"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "66",
+                        "endOffsets": "117"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,66 @@
+{"frames": [
+
+{
+	"filename": "carstoragebg.png",
+	"frame": {"x":0,"y":0,"w":816,"h":506},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":816,"h":506},
+	"sourceSize": {"w":816,"h":506},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "carstorageslot0.png",
+	"frame": {"x":0,"y":574,"w":215,"h":372},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":215,"h":372},
+	"sourceSize": {"w":215,"h":372},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "carstorageslot1.png",
+	"frame": {"x":987,"y":0,"w":36,"h":35},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":36,"h":35},
+	"sourceSize": {"w":36,"h":35},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "carstorageslotinfo.png",
+	"frame": {"x":818,"y":0,"w":167,"h":167},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":167,"h":167},
+	"sourceSize": {"w":167,"h":167},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "carstoragetabb.png",
+	"frame": {"x":818,"y":169,"w":115,"h":101},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":101},
+	"sourceSize": {"w":115,"h":101},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "carstoragetabicon.png",
+	"frame": {"x":818,"y":272,"w":102,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":102,"h":300},
+	"sourceSize": {"w":102,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "packimg12.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:58fd6dce348608fd077a41eff9dba458:4c4e955894c5299bca1d04dede630b75:80390976adcd5d3fa1112f30472281cb$"
+}
+}

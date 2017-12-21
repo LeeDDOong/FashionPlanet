@@ -1,0 +1,102 @@
+{"frames": [
+
+{
+	"filename": "minigamebg.png",
+	"frame": {"x":0,"y":0,"w":549,"h":606},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":549,"h":606},
+	"sourceSize": {"w":549,"h":606},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "minigamebtn.png",
+	"frame": {"x":0,"y":894,"w":60,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":60,"h":94},
+	"sourceSize": {"w":60,"h":94},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "minigameobj0.png",
+	"frame": {"x":973,"y":0,"w":17,"h":112},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":112},
+	"sourceSize": {"w":17,"h":112},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "minigameobj1.png",
+	"frame": {"x":0,"y":608,"w":167,"h":194},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":167,"h":194},
+	"sourceSize": {"w":167,"h":194},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "minigameobj2.png",
+	"frame": {"x":551,"y":292,"w":100,"h":600},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":600},
+	"sourceSize": {"w":100,"h":600},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "minigameobj3.png",
+	"frame": {"x":322,"y":608,"w":143,"h":156},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":143,"h":156},
+	"sourceSize": {"w":143,"h":156},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "minigameobj4.png",
+	"frame": {"x":551,"y":0,"w":420,"h":290},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":290},
+	"sourceSize": {"w":420,"h":290},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "minigameobj5.png",
+	"frame": {"x":62,"y":804,"w":167,"h":194},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":167,"h":194},
+	"sourceSize": {"w":167,"h":194},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "minigameobj6.png",
+	"frame": {"x":169,"y":608,"w":151,"h":178},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":151,"h":178},
+	"sourceSize": {"w":151,"h":178},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "minigameobj7.png",
+	"frame": {"x":231,"y":788,"w":151,"h":178},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":151,"h":178},
+	"sourceSize": {"w":151,"h":178},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "packimg4.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:50bd4dbea4ce17cdc0ff26d07cfb4117:6ab3d63df967ef0b28fb4407053a3276:b238f34a5db204d39e3956a9c50bf9b6$"
+}
+}

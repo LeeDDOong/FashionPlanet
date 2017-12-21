@@ -1,0 +1,3 @@
+# Referenced at /Users/LeeJaeWon/Desktop/project/FashionPlanet/cocos2d-x-3.4/Projects/FashionPlanet/proj.android-studio121212/libcocos2dx/build/intermediates/manifest/androidTest/debug/AndroidManifest.xml:9
+-keep class com.android.test.runner.MultiDexTestRunner { <init>(...); }
+

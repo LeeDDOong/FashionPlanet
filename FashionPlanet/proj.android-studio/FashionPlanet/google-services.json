@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "970364304520",
+    "firebase_url": "https://rulethestyle-e0363.firebaseio.com",
+    "project_id": "rulethestyle-e0363",
+    "storage_bucket": "rulethestyle-e0363.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:970364304520:android:160f4294e2bae209",
+        "android_client_info": {
+          "package_name": "com.bluefi.rulethestyle.google"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "970364304520-32v04jfmmpkii62rvj39f0cs42eamtml.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bluefi.rulethestyle.google",
+            "certificate_hash": "0fa343c1d38d567d45c4062b5cad55889f5f282b"
+          }
+        },
+        {
+          "client_id": "970364304520-mg2g123hhhg162q5js3o1eipu8v2ij7j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB645CMKkOkhGXYx7DWtRVXA6fEFxWUpHo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "970364304520-mg2g123hhhg162q5js3o1eipu8v2ij7j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,138 @@
+{"frames": [
+
+{
+	"filename": "giftshopbg.png",
+	"frame": {"x":0,"y":1026,"w":642,"h":374},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":642,"h":374},
+	"sourceSize": {"w":642,"h":374},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "giftshopslotbg.png",
+	"frame": {"x":707,"y":669,"w":183,"h":264},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":183,"h":264},
+	"sourceSize": {"w":183,"h":264},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "mailbg0.png",
+	"frame": {"x":0,"y":0,"w":960,"h":640},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":960,"h":640},
+	"sourceSize": {"w":960,"h":640},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "mailbg1.png",
+	"frame": {"x":422,"y":1402,"w":413,"h":273},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":413,"h":273},
+	"sourceSize": {"w":413,"h":273},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "mailbtn0.png",
+	"frame": {"x":707,"y":935,"w":174,"h":144},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":174,"h":144},
+	"sourceSize": {"w":174,"h":144},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "mailgiftbtn.png",
+	"frame": {"x":895,"y":642,"w":96,"h":105},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":105},
+	"sourceSize": {"w":96,"h":105},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "mailgifticon.png",
+	"frame": {"x":0,"y":1873,"w":159,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":159,"h":51},
+	"sourceSize": {"w":159,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "mailslotbg0.png",
+	"frame": {"x":0,"y":642,"w":705,"h":151},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":705,"h":151},
+	"sourceSize": {"w":705,"h":151},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "mailslotbg1.png",
+	"frame": {"x":0,"y":795,"w":705,"h":151},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":705,"h":151},
+	"sourceSize": {"w":705,"h":151},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "mailtab2.png",
+	"frame": {"x":644,"y":1081,"w":326,"h":70},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":326,"h":70},
+	"sourceSize": {"w":326,"h":70},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "mailtextbox.png",
+	"frame": {"x":0,"y":948,"w":660,"h":76},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":660,"h":76},
+	"sourceSize": {"w":660,"h":76},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "miniprofilebg.png",
+	"frame": {"x":0,"y":1402,"w":420,"h":469},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":469},
+	"sourceSize": {"w":420,"h":469},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "secret0.png",
+	"frame": {"x":707,"y":642,"w":186,"h":25},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":186,"h":25},
+	"sourceSize": {"w":186,"h":25},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "secret1.png",
+	"frame": {"x":962,"y":0,"w":19,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":19,"h":24},
+	"sourceSize": {"w":19,"h":24},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "packimg7.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":2048},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:16b129446b61ee3f6b28831da290d7a3:20cb0d7d74fec963c59d2bac6e6a323a:01aa91b3b4b8aec62b2e8b7d452cdbd7$"
+}
+}

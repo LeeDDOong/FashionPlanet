@@ -1,0 +1,10 @@
+PODS:
+  - DownPicker (0.1.33)
+
+DEPENDENCIES:
+  - DownPicker
+
+SPEC CHECKSUMS:
+  DownPicker: 3341f6241852a4b6671965c665c87a8ef9760ded
+
+COCOAPODS: 0.39.0.beta.5

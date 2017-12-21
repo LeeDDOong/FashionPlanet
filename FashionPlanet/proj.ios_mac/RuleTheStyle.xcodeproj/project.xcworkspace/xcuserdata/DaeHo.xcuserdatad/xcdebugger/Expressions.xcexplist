@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "getSprintfQuestCheck(int, int):WorldMap.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "xWorldMap.state">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "paintWorldMap():WorldMap.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "xWorldMap.state">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "drawQuestInfo():WorldMap.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "xWorldMap.state">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

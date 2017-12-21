@@ -1,0 +1,273 @@
+{"frames": [
+
+{
+	"filename": "addfriendbg.png",
+	"frame": {"x":1138,"y":0,"w":657,"h":578},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":657,"h":578},
+	"sourceSize": {"w":657,"h":578},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "addfriendbtn.png",
+	"frame": {"x":658,"y":796,"w":104,"h":110},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":110},
+	"sourceSize": {"w":104,"h":110},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "addfriendslot.png",
+	"frame": {"x":1127,"y":580,"w":609,"h":101},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":609,"h":101},
+	"sourceSize": {"w":609,"h":101},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "addfriendtab0.png",
+	"frame": {"x":1797,"y":0,"w":172,"h":78},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":172,"h":78},
+	"sourceSize": {"w":172,"h":78},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "addfriendtab2.png",
+	"frame": {"x":658,"y":557,"w":300,"h":71},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":71},
+	"sourceSize": {"w":300,"h":71},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "addfriendtextbox.png",
+	"frame": {"x":1127,"y":683,"w":585,"h":76},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":585,"h":76},
+	"sourceSize": {"w":585,"h":76},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "addkakao0.png",
+	"frame": {"x":0,"y":557,"w":656,"h":578},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":656,"h":578},
+	"sourceSize": {"w":656,"h":578},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "addkakao1.png",
+	"frame": {"x":658,"y":693,"w":256,"h":101},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":101},
+	"sourceSize": {"w":256,"h":101},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "addkakao2.png",
+	"frame": {"x":916,"y":776,"w":118,"h":70},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":118,"h":70},
+	"sourceSize": {"w":118,"h":70},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "addkakao3.png",
+	"frame": {"x":658,"y":630,"w":290,"h":61},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":290,"h":61},
+	"sourceSize": {"w":290,"h":61},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "addkakao4.png",
+	"frame": {"x":2022,"y":0,"w":25,"h":25},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":25},
+	"sourceSize": {"w":25,"h":25},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "friendadd0.png",
+	"frame": {"x":1964,"y":241,"w":84,"h":77},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":84,"h":77},
+	"sourceSize": {"w":84,"h":77},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "friendadd1.png",
+	"frame": {"x":1964,"y":320,"w":84,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":84,"h":41},
+	"sourceSize": {"w":84,"h":41},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "friendadd2.png",
+	"frame": {"x":1797,"y":204,"w":165,"h":217},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":165,"h":217},
+	"sourceSize": {"w":165,"h":217},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "friendbg.png",
+	"frame": {"x":0,"y":0,"w":1136,"h":555},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1136,"h":555},
+	"sourceSize": {"w":1136,"h":555},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "friendeditbtn.png",
+	"frame": {"x":1905,"y":833,"w":135,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":135,"h":96},
+	"sourceSize": {"w":135,"h":96},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "friendinfoicon0.png",
+	"frame": {"x":1971,"y":0,"w":49,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":49,"h":46},
+	"sourceSize": {"w":49,"h":46},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "friendinfoicon1.png",
+	"frame": {"x":1971,"y":48,"w":49,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":49,"h":46},
+	"sourceSize": {"w":49,"h":46},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "friendinfoicon2.png",
+	"frame": {"x":1970,"y":192,"w":39,"h":47},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":39,"h":47},
+	"sourceSize": {"w":39,"h":47},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "friendkakaoicon.png",
+	"frame": {"x":1970,"y":96,"w":49,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":49,"h":46},
+	"sourceSize": {"w":49,"h":46},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "friendrandombtn.png",
+	"frame": {"x":1127,"y":761,"w":135,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":135,"h":96},
+	"sourceSize": {"w":135,"h":96},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "friendslot0.png",
+	"frame": {"x":1797,"y":423,"w":165,"h":217},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":165,"h":217},
+	"sourceSize": {"w":165,"h":217},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "friendslot1.png",
+	"frame": {"x":960,"y":557,"w":165,"h":217},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":165,"h":217},
+	"sourceSize": {"w":165,"h":217},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "friendslot2.png",
+	"frame": {"x":1738,"y":642,"w":165,"h":217},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":165,"h":217},
+	"sourceSize": {"w":165,"h":217},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "friendtab.png",
+	"frame": {"x":1797,"y":80,"w":171,"h":122},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":171,"h":122},
+	"sourceSize": {"w":171,"h":122},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "friendtabicon0.png",
+	"frame": {"x":1905,"y":707,"w":138,"h":61},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":138,"h":61},
+	"sourceSize": {"w":138,"h":61},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "friendtabicon1.png",
+	"frame": {"x":1905,"y":770,"w":138,"h":61},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":138,"h":61},
+	"sourceSize": {"w":138,"h":61},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "friendtabicon2.png",
+	"frame": {"x":1905,"y":642,"w":140,"h":63},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":140,"h":63},
+	"sourceSize": {"w":140,"h":63},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "friendvisiticon.png",
+	"frame": {"x":1970,"y":144,"w":49,"h":46},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":49,"h":46},
+	"sourceSize": {"w":49,"h":46},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "packimg3.png",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":2048},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:23ddefae7a367f3aff981673e6da5b9e:7b1aad30ba0b1191a5e1edd795ea56f1:078649d0243c6bc9986fc1cf0877e905$"
+}
+}
