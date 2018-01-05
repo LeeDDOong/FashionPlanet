@@ -371,7 +371,6 @@ node_t* find_path(int start_x, int start_y, int dest_x, int dest_y) {
 		//길찾기 성공 
 		if(best->x == start_x && best->y == start_y)
 		{
-
 			return best;
 		}
 
@@ -432,9 +431,6 @@ M_Boolean setAstar(int startX,int startY,int endX,int endY,int type,int floor)
 	
 	
 	//반대로 되있기때문에 재정렬
-	
-	
-	
 	
 	for(int i=0;i<xAstar.totalCnt;i++)
 	{

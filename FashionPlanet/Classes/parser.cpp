@@ -290,6 +290,7 @@ void loadExcelParserByte(int type)
             
 			sprintf(xFashionData[fashionType][fashionList].strName, "%s",bData[i][1]);
 			xFashionData[fashionType][fashionList].lv = atoi(bData[i][3]);
+           
 			xFashionData[fashionType][fashionList].layer = atoi(bData[i][5]);
 			xFashionData[fashionType][fashionList].gender = atoi(bData[i][6]);
 			
@@ -307,6 +308,9 @@ void loadExcelParserByte(int type)
 			xFashionData[fashionType][fashionList].concept = atoi(bData[i][18]);	//컨셉
 			xFashionData[fashionType][fashionList].type2FashionShowScore = atoi(bData[i][19]);	//패션쇼점수공식용
 			xFashionData[fashionType][fashionList].theme = atoi(bData[i][20]);	//테마
+            
+            
+            
 		}
 		break;
 	case EXCEL_PS_DRESS_LIST:
@@ -399,7 +403,7 @@ void loadExcelParserByte(int type)
 			xBalanceData.trend41Per[i-1] = atoi(bData[i][15]);	//트랜드확률41~
             
             printf("xBalanceData.trend41Per[%d]>>%d\n",i-1,xBalanceData.trend41Per[i-1]);
-            
+            printf("xBalanceData.expMax[%d]>>%d\n",i-1,xBalanceData.expMax[i-1].oriData);
 		}
 		break;
 	case EXCEL_PS_RESDOWN:
@@ -417,7 +421,7 @@ void loadExcelParserByte(int type)
 		break;
 	case EXCEL_PS_MINIGAME:
 		colsMax +=1;
-			
+        
 		xMiniGame.xDragScroll.totalNum = 0;
 			
 		for(i=1;i<colsMax;i++)
@@ -874,6 +878,11 @@ void loadExcelParserByte(int type)
 				case 87://	캔디머신으로 x원 모으기
 				case 95://	남자 모델만 이용해 패션쇼 xx점 달성하기
 				case 96://	여자 모델만 이용해 패션쇼 xx점 달성하기
+                case 102:
+                case 103:
+                case 104:
+                case 105:
+                case 107:
 					xQuestDataMain[i-1].checkMax[k] = xQuestDataMain[i-1].checkCode[k];
 					break;
 				}
@@ -956,10 +965,10 @@ void loadExcelParserByte(int type)
 				case 19:
 				case 34:
 				case 20:
-				case 54:// xx등급 이상 모델 캐스팅하기
+				case 54:    //  xx등급 이상 모델 캐스팅하기
 					xQuestDataNormal[i-1].checkMax[k] = 1;
 					break;
-				case 85://	(특정의상카테고리)만 이용해 골드 x 벌기 카테고리/999
+				case 85:    //  (특정의상카테고리)만 이용해 골드 x 벌기 카테고리/999
 					xQuestDataNormal[i-1].checkMax[k] = xQuestDataNormal[i-1].checkCode[k]%100000;;
 					xQuestDataNormal[i-1].checkCode[k] = xQuestDataNormal[i-1].checkCode[k]/100000;
 					break;
@@ -969,32 +978,37 @@ void loadExcelParserByte(int type)
 				case 6:
 				case 21:
 				case 35:
-				case 42://	주문된 %s 진열하기
-				case 84://	xx 테마 인테리어 구매하기0 테마번호/999
-				case 88://	선호도 x% 상태로 의상 x벌 판매하기
+				case 42:    //  주문된 %s 진열하기
+				case 84:    //	xx 테마 인테리어 구매하기0 테마번호/999
+				case 88:    //	선호도 x% 상태로 의상 x벌 판매하기
 					xQuestDataNormal[i-1].checkCode[k] = xQuestDataNormal[i-1].checkCode[k]/1000;
 					break;
-				case 11:	//명성도
-				case 12:	//골드
-				case 17:	//칭호 갯수
-				case 36:	//얼마이상구매
-				case 37://	판매 단가 %d원 이상 의상 주문
-				case 38://	주문수량 %d벌 이상 의상 주문
-				case 39://	명성도 %d 이상 의상 구매
-				case 40://	의상 라이센스 %d개 이상 보유하기
-				case 46://	패션쇼 %d점 달성하기
-				case 48://	마네킹 레이어드 %d회 달성하기
-				case 51://	여자 모델 %d명 피팅하기
-				case 52://	남자 모델 %d명 피팅하기
-				case 55://	모델 %d명 보유하기
-				case 56://	선호도 %d%% 달성하기
-				case 57://	캔디 모으기
-				case 69://	남자마네킹 레이어드 %d회 달성하기(%d/%d)
-				case 78://	모델 활동으로 %d원 벌기(%d/%d)
-				case 79://	모델 활동으로 경험치 %d획득하기(%d/%d)
-				case 87://	캔디머신으로 x원 모으기
-				case 95://	남자 모델만 이용해 패션쇼 xx점 달성하기
-				case 96://	여자 모델만 이용해 패션쇼 xx점 달성하기
+				case 11:	//  명성도
+				case 12:	//  골드
+				case 17:	//  칭호 갯수
+				case 36:	//  얼마이상구매
+				case 37:    //	판매 단가 %d원 이상 의상 주문
+				case 38:    //	주문수량 %d벌 이상 의상 주문
+				case 39:    //	명성도 %d 이상 의상 구매
+				case 40:    //	의상 라이센스 %d개 이상 보유하기
+				case 46:    //	패션쇼 %d점 달성하기
+				case 48:    //	마네킹 레이어드 %d회 달성하기
+				case 51:    //	여자 모델 %d명 피팅하기
+				case 52:    //	남자 모델 %d명 피팅하기
+				case 55:    //	모델 %d명 보유하기
+				case 56:    //	선호도 %d%% 달성하기
+				case 57:    //	캔디 모으기
+				case 69:    //	남자마네킹 레이어드 %d회 달성하기(%d/%d)
+				case 78:    //	모델 활동으로 %d원 벌기(%d/%d)
+				case 79:    //	모델 활동으로 경험치 %d획득하기(%d/%d)
+				case 87:    //	캔디머신으로 x원 모으기
+				case 95:    //	남자 모델만 이용해 패션쇼 xx점 달성하기
+				case 96:    //	여자 모델만 이용해 패션쇼 xx점 달성하기
+                case 102:
+                case 103:
+                case 104:   //  허니팡 점수 넘기기
+                case 105:   //  루루팡 점수 넘기기
+                case 107:
 					xQuestDataNormal[i-1].checkMax[k] = xQuestDataNormal[i-1].checkCode[k];
 					break;
 				}
@@ -1012,7 +1026,7 @@ void loadExcelParserByte(int type)
 		}
 		break;
 	case EXCEL_PS_GOODSLIST:
-		for(int i=0;i<5;i++)
+		for(int i=0;i<6;i++)
 			xModel.fashionShowBonusTotal[i] = 0;
 		
 		colsMax +=1;
@@ -1024,6 +1038,7 @@ void loadExcelParserByte(int type)
 			xModel.fashionShowBonusPointMax[grade][xModel.fashionShowBonusTotal[grade]] = atoi(bData[i][4]);
 			xModel.fashionShowBonusPointType[grade][xModel.fashionShowBonusTotal[grade]] = atoi(bData[i][5]);
 			xModel.fashionShowBonusTotal[grade]++;
+            
 		}
 		break;
 	case EXCEL_PS_MODEL:
@@ -1032,63 +1047,66 @@ void loadExcelParserByte(int type)
 		xModel.totalRanDomSlotB = 0;
 		xModel.totalRanDomSlotC = 0;
 		xModel.totalRanDomSlotS = 0;
-		
+        
 		colsMax +=1;
 		for(i=1;i<colsMax;i++)
 		{
-			xModelData[i-1].imgNum = atoi(bData[i][1]);
-			sprintf(xModelData[i-1].strName, "%s",bData[i][2]);
-			xModelData[i-1].grade = atoi(bData[i][3]);
-			xModelData[i-1].isOneHead = atoi(bData[i][4])==0?FALSE:TRUE;
-			xModelData[i-1].sex = atoi(bData[i][5]);
-			xModelData[i-1].isSell = atoi(bData[i][6])==0?FALSE:TRUE;
-			xModelData[i-1].layeredNum = atoi(bData[i][7]);
-			xModelData[i-1].tema = atoi(bData[i][8]);
-			xModelData[i-1].price = atoi(bData[i][9]);
-			xModelData[i-1].priceType = atoi(bData[i][10]);
-			xModelData[i-1].upGradeMax = atoi(bData[i][11]);
-						
-			initSecurity(&xModelData[i-1].giftTime, atoi(bData[i][13]));
-			initSecurity(&xModelData[i-1].giftNum, atoi(bData[i][14]));
-			xModelData[i-1].giftType= atoi(bData[i][15]);		//0:골드1:룩2:캔디3:경험치
+			xModelData[i-1].imgNum = atoi(bData[i][1]);//이미지 번호
+			sprintf(xModelData[i-1].strName, "%s",bData[i][2]);//모델명
+			xModelData[i-1].grade = atoi(bData[i][3]);//등급
+			xModelData[i-1].isOneHead = atoi(bData[i][4])==0?FALSE:TRUE;//얼굴 구분
+			xModelData[i-1].sex = atoi(bData[i][5]);//성별
+			xModelData[i-1].isSell = atoi(bData[i][6])==0?FALSE:TRUE;//판매구분
+			xModelData[i-1].layeredNum = atoi(bData[i][7]);//레이어드 횟수
+			xModelData[i-1].tema = atoi(bData[i][8]);//진짜 안씀....
+			xModelData[i-1].price = atoi(bData[i][9]);//판매시 받는 재화의 양
+			xModelData[i-1].priceType = atoi(bData[i][10]);//판매시 받는 재화의 종류
+			xModelData[i-1].upGradeMax = atoi(bData[i][11]);//최대 강화치
+            //12열도 안씀....
+			initSecurity(&xModelData[i-1].giftTime, atoi(bData[i][13]));//홍보시간
+			initSecurity(&xModelData[i-1].giftNum, atoi(bData[i][14]));//홍보시 획득하는 재화의 량
+			xModelData[i-1].giftType= atoi(bData[i][15]);		//0:골드1:룩2:캔디3:경험치 //홍보시 재화의 종류
 			
 			xModelData[i-1].giftPer[0]= 0;
-			xModelData[i-1].giftPer[1]= atoi(bData[i][16]);
+			xModelData[i-1].giftPer[1]= atoi(bData[i][16]);//강화시 얻는 이득...gifttype 0일 경우 각 강화정도에 따라 재화의 양이 증가, 1일 경우 강화정도에 따라 시간 값이 차감... 
 			xModelData[i-1].giftPer[2]= atoi(bData[i][17]);
 			xModelData[i-1].giftPer[3]= atoi(bData[i][18]);
 			xModelData[i-1].giftPer[4]= atoi(bData[i][19]);
 			xModelData[i-1].giftPer[5]= atoi(bData[i][20]);
-			xModelData[i-1].giftPerType = atoi(bData[i][21]);		//0:수치1:시간
-			xModelData[i-1].giftIconNum = atoi(bData[i][22]);
+			xModelData[i-1].giftPerType = atoi(bData[i][21]);		//0:수치1:시간  증가타입이라는데 확인 필요
+			xModelData[i-1].giftIconNum = atoi(bData[i][22]);       //가이드라인(아이콘 번호)에서 보상을 뭘 주는지 그리는 아이콘
 												
-			xModelData[i-1].modelSkillType = atoi(bData[i][23]);
-			xModelData[i-1].totalSkillNum = atoi(bData[i][24]);
-			xModelData[i-1].skillType[0] = atoi(bData[i][25]);
-			xModelData[i-1].skillPer[0] = atoi(bData[i][26]);
+			xModelData[i-1].modelSkillType = atoi(bData[i][23]);    //모델타입(이미지 표시용)(예시 타입: 복합 이런거 나타냄)
+			xModelData[i-1].totalSkillNum = atoi(bData[i][24]);     //기능 개수
+			xModelData[i-1].skillType[0] = atoi(bData[i][25]);      //스킬 종류
+			xModelData[i-1].skillPer[0] = atoi(bData[i][26]);       //스킬의 수치
 			xModelData[i-1].skillType[1] = atoi(bData[i][27]);
 			xModelData[i-1].skillPer[1] = atoi(bData[i][28]);
 			xModelData[i-1].skillType[2] = atoi(bData[i][29]);
 			xModelData[i-1].skillPer[2] = atoi(bData[i][30]);
-						
+            xModelData[i-1].skillType[3] = atoi(bData[i][31]);
+            xModelData[i-1].skillPer[3] = atoi(bData[i][32]);
+            xModelData[i-1].skillType[4] = atoi(bData[i][33]);
+            xModelData[i-1].skillPer[4] = atoi(bData[i][34]);
 			xModelData[i-1].totalFittingLayered = 0;
-			xModelData[i-1].fittingLayered[0] = atoi(bData[i][31]);
-			xModelData[i-1].fittingLayered[1] = atoi(bData[i][32]);
-			xModelData[i-1].fittingLayered[2] = atoi(bData[i][33]);
-			xModelData[i-1].fittingLayered[3] = atoi(bData[i][34]);
-			xModelData[i-1].fittingLayered[4] = atoi(bData[i][35]);
-			xModelData[i-1].fittingLayered[5] = atoi(bData[i][36]);
-			xModelData[i-1].fittingLayered[6] = atoi(bData[i][37]);
-			xModelData[i-1].fittingLayered[7] = atoi(bData[i][38]);
-			xModelData[i-1].fittingLayered[8] = atoi(bData[i][39]);
-			xModelData[i-1].fittingLayered[9] = atoi(bData[i][40]);
-			xModelData[i-1].isFittingInOut = atoi(bData[i][41])==0?FALSE:TRUE;
+			xModelData[i-1].fittingLayered[0] = atoi(bData[i][35]); //스타일북에서 모델리스트에서 보이는 의상들...(레이어)
+			xModelData[i-1].fittingLayered[1] = atoi(bData[i][36]);
+			xModelData[i-1].fittingLayered[2] = atoi(bData[i][37]);
+			xModelData[i-1].fittingLayered[3] = atoi(bData[i][38]);
+			xModelData[i-1].fittingLayered[4] = atoi(bData[i][39]);
+			xModelData[i-1].fittingLayered[5] = atoi(bData[i][40]);
+			xModelData[i-1].fittingLayered[6] = atoi(bData[i][41]);
+			xModelData[i-1].fittingLayered[7] = atoi(bData[i][42]);
+			xModelData[i-1].fittingLayered[8] = atoi(bData[i][43]);
+			xModelData[i-1].fittingLayered[9] = atoi(bData[i][44]);
+			xModelData[i-1].isFittingInOut = atoi(bData[i][45])==0?FALSE:TRUE;//모델리스트에서 보이는 의상인데 내어입기 했느냐 안해느냐
 			
 			for(int ll=0;ll<10;ll++)
 			{
 				if(xModelData[i-1].fittingLayered[ll] != DONT)
 					xModelData[i-1].totalFittingLayered++;
 			}
-			
+			//모델 리스트 등급별로 분류
 			if(xModelData[i-1].isSell == TRUE)
 			{
 				xModel.ranDomSlot[xModel.totalRanDomSlot++] = i-1;
@@ -1119,6 +1137,7 @@ void loadExcelParserByte(int type)
 		totalGrade[1] = 0;
 		totalGrade[2] = 0;
 		totalGrade[3] = 0;
+        totalGrade[4] = 0;
 		memset(gradeSlot, 0, sizeof(gradeSlot));
 		memset(isNew, 0, sizeof(isNew));
 		colsMax +=1;
@@ -1130,8 +1149,7 @@ void loadExcelParserByte(int type)
 			isNew[grade][totalGrade[grade]] = atoi(bData[i][4]);	//new
 			totalGrade[grade]++;
 		}
-		
-			
+            
 		//모델 등급별 슬롯
 		xCollection.totalSlot = 0;
 		for(int gradeI=3;gradeI>=0;gradeI--)
@@ -1146,8 +1164,9 @@ void loadExcelParserByte(int type)
 				xCollection.xSlot[xCollection.totalSlot].isNew = isNew[gradeI][i] == 0?FALSE:TRUE;
 				xCollection.totalSlot++;
 			}
-		}			
-		break;
+		}
+
+        break;
 	case EXCEL_PS_STYLEDRESS:
 		xCollection.totalFashionTheme = 0;
 			
@@ -1163,6 +1182,7 @@ void loadExcelParserByte(int type)
 			xCollection.totalFashionTheme++;
 		}
 		break;
+   
 	case EXCEL_PS_DRESSCOLOR:
 		colsMax +=1;
 		for(i=1;i<colsMax;i++)
@@ -1199,19 +1219,20 @@ void loadExcelParserByte(int type)
 									
 		//////////////////
 		i = 3;
-		xBalance.Model[3] = atof(bData[i][1]);//(S등급모델)
-		xBalance.Model[2] = atof(bData[i][2]);//(A등급모델)
-		xBalance.Model[1] = atof(bData[i][3]);//(B등급모델)
-		xBalance.Model[0] = atof(bData[i][4]);//(C등급모델)
+        xBalance.Model[4] = atof(bData[i][1]);//(R등급모델)
+		xBalance.Model[3] = atof(bData[i][2]);//(S등급모델)
+		xBalance.Model[2] = atof(bData[i][3]);//(A등급모델)
+		xBalance.Model[1] = atof(bData[i][4]);//(B등급모델)
+		xBalance.Model[0] = atof(bData[i][5]);//(C등급모델)
 		xBalance.Upgrade[0] = 0;//(0단계업그레이드)
-		xBalance.Upgrade[1] = atof(bData[i][5]);//(1단계업그레이드)
-		xBalance.Upgrade[2] = atof(bData[i][6]);//(2단계업그레이드)
-		xBalance.Upgrade[3] = atof(bData[i][7]);//(3단계업그레이드)
-		xBalance.Upgrade[4] = atof(bData[i][8]);//(4단계업그레이드)
-		xBalance.Upgrade[5] = atof(bData[i][9]);//(5단계업그레이드)
+		xBalance.Upgrade[1] = atof(bData[i][6]);//(1단계업그레이드)
+		xBalance.Upgrade[2] = atof(bData[i][7]);//(2단계업그레이드)
+		xBalance.Upgrade[3] = atof(bData[i][8]);//(3단계업그레이드)
+		xBalance.Upgrade[4] = atof(bData[i][9]);//(4단계업그레이드)
+		xBalance.Upgrade[5] = atof(bData[i][10]);//(5단계업그레이드)
 		//////////////////
 		
-			
+            
 		//////////////////캐스팅확률
 		i = 5;
 		/////////////////
@@ -1534,7 +1555,8 @@ void loadExcelParserByte(int type)
 		xModel.upgradePer[3][2][2] = atoi(bData[i][8]);
 		xModel.upgradePer[3][3][2] = atoi(bData[i][9]);
 		xModel.upgradePer[3][4][2] = atoi(bData[i][10]);
-		i = 54;
+      
+        i = 54;
 		xModel.upgradePer[2][0][3] = atoi(bData[i][1]);
 		xModel.upgradePer[2][1][3] = atoi(bData[i][2]);
 		xModel.upgradePer[2][2][3] = atoi(bData[i][3]);
@@ -1545,7 +1567,13 @@ void loadExcelParserByte(int type)
 		xModel.upgradePer[3][2][3] = atoi(bData[i][8]);
 		xModel.upgradePer[3][3][3] = atoi(bData[i][9]);
 		xModel.upgradePer[3][4][3] = atoi(bData[i][10]);
-		i = 55;
+       
+        xModel.upgradePer[4][0][4] = 100;
+        xModel.upgradePer[4][1][4] = 100;
+        xModel.upgradePer[4][2][4] = 100;
+        xModel.upgradePer[4][3][4] = 100;
+        xModel.upgradePer[4][4][4] = 100;
+        i = 55;
 		//가격
 		xModel.upgradePrice[2][0] = atoi(bData[i][1]);
 		xModel.upgradePrice[2][1] = atoi(bData[i][2]);
@@ -1557,16 +1585,22 @@ void loadExcelParserByte(int type)
 		xModel.upgradePrice[3][2] = atoi(bData[i][8]);
 		xModel.upgradePrice[3][3] = atoi(bData[i][9]);
 		xModel.upgradePrice[3][4] = atoi(bData[i][10]);
+       
 		/////////////////////
 		//모델 업그레이드 확률 및 가격
 		i = 57;
 		xModel.mixPer[0] = atoi(bData[i][1]);
 		xModel.mixPer[1] = atoi(bData[i][2]);
 		xModel.mixPer[2] = atoi(bData[i][3]);
-		i = 58;
+        xModel.mixPer[3] = atoi(bData[i][4]);
+        
+        
+		
+        i = 58;
 		xModel.mixPrice[0] = atoi(bData[i][1]);
-		xModel.mixPrice[1] = atoi(bData[i][1]);
-		xModel.mixPrice[2] = atoi(bData[i][1]);
+		xModel.mixPrice[1] = atoi(bData[i][2]);
+		xModel.mixPrice[2] = atoi(bData[i][3]);
+        xModel.mixPrice[3] = atoi(bData[i][4]);
 		/////////////////////
 		/////////////////////
 		//퀘스트잠금
@@ -1789,12 +1823,12 @@ void loadExcelParserByte(int type)
         xFashionWeek.isOpen = atoi(bData[i][5]) == 0?false:true;
 
         xPang.PANG_TIME_MAX = atoi(bData[i][6]);
-            
+        xPang_SOLO.PANG_TIME_MAX = atoi(bData[i][6]);
 
             
         xPang.DEFAULTSCORE = atoi(bData[i][7]);
-		xPang_SOLO.DEFAULTSCORE = atoi(bData[i][7]);
-			
+        xPang_SOLO.DEFAULTSCORE = atoi(bData[i][7]);
+    
             
             
             
@@ -1833,7 +1867,8 @@ void loadExcelParserByte(int type)
         i=99;
         xFormer.OnOff=atoi(bData[i][0]);
         
-		break;
+       
+        break;
     case EXCEL_PS_PACKAGE:
         colsMax +=1;
         for(i=1;i<colsMax;i++)
@@ -1950,13 +1985,12 @@ void loadExcelParserByte(int type)
             xEventQuest.xMain[questType].startMonth = (ymd/100%100);
             xEventQuest.xMain[questType].startDay = ymd%100;
             xEventQuest.xMain[questType].startHour = atoi(bData[i][12]);
-            
             ymd = atoi(bData[i][13]);
             xEventQuest.xMain[questType].endYear = ymd/10000;
             xEventQuest.xMain[questType].endMonth = (ymd/100%100);
             xEventQuest.xMain[questType].endDay = ymd%100;
             xEventQuest.xMain[questType].endHour = atoi(bData[i][14]);
-            
+
         }
         break;
     case EXCEL_PS_EVENTQUEST:
@@ -2026,6 +2060,9 @@ void loadExcelParserByte(int type)
             case 87://	캔디머신으로 x원 모으기
             case 95://	남자 모델만 이용해 패션쇼 xx점 달성하기
             case 96://	여자 모델만 이용해 패션쇼 xx점 달성하기
+                xEventQuest.xData[questType][questList].checkMax = xEventQuest.xData[questType][questList].checkCode;
+                break;
+            case 104:
                 xEventQuest.xData[questType][questList].checkMax = xEventQuest.xData[questType][questList].checkCode;
                 break;
             }
@@ -2292,6 +2329,7 @@ void loadExcelParserByte(int type)
             xClubShop.xData[Num].coin=atoi(bData[i][3]);
         }
         break;
+   
 	}
     
 	for( i = 0; i < size1; i++)
@@ -2317,14 +2355,14 @@ void loadSpriteData(const char* strFileName,XSPRIT* Xsprit)
 	char strFileSprite[32];
 	
 	memset(strFileSprite,0,sizeof(strFileSprite));
-	
+			
 	sprintf(strFileSprite,"%s",strFileName);
 	loadData(strFileSprite,FALSE);
-	
-	
-	
-	
-	
+			
+
+    
+    
+    
 	index = 0;
 	//이미지 갯수 1개 구조체 1:1대응할꺼임 쓸꺼임
 	Xsprit->totalImg = getByteToInt(bufData, index);
@@ -2335,7 +2373,7 @@ void loadSpriteData(const char* strFileName,XSPRIT* Xsprit)
 	//총프레임
 	Xsprit->totalFrame = getByteToInt(bufData, index);
 	index += 4;
-	
+		
 	for(i=0;i<Xsprit->totalFrame;i++)
 	{
 		//방어영역
@@ -2347,7 +2385,7 @@ void loadSpriteData(const char* strFileName,XSPRIT* Xsprit)
 		index += 4;
 		//사운드
 		Xsprit->xFrame[i].snd = getByteToInt(bufData, index);
-		index += 4;
+		index += 4;		
 		//총레이어
 		Xsprit->xFrame[i].totalLayer = getByteToInt(bufData, index);
 		index += 4;
@@ -2385,13 +2423,51 @@ void loadSpriteData(const char* strFileName,XSPRIT* Xsprit)
 			index += 4;
 			//반전
 			Xsprit->xFrame[i].xLayer[z].isReverse = bufData[index++];
-		}
+		}				
 	}
+    
+
+    
+		
+	sortSlot[ACT_FRONT][0] = 0;
+	sortSlot[ACT_FRONT][1] = 2;
+	sortSlot[ACT_FRONT][2] = 1;
+	sortSlot[ACT_FRONT][3] = 4;
+	sortSlot[ACT_FRONT][4] = 5;
+	sortSlot[ACT_FRONT][5] = 6;
+	sortSlot[ACT_FRONT][6] = 3;
+	sortSlot[ACT_FRONT][7] = 10;
+	sortSlot[ACT_FRONT][8] = 11;
+	sortSlot[ACT_FRONT][9] = 12;
+	sortSlot[ACT_FRONT][10] = 9;
+	sortSlot[ACT_FRONT][11] = 7;
+	sortSlot[ACT_FRONT][12] = 8;
+	sortSlot[ACT_FRONT][13] = 13;
+	sortSlot[ACT_FRONT][14] = 14;
+	sortSlot[ACT_FRONT][15] = 15;
+	sortSlot[ACT_FRONT][16] = 16;
+	sortSlot[ACT_FRONT][17] = 18;
+	sortSlot[ACT_FRONT][18] = 17;
 	
-	
-	
-	
-	
+	sortSlot[ACT_BACK][0] = 1;
+	sortSlot[ACT_BACK][1] = 2;
+	sortSlot[ACT_BACK][2] = 0;
+	sortSlot[ACT_BACK][3] = 6;
+	sortSlot[ACT_BACK][4] = 3;
+	sortSlot[ACT_BACK][5] = 4;
+	sortSlot[ACT_BACK][6] = 5;
+	sortSlot[ACT_BACK][7] = 11;
+	sortSlot[ACT_BACK][8] = 8;
+	sortSlot[ACT_BACK][9] = 9;
+	sortSlot[ACT_BACK][10] =10;
+	sortSlot[ACT_BACK][11] = 7;
+	sortSlot[ACT_BACK][12] = 15;
+	sortSlot[ACT_BACK][13] = 12;
+	sortSlot[ACT_BACK][14] = 13;
+	sortSlot[ACT_BACK][15] = 14;
+	sortSlot[ACT_BACK][16] = 17;
+	sortSlot[ACT_BACK][17] = 18;
+	sortSlot[ACT_BACK][18] = 16;
 	
 	xSpritNpc[NPC_ACT_SONG][ACT_FRONT].isMike = TRUE;
 	xSpritNpc[NPC_ACT_GUITAR][ACT_FRONT].isGuitar = TRUE;
@@ -2412,7 +2488,7 @@ void loadSpriteData(const char* strFileName,XSPRIT* Xsprit)
 	xSpritNpc[NPC_ACT_RUNWAY_CHAIR_ACTION0][ACT_FRONT].isPen = TRUE;
 	xSpritNpc[NPC_ACT_RUNWAY_CHAIR_ACTION0][ACT_BACK].isPen = TRUE;
 	xSpritNpc[NPC_ACT_RUNWAY_CHAIR_ACTION0][ACT_FRONT].isNote = TRUE;
-	xSpritNpc[NPC_ACT_RUNWAY_CHAIR_ACTION0][ACT_BACK].isNote = TRUE;
+	xSpritNpc[NPC_ACT_RUNWAY_CHAIR_ACTION0][ACT_BACK].isNote = TRUE;	
 }
 
 void initSprit(XSPRIT *Xsprit)
@@ -2429,7 +2505,7 @@ int prcSprit(XSPRIT *Xsprit ,int *nowDelay,int *nowFrame)
 	}
 	//클때
 	if((*nowFrame) >= Xsprit->totalFrame)
-	{
+	{	
 		(*nowFrame) = 0;
 		(*nowDelay) = 0;
 		return 1;
@@ -2437,22 +2513,17 @@ int prcSprit(XSPRIT *Xsprit ,int *nowDelay,int *nowFrame)
 	return 0;
 }
 
-
 void drawSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 {
-	float fGameScaleOri = xGame.fgameScale;
-	xGame.fgameScale = xGame.fgameScale/2.f;
-	
-	
 	int i;
 	int imgX,imgY,imgW,imgH,drawX,drawY,imgNum;
-	
+	int origI=0;
 	int drawXsub;
 	int drawYsub;
 	if(Xsprit->nowFrame >= Xsprit->totalFrame || Xsprit->nowFrame < 0)
 	{
 		return;
-	}
+	}		
 	
 	Xsprit->hairResize = 100;
 	xGame.isReSizeDraw = TRUE;
@@ -2461,8 +2532,10 @@ void drawSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 	{
 		if(pos == ACT_FRONT)
 		{
+			//xFace.hair
+			//13두상(정면)
 			if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[8].imgScale == 100)
-			{
+			{								
 				imgX = Xsprit->xFrame[Xsprit->nowFrame].xLayer[8].imgX;
 				imgY = Xsprit->xFrame[Xsprit->nowFrame].xLayer[8].imgY;
 				imgW = Xsprit->xFrame[Xsprit->nowFrame].xLayer[8].imgW;
@@ -2473,6 +2546,7 @@ void drawSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 				{
 					xGame.isRotate = TRUE;
 					xGame.rotateNum = 360-Xsprit->xFrame[Xsprit->nowFrame].xLayer[8].imgRot;
+					
 				}
 				drawHair(drawX, drawY, xFace->hairNum,8, pos, 0);
 				xGame.isRotate = FALSE;
@@ -2496,10 +2570,19 @@ void drawSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 		imgNum = Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].imgNum;
 		
 		
+		//ppppppppppp
+		/*
+		 for(int imgI=0;imgI<ACTLAYERMAX;imgI++)
+		 xSpritNpc[xShopNpc[xObjSort[b_a].code[num]].actingType][ACT_FRONT].img[imgI] = &imgActBody[imgI][ACT_FRONT];
+		 for(int imgI=0;imgI<ACTLAYERMAX;imgI++)
+		 xSpritNpc[xShopNpc[xObjSort[b_a].code[num]].actingType][ACT_BACK].img[imgI] = &imgActBody[imgI][ACT_BACK];
+		 */
+		
+		
 		
 		if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].imgRot != 0)
-		{
-			xGame.isRotate = TRUE;
+		{			
+			xGame.isRotate = TRUE;			
 			xGame.rotateNum = 360-Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].imgRot;
 		}
 		xGame.isReSizeDraw = TRUE;
@@ -2507,35 +2590,40 @@ void drawSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 		if(pos == ACT_FRONT)
 		{
 			//xFace.hair
-			
+			//13두상(정면)
+			//14두상(우측)
+			//15두상(좌측)
 			switch(imgNum)
 			{
-				case 8:
-					if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].imgScale == 100)
-					{
-						xGame.isReSizeDraw = TRUE;
-						xGame.reSize = Xsprit->hairResize;
-						drawY+=Xsprit->hairResizeY;
-					}
-					break;
+                case 8:
+                    if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].imgScale == 100)
+                    {
+                        xGame.isReSizeDraw = TRUE;
+                        xGame.reSize = Xsprit->hairResize;
+                        drawY+=Xsprit->hairResizeY;
+                    }
+                    break;
 			}
 		}
 		else
 		{
 			//xFace.hair
+			//12두상(정면)
+			//13두상(우측)
+			//14두상(좌측)
 			switch(imgNum)
 			{
-				case 6:
-					if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].imgScale == 100)
-					{
-						xGame.isReSizeDraw = TRUE;
-						xGame.reSize = Xsprit->hairResize;
-						drawY+=Xsprit->hairResizeY;
-					}
-					break;
+			
+                case 6:
+                    if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].imgScale == 100)
+                    {
+                        xGame.isReSizeDraw = TRUE;
+                        xGame.reSize = Xsprit->hairResize;
+                        drawY+=Xsprit->hairResizeY;
+                    }
+                    break;
 			}
 		}
-		
 		
 		if(Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum] != NULL)
 		{
@@ -2545,22 +2633,21 @@ void drawSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 		}
 		
 		
-		
 		if(pos == ACT_FRONT)
 		{
-			drawImage(&imgActBody[imgNum][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL);
+            drawImage(&imgActBody[imgNum][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL);
 		}
 		else if(pos == ACT_BACK)
 		{
-			drawImage(&imgActBody[imgNum][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL);
+            drawImage(&imgActBody[imgNum][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL);
 		}
-		
+				
 		for(int layerI=0;layerI<SPRIT_IMGLAYERMAX;layerI++)
 		{
 			if(Xsprit->img[layerI][imgNum] != NULL)
 			{
-				drawXsub = drawX-(Xsprit->img[layerI][imgNum]->w - imgActBody[imgNum][pos].w)/2;
-				drawYsub = drawY-(Xsprit->img[layerI][imgNum]->h - imgActBody[imgNum][pos].h)/2;
+				 drawXsub = drawX-(Xsprit->img[layerI][imgNum]->w - imgActBody[imgNum][pos].w)/2;
+				 drawYsub = drawY-(Xsprit->img[layerI][imgNum]->h - imgActBody[imgNum][pos].h)/2;
 				
 				drawImage(Xsprit->img[layerI][imgNum], drawXsub, drawYsub, imgX, imgY, Xsprit->img[layerI][imgNum]->w, Xsprit->img[layerI][imgNum]->h, TL);
 			}
@@ -2570,48 +2657,51 @@ void drawSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 				if(pos == ACT_FRONT)
 				{
 					//xFace.hair
+					//13두상(정면)
+					//14두상(우측)
+					//15두상(좌측)
 					switch(imgNum)
 					{
-						case 8:
-							
-							if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[imgNum].imgScale == 100)
-							{
-								//표정그리고
-								if(xFace->faceNum != DONT)
-								{
-									drawFace(drawX, drawY,xFace,imgNum,pos);
-								}
-								//헤어그리기
-								if(xFace->hairNum != DONT)
-								{
-									drawHair(drawX, drawY, xFace->hairNum,imgNum, pos, 1);
-								}
-							}
-							break;
+                        case 8:
+                            if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[imgNum].imgScale == 100)
+                            {
+                                //표정그리고
+                                if(xFace->faceNum != DONT)
+                                {
+                                    drawFace(drawX, drawY,xFace,imgNum,pos);
+                                }
+                                //헤어그리기
+                                if(xFace->hairNum != DONT)
+                                {
+                                    drawHair(drawX, drawY, xFace->hairNum,imgNum, pos, 1);
+                                }
+                            }
+                            break;
 					}
 				}
 				else
 				{
 					//xFace.hair
-					
+					//12두상(정면)
+					//13두상(우측)
+					//14두상(좌측)
 					switch(imgNum)
 					{
-						case 6:
-							
-							if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[imgNum].imgScale == 100)
-							{
-								//표정그리고
-								if(xFace->faceNum != DONT)
-								{
-									drawFace(drawX, drawY,xFace,imgNum,pos);
-								}
-								//헤어그리기
-								if(xFace->hairNum != DONT)
-								{
-									drawHair(drawX, drawY, xFace->hairNum,imgNum, pos, 1);
-								}
-							}
-							break;
+                        case 6:
+                            if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[imgNum].imgScale == 100)
+                            {
+                                //표정그리고
+                                if(xFace->faceNum != DONT)
+                                {
+                                    drawFace(drawX, drawY,xFace,imgNum,pos);
+                                }
+                                //헤어그리기
+                                if(xFace->hairNum != DONT)
+                                {
+                                    drawHair(drawX, drawY, xFace->hairNum,imgNum, pos, 1);
+                                }
+                            }
+                            break;
 					}
 				}
 			}
@@ -2619,18 +2709,11 @@ void drawSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 		xGame.isRotate = FALSE;
 		xGame.isReSizeDraw = FALSE;
 		
-	}
-	
-	xGame.fgameScale=fGameScaleOri;
-	
+	}	
 }
 
 void reverseSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 {
-	float fGameScaleOri = xGame.fgameScale;
-	xGame.fgameScale = xGame.fgameScale/2.f;
-	
-	
 	int i;
 	int imgX,imgY,imgW,imgH,drawX,drawY,imgNum;
 	int drawXsub;
@@ -2653,6 +2736,7 @@ void reverseSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 		if(pos == ACT_FRONT)
 		{
 			//xFace.hair
+			//13두상(정면)
 			if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[8].imgScale == 100)
 			{
 				imgX = Xsprit->xFrame[Xsprit->nowFrame].xLayer[8].imgX;
@@ -2691,7 +2775,7 @@ void reverseSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 		drawY = y+Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].drawY;
 		
 		imgNum = Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].imgNum;
-		
+				
 		if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].imgRot != 0)
 		{
 			xGame.isRotate = TRUE;
@@ -2700,22 +2784,25 @@ void reverseSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 		}
 		
 		xGame.isReSizeDraw = TRUE;
-		
+        
 		xGame.reSize = Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].imgScale;
 		if(pos == ACT_FRONT)
 		{
 			//xFace.hair
+			//13두상(정면)
+			//14두상(우측)
+			//15두상(좌측)
 			switch(imgNum)
 			{
-				case 8:
-					if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].imgScale == 100)
-					{
-						xGame.isReSizeDraw = TRUE;
-						xGame.reSize = Xsprit->hairResize;
-						drawY+=Xsprit->hairResizeY;
-					}
-					break;
-			}
+                case 8:
+                    if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].imgScale == 100)
+                    {
+                        xGame.isReSizeDraw = TRUE;
+                        xGame.reSize = Xsprit->hairResize;
+                        drawY+=Xsprit->hairResizeY;
+                    }
+                    break;
+            }
 		}
 		else
 		{
@@ -2724,22 +2811,20 @@ void reverseSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 			//13두상(우측)
 			//14두상(좌측)
 			switch(imgNum)
-			{
-				case 6:
-					if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].imgScale == 100)
-					{
-						xGame.isReSizeDraw = TRUE;
-						xGame.reSize = Xsprit->hairResize;
-						drawY+=Xsprit->hairResizeY;
-					}
-					break;
-			}
+            {
+                case 6:
+                    if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].imgScale == 100)
+                    {
+                        xGame.isReSizeDraw = TRUE;
+                        xGame.reSize = Xsprit->hairResize;
+                        drawY+=Xsprit->hairResizeY;
+                    }
+                    break;
+            }
 		}
 		
 		xGame.isReverse = TRUE;
-		
-		
-		
+				
 		if(Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum] != NULL)
 		{
 			drawXsub = drawX-(Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum]->w - imgActBody[imgNum][pos].w)/2;
@@ -2747,17 +2832,15 @@ void reverseSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 			drawImage(Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum], drawXsub, drawYsub, imgX, imgY, Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum]->w, Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum]->h, TL);
 		}
 		
-		
-		
 		if(pos == ACT_FRONT)
 		{
-			drawImage(&imgActBody[imgNum][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL);
+            drawImage(&imgActBody[imgNum][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL);
 		}
 		else if(pos == ACT_BACK)
 		{
-			drawImage(&imgActBody[imgNum][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL);
+            drawImage(&imgActBody[imgNum][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL);
 		}
-		
+
 		
 		
 		
@@ -2779,65 +2862,62 @@ void reverseSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 				if(pos == ACT_FRONT)
 				{
 					//xFace.hair
-					
+					//13두상(정면)
+					//14두상(우측)
+					//15두상(좌측)
 					switch(imgNum)
 					{
-						case 8:
-							if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[imgNum].imgScale == 100)
-							{
-								//표정그리고
-								if(xFace->faceNum != DONT)
-								{
-									drawFace(drawX, drawY,xFace,imgNum,pos);
-								}
-								//헤어그리기
-								if(xFace->hairNum != DONT)
-								{
-									drawHair(drawX, drawY, xFace->hairNum,imgNum, pos, 1);
-								}
-							}
-							break;
+                        case 8:
+                            if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[imgNum].imgScale == 100)
+                            {
+                                //표정그리고
+                                if(xFace->faceNum != DONT)
+                                {
+                                    drawFace(drawX, drawY,xFace,imgNum,pos);
+                                }
+                                //헤어그리기
+                                if(xFace->hairNum != DONT)
+                                {
+                                    drawHair(drawX, drawY, xFace->hairNum,imgNum, pos, 1);
+                                }
+                            }
+                            break;
 					}
 				}
 				else
 				{
 					//xFace.hair
-					
-					switch(imgNum)
-					{
-						case 6:
-							if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[imgNum].imgScale == 100)
-							{
-								//표정그리고
-								if(xFace->faceNum != DONT)
-								{
-									drawFace(drawX, drawY,xFace,imgNum,pos);
-								}
-								//헤어그리기
-								if(xFace->hairNum != DONT)
-								{
-									drawHair(drawX, drawY, xFace->hairNum,imgNum, pos, 1);
-								}
-							}
-							break;
-					}
+					//12두상(정면)
+					//13두상(우측)
+					//14두상(좌측)
+                    switch(imgNum)
+                    {
+                        case 6:
+                            if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[imgNum].imgScale == 100)
+                            {
+                                //표정그리고
+                                if(xFace->faceNum != DONT)
+                                {
+                                    drawFace(drawX, drawY,xFace,imgNum,pos);
+                                }
+                                //헤어그리기
+                                if(xFace->hairNum != DONT)
+                                {
+                                    drawHair(drawX, drawY, xFace->hairNum,imgNum, pos, 1);
+                                }
+                            }
+                            break;
+                    }
 				}
 			}
 		}
-		
-		
 		
 		xGame.isReverse = FALSE;
 		xGame.isRotate = FALSE;
 		xGame.isReSizeDraw = FALSE;
 		
 	}
-	
-	xGame.fgameScale=fGameScaleOri;
-	
-	
 }
-
 
 XSPRITFRAME xFrame[50];
 //Byte -> int 변환
@@ -2846,10 +2926,10 @@ int getByteToIntPar(unsigned char data[], int idx)
 {
 	int result = 0;
 	
-	result =
+	result = 
 	((data[idx] & 0xFF)		<< 24) |
 	((data[idx+1] & 0xFF)	<< 16) |
-	((data[idx+2] & 0xFF)	<<  8) |
+	((data[idx+2] & 0xFF)	<<  8) | 
 	( data[idx+3] & 0xFF);
 	
 	return result;
@@ -2857,33 +2937,33 @@ int getByteToIntPar(unsigned char data[], int idx)
 
 int getExcelTypeNum(const char* strFileName)
 {
-	
+		
 	if(strcmp(strFileName, EXCEL_PS_INTERIOR_DATA_FILE) == 0)
-		return EXCEL_PS_INTERIOR_DATA;
+	return EXCEL_PS_INTERIOR_DATA;
 	
 	if(strcmp(strFileName, EXCEL_PS_INTERIOR_LIST_FILE) == 0)
-		return EXCEL_PS_INTERIOR_LIST;
+	return EXCEL_PS_INTERIOR_LIST;
 	
 	if(strcmp(strFileName, EXCEL_PS_THEME_FILE) == 0)
-		return EXCEL_PS_THEME;
-	
+	return EXCEL_PS_THEME;
+
 	if(strcmp(strFileName, EXCEL_PS_DRESS_DATA_FILE) == 0)
-		return EXCEL_PS_DRESS_DATA;
+	return EXCEL_PS_DRESS_DATA;
 	
 	if(strcmp(strFileName, EXCEL_PS_DRESS_LIST_FILE) == 0)
-		return EXCEL_PS_DRESS_LIST;
+	return EXCEL_PS_DRESS_LIST;
 	
 	if(strcmp(strFileName, EXCEL_PS_STAFF_DATA_FILE) == 0)
-		return EXCEL_PS_STAFF_DATA;
-	
-	
+	return EXCEL_PS_STAFF_DATA;
+
+
 	if(strcmp(strFileName, EXCEL_PS_STAFF_LIST_FILE) == 0)
-		return EXCEL_PS_STAFF_LIST;
-	
-	
+	return EXCEL_PS_STAFF_LIST;
+
+
 	if(strcmp(strFileName, EXCEL_PS_LVTABLE_FILE) == 0)
-		return EXCEL_PS_LVTABLE;
-	
+	return EXCEL_PS_LVTABLE;
+		
 	if(strcmp(strFileName, EXCEL_PS_RESDOWN_FILE) == 0)
 	return EXCEL_PS_RESDOWN;
 	
@@ -3017,7 +3097,16 @@ int getExcelTypeNum(const char* strFileName)
     
     if(strcmp(strFileName, EXCEL_PS_CLUBSTORE_FILE)==0)
         return EXCEL_PS_CLUBSTORE;
+    
+    if(strcmp(strFileName, EXCEL_PS_BROOCHSHOP_FILE)==0)
+        return EXCEL_PS_BROOCHSHOP;
 		
+    if(strcmp(strFileName, EXCEL_PS_R_STYLEBOOK_FILE)==0)
+        return EXCEL_PS_R_STYLEBOOK;
+    
+    if(strcmp(strFileName, EXCEL_PS_R_UPGRADE_FILE)==0)
+        return EXCEL_PS_R_UPGRADE;
+    
 	printf("여기까지들어온거면 완전에러!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!>>%s\n",strFileName);
 	
 	return DONT;

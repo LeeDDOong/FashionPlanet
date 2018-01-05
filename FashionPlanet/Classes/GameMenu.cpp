@@ -1972,7 +1972,7 @@ void setPopupResult()
 				else
 				{
 					playState = xPopup.yes;
-					setNewModel(0);
+//					setNewModel(0);
 					
 					switch(xShop.premiumPriceType[xShop.selectSlot])
 					{
@@ -2002,7 +2002,7 @@ void setPopupResult()
 				else
 				{
 					playState = xPopup.yes;
-					setNewModel(1);
+//					setNewModel(1);
 					
 					
 					switch(xShop.premiumPriceType[xShop.selectSlot])
@@ -2903,8 +2903,8 @@ void setPopupResult()
 				break;
 			}
 						
-			outPutInventoryModel(xModel.infoInventoryNum);
-			setModelList(xModel.listTabNum);
+//			outPutInventoryModel(xModel.infoInventoryNum);
+//			setModelList(xModel.listTabNum);
 			xModel.inventoryNum = DONT;
 			
 			switch(xModel.state)

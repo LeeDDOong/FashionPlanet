@@ -946,10 +946,10 @@ void drawLoading()
 				sprintf(strTempS, "%d.png",k);
 				loadImg(strTempS,&imgActBody[k][ACT_FRONT]);
 				
-				xGame.isUnAnti = FALSE;
-				sprintf(strTempS, "s%d.png",k);
-				loadImg(strTempS,&imgActBodySub[k][ACT_FRONT]);
-				xGame.isUnAnti = FALSE;
+//				xGame.isUnAnti = FALSE;
+//				sprintf(strTempS, "s%d.png",k);
+//				loadImg(strTempS,&imgActBodySub[k][ACT_FRONT]);
+//				xGame.isUnAnti = FALSE;
 				//팔이랑 다리
 				switch(k)
 				{
@@ -974,10 +974,10 @@ void drawLoading()
 				sprintf(strTempS, "b%d.png",k);
 				loadImg(strTempS,&imgActBody[k][ACT_BACK]);
 				
-				xGame.isUnAnti = FALSE;
-				sprintf(strTempS, "sb%d.png",k);
-				loadImg(strTempS,&imgActBodySub[k][ACT_BACK]);
-				xGame.isUnAnti = FALSE;
+//				xGame.isUnAnti = FALSE;
+//				sprintf(strTempS, "sb%d.png",k);
+//				loadImg(strTempS,&imgActBodySub[k][ACT_BACK]);
+//				xGame.isUnAnti = FALSE;
 			}
 			xGame.isUnAnti = FALSE;
 			break;

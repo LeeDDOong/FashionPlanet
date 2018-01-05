@@ -1154,6 +1154,7 @@ typedef struct
 	
 	XTOUCH xBuildMode[2];
 	
+    
 	M_Boolean isBuildOkBtn;
 } XINTERIOR;
 extern XINTERIOR xInterior;
@@ -2428,7 +2429,7 @@ extern XTOUCH xTouchFittingS[10];
 extern XTOUCH xTouchInteriorBtn[4][2];
 
 
-extern XTOUCH xTouchWorldMapFriendIcon;
+//extern XTOUCH xTouchWorldMapFriendIcon;
 extern XTOUCH xTouchWorldMapMainMenuIcon;
 
 extern XTOUCH xTouchWorldMapCashIcon;
@@ -2542,6 +2543,9 @@ typedef struct
 	int wallInitCode[FLOORMAX];
 	int tileInitW;
 	int tileInitH;
+    
+    
+    XTOUCH xTouchTile[FLOORMAX][MAPDATAXMAX][MAPDATAXMAX];
 } XMAP;
 extern XMAP xMap;
 
@@ -8271,14 +8275,14 @@ void drawQuestResult(void);
 void addOrderQuest(int code);
 void drawCarWorldMap(int x,int y,int code,int pos,int anyCnt,int reSize);
 void drawNpcIcon(int x,int y,int npcNum);
-void drawModelList(void);
-void drawModelUpGrade(void);
-void drawNewModel(void);
-int addInventoryModel(int modelCode);
-void setModelList(int grade);
-void outPutInventoryModel(int slotNum);
-void setModelUpGradeList(int slotNum);
-void setNewModel(int type);
+//void drawModelList(void);
+//void drawModelUpGrade(void);
+//void drawNewModel(void);
+//int addInventoryModel(int modelCode);
+//void setModelList(int grade);
+//void outPutInventoryModel(int slotNum);
+//void setModelUpGradeList(int slotNum);
+//void setNewModel(int type);
 
 
 
@@ -8399,15 +8403,15 @@ void drawModelName(int x,int y,int code);
 
 void drawModelEff(void);
 void setModelEff(int x,int y);
-void drawModelCasting(void);
+//void drawModelCasting(void);
 void drawModelSlot(int x,int y,int selectNum);
 
-int getModelUpgradePrice(int oriInvenSlot,int targetInvenSlot);
-int getModelUpgradePer(int oriInvenSlot,int targetInvenSlot);
+//int getModelUpgradePrice(int oriInvenSlot,int targetInvenSlot);
+//int getModelUpgradePer(int oriInvenSlot,int targetInvenSlot);
 
 
 void drawModelShow(int modelCode,XFITTINGLAYER *xF,int anyCnt);
-void drawModelRotEff(int xPos,int yPos,int anyCnt);
+//void drawModelRotEff(int xPos,int yPos,int anyCnt);
 void drawModelUpgradeOn(void);
 void drawFashionShowMainNew(void);
 void drawFashionShowInfo(void);
@@ -8417,7 +8421,7 @@ M_Boolean getIsVote(int userNum);
 void addIsVote(int userNum);
 void loadImgFreeImgFashionShow(M_Boolean isLoad);
 
-int addInventoryModel_FRIEND(int modelCode);
+//int addInventoryModel_FRIEND(int modelCode);
 void drawModelShop_FRIEND(void);
 void drawModelShopBuyPopup_FRIEND(void);
 
@@ -8430,10 +8434,10 @@ void shopNpcErrSpeak(int npcNum);
 void loadFashionFImg(int imgType,int imgList);
 void drawGiftShopResult(void);
 void makeModelShopNpc(void);
-void prcModelShopNpc(void);
-void setModelNpcStateFloorUp(int npcNum,int floor);
-void setModelNpcStateFloorDown(int npcNum,int floor);
-void setModelNpcSpeakWelCome(int floor,M_Boolean isIn);
+//void prcModelShopNpc(void);
+//void setModelNpcStateFloorUp(int npcNum,int floor);
+//void setModelNpcStateFloorDown(int npcNum,int floor);
+//void setModelNpcSpeakWelCome(int floor,M_Boolean isIn);
 void freeFashionFLayer(void);
 void loadFashionFImgWorldMap(int type, int listNum);
 void shopImgFreeLoad(M_Boolean isLoad);
@@ -8487,8 +8491,8 @@ void npcSetImgLoad(int k);
 void getFashionColorStr(char *strText,int code);
 void getFashionConceptStr(char *strText,int code);
 void setCommaNum(char *strTempS,int num);
-void sortModelList(void);
-void sortModelListFriend(void);
+//void sortModelList(void);
+//void sortModelListFriend(void);
 void checkSocialDay(void);
 int getSocialTemp(int type);
 
@@ -8515,8 +8519,8 @@ int getStaffFaceNum(int code);
 int getStaffFashionNum(int code);
 int getUserW(int totalCnt,int nowCnt,int rever);
 int getUserH(int totalCnt,int nowCnt,int rever);
-void drawModelMain(void);
-void drawModelInfo(void);
+//void drawModelMain(void);
+//void drawModelInfo(void);
 int getModelMainSlot(int key);
 void drawModelNameString(int x,int y,int ank,int modelCode);
 int getModelGiftNum(int inventoryNum,int gab);
@@ -8525,7 +8529,7 @@ void drawModelMainGiftInfo(void);
 void drawModelMainGiftResult(void);
 void drawModelMainGiftIcon(int x,int y,int type);
 void makeWaste(void);
-void drawModelMain_FRIEND(void);
+//void drawModelMain_FRIEND(void);
 int getModelKeyToSlotNumFRIEND(int key);
 void initTutoLimit(int type);
 void drawFriendInvite(void);

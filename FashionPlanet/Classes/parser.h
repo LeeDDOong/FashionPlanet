@@ -356,15 +356,14 @@ extern char strFileNameTemp[64];
 #define EXCEL_PS_CLUBSTORE_FILE                 "Club_store.dat"
 
 
+#define EXCEL_PS_BROOCHSHOP                     48
+#define EXCEL_PS_BROOCHSHOP_FILE                "b_shop.dat"
 
+#define EXCEL_PS_R_STYLEBOOK                    49
+#define EXCEL_PS_R_STYLEBOOK_FILE               "R_stylebook_model.dat"
 
-
-
-
-
-
-
-
+#define EXCEL_PS_R_UPGRADE                      50
+#define EXCEL_PS_R_UPGRADE_FILE                 "R_Upgrade.dat"
 
 int prcSprit(XSPRIT *Xsprit ,int *nowDelay,int *nowFrame);
 void initSprit(XSPRIT *Xsprit);
@@ -373,7 +372,6 @@ void drawSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace);
 void reverseSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace);
 void loadExcelParserByte(int type);
 int getExcelTypeNum(const char* strFileName);
-
 #endif
 
 

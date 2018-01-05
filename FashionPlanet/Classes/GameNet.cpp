@@ -3830,17 +3830,6 @@ void setRecv(char* strJson)
 				}
 			}
                 
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
 			xWorldMap.isInitLoading = FALSE;
 			{
                 
@@ -4457,7 +4446,7 @@ void setRecv(char* strJson)
 			int slot;
 			for(int i=0;i<array.size();i++)
 			{
-				slot = addInventoryModel_FRIEND(array[i]["M_INDEX"].asInt());
+//				slot = addInventoryModel_FRIEND(array[i]["M_INDEX"].asInt());
 				xInventoryModel_FRIEND[slot].key = array[i]["KEY"].asInt();
 				xInventoryModel_FRIEND[slot].upGrade = array[i]["UPGLADE"].asInt();
 				
@@ -4481,7 +4470,7 @@ void setRecv(char* strJson)
 				xInventoryModel_FRIEND[slot].xF.isInFitting = array[i]["OUT"].asInt()==0?FALSE:TRUE;
 			}
 			
-			sortModelListFriend();
+//			sortModelListFriend();
 			
 			xNetGetModelMain.friendNum = xNetGetModelListFriend.friendUserNum;
 			netSend(CMD_GETMODELMAIN, DONT);
@@ -4541,7 +4530,7 @@ void setRecv(char* strJson)
 				{
 					
 					xModelData[array[i]["M_INDEX"].asInt()].isOpen = TRUE;
-					slot = addInventoryModel(array[i]["M_INDEX"].asInt());
+//					slot = addInventoryModel(array[i]["M_INDEX"].asInt());
 					xInventoryModel[slot].key = array[i]["KEY"].asInt();
 					xInventoryModel[slot].upGrade = array[i]["UPGLADE"].asInt();
 					
@@ -5949,7 +5938,7 @@ void setRecv(char* strJson)
                 xClubStorage.xData[xClubStorage.selectedNum].count=root["ITEM_COUNT"].asInt();
                 if(xClubStorage.xData[xClubStorage.selectedNum].num==1)
                 {
-                    setNewModel(1);
+//                    setNewModel(1);
                 }
                 break;
             case 1:

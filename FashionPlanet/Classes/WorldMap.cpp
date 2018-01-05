@@ -560,7 +560,7 @@ XTOUCH xTouchScrollOk;
 XTOUCH xTouchScrollStepUp;
 XTOUCH xTouchScrollStepDown;
 
-XTOUCH xTouchWorldMapFriendIcon;
+//XTOUCH xTouchWorldMapFriendIcon;
 XTOUCH xTouchWorldMapMainMenuIcon;
 XTOUCH xTouchWorldMapCashIcon;
 XTOUCH xTouchWorldMapItemShop;
@@ -1976,10 +1976,6 @@ void npcSetImgLoad(int k)
 
 void initDragScroll()
 {
-    
-    
-
-    
     xClubShop.xDragScroll.touchXpos = DONT;
     xClubShop.xDragScroll.touchYpos = DONT;
     xClubShop.xDragScroll.touchXposBefore = DONT;
@@ -4608,7 +4604,7 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 							{
 								xFashionShow.state = FASHIONSHOW_STATE_SELECTMODEL;
 								
-								setModelList(DONT);
+//								setModelList(DONT);
 								
 								if(xWorldMap.isTuto == TRUE)
 									xFashionShow.isShowDressCode = FALSE;
@@ -5258,7 +5254,7 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 						}
 						else
 						{
-							setModelUpGradeList(xModelUpGrade.inventoryNum);
+//							setModelUpGradeList(xModelUpGrade.inventoryNum);
 							switch(xModel.state)
 							{
 							case MODELCOLLECT_STATE_MAININFO:
@@ -5772,8 +5768,8 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 						else
 						{
 							xModel.state = xModel.fittingInState;
-							sortModelList();
-							setModelList(xModel.listTabNum);
+//							sortModelList();
+//							setModelList(xModel.listTabNum);
 						}
 					}
 					else if(xFitting.totalNumS == 0 && touchCheck(&xTouchLink) == TRUE && touchType == USER_POINT_PRESS_EVENT)
@@ -6148,8 +6144,8 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 						int price = 0;
 						if(xModelUpGrade.selectSlot != DONT)
 						{
-							per = getModelUpgradePer(xModelUpGrade.inventoryNum,xModelUpGrade.modelListSlot[xModelUpGrade.selectSlot]);
-							price = getModelUpgradePrice(xModelUpGrade.inventoryNum,xModelUpGrade.modelListSlot[xModelUpGrade.selectSlot]);
+//							per = getModelUpgradePer(xModelUpGrade.inventoryNum,xModelUpGrade.modelListSlot[xModelUpGrade.selectSlot]);
+//							price = getModelUpgradePrice(xModelUpGrade.inventoryNum,xModelUpGrade.modelListSlot[xModelUpGrade.selectSlot]);
 						}
 						
 						if(xSaveTemp.money.oriData < price)
@@ -6195,8 +6191,8 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 						xWorldMap.isKeyReturn = TRUE;
 						xModel.inventoryNum = DONT;
 						
-						sortModelList();
-						setModelList(xModel.listTabNum);
+//						sortModelList();
+//						setModelList(xModel.listTabNum);
 						
 					}
 					else
@@ -7141,11 +7137,11 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
                                                 setTired(xMail.xMailSlot[selectSlot].giftValue.oriData);
                                                 break;
                                             case 5:	//일반 모델 캐스팅권(추가)
-                                                setNewModel(0);
+//                                                setNewModel(0);
                                                 xMail.state = MAIL_STATE_MAIN;
                                                 break;
                                             case 6:	//고급 모델 캐스팅권(추가)
-                                                setNewModel(1);
+//                                                setNewModel(1);
                                                 xMail.state = MAIL_STATE_MAIN;
                                                 break;
                                             case 7:	//유행 티켓(의상)
@@ -7167,15 +7163,15 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
                                                 xTrend.state = TREND_STATE_NEW;
                                                 break;
                                             case 9:	//A급 모델 캐스팅권
-                                                setNewModel(3);
+//                                                setNewModel(3);
                                                 xMail.state = MAIL_STATE_MAIN;
                                                 break;
                                             case 10://S급 모델 캐스팅권
-                                                setNewModel(4);
+//                                                setNewModel(4);
                                                 xMail.state = MAIL_STATE_MAIN;
                                                 break;
                                             case 11://A~S급 모델 캐스팅권
-                                                setNewModel(2);
+//                                                setNewModel(2);
                                                 xMail.state = MAIL_STATE_MAIN;
                                                 break;
                                             case 12://경험치
@@ -7183,7 +7179,7 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
                                                 break;
                                             case 13://지정 모델 확정권
                                                 xMail.giftModelCode = xMail.xMailSlot[selectSlot].giftValue.oriData;
-                                                setNewModel(5);
+//                                                setNewModel(5);
                                                 xMail.state = MAIL_STATE_MAIN;
                                                 break;
                                             case 14://허니팡 횟수 추가
@@ -8839,10 +8835,10 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
                             
                             xMiniGame.state = MINIGAME_STATE_MAIN;
                             xWorldMap.isKeyReturn = TRUE;
-                            if(xMiniGame.xMiniGameSlot[xMiniGame.selectSlot].slotCode.oriData == 0)
-                                setNewModel(0);
-                            else
-                                setNewModel(1);
+//                            if(xMiniGame.xMiniGameSlot[xMiniGame.selectSlot].slotCode.oriData == 0)
+//                                setNewModel(0);
+//                            else
+//                                setNewModel(1);
                             
                             
 
@@ -8915,10 +8911,10 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 							}
 							else
 							{
-								if(xMiniGame.xMiniGameSlot[xMiniGame.selectSlot].slotCode.oriData == 0)
-									setNewModel(0);
-								else
-									setNewModel(1);
+//								if(xMiniGame.xMiniGameSlot[xMiniGame.selectSlot].slotCode.oriData == 0)
+//									setNewModel(0);
+//								else
+//									setNewModel(1);
 							}
 							break;
 						case MINIGAME_TYPE_INTERIOR:
@@ -14473,17 +14469,17 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 							}
                             
                             
-							else if(xWorldMap.isExternal == FALSE && touchCheck(&xTouchWorldMapFriendIcon) == TRUE)
-							{
-//LJW 월드맵 친구아이콘 막기
-//								playSnd(SND_MENU_OK);
-//								if(xTutoLimit.isLock[TUTOLIMIT_TYPE_WORLDMAP_FRIENDS] == TRUE || xTutoLimit.isLock[TUTOLIMIT_TYPE_FRIENDSHOP_FRIENDS] == TRUE)
-//								{
-//								
-//								}
-//								else
-//									setStateFriendList();
-							}
+//							else if(xWorldMap.isExternal == FALSE && touchCheck(&xTouchWorldMapFriendIcon) == TRUE)
+//							{
+////LJW 월드맵 친구아이콘 막기
+////								playSnd(SND_MENU_OK);
+////								if(xTutoLimit.isLock[TUTOLIMIT_TYPE_WORLDMAP_FRIENDS] == TRUE || xTutoLimit.isLock[TUTOLIMIT_TYPE_FRIENDSHOP_FRIENDS] == TRUE)
+////								{
+////								
+////								}
+////								else
+////									setStateFriendList();
+//							}
                             
 							else if(xWorldMap.isExternal == FALSE && xFriendMap.type != 0 && touchCheck(&xTouchFriendMapRandom) == TRUE)
 							{
@@ -14783,10 +14779,6 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 			}
 			else if(touchType == USER_POINT_RELEASE_EVENT)
 			{
-				
-				
-
-				
 				xSelectTileOne.state = SELECTTILE_STATE_DONT;
 				if(xInterior.buildModeTime64 != DONT)
 				{
@@ -14826,13 +14818,6 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
                         }
                     }
 					
-					
-                    
-                    
-                    
-                    
-
-                    
                     
                     if(xEventQuestUi.totalNum > 0 && xWorldMap.isExternal == FALSE && touchCheck(&xEventQuestUi.xTouchMenu) == TRUE)
                     {
@@ -14867,8 +14852,6 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
                         }
                         else
                         {
-                            
-                            
                             
                             
                             if(xClub.xMy.clubKey == DONT)
@@ -15208,17 +15191,17 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 							}
 						}
 					}
-					else if(xWorldMap.isExternal == FALSE && touchCheck(&xTouchWorldMapFriendIcon) == TRUE)
-					{
-						playSnd(SND_MENU_OK);
-						if(xTutoLimit.isLock[TUTOLIMIT_TYPE_WORLDMAP_FRIENDS] == TRUE)
-						{
-							
-						}
-						else
-							setStateFriendList();
-					}
-                    
+//					else if(xWorldMap.isExternal == FALSE && touchCheck(&xTouchWorldMapFriendIcon) == TRUE)
+//					{
+//						playSnd(SND_MENU_OK);
+//						if(xTutoLimit.isLock[TUTOLIMIT_TYPE_WORLDMAP_FRIENDS] == TRUE)
+//						{
+//							
+//						}
+////						else
+////							setStateFriendList();
+//					}
+//                    
                     
                     else if(xHotDeal.isOpen == true && xWorldMap.isFriendMap == false &&  xWorldMap.isExternal == FALSE && touchCheck(&xHotDeal.xTouchUi) == TRUE)
                     {
@@ -15842,7 +15825,27 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 								}
 							}
 
-							
+							if(xSelectTileOne.state == SELECTTILE_STATE_DONT)
+                            {
+                                setSelectTileKeyEvent(MAP_TYPE_FLOORTILE0, xMap.nowFloor);
+                                if(xSelectTileOne.state == SELECTTILE_STATE_PLAY)
+                                {
+                                    setMapData(xMap.data[xMap.nowFloor][MAP_TYPE_FLOORTILE0][xSelectTileOne.tileNumX][xSelectTileOne.tileNumY]);
+                                    switch (xMap.type)
+                                    {
+                                        case INTERIOR_TYPE_FLOORTILE:
+                                            xShopAssistant[xMap.nowFloor][0].state = SHOPASSISTANT_STATE_WAIT;
+                                            xShopAssistant[xMap.nowFloor][0].makeX = xSelectTileOne.tileNumX-xMap.shopPointX;
+                                            xShopAssistant[xMap.nowFloor][0].makeY = xSelectTileOne.tileNumY-xMap.shopPointY;
+                                            break;
+                                        default:
+                                            xSelectTileOne.state = SELECTTILE_STATE_DONT;
+                                            break;
+                                    }
+                                    
+                                }
+//                                log("KBY_POS (%d, %d)", xShopAssistant[xMap.nowFloor][0].makeX, xShopAssistant[xMap.nowFloor][0].makeY);
+                            }
 //							if(xSelectTileOne.state == SELECTTILE_STATE_DONT)
 //							{
 //								setSelectTileKeyEvent(MAP_TYPE_PAYMENTASSISTANT,xMap.nowFloor);
@@ -19880,7 +19883,7 @@ void prcWorldMap()
 	if(xWorldMap.state != WORLDMAP_STATE_INTERIOR)
 	{
 		shopNpcPrc();
-		prcModelShopNpc();
+//		prcModelShopNpc();
 		worldMapNpcPrc();
 	}
 	//LJW 월드맵 자동차 생성 막기
@@ -20378,7 +20381,7 @@ void paintWorldMap()
 		}
 		break;
 	case WORLDMAP_STATE_MODEL_FRIEND:
-		drawModelMain_FRIEND();
+//		drawModelMain_FRIEND();
 					
 		switch(xModel.state)
 		{
@@ -20404,58 +20407,58 @@ void paintWorldMap()
 		case MODELCOLLECT_STATE_MAINGIFTINFO:
 		case MODELCOLLECT_STATE_MAINGIFTRESULT:
 		case MODELCOLLECT_STATE_HELP:
-			drawModelMain();
+//			drawModelMain();
 			switch(xModel.state)
 			{
 			case MODELCOLLECT_STATE_MAINCASTING:
-				drawModelCasting();
+//				drawModelCasting();
 				break;
 			case MODELCOLLECT_STATE_MAININFO:
-				drawModelInfo();
+//				drawModelInfo();
 				break;
 			case MODELCOLLECT_STATE_MAINUPGRADE:
-				drawModelUpGrade();
+//				drawModelUpGrade();
 				break;
 			case MODELCOLLECT_STATE_MAINGIFTINFO:
-				drawModelMainGiftInfo();
+//				drawModelMainGiftInfo();
 				break;
 			case MODELCOLLECT_STATE_MAINGIFTRESULT:
-				drawModelMainGiftResult();
+//				drawModelMainGiftResult();
 				break;
 			case MODELCOLLECT_STATE_HELP:
-				drawModelHelp();
+//				drawModelHelp();
 				break;
 			}
 			break;
 		case MODELCOLLECT_STATE_SELECTMODEL:
 		case MODELCOLLECT_STATE_SELECTMODELCASTING:
-			drawModelList();
-			if(xModel.state == MODELCOLLECT_STATE_SELECTMODELCASTING)
-				drawModelCasting();
+//			drawModelList();
+//			if(xModel.state == MODELCOLLECT_STATE_SELECTMODELCASTING)
+//				drawModelCasting();
 			break;
 		case MODELCOLLECT_STATE_LIST:
 		case MODELCOLLECT_STATE_LISTCASTING:
 		case MODELCOLLECT_STATE_LISTINFO:
 		case MODELCOLLECT_STATE_LISTUPGRADE:
-			drawModelList();
+//			drawModelList();
 			switch(xModel.state)
 			{
 			case MODELCOLLECT_STATE_LISTCASTING:
-				drawModelCasting();
+//				drawModelCasting();
 				break;
 			case MODELCOLLECT_STATE_LISTINFO:
-				drawModelInfo();
+//				drawModelInfo();
 				break;
 			case MODELCOLLECT_STATE_LISTUPGRADE:
-				drawModelUpGrade();
+//				drawModelUpGrade();
 				break;
 			}
 			break;
 		case MODELCOLLECT_STATE_FITTING:
-			drawModelFitting();
+//			drawModelFitting();
 			break;
 		}
-		drawModelUpgradeOn();
+//		drawModelUpgradeOn();
 
 		/*
 		switch(xModel.state)
@@ -20471,7 +20474,7 @@ void paintWorldMap()
 		drawOption();
 		break;
 	case WORLDMAP_STATE_MODELMAINGIFTINFO:
-		drawModelMainGiftInfo();
+//		drawModelMainGiftInfo();
 		break;
 	case WORLDMAP_STATE_TODAYSOCIAL:
 		drawTodaySocialFashion();
@@ -20488,7 +20491,7 @@ void paintWorldMap()
 		switch(xCollection.state)
 		{
 		case COLLECTION_STATE_MODELINFOPOPUP:
-			drawModelHelp();
+//			drawModelHelp();
 			break;
 		}
 		break;
@@ -20878,7 +20881,7 @@ void paintWorldMap()
 	if(xWorldMap.isQuestResult == TRUE)
 		drawQuestResult();
 	else if(xWorldMap.isNewModel == TRUE)
-		drawNewModel();
+//		drawNewModel();
 			
 	
 	if(xWorldMap.isTuto == TRUE)
@@ -21918,7 +21921,7 @@ void worldMapNpcPrc()
 			if(xWorldMapNpc[i].imgCnt > 19)
 				xWorldMapNpc[i].imgCnt = 0;
 			
-				
+			//스프라이트 그리는 곳
 			switch(xWorldMapNpc[i].moveType)
 			{
 			case MOVETYPE_XPLUS:
@@ -21930,7 +21933,7 @@ void worldMapNpcPrc()
 				prcSprit(&xSpritNpc[NPC_ACT_WALKING][ACT_BACK],&xWorldMapNpc[i].nowDelay,&xWorldMapNpc[i].nowFrame);
 				break;
 			}
-				
+			//이동 관련한 것
 			switch(xWorldMapNpc[i].moveType)
 			{
 			case MOVETYPE_XPLUS:
@@ -22749,110 +22752,110 @@ void setNpcStateFloorDown(int npcNum,int floor)
 	}
 }
 
-void setModelNpcStateFloorUp(int npcNum,int floor)
-{
-	int endX;
-	int endY;
-	xModelNpc[npcNum].state = MODELNPC_STATE_FLOORUPMOVE;
-	xModelNpc[npcNum].nowDelay = 0;
-	xModelNpc[npcNum].nowFrame = 0;
-	
-	//샵아웃 위치로 변경
-	endX = xWorldMap.floorUpX;
-	endY = xWorldMap.floorUpY;
-	
-	xModelNpc[npcNum].actLook = MOVETYPE_YPLUS;
-	
-	if(xMap.shopData[floor][MAP_TYPE_OBJ][endX-xMap.shopPointX][endY-xMap.shopPointY] == TRUE)
-	{
-		xModelNpc[npcNum].state = MODELNPC_STATE_ASTARERR;
-		xModelNpc[npcNum].anyCnt = 0;
-		setSpeak(&xModelNpc[npcNum].xSpeak, "올라갈 길이 없네!", SPEAKFRAMEMAX);
-	}
-	//새위치 탐색
-	else if(setAstar(xModelNpc[npcNum].x-xMap.shopPointX, xModelNpc[npcNum].y-xMap.shopPointY, endX-xMap.shopPointX, endY-xMap.shopPointY, MAP_TYPE_OBJ,floor) == FALSE)
-	{
-		xModelNpc[npcNum].state = MODELNPC_STATE_ASTARERR;
-		xModelNpc[npcNum].anyCnt = 0;
-		setSpeak(&xModelNpc[npcNum].xSpeak, "올라갈 길이 없네!", SPEAKFRAMEMAX);
-	}
-	else
-	{
-		xModelNpc[npcNum].bestTotalCnt = xAstar.totalCnt;
-		xModelNpc[npcNum].bestNowCnt = 0;
-		for(int totalI=0;totalI<xAstar.totalCnt;totalI++)
-		{
-			xModelNpc[npcNum].bestX[totalI] = xAstar.bestX[totalI]+xMap.shopPointX;
-			xModelNpc[npcNum].bestY[totalI] = xAstar.bestY[totalI]+xMap.shopPointY;
-		}
-		
-		//다음이동
-		if(xModelNpc[npcNum].bestX[xModelNpc[npcNum].bestNowCnt] < xModelNpc[npcNum].bestX[xModelNpc[npcNum].bestNowCnt+1])
-			xModelNpc[npcNum].moveType = MOVETYPE_XPLUS;
-		else if(xModelNpc[npcNum].bestX[xModelNpc[npcNum].bestNowCnt] > xModelNpc[npcNum].bestX[xModelNpc[npcNum].bestNowCnt+1])
-			xModelNpc[npcNum].moveType = MOVETYPE_XMINUS;
-		else if(xModelNpc[npcNum].bestY[xModelNpc[npcNum].bestNowCnt] < xModelNpc[npcNum].bestY[xModelNpc[npcNum].bestNowCnt+1])
-			xModelNpc[npcNum].moveType = MOVETYPE_YPLUS;
-		else if(xModelNpc[npcNum].bestY[xModelNpc[npcNum].bestNowCnt] > xModelNpc[npcNum].bestY[xModelNpc[npcNum].bestNowCnt+1])
-			xModelNpc[npcNum].moveType = MOVETYPE_YMINUS;
-	}
-}
+//void setModelNpcStateFloorUp(int npcNum,int floor)
+//{
+//	int endX;
+//	int endY;
+//	xModelNpc[npcNum].state = MODELNPC_STATE_FLOORUPMOVE;
+//	xModelNpc[npcNum].nowDelay = 0;
+//	xModelNpc[npcNum].nowFrame = 0;
+//	
+//	//샵아웃 위치로 변경
+//	endX = xWorldMap.floorUpX;
+//	endY = xWorldMap.floorUpY;
+//	
+//	xModelNpc[npcNum].actLook = MOVETYPE_YPLUS;
+//	
+//	if(xMap.shopData[floor][MAP_TYPE_OBJ][endX-xMap.shopPointX][endY-xMap.shopPointY] == TRUE)
+//	{
+//		xModelNpc[npcNum].state = MODELNPC_STATE_ASTARERR;
+//		xModelNpc[npcNum].anyCnt = 0;
+//		setSpeak(&xModelNpc[npcNum].xSpeak, "올라갈 길이 없네!", SPEAKFRAMEMAX);
+//	}
+//	//새위치 탐색
+//	else if(setAstar(xModelNpc[npcNum].x-xMap.shopPointX, xModelNpc[npcNum].y-xMap.shopPointY, endX-xMap.shopPointX, endY-xMap.shopPointY, MAP_TYPE_OBJ,floor) == FALSE)
+//	{
+//		xModelNpc[npcNum].state = MODELNPC_STATE_ASTARERR;
+//		xModelNpc[npcNum].anyCnt = 0;
+//		setSpeak(&xModelNpc[npcNum].xSpeak, "올라갈 길이 없네!", SPEAKFRAMEMAX);
+//	}
+//	else
+//	{
+//		xModelNpc[npcNum].bestTotalCnt = xAstar.totalCnt;
+//		xModelNpc[npcNum].bestNowCnt = 0;
+//		for(int totalI=0;totalI<xAstar.totalCnt;totalI++)
+//		{
+//			xModelNpc[npcNum].bestX[totalI] = xAstar.bestX[totalI]+xMap.shopPointX;
+//			xModelNpc[npcNum].bestY[totalI] = xAstar.bestY[totalI]+xMap.shopPointY;
+//		}
+//		
+//		//다음이동
+//		if(xModelNpc[npcNum].bestX[xModelNpc[npcNum].bestNowCnt] < xModelNpc[npcNum].bestX[xModelNpc[npcNum].bestNowCnt+1])
+//			xModelNpc[npcNum].moveType = MOVETYPE_XPLUS;
+//		else if(xModelNpc[npcNum].bestX[xModelNpc[npcNum].bestNowCnt] > xModelNpc[npcNum].bestX[xModelNpc[npcNum].bestNowCnt+1])
+//			xModelNpc[npcNum].moveType = MOVETYPE_XMINUS;
+//		else if(xModelNpc[npcNum].bestY[xModelNpc[npcNum].bestNowCnt] < xModelNpc[npcNum].bestY[xModelNpc[npcNum].bestNowCnt+1])
+//			xModelNpc[npcNum].moveType = MOVETYPE_YPLUS;
+//		else if(xModelNpc[npcNum].bestY[xModelNpc[npcNum].bestNowCnt] > xModelNpc[npcNum].bestY[xModelNpc[npcNum].bestNowCnt+1])
+//			xModelNpc[npcNum].moveType = MOVETYPE_YMINUS;
+//	}
+//}
 
-void setModelNpcStateFloorDown(int npcNum,int floor)
-{
-	int endX;
-	int endY;
-	xModelNpc[npcNum].state = MODELNPC_STATE_FLOORDOWNMOVE;
-	xModelNpc[npcNum].nowDelay = 0;
-	xModelNpc[npcNum].nowFrame = 0;
-	
-	//샵아웃 위치로 변경
-	endX = xWorldMap.floorDownX;
-	endY = xWorldMap.floorDownY;
-	
-	xModelNpc[npcNum].actLook = MOVETYPE_YMINUS;
-	
-	
-	if(endX == xModelNpc[npcNum].x && endY == xModelNpc[npcNum].y)
-	{
-		xModelNpc[npcNum].state = MODELNPC_STATE_FLOORDOWN;
-		xModelNpc[npcNum].anyCnt = 0;
-		
-	}
-	else if(xMap.shopData[floor][MAP_TYPE_OBJ][endX-xMap.shopPointX][endY-xMap.shopPointY] == TRUE)
-	{
-		xModelNpc[npcNum].state = MODELNPC_STATE_ASTARERR;
-		xModelNpc[npcNum].anyCnt = 0;
-		setSpeak(&xModelNpc[npcNum].xSpeak, "내려가기에러!", SPEAKFRAMEMAX);
-	}
-	//새위치 탐색
-	else if(setAstar(xModelNpc[npcNum].x-xMap.shopPointX, xModelNpc[npcNum].y-xMap.shopPointY, endX-xMap.shopPointX, endY-xMap.shopPointY, MAP_TYPE_OBJ,floor) == FALSE)
-	{
-		xModelNpc[npcNum].state = MODELNPC_STATE_ASTARERR;
-		xModelNpc[npcNum].anyCnt = 0;
-		setSpeak(&xModelNpc[npcNum].xSpeak, "내려가기에러!", SPEAKFRAMEMAX);
-	}
-	else
-	{
-		xModelNpc[npcNum].bestTotalCnt = xAstar.totalCnt;
-		xModelNpc[npcNum].bestNowCnt = 0;
-		for(int totalI=0;totalI<xAstar.totalCnt;totalI++)
-		{
-			xModelNpc[npcNum].bestX[totalI] = xAstar.bestX[totalI]+xMap.shopPointX;
-			xModelNpc[npcNum].bestY[totalI] = xAstar.bestY[totalI]+xMap.shopPointY;
-		}
-		
-		//다음이동
-		if(xModelNpc[npcNum].bestX[xModelNpc[npcNum].bestNowCnt] < xModelNpc[npcNum].bestX[xModelNpc[npcNum].bestNowCnt+1])
-			xModelNpc[npcNum].moveType = MOVETYPE_XPLUS;
-		else if(xModelNpc[npcNum].bestX[xModelNpc[npcNum].bestNowCnt] > xModelNpc[npcNum].bestX[xModelNpc[npcNum].bestNowCnt+1])
-			xModelNpc[npcNum].moveType = MOVETYPE_XMINUS;
-		else if(xModelNpc[npcNum].bestY[xModelNpc[npcNum].bestNowCnt] < xModelNpc[npcNum].bestY[xModelNpc[npcNum].bestNowCnt+1])
-			xModelNpc[npcNum].moveType = MOVETYPE_YPLUS;
-		else if(xModelNpc[npcNum].bestY[xModelNpc[npcNum].bestNowCnt] > xModelNpc[npcNum].bestY[xModelNpc[npcNum].bestNowCnt+1])
-			xModelNpc[npcNum].moveType = MOVETYPE_YMINUS;
-	}
-}
+//void setModelNpcStateFloorDown(int npcNum,int floor)
+//{
+//	int endX;
+//	int endY;
+//	xModelNpc[npcNum].state = MODELNPC_STATE_FLOORDOWNMOVE;
+//	xModelNpc[npcNum].nowDelay = 0;
+//	xModelNpc[npcNum].nowFrame = 0;
+//	
+//	//샵아웃 위치로 변경
+//	endX = xWorldMap.floorDownX;
+//	endY = xWorldMap.floorDownY;
+//	
+//	xModelNpc[npcNum].actLook = MOVETYPE_YMINUS;
+//	
+//	
+//	if(endX == xModelNpc[npcNum].x && endY == xModelNpc[npcNum].y)
+//	{
+//		xModelNpc[npcNum].state = MODELNPC_STATE_FLOORDOWN;
+//		xModelNpc[npcNum].anyCnt = 0;
+//		
+//	}
+//	else if(xMap.shopData[floor][MAP_TYPE_OBJ][endX-xMap.shopPointX][endY-xMap.shopPointY] == TRUE)
+//	{
+//		xModelNpc[npcNum].state = MODELNPC_STATE_ASTARERR;
+//		xModelNpc[npcNum].anyCnt = 0;
+//		setSpeak(&xModelNpc[npcNum].xSpeak, "내려가기에러!", SPEAKFRAMEMAX);
+//	}
+//	//새위치 탐색
+//	else if(setAstar(xModelNpc[npcNum].x-xMap.shopPointX, xModelNpc[npcNum].y-xMap.shopPointY, endX-xMap.shopPointX, endY-xMap.shopPointY, MAP_TYPE_OBJ,floor) == FALSE)
+//	{
+//		xModelNpc[npcNum].state = MODELNPC_STATE_ASTARERR;
+//		xModelNpc[npcNum].anyCnt = 0;
+//		setSpeak(&xModelNpc[npcNum].xSpeak, "내려가기에러!", SPEAKFRAMEMAX);
+//	}
+//	else
+//	{
+//		xModelNpc[npcNum].bestTotalCnt = xAstar.totalCnt;
+//		xModelNpc[npcNum].bestNowCnt = 0;
+//		for(int totalI=0;totalI<xAstar.totalCnt;totalI++)
+//		{
+//			xModelNpc[npcNum].bestX[totalI] = xAstar.bestX[totalI]+xMap.shopPointX;
+//			xModelNpc[npcNum].bestY[totalI] = xAstar.bestY[totalI]+xMap.shopPointY;
+//		}
+//		
+//		//다음이동
+//		if(xModelNpc[npcNum].bestX[xModelNpc[npcNum].bestNowCnt] < xModelNpc[npcNum].bestX[xModelNpc[npcNum].bestNowCnt+1])
+//			xModelNpc[npcNum].moveType = MOVETYPE_XPLUS;
+//		else if(xModelNpc[npcNum].bestX[xModelNpc[npcNum].bestNowCnt] > xModelNpc[npcNum].bestX[xModelNpc[npcNum].bestNowCnt+1])
+//			xModelNpc[npcNum].moveType = MOVETYPE_XMINUS;
+//		else if(xModelNpc[npcNum].bestY[xModelNpc[npcNum].bestNowCnt] < xModelNpc[npcNum].bestY[xModelNpc[npcNum].bestNowCnt+1])
+//			xModelNpc[npcNum].moveType = MOVETYPE_YPLUS;
+//		else if(xModelNpc[npcNum].bestY[xModelNpc[npcNum].bestNowCnt] > xModelNpc[npcNum].bestY[xModelNpc[npcNum].bestNowCnt+1])
+//			xModelNpc[npcNum].moveType = MOVETYPE_YMINUS;
+//	}
+//}
 
 void setNpcStateExit(int npcNum,int floor)
 {
@@ -22967,1719 +22970,1719 @@ void shopNpcPrc()
 			   ||(xShopNpc[i].x == xWorldMap.doorMakeX && xShopNpc[i].y == xWorldMap.doorMakeY-1))
 				xWorldMap.isDoorOpen = TRUE;
 		}
-		
-		switch(xShopNpc[i].state)
-		{
-		case SHOPNPC_STATE_CALLSHOPASSISTANT_RCMD:
-			xShopNpc[i].moveType = xShopNpc[i].actLook;
-			//호출중(무한검색)
-			if(1 == prcSprit(&xSpritNpc[NPC_ACT_ASSISTANTCALL][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-				xShopNpc[i].isActEnd = TRUE;
-			if(xShopNpc[i].isActEnd == TRUE)
-			{
-				//WAIT상태 점원 호출중
-				for(int k=0;k<SHOPASSISTANTMAX;k++)
-				{
-					int floor = xShopNpc[i].floor;
-					if(xShopAssistant[floor][k].state == SHOPASSISTANT_STATE_WAIT || xShopAssistant[floor][k].state ==SHOPASSISTANT_STATE_WAITMOVE || xShopAssistant[floor][k].state ==SHOPASSISTANT_STATE_ORDERINGMOVE)
-					{
-						xShopNpc[i].state = SHOPNPC_STATE_CALLSHOPASSISTANTWAIT_RCMD;
-						xShopNpc[i].nowDelay = 0;
-						xShopNpc[i].nowFrame = 0;
-						if(xShowWindowInfo[floor][xShopNpc[i].actInteriorNum].interiorCode >= 0)
-						{
-							xShopNpc[i].actLook = MOVETYPE_XPLUS;
-							xShopAssistant[floor][k].actLook = MOVETYPE_XMINUS;
-							endX = xShopNpc[i].x+1;
-							endY = xShopNpc[i].y;
-						}
-						else
-						{
-							xShopNpc[i].actLook = MOVETYPE_YPLUS;
-							xShopAssistant[floor][k].actLook = MOVETYPE_YMINUS;
-							endX = xShopNpc[i].x;
-							endY = xShopNpc[i].y+1;
-						}
-						
-						//점원정보등록
-						xShopAssistant[floor][k].shopNpcNum = i;
-																		
-						xShopAssistant[floor][k].state = SHOPASSISTANT_STATE_RCMDMOVE;
-						
-																		
-						
-						if(setAstar(xShopAssistant[floor][k].x-xMap.shopPointX, xShopAssistant[floor][k].y-xMap.shopPointY, endX-xMap.shopPointX, endY-xMap.shopPointY, MAP_TYPE_OBJ,floor) == FALSE)
-						{
-							//NPC예외처리
-							xShopNpc[i].state = SHOPNPC_STATE_WAIT;
-							xShopNpc[i].anyCnt = 0;
-							xShowWindowInfo[floor][xShopNpc[i].actInteriorNum].state = SHOWWINDOWINFO_STATE_WAIT;
-
-							
-							//setSpeak(&xShopNpc[i].xSpeak, "점원>손님길찾ERR_22(개발확인)", SPEAKFRAMEMAX);
-							
-							//대응NPC그냥 대기상태로 변환 제위치로 갈필요는 없단
-							xShopAssistant[floor][k].state = SHOPASSISTANT_STATE_WAIT;
-							xShopAssistant[floor][k].anyCnt = 0;
-							xShopAssistant[floor][k].nowDelay = 0;
-							xShopAssistant[floor][k].nowFrame = 0;
-						}
-						else
-						{
-							//대응NPC로 이동
-							setSpeak(&xShopAssistant[floor][k].xSpeak, "네네~\n지금 갑니다", SPEAKFRAMEMAX);
-							xShopAssistant[floor][k].state = SHOPASSISTANT_STATE_RCMDMOVE;
-							xShopAssistant[floor][k].bestTotalCnt = xAstar.totalCnt;
-							xShopAssistant[floor][k].bestNowCnt = 0;
-							for(int totalI=0;totalI<xAstar.totalCnt;totalI++)
-							{
-								xShopAssistant[floor][k].bestX[totalI] = xAstar.bestX[totalI]+xMap.shopPointX;
-								xShopAssistant[floor][k].bestY[totalI] = xAstar.bestY[totalI]+xMap.shopPointY;
-							}
-							
-							//다음이동
-							if(xShopAssistant[floor][k].bestX[xShopAssistant[floor][k].bestNowCnt] < xShopAssistant[floor][k].bestX[xShopAssistant[floor][k].bestNowCnt+1])
-								xShopAssistant[floor][k].moveType = MOVETYPE_XPLUS;
-							else if(xShopAssistant[floor][k].bestX[xShopAssistant[floor][k].bestNowCnt] > xShopAssistant[floor][k].bestX[xShopAssistant[floor][k].bestNowCnt+1])
-								xShopAssistant[floor][k].moveType = MOVETYPE_XMINUS;
-							else if(xShopAssistant[floor][k].bestY[xShopAssistant[floor][k].bestNowCnt] < xShopAssistant[floor][k].bestY[xShopAssistant[floor][k].bestNowCnt+1])
-								xShopAssistant[floor][i].moveType = MOVETYPE_YPLUS;
-							else if(xShopAssistant[floor][k].bestY[xShopAssistant[floor][k].bestNowCnt] > xShopAssistant[floor][k].bestY[xShopAssistant[floor][k].bestNowCnt+1])
-								xShopAssistant[floor][k].moveType = MOVETYPE_YMINUS;
-						}
-						break;
-					}
-				}
-			}
-			break;
-		case SHOPNPC_STATE_CALLSHOPASSISTANT:
-			xShopNpc[i].moveType = xShopNpc[i].actLook;
-			//호출중(무한검색)
-			if(1 == prcSprit(&xSpritNpc[NPC_ACT_ASSISTANTCALL][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-				xShopNpc[i].isActEnd = TRUE;
-			if(xShopNpc[i].isActEnd == TRUE)
-			{
-				//WAIT상태 점원 호출중
-				for(int k=0;k<SHOPASSISTANTMAX;k++)
-				{
-					if(xShopAssistant[xShopNpc[i].floor][k].state == SHOPASSISTANT_STATE_WAIT || xShopAssistant[xShopNpc[i].floor][k].state ==SHOPASSISTANT_STATE_WAITMOVE || xShopAssistant[xShopNpc[i].floor][k].state ==SHOPASSISTANT_STATE_ORDERINGMOVE)
-					{
-						setCallShopAssistant(i,k);
-						break;
-					}
-				}
-			}
-			break;
-		case SHOPNPC_STATE_CALLSHOPASSISTANTWAIT:
-		case SHOPNPC_STATE_CALLSHOPASSISTANTWAIT_RCMD:
-			//호출대기중(올때까지 대기)
-			xShopNpc[i].moveType = xShopNpc[i].actLook;
-			switch(xShopNpc[i].moveType)
-			{
-			case MOVETYPE_XPLUS:
-			case MOVETYPE_YPLUS:
-				prcSprit(&xSpritNpc[NPC_ACT_STOP][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame);
-				break;
-			case MOVETYPE_XMINUS:
-			case MOVETYPE_YMINUS:
-				prcSprit(&xSpritNpc[NPC_ACT_STOP][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame);
-				break;
-			}
-			break;
-		case SHOPNPC_STATE_TABLESEE:
-			xShopNpc[i].moveType = xShopNpc[i].actLook;
-								
-			switch(xShopNpc[i].moveType)
-			{
-			case MOVETYPE_XPLUS:
-			case MOVETYPE_YPLUS:
-				if(1 == prcSprit(&xSpritNpc[xShopNpc[i].subAct][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-					xShopNpc[i].isActEnd = TRUE;
-				break;
-			case MOVETYPE_XMINUS:
-			case MOVETYPE_YMINUS:
-				if(1 == prcSprit(&xSpritNpc[xShopNpc[i].subAct][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-					xShopNpc[i].isActEnd = TRUE;
-				break;
-			}
-			if(xShopNpc[i].isActEnd == TRUE)
-			{
-				xShopNpc[i].state = SHOPNPC_STATE_TABLEBUY;
-				xShopNpc[i].moveType = xShopNpc[i].actLook;
-				xShopNpc[i].isActEnd = FALSE;
-				xShopNpc[i].nowDelay = 0;
-				xShopNpc[i].nowFrame = 0;				
-				
-				
-				if(xShopNpc[i].buyAct == NPC_BUYACT_TREND)
-					if(ranDom(0, 100) < xWorldMap.npcSpeakPer)
-						setSpeak(&xShopNpc[i].xSpeak, "요즘 유행하는 의상이 이건가", SPEAKFRAMEMAX);
-				
-			}
-			break;
-		case SHOPNPC_STATE_ETC:			
-			switch(xShopNpc[i].moveType)
-			{
-			case MOVETYPE_XPLUS:
-			case MOVETYPE_YPLUS:
-				if(1 == prcSprit(&xSpritNpc[xShopNpc[i].etcAct][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-				{
-					xShopNpc[i].state = xShopNpc[i].etcAct_BackUp;
-					xShopNpc[i].nowDelay = 0;
-					xShopNpc[i].nowFrame = 0;
-				}
-				break;
-			case MOVETYPE_XMINUS:
-			case MOVETYPE_YMINUS:
-				if(1 == prcSprit(&xSpritNpc[xShopNpc[i].etcAct][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-				{
-					xShopNpc[i].state = xShopNpc[i].etcAct_BackUp;
-					xShopNpc[i].nowDelay = 0;
-					xShopNpc[i].nowFrame = 0;
-				}
-				break;
-			}
-			break;
-		case SHOPNPC_STATE_CHAIR_EVENTFAIL:
-			if(1 == prcSprit(&xSpritNpc[NPC_ACT_ANGRY][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-				xShopNpc[i].isActEnd = TRUE;
-				
-			if(xShopNpc[i].isActEnd == TRUE)
-			{
-				xShopNpc[i].nowFrame = 0;
-				xShopNpc[i].nowDelay = 0;
-				xShopNpc[i].isActEnd = FALSE;
-				
-				xShopNpc[i].state = SHOPNPC_STATE_MOVE;
-				initShopNpcMove(i);
-			}			
-			break;
-		case SHOPNPC_STATE_CHAIR_STANDUP:
-			if(1 == prcSprit(&xSpritNpc[NPC_ACT_CHAIR_STANDUP][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-				xShopNpc[i].isActEnd = TRUE;
-			if(xShopNpc[i].isActEnd == TRUE)
-			{
-				xShopNpc[i].nowFrame = 0;
-				xShopNpc[i].nowDelay = 0;
-				xShopNpc[i].isActEnd = FALSE;
-				
-				xChairInfo[xShopNpc[i].floor].npcCode[xShopNpc[i].chairNum] = DONT;
-				if(xChairInfo[xShopNpc[i].floor].interiorCode[xShopNpc[i].chairNum] > 0)
-					xShopNpc[i].x++;
-				else
-					xShopNpc[i].y++;
-				
-				if(xShopNpc[i].isSitEventFail == TRUE)
-				{
-					//요청 실패시에는 짜증한번 내주고
-					xShopNpc[i].state = SHOPNPC_STATE_CHAIR_EVENTFAIL;
-					setEmoticon(&xShopNpc[i].xEmoticon,EMOTICON_TYPE_ANGER);
-					
-				}
-				else
-				{
-					xShopNpc[i].state = SHOPNPC_STATE_MOVE;
-					initShopNpcMove(i);
-				}
-			}
-			break;
-		case SHOPNPC_STATE_CHAIR_WAIT:
-			if(1 == prcSprit(&xSpritNpc[NPC_ACT_CHAIR_EVENT][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-				xShopNpc[i].isActEnd = TRUE;
-			
-			if(xShopNpc[i].isActEnd == TRUE)
-			{
-				if(--xShopNpc[i].actCount <=0)
-				{
-					xShopNpc[i].state = SHOPNPC_STATE_CHAIR_STANDUP;
-					xShopNpc[i].isSitEventBox = FALSE;
-					xShopNpc[i].isSitEventFail = TRUE;
-					
-					
-					if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-					{
-						switch(xQuestTuto.nowNum)
-						{
-						case TUTO_8_INTERIOR_NPCTOUCH:
-							xQuestTuto.isTutoClean = TRUE;
-							break;
-						}
-					}
-					
-				}
-				xShopNpc[i].isActEnd = FALSE;
-				xShopNpc[i].nowDelay = 0;
-				xShopNpc[i].nowFrame = 0;
-			}
-			break;
-		case SHOPNPC_STATE_CHAIR_ACT:
-			if(1 == prcSprit(&xSpritNpc[xShopNpc[i].subAct][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-				xShopNpc[i].isActEnd = TRUE;
-			
-			if(xShopNpc[i].isActEnd == TRUE)
-			{
-				if(--xShopNpc[i].actCount <=0)
-				{
-					xShopNpc[i].state = SHOPNPC_STATE_CHAIR_STANDUP;				
-				}
-				xShopNpc[i].isActEnd = FALSE;
-				xShopNpc[i].nowDelay = 0;
-				xShopNpc[i].nowFrame = 0;
-			}
-			break;
-		case SHOPNPC_STATE_CHAIR_SIT:
-			if(1 == prcSprit(&xSpritNpc[NPC_ACT_CHAIR_SIT][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-				xShopNpc[i].isActEnd = TRUE;
-			if(xShopNpc[i].isActEnd == TRUE)
-			{
-				//요청액팅 실행
-				xShopNpc[i].state = SHOPNPC_STATE_CHAIR_WAIT;
-				xShopNpc[i].isSitEventBox = TRUE;
-				xShopNpc[i].isEventBox = FALSE;
-				xShopNpc[i].eventBoxAnyCnt = 0;
-				xShopNpc[i].eventBoxShowAntCnt = 0;
-				
-				
-				xShopNpc[i].isActEnd = FALSE;
-				xShopNpc[i].nowDelay = 0;
-				xShopNpc[i].nowFrame = 0;
-				xShopNpc[i].actCount = 2;
-				xShopNpc[i].actCount = 2;
-								
-				switch(ranDom(0, 3))
-				{
-				case 0:	xShopNpc[i].subAct = NPC_ACT_CHAIR_BOOK;break;
-				case 1:	xShopNpc[i].subAct = NPC_ACT_CHAIR_COFFEE;break;
-				case 2:	xShopNpc[i].subAct = NPC_ACT_CHAIR_IPAD;break;
-				case 3:	xShopNpc[i].subAct = NPC_ACT_CHAIR_PHONE;break;
-				}
-								
-				if(ranDom(0, 99) < xModelSkill.bonusPer[MODELSKILL_TYPE_CHAIR_BOOK])
-					xShopNpc[i].subAct = NPC_ACT_CHAIR_BOOK;
-				else if(ranDom(0, 99) < xModelSkill.bonusPer[MODELSKILL_TYPE_CHAIR_COFFEE])
-					xShopNpc[i].subAct = NPC_ACT_CHAIR_COFFEE;
-				else if(ranDom(0, 99) < xModelSkill.bonusPer[MODELSKILL_TYPE_CHAIR_IPAD])
-					xShopNpc[i].subAct = NPC_ACT_CHAIR_IPAD;
-				else if(ranDom(0, 99) < xModelSkill.bonusPer[MODELSKILL_TYPE_CHAIR_PHONE])
-					xShopNpc[i].subAct = NPC_ACT_CHAIR_PHONE;
-			}
-			break;
-		case SHOPNPC_STATE_PORTER_WM_MAN_TYPE0_0:
-			switch(xShopNpc[i].moveType)
-			{
-			case MOVETYPE_XPLUS:
-			case MOVETYPE_YPLUS:
-					
-				switch(xShopNpc[i].porterOptionType)
-				{
-				case 1:	//여남//남
-					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MAN_YES][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-						xShopNpc[i].isActEnd = TRUE;
-					break;
-				case 3:	//여여//남
-					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_WW_MAN_YES][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-						xShopNpc[i].isActEnd = TRUE;
-					break;
-				case 5:	//남남//남
-					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MM_MAN_YES][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-						xShopNpc[i].isActEnd = TRUE;
-					break;
-				}
-				break;
-			case MOVETYPE_XMINUS:
-			case MOVETYPE_YMINUS:
-				switch(xShopNpc[i].porterOptionType)
-				{
-				case 1:	//여남//남
-					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MAN_YES][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-						xShopNpc[i].isActEnd = TRUE;
-					break;
-				case 3:	//여여//남
-					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_WW_MAN_YES][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-						xShopNpc[i].isActEnd = TRUE;
-					break;
-				case 5:	//남남//남
-					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MM_MAN_YES][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-						xShopNpc[i].isActEnd = TRUE;
-					break;
-				}
-				break;
-			}
-				
-			if(xShopNpc[i].isActEnd == TRUE)
-			{
-				//여 설정
-				xShopNpc[xShopNpc[i].porterNpcNum].state = SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE0_2;
-				
-				switch(xShopNpc[i].porterOptionType)
-				{
-				case 1:	//여남(남자)
-					setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "너 그렇게 성의 없이 대답할래?", SPEAKFRAMEMAX);
-					break;
-				case 3:	//여여(여자)
-					setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "얘,나 아직 슬림하다구!", SPEAKFRAMEMAX);
-					break;
-				case 5:	//남남(남자)
-					setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "어디!?알았어 빨리 입어보러 가자", SPEAKFRAMEMAX);
-					break;
-				}
-				
-				xShopNpc[xShopNpc[i].porterNpcNum].isActEnd = FALSE;
-				xShopNpc[xShopNpc[i].porterNpcNum].nowDelay = 0;
-				xShopNpc[xShopNpc[i].porterNpcNum].nowFrame = 0;
-				//남 설정
-				setNpcStatePorterMove(i,xShopNpc[i].porterNpcNum);
-			}
-			break;
-		case SHOPNPC_STATE_PORTER_WM_MAN_TYPE1_0:
-		case SHOPNPC_STATE_PORTER_MM_MAN_TYPE1_0:
-		case SHOPNPC_STATE_PORTER_WW_MAN_TYPE1_0:
-			switch(xShopNpc[i].moveType)
-			{
-			case MOVETYPE_XPLUS:
-			case MOVETYPE_YPLUS:
-				if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MAN_APPLAUD][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-					xShopNpc[i].isActEnd = TRUE;
-				break;
-			case MOVETYPE_XMINUS:
-			case MOVETYPE_YMINUS:
-				if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MAN_APPLAUD][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-					xShopNpc[i].isActEnd = TRUE;
-				break;
-			}
-			if(xShopNpc[i].isActEnd == TRUE)
-			{
-				//여설정
-				switch(xShopNpc[i].state)
-				{
-				case SHOPNPC_STATE_PORTER_WM_MAN_TYPE1_0:
-					setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "그래도 한번 입어볼래", SPEAKFRAMEMAX);
-					break;
-				case SHOPNPC_STATE_PORTER_MM_MAN_TYPE1_0:
-					setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "잘생긴 모습 질투 하지 마라 기다려", SPEAKFRAMEMAX);
-					break;
-				case SHOPNPC_STATE_PORTER_WW_MAN_TYPE1_0:
-					setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "내가 이정도 핏이 안 나올 거 같아?", SPEAKFRAMEMAX);
-					break;
-				}
-				setNpcStateFittingRoom(xShopNpc[i].porterNpcNum,xShopNpc[xShopNpc[i].porterNpcNum].floor);
-				//남 설정
-				setNpcStatePorterMove(i,xShopNpc[i].porterNpcNum);
-			}
-			break;
-		case SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE0_0:	//시작대사0
-		case SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE1_0:
-		case SHOPNPC_STATE_PORTER_MM_WOMAN_TYPE1_0:
-		case SHOPNPC_STATE_PORTER_WW_WOMAN_TYPE1_0:
-			switch(xShopNpc[i].moveType)
-			{
-			case MOVETYPE_XPLUS:
-			case MOVETYPE_YPLUS:
-				switch(xShopNpc[i].porterOptionType)
-				{
-				case 0:	//여남//여
-					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_FITTING][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-						xShopNpc[i].isActEnd = TRUE;
-					break;
-				case 2:	//여여//여
-					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_WW_W_FITTING][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-						xShopNpc[i].isActEnd = TRUE;
-					break;
-				case 4:	//남남//여
-					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MM_W_FITTING][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-						xShopNpc[i].isActEnd = TRUE;
-					break;
-				}
-				break;
-			case MOVETYPE_XMINUS:
-			case MOVETYPE_YMINUS:
-				switch(xShopNpc[i].porterOptionType)
-				{
-				case 0:	//여남//여
-					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_FITTING][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-						xShopNpc[i].isActEnd = TRUE;
-					break;
-				case 2:	//여여//여
-					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_WW_W_FITTING][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-						xShopNpc[i].isActEnd = TRUE;
-					break;
-				case 4:	//남남//여
-					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MM_W_FITTING][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-						xShopNpc[i].isActEnd = TRUE;
-					break;
-				}
-				
-				break;
-			}
-			if(xShopNpc[i].isActEnd == TRUE)
-			{
-				if(xShopNpc[i].state == SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE0_0)
-				{
-					xShopNpc[i].state = SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE0_1;
-					xShopNpc[xShopNpc[i].porterNpcNum].state = SHOPNPC_STATE_PORTER_WM_MAN_TYPE0_0;
-					
-					switch(xShopNpc[i].porterOptionType)
-					{
-					case 0:	//여남(여자)
-						setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "그래 괜찮은 거 같아 그걸로 사", SPEAKFRAMEMAX);
-						break;
-					case 2:	//여여(여자)
-						setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "어머,이거 괜찮은데?근데 사이즈는 맞아?", SPEAKFRAMEMAX);
-						break;
-					case 4:	//남남(여자)
-						setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "직원 오기 전에 빨리 사라 부끄럽다", SPEAKFRAMEMAX);
-						break;
-					}
-				}
-				else if(xShopNpc[i].state == SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE1_0)
-				{
-					xShopNpc[i].state = SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE1_1;
-					xShopNpc[xShopNpc[i].porterNpcNum].state = SHOPNPC_STATE_PORTER_WM_MAN_TYPE1_0;
-					setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "좋아 이쁘니까 그 옷으로 하자", SPEAKFRAMEMAX);
-				}
-				else if(xShopNpc[i].state == SHOPNPC_STATE_PORTER_MM_WOMAN_TYPE1_0)
-				{
-					xShopNpc[i].state = SHOPNPC_STATE_PORTER_MM_WOMAN_TYPE1_1;
-					xShopNpc[xShopNpc[i].porterNpcNum].state = SHOPNPC_STATE_PORTER_MM_MAN_TYPE1_0;
-					setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "솔직히 너랑 같이 다니는 거 부끄럽다 이러지 마라", SPEAKFRAMEMAX);
-				}
-				else if(xShopNpc[i].state == SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE1_0)
-				{
-					xShopNpc[i].state = SHOPNPC_STATE_PORTER_WW_WOMAN_TYPE1_1;
-					xShopNpc[xShopNpc[i].porterNpcNum].state = SHOPNPC_STATE_PORTER_WW_MAN_TYPE1_0;
-					setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "괜찮긴 한데 사이즈 너한테 맞아?", SPEAKFRAMEMAX);
-				}
-				xShopNpc[xShopNpc[i].porterNpcNum].isActEnd = FALSE;
-				xShopNpc[xShopNpc[i].porterNpcNum].nowDelay = 0;
-				xShopNpc[xShopNpc[i].porterNpcNum].nowFrame = 0;
-				
-				xShopNpc[i].isActEnd = FALSE;
-				xShopNpc[i].nowDelay = 0;
-				xShopNpc[i].nowFrame = 0;								
-			}
-			break;
-		case SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE1_1:	//남자 대사 대기
-		case SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE0_1:	//남자 대사 대기
-								
-		case SHOPNPC_STATE_PORTER_MM_WOMAN_TYPE1_1:	//남자 대사 대기(남남)
-		case SHOPNPC_STATE_PORTER_WW_WOMAN_TYPE1_1:	//남자 대사 대기(남남)
-				
-			switch(xShopNpc[i].moveType)
-			{
-			case MOVETYPE_XPLUS:
-			case MOVETYPE_YPLUS:
-				if(1 == prcSprit(&xSpritNpc[NPC_ACT_STOP][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-					xShopNpc[i].isActEnd = TRUE;
-				break;
-			case MOVETYPE_XMINUS:
-			case MOVETYPE_YMINUS:
-				if(1 == prcSprit(&xSpritNpc[NPC_ACT_STOP][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-					xShopNpc[i].isActEnd = TRUE;
-				break;
-			}
-			break;
-		case SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE0_2:	//화내기 대사
-			switch(xShopNpc[i].moveType)
-			{
-			case MOVETYPE_XPLUS:
-			case MOVETYPE_YPLUS:
-				switch(xShopNpc[i].porterOptionType)
-				{
-				case 0:	//여남//여
-					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_ANGRY][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-						xShopNpc[i].isActEnd = TRUE;
-					break;
-				case 2:	//여여//여
-					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_WW_W_ANGRY][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-						xShopNpc[i].isActEnd = TRUE;
-					break;
-				case 4:	//남남//여
-					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MM_W_ANGRY][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-						xShopNpc[i].isActEnd = TRUE;
-					break;
-				}
-				break;
-			case MOVETYPE_XMINUS:
-			case MOVETYPE_YMINUS:
-				switch(xShopNpc[i].porterOptionType)
-				{
-				case 0:	//여남//여
-					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_ANGRY][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-						xShopNpc[i].isActEnd = TRUE;
-					break;
-				case 2:	//여여//여
-					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_WW_W_ANGRY][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-						xShopNpc[i].isActEnd = TRUE;
-					break;
-				case 4:	//남남//여
-					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MM_W_ANGRY][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-						xShopNpc[i].isActEnd = TRUE;
-					break;
-				}
-				break;
-			}
-			if(xShopNpc[i].isActEnd == TRUE)
-			{
-				
-				switch(xShopNpc[i].porterOptionType)
-				{
-				case 4:	//남남(남자)
-					setSpeak(&xShopNpc[i].xSpeak, "이거면 올 한해 충분하겠지", SPEAKFRAMEMAX);
-					break;
-				}
-				
-				setNpcStateFittingRoom(i,xShopNpc[i].floor);				
-			}
-			break;
-		case SHOPNPC_STATE_PORTER_WM_MAN_WAIT:	//남자 대기
-			switch(xShopNpc[i].moveType)
-			{
-			case MOVETYPE_XPLUS:
-			case MOVETYPE_YPLUS:
-				if(1 == prcSprit(&xSpritNpc[NPC_ACT_STOP][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-					xShopNpc[i].isActEnd = TRUE;
-				break;
-			case MOVETYPE_XMINUS:
-			case MOVETYPE_YMINUS:
-				if(1 == prcSprit(&xSpritNpc[NPC_ACT_STOP][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-					xShopNpc[i].isActEnd = TRUE;
-				break;
-			}
-			setNpcStatePorterMove(i,xShopNpc[i].porterNpcNum);
-			break;
-		case SHOPNPC_STATE_PORTER_WM_MAN_TIRED:	//남자 피곤
-			switch(xShopNpc[i].moveType)
-			{
-			case MOVETYPE_XPLUS:
-			case MOVETYPE_YPLUS:
-				switch(xShopNpc[i].porterOptionType)
-				{
-				case 1:	//여남//남
-					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MAN_TIRED][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-						xShopNpc[i].isActEnd = TRUE;
-					break;
-				case 3:	//여여//남
-					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_WW_MAN_TIRED][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-						xShopNpc[i].isActEnd = TRUE;
-					break;
-				case 5:	//남남//남
-					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MM_MAN_TIRED][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-						xShopNpc[i].isActEnd = TRUE;
-					break;
-				}
-				break;
-			case MOVETYPE_XMINUS:
-			case MOVETYPE_YMINUS:
-				switch(xShopNpc[i].porterOptionType)
-				{
-				case 1:	//여남//남
-					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MAN_TIRED][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-						xShopNpc[i].isActEnd = TRUE;
-					break;
-				case 3:	//여여//남
-					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_WW_MAN_TIRED][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-						xShopNpc[i].isActEnd = TRUE;
-					break;
-				case 5:	//남남//남
-					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MM_MAN_TIRED][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-						xShopNpc[i].isActEnd = TRUE;
-					break;
-				}
-				break;
-			}
-			if(xShopNpc[i].isActEnd == TRUE)
-			{
-				setNpcStatePorterMove(i,xShopNpc[i].porterNpcNum);
-			}			
-			break;
-		case SHOPNPC_STATE_TABLEBUY:
-			xShopNpc[i].moveType = xShopNpc[i].actLook;
-			switch(xShopNpc[i].moveType)
-			{
-			case MOVETYPE_XPLUS:
-			case MOVETYPE_YPLUS:
-				if(1 == prcSprit(&xSpritNpc[NPC_ACT_SELECT][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-					xShopNpc[i].isActEnd = TRUE;
-				break;
-			case MOVETYPE_XMINUS:
-			case MOVETYPE_YMINUS:
-				if(1 == prcSprit(&xSpritNpc[NPC_ACT_SELECT][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-					xShopNpc[i].isActEnd = TRUE;
-				break;
-			}
-			if(xShopNpc[i].isActEnd == TRUE)
-			{
-				resetSellTableInfo(xShopNpc[i].floor);
-				
-				M_Boolean isSlotCheck = FALSE;
-				int slotNum = 0;
-				
-				
-				int subTotalSlot = 0;
-				int subSlotNum[12];
-				int type;
-				int listNum;
-				
-				if(xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].useTotal > 0)
-				{
-					switch(xShopNpc[i].buyType20)
-					{
-					case BUY_TYPE20_SEX:
-						//성별관련 상품 검색
-						for(int z=0;z<xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].useTotal;z++)
-						{
-							
-							slotNum = xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].useXslotNum[z];
-							type = xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].xSlot[slotNum].code/1000;
-							listNum = xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].xSlot[slotNum].code%1000;
-							
-							if(xShopNpc[i].buySex20 == xFashionData[type][listNum].gender)
-								subSlotNum[subTotalSlot++] = slotNum;
-						}
-						if(subTotalSlot >  0)
-						{
-							isSlotCheck = TRUE;
-							slotNum = subSlotNum[ranDom(0, subTotalSlot-1)];
-						}
-						break;
-					case BUY_TYPE20_TREND:
-						for(int z=0;z<xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].useTotal;z++)
-						{
-							
-							slotNum = xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].useXslotNum[z];
-							type = xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].xSlot[slotNum].code/1000;
-							listNum = xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].xSlot[slotNum].code%1000;
-							
-							if(xShopNpc[i].buySex20 == xFashionData[type][listNum].gender)
-								subSlotNum[subTotalSlot++] = slotNum;
-						}
-						if(subTotalSlot >  0)
-						{
-							isSlotCheck = TRUE;
-							slotNum = subSlotNum[ranDom(0, subTotalSlot-1)];
-						}
-							
-							
-
-							
-						//유행의상검색
-						for(int z=0;z<xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].useTotal;z++)
-						{
-							slotNum = xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].useXslotNum[z];
-							for(int t=0;t<TRENDMAX;t++)
-							{
-								if(xTrend.isOpen[t] == TRUE)
-								{
-									if(xTrend.itemCode[t] == xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].xSlot[slotNum].code)
-									{
-										subSlotNum[subTotalSlot++] = slotNum;
-										break;
-									}
-								}
-							}
-						}
-							
-						if(xWorldMap.isFriendMap == FALSE)
-						{
-							if(subTotalSlot >  0)
-							{
-								isSlotCheck = TRUE;
-								slotNum = subSlotNum[ranDom(0, subTotalSlot-1)];
-								xShopNpc[i].isTrendEvent = TRUE;
-								xShopNpc[i].isEventBox = FALSE;
-								xShopNpc[i].eventBoxAnyCnt = 0;
-							}
-						}
-						break;
-					case BUY_TYPE20_RANDOM:
-					case BUY_TYPE20_SELLTABLE:
-						//아무거나 닥치는대로 검사
-						isSlotCheck = TRUE;
-						slotNum = ranDom(0, xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].useTotal-1);
-						slotNum = xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].useXslotNum[slotNum];
-						break;
-					}
-				}
-								
-				if(isSlotCheck == FALSE)
-				{
-					xShopNpc[i].state = SHOPNPC_STATE_EMPTY;
-					xShopNpc[i].subAct = NPC_ACT_ANGRY;
-					xShopNpc[i].anyCnt = 0;
-					xShopNpc[i].isActEnd = FALSE;
-					xShopNpc[i].nowDelay = 0;
-					xShopNpc[i].nowFrame = 0;
-
-					setEmoticon(&xShopNpc[i].xEmoticon,EMOTICON_TYPE_ANGER);
-					shopNpcErrSpeak(i);
-				}
-				else
-				{
-					//수량 빼고 해당 아이템 넣어주기
-					if(xWorldMap.isFriendMap == FALSE)
-					{
-						--xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].xSlot[slotNum].num;
-                        xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].xSlot[slotNum].flowTime = 0;
-						xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].isUpdata = TRUE;
-					}
-					
-					xShopNpc[i].buyItemCode = xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].xSlot[slotNum].code;
-					
-
-					if(xShopNpc[i].isPorter_woman == TRUE)
-					{
-						//의상 몸에 대보기
-						switch(xShopNpc[i].porterOptionType)
-						{
-						case 0:	//여남(여자)
-							setSpeak(&xShopNpc[i].xSpeak, "이옷 어떤거 같아?", SPEAKFRAMEMAX);
-							switch(0)
-							{
-							case 0:
-								xShopNpc[i].porterOptionTypeSub = 0;
-								xShopNpc[xShopNpc[i].porterNpcNum].porterOptionTypeSub = 0;
-								xShopNpc[i].state = SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE0_0;
-								break;
-							case 1:
-								xShopNpc[i].porterOptionTypeSub = 1;
-								xShopNpc[xShopNpc[i].porterNpcNum].porterOptionTypeSub = 1;
-								xShopNpc[i].state = SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE1_0;
-								break;
-							}
-							break;
-						case 2:	//여여(여자)
-							setSpeak(&xShopNpc[i].xSpeak, "이옷 어떤거 같아?", SPEAKFRAMEMAX);
-							switch(0)
-							{
-							case 0:
-								xShopNpc[i].porterOptionTypeSub = 0;
-								xShopNpc[xShopNpc[i].porterNpcNum].porterOptionTypeSub = 0;
-								xShopNpc[i].state = SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE0_0;
-								break;
-							case 1:
-								xShopNpc[i].porterOptionTypeSub = 1;
-								xShopNpc[xShopNpc[i].porterNpcNum].porterOptionTypeSub = 1;
-								xShopNpc[i].state = SHOPNPC_STATE_PORTER_WW_WOMAN_TYPE1_0;
-								break;
-							}
-							break;
-						case 4:	//남남(여자)
-							switch(0)
-							{
-							case 0:
-								xShopNpc[i].porterOptionTypeSub = 0;
-								xShopNpc[xShopNpc[i].porterNpcNum].porterOptionTypeSub = 0;
-								setSpeak(&xShopNpc[i].xSpeak, "야,이거 어때? 멋있지?", SPEAKFRAMEMAX);
-								xShopNpc[i].state = SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE0_0;
-								break;
-							case 1:
-								xShopNpc[i].porterOptionTypeSub = 1;
-								xShopNpc[xShopNpc[i].porterNpcNum].porterOptionTypeSub = 1;
-								setSpeak(&xShopNpc[i].xSpeak, "이거 입으면 배우 제의 올 거 같지않음?", SPEAKFRAMEMAX);
-								xShopNpc[i].state = SHOPNPC_STATE_PORTER_MM_WOMAN_TYPE1_0;
-								break;
-							}
-							break;
-						}
-						
-						xShopNpc[i].anyCnt = 0;
-						xShopNpc[i].nowDelay = 0;
-						xShopNpc[i].nowFrame = 0;
-						xShopNpc[i].isActEnd = FALSE;
-						
-					}
-					else
-					{
-						switch(xShopNpc[i].buyType20)
-						{
-						case BUY_TYPE20_SEX:
-						case BUY_TYPE20_SELLTABLE:
-						case BUY_TYPE20_FITTING:
-							if(ranDom(0, 100) < 70)
-								setNpcStateFittingRoom(i,xShopNpc[i].floor);
-							else
-								setNpcStatePayMent(i,xShopNpc[i].floor);
-							break;
-						case BUY_TYPE20_TREND:
-							setNpcStateFittingRoom(i,xShopNpc[i].floor);
-							break;
-						case BUY_TYPE20_RANDOM:
-							setNpcStatePayMent(i,xShopNpc[i].floor);
-							break;
-						}
-					}
-				}
-			}
-			break;
-		case SHOPNPC_STATE_FITTINGROOM:
-			xShopNpc[i].moveType = xShopNpc[i].actLook;
-						
-			if(++xShopNpc[i].anyCnt > 10)
-			{
-				xShopNpc[i].state = SHOPNPC_STATE_FITTINGROOM_OPEN_IN;
-				xShopNpc[i].anyCnt = 0;
-				xShopNpc[i].isActEnd = FALSE;
-				
-				endX = xFittingRoomInfo[xShopNpc[i].floor].x[xShopNpc[i].actInteriorNum];
-				endY = xFittingRoomInfo[xShopNpc[i].floor].y[xShopNpc[i].actInteriorNum];
-												
-				if(xMap.shopData[xShopNpc[i].floor][0/*걸리지 않음*/][endX-xMap.shopPointX][endY-xMap.shopPointY] == TRUE)
-				{
-					xShopNpc[i].state = SHOPNPC_STATE_WAIT;
-					xShopNpc[i].anyCnt = 0;
-
-					//setSpeak(&xShopNpc[i].xSpeak, "피팅룸들어갈때ERR_(개발확인)", SPEAKFRAMEMAX);
-					////////////////
-				}
-				else
-				{
-					//새위치 탐색
-					if(setAstar(xShopNpc[i].x-xMap.shopPointX, xShopNpc[i].y-xMap.shopPointY, endX-xMap.shopPointX, endY-xMap.shopPointY, 0/*장해물상관없이무한대로이동가능*/,xShopNpc[i].floor) == FALSE)
-					{
-						xShopNpc[i].state = SHOPNPC_STATE_WAIT;
-						xShopNpc[i].anyCnt = 0;
-
-						//setSpeak(&xShopNpc[i].xSpeak, "피팅룸들어갈때ERR_(개발확인)", SPEAKFRAMEMAX);
-						////////////////
-					}
-					else
-					{
-						xShopNpc[i].bestTotalCnt = xAstar.totalCnt;
-						xShopNpc[i].bestNowCnt = 0;
-						for(int totalI=0;totalI<xAstar.totalCnt;totalI++)
-						{
-							xShopNpc[i].bestX[totalI] = xAstar.bestX[totalI]+xMap.shopPointX;
-							xShopNpc[i].bestY[totalI] = xAstar.bestY[totalI]+xMap.shopPointY;
-						}
-						//다음이동
-						if(xShopNpc[i].bestX[xShopNpc[i].bestNowCnt] < xShopNpc[i].bestX[xShopNpc[i].bestNowCnt+1])
-							xShopNpc[i].moveType = MOVETYPE_XPLUS;
-						else if(xShopNpc[i].bestX[xShopNpc[i].bestNowCnt] > xShopNpc[i].bestX[xShopNpc[i].bestNowCnt+1])
-							xShopNpc[i].moveType = MOVETYPE_XMINUS;
-						else if(xShopNpc[i].bestY[xShopNpc[i].bestNowCnt] < xShopNpc[i].bestY[xShopNpc[i].bestNowCnt+1])
-							xShopNpc[i].moveType = MOVETYPE_YPLUS;
-						else if(xShopNpc[i].bestY[xShopNpc[i].bestNowCnt] > xShopNpc[i].bestY[xShopNpc[i].bestNowCnt+1])
-							xShopNpc[i].moveType = MOVETYPE_YMINUS;
-					}
-				}
-			}
-			break;
-		
-		case SHOPNPC_STATE_FITTINGROOM_CLOSE_WAIT:
-			if(xShopNpc[i].anyCnt == 2)
-			{
-				if(xShopNpc[i].isPorter_woman == TRUE)
-				{
-					xShopNpc[xShopNpc[i].porterNpcNum].state = SHOPNPC_STATE_PORTER_WM_MAN_TIRED;
-					xShopNpc[xShopNpc[i].porterNpcNum].isActEnd = FALSE;
-					xShopNpc[xShopNpc[i].porterNpcNum].nowFrame = 0;
-					xShopNpc[xShopNpc[i].porterNpcNum].nowDelay = 0;
-					
-					switch(xShopNpc[i].porterOptionType)
-					{
-					case 0:	//여남(여자)
-						switch(xShopNpc[xShopNpc[i].porterNpcNum].porterOptionTypeSub)
-						{
-						case 0:
-							setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "아..힘들어 죽겠구만..", SPEAKFRAMEMAX);
-							break;
-						case 1:
-							setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "그럴거면 뭐하러 물어본거야!", SPEAKFRAMEMAX);
-							break;
-						}
-						break;
-					case 2:	//여여(여자)
-						switch(xShopNpc[xShopNpc[i].porterNpcNum].porterOptionTypeSub)
-						{
-						case 0:
-							setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "저번보다 살찐 거 같은데 숨기긴~", SPEAKFRAMEMAX);
-							break;
-						case 1:
-							setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "또 환불하러 와야겠네~", SPEAKFRAMEMAX);
-							break;
-						}
-						break;
-					case 4:	//남남(여자)
-						switch(xShopNpc[xShopNpc[i].porterNpcNum].porterOptionTypeSub)
-						{
-						case 0:
-							setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "아..이래서 쇼핑은 힘들다니까..", SPEAKFRAMEMAX);
-							break;
-						case 1:
-							setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "아..애랑 같이 못 다니겠는데..", SPEAKFRAMEMAX);
-							break;
-						}
-						break;
-					}
-				}
-			}
-			if(++xShopNpc[i].anyCnt > 20)
-			{
-				xShopNpc[i].state = SHOPNPC_STATE_FITTINGROOM_OPEN_OUT;
-				xShopNpc[i].anyCnt = 0;
-				xShopNpc[i].isActEnd = FALSE;
-								
-				if(xFittingRoomInfo[xShopNpc[i].floor].codeNum[xShopNpc[i].actInteriorNum] > 0)
-				{
-					endX = xFittingRoomInfo[xShopNpc[i].floor].x[xShopNpc[i].actInteriorNum]+1;
-					endY = xFittingRoomInfo[xShopNpc[i].floor].y[xShopNpc[i].actInteriorNum];
-				}
-				else
-				{
-					endX = xFittingRoomInfo[xShopNpc[i].floor].x[xShopNpc[i].actInteriorNum];
-					endY = xFittingRoomInfo[xShopNpc[i].floor].y[xShopNpc[i].actInteriorNum]+1;
-				}
-				
-				if(xMap.shopData[xShopNpc[i].floor][0/*걸리지 않음*/][endX-xMap.shopPointX][endY-xMap.shopPointY] == TRUE)
-				{
-					xShopNpc[i].state = SHOPNPC_STATE_WAIT;
-					xShopNpc[i].anyCnt = 0;
-
-					//setSpeak(&xShopNpc[i].xSpeak, "피팅룸들어갈때ERR_(개발확인)", SPEAKFRAMEMAX);
-					////////////////
-				}
-				else
-				{
-					//새위치 탐색
-					if(setAstar(xShopNpc[i].x-xMap.shopPointX, xShopNpc[i].y-xMap.shopPointY, endX-xMap.shopPointX, endY-xMap.shopPointY, 0/*장해물상관없이무한대로이동가능*/,xShopNpc[i].floor) == FALSE)
-					{
-						xShopNpc[i].state = SHOPNPC_STATE_WAIT;
-						xShopNpc[i].anyCnt = 0;
-
-						//setSpeak(&xShopNpc[i].xSpeak, "피팅룸들어갈때ERR_(개발확인)", SPEAKFRAMEMAX);
-						////////////////
-					}
-					else
-					{
-						xShopNpc[i].bestTotalCnt = xAstar.totalCnt;
-						xShopNpc[i].bestNowCnt = 0;
-						for(int totalI=0;totalI<xAstar.totalCnt;totalI++)
-						{
-							xShopNpc[i].bestX[totalI] = xAstar.bestX[totalI]+xMap.shopPointX;
-							xShopNpc[i].bestY[totalI] = xAstar.bestY[totalI]+xMap.shopPointY;
-						}
-						//다음이동
-						if(xShopNpc[i].bestX[xShopNpc[i].bestNowCnt] < xShopNpc[i].bestX[xShopNpc[i].bestNowCnt+1])
-							xShopNpc[i].moveType = MOVETYPE_XPLUS;
-						else if(xShopNpc[i].bestX[xShopNpc[i].bestNowCnt] > xShopNpc[i].bestX[xShopNpc[i].bestNowCnt+1])
-							xShopNpc[i].moveType = MOVETYPE_XMINUS;
-						else if(xShopNpc[i].bestY[xShopNpc[i].bestNowCnt] < xShopNpc[i].bestY[xShopNpc[i].bestNowCnt+1])
-							xShopNpc[i].moveType = MOVETYPE_YPLUS;
-						else if(xShopNpc[i].bestY[xShopNpc[i].bestNowCnt] > xShopNpc[i].bestY[xShopNpc[i].bestNowCnt+1])
-							xShopNpc[i].moveType = MOVETYPE_YMINUS;
-					}
-				}
-
-				//구매한아이템 장착
-				if(xShopNpc[i].isFittingRoom == TRUE)
-				{
-					setMapData(xShopNpc[i].buyItemCode);
-					xShopNpc[i].xF.code[xFashionData[xMap.type][xMap.listNum].layer] = xShopNpc[i].buyItemCode;
-				}
-				xShopNpc[i].isBuyAct[xShopNpc[i].buyAct] = TRUE;
-			}
-			break;
-		case SHOPNPC_STATE_LOOKINGMIRROR:
-			setFace(&xShopNpc[i].xFace, FACE_TYPE_SMILE);
-			setMapData(xShopNpc[i].buyItemCode);
-			xShopNpc[i].moveType = xShopNpc[i].actLook;
-								
-			if(xShopNpc[i].actingType == NPC_ACT_POWERMAN)
-			{
-				if(1 == prcSprit(&xSpritNpc[NPC_ACT_POWERMAN][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-					xShopNpc[i].isActEnd = TRUE;
-			}
-			else if(xShopNpc[i].actingType == NPC_ACT_POSE3)
-			{
-				if(1 == prcSprit(&xSpritNpc[NPC_ACT_POSE3][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-					xShopNpc[i].isActEnd = TRUE;
-			}
-			else
-			{
-				switch(xShopNpc[i].moveType)
-				{
-					case MOVETYPE_XPLUS:
-					case MOVETYPE_YPLUS:
-						
-						switch(xMap.type)
-						{
-						case F_TYPE_OUTER:
-						case F_TYPE_TOP:
-						case F_TYPE_BOTTOM:
-						case F_TYPE_ONEPIECE:
-							if(1 == prcSprit(&xSpritNpc[NPC_ACT_POSE1][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-								xShopNpc[i].isActEnd = TRUE;
-							break;
-						case F_TYPE_SHOES:
-						case F_TYPE_BAG:
-						case F_TYPE_ACCECSSORY:
-							if(1 == prcSprit(&xSpritNpc[NPC_ACT_POSE2][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-								xShopNpc[i].isActEnd = TRUE;
-							break;
-						}
-						
-						break;
-					case MOVETYPE_XMINUS:
-					case MOVETYPE_YMINUS:
-						switch(xMap.type)
-					{
-						case F_TYPE_OUTER:
-						case F_TYPE_TOP:
-						case F_TYPE_BOTTOM:
-						case F_TYPE_ONEPIECE:
-							if(1 == prcSprit(&xSpritNpc[NPC_ACT_POSE1][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-								xShopNpc[i].isActEnd = TRUE;
-							break;
-						case F_TYPE_SHOES:
-						case F_TYPE_BAG:
-						case F_TYPE_ACCECSSORY:
-							if(1 == prcSprit(&xSpritNpc[NPC_ACT_POSE2][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-								xShopNpc[i].isActEnd = TRUE;
-							break;
-					}
-						break;
-				}
-
-			}
-			
-			if(xShopNpc[i].isActEnd == TRUE)			
-			{
-				setNpcStatePayMent(i,xShopNpc[i].floor);
-					xFittingRoomInfo[xShopNpc[i].floor].state[xShopNpc[i].actInteriorNum] = FITTINGROOMINFO_STATE_WAIT;
-			}
-			break;
-		case SHOPNPC_STATE_PAYMENTWAIT:
-			xShopNpc[i].moveType = xShopNpc[i].actLook;
-			//계산NPC가 SHOPNPC_STATE_PAYMENT로 변환해주자
-			break;
-		case SHOPNPC_STATE_PAYMENT:
-			xShopNpc[i].moveType = xShopNpc[i].actLook;
-				/*
-			xShopNpc[i].moveType = xShopNpc[i].actLook;
-			
-			if(++xShopNpc[i].anyCnt > 50)
-			{
-				setNpcStateExit(i);
-				
-				if(xShopNpc[i].eventType == NPC_EVENT_EXPING)
-					xShopNpc[i].eventType = NPC_EVENT_DONT;
-			}
-				 */
-			break;
-		case SHOPNPC_STATE_FLOORUP:
-			//10에변경
-			//17에 행동변경
-			switch(++xShopNpc[i].anyCnt)
-			{
-			case 10:
-				xShopNpc[i].floor++;
-				xShopNpc[i].moveType = MOVETYPE_YPLUS;
-				xShopNpc[i].actLook = MOVETYPE_YPLUS;
-					
-				xShopNpc[i].x = xWorldMap.floorDownX;
-				xShopNpc[i].y = xWorldMap.floorDownY;
-				break;
-			case 17:
-				if(xShopNpc[i].floor < xShopNpc[i].floorTarget)
-				{
-					//올라가기로
-					setNpcStateFloorUp(i, xShopNpc[i].floor);
-				}
-				else
-				{
-					xShopNpc[i].state = SHOPNPC_STATE_MOVE;					
-					initShopNpcMove(i);
-				}
-				break;
-			}
-			break;
-		case SHOPNPC_STATE_FLOORDOWN:
-			xShopNpc[i].moveType = xShopNpc[i].actLook;
-			//10에변경
-			//17에 행동변경
-			switch(++xShopNpc[i].anyCnt)
-			{
-			case 10:
-				xShopNpc[i].floor--;
-				xShopNpc[i].moveType = MOVETYPE_YPLUS;
-				xShopNpc[i].actLook = MOVETYPE_YPLUS;
-				xShopNpc[i].x = xWorldMap.floorUpX;
-				xShopNpc[i].y = xWorldMap.floorUpY;
-				break;
-			case 17:
-				if(xShopNpc[i].floor != 0)
-				{
-					//내려가기
-					setNpcStateFloorDown(i, xShopNpc[i].floor);
-				}
-				else
-				{
-					setNpcStateExit(i, xShopNpc[i].floor);
-				}
-				break;
-			}
-			break;
-		case SHOPNPC_STATE_EMPTY:
-			setFace(&xShopNpc[i].xFace, FACE_TYPE_ANGRY);
-							
-			switch(xShopNpc[i].moveType)
-			{
-			case MOVETYPE_XPLUS:
-			case MOVETYPE_YPLUS:					
-				if(1 == prcSprit(&xSpritNpc[xShopNpc[i].subAct][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-					xShopNpc[i].isActEnd = TRUE;
-				break;
-			case MOVETYPE_XMINUS:
-			case MOVETYPE_YMINUS:
-				if(1 == prcSprit(&xSpritNpc[xShopNpc[i].subAct][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
-					xShopNpc[i].isActEnd = TRUE;
-				break;
-			}
-				
-			if(xShopNpc[i].isActEnd == TRUE)
-			{
-				xShopNpc[i].nowFrame = 0;
-				xShopNpc[i].nowDelay = 0;
-				xShopNpc[i].isActEnd = FALSE;
-				xShopNpc[i].state = SHOPNPC_STATE_MOVE;
-				initShopNpcMove(i);
-			}
-			break;
-		case SHOPNPC_STATE_ASTARERR:
-		case SHOPNPC_STATE_WAIT:
-			setFace(&xShopNpc[i].xFace, FACE_TYPE_ANGRY);
-			if(++xShopNpc[i].anyCnt > 50)
-			{
-				if(xShopNpc[i].buyType20 == BUY_TYPE20_FITTING && xShopNpc[i].actInteriorNum != DONT)
-				{
-					if(xShowWindowInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].state == SHOWWINDOWINFO_STATE_PLAY)
-					{
-						xShowWindowInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].state = SHOWWINDOWINFO_STATE_WAIT;
-						xShopNpc[i].actInteriorNum = DONT;
-					}
-				}
-				
-				xShopNpc[i].state = SHOPNPC_STATE_MOVE;
-				xShopNpc[i].nowDelay = 0;
-				xShopNpc[i].nowFrame = 0;
-				setNpcStateExit(i,xShopNpc[i].floor);
-			}
-			break;
-		case SHOPNPC_STATE_MOVE:
-		case SHOPNPC_STATE_FITTINGROOM_OPEN_OUT:
-		case SHOPNPC_STATE_FITTINGROOM_OPEN_IN:
-		case SHOPNPC_STATE_FLOORUPMOVE:
-		case SHOPNPC_STATE_FLOORDOWNMOVE:
-				
-			++xShopNpc[i].anyCnt;
-			setFace(&xShopNpc[i].xFace, FACE_TYPE_NORMAL);
-			//계산대기중 손님들은 계산손님등록 큐를 지속적으로 검색하여 가는길에 좌표가 겹친다면 그대로 서서 대기하고
-			isSubTemp[0] = FALSE;
-			if(xShopNpc[i].buyAct == NPC_BUYACT_PAYMENT)
-			{
-				for(int z=0;z<xPaymentAssistant[xShopNpc[i].floor].totalSlot;z++)
-				{
-					if(xPaymentAssistant[xShopNpc[i].floor].xShopNpcSlot[z].npcNum != i)
-					{
-						if(xShopNpc[i].bestNowCnt < xShopNpc[i].bestTotalCnt)
-						{
-							if(xShopNpc[xPaymentAssistant[xShopNpc[i].floor].xShopNpcSlot[z].npcNum].x == xShopNpc[i].bestX[xShopNpc[i].bestNowCnt+1]
-							   && xShopNpc[xPaymentAssistant[xShopNpc[i].floor].xShopNpcSlot[z].npcNum].y == xShopNpc[i].bestY[xShopNpc[i].bestNowCnt+1])
-							{
-								isSubTemp[0] = TRUE;
-								break;
-							}
-						}
-					}
-				}
-			}
-							
-			if(isSubTemp[0] == TRUE)
-				continue;
-							
-			if(xShopNpc[i].speed == xMap.speedTable[1])
-			{
-				if(gameCnt%2==0)
-					++xShopNpc[i].imgCnt;
-			}
-			else if(xShopNpc[i].speed == xMap.speedTable[2])
-			{
-				++xShopNpc[i].imgCnt;
-			}
-			else if(xShopNpc[i].speed == xMap.speedTable[3])
-			{
-				xShopNpc[i].imgCnt +=2;
-			}
-			
-			if(xShopNpc[i].imgCnt > 19)
-				xShopNpc[i].imgCnt = 0;
-				
-				
-			switch(xShopNpc[i].moveType)
-			{
-			case MOVETYPE_XPLUS:
-			case MOVETYPE_YPLUS:
-				prcSprit(&xSpritNpc[NPC_ACT_WALKING][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame);
-				break;
-			case MOVETYPE_XMINUS:
-			case MOVETYPE_YMINUS:
-				prcSprit(&xSpritNpc[NPC_ACT_WALKING][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame);
-				break;
-			}
-				
-			switch(xShopNpc[i].moveType)
-			{
-				case MOVETYPE_XPLUS:
-					xShopNpc[i].drawX -= (float)(xShopNpc[i].speed * 2);
-					xShopNpc[i].drawY += (float)(xShopNpc[i].speed * 1);					
-					if(xShopNpc[i].drawX  <= -(TILEW/4))
-					{
-						
-						switch(xShopNpc[i].state)
-						{
-						case SHOPNPC_STATE_FLOORUPMOVE:
-						case SHOPNPC_STATE_FLOORDOWNMOVE:
-						case SHOPNPC_STATE_MOVE:
-							xShopNpc[i].x_befor = xShopNpc[i].x;
-							xShopNpc[i].y_befor = xShopNpc[i].y;
-							break;
-						}
-
-						xShopNpc[i].x++;
-						xShopNpc[i].drawX = (TILEW/4);
-						xShopNpc[i].drawY = -(TILEH/4);
-					}
-					break;
-				case MOVETYPE_XMINUS:
-					xShopNpc[i].drawX += (float)(xShopNpc[i].speed * 2);
-					xShopNpc[i].drawY -= (float)(xShopNpc[i].speed * 1);
-					if(xShopNpc[i].drawX  >= (TILEW/4))
-					{
-						switch(xShopNpc[i].state)
-						{
-						case SHOPNPC_STATE_FLOORUPMOVE:
-						case SHOPNPC_STATE_FLOORDOWNMOVE:
-						case SHOPNPC_STATE_MOVE:
-							xShopNpc[i].x_befor = xShopNpc[i].x;
-							xShopNpc[i].y_befor = xShopNpc[i].y;
-							break;
-						}
-						xShopNpc[i].x--;
-						xShopNpc[i].drawX = -(TILEW/4);
-						xShopNpc[i].drawY = (TILEH/4);
-					}
-					break;
-				case MOVETYPE_YPLUS:
-					xShopNpc[i].drawX += (float)(xShopNpc[i].speed * 2);
-					xShopNpc[i].drawY += (float)(xShopNpc[i].speed * 1);
-					if(xShopNpc[i].drawY  >= (TILEH/4))
-					{
-						switch(xShopNpc[i].state)
-						{
-						case SHOPNPC_STATE_FLOORUPMOVE:
-						case SHOPNPC_STATE_FLOORDOWNMOVE:
-						case SHOPNPC_STATE_MOVE:
-							xShopNpc[i].x_befor = xShopNpc[i].x;
-							xShopNpc[i].y_befor = xShopNpc[i].y;
-							break;
-						}
-						xShopNpc[i].y++;
-						xShopNpc[i].drawX = -(TILEW/4);
-						xShopNpc[i].drawY = -(TILEH/4);
-					}
-					break;
-				case MOVETYPE_YMINUS:
-					xShopNpc[i].drawX -= (float)(xShopNpc[i].speed * 2);
-					xShopNpc[i].drawY -= (float)(xShopNpc[i].speed * 1);
-					if(xShopNpc[i].drawY  <= -(TILEH/4))
-					{
-						switch(xShopNpc[i].state)
-						{
-						case SHOPNPC_STATE_FLOORUPMOVE:
-						case SHOPNPC_STATE_FLOORDOWNMOVE:
-						case SHOPNPC_STATE_MOVE:
-							xShopNpc[i].x_befor = xShopNpc[i].x;
-							xShopNpc[i].y_befor = xShopNpc[i].y;
-							break;
-						}
-						
-						xShopNpc[i].y--;
-						xShopNpc[i].drawX = (TILEW/4);
-						xShopNpc[i].drawY = (TILEH/4);
-					}
-					break;
-			}
-			
-			//도착 위치 검색 및 위치 보정
-			if(xShopNpc[i].drawX == 0)
-			{
-				int ranDomTemp = ranDom(0, 100);
-				
-				if(xShopNpc[i].isPorter_man == FALSE)
-				{
-					//1/3정도 왓을때
-					if(xShopNpc[i].bestNowCnt == xShopNpc[i].bestTotalCnt/3)
-					{
-						if(xShopNpc[i].state == SHOPNPC_STATE_MOVE)
-						{
-							switch(xShopNpc[i].buyAct)
-							{
-							case NPC_BUYACT_SELLTABLE:
-							case NPC_BUYACT_TREND:
-							case NPC_BUYACT_FITTING:
-								if(ranDom(0, 100) < xWorldMap.npcSpeakPer)
-								{
-									if(ranDomTemp < 30)
-										setSpeak(&xShopNpc[i].xSpeak, "남들과 달라 보이고 싶어", SPEAKFRAMEMAX);
-									else if(ranDomTemp < 60)
-										setSpeak(&xShopNpc[i].xSpeak, "개성 있는 패션이 중요하지", SPEAKFRAMEMAX);
-								}
-								break;
-							}
-						}
-					}
-				}
-				
-				//목표위치도착
-				if(++xShopNpc[i].bestNowCnt >= xShopNpc[i].bestTotalCnt-1)
-				{
-					if(xShopNpc[i].state == SHOPNPC_STATE_FLOORUPMOVE)
-					{
-						xShopNpc[i].state = SHOPNPC_STATE_FLOORUP;
-						xShopNpc[i].moveType = MOVETYPE_YMINUS;
-						xShopNpc[i].actLook = MOVETYPE_YMINUS;
-						xShopNpc[i].anyCnt = 0;
-					}
-					else if(xShopNpc[i].state == SHOPNPC_STATE_FLOORDOWNMOVE)
-					{
-						xShopNpc[i].state = SHOPNPC_STATE_FLOORDOWN;
-						xShopNpc[i].anyCnt = 0;
-						
-					}
-					else if(xMap.data[0][5][xShopNpc[i].x][xShopNpc[i].y] == 4 || xMap.data[0][5][xShopNpc[i].x][xShopNpc[i].y] == -4)
-					{
-						xShopNpc[i].state = SHOPNPC_STATE_DONT;
-						setModelNpcSpeakWelCome(0,FALSE);
-						
-						int npcNum;
-						if(xWorldMap.doorCode >= 0)
-							npcNum = makeWorldMapNpc(xShopNpc[i].x,xShopNpc[i].y,xShopNpc[i].type,xShopNpc[i].speed,MOVETYPE_XMINUS);
-						else
-							npcNum = makeWorldMapNpc(xShopNpc[i].x,xShopNpc[i].y,xShopNpc[i].type,xShopNpc[i].speed,MOVETYPE_YMINUS);												
-						
-
-						xWorldMapNpc[npcNum].modelNum = xShopNpc[i].modelNum;
-						
-						memcpy(&xWorldMapNpc[npcNum].xFace,&xShopNpc[i].xFace,sizeof(xShopNpc[i].xFace));
-						memcpy(&xWorldMapNpc[npcNum].xF,&xShopNpc[i].xF,sizeof(xShopNpc[i].xF));
-						xWorldMapNpc[npcNum].buyItemCode = xShopNpc[i].buyItemCode;
-						xWorldMapNpc[npcNum].state = WORLDMAPNPC_STATE_MOVE;
-						xWorldMapNpc[npcNum].isOutShop = TRUE;
-						xWorldMapNpc[npcNum].isInShop = FALSE;
-						
-						if(xShopNpc[i].isPorter_man == TRUE)
-						{							
-							xWorldMapNpc[npcNum].isDie = TRUE;
-						}
-					}
-					else
-					{
-						switch(xShopNpc[i].state)
-						{
-						case SHOPNPC_STATE_FITTINGROOM_OPEN_IN:
-							xShopNpc[i].state = SHOPNPC_STATE_FITTINGROOM_CLOSE_WAIT;
-							xShopNpc[i].anyCnt = 0;
-							break;
-						case SHOPNPC_STATE_FITTINGROOM_OPEN_OUT:
-							xShopNpc[i].buyAct = NPC_BUYACT_PAYMENT;
-							xShopNpc[i].state = SHOPNPC_STATE_LOOKINGMIRROR;
-								
-							if(xWorldMap.isFriendMap == FALSE)
-							{
-								xShopNpc[i].eventBoxShowAntCnt = 0;
-								xShopNpc[i].payMentEvent = TRUE;
-								xShopNpc[i].payMentTime = xCalendar.nowTime;
-								xShopNpc[i].payMentType = 1;		//0계산대1:피팅룸2:쇼윈도
-							}
-								
-							
-							xShopNpc[i].isActEnd = FALSE;
-							xShopNpc[i].nowDelay = 0;
-							xShopNpc[i].nowFrame = 0;
-							xShopNpc[i].anyCnt = 0;
-							setMapData(xShopNpc[i].buyItemCode);
-								
-							if(xShopNpc[i].genDer == 1)
-								xShopNpc[i].actingType = NPC_ACT_POWERMAN;
-							else if(ranDom(0,100)< 33)
-							{
-								xShopNpc[i].actingType = NPC_ACT_POSE3;
-							}
-							else
-							{
-								switch(xMap.type)
-								{
-								case F_TYPE_OUTER:
-								case F_TYPE_TOP:
-								case F_TYPE_BOTTOM:
-								case F_TYPE_ONEPIECE:
-									xShopNpc[i].actingType = NPC_ACT_POSE1;
-									break;
-								case F_TYPE_SHOES:
-								case F_TYPE_BAG:
-								case F_TYPE_ACCECSSORY:
-									xShopNpc[i].actingType = NPC_ACT_POSE2;
-									break;
-								}
-							}
-								
-							if(ranDom(0, 100)<50)
-							{
-								switch(xMap.type)
-								{
-								case F_TYPE_OUTER:
-								case F_TYPE_TOP:
-								case F_TYPE_BOTTOM:
-								case F_TYPE_ONEPIECE:
-									if(ranDom(0, 100) < xWorldMap.npcSpeakPer)
-										setSpeak(&xShopNpc[i].xSpeak, "예쁘다 맘에 드네!!", SPEAKFRAMEMAX);
-									break;
-								case F_TYPE_SHOES:
-								case F_TYPE_BAG:
-								case F_TYPE_ACCECSSORY:
-									if(ranDom(0, 100) < xWorldMap.npcSpeakPer)
-										setSpeak(&xShopNpc[i].xSpeak, "맘에 드는 걸~", SPEAKFRAMEMAX);
-									break;
-								}
-							}
-								
-							if(xShopNpc[i].isPorter_woman == TRUE)
-							{
-								switch(xShopNpc[i].porterOptionType)
-								{
-								case 4:	//남남(여자)
-									switch(xShopNpc[xShopNpc[i].porterNpcNum].porterOptionTypeSub)
-									{
-									case 1:
-										setSpeak(&xShopNpc[i].xSpeak, "역시 잘 생겼단 말이지~", SPEAKFRAMEMAX);
-										break;
-									}
-									break;
-								}
-							}
-							break;
-						default:
-							if(xShopNpc[i].isChair == TRUE)
-							{
-								
-								if(xChairInfo[xShopNpc[i].floor].interiorCode[xShopNpc[i].chairNum] > 0)
-								{
-									xShopNpc[i].x--;
-								}
-								else
-								{
-									xShopNpc[i].y--;
-								}
-								
-								xShopNpc[i].state = SHOPNPC_STATE_CHAIR_SIT;
-								xShopNpc[i].isActEnd = FALSE;
-								xShopNpc[i].nowDelay = 0;
-								xShopNpc[i].nowFrame = 0;
-								
-								
-								if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-								{
-									switch(xQuestTuto.nowNum)
-									{
-									case TUTO_8_INTERIOR_MAKENPC:
-										xQuestTuto.isTutoClean = TRUE;
-										break;
-									}
-								}
-								
-								if(ranDom(0, 100) < xWorldMap.npcSpeakPer)
-								{
-									switch(ranDom(0, 1))
-									{
-									case 0:
-										setSpeak(&xShopNpc[i].xSpeak, "아~힘들어", SPEAKFRAMEMAX);
-										break;
-									case 1:
-										setSpeak(&xShopNpc[i].xSpeak, "다리 아프네", SPEAKFRAMEMAX);
-										break;
-									}
-								}
-									
-							}
-							else
-							{								
-								if(xShopNpc[i].isPorter_man == TRUE)
-								{
-									setNpcStatePorterMove(i,xShopNpc[i].porterNpcNum);
-								}
-								else
-								{
-									switch(xShopNpc[i].buyAct)
-									{
-									case NPC_BUYACT_SELLTABLE:
-									case NPC_BUYACT_TREND:
-										if(xShopNpc[i].isPorter_woman == TRUE)
-										{										
-											xShopNpc[i].state = SHOPNPC_STATE_TABLEBUY;
-											xShopNpc[i].moveType = xShopNpc[i].actLook;
-											xShopNpc[i].isActEnd = FALSE;
-											xShopNpc[i].nowDelay = 0;
-											xShopNpc[i].nowFrame = 0;
-										}
-										else
-										{
-											if(ranDom(0, 100) < 50)
-											{
-												xShopNpc[i].state = SHOPNPC_STATE_TABLESEE;
-												
-												int randTemp = ranDom(0, 100);
-												if(randTemp < 30)
-													xShopNpc[i].subAct = NPC_ACT_GOMIN;
-												else if(randTemp < 60)
-													xShopNpc[i].subAct = NPC_ACT_NPC1;
-												else
-													xShopNpc[i].subAct = NPC_ACT_NPC2;									
-												
-												xShopNpc[i].isActEnd = FALSE;
-												xShopNpc[i].nowDelay = 0;
-												xShopNpc[i].nowFrame = 0;
-												if(ranDom(0, 100) < xWorldMap.npcSpeakPer)
-												{
-													if(ranDom(0, 100)<50)
-														setSpeak(&xShopNpc[i].xSpeak, "어떤 옷을 입는 게 좋을까?", SPEAKFRAMEMAX);
-												}
-											}
-											else
-											{
-												xShopNpc[i].state = SHOPNPC_STATE_TABLEBUY;
-												xShopNpc[i].moveType = xShopNpc[i].actLook;
-												xShopNpc[i].isActEnd = FALSE;
-												xShopNpc[i].nowDelay = 0;
-												xShopNpc[i].nowFrame = 0;
-												
-												if(ranDom(0, 100) < xWorldMap.npcSpeakPer)
-												{
-													if(xShopNpc[i].buyAct == NPC_BUYACT_TREND)
-														setSpeak(&xShopNpc[i].xSpeak, "요즘 유행하는 의상이 이건가", SPEAKFRAMEMAX);
-												}
-											}
-										}
-										break;
-									case NPC_BUYACT_FITTING:
-										resetShowWindowInfo();
-										//마네킹에 피팅된옷이 없거나 마네킹자체가 없다면 예외처리
-										if(xShowWindowInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].isUse == FALSE || xShowWindowInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].isFitting == FALSE)
-										{
-											xShopNpc[i].state = SHOPNPC_STATE_WAIT;
-											xShopNpc[i].subAct = NPC_ACT_ANGRY;
-											xShopNpc[i].anyCnt = 0;
-											xShopNpc[i].isActEnd = FALSE;
-											xShopNpc[i].nowDelay = 0;
-											xShopNpc[i].nowFrame = 0;
-
-											setSpeak(&xShopNpc[i].xSpeak, "피팅 된 의상이 하나도 없네?", SPEAKFRAMEMAX);
-											xShowWindowInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].state = SHOWWINDOWINFO_STATE_WAIT;
-											
-										}
-										else
-										{
-											//점원이 올때 까지 점원부르기상태 풀어주는건 점원쪽에서 해주자
-											xShopNpc[i].buyItemCode_ASSISTCALL = DONT;
-											int showWindowFitttingTotal=0;
-											int showWindowFittingSlot[20];
-											for(int ff=0;ff<SPRIT_IMGLAYERMAX;ff++)
-											{
-												if(xShowWindowInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].xF.code[ff] != DONT)
-												{
-													showWindowFittingSlot[showWindowFitttingTotal++] = xShowWindowInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].xF.code[ff];
-												}
-											}
-											
-											if(showWindowFitttingTotal != 0)
-												xShopNpc[i].buyItemCode_ASSISTCALL = showWindowFittingSlot[ranDom(0, showWindowFitttingTotal-1)];
-											
-											if(xShowWindowInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].interiorCode > 0)
-											{
-												xShopNpc[i].moveType = MOVETYPE_XPLUS;
-												xShopNpc[i].actLook = MOVETYPE_XPLUS;
-											}
-											else
-											{
-												xShopNpc[i].moveType = MOVETYPE_YPLUS;
-												xShopNpc[i].actLook = MOVETYPE_YPLUS;
-											}
-																				
-											xShopNpc[i].isActEnd = FALSE;
-											xShopNpc[i].nowDelay = 0;
-											xShopNpc[i].nowFrame = 0;
-
-											if(ranDom(0, 100) < 50)
-											{
-												int type = xShopNpc[i].buyItemCode_ASSISTCALL/1000;
-												int list = xShopNpc[i].buyItemCode_ASSISTCALL%1000;
-												xShopNpc[i].state = SHOPNPC_STATE_CALLSHOPASSISTANT;
-												sprintf(strTempS, "여기 %s 좀 가져다 주세요",xFashionData[type][list].strName);
-												setSpeak(&xShopNpc[i].xSpeak, strTempS, SPEAKFRAMEMAX);
-											}
-											else
-											{
-												xShopNpc[i].state = SHOPNPC_STATE_CALLSHOPASSISTANT_RCMD;
-												sprintf(strTempS, "여기요~");
-												setSpeak(&xShopNpc[i].xSpeak, strTempS, SPEAKFRAMEMAX);
-											}
-											
-											if(xWorldMap.isFriendMap == FALSE)
-											{
-												xShopNpc[i].eventBoxShowAntCnt = 0;
-												xShopNpc[i].payMentEvent = TRUE;
-												xShopNpc[i].payMentTime = xCalendar.nowTime;
-												xShopNpc[i].payMentType = 2;		//0계산대1:피팅룸2:쇼윈도
-											}
-										}
-										break;
-									case NPC_BUYACT_FITTINGROOM:
-										//피팅룸엔진에서 WAIT인손님 검색 피팅상태로 변환
-										xShopNpc[i].state = SHOPNPC_STATE_FITTINGROOM;
-										xShopNpc[i].anyCnt = 0;
-										//피팅룸엔진은 사용상태로 변환									
-										xFittingRoomInfo[xShopNpc[i].floor].npcNumcode[xShopNpc[i].actInteriorNum] = i;
-										break;
-									case NPC_BUYACT_PAYMENT:
-										xShopNpc[i].state = SHOPNPC_STATE_PAYMENTWAIT;
-										xShopNpc[i].anyCnt = 0;
-										break;
-									}
-								}
-							}
-							break;
-						}
-					}
-				}
-				else
-				{				
-					//다음이동
-					if(xShopNpc[i].bestX[xShopNpc[i].bestNowCnt] < xShopNpc[i].bestX[xShopNpc[i].bestNowCnt+1])
-						xShopNpc[i].moveType = MOVETYPE_XPLUS;
-					else if(xShopNpc[i].bestX[xShopNpc[i].bestNowCnt] > xShopNpc[i].bestX[xShopNpc[i].bestNowCnt+1])
-						xShopNpc[i].moveType = MOVETYPE_XMINUS;
-					else if(xShopNpc[i].bestY[xShopNpc[i].bestNowCnt] < xShopNpc[i].bestY[xShopNpc[i].bestNowCnt+1])
-						xShopNpc[i].moveType = MOVETYPE_YPLUS;
-					else if(xShopNpc[i].bestY[xShopNpc[i].bestNowCnt] > xShopNpc[i].bestY[xShopNpc[i].bestNowCnt+1])
-						xShopNpc[i].moveType = MOVETYPE_YMINUS;
-				}
-			}
-		break;
-		}
+//		
+//		switch(xShopNpc[i].state)
+//		{
+//		case SHOPNPC_STATE_CALLSHOPASSISTANT_RCMD:
+//			xShopNpc[i].moveType = xShopNpc[i].actLook;
+//			//호출중(무한검색)
+//			if(1 == prcSprit(&xSpritNpc[NPC_ACT_ASSISTANTCALL][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//				xShopNpc[i].isActEnd = TRUE;
+//			if(xShopNpc[i].isActEnd == TRUE)
+//			{
+//				//WAIT상태 점원 호출중
+//				for(int k=0;k<SHOPASSISTANTMAX;k++)
+//				{
+//					int floor = xShopNpc[i].floor;
+//					if(xShopAssistant[floor][k].state == SHOPASSISTANT_STATE_WAIT || xShopAssistant[floor][k].state ==SHOPASSISTANT_STATE_WAITMOVE || xShopAssistant[floor][k].state ==SHOPASSISTANT_STATE_ORDERINGMOVE)
+//					{
+//						xShopNpc[i].state = SHOPNPC_STATE_CALLSHOPASSISTANTWAIT_RCMD;
+//						xShopNpc[i].nowDelay = 0;
+//						xShopNpc[i].nowFrame = 0;
+//						if(xShowWindowInfo[floor][xShopNpc[i].actInteriorNum].interiorCode >= 0)
+//						{
+//							xShopNpc[i].actLook = MOVETYPE_XPLUS;
+//							xShopAssistant[floor][k].actLook = MOVETYPE_XMINUS;
+//							endX = xShopNpc[i].x+1;
+//							endY = xShopNpc[i].y;
+//						}
+//						else
+//						{
+//							xShopNpc[i].actLook = MOVETYPE_YPLUS;
+//							xShopAssistant[floor][k].actLook = MOVETYPE_YMINUS;
+//							endX = xShopNpc[i].x;
+//							endY = xShopNpc[i].y+1;
+//						}
+//						
+//						//점원정보등록
+//						xShopAssistant[floor][k].shopNpcNum = i;
+//																		
+//						xShopAssistant[floor][k].state = SHOPASSISTANT_STATE_RCMDMOVE;
+//						
+//																		
+//						
+//						if(setAstar(xShopAssistant[floor][k].x-xMap.shopPointX, xShopAssistant[floor][k].y-xMap.shopPointY, endX-xMap.shopPointX, endY-xMap.shopPointY, MAP_TYPE_OBJ,floor) == FALSE)
+//						{
+//							//NPC예외처리
+//							xShopNpc[i].state = SHOPNPC_STATE_WAIT;
+//							xShopNpc[i].anyCnt = 0;
+//							xShowWindowInfo[floor][xShopNpc[i].actInteriorNum].state = SHOWWINDOWINFO_STATE_WAIT;
+//
+//							
+//							//setSpeak(&xShopNpc[i].xSpeak, "점원>손님길찾ERR_22(개발확인)", SPEAKFRAMEMAX);
+//							
+//							//대응NPC그냥 대기상태로 변환 제위치로 갈필요는 없단
+//							xShopAssistant[floor][k].state = SHOPASSISTANT_STATE_WAIT;
+//							xShopAssistant[floor][k].anyCnt = 0;
+//							xShopAssistant[floor][k].nowDelay = 0;
+//							xShopAssistant[floor][k].nowFrame = 0;
+//						}
+//						else
+//						{
+//							//대응NPC로 이동
+//							setSpeak(&xShopAssistant[floor][k].xSpeak, "네네~\n지금 갑니다", SPEAKFRAMEMAX);
+//							xShopAssistant[floor][k].state = SHOPASSISTANT_STATE_RCMDMOVE;
+//							xShopAssistant[floor][k].bestTotalCnt = xAstar.totalCnt;
+//							xShopAssistant[floor][k].bestNowCnt = 0;
+//							for(int totalI=0;totalI<xAstar.totalCnt;totalI++)
+//							{
+//								xShopAssistant[floor][k].bestX[totalI] = xAstar.bestX[totalI]+xMap.shopPointX;
+//								xShopAssistant[floor][k].bestY[totalI] = xAstar.bestY[totalI]+xMap.shopPointY;
+//							}
+//							
+//							//다음이동
+//							if(xShopAssistant[floor][k].bestX[xShopAssistant[floor][k].bestNowCnt] < xShopAssistant[floor][k].bestX[xShopAssistant[floor][k].bestNowCnt+1])
+//								xShopAssistant[floor][k].moveType = MOVETYPE_XPLUS;
+//							else if(xShopAssistant[floor][k].bestX[xShopAssistant[floor][k].bestNowCnt] > xShopAssistant[floor][k].bestX[xShopAssistant[floor][k].bestNowCnt+1])
+//								xShopAssistant[floor][k].moveType = MOVETYPE_XMINUS;
+//							else if(xShopAssistant[floor][k].bestY[xShopAssistant[floor][k].bestNowCnt] < xShopAssistant[floor][k].bestY[xShopAssistant[floor][k].bestNowCnt+1])
+//								xShopAssistant[floor][i].moveType = MOVETYPE_YPLUS;
+//							else if(xShopAssistant[floor][k].bestY[xShopAssistant[floor][k].bestNowCnt] > xShopAssistant[floor][k].bestY[xShopAssistant[floor][k].bestNowCnt+1])
+//								xShopAssistant[floor][k].moveType = MOVETYPE_YMINUS;
+//						}
+//						break;
+//					}
+//				}
+//			}
+//			break;
+//		case SHOPNPC_STATE_CALLSHOPASSISTANT:
+//			xShopNpc[i].moveType = xShopNpc[i].actLook;
+//			//호출중(무한검색)
+//			if(1 == prcSprit(&xSpritNpc[NPC_ACT_ASSISTANTCALL][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//				xShopNpc[i].isActEnd = TRUE;
+//			if(xShopNpc[i].isActEnd == TRUE)
+//			{
+//				//WAIT상태 점원 호출중
+//				for(int k=0;k<SHOPASSISTANTMAX;k++)
+//				{
+//					if(xShopAssistant[xShopNpc[i].floor][k].state == SHOPASSISTANT_STATE_WAIT || xShopAssistant[xShopNpc[i].floor][k].state ==SHOPASSISTANT_STATE_WAITMOVE || xShopAssistant[xShopNpc[i].floor][k].state ==SHOPASSISTANT_STATE_ORDERINGMOVE)
+//					{
+//						setCallShopAssistant(i,k);
+//						break;
+//					}
+//				}
+//			}
+//			break;
+//		case SHOPNPC_STATE_CALLSHOPASSISTANTWAIT:
+//		case SHOPNPC_STATE_CALLSHOPASSISTANTWAIT_RCMD:
+//			//호출대기중(올때까지 대기)
+//			xShopNpc[i].moveType = xShopNpc[i].actLook;
+//			switch(xShopNpc[i].moveType)
+//			{
+//			case MOVETYPE_XPLUS:
+//			case MOVETYPE_YPLUS:
+//				prcSprit(&xSpritNpc[NPC_ACT_STOP][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame);
+//				break;
+//			case MOVETYPE_XMINUS:
+//			case MOVETYPE_YMINUS:
+//				prcSprit(&xSpritNpc[NPC_ACT_STOP][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame);
+//				break;
+//			}
+//			break;
+//		case SHOPNPC_STATE_TABLESEE:
+//			xShopNpc[i].moveType = xShopNpc[i].actLook;
+//								
+//			switch(xShopNpc[i].moveType)
+//			{
+//			case MOVETYPE_XPLUS:
+//			case MOVETYPE_YPLUS:
+//				if(1 == prcSprit(&xSpritNpc[xShopNpc[i].subAct][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//					xShopNpc[i].isActEnd = TRUE;
+//				break;
+//			case MOVETYPE_XMINUS:
+//			case MOVETYPE_YMINUS:
+//				if(1 == prcSprit(&xSpritNpc[xShopNpc[i].subAct][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//					xShopNpc[i].isActEnd = TRUE;
+//				break;
+//			}
+//			if(xShopNpc[i].isActEnd == TRUE)
+//			{
+//				xShopNpc[i].state = SHOPNPC_STATE_TABLEBUY;
+//				xShopNpc[i].moveType = xShopNpc[i].actLook;
+//				xShopNpc[i].isActEnd = FALSE;
+//				xShopNpc[i].nowDelay = 0;
+//				xShopNpc[i].nowFrame = 0;				
+//				
+//				
+//				if(xShopNpc[i].buyAct == NPC_BUYACT_TREND)
+//					if(ranDom(0, 100) < xWorldMap.npcSpeakPer)
+//						setSpeak(&xShopNpc[i].xSpeak, "요즘 유행하는 의상이 이건가", SPEAKFRAMEMAX);
+//				
+//			}
+//			break;
+//		case SHOPNPC_STATE_ETC:			
+//			switch(xShopNpc[i].moveType)
+//			{
+//			case MOVETYPE_XPLUS:
+//			case MOVETYPE_YPLUS:
+//				if(1 == prcSprit(&xSpritNpc[xShopNpc[i].etcAct][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//				{
+//					xShopNpc[i].state = xShopNpc[i].etcAct_BackUp;
+//					xShopNpc[i].nowDelay = 0;
+//					xShopNpc[i].nowFrame = 0;
+//				}
+//				break;
+//			case MOVETYPE_XMINUS:
+//			case MOVETYPE_YMINUS:
+//				if(1 == prcSprit(&xSpritNpc[xShopNpc[i].etcAct][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//				{
+//					xShopNpc[i].state = xShopNpc[i].etcAct_BackUp;
+//					xShopNpc[i].nowDelay = 0;
+//					xShopNpc[i].nowFrame = 0;
+//				}
+//				break;
+//			}
+//			break;
+//		case SHOPNPC_STATE_CHAIR_EVENTFAIL:
+//			if(1 == prcSprit(&xSpritNpc[NPC_ACT_ANGRY][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//				xShopNpc[i].isActEnd = TRUE;
+//				
+//			if(xShopNpc[i].isActEnd == TRUE)
+//			{
+//				xShopNpc[i].nowFrame = 0;
+//				xShopNpc[i].nowDelay = 0;
+//				xShopNpc[i].isActEnd = FALSE;
+//				
+//				xShopNpc[i].state = SHOPNPC_STATE_MOVE;
+//				initShopNpcMove(i);
+//			}			
+//			break;
+//		case SHOPNPC_STATE_CHAIR_STANDUP:
+//			if(1 == prcSprit(&xSpritNpc[NPC_ACT_CHAIR_STANDUP][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//				xShopNpc[i].isActEnd = TRUE;
+//			if(xShopNpc[i].isActEnd == TRUE)
+//			{
+//				xShopNpc[i].nowFrame = 0;
+//				xShopNpc[i].nowDelay = 0;
+//				xShopNpc[i].isActEnd = FALSE;
+//				
+//				xChairInfo[xShopNpc[i].floor].npcCode[xShopNpc[i].chairNum] = DONT;
+//				if(xChairInfo[xShopNpc[i].floor].interiorCode[xShopNpc[i].chairNum] > 0)
+//					xShopNpc[i].x++;
+//				else
+//					xShopNpc[i].y++;
+//				
+//				if(xShopNpc[i].isSitEventFail == TRUE)
+//				{
+//					//요청 실패시에는 짜증한번 내주고
+//					xShopNpc[i].state = SHOPNPC_STATE_CHAIR_EVENTFAIL;
+//					setEmoticon(&xShopNpc[i].xEmoticon,EMOTICON_TYPE_ANGER);
+//					
+//				}
+//				else
+//				{
+//					xShopNpc[i].state = SHOPNPC_STATE_MOVE;
+//					initShopNpcMove(i);
+//				}
+//			}
+//			break;
+//		case SHOPNPC_STATE_CHAIR_WAIT:
+//			if(1 == prcSprit(&xSpritNpc[NPC_ACT_CHAIR_EVENT][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//				xShopNpc[i].isActEnd = TRUE;
+//			
+//			if(xShopNpc[i].isActEnd == TRUE)
+//			{
+//				if(--xShopNpc[i].actCount <=0)
+//				{
+//					xShopNpc[i].state = SHOPNPC_STATE_CHAIR_STANDUP;
+//					xShopNpc[i].isSitEventBox = FALSE;
+//					xShopNpc[i].isSitEventFail = TRUE;
+//					
+//					
+//					if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+//					{
+//						switch(xQuestTuto.nowNum)
+//						{
+//						case TUTO_8_INTERIOR_NPCTOUCH:
+//							xQuestTuto.isTutoClean = TRUE;
+//							break;
+//						}
+//					}
+//					
+//				}
+//				xShopNpc[i].isActEnd = FALSE;
+//				xShopNpc[i].nowDelay = 0;
+//				xShopNpc[i].nowFrame = 0;
+//			}
+//			break;
+//		case SHOPNPC_STATE_CHAIR_ACT:
+//			if(1 == prcSprit(&xSpritNpc[xShopNpc[i].subAct][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//				xShopNpc[i].isActEnd = TRUE;
+//			
+//			if(xShopNpc[i].isActEnd == TRUE)
+//			{
+//				if(--xShopNpc[i].actCount <=0)
+//				{
+//					xShopNpc[i].state = SHOPNPC_STATE_CHAIR_STANDUP;				
+//				}
+//				xShopNpc[i].isActEnd = FALSE;
+//				xShopNpc[i].nowDelay = 0;
+//				xShopNpc[i].nowFrame = 0;
+//			}
+//			break;
+//		case SHOPNPC_STATE_CHAIR_SIT:
+//			if(1 == prcSprit(&xSpritNpc[NPC_ACT_CHAIR_SIT][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//				xShopNpc[i].isActEnd = TRUE;
+//			if(xShopNpc[i].isActEnd == TRUE)
+//			{
+//				//요청액팅 실행
+//				xShopNpc[i].state = SHOPNPC_STATE_CHAIR_WAIT;
+//				xShopNpc[i].isSitEventBox = TRUE;
+//				xShopNpc[i].isEventBox = FALSE;
+//				xShopNpc[i].eventBoxAnyCnt = 0;
+//				xShopNpc[i].eventBoxShowAntCnt = 0;
+//				
+//				
+//				xShopNpc[i].isActEnd = FALSE;
+//				xShopNpc[i].nowDelay = 0;
+//				xShopNpc[i].nowFrame = 0;
+//				xShopNpc[i].actCount = 2;
+//				xShopNpc[i].actCount = 2;
+//								
+//				switch(ranDom(0, 3))
+//				{
+//				case 0:	xShopNpc[i].subAct = NPC_ACT_CHAIR_BOOK;break;
+//				case 1:	xShopNpc[i].subAct = NPC_ACT_CHAIR_COFFEE;break;
+//				case 2:	xShopNpc[i].subAct = NPC_ACT_CHAIR_IPAD;break;
+//				case 3:	xShopNpc[i].subAct = NPC_ACT_CHAIR_PHONE;break;
+//				}
+//								
+//				if(ranDom(0, 99) < xModelSkill.bonusPer[MODELSKILL_TYPE_CHAIR_BOOK])
+//					xShopNpc[i].subAct = NPC_ACT_CHAIR_BOOK;
+//				else if(ranDom(0, 99) < xModelSkill.bonusPer[MODELSKILL_TYPE_CHAIR_COFFEE])
+//					xShopNpc[i].subAct = NPC_ACT_CHAIR_COFFEE;
+//				else if(ranDom(0, 99) < xModelSkill.bonusPer[MODELSKILL_TYPE_CHAIR_IPAD])
+//					xShopNpc[i].subAct = NPC_ACT_CHAIR_IPAD;
+//				else if(ranDom(0, 99) < xModelSkill.bonusPer[MODELSKILL_TYPE_CHAIR_PHONE])
+//					xShopNpc[i].subAct = NPC_ACT_CHAIR_PHONE;
+//			}
+//			break;
+//		case SHOPNPC_STATE_PORTER_WM_MAN_TYPE0_0:
+//			switch(xShopNpc[i].moveType)
+//			{
+//			case MOVETYPE_XPLUS:
+//			case MOVETYPE_YPLUS:
+//					
+//				switch(xShopNpc[i].porterOptionType)
+//				{
+//				case 1:	//여남//남
+//					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MAN_YES][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//						xShopNpc[i].isActEnd = TRUE;
+//					break;
+//				case 3:	//여여//남
+//					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_WW_MAN_YES][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//						xShopNpc[i].isActEnd = TRUE;
+//					break;
+//				case 5:	//남남//남
+//					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MM_MAN_YES][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//						xShopNpc[i].isActEnd = TRUE;
+//					break;
+//				}
+//				break;
+//			case MOVETYPE_XMINUS:
+//			case MOVETYPE_YMINUS:
+//				switch(xShopNpc[i].porterOptionType)
+//				{
+//				case 1:	//여남//남
+//					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MAN_YES][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//						xShopNpc[i].isActEnd = TRUE;
+//					break;
+//				case 3:	//여여//남
+//					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_WW_MAN_YES][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//						xShopNpc[i].isActEnd = TRUE;
+//					break;
+//				case 5:	//남남//남
+//					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MM_MAN_YES][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//						xShopNpc[i].isActEnd = TRUE;
+//					break;
+//				}
+//				break;
+//			}
+//				
+//			if(xShopNpc[i].isActEnd == TRUE)
+//			{
+//				//여 설정
+//				xShopNpc[xShopNpc[i].porterNpcNum].state = SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE0_2;
+//				
+//				switch(xShopNpc[i].porterOptionType)
+//				{
+//				case 1:	//여남(남자)
+//					setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "너 그렇게 성의 없이 대답할래?", SPEAKFRAMEMAX);
+//					break;
+//				case 3:	//여여(여자)
+//					setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "얘,나 아직 슬림하다구!", SPEAKFRAMEMAX);
+//					break;
+//				case 5:	//남남(남자)
+//					setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "어디!?알았어 빨리 입어보러 가자", SPEAKFRAMEMAX);
+//					break;
+//				}
+//				
+//				xShopNpc[xShopNpc[i].porterNpcNum].isActEnd = FALSE;
+//				xShopNpc[xShopNpc[i].porterNpcNum].nowDelay = 0;
+//				xShopNpc[xShopNpc[i].porterNpcNum].nowFrame = 0;
+//				//남 설정
+//				setNpcStatePorterMove(i,xShopNpc[i].porterNpcNum);
+//			}
+//			break;
+//		case SHOPNPC_STATE_PORTER_WM_MAN_TYPE1_0:
+//		case SHOPNPC_STATE_PORTER_MM_MAN_TYPE1_0:
+//		case SHOPNPC_STATE_PORTER_WW_MAN_TYPE1_0:
+//			switch(xShopNpc[i].moveType)
+//			{
+//			case MOVETYPE_XPLUS:
+//			case MOVETYPE_YPLUS:
+//				if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MAN_APPLAUD][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//					xShopNpc[i].isActEnd = TRUE;
+//				break;
+//			case MOVETYPE_XMINUS:
+//			case MOVETYPE_YMINUS:
+//				if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MAN_APPLAUD][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//					xShopNpc[i].isActEnd = TRUE;
+//				break;
+//			}
+//			if(xShopNpc[i].isActEnd == TRUE)
+//			{
+//				//여설정
+//				switch(xShopNpc[i].state)
+//				{
+//				case SHOPNPC_STATE_PORTER_WM_MAN_TYPE1_0:
+//					setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "그래도 한번 입어볼래", SPEAKFRAMEMAX);
+//					break;
+//				case SHOPNPC_STATE_PORTER_MM_MAN_TYPE1_0:
+//					setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "잘생긴 모습 질투 하지 마라 기다려", SPEAKFRAMEMAX);
+//					break;
+//				case SHOPNPC_STATE_PORTER_WW_MAN_TYPE1_0:
+//					setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "내가 이정도 핏이 안 나올 거 같아?", SPEAKFRAMEMAX);
+//					break;
+//				}
+//				setNpcStateFittingRoom(xShopNpc[i].porterNpcNum,xShopNpc[xShopNpc[i].porterNpcNum].floor);
+//				//남 설정
+//				setNpcStatePorterMove(i,xShopNpc[i].porterNpcNum);
+//			}
+//			break;
+//		case SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE0_0:	//시작대사0
+//		case SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE1_0:
+//		case SHOPNPC_STATE_PORTER_MM_WOMAN_TYPE1_0:
+//		case SHOPNPC_STATE_PORTER_WW_WOMAN_TYPE1_0:
+//			switch(xShopNpc[i].moveType)
+//			{
+//			case MOVETYPE_XPLUS:
+//			case MOVETYPE_YPLUS:
+//				switch(xShopNpc[i].porterOptionType)
+//				{
+//				case 0:	//여남//여
+//					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_FITTING][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//						xShopNpc[i].isActEnd = TRUE;
+//					break;
+//				case 2:	//여여//여
+//					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_WW_W_FITTING][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//						xShopNpc[i].isActEnd = TRUE;
+//					break;
+//				case 4:	//남남//여
+//					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MM_W_FITTING][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//						xShopNpc[i].isActEnd = TRUE;
+//					break;
+//				}
+//				break;
+//			case MOVETYPE_XMINUS:
+//			case MOVETYPE_YMINUS:
+//				switch(xShopNpc[i].porterOptionType)
+//				{
+//				case 0:	//여남//여
+//					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_FITTING][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//						xShopNpc[i].isActEnd = TRUE;
+//					break;
+//				case 2:	//여여//여
+//					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_WW_W_FITTING][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//						xShopNpc[i].isActEnd = TRUE;
+//					break;
+//				case 4:	//남남//여
+//					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MM_W_FITTING][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//						xShopNpc[i].isActEnd = TRUE;
+//					break;
+//				}
+//				
+//				break;
+//			}
+//			if(xShopNpc[i].isActEnd == TRUE)
+//			{
+//				if(xShopNpc[i].state == SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE0_0)
+//				{
+//					xShopNpc[i].state = SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE0_1;
+//					xShopNpc[xShopNpc[i].porterNpcNum].state = SHOPNPC_STATE_PORTER_WM_MAN_TYPE0_0;
+//					
+//					switch(xShopNpc[i].porterOptionType)
+//					{
+//					case 0:	//여남(여자)
+//						setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "그래 괜찮은 거 같아 그걸로 사", SPEAKFRAMEMAX);
+//						break;
+//					case 2:	//여여(여자)
+//						setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "어머,이거 괜찮은데?근데 사이즈는 맞아?", SPEAKFRAMEMAX);
+//						break;
+//					case 4:	//남남(여자)
+//						setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "직원 오기 전에 빨리 사라 부끄럽다", SPEAKFRAMEMAX);
+//						break;
+//					}
+//				}
+//				else if(xShopNpc[i].state == SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE1_0)
+//				{
+//					xShopNpc[i].state = SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE1_1;
+//					xShopNpc[xShopNpc[i].porterNpcNum].state = SHOPNPC_STATE_PORTER_WM_MAN_TYPE1_0;
+//					setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "좋아 이쁘니까 그 옷으로 하자", SPEAKFRAMEMAX);
+//				}
+//				else if(xShopNpc[i].state == SHOPNPC_STATE_PORTER_MM_WOMAN_TYPE1_0)
+//				{
+//					xShopNpc[i].state = SHOPNPC_STATE_PORTER_MM_WOMAN_TYPE1_1;
+//					xShopNpc[xShopNpc[i].porterNpcNum].state = SHOPNPC_STATE_PORTER_MM_MAN_TYPE1_0;
+//					setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "솔직히 너랑 같이 다니는 거 부끄럽다 이러지 마라", SPEAKFRAMEMAX);
+//				}
+//				else if(xShopNpc[i].state == SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE1_0)
+//				{
+//					xShopNpc[i].state = SHOPNPC_STATE_PORTER_WW_WOMAN_TYPE1_1;
+//					xShopNpc[xShopNpc[i].porterNpcNum].state = SHOPNPC_STATE_PORTER_WW_MAN_TYPE1_0;
+//					setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "괜찮긴 한데 사이즈 너한테 맞아?", SPEAKFRAMEMAX);
+//				}
+//				xShopNpc[xShopNpc[i].porterNpcNum].isActEnd = FALSE;
+//				xShopNpc[xShopNpc[i].porterNpcNum].nowDelay = 0;
+//				xShopNpc[xShopNpc[i].porterNpcNum].nowFrame = 0;
+//				
+//				xShopNpc[i].isActEnd = FALSE;
+//				xShopNpc[i].nowDelay = 0;
+//				xShopNpc[i].nowFrame = 0;								
+//			}
+//			break;
+//		case SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE1_1:	//남자 대사 대기
+//		case SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE0_1:	//남자 대사 대기
+//								
+//		case SHOPNPC_STATE_PORTER_MM_WOMAN_TYPE1_1:	//남자 대사 대기(남남)
+//		case SHOPNPC_STATE_PORTER_WW_WOMAN_TYPE1_1:	//남자 대사 대기(남남)
+//				
+//			switch(xShopNpc[i].moveType)
+//			{
+//			case MOVETYPE_XPLUS:
+//			case MOVETYPE_YPLUS:
+//				if(1 == prcSprit(&xSpritNpc[NPC_ACT_STOP][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//					xShopNpc[i].isActEnd = TRUE;
+//				break;
+//			case MOVETYPE_XMINUS:
+//			case MOVETYPE_YMINUS:
+//				if(1 == prcSprit(&xSpritNpc[NPC_ACT_STOP][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//					xShopNpc[i].isActEnd = TRUE;
+//				break;
+//			}
+//			break;
+//		case SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE0_2:	//화내기 대사
+//			switch(xShopNpc[i].moveType)
+//			{
+//			case MOVETYPE_XPLUS:
+//			case MOVETYPE_YPLUS:
+//				switch(xShopNpc[i].porterOptionType)
+//				{
+//				case 0:	//여남//여
+//					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_ANGRY][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//						xShopNpc[i].isActEnd = TRUE;
+//					break;
+//				case 2:	//여여//여
+//					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_WW_W_ANGRY][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//						xShopNpc[i].isActEnd = TRUE;
+//					break;
+//				case 4:	//남남//여
+//					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MM_W_ANGRY][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//						xShopNpc[i].isActEnd = TRUE;
+//					break;
+//				}
+//				break;
+//			case MOVETYPE_XMINUS:
+//			case MOVETYPE_YMINUS:
+//				switch(xShopNpc[i].porterOptionType)
+//				{
+//				case 0:	//여남//여
+//					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_ANGRY][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//						xShopNpc[i].isActEnd = TRUE;
+//					break;
+//				case 2:	//여여//여
+//					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_WW_W_ANGRY][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//						xShopNpc[i].isActEnd = TRUE;
+//					break;
+//				case 4:	//남남//여
+//					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MM_W_ANGRY][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//						xShopNpc[i].isActEnd = TRUE;
+//					break;
+//				}
+//				break;
+//			}
+//			if(xShopNpc[i].isActEnd == TRUE)
+//			{
+//				
+//				switch(xShopNpc[i].porterOptionType)
+//				{
+//				case 4:	//남남(남자)
+//					setSpeak(&xShopNpc[i].xSpeak, "이거면 올 한해 충분하겠지", SPEAKFRAMEMAX);
+//					break;
+//				}
+//				
+//				setNpcStateFittingRoom(i,xShopNpc[i].floor);				
+//			}
+//			break;
+//		case SHOPNPC_STATE_PORTER_WM_MAN_WAIT:	//남자 대기
+//			switch(xShopNpc[i].moveType)
+//			{
+//			case MOVETYPE_XPLUS:
+//			case MOVETYPE_YPLUS:
+//				if(1 == prcSprit(&xSpritNpc[NPC_ACT_STOP][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//					xShopNpc[i].isActEnd = TRUE;
+//				break;
+//			case MOVETYPE_XMINUS:
+//			case MOVETYPE_YMINUS:
+//				if(1 == prcSprit(&xSpritNpc[NPC_ACT_STOP][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//					xShopNpc[i].isActEnd = TRUE;
+//				break;
+//			}
+//			setNpcStatePorterMove(i,xShopNpc[i].porterNpcNum);
+//			break;
+//		case SHOPNPC_STATE_PORTER_WM_MAN_TIRED:	//남자 피곤
+//			switch(xShopNpc[i].moveType)
+//			{
+//			case MOVETYPE_XPLUS:
+//			case MOVETYPE_YPLUS:
+//				switch(xShopNpc[i].porterOptionType)
+//				{
+//				case 1:	//여남//남
+//					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MAN_TIRED][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//						xShopNpc[i].isActEnd = TRUE;
+//					break;
+//				case 3:	//여여//남
+//					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_WW_MAN_TIRED][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//						xShopNpc[i].isActEnd = TRUE;
+//					break;
+//				case 5:	//남남//남
+//					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MM_MAN_TIRED][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//						xShopNpc[i].isActEnd = TRUE;
+//					break;
+//				}
+//				break;
+//			case MOVETYPE_XMINUS:
+//			case MOVETYPE_YMINUS:
+//				switch(xShopNpc[i].porterOptionType)
+//				{
+//				case 1:	//여남//남
+//					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MAN_TIRED][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//						xShopNpc[i].isActEnd = TRUE;
+//					break;
+//				case 3:	//여여//남
+//					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_WW_MAN_TIRED][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//						xShopNpc[i].isActEnd = TRUE;
+//					break;
+//				case 5:	//남남//남
+//					if(1 == prcSprit(&xSpritNpc[NPC_ACT_PORTER_MM_MAN_TIRED][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//						xShopNpc[i].isActEnd = TRUE;
+//					break;
+//				}
+//				break;
+//			}
+//			if(xShopNpc[i].isActEnd == TRUE)
+//			{
+//				setNpcStatePorterMove(i,xShopNpc[i].porterNpcNum);
+//			}			
+//			break;
+//		case SHOPNPC_STATE_TABLEBUY:
+//			xShopNpc[i].moveType = xShopNpc[i].actLook;
+//			switch(xShopNpc[i].moveType)
+//			{
+//			case MOVETYPE_XPLUS:
+//			case MOVETYPE_YPLUS:
+//				if(1 == prcSprit(&xSpritNpc[NPC_ACT_SELECT][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//					xShopNpc[i].isActEnd = TRUE;
+//				break;
+//			case MOVETYPE_XMINUS:
+//			case MOVETYPE_YMINUS:
+//				if(1 == prcSprit(&xSpritNpc[NPC_ACT_SELECT][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//					xShopNpc[i].isActEnd = TRUE;
+//				break;
+//			}
+//			if(xShopNpc[i].isActEnd == TRUE)
+//			{
+//				resetSellTableInfo(xShopNpc[i].floor);
+//				
+//				M_Boolean isSlotCheck = FALSE;
+//				int slotNum = 0;
+//				
+//				
+//				int subTotalSlot = 0;
+//				int subSlotNum[12];
+//				int type;
+//				int listNum;
+//				
+//				if(xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].useTotal > 0)
+//				{
+//					switch(xShopNpc[i].buyType20)
+//					{
+//					case BUY_TYPE20_SEX:
+//						//성별관련 상품 검색
+//						for(int z=0;z<xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].useTotal;z++)
+//						{
+//							
+//							slotNum = xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].useXslotNum[z];
+//							type = xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].xSlot[slotNum].code/1000;
+//							listNum = xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].xSlot[slotNum].code%1000;
+//							
+//							if(xShopNpc[i].buySex20 == xFashionData[type][listNum].gender)
+//								subSlotNum[subTotalSlot++] = slotNum;
+//						}
+//						if(subTotalSlot >  0)
+//						{
+//							isSlotCheck = TRUE;
+//							slotNum = subSlotNum[ranDom(0, subTotalSlot-1)];
+//						}
+//						break;
+//					case BUY_TYPE20_TREND:
+//						for(int z=0;z<xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].useTotal;z++)
+//						{
+//							
+//							slotNum = xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].useXslotNum[z];
+//							type = xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].xSlot[slotNum].code/1000;
+//							listNum = xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].xSlot[slotNum].code%1000;
+//							
+//							if(xShopNpc[i].buySex20 == xFashionData[type][listNum].gender)
+//								subSlotNum[subTotalSlot++] = slotNum;
+//						}
+//						if(subTotalSlot >  0)
+//						{
+//							isSlotCheck = TRUE;
+//							slotNum = subSlotNum[ranDom(0, subTotalSlot-1)];
+//						}
+//							
+//							
+//
+//							
+//						//유행의상검색
+//						for(int z=0;z<xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].useTotal;z++)
+//						{
+//							slotNum = xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].useXslotNum[z];
+//							for(int t=0;t<TRENDMAX;t++)
+//							{
+//								if(xTrend.isOpen[t] == TRUE)
+//								{
+//									if(xTrend.itemCode[t] == xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].xSlot[slotNum].code)
+//									{
+//										subSlotNum[subTotalSlot++] = slotNum;
+//										break;
+//									}
+//								}
+//							}
+//						}
+//							
+//						if(xWorldMap.isFriendMap == FALSE)
+//						{
+//							if(subTotalSlot >  0)
+//							{
+//								isSlotCheck = TRUE;
+//								slotNum = subSlotNum[ranDom(0, subTotalSlot-1)];
+//								xShopNpc[i].isTrendEvent = TRUE;
+//								xShopNpc[i].isEventBox = FALSE;
+//								xShopNpc[i].eventBoxAnyCnt = 0;
+//							}
+//						}
+//						break;
+//					case BUY_TYPE20_RANDOM:
+//					case BUY_TYPE20_SELLTABLE:
+//						//아무거나 닥치는대로 검사
+//						isSlotCheck = TRUE;
+//						slotNum = ranDom(0, xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].useTotal-1);
+//						slotNum = xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].useXslotNum[slotNum];
+//						break;
+//					}
+//				}
+//								
+//				if(isSlotCheck == FALSE)
+//				{
+//					xShopNpc[i].state = SHOPNPC_STATE_EMPTY;
+//					xShopNpc[i].subAct = NPC_ACT_ANGRY;
+//					xShopNpc[i].anyCnt = 0;
+//					xShopNpc[i].isActEnd = FALSE;
+//					xShopNpc[i].nowDelay = 0;
+//					xShopNpc[i].nowFrame = 0;
+//
+//					setEmoticon(&xShopNpc[i].xEmoticon,EMOTICON_TYPE_ANGER);
+//					shopNpcErrSpeak(i);
+//				}
+//				else
+//				{
+//					//수량 빼고 해당 아이템 넣어주기
+//					if(xWorldMap.isFriendMap == FALSE)
+//					{
+//						--xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].xSlot[slotNum].num;
+//                        xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].xSlot[slotNum].flowTime = 0;
+//						xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].isUpdata = TRUE;
+//					}
+//					
+//					xShopNpc[i].buyItemCode = xSellTableInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].xSlot[slotNum].code;
+//					
+//
+//					if(xShopNpc[i].isPorter_woman == TRUE)
+//					{
+//						//의상 몸에 대보기
+//						switch(xShopNpc[i].porterOptionType)
+//						{
+//						case 0:	//여남(여자)
+//							setSpeak(&xShopNpc[i].xSpeak, "이옷 어떤거 같아?", SPEAKFRAMEMAX);
+//							switch(0)
+//							{
+//							case 0:
+//								xShopNpc[i].porterOptionTypeSub = 0;
+//								xShopNpc[xShopNpc[i].porterNpcNum].porterOptionTypeSub = 0;
+//								xShopNpc[i].state = SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE0_0;
+//								break;
+//							case 1:
+//								xShopNpc[i].porterOptionTypeSub = 1;
+//								xShopNpc[xShopNpc[i].porterNpcNum].porterOptionTypeSub = 1;
+//								xShopNpc[i].state = SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE1_0;
+//								break;
+//							}
+//							break;
+//						case 2:	//여여(여자)
+//							setSpeak(&xShopNpc[i].xSpeak, "이옷 어떤거 같아?", SPEAKFRAMEMAX);
+//							switch(0)
+//							{
+//							case 0:
+//								xShopNpc[i].porterOptionTypeSub = 0;
+//								xShopNpc[xShopNpc[i].porterNpcNum].porterOptionTypeSub = 0;
+//								xShopNpc[i].state = SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE0_0;
+//								break;
+//							case 1:
+//								xShopNpc[i].porterOptionTypeSub = 1;
+//								xShopNpc[xShopNpc[i].porterNpcNum].porterOptionTypeSub = 1;
+//								xShopNpc[i].state = SHOPNPC_STATE_PORTER_WW_WOMAN_TYPE1_0;
+//								break;
+//							}
+//							break;
+//						case 4:	//남남(여자)
+//							switch(0)
+//							{
+//							case 0:
+//								xShopNpc[i].porterOptionTypeSub = 0;
+//								xShopNpc[xShopNpc[i].porterNpcNum].porterOptionTypeSub = 0;
+//								setSpeak(&xShopNpc[i].xSpeak, "야,이거 어때? 멋있지?", SPEAKFRAMEMAX);
+//								xShopNpc[i].state = SHOPNPC_STATE_PORTER_WM_WOMAN_TYPE0_0;
+//								break;
+//							case 1:
+//								xShopNpc[i].porterOptionTypeSub = 1;
+//								xShopNpc[xShopNpc[i].porterNpcNum].porterOptionTypeSub = 1;
+//								setSpeak(&xShopNpc[i].xSpeak, "이거 입으면 배우 제의 올 거 같지않음?", SPEAKFRAMEMAX);
+//								xShopNpc[i].state = SHOPNPC_STATE_PORTER_MM_WOMAN_TYPE1_0;
+//								break;
+//							}
+//							break;
+//						}
+//						
+//						xShopNpc[i].anyCnt = 0;
+//						xShopNpc[i].nowDelay = 0;
+//						xShopNpc[i].nowFrame = 0;
+//						xShopNpc[i].isActEnd = FALSE;
+//						
+//					}
+//					else
+//					{
+//						switch(xShopNpc[i].buyType20)
+//						{
+//						case BUY_TYPE20_SEX:
+//						case BUY_TYPE20_SELLTABLE:
+//						case BUY_TYPE20_FITTING:
+//							if(ranDom(0, 100) < 70)
+//								setNpcStateFittingRoom(i,xShopNpc[i].floor);
+//							else
+//								setNpcStatePayMent(i,xShopNpc[i].floor);
+//							break;
+//						case BUY_TYPE20_TREND:
+//							setNpcStateFittingRoom(i,xShopNpc[i].floor);
+//							break;
+//						case BUY_TYPE20_RANDOM:
+//							setNpcStatePayMent(i,xShopNpc[i].floor);
+//							break;
+//						}
+//					}
+//				}
+//			}
+//			break;
+//		case SHOPNPC_STATE_FITTINGROOM:
+//			xShopNpc[i].moveType = xShopNpc[i].actLook;
+//						
+//			if(++xShopNpc[i].anyCnt > 10)
+//			{
+//				xShopNpc[i].state = SHOPNPC_STATE_FITTINGROOM_OPEN_IN;
+//				xShopNpc[i].anyCnt = 0;
+//				xShopNpc[i].isActEnd = FALSE;
+//				
+//				endX = xFittingRoomInfo[xShopNpc[i].floor].x[xShopNpc[i].actInteriorNum];
+//				endY = xFittingRoomInfo[xShopNpc[i].floor].y[xShopNpc[i].actInteriorNum];
+//												
+//				if(xMap.shopData[xShopNpc[i].floor][0/*걸리지 않음*/][endX-xMap.shopPointX][endY-xMap.shopPointY] == TRUE)
+//				{
+//					xShopNpc[i].state = SHOPNPC_STATE_WAIT;
+//					xShopNpc[i].anyCnt = 0;
+//
+//					//setSpeak(&xShopNpc[i].xSpeak, "피팅룸들어갈때ERR_(개발확인)", SPEAKFRAMEMAX);
+//					////////////////
+//				}
+//				else
+//				{
+//					//새위치 탐색
+//					if(setAstar(xShopNpc[i].x-xMap.shopPointX, xShopNpc[i].y-xMap.shopPointY, endX-xMap.shopPointX, endY-xMap.shopPointY, 0/*장해물상관없이무한대로이동가능*/,xShopNpc[i].floor) == FALSE)
+//					{
+//						xShopNpc[i].state = SHOPNPC_STATE_WAIT;
+//						xShopNpc[i].anyCnt = 0;
+//
+//						//setSpeak(&xShopNpc[i].xSpeak, "피팅룸들어갈때ERR_(개발확인)", SPEAKFRAMEMAX);
+//						////////////////
+//					}
+//					else
+//					{
+//						xShopNpc[i].bestTotalCnt = xAstar.totalCnt;
+//						xShopNpc[i].bestNowCnt = 0;
+//						for(int totalI=0;totalI<xAstar.totalCnt;totalI++)
+//						{
+//							xShopNpc[i].bestX[totalI] = xAstar.bestX[totalI]+xMap.shopPointX;
+//							xShopNpc[i].bestY[totalI] = xAstar.bestY[totalI]+xMap.shopPointY;
+//						}
+//						//다음이동
+//						if(xShopNpc[i].bestX[xShopNpc[i].bestNowCnt] < xShopNpc[i].bestX[xShopNpc[i].bestNowCnt+1])
+//							xShopNpc[i].moveType = MOVETYPE_XPLUS;
+//						else if(xShopNpc[i].bestX[xShopNpc[i].bestNowCnt] > xShopNpc[i].bestX[xShopNpc[i].bestNowCnt+1])
+//							xShopNpc[i].moveType = MOVETYPE_XMINUS;
+//						else if(xShopNpc[i].bestY[xShopNpc[i].bestNowCnt] < xShopNpc[i].bestY[xShopNpc[i].bestNowCnt+1])
+//							xShopNpc[i].moveType = MOVETYPE_YPLUS;
+//						else if(xShopNpc[i].bestY[xShopNpc[i].bestNowCnt] > xShopNpc[i].bestY[xShopNpc[i].bestNowCnt+1])
+//							xShopNpc[i].moveType = MOVETYPE_YMINUS;
+//					}
+//				}
+//			}
+//			break;
+//		
+//		case SHOPNPC_STATE_FITTINGROOM_CLOSE_WAIT:
+//			if(xShopNpc[i].anyCnt == 2)
+//			{
+//				if(xShopNpc[i].isPorter_woman == TRUE)
+//				{
+//					xShopNpc[xShopNpc[i].porterNpcNum].state = SHOPNPC_STATE_PORTER_WM_MAN_TIRED;
+//					xShopNpc[xShopNpc[i].porterNpcNum].isActEnd = FALSE;
+//					xShopNpc[xShopNpc[i].porterNpcNum].nowFrame = 0;
+//					xShopNpc[xShopNpc[i].porterNpcNum].nowDelay = 0;
+//					
+//					switch(xShopNpc[i].porterOptionType)
+//					{
+//					case 0:	//여남(여자)
+//						switch(xShopNpc[xShopNpc[i].porterNpcNum].porterOptionTypeSub)
+//						{
+//						case 0:
+//							setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "아..힘들어 죽겠구만..", SPEAKFRAMEMAX);
+//							break;
+//						case 1:
+//							setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "그럴거면 뭐하러 물어본거야!", SPEAKFRAMEMAX);
+//							break;
+//						}
+//						break;
+//					case 2:	//여여(여자)
+//						switch(xShopNpc[xShopNpc[i].porterNpcNum].porterOptionTypeSub)
+//						{
+//						case 0:
+//							setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "저번보다 살찐 거 같은데 숨기긴~", SPEAKFRAMEMAX);
+//							break;
+//						case 1:
+//							setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "또 환불하러 와야겠네~", SPEAKFRAMEMAX);
+//							break;
+//						}
+//						break;
+//					case 4:	//남남(여자)
+//						switch(xShopNpc[xShopNpc[i].porterNpcNum].porterOptionTypeSub)
+//						{
+//						case 0:
+//							setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "아..이래서 쇼핑은 힘들다니까..", SPEAKFRAMEMAX);
+//							break;
+//						case 1:
+//							setSpeak(&xShopNpc[xShopNpc[i].porterNpcNum].xSpeak, "아..애랑 같이 못 다니겠는데..", SPEAKFRAMEMAX);
+//							break;
+//						}
+//						break;
+//					}
+//				}
+//			}
+//			if(++xShopNpc[i].anyCnt > 20)
+//			{
+//				xShopNpc[i].state = SHOPNPC_STATE_FITTINGROOM_OPEN_OUT;
+//				xShopNpc[i].anyCnt = 0;
+//				xShopNpc[i].isActEnd = FALSE;
+//								
+//				if(xFittingRoomInfo[xShopNpc[i].floor].codeNum[xShopNpc[i].actInteriorNum] > 0)
+//				{
+//					endX = xFittingRoomInfo[xShopNpc[i].floor].x[xShopNpc[i].actInteriorNum]+1;
+//					endY = xFittingRoomInfo[xShopNpc[i].floor].y[xShopNpc[i].actInteriorNum];
+//				}
+//				else
+//				{
+//					endX = xFittingRoomInfo[xShopNpc[i].floor].x[xShopNpc[i].actInteriorNum];
+//					endY = xFittingRoomInfo[xShopNpc[i].floor].y[xShopNpc[i].actInteriorNum]+1;
+//				}
+//				
+//				if(xMap.shopData[xShopNpc[i].floor][0/*걸리지 않음*/][endX-xMap.shopPointX][endY-xMap.shopPointY] == TRUE)
+//				{
+//					xShopNpc[i].state = SHOPNPC_STATE_WAIT;
+//					xShopNpc[i].anyCnt = 0;
+//
+//					//setSpeak(&xShopNpc[i].xSpeak, "피팅룸들어갈때ERR_(개발확인)", SPEAKFRAMEMAX);
+//					////////////////
+//				}
+//				else
+//				{
+//					//새위치 탐색
+//					if(setAstar(xShopNpc[i].x-xMap.shopPointX, xShopNpc[i].y-xMap.shopPointY, endX-xMap.shopPointX, endY-xMap.shopPointY, 0/*장해물상관없이무한대로이동가능*/,xShopNpc[i].floor) == FALSE)
+//					{
+//						xShopNpc[i].state = SHOPNPC_STATE_WAIT;
+//						xShopNpc[i].anyCnt = 0;
+//
+//						//setSpeak(&xShopNpc[i].xSpeak, "피팅룸들어갈때ERR_(개발확인)", SPEAKFRAMEMAX);
+//						////////////////
+//					}
+//					else
+//					{
+//						xShopNpc[i].bestTotalCnt = xAstar.totalCnt;
+//						xShopNpc[i].bestNowCnt = 0;
+//						for(int totalI=0;totalI<xAstar.totalCnt;totalI++)
+//						{
+//							xShopNpc[i].bestX[totalI] = xAstar.bestX[totalI]+xMap.shopPointX;
+//							xShopNpc[i].bestY[totalI] = xAstar.bestY[totalI]+xMap.shopPointY;
+//						}
+//						//다음이동
+//						if(xShopNpc[i].bestX[xShopNpc[i].bestNowCnt] < xShopNpc[i].bestX[xShopNpc[i].bestNowCnt+1])
+//							xShopNpc[i].moveType = MOVETYPE_XPLUS;
+//						else if(xShopNpc[i].bestX[xShopNpc[i].bestNowCnt] > xShopNpc[i].bestX[xShopNpc[i].bestNowCnt+1])
+//							xShopNpc[i].moveType = MOVETYPE_XMINUS;
+//						else if(xShopNpc[i].bestY[xShopNpc[i].bestNowCnt] < xShopNpc[i].bestY[xShopNpc[i].bestNowCnt+1])
+//							xShopNpc[i].moveType = MOVETYPE_YPLUS;
+//						else if(xShopNpc[i].bestY[xShopNpc[i].bestNowCnt] > xShopNpc[i].bestY[xShopNpc[i].bestNowCnt+1])
+//							xShopNpc[i].moveType = MOVETYPE_YMINUS;
+//					}
+//				}
+//
+//				//구매한아이템 장착
+//				if(xShopNpc[i].isFittingRoom == TRUE)
+//				{
+//					setMapData(xShopNpc[i].buyItemCode);
+//					xShopNpc[i].xF.code[xFashionData[xMap.type][xMap.listNum].layer] = xShopNpc[i].buyItemCode;
+//				}
+//				xShopNpc[i].isBuyAct[xShopNpc[i].buyAct] = TRUE;
+//			}
+//			break;
+//		case SHOPNPC_STATE_LOOKINGMIRROR:
+//			setFace(&xShopNpc[i].xFace, FACE_TYPE_SMILE);
+//			setMapData(xShopNpc[i].buyItemCode);
+//			xShopNpc[i].moveType = xShopNpc[i].actLook;
+//								
+//			if(xShopNpc[i].actingType == NPC_ACT_POWERMAN)
+//			{
+//				if(1 == prcSprit(&xSpritNpc[NPC_ACT_POWERMAN][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//					xShopNpc[i].isActEnd = TRUE;
+//			}
+//			else if(xShopNpc[i].actingType == NPC_ACT_POSE3)
+//			{
+//				if(1 == prcSprit(&xSpritNpc[NPC_ACT_POSE3][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//					xShopNpc[i].isActEnd = TRUE;
+//			}
+//			else
+//			{
+//				switch(xShopNpc[i].moveType)
+//				{
+//					case MOVETYPE_XPLUS:
+//					case MOVETYPE_YPLUS:
+//						
+//						switch(xMap.type)
+//						{
+//						case F_TYPE_OUTER:
+//						case F_TYPE_TOP:
+//						case F_TYPE_BOTTOM:
+//						case F_TYPE_ONEPIECE:
+//							if(1 == prcSprit(&xSpritNpc[NPC_ACT_POSE1][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//								xShopNpc[i].isActEnd = TRUE;
+//							break;
+//						case F_TYPE_SHOES:
+//						case F_TYPE_BAG:
+//						case F_TYPE_ACCECSSORY:
+//							if(1 == prcSprit(&xSpritNpc[NPC_ACT_POSE2][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//								xShopNpc[i].isActEnd = TRUE;
+//							break;
+//						}
+//						
+//						break;
+//					case MOVETYPE_XMINUS:
+//					case MOVETYPE_YMINUS:
+//						switch(xMap.type)
+//					{
+//						case F_TYPE_OUTER:
+//						case F_TYPE_TOP:
+//						case F_TYPE_BOTTOM:
+//						case F_TYPE_ONEPIECE:
+//							if(1 == prcSprit(&xSpritNpc[NPC_ACT_POSE1][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//								xShopNpc[i].isActEnd = TRUE;
+//							break;
+//						case F_TYPE_SHOES:
+//						case F_TYPE_BAG:
+//						case F_TYPE_ACCECSSORY:
+//							if(1 == prcSprit(&xSpritNpc[NPC_ACT_POSE2][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//								xShopNpc[i].isActEnd = TRUE;
+//							break;
+//					}
+//						break;
+//				}
+//
+//			}
+//			
+//			if(xShopNpc[i].isActEnd == TRUE)			
+//			{
+//				setNpcStatePayMent(i,xShopNpc[i].floor);
+//					xFittingRoomInfo[xShopNpc[i].floor].state[xShopNpc[i].actInteriorNum] = FITTINGROOMINFO_STATE_WAIT;
+//			}
+//			break;
+//		case SHOPNPC_STATE_PAYMENTWAIT:
+//			xShopNpc[i].moveType = xShopNpc[i].actLook;
+//			//계산NPC가 SHOPNPC_STATE_PAYMENT로 변환해주자
+//			break;
+//		case SHOPNPC_STATE_PAYMENT:
+//			xShopNpc[i].moveType = xShopNpc[i].actLook;
+//				/*
+//			xShopNpc[i].moveType = xShopNpc[i].actLook;
+//			
+//			if(++xShopNpc[i].anyCnt > 50)
+//			{
+//				setNpcStateExit(i);
+//				
+//				if(xShopNpc[i].eventType == NPC_EVENT_EXPING)
+//					xShopNpc[i].eventType = NPC_EVENT_DONT;
+//			}
+//				 */
+//			break;
+//		case SHOPNPC_STATE_FLOORUP:
+//			//10에변경
+//			//17에 행동변경
+//			switch(++xShopNpc[i].anyCnt)
+//			{
+//			case 10:
+//				xShopNpc[i].floor++;
+//				xShopNpc[i].moveType = MOVETYPE_YPLUS;
+//				xShopNpc[i].actLook = MOVETYPE_YPLUS;
+//					
+//				xShopNpc[i].x = xWorldMap.floorDownX;
+//				xShopNpc[i].y = xWorldMap.floorDownY;
+//				break;
+//			case 17:
+//				if(xShopNpc[i].floor < xShopNpc[i].floorTarget)
+//				{
+//					//올라가기로
+//					setNpcStateFloorUp(i, xShopNpc[i].floor);
+//				}
+//				else
+//				{
+//					xShopNpc[i].state = SHOPNPC_STATE_MOVE;					
+//					initShopNpcMove(i);
+//				}
+//				break;
+//			}
+//			break;
+//		case SHOPNPC_STATE_FLOORDOWN:
+//			xShopNpc[i].moveType = xShopNpc[i].actLook;
+//			//10에변경
+//			//17에 행동변경
+//			switch(++xShopNpc[i].anyCnt)
+//			{
+//			case 10:
+//				xShopNpc[i].floor--;
+//				xShopNpc[i].moveType = MOVETYPE_YPLUS;
+//				xShopNpc[i].actLook = MOVETYPE_YPLUS;
+//				xShopNpc[i].x = xWorldMap.floorUpX;
+//				xShopNpc[i].y = xWorldMap.floorUpY;
+//				break;
+//			case 17:
+//				if(xShopNpc[i].floor != 0)
+//				{
+//					//내려가기
+//					setNpcStateFloorDown(i, xShopNpc[i].floor);
+//				}
+//				else
+//				{
+//					setNpcStateExit(i, xShopNpc[i].floor);
+//				}
+//				break;
+//			}
+//			break;
+//		case SHOPNPC_STATE_EMPTY:
+//			setFace(&xShopNpc[i].xFace, FACE_TYPE_ANGRY);
+//							
+//			switch(xShopNpc[i].moveType)
+//			{
+//			case MOVETYPE_XPLUS:
+//			case MOVETYPE_YPLUS:					
+//				if(1 == prcSprit(&xSpritNpc[xShopNpc[i].subAct][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//					xShopNpc[i].isActEnd = TRUE;
+//				break;
+//			case MOVETYPE_XMINUS:
+//			case MOVETYPE_YMINUS:
+//				if(1 == prcSprit(&xSpritNpc[xShopNpc[i].subAct][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame))
+//					xShopNpc[i].isActEnd = TRUE;
+//				break;
+//			}
+//				
+//			if(xShopNpc[i].isActEnd == TRUE)
+//			{
+//				xShopNpc[i].nowFrame = 0;
+//				xShopNpc[i].nowDelay = 0;
+//				xShopNpc[i].isActEnd = FALSE;
+//				xShopNpc[i].state = SHOPNPC_STATE_MOVE;
+//				initShopNpcMove(i);
+//			}
+//			break;
+//		case SHOPNPC_STATE_ASTARERR:
+//		case SHOPNPC_STATE_WAIT:
+//			setFace(&xShopNpc[i].xFace, FACE_TYPE_ANGRY);
+//			if(++xShopNpc[i].anyCnt > 50)
+//			{
+//				if(xShopNpc[i].buyType20 == BUY_TYPE20_FITTING && xShopNpc[i].actInteriorNum != DONT)
+//				{
+//					if(xShowWindowInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].state == SHOWWINDOWINFO_STATE_PLAY)
+//					{
+//						xShowWindowInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].state = SHOWWINDOWINFO_STATE_WAIT;
+//						xShopNpc[i].actInteriorNum = DONT;
+//					}
+//				}
+//				
+//				xShopNpc[i].state = SHOPNPC_STATE_MOVE;
+//				xShopNpc[i].nowDelay = 0;
+//				xShopNpc[i].nowFrame = 0;
+//				setNpcStateExit(i,xShopNpc[i].floor);
+//			}
+//			break;
+//		case SHOPNPC_STATE_MOVE:
+//		case SHOPNPC_STATE_FITTINGROOM_OPEN_OUT:
+//		case SHOPNPC_STATE_FITTINGROOM_OPEN_IN:
+//		case SHOPNPC_STATE_FLOORUPMOVE:
+//		case SHOPNPC_STATE_FLOORDOWNMOVE:
+//				
+//			++xShopNpc[i].anyCnt;
+//			setFace(&xShopNpc[i].xFace, FACE_TYPE_NORMAL);
+//			//계산대기중 손님들은 계산손님등록 큐를 지속적으로 검색하여 가는길에 좌표가 겹친다면 그대로 서서 대기하고
+//			isSubTemp[0] = FALSE;
+//			if(xShopNpc[i].buyAct == NPC_BUYACT_PAYMENT)
+//			{
+//				for(int z=0;z<xPaymentAssistant[xShopNpc[i].floor].totalSlot;z++)
+//				{
+//					if(xPaymentAssistant[xShopNpc[i].floor].xShopNpcSlot[z].npcNum != i)
+//					{
+//						if(xShopNpc[i].bestNowCnt < xShopNpc[i].bestTotalCnt)
+//						{
+//							if(xShopNpc[xPaymentAssistant[xShopNpc[i].floor].xShopNpcSlot[z].npcNum].x == xShopNpc[i].bestX[xShopNpc[i].bestNowCnt+1]
+//							   && xShopNpc[xPaymentAssistant[xShopNpc[i].floor].xShopNpcSlot[z].npcNum].y == xShopNpc[i].bestY[xShopNpc[i].bestNowCnt+1])
+//							{
+//								isSubTemp[0] = TRUE;
+//								break;
+//							}
+//						}
+//					}
+//				}
+//			}
+//							
+//			if(isSubTemp[0] == TRUE)
+//				continue;
+//							
+//			if(xShopNpc[i].speed == xMap.speedTable[1])
+//			{
+//				if(gameCnt%2==0)
+//					++xShopNpc[i].imgCnt;
+//			}
+//			else if(xShopNpc[i].speed == xMap.speedTable[2])
+//			{
+//				++xShopNpc[i].imgCnt;
+//			}
+//			else if(xShopNpc[i].speed == xMap.speedTable[3])
+//			{
+//				xShopNpc[i].imgCnt +=2;
+//			}
+//			
+//			if(xShopNpc[i].imgCnt > 19)
+//				xShopNpc[i].imgCnt = 0;
+//				
+//				
+//			switch(xShopNpc[i].moveType)
+//			{
+//			case MOVETYPE_XPLUS:
+//			case MOVETYPE_YPLUS:
+//				prcSprit(&xSpritNpc[NPC_ACT_WALKING][ACT_FRONT],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame);
+//				break;
+//			case MOVETYPE_XMINUS:
+//			case MOVETYPE_YMINUS:
+//				prcSprit(&xSpritNpc[NPC_ACT_WALKING][ACT_BACK],&xShopNpc[i].nowDelay,&xShopNpc[i].nowFrame);
+//				break;
+//			}
+//				
+//			switch(xShopNpc[i].moveType)
+//			{
+//				case MOVETYPE_XPLUS:
+//					xShopNpc[i].drawX -= (float)(xShopNpc[i].speed * 2);
+//					xShopNpc[i].drawY += (float)(xShopNpc[i].speed * 1);					
+//					if(xShopNpc[i].drawX  <= -(TILEW/4))
+//					{
+//						
+//						switch(xShopNpc[i].state)
+//						{
+//						case SHOPNPC_STATE_FLOORUPMOVE:
+//						case SHOPNPC_STATE_FLOORDOWNMOVE:
+//						case SHOPNPC_STATE_MOVE:
+//							xShopNpc[i].x_befor = xShopNpc[i].x;
+//							xShopNpc[i].y_befor = xShopNpc[i].y;
+//							break;
+//						}
+//
+//						xShopNpc[i].x++;
+//						xShopNpc[i].drawX = (TILEW/4);
+//						xShopNpc[i].drawY = -(TILEH/4);
+//					}
+//					break;
+//				case MOVETYPE_XMINUS:
+//					xShopNpc[i].drawX += (float)(xShopNpc[i].speed * 2);
+//					xShopNpc[i].drawY -= (float)(xShopNpc[i].speed * 1);
+//					if(xShopNpc[i].drawX  >= (TILEW/4))
+//					{
+//						switch(xShopNpc[i].state)
+//						{
+//						case SHOPNPC_STATE_FLOORUPMOVE:
+//						case SHOPNPC_STATE_FLOORDOWNMOVE:
+//						case SHOPNPC_STATE_MOVE:
+//							xShopNpc[i].x_befor = xShopNpc[i].x;
+//							xShopNpc[i].y_befor = xShopNpc[i].y;
+//							break;
+//						}
+//						xShopNpc[i].x--;
+//						xShopNpc[i].drawX = -(TILEW/4);
+//						xShopNpc[i].drawY = (TILEH/4);
+//					}
+//					break;
+//				case MOVETYPE_YPLUS:
+//					xShopNpc[i].drawX += (float)(xShopNpc[i].speed * 2);
+//					xShopNpc[i].drawY += (float)(xShopNpc[i].speed * 1);
+//					if(xShopNpc[i].drawY  >= (TILEH/4))
+//					{
+//						switch(xShopNpc[i].state)
+//						{
+//						case SHOPNPC_STATE_FLOORUPMOVE:
+//						case SHOPNPC_STATE_FLOORDOWNMOVE:
+//						case SHOPNPC_STATE_MOVE:
+//							xShopNpc[i].x_befor = xShopNpc[i].x;
+//							xShopNpc[i].y_befor = xShopNpc[i].y;
+//							break;
+//						}
+//						xShopNpc[i].y++;
+//						xShopNpc[i].drawX = -(TILEW/4);
+//						xShopNpc[i].drawY = -(TILEH/4);
+//					}
+//					break;
+//				case MOVETYPE_YMINUS:
+//					xShopNpc[i].drawX -= (float)(xShopNpc[i].speed * 2);
+//					xShopNpc[i].drawY -= (float)(xShopNpc[i].speed * 1);
+//					if(xShopNpc[i].drawY  <= -(TILEH/4))
+//					{
+//						switch(xShopNpc[i].state)
+//						{
+//						case SHOPNPC_STATE_FLOORUPMOVE:
+//						case SHOPNPC_STATE_FLOORDOWNMOVE:
+//						case SHOPNPC_STATE_MOVE:
+//							xShopNpc[i].x_befor = xShopNpc[i].x;
+//							xShopNpc[i].y_befor = xShopNpc[i].y;
+//							break;
+//						}
+//						
+//						xShopNpc[i].y--;
+//						xShopNpc[i].drawX = (TILEW/4);
+//						xShopNpc[i].drawY = (TILEH/4);
+//					}
+//					break;
+//			}
+//			
+//			//도착 위치 검색 및 위치 보정
+//			if(xShopNpc[i].drawX == 0)
+//			{
+//				int ranDomTemp = ranDom(0, 100);
+//				
+//				if(xShopNpc[i].isPorter_man == FALSE)
+//				{
+//					//1/3정도 왓을때
+//					if(xShopNpc[i].bestNowCnt == xShopNpc[i].bestTotalCnt/3)
+//					{
+//						if(xShopNpc[i].state == SHOPNPC_STATE_MOVE)
+//						{
+//							switch(xShopNpc[i].buyAct)
+//							{
+//							case NPC_BUYACT_SELLTABLE:
+//							case NPC_BUYACT_TREND:
+//							case NPC_BUYACT_FITTING:
+//								if(ranDom(0, 100) < xWorldMap.npcSpeakPer)
+//								{
+//									if(ranDomTemp < 30)
+//										setSpeak(&xShopNpc[i].xSpeak, "남들과 달라 보이고 싶어", SPEAKFRAMEMAX);
+//									else if(ranDomTemp < 60)
+//										setSpeak(&xShopNpc[i].xSpeak, "개성 있는 패션이 중요하지", SPEAKFRAMEMAX);
+//								}
+//								break;
+//							}
+//						}
+//					}
+//				}
+//				
+//				//목표위치도착
+//				if(++xShopNpc[i].bestNowCnt >= xShopNpc[i].bestTotalCnt-1)
+//				{
+//					if(xShopNpc[i].state == SHOPNPC_STATE_FLOORUPMOVE)
+//					{
+//						xShopNpc[i].state = SHOPNPC_STATE_FLOORUP;
+//						xShopNpc[i].moveType = MOVETYPE_YMINUS;
+//						xShopNpc[i].actLook = MOVETYPE_YMINUS;
+//						xShopNpc[i].anyCnt = 0;
+//					}
+//					else if(xShopNpc[i].state == SHOPNPC_STATE_FLOORDOWNMOVE)
+//					{
+//						xShopNpc[i].state = SHOPNPC_STATE_FLOORDOWN;
+//						xShopNpc[i].anyCnt = 0;
+//						
+//					}
+//					else if(xMap.data[0][5][xShopNpc[i].x][xShopNpc[i].y] == 4 || xMap.data[0][5][xShopNpc[i].x][xShopNpc[i].y] == -4)
+//					{
+//						xShopNpc[i].state = SHOPNPC_STATE_DONT;
+////						setModelNpcSpeakWelCome(0,FALSE);
+//						
+//						int npcNum;
+//						if(xWorldMap.doorCode >= 0)
+//							npcNum = makeWorldMapNpc(xShopNpc[i].x,xShopNpc[i].y,xShopNpc[i].type,xShopNpc[i].speed,MOVETYPE_XMINUS);
+//						else
+//							npcNum = makeWorldMapNpc(xShopNpc[i].x,xShopNpc[i].y,xShopNpc[i].type,xShopNpc[i].speed,MOVETYPE_YMINUS);												
+//						
+//
+//						xWorldMapNpc[npcNum].modelNum = xShopNpc[i].modelNum;
+//						
+//						memcpy(&xWorldMapNpc[npcNum].xFace,&xShopNpc[i].xFace,sizeof(xShopNpc[i].xFace));
+//						memcpy(&xWorldMapNpc[npcNum].xF,&xShopNpc[i].xF,sizeof(xShopNpc[i].xF));
+//						xWorldMapNpc[npcNum].buyItemCode = xShopNpc[i].buyItemCode;
+//						xWorldMapNpc[npcNum].state = WORLDMAPNPC_STATE_MOVE;
+//						xWorldMapNpc[npcNum].isOutShop = TRUE;
+//						xWorldMapNpc[npcNum].isInShop = FALSE;
+//						
+//						if(xShopNpc[i].isPorter_man == TRUE)
+//						{							
+//							xWorldMapNpc[npcNum].isDie = TRUE;
+//						}
+//					}
+//					else
+//					{
+//						switch(xShopNpc[i].state)
+//						{
+//						case SHOPNPC_STATE_FITTINGROOM_OPEN_IN:
+//							xShopNpc[i].state = SHOPNPC_STATE_FITTINGROOM_CLOSE_WAIT;
+//							xShopNpc[i].anyCnt = 0;
+//							break;
+//						case SHOPNPC_STATE_FITTINGROOM_OPEN_OUT:
+//							xShopNpc[i].buyAct = NPC_BUYACT_PAYMENT;
+//							xShopNpc[i].state = SHOPNPC_STATE_LOOKINGMIRROR;
+//								
+//							if(xWorldMap.isFriendMap == FALSE)
+//							{
+//								xShopNpc[i].eventBoxShowAntCnt = 0;
+//								xShopNpc[i].payMentEvent = TRUE;
+//								xShopNpc[i].payMentTime = xCalendar.nowTime;
+//								xShopNpc[i].payMentType = 1;		//0계산대1:피팅룸2:쇼윈도
+//							}
+//								
+//							
+//							xShopNpc[i].isActEnd = FALSE;
+//							xShopNpc[i].nowDelay = 0;
+//							xShopNpc[i].nowFrame = 0;
+//							xShopNpc[i].anyCnt = 0;
+//							setMapData(xShopNpc[i].buyItemCode);
+//								
+//							if(xShopNpc[i].genDer == 1)
+//								xShopNpc[i].actingType = NPC_ACT_POWERMAN;
+//							else if(ranDom(0,100)< 33)
+//							{
+//								xShopNpc[i].actingType = NPC_ACT_POSE3;
+//							}
+//							else
+//							{
+//								switch(xMap.type)
+//								{
+//								case F_TYPE_OUTER:
+//								case F_TYPE_TOP:
+//								case F_TYPE_BOTTOM:
+//								case F_TYPE_ONEPIECE:
+//									xShopNpc[i].actingType = NPC_ACT_POSE1;
+//									break;
+//								case F_TYPE_SHOES:
+//								case F_TYPE_BAG:
+//								case F_TYPE_ACCECSSORY:
+//									xShopNpc[i].actingType = NPC_ACT_POSE2;
+//									break;
+//								}
+//							}
+//								
+//							if(ranDom(0, 100)<50)
+//							{
+//								switch(xMap.type)
+//								{
+//								case F_TYPE_OUTER:
+//								case F_TYPE_TOP:
+//								case F_TYPE_BOTTOM:
+//								case F_TYPE_ONEPIECE:
+//									if(ranDom(0, 100) < xWorldMap.npcSpeakPer)
+//										setSpeak(&xShopNpc[i].xSpeak, "예쁘다 맘에 드네!!", SPEAKFRAMEMAX);
+//									break;
+//								case F_TYPE_SHOES:
+//								case F_TYPE_BAG:
+//								case F_TYPE_ACCECSSORY:
+//									if(ranDom(0, 100) < xWorldMap.npcSpeakPer)
+//										setSpeak(&xShopNpc[i].xSpeak, "맘에 드는 걸~", SPEAKFRAMEMAX);
+//									break;
+//								}
+//							}
+//								
+//							if(xShopNpc[i].isPorter_woman == TRUE)
+//							{
+//								switch(xShopNpc[i].porterOptionType)
+//								{
+//								case 4:	//남남(여자)
+//									switch(xShopNpc[xShopNpc[i].porterNpcNum].porterOptionTypeSub)
+//									{
+//									case 1:
+//										setSpeak(&xShopNpc[i].xSpeak, "역시 잘 생겼단 말이지~", SPEAKFRAMEMAX);
+//										break;
+//									}
+//									break;
+//								}
+//							}
+//							break;
+//						default:
+//							if(xShopNpc[i].isChair == TRUE)
+//							{
+//								
+//								if(xChairInfo[xShopNpc[i].floor].interiorCode[xShopNpc[i].chairNum] > 0)
+//								{
+//									xShopNpc[i].x--;
+//								}
+//								else
+//								{
+//									xShopNpc[i].y--;
+//								}
+//								
+//								xShopNpc[i].state = SHOPNPC_STATE_CHAIR_SIT;
+//								xShopNpc[i].isActEnd = FALSE;
+//								xShopNpc[i].nowDelay = 0;
+//								xShopNpc[i].nowFrame = 0;
+//								
+//								
+//								if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+//								{
+//									switch(xQuestTuto.nowNum)
+//									{
+//									case TUTO_8_INTERIOR_MAKENPC:
+//										xQuestTuto.isTutoClean = TRUE;
+//										break;
+//									}
+//								}
+//								
+//								if(ranDom(0, 100) < xWorldMap.npcSpeakPer)
+//								{
+//									switch(ranDom(0, 1))
+//									{
+//									case 0:
+//										setSpeak(&xShopNpc[i].xSpeak, "아~힘들어", SPEAKFRAMEMAX);
+//										break;
+//									case 1:
+//										setSpeak(&xShopNpc[i].xSpeak, "다리 아프네", SPEAKFRAMEMAX);
+//										break;
+//									}
+//								}
+//									
+//							}
+//							else
+//							{								
+//								if(xShopNpc[i].isPorter_man == TRUE)
+//								{
+//									setNpcStatePorterMove(i,xShopNpc[i].porterNpcNum);
+//								}
+//								else
+//								{
+//									switch(xShopNpc[i].buyAct)
+//									{
+//									case NPC_BUYACT_SELLTABLE:
+//									case NPC_BUYACT_TREND:
+//										if(xShopNpc[i].isPorter_woman == TRUE)
+//										{										
+//											xShopNpc[i].state = SHOPNPC_STATE_TABLEBUY;
+//											xShopNpc[i].moveType = xShopNpc[i].actLook;
+//											xShopNpc[i].isActEnd = FALSE;
+//											xShopNpc[i].nowDelay = 0;
+//											xShopNpc[i].nowFrame = 0;
+//										}
+//										else
+//										{
+//											if(ranDom(0, 100) < 50)
+//											{
+//												xShopNpc[i].state = SHOPNPC_STATE_TABLESEE;
+//												
+//												int randTemp = ranDom(0, 100);
+//												if(randTemp < 30)
+//													xShopNpc[i].subAct = NPC_ACT_GOMIN;
+//												else if(randTemp < 60)
+//													xShopNpc[i].subAct = NPC_ACT_NPC1;
+//												else
+//													xShopNpc[i].subAct = NPC_ACT_NPC2;									
+//												
+//												xShopNpc[i].isActEnd = FALSE;
+//												xShopNpc[i].nowDelay = 0;
+//												xShopNpc[i].nowFrame = 0;
+//												if(ranDom(0, 100) < xWorldMap.npcSpeakPer)
+//												{
+//													if(ranDom(0, 100)<50)
+//														setSpeak(&xShopNpc[i].xSpeak, "어떤 옷을 입는 게 좋을까?", SPEAKFRAMEMAX);
+//												}
+//											}
+//											else
+//											{
+//												xShopNpc[i].state = SHOPNPC_STATE_TABLEBUY;
+//												xShopNpc[i].moveType = xShopNpc[i].actLook;
+//												xShopNpc[i].isActEnd = FALSE;
+//												xShopNpc[i].nowDelay = 0;
+//												xShopNpc[i].nowFrame = 0;
+//												
+//												if(ranDom(0, 100) < xWorldMap.npcSpeakPer)
+//												{
+//													if(xShopNpc[i].buyAct == NPC_BUYACT_TREND)
+//														setSpeak(&xShopNpc[i].xSpeak, "요즘 유행하는 의상이 이건가", SPEAKFRAMEMAX);
+//												}
+//											}
+//										}
+//										break;
+//									case NPC_BUYACT_FITTING:
+//										resetShowWindowInfo();
+//										//마네킹에 피팅된옷이 없거나 마네킹자체가 없다면 예외처리
+//										if(xShowWindowInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].isUse == FALSE || xShowWindowInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].isFitting == FALSE)
+//										{
+//											xShopNpc[i].state = SHOPNPC_STATE_WAIT;
+//											xShopNpc[i].subAct = NPC_ACT_ANGRY;
+//											xShopNpc[i].anyCnt = 0;
+//											xShopNpc[i].isActEnd = FALSE;
+//											xShopNpc[i].nowDelay = 0;
+//											xShopNpc[i].nowFrame = 0;
+//
+//											setSpeak(&xShopNpc[i].xSpeak, "피팅 된 의상이 하나도 없네?", SPEAKFRAMEMAX);
+//											xShowWindowInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].state = SHOWWINDOWINFO_STATE_WAIT;
+//											
+//										}
+//										else
+//										{
+//											//점원이 올때 까지 점원부르기상태 풀어주는건 점원쪽에서 해주자
+//											xShopNpc[i].buyItemCode_ASSISTCALL = DONT;
+//											int showWindowFitttingTotal=0;
+//											int showWindowFittingSlot[20];
+//											for(int ff=0;ff<SPRIT_IMGLAYERMAX;ff++)
+//											{
+//												if(xShowWindowInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].xF.code[ff] != DONT)
+//												{
+//													showWindowFittingSlot[showWindowFitttingTotal++] = xShowWindowInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].xF.code[ff];
+//												}
+//											}
+//											
+//											if(showWindowFitttingTotal != 0)
+//												xShopNpc[i].buyItemCode_ASSISTCALL = showWindowFittingSlot[ranDom(0, showWindowFitttingTotal-1)];
+//											
+//											if(xShowWindowInfo[xShopNpc[i].floor][xShopNpc[i].actInteriorNum].interiorCode > 0)
+//											{
+//												xShopNpc[i].moveType = MOVETYPE_XPLUS;
+//												xShopNpc[i].actLook = MOVETYPE_XPLUS;
+//											}
+//											else
+//											{
+//												xShopNpc[i].moveType = MOVETYPE_YPLUS;
+//												xShopNpc[i].actLook = MOVETYPE_YPLUS;
+//											}
+//																				
+//											xShopNpc[i].isActEnd = FALSE;
+//											xShopNpc[i].nowDelay = 0;
+//											xShopNpc[i].nowFrame = 0;
+//
+//											if(ranDom(0, 100) < 50)
+//											{
+//												int type = xShopNpc[i].buyItemCode_ASSISTCALL/1000;
+//												int list = xShopNpc[i].buyItemCode_ASSISTCALL%1000;
+//												xShopNpc[i].state = SHOPNPC_STATE_CALLSHOPASSISTANT;
+//												sprintf(strTempS, "여기 %s 좀 가져다 주세요",xFashionData[type][list].strName);
+//												setSpeak(&xShopNpc[i].xSpeak, strTempS, SPEAKFRAMEMAX);
+//											}
+//											else
+//											{
+//												xShopNpc[i].state = SHOPNPC_STATE_CALLSHOPASSISTANT_RCMD;
+//												sprintf(strTempS, "여기요~");
+//												setSpeak(&xShopNpc[i].xSpeak, strTempS, SPEAKFRAMEMAX);
+//											}
+//											
+//											if(xWorldMap.isFriendMap == FALSE)
+//											{
+//												xShopNpc[i].eventBoxShowAntCnt = 0;
+//												xShopNpc[i].payMentEvent = TRUE;
+//												xShopNpc[i].payMentTime = xCalendar.nowTime;
+//												xShopNpc[i].payMentType = 2;		//0계산대1:피팅룸2:쇼윈도
+//											}
+//										}
+//										break;
+//									case NPC_BUYACT_FITTINGROOM:
+//										//피팅룸엔진에서 WAIT인손님 검색 피팅상태로 변환
+//										xShopNpc[i].state = SHOPNPC_STATE_FITTINGROOM;
+//										xShopNpc[i].anyCnt = 0;
+//										//피팅룸엔진은 사용상태로 변환									
+//										xFittingRoomInfo[xShopNpc[i].floor].npcNumcode[xShopNpc[i].actInteriorNum] = i;
+//										break;
+//									case NPC_BUYACT_PAYMENT:
+//										xShopNpc[i].state = SHOPNPC_STATE_PAYMENTWAIT;
+//										xShopNpc[i].anyCnt = 0;
+//										break;
+//									}
+//								}
+//							}
+//							break;
+//						}
+//					}
+//				}
+//				else
+//				{				
+//					//다음이동
+//					if(xShopNpc[i].bestX[xShopNpc[i].bestNowCnt] < xShopNpc[i].bestX[xShopNpc[i].bestNowCnt+1])
+//						xShopNpc[i].moveType = MOVETYPE_XPLUS;
+//					else if(xShopNpc[i].bestX[xShopNpc[i].bestNowCnt] > xShopNpc[i].bestX[xShopNpc[i].bestNowCnt+1])
+//						xShopNpc[i].moveType = MOVETYPE_XMINUS;
+//					else if(xShopNpc[i].bestY[xShopNpc[i].bestNowCnt] < xShopNpc[i].bestY[xShopNpc[i].bestNowCnt+1])
+//						xShopNpc[i].moveType = MOVETYPE_YPLUS;
+//					else if(xShopNpc[i].bestY[xShopNpc[i].bestNowCnt] > xShopNpc[i].bestY[xShopNpc[i].bestNowCnt+1])
+//						xShopNpc[i].moveType = MOVETYPE_YMINUS;
+//				}
+//			}
+//		break;
+//		}
 	}
 			
 	
 	//점원연산
-	for(int floor=0;floor<xMap.totalFloor;floor++)
+	for(int floor=0;floor<1;floor++)
 	{
 		for(int i=0;i<SHOPASSISTANTMAX;i++)
 		{
@@ -24700,115 +24703,120 @@ void shopNpcPrc()
 					break;
 				}
 										
-				if(++xShopAssistant[floor][i].anyCnt > 180)
+				if(++xShopAssistant[floor][i].anyCnt > 0)
 				{
-					//정돈하기
-					int selectSellTable = DONT;					
-						
-					resetSellTableInfo(floor);	//xSell.tableNumSlot_Total[xSell.totalTotal]
-					selectSellTable = DONT;
-					if(xSell.totalTotal[floor] > 0)
-					{
-						for(int ss =0;ss<xSell.totalTotal[floor];ss++)
-						{
-							if(xSellTableInfo[floor][xSell.tableNumSlot_Total[floor][ss]].orderingCnt> 300)
-							{
-								xSellTableInfo[floor][xSell.tableNumSlot_Total[floor][ss]].orderingCnt = 0;
-								selectSellTable = xSell.tableNumSlot_Total[floor][ss];
-								break;
-							}
-						}
-					}
-			
-					
-					if(selectSellTable != DONT)
-					{
-						setMapData(xSellTableInfo[floor][selectSellTable].interiorCode);
-						
-						xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_ORDERINGMOVE;
-						xShopAssistant[floor][i].nowDelay = 0;
-						xShopAssistant[floor][i].nowFrame = 0;
-																		
-						if(xMap.rever == 0)
-						{
-							
-							endX = xSellTableInfo[floor][selectSellTable].x + 1;
-							endY = xSellTableInfo[floor][selectSellTable].y + ranDom(0, xObj.xObjData[xMap.type][xMap.listNum].h[xMap.rever]-1);
-							xShopAssistant[floor][i].actLook = MOVETYPE_XMINUS;
-						}
-						else
-						{
-							endX = xSellTableInfo[floor][selectSellTable].x + ranDom(0, xObj.xObjData[xMap.type][xMap.listNum].w[xMap.rever]-1);
-							endY = xSellTableInfo[floor][selectSellTable].y + 1;
-							xShopAssistant[floor][i].actLook = MOVETYPE_YMINUS;
-						}
-
-						if(xMap.shopData[floor][MAP_TYPE_OBJ][endX-xMap.shopPointX][endY-xMap.shopPointY] == TRUE)
-						{
-							xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_WAIT;
-							xShopAssistant[floor][i].anyCnt = 0;
-						}
-						
-						//새위치 탐색
-						if(xShopAssistant[floor][i].state == SHOPASSISTANT_STATE_ORDERINGMOVE)
-						{
-							if(setAstar(xShopAssistant[floor][i].x-xMap.shopPointX, xShopAssistant[floor][i].y-xMap.shopPointY, endX-xMap.shopPointX, endY-xMap.shopPointY, MAP_TYPE_OBJ,floor) == FALSE)
-							{
-								xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_WAIT;
-								xShopAssistant[floor][i].anyCnt = 0;
-							}
-							else
-							{
-								xShopAssistant[floor][i].bestTotalCnt = xAstar.totalCnt;
-								xShopAssistant[floor][i].bestNowCnt = 0;
-								for(int totalI=0;totalI<xAstar.totalCnt;totalI++)
-								{
-									xShopAssistant[floor][i].bestX[totalI] = xAstar.bestX[totalI]+xMap.shopPointX;
-									xShopAssistant[floor][i].bestY[totalI] = xAstar.bestY[totalI]+xMap.shopPointY;
-								}
-								//다음이동
-								if(xShopAssistant[floor][i].bestX[xShopAssistant[floor][i].bestNowCnt] < xShopAssistant[floor][i].bestX[xShopAssistant[floor][i].bestNowCnt+1])
-									xShopAssistant[floor][i].moveType = MOVETYPE_XPLUS;
-								else if(xShopAssistant[floor][i].bestX[xShopAssistant[floor][i].bestNowCnt] > xShopAssistant[floor][i].bestX[xShopAssistant[floor][i].bestNowCnt+1])
-									xShopAssistant[floor][i].moveType = MOVETYPE_XMINUS;
-								else if(xShopAssistant[floor][i].bestY[xShopAssistant[floor][i].bestNowCnt] < xShopAssistant[floor][i].bestY[xShopAssistant[floor][i].bestNowCnt+1])
-									xShopAssistant[floor][i].moveType = MOVETYPE_YPLUS;
-								else if(xShopAssistant[floor][i].bestY[xShopAssistant[floor][i].bestNowCnt] > xShopAssistant[floor][i].bestY[xShopAssistant[floor][i].bestNowCnt+1])
-									xShopAssistant[floor][i].moveType = MOVETYPE_YMINUS;
-							}
-						}
-						
-						
-						
-					}
-					else
+//					//정돈하기
+//					int selectSellTable = DONT;					
+//						
+//					resetSellTableInfo(floor);	//xSell.tableNumSlot_Total[xSell.totalTotal]
+//					selectSellTable = DONT;
+//					if(xSell.totalTotal[floor] > 0)
+//					{
+//						for(int ss =0;ss<xSell.totalTotal[floor];ss++)
+//						{
+//							if(xSellTableInfo[floor][xSell.tableNumSlot_Total[floor][ss]].orderingCnt> 300)
+//							{
+//								xSellTableInfo[floor][xSell.tableNumSlot_Total[floor][ss]].orderingCnt = 0;
+//								selectSellTable = xSell.tableNumSlot_Total[floor][ss];
+//								break;
+//							}
+//						}
+//					}
+//			
+//					
+//					if(selectSellTable != DONT)
+//					{
+//						setMapData(xSellTableInfo[floor][selectSellTable].interiorCode);
+//						
+//						xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_ORDERINGMOVE;
+//						xShopAssistant[floor][i].nowDelay = 0;
+//						xShopAssistant[floor][i].nowFrame = 0;
+//																		
+//						if(xMap.rever == 0)
+//						{
+//							
+//							endX = xSellTableInfo[floor][selectSellTable].x + 1;
+//							endY = xSellTableInfo[floor][selectSellTable].y + ranDom(0, xObj.xObjData[xMap.type][xMap.listNum].h[xMap.rever]-1);
+//							xShopAssistant[floor][i].actLook = MOVETYPE_XMINUS;
+//						}
+//						else
+//						{
+//							endX = xSellTableInfo[floor][selectSellTable].x + ranDom(0, xObj.xObjData[xMap.type][xMap.listNum].w[xMap.rever]-1);
+//							endY = xSellTableInfo[floor][selectSellTable].y + 1;
+//							xShopAssistant[floor][i].actLook = MOVETYPE_YMINUS;
+//						}
+//
+//						if(xMap.shopData[floor][MAP_TYPE_OBJ][endX-xMap.shopPointX][endY-xMap.shopPointY] == TRUE)
+//						{
+//							xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_WAIT;
+//							xShopAssistant[floor][i].anyCnt = 0;
+//						}
+//						
+//						//새위치 탐색
+//						if(xShopAssistant[floor][i].state == SHOPASSISTANT_STATE_ORDERINGMOVE)
+//						{
+//							if(setAstar(xShopAssistant[floor][i].x-xMap.shopPointX, xShopAssistant[floor][i].y-xMap.shopPointY, endX-xMap.shopPointX, endY-xMap.shopPointY, MAP_TYPE_OBJ,floor) == FALSE)
+//							{
+//								xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_WAIT;
+//								xShopAssistant[floor][i].anyCnt = 0;
+//							}
+//							else
+//							{
+//								xShopAssistant[floor][i].bestTotalCnt = xAstar.totalCnt;
+//								xShopAssistant[floor][i].bestNowCnt = 0;
+//								for(int totalI=0;totalI<xAstar.totalCnt;totalI++)
+//								{
+//									xShopAssistant[floor][i].bestX[totalI] = xAstar.bestX[totalI]+xMap.shopPointX;
+//									xShopAssistant[floor][i].bestY[totalI] = xAstar.bestY[totalI]+xMap.shopPointY;
+//								}
+//								//다음이동
+//								if(xShopAssistant[floor][i].bestX[xShopAssistant[floor][i].bestNowCnt] < xShopAssistant[floor][i].bestX[xShopAssistant[floor][i].bestNowCnt+1])
+//									xShopAssistant[floor][i].moveType = MOVETYPE_XPLUS;
+//								else if(xShopAssistant[floor][i].bestX[xShopAssistant[floor][i].bestNowCnt] > xShopAssistant[floor][i].bestX[xShopAssistant[floor][i].bestNowCnt+1])
+//									xShopAssistant[floor][i].moveType = MOVETYPE_XMINUS;
+//								else if(xShopAssistant[floor][i].bestY[xShopAssistant[floor][i].bestNowCnt] < xShopAssistant[floor][i].bestY[xShopAssistant[floor][i].bestNowCnt+1])
+//									xShopAssistant[floor][i].moveType = MOVETYPE_YPLUS;
+//								else if(xShopAssistant[floor][i].bestY[xShopAssistant[floor][i].bestNowCnt] > xShopAssistant[floor][i].bestY[xShopAssistant[floor][i].bestNowCnt+1])
+//									xShopAssistant[floor][i].moveType = MOVETYPE_YMINUS;
+//							}
+//						}
+//					}
+//					else
 					{
 						////////////
-						M_Boolean isWaitMove = FALSE;
+//						M_Boolean isWaitMove = FALSE;
 						int waitMoveWhileCnt = 0;
-						while (true)
-						{
-							xShopAssistant[floor][i].makeX = ranDom(0, xMap.shopPointW-1);
-							xShopAssistant[floor][i].makeY = ranDom(0, xMap.shopPointH-1);
+//						while (true)
+//						{
+//							xShopAssistant[floor][i].makeX = ranDom(0, xMap.shopPointW-1);
+//							xShopAssistant[floor][i].makeY = ranDom(0, xMap.shopPointH-1);
 							
-							if(xMap.shopData[floor][MAP_TYPE_OBJ][xShopAssistant[floor][i].makeX][xShopAssistant[floor][i].makeY] == FALSE)
-							{
-								isWaitMove = TRUE;
-								
-								break;
-							}
-							if(++waitMoveWhileCnt>30)
-								break;
-						}
+//                            isWaitMove = TRUE;
+//                            break;
+//							if(xMap.shopData[floor][MAP_TYPE_OBJ][xShopAssistant[floor][i].makeX][xShopAssistant[floor][i].makeY] == FALSE)
+//							{
+//								isWaitMove = TRUE;
+//								break;
+//							}
+//							if(++waitMoveWhileCnt>30)
+//								break;
+//						}
 						//////////
-						
+                    
 						endX = xShopAssistant[floor][i].makeX+xMap.shopPointX;
 						endY = xShopAssistant[floor][i].makeY+xMap.shopPointY;
-						if(isWaitMove == FALSE)
+                        
+                        
+                        
+//						if(isWaitMove == FALSE)
+//						{
+//						}
+//						else if(setAstar(xShopAssistant[floor][i].x-xMap.shopPointX, xShopAssistant[floor][i].y-xMap.shopPointY, endX-xMap.shopPointX, endY-xMap.shopPointY, MAP_TYPE_OBJ,floor) == FALSE)
+                        if(setAstar(xShopAssistant[floor][i].x-xMap.shopPointX, xShopAssistant[floor][i].y-xMap.shopPointY, endX-xMap.shopPointX, endY-xMap.shopPointY, MAP_TYPE_OBJ,floor) == FALSE)
 						{
-						}
-						else if(setAstar(xShopAssistant[floor][i].x-xMap.shopPointX, xShopAssistant[floor][i].y-xMap.shopPointY, endX-xMap.shopPointX, endY-xMap.shopPointY, MAP_TYPE_OBJ,floor) == FALSE)
-						{
+                            xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_WAIT;
+                            xShopAssistant[floor][i].nowDelay = 0;
+                            xShopAssistant[floor][i].nowFrame = 0;
 						}
 						else
 						{
@@ -24838,253 +24846,253 @@ void shopNpcPrc()
 					}
 				}
 				break;
-			case SHOPASSISTANT_STATE_ORDERING:	//정리
-				xShopAssistant[floor][i].moveType = xShopAssistant[floor][i].actLook;
-				switch(xShopAssistant[floor][i].moveType)
-				{
-				case MOVETYPE_XPLUS:
-				case MOVETYPE_YPLUS:
-					if(1== prcSprit(&xSpritNpc[NPC_ACT_ORDERING][ACT_FRONT],&xShopAssistant[floor][i].nowDelay,&xShopAssistant[floor][i].nowFrame))
-						xShopAssistant[floor][i].isActEnd = TRUE;
-					break;
-				case MOVETYPE_XMINUS:
-				case MOVETYPE_YMINUS:
-					if(1== prcSprit(&xSpritNpc[NPC_ACT_ORDERING][ACT_BACK],&xShopAssistant[floor][i].nowDelay,&xShopAssistant[floor][i].nowFrame))
-						xShopAssistant[floor][i].isActEnd = TRUE;
-					break;
-				}
-				if(xShopAssistant[floor][i].isActEnd == TRUE)
-				{
-					xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_WAIT;
-					xShopAssistant[floor][i].anyCnt = 999;
-					xShopAssistant[floor][i].nowDelay = 0;
-					xShopAssistant[floor][i].nowFrame = 0;
-				}
-				break;
-			case SHOPASSISTANT_STATE_ORDERING2:	//청소
-				xShopAssistant[floor][i].moveType = xShopAssistant[floor][i].actLook;
-				switch(xShopAssistant[floor][i].moveType)
-				{
-				case MOVETYPE_XPLUS:
-				case MOVETYPE_YPLUS:
-					if(1== prcSprit(&xSpritNpc[NPC_ACT_CLEAN][ACT_FRONT],&xShopAssistant[floor][i].nowDelay,&xShopAssistant[floor][i].nowFrame))
-						xShopAssistant[floor][i].isActEnd = TRUE;
-					break;
-				case MOVETYPE_XMINUS:
-				case MOVETYPE_YMINUS:
-					if(1== prcSprit(&xSpritNpc[NPC_ACT_CLEAN][ACT_BACK],&xShopAssistant[floor][i].nowDelay,&xShopAssistant[floor][i].nowFrame))
-						xShopAssistant[floor][i].isActEnd = TRUE;
-					break;
-				}
-				if(xShopAssistant[floor][i].isActEnd == TRUE)
-				{
-					xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_WAIT;
-					xShopAssistant[floor][i].anyCnt = 999;
-					xShopAssistant[floor][i].nowDelay = 0;
-					xShopAssistant[floor][i].nowFrame = 0;
-				}
-				break;
-			case SHOPASSISTANT_STATE_SELLTABLE:	//판매테이블
-				xShopAssistant[floor][i].moveType = xShopAssistant[floor][i].actLook;
-				switch(xShopAssistant[floor][i].moveType)
-				{
-				case MOVETYPE_XPLUS:
-				case MOVETYPE_YPLUS:
-					prcSprit(&xSpritNpc[NPC_ACT_STOP][ACT_FRONT],&xShopAssistant[floor][i].nowDelay,&xShopAssistant[floor][i].nowFrame);
-					break;
-				case MOVETYPE_XMINUS:
-				case MOVETYPE_YMINUS:
-					prcSprit(&xSpritNpc[NPC_ACT_STOP][ACT_BACK],&xShopAssistant[floor][i].nowDelay,&xShopAssistant[floor][i].nowFrame);
-					break;
-				}
-				
-				if(++xShopAssistant[floor][i].anyCnt > 30)
-				{
-					xShopAssistant[floor][i].anyCnt = 0;
-					//NPC가 요청한 상품이 있나 확인후 없다면 예외처리
-					int tableNum = xShopAssistant[floor][i].sellTableNum;
-					int itemSlotNum = DONT;
-					setMapData(xSellTableInfo[floor][tableNum].interiorCode);	//xMap.rever,xMap.type,xMap.listNum 구하기
-					for(int ss=0;ss<xObj.xObjData[xMap.type][xMap.listNum].slot;ss++)
-					{
-						if(xSellTableInfo[floor][tableNum].xSlot[ss].code == xShopNpc[xShopAssistant[floor][i].shopNpcNum].buyItemCode_ASSISTCALL && xSellTableInfo[floor][tableNum].xSlot[ss].num > 0)
-						{
-							//물품이 있는것 확인
-							itemSlotNum = ss;
-							break;
-						}
-					}
-					
-					if(itemSlotNum == DONT)
-					{
-						//NPC예외처리
-						xShopNpc[xShopAssistant[floor][i].shopNpcNum].state = SHOPNPC_STATE_WAIT;
-						xShopNpc[xShopAssistant[floor][i].shopNpcNum].anyCnt = 0;
-						setSpeak(&xShopNpc[xShopAssistant[floor][i].shopNpcNum].xSpeak, "이 옷 다 팔렸나요?", SPEAKFRAMEMAX);
-						
-						//대응NPC그냥 대기상태로 변환 제위치로 갈필요는 없단
-						xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_WAIT;
-						xShopAssistant[floor][i].anyCnt = 0;
-						xShopAssistant[floor][i].nowDelay = 0;
-						xShopAssistant[floor][i].nowFrame = 0;
-					}
-					else
-					{
-						if(xShowWindowInfo[floor][xShopNpc[xShopAssistant[floor][i].shopNpcNum].actInteriorNum].interiorCode < 0)
-						{
-							endX = xShopNpc[xShopAssistant[floor][i].shopNpcNum].x;
-							endY = xShopNpc[xShopAssistant[floor][i].shopNpcNum].y+1;
-						}
-						else
-						{
-							endX = xShopNpc[xShopAssistant[floor][i].shopNpcNum].x+1;
-							endY = xShopNpc[xShopAssistant[floor][i].shopNpcNum].y;
-						}
-						
-						
-						
-						
-						//손님 앞에 자리가 없다면 그냥 손님과 겹치게 하자
-						if(setAstar(xShopAssistant[floor][i].x-xMap.shopPointX, xShopAssistant[floor][i].y-xMap.shopPointY, endX-xMap.shopPointX, endY-xMap.shopPointY, MAP_TYPE_OBJ,floor) == FALSE)
-						{
-							endX = xShopNpc[xShopAssistant[floor][i].shopNpcNum].x;
-							endY = xShopNpc[xShopAssistant[floor][i].shopNpcNum].y;
-						}
-						
-						
-						if(setAstar(xShopAssistant[floor][i].x-xMap.shopPointX, xShopAssistant[floor][i].y-xMap.shopPointY, endX-xMap.shopPointX, endY-xMap.shopPointY, MAP_TYPE_OBJ,floor) == FALSE)
-						{
-							//NPC예외처리
-							xShopNpc[xShopAssistant[floor][i].shopNpcNum].state = SHOPNPC_STATE_WAIT;
-							xShopNpc[xShopAssistant[floor][i].shopNpcNum].anyCnt = 0;
-							xShowWindowInfo[floor][xShopNpc[xShopAssistant[floor][i].shopNpcNum].actInteriorNum].state = SHOWWINDOWINFO_STATE_WAIT;
-
-							
-							//setSpeak(&xShopNpc[xShopAssistant[floor][i].shopNpcNum].xSpeak, "점원>손님길찾ERR_11(개발확인)", SPEAKFRAMEMAX);
-							
-							//대응NPC그냥 대기상태로 변환 제위치로 갈필요는 없단
-							xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_WAIT;
-							xShopAssistant[floor][i].anyCnt = 0;
-							xShopAssistant[floor][i].nowDelay = 0;
-							xShopAssistant[floor][i].nowFrame = 0;							
-						}
-						else
-						{
-							//테이블에서 수량 꺼네기 및 아이템 등록
-							
-							if(xWorldMap.isFriendMap == FALSE)
-							{
-								xSaveTemp.sellFittingNum++;
-								--xSellTableInfo[floor][tableNum].xSlot[itemSlotNum].num;
-                                xSellTableInfo[floor][tableNum].xSlot[itemSlotNum].flowTime = 0;
-								xSellTableInfo[floor][tableNum].isUpdata = TRUE;
-							}
-							
-							xShopAssistant[floor][i].buyItemCode = xSellTableInfo[floor][tableNum].xSlot[itemSlotNum].code;
-														
-							//대응NPC로 이동
-							xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_SHOPNPCMOVE;
-							xShopAssistant[floor][i].bestTotalCnt = xAstar.totalCnt;
-							xShopAssistant[floor][i].bestNowCnt = 0;
-							for(int totalI=0;totalI<xAstar.totalCnt;totalI++)
-							{
-								xShopAssistant[floor][i].bestX[totalI] = xAstar.bestX[totalI]+xMap.shopPointX;
-								xShopAssistant[floor][i].bestY[totalI] = xAstar.bestY[totalI]+xMap.shopPointY;
-							}
-							
-							//다음이동
-							if(xShopAssistant[floor][i].bestX[xShopAssistant[floor][i].bestNowCnt] < xShopAssistant[floor][i].bestX[xShopAssistant[floor][i].bestNowCnt+1])
-								xShopAssistant[floor][i].moveType = MOVETYPE_XPLUS;
-							else if(xShopAssistant[floor][i].bestX[xShopAssistant[floor][i].bestNowCnt] > xShopAssistant[floor][i].bestX[xShopAssistant[floor][i].bestNowCnt+1])
-								xShopAssistant[floor][i].moveType = MOVETYPE_XMINUS;
-							else if(xShopAssistant[floor][i].bestY[xShopAssistant[floor][i].bestNowCnt] < xShopAssistant[floor][i].bestY[xShopAssistant[floor][i].bestNowCnt+1])
-								xShopAssistant[floor][i].moveType = MOVETYPE_YPLUS;
-							else if(xShopAssistant[floor][i].bestY[xShopAssistant[floor][i].bestNowCnt] > xShopAssistant[floor][i].bestY[xShopAssistant[floor][i].bestNowCnt+1])
-								xShopAssistant[floor][i].moveType = MOVETYPE_YMINUS;
-						}
-					}				
-				}
-				break;
-			case SHOPASSISTANT_STATE_RCMD:		//추천설명
-				setFace(&xShopAssistant[floor][i].xFace, FACE_TYPE_SMILE);
-				xShopAssistant[floor][i].moveType = xShopAssistant[floor][i].actLook;
-				switch(xShopAssistant[floor][i].moveType)
-				{
-				case MOVETYPE_XPLUS:
-				case MOVETYPE_YPLUS:
-					prcSprit(&xSpritNpc[NPC_ACT_TALKING][ACT_FRONT],&xShopAssistant[floor][i].nowDelay,&xShopAssistant[floor][i].nowFrame);
-					break;
-				case MOVETYPE_XMINUS:
-				case MOVETYPE_YMINUS:
-					prcSprit(&xSpritNpc[NPC_ACT_TALKING][ACT_BACK],&xShopAssistant[floor][i].nowDelay,&xShopAssistant[floor][i].nowFrame);
-					break;
-				}
-					
-				if(++xShopAssistant[floor][i].anyCnt == 5)
-				{
-					setSpeak(&xShopNpc[xShopAssistant[floor][i].shopNpcNum].xSpeak, "의상 추천 좀 해주세요", SPEAKFRAMEMAX);
-				}
-				else if(xShopAssistant[floor][i].anyCnt == 30)
-				{
-					
-					int type = xShopNpc[xShopAssistant[floor][i].shopNpcNum].buyItemCode_ASSISTCALL/1000;
-					int list = xShopNpc[xShopAssistant[floor][i].shopNpcNum].buyItemCode_ASSISTCALL%1000;
-					
-					sprintf(strTempS, "요즘은 %s을(를) 많이들 찾으세요",xFashionData[type][list].strName);
-					setSpeak(&xShopAssistant[floor][i].xSpeak, strTempS, SPEAKFRAMEMAX);
-				}
-				else  if(xShopAssistant[floor][i].anyCnt == 55)
-				{
-					int type = xShopNpc[xShopAssistant[floor][i].shopNpcNum].buyItemCode_ASSISTCALL/1000;
-					int list = xShopNpc[xShopAssistant[floor][i].shopNpcNum].buyItemCode_ASSISTCALL%1000;
-					
-					sprintf(strTempS, "음~그럼 %s 가져다 주세요",xFashionData[type][list].strName);
-					setSpeak(&xShopNpc[xShopAssistant[floor][i].shopNpcNum].xSpeak, strTempS, SPEAKFRAMEMAX);
-				}
-				else  if(xShopAssistant[floor][i].anyCnt == 80)
-				{
-					setCallShopAssistant(xShopAssistant[floor][i].shopNpcNum,i);
-				}
-				break;
-			case SHOPASSISTANT_STATE_SHOPNPC:	//판매요청npc대응
-				setFace(&xShopAssistant[floor][i].xFace, FACE_TYPE_SMILE);
-				xShopAssistant[floor][i].moveType = xShopAssistant[floor][i].actLook;
-				switch(xShopAssistant[floor][i].moveType)
-				{
-				case MOVETYPE_XPLUS:
-				case MOVETYPE_YPLUS:
-					prcSprit(&xSpritNpc[NPC_ACT_STOP][ACT_FRONT],&xShopAssistant[floor][i].nowDelay,&xShopAssistant[floor][i].nowFrame);
-					break;
-				case MOVETYPE_XMINUS:
-				case MOVETYPE_YMINUS:
-					prcSprit(&xSpritNpc[NPC_ACT_STOP][ACT_BACK],&xShopAssistant[floor][i].nowDelay,&xShopAssistant[floor][i].nowFrame);
-					break;
-				}
-				if(++xShopAssistant[floor][i].anyCnt > 20)
-				{
-					//물건 건네주기
-					xShopNpc[xShopAssistant[floor][i].shopNpcNum].buyItemCode = xShopAssistant[floor][i].buyItemCode;
-					xShopAssistant[floor][i].buyItemCode = DONT;
-					
-					//대응NPC다음상태로 변경
-					if(ranDom(0, 100) < 70)
-						setNpcStateFittingRoom(xShopAssistant[floor][i].shopNpcNum,floor);
-					else
-						setNpcStatePayMent(xShopAssistant[floor][i].shopNpcNum,floor);
-					
-					xShowWindowInfo[floor][xShopNpc[xShopAssistant[floor][i].shopNpcNum].actInteriorNum].state = SHOWWINDOWINFO_STATE_WAIT;
-										
-					xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_WAIT;
-					xShopAssistant[floor][i].anyCnt = 0;
-					xShopAssistant[floor][i].nowDelay = 0;
-					xShopAssistant[floor][i].nowFrame = 0;
-				}
-				break;
-			case SHOPASSISTANT_STATE_SELLTABLEMOVE:
-			case SHOPASSISTANT_STATE_SHOPNPCMOVE:
-			case SHOPASSISTANT_STATE_RCMDMOVE:
+//			case SHOPASSISTANT_STATE_ORDERING:	//정리
+//				xShopAssistant[floor][i].moveType = xShopAssistant[floor][i].actLook;
+//				switch(xShopAssistant[floor][i].moveType)
+//				{
+//				case MOVETYPE_XPLUS:
+//				case MOVETYPE_YPLUS:
+//					if(1== prcSprit(&xSpritNpc[NPC_ACT_ORDERING][ACT_FRONT],&xShopAssistant[floor][i].nowDelay,&xShopAssistant[floor][i].nowFrame))
+//						xShopAssistant[floor][i].isActEnd = TRUE;
+//					break;
+//				case MOVETYPE_XMINUS:
+//				case MOVETYPE_YMINUS:
+//					if(1== prcSprit(&xSpritNpc[NPC_ACT_ORDERING][ACT_BACK],&xShopAssistant[floor][i].nowDelay,&xShopAssistant[floor][i].nowFrame))
+//						xShopAssistant[floor][i].isActEnd = TRUE;
+//					break;
+//				}
+//				if(xShopAssistant[floor][i].isActEnd == TRUE)
+//				{
+//					xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_WAIT;
+//					xShopAssistant[floor][i].anyCnt = 999;
+//					xShopAssistant[floor][i].nowDelay = 0;
+//					xShopAssistant[floor][i].nowFrame = 0;
+//				}
+//				break;
+//			case SHOPASSISTANT_STATE_ORDERING2:	//청소
+//				xShopAssistant[floor][i].moveType = xShopAssistant[floor][i].actLook;
+//				switch(xShopAssistant[floor][i].moveType)
+//				{
+//				case MOVETYPE_XPLUS:
+//				case MOVETYPE_YPLUS:
+//					if(1== prcSprit(&xSpritNpc[NPC_ACT_CLEAN][ACT_FRONT],&xShopAssistant[floor][i].nowDelay,&xShopAssistant[floor][i].nowFrame))
+//						xShopAssistant[floor][i].isActEnd = TRUE;
+//					break;
+//				case MOVETYPE_XMINUS:
+//				case MOVETYPE_YMINUS:
+//					if(1== prcSprit(&xSpritNpc[NPC_ACT_CLEAN][ACT_BACK],&xShopAssistant[floor][i].nowDelay,&xShopAssistant[floor][i].nowFrame))
+//						xShopAssistant[floor][i].isActEnd = TRUE;
+//					break;
+//				}
+//				if(xShopAssistant[floor][i].isActEnd == TRUE)
+//				{
+//					xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_WAIT;
+//					xShopAssistant[floor][i].anyCnt = 999;
+//					xShopAssistant[floor][i].nowDelay = 0;
+//					xShopAssistant[floor][i].nowFrame = 0;
+//				}
+//				break;
+//			case SHOPASSISTANT_STATE_SELLTABLE:	//판매테이블
+//				xShopAssistant[floor][i].moveType = xShopAssistant[floor][i].actLook;
+//				switch(xShopAssistant[floor][i].moveType)
+//				{
+//				case MOVETYPE_XPLUS:
+//				case MOVETYPE_YPLUS:
+//					prcSprit(&xSpritNpc[NPC_ACT_STOP][ACT_FRONT],&xShopAssistant[floor][i].nowDelay,&xShopAssistant[floor][i].nowFrame);
+//					break;
+//				case MOVETYPE_XMINUS:
+//				case MOVETYPE_YMINUS:
+//					prcSprit(&xSpritNpc[NPC_ACT_STOP][ACT_BACK],&xShopAssistant[floor][i].nowDelay,&xShopAssistant[floor][i].nowFrame);
+//					break;
+//				}
+//				
+//				if(++xShopAssistant[floor][i].anyCnt > 30)
+//				{
+//					xShopAssistant[floor][i].anyCnt = 0;
+//					//NPC가 요청한 상품이 있나 확인후 없다면 예외처리
+//					int tableNum = xShopAssistant[floor][i].sellTableNum;
+//					int itemSlotNum = DONT;
+//					setMapData(xSellTableInfo[floor][tableNum].interiorCode);	//xMap.rever,xMap.type,xMap.listNum 구하기
+//					for(int ss=0;ss<xObj.xObjData[xMap.type][xMap.listNum].slot;ss++)
+//					{
+//						if(xSellTableInfo[floor][tableNum].xSlot[ss].code == xShopNpc[xShopAssistant[floor][i].shopNpcNum].buyItemCode_ASSISTCALL && xSellTableInfo[floor][tableNum].xSlot[ss].num > 0)
+//						{
+//							//물품이 있는것 확인
+//							itemSlotNum = ss;
+//							break;
+//						}
+//					}
+//					
+//					if(itemSlotNum == DONT)
+//					{
+//						//NPC예외처리
+//						xShopNpc[xShopAssistant[floor][i].shopNpcNum].state = SHOPNPC_STATE_WAIT;
+//						xShopNpc[xShopAssistant[floor][i].shopNpcNum].anyCnt = 0;
+//						setSpeak(&xShopNpc[xShopAssistant[floor][i].shopNpcNum].xSpeak, "이 옷 다 팔렸나요?", SPEAKFRAMEMAX);
+//						
+//						//대응NPC그냥 대기상태로 변환 제위치로 갈필요는 없단
+//						xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_WAIT;
+//						xShopAssistant[floor][i].anyCnt = 0;
+//						xShopAssistant[floor][i].nowDelay = 0;
+//						xShopAssistant[floor][i].nowFrame = 0;
+//					}
+//					else
+//					{
+//						if(xShowWindowInfo[floor][xShopNpc[xShopAssistant[floor][i].shopNpcNum].actInteriorNum].interiorCode < 0)
+//						{
+//							endX = xShopNpc[xShopAssistant[floor][i].shopNpcNum].x;
+//							endY = xShopNpc[xShopAssistant[floor][i].shopNpcNum].y+1;
+//						}
+//						else
+//						{
+//							endX = xShopNpc[xShopAssistant[floor][i].shopNpcNum].x+1;
+//							endY = xShopNpc[xShopAssistant[floor][i].shopNpcNum].y;
+//						}
+//						
+//						
+//						
+//						
+//						//손님 앞에 자리가 없다면 그냥 손님과 겹치게 하자
+//						if(setAstar(xShopAssistant[floor][i].x-xMap.shopPointX, xShopAssistant[floor][i].y-xMap.shopPointY, endX-xMap.shopPointX, endY-xMap.shopPointY, MAP_TYPE_OBJ,floor) == FALSE)
+//						{
+//							endX = xShopNpc[xShopAssistant[floor][i].shopNpcNum].x;
+//							endY = xShopNpc[xShopAssistant[floor][i].shopNpcNum].y;
+//						}
+//						
+//						
+//						if(setAstar(xShopAssistant[floor][i].x-xMap.shopPointX, xShopAssistant[floor][i].y-xMap.shopPointY, endX-xMap.shopPointX, endY-xMap.shopPointY, MAP_TYPE_OBJ,floor) == FALSE)
+//						{
+//							//NPC예외처리
+//							xShopNpc[xShopAssistant[floor][i].shopNpcNum].state = SHOPNPC_STATE_WAIT;
+//							xShopNpc[xShopAssistant[floor][i].shopNpcNum].anyCnt = 0;
+//							xShowWindowInfo[floor][xShopNpc[xShopAssistant[floor][i].shopNpcNum].actInteriorNum].state = SHOWWINDOWINFO_STATE_WAIT;
+//
+//							
+//							//setSpeak(&xShopNpc[xShopAssistant[floor][i].shopNpcNum].xSpeak, "점원>손님길찾ERR_11(개발확인)", SPEAKFRAMEMAX);
+//							
+//							//대응NPC그냥 대기상태로 변환 제위치로 갈필요는 없단
+//							xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_WAIT;
+//							xShopAssistant[floor][i].anyCnt = 0;
+//							xShopAssistant[floor][i].nowDelay = 0;
+//							xShopAssistant[floor][i].nowFrame = 0;							
+//						}
+//						else
+//						{
+//							//테이블에서 수량 꺼네기 및 아이템 등록
+//							
+//							if(xWorldMap.isFriendMap == FALSE)
+//							{
+//								xSaveTemp.sellFittingNum++;
+//								--xSellTableInfo[floor][tableNum].xSlot[itemSlotNum].num;
+//                                xSellTableInfo[floor][tableNum].xSlot[itemSlotNum].flowTime = 0;
+//								xSellTableInfo[floor][tableNum].isUpdata = TRUE;
+//							}
+//							
+//							xShopAssistant[floor][i].buyItemCode = xSellTableInfo[floor][tableNum].xSlot[itemSlotNum].code;
+//														
+//							//대응NPC로 이동
+//							xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_SHOPNPCMOVE;
+//							xShopAssistant[floor][i].bestTotalCnt = xAstar.totalCnt;
+//							xShopAssistant[floor][i].bestNowCnt = 0;
+//							for(int totalI=0;totalI<xAstar.totalCnt;totalI++)
+//							{
+//								xShopAssistant[floor][i].bestX[totalI] = xAstar.bestX[totalI]+xMap.shopPointX;
+//								xShopAssistant[floor][i].bestY[totalI] = xAstar.bestY[totalI]+xMap.shopPointY;
+//							}
+//							
+//							//다음이동
+//							if(xShopAssistant[floor][i].bestX[xShopAssistant[floor][i].bestNowCnt] < xShopAssistant[floor][i].bestX[xShopAssistant[floor][i].bestNowCnt+1])
+//								xShopAssistant[floor][i].moveType = MOVETYPE_XPLUS;
+//							else if(xShopAssistant[floor][i].bestX[xShopAssistant[floor][i].bestNowCnt] > xShopAssistant[floor][i].bestX[xShopAssistant[floor][i].bestNowCnt+1])
+//								xShopAssistant[floor][i].moveType = MOVETYPE_XMINUS;
+//							else if(xShopAssistant[floor][i].bestY[xShopAssistant[floor][i].bestNowCnt] < xShopAssistant[floor][i].bestY[xShopAssistant[floor][i].bestNowCnt+1])
+//								xShopAssistant[floor][i].moveType = MOVETYPE_YPLUS;
+//							else if(xShopAssistant[floor][i].bestY[xShopAssistant[floor][i].bestNowCnt] > xShopAssistant[floor][i].bestY[xShopAssistant[floor][i].bestNowCnt+1])
+//								xShopAssistant[floor][i].moveType = MOVETYPE_YMINUS;
+//						}
+//					}				
+//				}
+//				break;
+//			case SHOPASSISTANT_STATE_RCMD:		//추천설명
+//				setFace(&xShopAssistant[floor][i].xFace, FACE_TYPE_SMILE);
+//				xShopAssistant[floor][i].moveType = xShopAssistant[floor][i].actLook;
+//				switch(xShopAssistant[floor][i].moveType)
+//				{
+//				case MOVETYPE_XPLUS:
+//				case MOVETYPE_YPLUS:
+//					prcSprit(&xSpritNpc[NPC_ACT_TALKING][ACT_FRONT],&xShopAssistant[floor][i].nowDelay,&xShopAssistant[floor][i].nowFrame);
+//					break;
+//				case MOVETYPE_XMINUS:
+//				case MOVETYPE_YMINUS:
+//					prcSprit(&xSpritNpc[NPC_ACT_TALKING][ACT_BACK],&xShopAssistant[floor][i].nowDelay,&xShopAssistant[floor][i].nowFrame);
+//					break;
+//				}
+//					
+//				if(++xShopAssistant[floor][i].anyCnt == 5)
+//				{
+//					setSpeak(&xShopNpc[xShopAssistant[floor][i].shopNpcNum].xSpeak, "의상 추천 좀 해주세요", SPEAKFRAMEMAX);
+//				}
+//				else if(xShopAssistant[floor][i].anyCnt == 30)
+//				{
+//					
+//					int type = xShopNpc[xShopAssistant[floor][i].shopNpcNum].buyItemCode_ASSISTCALL/1000;
+//					int list = xShopNpc[xShopAssistant[floor][i].shopNpcNum].buyItemCode_ASSISTCALL%1000;
+//					
+//					sprintf(strTempS, "요즘은 %s을(를) 많이들 찾으세요",xFashionData[type][list].strName);
+//					setSpeak(&xShopAssistant[floor][i].xSpeak, strTempS, SPEAKFRAMEMAX);
+//				}
+//				else  if(xShopAssistant[floor][i].anyCnt == 55)
+//				{
+//					int type = xShopNpc[xShopAssistant[floor][i].shopNpcNum].buyItemCode_ASSISTCALL/1000;
+//					int list = xShopNpc[xShopAssistant[floor][i].shopNpcNum].buyItemCode_ASSISTCALL%1000;
+//					
+//					sprintf(strTempS, "음~그럼 %s 가져다 주세요",xFashionData[type][list].strName);
+//					setSpeak(&xShopNpc[xShopAssistant[floor][i].shopNpcNum].xSpeak, strTempS, SPEAKFRAMEMAX);
+//				}
+//				else  if(xShopAssistant[floor][i].anyCnt == 80)
+//				{
+//					setCallShopAssistant(xShopAssistant[floor][i].shopNpcNum,i);
+//				}
+//				break;
+//			case SHOPASSISTANT_STATE_SHOPNPC:	//판매요청npc대응
+//				setFace(&xShopAssistant[floor][i].xFace, FACE_TYPE_SMILE);
+//				xShopAssistant[floor][i].moveType = xShopAssistant[floor][i].actLook;
+//				switch(xShopAssistant[floor][i].moveType)
+//				{
+//				case MOVETYPE_XPLUS:
+//				case MOVETYPE_YPLUS:
+//					prcSprit(&xSpritNpc[NPC_ACT_STOP][ACT_FRONT],&xShopAssistant[floor][i].nowDelay,&xShopAssistant[floor][i].nowFrame);
+//					break;
+//				case MOVETYPE_XMINUS:
+//				case MOVETYPE_YMINUS:
+//					prcSprit(&xSpritNpc[NPC_ACT_STOP][ACT_BACK],&xShopAssistant[floor][i].nowDelay,&xShopAssistant[floor][i].nowFrame);
+//					break;
+//				}
+//				if(++xShopAssistant[floor][i].anyCnt > 20)
+//				{
+//					//물건 건네주기
+//					xShopNpc[xShopAssistant[floor][i].shopNpcNum].buyItemCode = xShopAssistant[floor][i].buyItemCode;
+//					xShopAssistant[floor][i].buyItemCode = DONT;
+//					
+//					//대응NPC다음상태로 변경
+//					if(ranDom(0, 100) < 70)
+//						setNpcStateFittingRoom(xShopAssistant[floor][i].shopNpcNum,floor);
+//					else
+//						setNpcStatePayMent(xShopAssistant[floor][i].shopNpcNum,floor);
+//					
+//					xShowWindowInfo[floor][xShopNpc[xShopAssistant[floor][i].shopNpcNum].actInteriorNum].state = SHOWWINDOWINFO_STATE_WAIT;
+//										
+//					xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_WAIT;
+//					xShopAssistant[floor][i].anyCnt = 0;
+//					xShopAssistant[floor][i].nowDelay = 0;
+//					xShopAssistant[floor][i].nowFrame = 0;
+//				}
+//				break;
+//			case SHOPASSISTANT_STATE_SELLTABLEMOVE:
+//			case SHOPASSISTANT_STATE_SHOPNPCMOVE:
+//			case SHOPASSISTANT_STATE_RCMDMOVE:
 			case SHOPASSISTANT_STATE_WAITMOVE:
-			case SHOPASSISTANT_STATE_ORDERINGMOVE:
+//			case SHOPASSISTANT_STATE_ORDERINGMOVE:
 				setFace(&xShopAssistant[floor][i].xFace, FACE_TYPE_NORMAL);
 				if(xShopAssistant[floor][i].speed == xMap.speedTable[1])
 				{
@@ -25120,26 +25128,30 @@ void shopNpcPrc()
 				case MOVETYPE_XPLUS:
 					xShopAssistant[floor][i].drawX -= (float)(xShopAssistant[floor][i].speed * 2);
 					xShopAssistant[floor][i].drawY += (float)(xShopAssistant[floor][i].speed * 1);
+                   
 					if(xShopAssistant[floor][i].drawX  <= -(TILEW/4))
 					{
 						xShopAssistant[floor][i].x++;
 						xShopAssistant[floor][i].drawX = (TILEW/4);
 						xShopAssistant[floor][i].drawY = -(TILEH/4);
-					}
+                    }
 					break;
 				case MOVETYPE_XMINUS:
 					xShopAssistant[floor][i].drawX += (float)(xShopAssistant[floor][i].speed * 2);
 					xShopAssistant[floor][i].drawY -= (float)(xShopAssistant[floor][i].speed * 1);
+    
 					if(xShopAssistant[floor][i].drawX  >= (TILEW/4))
 					{
 						xShopAssistant[floor][i].x--;
 						xShopAssistant[floor][i].drawX = -(TILEW/4);
 						xShopAssistant[floor][i].drawY = (TILEH/4);
+                        
 					}
 					break;
 				case MOVETYPE_YPLUS:
 					xShopAssistant[floor][i].drawX += (float)(xShopAssistant[floor][i].speed * 2);
 					xShopAssistant[floor][i].drawY += (float)(xShopAssistant[floor][i].speed * 1);
+
 					if(xShopAssistant[floor][i].drawY  >= (TILEH/4))
 					{
 						xShopAssistant[floor][i].y++;
@@ -25150,11 +25162,12 @@ void shopNpcPrc()
 				case MOVETYPE_YMINUS:
 					xShopAssistant[floor][i].drawX -= (float)(xShopAssistant[floor][i].speed * 2);
 					xShopAssistant[floor][i].drawY -= (float)(xShopAssistant[floor][i].speed * 1);
-					if(xShopAssistant[floor][i].drawY  <= -(TILEH/4))
+                    if(xShopAssistant[floor][i].drawY  <= -(TILEH/4))
 					{
 						xShopAssistant[floor][i].y--;
 						xShopAssistant[floor][i].drawX = (TILEW/4);
 						xShopAssistant[floor][i].drawY = (TILEH/4);
+                        
 					}
 					break;
 				}
@@ -25167,48 +25180,48 @@ void shopNpcPrc()
 					{
 						switch(xShopAssistant[floor][i].state)
 						{
-						case SHOPASSISTANT_STATE_SELLTABLEMOVE:		//진열대로 이동중
-							xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_SELLTABLE;
-							xShopAssistant[floor][i].nowDelay = 0;
-							xShopAssistant[floor][i].nowFrame = 0;
-							xShopAssistant[floor][i].isActEnd = FALSE;
-							xShopAssistant[floor][i].anyCnt = 0;
-							break;
-						case SHOPASSISTANT_STATE_SHOPNPCMOVE:		//손님에게 이동중
-							xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_SHOPNPC;
-							xShopAssistant[floor][i].anyCnt = 0;
-							xShopAssistant[floor][i].nowDelay = 0;
-							xShopAssistant[floor][i].nowFrame = 0;
-							xShopAssistant[floor][i].anyCnt = 0;
-							break;
-						case SHOPASSISTANT_STATE_RCMDMOVE:
-							xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_RCMD;
-							xShopAssistant[floor][i].anyCnt = 0;
-							xShopAssistant[floor][i].nowDelay = 0;
-							xShopAssistant[floor][i].nowFrame = 0;
-							xShopAssistant[floor][i].anyCnt = 0;
-							break;
+//						case SHOPASSISTANT_STATE_SELLTABLEMOVE:		//진열대로 이동중
+//							xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_SELLTABLE;
+//							xShopAssistant[floor][i].nowDelay = 0;
+//							xShopAssistant[floor][i].nowFrame = 0;
+//							xShopAssistant[floor][i].isActEnd = FALSE;
+//							xShopAssistant[floor][i].anyCnt = 0;
+//							break;
+//						case SHOPASSISTANT_STATE_SHOPNPCMOVE:		//손님에게 이동중
+//							xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_SHOPNPC;
+//							xShopAssistant[floor][i].anyCnt = 0;
+//							xShopAssistant[floor][i].nowDelay = 0;
+//							xShopAssistant[floor][i].nowFrame = 0;
+//							xShopAssistant[floor][i].anyCnt = 0;
+//							break;
+//						case SHOPASSISTANT_STATE_RCMDMOVE:
+//							xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_RCMD;
+//							xShopAssistant[floor][i].anyCnt = 0;
+//							xShopAssistant[floor][i].nowDelay = 0;
+//							xShopAssistant[floor][i].nowFrame = 0;
+//							xShopAssistant[floor][i].anyCnt = 0;
+//							break;
 						case SHOPASSISTANT_STATE_WAITMOVE:			//본위치로 이동중
 							xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_WAIT;
 							xShopAssistant[floor][i].anyCnt = 0;
 							xShopAssistant[floor][i].nowDelay = 0;
 							xShopAssistant[floor][i].nowFrame = 0;
 							break;
-						case SHOPASSISTANT_STATE_ORDERINGMOVE:
-							if(ranDom(0, 100) < 50)
-							{
-								xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_ORDERING;
-							}
-							else
-							{
-								xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_ORDERING2;
-							}
-							
-							xShopAssistant[floor][i].isActEnd = FALSE;
-							xShopAssistant[floor][i].anyCnt = 0;								
-							xShopAssistant[floor][i].nowDelay = 0;
-							xShopAssistant[floor][i].nowFrame = 0;
-							break;
+//						case SHOPASSISTANT_STATE_ORDERINGMOVE:
+//							if(ranDom(0, 100) < 50)
+//							{
+//								xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_ORDERING;
+//							}
+//							else
+//							{
+//								xShopAssistant[floor][i].state = SHOPASSISTANT_STATE_ORDERING2;
+//							}
+//							
+//							xShopAssistant[floor][i].isActEnd = FALSE;
+//							xShopAssistant[floor][i].anyCnt = 0;								
+//							xShopAssistant[floor][i].nowDelay = 0;
+//							xShopAssistant[floor][i].nowFrame = 0;
+//							break;
 						}
 					}
 					else
@@ -25226,6 +25239,7 @@ void shopNpcPrc()
 				}
 				break;
 			}
+//            log("KBY_DDDD : %d",xShopAssistant[floor][i].state);
 		}
 		
 		
@@ -25632,6 +25646,16 @@ void drawWorldMap()
 						}
 												
                         drawObj(mapXpos, mapYpos, xMap.type, xMap.listNum, xMap.rever,FALSE,DONT,DONT);
+                        
+//                        xMap.xTouchTile[xMap.nowFloor][xMap.type][xMap.listNum].wPos = xObj.img[xMap.type][xMap.listNum].w;
+//                        xMap.xTouchTile[xMap.nowFloor][xMap.type][xMap.listNum].hPos = xObj.img[xMap.type][xMap.listNum].h;
+//                        xMap.xTouchTile[xMap.nowFloor][xMap.type][xMap.listNum].xPos = mapXpos - xMap.xTouchTile[xMap.nowFloor][xMap.type][xMap.listNum].wPos/2;
+//                        xMap.xTouchTile[xMap.nowFloor][xMap.type][xMap.listNum].yPos = mapYpos - xMap.xTouchTile[xMap.nowFloor][xMap.type][xMap.listNum].hPos/2;
+                        
+//                        setAlpha(100);
+//                        gSetColor(255, 0, 0);
+//                        fillRect(xMap.xTouchTile[xMap.nowFloor][xMap.type][xMap.listNum].xPos , xMap.xTouchTile[xMap.nowFloor][xMap.type][xMap.listNum].yPos , xMap.xTouchTile[xMap.nowFloor][xMap.type][xMap.listNum].wPos, xMap.xTouchTile[xMap.nowFloor][xMap.type][xMap.listNum].hPos);
+//                        setAlpha(ALPHA_MAX);
                         
                         if(v == MAP_TYPE_FLOORTILE0)
                         {
@@ -26344,7 +26368,7 @@ void drawWorldMap()
 				xObjSort[b_a].y[xObjSort[b_a].totalNum] = y-(floor*5);
 				xObjSort[b_a].totalNum++;
 				
-
+                //이동 그리는것
 				for(i = 0;i<WORLDMAPNPCMAX;i++)
 				{
 					if(xWorldMapNpc[i].state != WORLDMAPNPC_STATE_DONT)
@@ -26369,7 +26393,7 @@ void drawWorldMap()
 						xObjSort[b_a].totalNum++;
 					}
 				}
-				
+				//여기까지
 				for(i = 0;i<WORLDMAPCARMAX;i++)
 				{
 					if(xWorldMapCar[i].state != WORLDMAPCAR_STATE_DONT)
@@ -28187,6 +28211,7 @@ void drawObjSort(int num,int floor,int b_a)
 
 			drawSpeak(&xModelNpc[xObjSort[b_a].code[num]].xSpeak, getWorldMapPos(subTemp[XPOS], cx), getWorldMapPos(subTemp[YPOS]-70, cy));
 		}
+        //캐릭터 그리느는 곳
 		else if(xObjSort[b_a].viewType[num] == MAP_TYPE_SHOPASSISTANT)
 		{
 			subTemp[XPOS] = mapXpos + xShopAssistant[floor][xObjSort[b_a].code[num]].drawX;
@@ -28216,7 +28241,9 @@ void drawObjSort(int num,int floor,int b_a)
 			{
 			case SHOPASSISTANT_STATE_WAIT:
 				xShopAssistant[floor][xObjSort[b_a].code[num]].buyItemCode = DONT;
-				xShopAssistant[floor][xObjSort[b_a].code[num]].actingType = NPC_ACT_STOP;
+//				xShopAssistant[floor][xObjSort[b_a].code[num]].actingType = NPC_ACT_STOP;
+                xShopAssistant[floor][xObjSort[b_a].code[num]].actingType = NPC_ACT_WALKING;
+
 				sprintf(strTempS, "대기");
 				break;
 			case SHOPASSISTANT_STATE_SELLTABLEMOVE:
@@ -28224,7 +28251,8 @@ void drawObjSort(int num,int floor,int b_a)
 				sprintf(strTempS, "물품이동");
 				break;
 			case SHOPASSISTANT_STATE_SHOPNPCMOVE:
-				xShopAssistant[floor][xObjSort[b_a].code[num]].actingType = NPC_ACT_WALKINGBAG;
+//				xShopAssistant[floor][xObjSort[b_a].code[num]].actingType = NPC_ACT_WALKINGBAG;
+                xShopAssistant[floor][xObjSort[b_a].code[num]].actingType = NPC_ACT_WALKING;
 				sprintf(strTempS, "손님이동");
 				break;
 			case SHOPASSISTANT_STATE_RCMDMOVE:
@@ -28241,24 +28269,29 @@ void drawObjSort(int num,int floor,int b_a)
 				break;
 			case SHOPASSISTANT_STATE_ORDERING:
 				xShopAssistant[floor][xObjSort[b_a].code[num]].moveType = xShopAssistant[floor][xObjSort[b_a].code[num]].actLook;
-				xShopAssistant[floor][xObjSort[b_a].code[num]].actingType = NPC_ACT_ORDERING;
+//				xShopAssistant[floor][xObjSort[b_a].code[num]].actingType = NPC_ACT_ORDERING;
+                xShopAssistant[floor][xObjSort[b_a].code[num]].actingType = NPC_ACT_WALKING;
 				sprintf(strTempS, "꺼내기");
 				break;
 			case SHOPASSISTANT_STATE_ORDERING2:
 				xShopAssistant[floor][xObjSort[b_a].code[num]].moveType = xShopAssistant[floor][xObjSort[b_a].code[num]].actLook;
-				xShopAssistant[floor][xObjSort[b_a].code[num]].actingType = NPC_ACT_CLEAN;
+//				xShopAssistant[floor][xObjSort[b_a].code[num]].actingType = NPC_ACT_CLEAN;
+                xShopAssistant[floor][xObjSort[b_a].code[num]].actingType = NPC_ACT_WALKING;
 				sprintf(strTempS, "꺼내기");
 				break;
 			case SHOPASSISTANT_STATE_SELLTABLE:
-				xShopAssistant[floor][xObjSort[b_a].code[num]].actingType = NPC_ACT_STOP;
+//				xShopAssistant[floor][xObjSort[b_a].code[num]].actingType = NPC_ACT_STOP;
+                xShopAssistant[floor][xObjSort[b_a].code[num]].actingType = NPC_ACT_WALKING;
 				sprintf(strTempS, "꺼내기");
 				break;
 			case SHOPASSISTANT_STATE_SHOPNPC:
-				xShopAssistant[floor][xObjSort[b_a].code[num]].actingType = NPC_ACT_STOP;
+                xShopAssistant[floor][xObjSort[b_a].code[num]].actingType = NPC_ACT_WALKING;
+//				xShopAssistant[floor][xObjSort[b_a].code[num]].actingType = NPC_ACT_STOP;
 				sprintf(strTempS, "건네주기");
 				break;
 			case SHOPASSISTANT_STATE_RCMD:
-				xShopAssistant[floor][xObjSort[b_a].code[num]].actingType = NPC_ACT_TALKING;
+                xShopAssistant[floor][xObjSort[b_a].code[num]].actingType = NPC_ACT_WALKING;
+//				xShopAssistant[floor][xObjSort[b_a].code[num]].actingType = NPC_ACT_TALKING;
 				sprintf(strTempS, "추천대화");
 				break;
 			}
@@ -28280,25 +28313,25 @@ void drawObjSort(int num,int floor,int b_a)
 				case MOVETYPE_XPLUS:
 					xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_FRONT].nowDelay = xShopAssistant[floor][xObjSort[b_a].code[num]].nowDelay;
 					xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_FRONT].nowFrame = xShopAssistant[floor][xObjSort[b_a].code[num]].nowFrame;
-					setSpritF(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_FRONT],&xShopAssistant[floor][xObjSort[b_a].code[num]].xF,ACT_FRONT);
-					drawSprit(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_FRONT],subTemp[XPOS], subTemp[YPOS],ACT_FRONT,&xShopAssistant[floor][xObjSort[b_a].code[num]].xFace);					
+//					setSpritF(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_FRONT],&xShopAssistant[floor][xObjSort[b_a].code[num]].xF,ACT_FRONT);
+					drawSprit(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_FRONT],subTemp[XPOS], subTemp[YPOS],ACT_FRONT,&xShopAssistant[floor][xObjSort[b_a].code[num]].xFace);
 					break;
 				case MOVETYPE_XMINUS:
 					xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_BACK].nowDelay = xShopAssistant[floor][xObjSort[b_a].code[num]].nowDelay;
 					xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_BACK].nowFrame = xShopAssistant[floor][xObjSort[b_a].code[num]].nowFrame;
-					setSpritF(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_BACK],&xShopAssistant[floor][xObjSort[b_a].code[num]].xF,ACT_BACK);
+//					setSpritF(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_BACK],&xShopAssistant[floor][xObjSort[b_a].code[num]].xF,ACT_BACK);
 					drawSprit(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_BACK],subTemp[XPOS], subTemp[YPOS],ACT_BACK,&xShopAssistant[floor][xObjSort[b_a].code[num]].xFace);
 					break;
 				case MOVETYPE_YPLUS:
 					xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_FRONT].nowDelay = xShopAssistant[floor][xObjSort[b_a].code[num]].nowDelay;
 					xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_FRONT].nowFrame = xShopAssistant[floor][xObjSort[b_a].code[num]].nowFrame;
-					setSpritF(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_FRONT],&xShopAssistant[floor][xObjSort[b_a].code[num]].xF,ACT_FRONT);
+//					setSpritF(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_FRONT],&xShopAssistant[floor][xObjSort[b_a].code[num]].xF,ACT_FRONT);
 					reverseSprit(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_FRONT],subTemp[XPOS], subTemp[YPOS],ACT_FRONT,&xShopAssistant[floor][xObjSort[b_a].code[num]].xFace);
 					break;
 				case MOVETYPE_YMINUS:
 					xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_BACK].nowDelay = xShopAssistant[floor][xObjSort[b_a].code[num]].nowDelay;
 					xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_BACK].nowFrame = xShopAssistant[floor][xObjSort[b_a].code[num]].nowFrame;
-					setSpritF(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_BACK],&xShopAssistant[floor][xObjSort[b_a].code[num]].xF,ACT_BACK);
+//					setSpritF(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_BACK],&xShopAssistant[floor][xObjSort[b_a].code[num]].xF,ACT_BACK);
 					reverseSprit(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_BACK],subTemp[XPOS], subTemp[YPOS],ACT_BACK,&xShopAssistant[floor][xObjSort[b_a].code[num]].xFace);
 					break;
 				}
@@ -28311,14 +28344,14 @@ void drawObjSort(int num,int floor,int b_a)
 					case MOVETYPE_XMINUS:
 						xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_FRONT].nowDelay = xShopAssistant[floor][xObjSort[b_a].code[num]].nowDelay;
 						xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_FRONT].nowFrame = xShopAssistant[floor][xObjSort[b_a].code[num]].nowFrame;
-						setSpritF(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_FRONT],&xShopAssistant[floor][xObjSort[b_a].code[num]].xF,ACT_FRONT);
+//						setSpritF(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_FRONT],&xShopAssistant[floor][xObjSort[b_a].code[num]].xF,ACT_FRONT);
 						drawSprit(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_FRONT],subTemp[XPOS], subTemp[YPOS],ACT_FRONT,&xShopAssistant[floor][xObjSort[b_a].code[num]].xFace);
 						break;
 					case MOVETYPE_YPLUS:
 					case MOVETYPE_YMINUS:
 						xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_FRONT].nowDelay = xShopAssistant[floor][xObjSort[b_a].code[num]].nowDelay;
 						xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_FRONT].nowFrame = xShopAssistant[floor][xObjSort[b_a].code[num]].nowFrame;
-						setSpritF(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_FRONT],&xShopAssistant[floor][xObjSort[b_a].code[num]].xF,ACT_FRONT);
+//						setSpritF(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_FRONT],&xShopAssistant[floor][xObjSort[b_a].code[num]].xF,ACT_FRONT);
 						reverseSprit(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_FRONT],subTemp[XPOS], subTemp[YPOS],ACT_FRONT,&xShopAssistant[floor][xObjSort[b_a].code[num]].xFace);
 						break;
 				}
@@ -28331,18 +28364,17 @@ void drawObjSort(int num,int floor,int b_a)
 					case MOVETYPE_XMINUS:
 						xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_BACK].nowDelay = xShopAssistant[floor][xObjSort[b_a].code[num]].nowDelay;
 						xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_BACK].nowFrame = xShopAssistant[floor][xObjSort[b_a].code[num]].nowFrame;
-						setSpritF(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_BACK],&xShopAssistant[floor][xObjSort[b_a].code[num]].xF,ACT_BACK);
+//						setSpritF(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_BACK],&xShopAssistant[floor][xObjSort[b_a].code[num]].xF,ACT_BACK);
 						drawSprit(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_BACK],subTemp[XPOS], subTemp[YPOS],ACT_BACK,&xShopAssistant[floor][xObjSort[b_a].code[num]].xFace);
 						break;
 					case MOVETYPE_YPLUS:
 					case MOVETYPE_YMINUS:
 						xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_BACK].nowDelay = xShopAssistant[floor][xObjSort[b_a].code[num]].nowDelay;
 						xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_BACK].nowFrame = xShopAssistant[floor][xObjSort[b_a].code[num]].nowFrame;
-						setSpritF(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_BACK],&xShopAssistant[floor][xObjSort[b_a].code[num]].xF,ACT_BACK);
+//						setSpritF(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_BACK],&xShopAssistant[floor][xObjSort[b_a].code[num]].xF,ACT_BACK);
 						reverseSprit(&xSpritNpc[xShopAssistant[floor][xObjSort[b_a].code[num]].actingType][ACT_BACK],subTemp[XPOS], subTemp[YPOS],ACT_BACK,&xShopAssistant[floor][xObjSort[b_a].code[num]].xFace);
 						break;
 				}
-
 			}
 			
 			drawSpeak(&xShopAssistant[floor][xObjSort[b_a].code[num]].xSpeak, getWorldMapPos(subTemp[XPOS], cx), getWorldMapPos(subTemp[YPOS]-70, cy));
@@ -30733,8 +30765,8 @@ void makeShopNpc(int worldMapNpcCode,int optionType,int optionNum)
 			//2:여자,3:여자
 			//4:남자,5:남자
 			
-			if(optionType != 1 && optionType != 3 && optionType != 5)
-				setModelNpcSpeakWelCome(0,TRUE);
+//			if(optionType != 1 && optionType != 3 && optionType != 5)
+//				setModelNpcSpeakWelCome(0,TRUE);
 			
 			int npcSetSlot=0;
 			switch(optionType)
@@ -44464,7 +44496,7 @@ void drawTrendInfo()
 			xGame.isBlend = TRUE;
 		
 		
-		drawModelRotEff(subTemp[XPOS], subTemp[YPOS],gameCnt);
+//		drawModelRotEff(subTemp[XPOS], subTemp[YPOS],gameCnt);
 		drawPacker(imgHiPing0, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgHiPing0), imgH(imgHiPing0), VH);
 	
 		drawPacker(imgFittingMenu2, subTemp[XPOS]-imgW(imgFittingMenu2)/2, subTemp[YPOS]+84, 0, imgH(imgFittingMenu2)/4*3, imgW(imgFittingMenu2), imgH(imgFittingMenu2)/4, VL);
@@ -54626,1183 +54658,1183 @@ void drawQuestResult()
 }
 
 
-void drawModelList()
-{
-	int px = cx;
-	int py = cy-30;
-	xModel.totalListNum = 0;
-	switch(xModel.state)
-	{
-	case MODELCOLLECT_STATE_SELECTMODEL:
-	case MODELCOLLECT_STATE_SELECTMODELCASTING:
-			
-		if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-		{
-			switch(xQuestTuto.nowNum)
-			{
-			case TUTO_22_MODELMAINSLOTSELECT:
-				xQuestTuto.isTutoClean = TRUE;
-				break;
-			}
-		}
-			
-		for(int i=0;i<xModel.totalInventoryModel;i++)
-		{
-			M_Boolean isCheck = FALSE;
-			for(int k=0;k<MODELMAINSLOTMAX;k++)
-			{
-				switch(xModelMainSlot[k].state)
-				{
-					case MODELMAINSLOT_STATE_WAIT:
-					case MODELMAINSLOT_STATE_PLAY:
-						xModelMainSlot[k].inventoryNum = getModelKeyToSlotNum(xModelMainSlot[k].modelKey);
-						if(xModelMainSlot[k].inventoryNum == i)
-							isCheck = TRUE;
-						break;
-				}
-				
-			}
-			if(isCheck == FALSE)
-				xModel.listNumSlot[xModel.totalListNum++] = i;
-		}
-		break;
-	case MODELCOLLECT_STATE_LIST:
-	case MODELCOLLECT_STATE_LISTCASTING:
-	case MODELCOLLECT_STATE_LISTINFO:
-		for(int i=0;i<xModel.totalInventoryModel;i++)
-			xModel.listNumSlot[xModel.totalListNum++] = i;
-		break;
-	}
-	
-	gSetColor(0, 0, 0);
-	fillRect(0, 0, lcdW, lcdH);
-	drawPacker(imgModelBg0, px, py, 0, 0, imgW(imgModelBg0), imgH(imgModelBg0), VH);
-			
-	subTemp[XPOS] = px;
-	subTemp[YPOS] = py-222;
-		
-	//타이틀
-	switch(xModel.state)
-	{
-	case MODELCOLLECT_STATE_LIST:
-	case MODELCOLLECT_STATE_LISTCASTING:
-	case MODELCOLLECT_STATE_LISTINFO:
-		sprintf(strTempS, "모델 리스트");
-		break;
-	default:
-		sprintf(strTempS, "배치하실 모델을 선택해 주세요");
-		break;
-	}
-	setFontSize(20);
-	gDrawStringBold(subTemp[XPOS], subTemp[YPOS]-6, strTempS, VH, 86, 255, 220, 33, 20, 20);
-	setFontSize(11);
-	
-	//세부메뉴
-	xModel.xDragScrollS.totalNum = xModel.totalListNum;
-	xModel.xDragScrollS.posGab = 190;
-	xModel.xDragScrollS.endPos = -(((xModel.xDragScrollS.totalNum-5)*xModel.xDragScrollS.posGab));
-	if(xModel.xDragScrollS.totalNum < 5)
-		xModel.xDragScrollS.endPos = 0;
-	
-	dragScrollPrc(&xModel.xDragScrollS,1,FALSE);
-	int iMax = xModel.xDragScrollS.totalNum;
-			
-	int slotNum;
-	int code;
-	int upGrade;
-	int pos;
-	for(int i=0;i<iMax;i++)
-	{
-		pos = xModel.xDragScrollS.pos+(xModel.xDragScrollS.posGab*i);
-		subTemp[XPOS] = px-380+pos;
-		subTemp[YPOS] = py;
-		
-		if(subTemp[XPOS] < -xModel.xDragScrollS.posGab)
-			continue;
-		if(subTemp[XPOS] > lcdW+xModel.xDragScrollS.posGab)
-			continue;
-	
-		slotNum = xModel.listNumSlot[i];
-		code = xInventoryModel[slotNum].code;
-		upGrade = xInventoryModel[slotNum].upGrade;
-					
-		XFACE xFaceTemp;
-		xFaceTemp.hairNum = code+1000;
-		xFaceTemp.faceNum = code+1000;
-		xFaceTemp.faceType = FACE_TYPE_NORMAL;
-				
-		drawFittingBody(subTemp[XPOS], subTemp[YPOS]+25,&xInventoryModel[slotNum].xF,&xFaceTemp,TRUE,xModelData[xInventoryModel[slotNum].code].sex);
-		
-		if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-		{
-			switch(xQuestTuto.nowNum)
-			{
-			case TUTO_22_MODELSELECTMODEL:
-				if(xModel.state == MODELCOLLECT_STATE_SELECTMODEL)
-				{
-					xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
-					xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS]+25;
-					xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
-				}
-				break;
-			}
-		}
-
-		if(getModelMainSlot(xInventoryModel[slotNum].key) != DONT)
-		{
-			int fsInfoW = 0;
-			int fsInfoH = 0;
-			
-			switch(gameCnt%29)
-			{
-				case 0:fsInfoW =0;fsInfoH =	0;break;
-				case 1:fsInfoW =-0.026;fsInfoH =	0.024;break;
-				case 2:fsInfoW =-0.116;fsInfoH =	0.105;break;
-				case 3:fsInfoW =-0.294;fsInfoH =	0.265;break;
-				case 4:fsInfoW =-0.6;fsInfoH =	0.541;break;
-				case 5:fsInfoW =-1.12;fsInfoH =	1.01;break;
-				case 6:fsInfoW =-2.087;fsInfoH =	1.883;break;
-				case 7:fsInfoW =-7.291;fsInfoH =	6.575;break;
-				case 8:fsInfoW =-12.493;fsInfoH =	11.267;break;
-				case 9:fsInfoW =-13.46;fsInfoH =	12.139;break;
-				case 10:fsInfoW =-13.978;fsInfoH =	12.606;break;
-				case 11:fsInfoW =-14.288;fsInfoH =	12.886;break;
-				case 12:fsInfoW =-14.468;fsInfoH =	13.048;break;
-				case 13:fsInfoW =-14.561;fsInfoH =	13.132;break;
-				case 14:fsInfoW =-14.592;fsInfoH =	13.16;break;
-				case 15:fsInfoW =-14.566;fsInfoH =	13.137;break;
-				case 16:fsInfoW =-14.475;fsInfoH =	13.054;break;
-				case 17:fsInfoW =-14.298;fsInfoH =	12.895;break;
-				case 18:fsInfoW =-13.992;fsInfoH =	12.619;break;
-				case 19:fsInfoW =-13.473;fsInfoH =	12.15;break;
-				case 20:fsInfoW =-12.504;fsInfoH =	11.277;break;
-				case 21:fsInfoW =-7.302;fsInfoH =	6.585;break;
-				case 22:fsInfoW =-2.098;fsInfoH =	1.892;break;
-				case 23:fsInfoW =-1.132;fsInfoH =	1.021;break;
-				case 24:fsInfoW =-0.611;fsInfoH =	0.551;break;
-				case 25:fsInfoW =-0.301;fsInfoH =	0.272;break;
-				case 26:fsInfoW =-0.12;fsInfoH =	0.108;break;
-				case 27:fsInfoW =-0.027;fsInfoH =	0.025;break;
-				case 28:fsInfoW =0;fsInfoH =	0;break;
-			}
-			drawPacker(imgTutoInfo7, subTemp[XPOS], subTemp[YPOS]-180+fsInfoH, 0, 0, imgW(imgTutoInfo7), imgH(imgTutoInfo7), VH);
-			drawPacker(imgModelGuestSlot, subTemp[XPOS], subTemp[YPOS]-150, 0, 0, imgW(imgModelGuestSlot), imgH(imgModelGuestSlot), VH);
-		}
-			
-
-		switch(xModel.state)
-		{
-		case MODELCOLLECT_STATE_SELECTMODEL:
-		case MODELCOLLECT_STATE_SELECTMODELCASTING:
-			subTemp[YPOS] += 145;
-			break;
-		default:
-			subTemp[YPOS] += 200;
-			break;
-		}
-		
-		xGame.fgameScaleCx = subTemp[XPOS];
-		xGame.fgameScaleCy = lcdH-subTemp[YPOS];
-		xGame.fgameScale = 0.7f;
-		
-		
-		switch(xModelData[code].grade)
-		{
-		case 0:drawPacker(imgNewModelRank0, subTemp[XPOS]-60-12, subTemp[YPOS]+5, 0, 0, imgW(imgNewModelRank0), imgH(imgNewModelRank0), VH);break;
-		case 1:drawPacker(imgNewModelRank1, subTemp[XPOS]-60-12, subTemp[YPOS]+5, 0, 0, imgW(imgNewModelRank1), imgH(imgNewModelRank1), VH);break;
-		case 2:drawPacker(imgNewModelRank2, subTemp[XPOS]-60-12, subTemp[YPOS]+5, 0, 0, imgW(imgNewModelRank2), imgH(imgNewModelRank2), VH);break;
-		case 3:drawPacker(imgNewModelRank3, subTemp[XPOS]-60-12, subTemp[YPOS]+5, 0, 0, imgW(imgNewModelRank3), imgH(imgNewModelRank3), VH);break;
-		}
-		
-		for(int k=0;k<xModelData[code].upGradeMax;k++)
-		{
-			if(upGrade > k)
-				drawPacker(imgModelLv, subTemp[XPOS]-23+12+(24*k), subTemp[YPOS], imgW(imgModelLv)/2, 0, imgW(imgModelLv)/2, imgH(imgModelLv), VH);
-			else
-				drawPacker(imgModelLv, subTemp[XPOS]-23+12+(24*k), subTemp[YPOS], 0, 0, imgW(imgModelLv)/2, imgH(imgModelLv), VH);
-		}
-		drawModelName(subTemp[XPOS]+25+12, subTemp[YPOS]+37,code);
-						
-		xGame.fgameScaleCx = cx;
-		xGame.fgameScaleCy = cy;
-		xGame.fgameScale = 1.0f;
-		
-		
-		int giftTypeImgNum;
-		switch(xModel.state)
-		{
-		case MODELCOLLECT_STATE_SELECTMODEL:
-		case MODELCOLLECT_STATE_SELECTMODELCASTING:
-			drawPacker(imgModelBg1, subTemp[XPOS], subTemp[YPOS]+73, 0, 0, imgW(imgModelBg1), imgH(imgModelBg1), VH);
-			switch(xModelData[code].giftType)
-			{
-			case MODEL_GIFTTYPE_GOLD:giftTypeImgNum=5;break;
-			case MODEL_GIFTTYPE_LOOK:giftTypeImgNum=1;break;
-			case MODEL_GIFTTYPE_CANDY:giftTypeImgNum=6;break;
-			case MODEL_GIFTTYPE_EXP:giftTypeImgNum=3;break;
-			}
-			drawPacker(imgProductionMenuObj0, subTemp[XPOS]-22, subTemp[YPOS]+75+10, imgW(imgProductionMenuObj0)/8*giftTypeImgNum, 0, imgW(imgProductionMenuObj0)/8, imgH(imgProductionMenuObj0), VL);
-			gSetColor(55, 24, 12);
-			sprintf(strTempS, "%d",getModelGiftNum(slotNum,0));
-			gDrawString(subTemp[XPOS]+63, subTemp[YPOS]+75+10, strTempS, VR);
-								
-			gSetColor(55, 24, 12);
-			drawTimeSprintf(strTempS,getModelGiftTime(slotNum,0),4);
-			gDrawString(subTemp[XPOS]+63, subTemp[YPOS]+75-14, strTempS, VR);
-			break;
-		}
-	}
-	
-	//거리별 스크롤 방식에서 셀럭트넘은 첫 시작 값으로 취급한다
-	subTemp[XPOS] = px-380;
-	subTemp[YPOS] = py+30;
-	xModel.xDragScrollS.selectNum = (-xModel.xDragScrollS.pos/xModel.xDragScrollS.posGab);
-	for(int i=0;i<=6;i++)
-	{
-		xModel.xTouchSelectSlot[i].wPos = xModel.xDragScrollS.posGab-4;
-		xModel.xTouchSelectSlot[i].hPos = 420;
-		xModel.xTouchSelectSlot[i].xPos = subTemp[XPOS]+(xModel.xDragScrollS.posGab*i)+(xModel.xDragScrollS.pos%xModel.xDragScrollS.posGab) - xModel.xTouchSelectSlot[i].wPos/2;
-		xModel.xTouchSelectSlot[i].yPos = subTemp[YPOS] - xModel.xTouchSelectSlot[i].hPos/2;
-			
-		/*
-		gSetColor(255, 0, 0);
-		setAlpha(100);
-		fillRect(xModel.xTouchSelectSlot[i].xPos, xModel.xTouchSelectSlot[i].yPos, xModel.xTouchSelectSlot[i].wPos, xModel.xTouchSelectSlot[i].hPos);
-		setAlpha(ALPHA_MAX);
-		 */
-	}
-				
-	subTemp[XPOS] = lcdW-97;
-	subTemp[YPOS] = lcdH-47;
-	
-	drawPacker(imgModelCastingBtn0, subTemp[XPOS]+3, subTemp[YPOS]+1, 0, 0, imgW(imgModelCastingBtn0), imgH(imgModelCastingBtn0), VH);
-	drawPacker(imgModelCastingBtn1, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgModelCastingBtn1), imgH(imgModelCastingBtn1), VH);
-	
-	int castImgNum = DONT;
-	switch(gameCnt%50)
-	{
-	case 41:castImgNum = 0;	break;
-	case 42:castImgNum = 1;	break;
-	case 43:castImgNum = 2;	break;
-	case 44:castImgNum = 3;	break;
-	case 45:castImgNum = 4;	break;
-	}
-	
-	if(castImgNum != DONT)
-	{
-		xGame.isBlend = TRUE;
-		xGame.blendType = BLEND_ADDP;
-		drawPacker(imgModelCastingBtn2, subTemp[XPOS], subTemp[YPOS], 0, imgH(imgModelCastingBtn2)/5*castImgNum, imgW(imgModelCastingBtn2), imgH(imgModelCastingBtn2)/5, VH);
-		xGame.isBlend = FALSE;
-	}
-	
-	if(gameCnt%50 == 0)
-	{
-		setModelEff(subTemp[XPOS]-63, subTemp[YPOS]-26);
-		setModelEff(subTemp[XPOS]+67, subTemp[YPOS]+23);
-	}
-
-	
-	
-	xModel.xTouchCastingBtn.wPos = imgW(imgModelCastingBtn1);
-	xModel.xTouchCastingBtn.hPos = imgH(imgModelCastingBtn1);
-	xModel.xTouchCastingBtn.xPos = subTemp[XPOS]-xModel.xTouchCastingBtn.wPos/2;
-	xModel.xTouchCastingBtn.yPos = subTemp[YPOS]-xModel.xTouchCastingBtn.hPos/2;
-	
-	
-	subTemp[XPOS] = lcdW-40;
-	subTemp[YPOS] = py-232;
-		
-	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-	{
-		switch(xQuestTuto.nowNum)
-		{
-		case TUTO_22_RESULT:
-			xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
-			xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
-			xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
-			break;
-		}
-	}
-		
-	xTouchClr.wPos = 80;
-	xTouchClr.hPos = 80;
-	xTouchClr.xPos = subTemp[XPOS]-xTouchClr.wPos/2;
-	xTouchClr.yPos = subTemp[YPOS]-xTouchClr.hPos/2;
-	
-    /*
-	gSetColor(255, 0, 0);
-	setAlpha(100);
-	fillRect(xTouchClr.xPos, xTouchClr.yPos, xTouchClr.wPos, xTouchClr.hPos);
-	setAlpha(ALPHA_MAX);
-    */
-
-}
-
-
-
-void drawModelUpGrade()
-{
-	int px = cx;
-	int py = cy;
-	
-	drawBgFillRect();
-	drawPacker(imgModelUpGradeBg, px-3, py-3, 0, 0, imgW(imgModelUpGradeBg), imgH(imgModelUpGradeBg), VH);
-		
-	int iMax;
-	int pos;
-	int code;
-	int upGrade;
-	
-	code = xInventoryModel[xModelUpGrade.inventoryNum].code;
-	upGrade = xInventoryModel[xModelUpGrade.inventoryNum].upGrade;
-	
-	
-		
-	subTemp[XPOS] = px-320;
-	subTemp[YPOS] = py-106;
-	
-	XFACE xFaceTemp;
-	xFaceTemp.hairNum = 1000+code;
-	xFaceTemp.faceNum = 1000+code;
-	xFaceTemp.faceType = FACE_TYPE_SMILE;
-	drawFittingBody(subTemp[XPOS], subTemp[YPOS]+60,&xInventoryModel[xModelUpGrade.inventoryNum].xF,&xFaceTemp,TRUE,xModelData[code].sex);
-	
-	
-	subTemp[XPOS] = px-320;
-	subTemp[YPOS] = py+143;
-	gSetColor(255, 255, 255);
-	gDrawString(subTemp[XPOS]-88, subTemp[YPOS]-6, "모델 랭크", VL);
-	gDrawString(subTemp[XPOS]-88, subTemp[YPOS]-6+20, "모델 레벨", VL);
-	gDrawString(subTemp[XPOS]-88, subTemp[YPOS]-6+40, "레이어드 수", VL);
-
-	
-	gSetColor(253, 173, 10);
-	switch(xModelData[code].grade)
-	{
-	case 0:sprintf(strTempS,"C랭크");break;
-	case 1:sprintf(strTempS,"B랭크");break;
-	case 2:sprintf(strTempS,"A랭크");break;
-	case 3:sprintf(strTempS,"S랭크");break;
-	}
-	gDrawString(subTemp[XPOS]+88, subTemp[YPOS]-6, strTempS, VR);
-	
-	
-	xGame.isReSizeDraw = TRUE;
-	xGame.reSize = 80;
-	for(int k=0;k<xModelData[code].upGradeMax;k++)
-	{
-		if(upGrade > k)
-			drawPacker(imgModelLv, subTemp[XPOS]+2+(20*k), subTemp[YPOS]+20-7, imgW(imgModelLv)/2, 0, imgW(imgModelLv)/2, imgH(imgModelLv), VH);
-		else
-			drawPacker(imgModelLv, subTemp[XPOS]+2+(20*k), subTemp[YPOS]+20-7, 0, 0, imgW(imgModelLv)/2, imgH(imgModelLv), VH);
-	}
-	xGame.isReSizeDraw = FALSE;
-	
-	
-		
-	sprintf(strTempS, "%d회",xModelData[code].layeredNum+getModelLayered(xModelUpGrade.inventoryNum,0));
-	gDrawString(subTemp[XPOS]+88, subTemp[YPOS]-6+40, strTempS, VR);
-	
-	
-	subTemp[XPOS] = px-320;
-	subTemp[YPOS] = py+238;
-	
-	gSetColor(254, 177, 0);
-	gDrawString(subTemp[XPOS]-88, subTemp[YPOS]-36, "활동 보상", VL);
-
-	drawIcon(subTemp[XPOS]-90+10,subTemp[YPOS]-6, ICON_TYPE_TIME);
-	gSetColor(255, 255, 255);
-	drawTimeSprintf(strTempS,getModelGiftTime(xModelUpGrade.inventoryNum,0),4);
-	gDrawString(subTemp[XPOS]-90+10+20, subTemp[YPOS]-6, strTempS, VL);
-		
-	drawPacker(imgModelMainInfo4, subTemp[XPOS]-10, subTemp[YPOS]-4, 0, 0, imgW(imgModelMainInfo4), imgH(imgModelMainInfo4), VH);
-	
-	//254	188	10
-	gSetColor(254, 188, 10);
-	setCommaNum(strTempS, getModelGiftNum(xModelUpGrade.inventoryNum,0));
-	gDrawString(subTemp[XPOS]+90, subTemp[YPOS]-6, strTempS, VR);
-	
-	int giftTypeImgNum;
-	switch(xModelData[code].giftType)
-	{
-		case MODEL_GIFTTYPE_GOLD:giftTypeImgNum=ICON_TYPE_GOLD;break;
-		case MODEL_GIFTTYPE_LOOK:giftTypeImgNum=ICON_TYPE_LOOK;break;
-		case MODEL_GIFTTYPE_CANDY:giftTypeImgNum=ICON_TYPE_CANDY;break;
-		case MODEL_GIFTTYPE_EXP:giftTypeImgNum=ICON_TYPE_EXP;break;
-	}
-	drawIcon(subTemp[XPOS]+15, subTemp[YPOS]-6, giftTypeImgNum);
-
-	//세부메뉴
-	subTemp[XPOS] = px-88;
-	subTemp[YPOS] = py-38;
-	
-	xModelUpGrade.xDragScrollS.totalNum = xModelUpGrade.totalModelList;
-	xModelUpGrade.xDragScrollS.posGab = 202;
-	
-	xModelUpGrade.xDragScrollS.endPos = -(((xModelUpGrade.xDragScrollS.totalNum-3)*xModelUpGrade.xDragScrollS.posGab));
-	
-	if(xModelUpGrade.xDragScrollS.totalNum < 3)
-		xModelUpGrade.xDragScrollS.endPos = 0;
-	
-	iMax = xModelUpGrade.xDragScrollS.totalNum;
-	dragScrollPrc(&xModelUpGrade.xDragScrollS,1,FALSE);
-	
-	gSetClip(true,px+110-305,0,610,lcdH);
-	
-	for(int i=0;i<iMax;i++)
-	{
-		pos = xModelUpGrade.xDragScrollS.pos+(xModelUpGrade.xDragScrollS.posGab*i);
-		if(subTemp[XPOS]+pos < -xModelUpGrade.xDragScrollS.posGab)
-			continue;
-				
-		if(xModelUpGrade.isUpgrade == TRUE && xModelUpGrade.selectSlot == i)
-			continue;
-			
-		drawModelSlot(subTemp[XPOS]+pos,subTemp[YPOS],xModelUpGrade.modelListSlot[i]);
-			
-		
-				
-		if(xModelUpGrade.selectSlot == i)
-		{
-			xModelUpGrade.slotX = subTemp[XPOS]+pos;
-			xModelUpGrade.slotY = subTemp[YPOS];
-			drawPacker(imgModelUpGradeSlot1, subTemp[XPOS]+pos, subTemp[YPOS], 0, 0, imgW(imgModelUpGradeSlot1), imgH(imgModelUpGradeSlot1), VH);
-		}
-		else if(xModelUpGrade.selectSlot != DONT)
-			drawPacker(imgModelUpGradeSlot2, subTemp[XPOS]+pos, subTemp[YPOS], 0, 0, imgW(imgModelUpGradeSlot2), imgH(imgModelUpGradeSlot2), VH);
-	}
-    gSetClip(false,0, 0, lcdW, lcdH);
-	//거리별 스크롤 방식에서 셀럭트넘은 첫 시작 값으로 취급한다
-	xModelUpGrade.xDragScrollS.selectNum = (-xModelUpGrade.xDragScrollS.pos/xModelUpGrade.xDragScrollS.posGab);
-	for(int i=0;i<4;i++)
-	{
-		xModelUpGrade.xTouchSelectSlot[i].wPos = xModelUpGrade.xDragScrollS.posGab-4;
-		xModelUpGrade.xTouchSelectSlot[i].hPos = 300;
-		xModelUpGrade.xTouchSelectSlot[i].xPos = subTemp[XPOS]+(xModelUpGrade.xDragScrollS.posGab*i)+(xModelUpGrade.xDragScrollS.pos%xModelUpGrade.xDragScrollS.posGab) - xModelUpGrade.xTouchSelectSlot[i].wPos/2;
-		xModelUpGrade.xTouchSelectSlot[i].yPos = subTemp[YPOS] - xModelUpGrade.xTouchSelectSlot[i].hPos/2;
-		
-		/*
-		gSetColor(255, 0, 0);
-		setAlpha(100);
-		fillRect(xModelUpGrade.xTouchSelectSlot[i].xPos, xModelUpGrade.xTouchSelectSlot[i].yPos, xModelUpGrade.xTouchSelectSlot[i].wPos, xModelUpGrade.xTouchSelectSlot[i].hPos);
-		setAlpha(ALPHA_MAX);
-		 */
-	}
-		
-	subTemp[XPOS] = px+315;
-	subTemp[YPOS] = py+210;
-	setFontSize(20);
-		
-	M_Boolean isClose = FALSE;
-	
-	
-	switch(xModelUpGrade.upgradeType)
-	{
-	case 0:
-		sprintf(strTempS,"업그레이드");
-		if(xInventoryModel[xModelUpGrade.inventoryNum].upGrade >= xModelData[xInventoryModel[xModelUpGrade.inventoryNum].code].upGradeMax)
-		{
-			isClose = TRUE;
-		}
-		break;
-	case 1:
-		sprintf(strTempS,"조합하기");
-		break;
-	}
-		
-	if(isClose == FALSE && xModelUpGrade.selectSlot >= 0 && xModelUpGrade.selectSlot < xModelUpGrade.totalModelList)
-	{
-		drawPacker(imgUpGrageBtn, subTemp[XPOS], subTemp[YPOS], 0, imgH(imgUpGrageBtn)/2, imgW(imgUpGrageBtn), imgH(imgUpGrageBtn)/2, VH);
-		gDrawStringBold(subTemp[XPOS], subTemp[YPOS], strTempS, VH, 255, 255, 255, 186, 70, 10);
-	}
-	else
-	{
-		
-		drawPacker(imgUpGrageBtn, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgUpGrageBtn), imgH(imgUpGrageBtn)/2, VH);
-		gDrawStringBold(subTemp[XPOS], subTemp[YPOS], strTempS, VH, 166, 156, 126, 81, 19, 2);
-	}
-	setFontSize(11);
-	xTouchOk.wPos = imgW(imgUpGrageBtn);
-	xTouchOk.hPos = imgH(imgUpGrageBtn)/2;
-	xTouchOk.xPos = subTemp[XPOS]-xTouchOk.wPos/2;
-	xTouchOk.yPos = subTemp[YPOS]-xTouchOk.hPos/2;
-		
-	xTouchClr.wPos = 100;
-	xTouchClr.hPos = 100;
-	xTouchClr.xPos = px+402-xTouchClr.wPos/2;
-	xTouchClr.yPos = py-250-xTouchClr.hPos/2;
-	
-	/*
-	gSetColor(255, 0, 0);
-	setAlpha(100);
-	fillRect(xTouchClr.xPos, xTouchClr.yPos, xTouchClr.wPos, xTouchClr.hPos);
-	setAlpha(ALPHA_MAX);
-	 */
-	
-	
-	switch(xModelUpGrade.upgradeType)
-	{
-	case 0:
-		gDrawStringBold(px-162, py+170, "업그레이드에 이용되는 모델은 사라집니다.", VL, 97, 255, 227, 44, 27, 26);
-		break;
-	case 1:
-		gDrawStringBold(px-162, py+170, "조합 성공시 윗등급의 모델이 랜덤하게 나와요", VL, 97, 255, 227, 44, 27, 26);
-		break;
-	}
-	int per = 0;
-	int price = 0;
-	if(xModelUpGrade.selectSlot != DONT)
-	{
-		per = getModelUpgradePer(xModelUpGrade.inventoryNum,xModelUpGrade.modelListSlot[xModelUpGrade.selectSlot]);
-		price = getModelUpgradePrice(xModelUpGrade.inventoryNum,xModelUpGrade.modelListSlot[xModelUpGrade.selectSlot]);
-	}
-	gDrawStringBold(px-183, py+225, "비용", VL, 97, 255, 227, 44, 27, 26);
-	gDrawStringBold(px+35, py+225, "확률", VL, 97, 255, 227, 44, 27, 26);
-	
-	setCommaNum(strTempS, price);
-	setFontSize(14);
-	gDrawStringBold(px-40, py+225, strTempS, VR, 97, 255, 227, 44, 27, 26);
-	setFontSize(11);
-	
-	
-	
-	
-	
-	setFontSize(14);
-	sprintf(strTempS, " %d%% ",per);
-	gDrawStringBold(px+180, py+225, strTempS, VR, 97, 255, 227, 44, 27, 26);
-	setFontSize(11);
-	
-	if(xModelUpGrade.totalModelList == 0)
-	{
-		setFontSize(14);
-		switch(xModelUpGrade.upgradeType)
-		{
-		case 0:
-			xLinkInfo.total = 0;
-			sprintf(xLinkInfo.strTemp[xLinkInfo.total++],"모델을 업그레이드 하실려면");
-			sprintf(xLinkInfo.strTemp[xLinkInfo.total++],"다른 모델이 필요합니다.");
-			drawLinkInfo(px-70,py-40,0);
-
-			break;
-		case 1:
-			xLinkInfo.total = 0;
-			sprintf(xLinkInfo.strTemp[xLinkInfo.total++],"업그레이드가 완료된");
-			sprintf(xLinkInfo.strTemp[xLinkInfo.total++],"동일등급의 모델이 필요합니다.");
-			drawLinkInfo(px-70,py-40,0);
-			break;
-		}
-		setFontSize(11);
-	}
-}
+//void drawModelList()
+//{
+//	int px = cx;
+//	int py = cy-30;
+//	xModel.totalListNum = 0;
+//	switch(xModel.state)
+//	{
+//	case MODELCOLLECT_STATE_SELECTMODEL:
+//	case MODELCOLLECT_STATE_SELECTMODELCASTING:
+//			
+//		if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+//		{
+//			switch(xQuestTuto.nowNum)
+//			{
+//			case TUTO_22_MODELMAINSLOTSELECT:
+//				xQuestTuto.isTutoClean = TRUE;
+//				break;
+//			}
+//		}
+//			
+//		for(int i=0;i<xModel.totalInventoryModel;i++)
+//		{
+//			M_Boolean isCheck = FALSE;
+//			for(int k=0;k<MODELMAINSLOTMAX;k++)
+//			{
+//				switch(xModelMainSlot[k].state)
+//				{
+//					case MODELMAINSLOT_STATE_WAIT:
+//					case MODELMAINSLOT_STATE_PLAY:
+//						xModelMainSlot[k].inventoryNum = getModelKeyToSlotNum(xModelMainSlot[k].modelKey);
+//						if(xModelMainSlot[k].inventoryNum == i)
+//							isCheck = TRUE;
+//						break;
+//				}
+//				
+//			}
+//			if(isCheck == FALSE)
+//				xModel.listNumSlot[xModel.totalListNum++] = i;
+//		}
+//		break;
+//	case MODELCOLLECT_STATE_LIST:
+//	case MODELCOLLECT_STATE_LISTCASTING:
+//	case MODELCOLLECT_STATE_LISTINFO:
+//		for(int i=0;i<xModel.totalInventoryModel;i++)
+//			xModel.listNumSlot[xModel.totalListNum++] = i;
+//		break;
+//	}
+//	
+//	gSetColor(0, 0, 0);
+//	fillRect(0, 0, lcdW, lcdH);
+//	drawPacker(imgModelBg0, px, py, 0, 0, imgW(imgModelBg0), imgH(imgModelBg0), VH);
+//			
+//	subTemp[XPOS] = px;
+//	subTemp[YPOS] = py-222;
+//		
+//	//타이틀
+//	switch(xModel.state)
+//	{
+//	case MODELCOLLECT_STATE_LIST:
+//	case MODELCOLLECT_STATE_LISTCASTING:
+//	case MODELCOLLECT_STATE_LISTINFO:
+//		sprintf(strTempS, "모델 리스트");
+//		break;
+//	default:
+//		sprintf(strTempS, "배치하실 모델을 선택해 주세요");
+//		break;
+//	}
+//	setFontSize(20);
+//	gDrawStringBold(subTemp[XPOS], subTemp[YPOS]-6, strTempS, VH, 86, 255, 220, 33, 20, 20);
+//	setFontSize(11);
+//	
+//	//세부메뉴
+//	xModel.xDragScrollS.totalNum = xModel.totalListNum;
+//	xModel.xDragScrollS.posGab = 190;
+//	xModel.xDragScrollS.endPos = -(((xModel.xDragScrollS.totalNum-5)*xModel.xDragScrollS.posGab));
+//	if(xModel.xDragScrollS.totalNum < 5)
+//		xModel.xDragScrollS.endPos = 0;
+//	
+//	dragScrollPrc(&xModel.xDragScrollS,1,FALSE);
+//	int iMax = xModel.xDragScrollS.totalNum;
+//			
+//	int slotNum;
+//	int code;
+//	int upGrade;
+//	int pos;
+//	for(int i=0;i<iMax;i++)
+//	{
+//		pos = xModel.xDragScrollS.pos+(xModel.xDragScrollS.posGab*i);
+//		subTemp[XPOS] = px-380+pos;
+//		subTemp[YPOS] = py;
+//		
+//		if(subTemp[XPOS] < -xModel.xDragScrollS.posGab)
+//			continue;
+//		if(subTemp[XPOS] > lcdW+xModel.xDragScrollS.posGab)
+//			continue;
+//	
+//		slotNum = xModel.listNumSlot[i];
+//		code = xInventoryModel[slotNum].code;
+//		upGrade = xInventoryModel[slotNum].upGrade;
+//					
+//		XFACE xFaceTemp;
+//		xFaceTemp.hairNum = code+1000;
+//		xFaceTemp.faceNum = code+1000;
+//		xFaceTemp.faceType = FACE_TYPE_NORMAL;
+//				
+//		drawFittingBody(subTemp[XPOS], subTemp[YPOS]+25,&xInventoryModel[slotNum].xF,&xFaceTemp,TRUE,xModelData[xInventoryModel[slotNum].code].sex);
+//		
+//		if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+//		{
+//			switch(xQuestTuto.nowNum)
+//			{
+//			case TUTO_22_MODELSELECTMODEL:
+//				if(xModel.state == MODELCOLLECT_STATE_SELECTMODEL)
+//				{
+//					xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
+//					xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS]+25;
+//					xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
+//				}
+//				break;
+//			}
+//		}
+//
+//		if(getModelMainSlot(xInventoryModel[slotNum].key) != DONT)
+//		{
+//			int fsInfoW = 0;
+//			int fsInfoH = 0;
+//			
+//			switch(gameCnt%29)
+//			{
+//				case 0:fsInfoW =0;fsInfoH =	0;break;
+//				case 1:fsInfoW =-0.026;fsInfoH =	0.024;break;
+//				case 2:fsInfoW =-0.116;fsInfoH =	0.105;break;
+//				case 3:fsInfoW =-0.294;fsInfoH =	0.265;break;
+//				case 4:fsInfoW =-0.6;fsInfoH =	0.541;break;
+//				case 5:fsInfoW =-1.12;fsInfoH =	1.01;break;
+//				case 6:fsInfoW =-2.087;fsInfoH =	1.883;break;
+//				case 7:fsInfoW =-7.291;fsInfoH =	6.575;break;
+//				case 8:fsInfoW =-12.493;fsInfoH =	11.267;break;
+//				case 9:fsInfoW =-13.46;fsInfoH =	12.139;break;
+//				case 10:fsInfoW =-13.978;fsInfoH =	12.606;break;
+//				case 11:fsInfoW =-14.288;fsInfoH =	12.886;break;
+//				case 12:fsInfoW =-14.468;fsInfoH =	13.048;break;
+//				case 13:fsInfoW =-14.561;fsInfoH =	13.132;break;
+//				case 14:fsInfoW =-14.592;fsInfoH =	13.16;break;
+//				case 15:fsInfoW =-14.566;fsInfoH =	13.137;break;
+//				case 16:fsInfoW =-14.475;fsInfoH =	13.054;break;
+//				case 17:fsInfoW =-14.298;fsInfoH =	12.895;break;
+//				case 18:fsInfoW =-13.992;fsInfoH =	12.619;break;
+//				case 19:fsInfoW =-13.473;fsInfoH =	12.15;break;
+//				case 20:fsInfoW =-12.504;fsInfoH =	11.277;break;
+//				case 21:fsInfoW =-7.302;fsInfoH =	6.585;break;
+//				case 22:fsInfoW =-2.098;fsInfoH =	1.892;break;
+//				case 23:fsInfoW =-1.132;fsInfoH =	1.021;break;
+//				case 24:fsInfoW =-0.611;fsInfoH =	0.551;break;
+//				case 25:fsInfoW =-0.301;fsInfoH =	0.272;break;
+//				case 26:fsInfoW =-0.12;fsInfoH =	0.108;break;
+//				case 27:fsInfoW =-0.027;fsInfoH =	0.025;break;
+//				case 28:fsInfoW =0;fsInfoH =	0;break;
+//			}
+//			drawPacker(imgTutoInfo7, subTemp[XPOS], subTemp[YPOS]-180+fsInfoH, 0, 0, imgW(imgTutoInfo7), imgH(imgTutoInfo7), VH);
+//			drawPacker(imgModelGuestSlot, subTemp[XPOS], subTemp[YPOS]-150, 0, 0, imgW(imgModelGuestSlot), imgH(imgModelGuestSlot), VH);
+//		}
+//			
+//
+//		switch(xModel.state)
+//		{
+//		case MODELCOLLECT_STATE_SELECTMODEL:
+//		case MODELCOLLECT_STATE_SELECTMODELCASTING:
+//			subTemp[YPOS] += 145;
+//			break;
+//		default:
+//			subTemp[YPOS] += 200;
+//			break;
+//		}
+//		
+//		xGame.fgameScaleCx = subTemp[XPOS];
+//		xGame.fgameScaleCy = lcdH-subTemp[YPOS];
+//		xGame.fgameScale = 0.7f;
+//		
+//		
+//		switch(xModelData[code].grade)
+//		{
+//		case 0:drawPacker(imgNewModelRank0, subTemp[XPOS]-60-12, subTemp[YPOS]+5, 0, 0, imgW(imgNewModelRank0), imgH(imgNewModelRank0), VH);break;
+//		case 1:drawPacker(imgNewModelRank1, subTemp[XPOS]-60-12, subTemp[YPOS]+5, 0, 0, imgW(imgNewModelRank1), imgH(imgNewModelRank1), VH);break;
+//		case 2:drawPacker(imgNewModelRank2, subTemp[XPOS]-60-12, subTemp[YPOS]+5, 0, 0, imgW(imgNewModelRank2), imgH(imgNewModelRank2), VH);break;
+//		case 3:drawPacker(imgNewModelRank3, subTemp[XPOS]-60-12, subTemp[YPOS]+5, 0, 0, imgW(imgNewModelRank3), imgH(imgNewModelRank3), VH);break;
+//		}
+//		
+//		for(int k=0;k<xModelData[code].upGradeMax;k++)
+//		{
+//			if(upGrade > k)
+//				drawPacker(imgModelLv, subTemp[XPOS]-23+12+(24*k), subTemp[YPOS], imgW(imgModelLv)/2, 0, imgW(imgModelLv)/2, imgH(imgModelLv), VH);
+//			else
+//				drawPacker(imgModelLv, subTemp[XPOS]-23+12+(24*k), subTemp[YPOS], 0, 0, imgW(imgModelLv)/2, imgH(imgModelLv), VH);
+//		}
+//		drawModelName(subTemp[XPOS]+25+12, subTemp[YPOS]+37,code);
+//						
+//		xGame.fgameScaleCx = cx;
+//		xGame.fgameScaleCy = cy;
+//		xGame.fgameScale = 1.0f;
+//		
+//		
+//		int giftTypeImgNum;
+//		switch(xModel.state)
+//		{
+//		case MODELCOLLECT_STATE_SELECTMODEL:
+//		case MODELCOLLECT_STATE_SELECTMODELCASTING:
+//			drawPacker(imgModelBg1, subTemp[XPOS], subTemp[YPOS]+73, 0, 0, imgW(imgModelBg1), imgH(imgModelBg1), VH);
+//			switch(xModelData[code].giftType)
+//			{
+//			case MODEL_GIFTTYPE_GOLD:giftTypeImgNum=5;break;
+//			case MODEL_GIFTTYPE_LOOK:giftTypeImgNum=1;break;
+//			case MODEL_GIFTTYPE_CANDY:giftTypeImgNum=6;break;
+//			case MODEL_GIFTTYPE_EXP:giftTypeImgNum=3;break;
+//			}
+//			drawPacker(imgProductionMenuObj0, subTemp[XPOS]-22, subTemp[YPOS]+75+10, imgW(imgProductionMenuObj0)/8*giftTypeImgNum, 0, imgW(imgProductionMenuObj0)/8, imgH(imgProductionMenuObj0), VL);
+//			gSetColor(55, 24, 12);
+//			sprintf(strTempS, "%d",getModelGiftNum(slotNum,0));
+//			gDrawString(subTemp[XPOS]+63, subTemp[YPOS]+75+10, strTempS, VR);
+//								
+//			gSetColor(55, 24, 12);
+//			drawTimeSprintf(strTempS,getModelGiftTime(slotNum,0),4);
+//			gDrawString(subTemp[XPOS]+63, subTemp[YPOS]+75-14, strTempS, VR);
+//			break;
+//		}
+//	}
+//	
+//	//거리별 스크롤 방식에서 셀럭트넘은 첫 시작 값으로 취급한다
+//	subTemp[XPOS] = px-380;
+//	subTemp[YPOS] = py+30;
+//	xModel.xDragScrollS.selectNum = (-xModel.xDragScrollS.pos/xModel.xDragScrollS.posGab);
+//	for(int i=0;i<=6;i++)
+//	{
+//		xModel.xTouchSelectSlot[i].wPos = xModel.xDragScrollS.posGab-4;
+//		xModel.xTouchSelectSlot[i].hPos = 420;
+//		xModel.xTouchSelectSlot[i].xPos = subTemp[XPOS]+(xModel.xDragScrollS.posGab*i)+(xModel.xDragScrollS.pos%xModel.xDragScrollS.posGab) - xModel.xTouchSelectSlot[i].wPos/2;
+//		xModel.xTouchSelectSlot[i].yPos = subTemp[YPOS] - xModel.xTouchSelectSlot[i].hPos/2;
+//			
+//		/*
+//		gSetColor(255, 0, 0);
+//		setAlpha(100);
+//		fillRect(xModel.xTouchSelectSlot[i].xPos, xModel.xTouchSelectSlot[i].yPos, xModel.xTouchSelectSlot[i].wPos, xModel.xTouchSelectSlot[i].hPos);
+//		setAlpha(ALPHA_MAX);
+//		 */
+//	}
+//				
+//	subTemp[XPOS] = lcdW-97;
+//	subTemp[YPOS] = lcdH-47;
+//	
+//	drawPacker(imgModelCastingBtn0, subTemp[XPOS]+3, subTemp[YPOS]+1, 0, 0, imgW(imgModelCastingBtn0), imgH(imgModelCastingBtn0), VH);
+//	drawPacker(imgModelCastingBtn1, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgModelCastingBtn1), imgH(imgModelCastingBtn1), VH);
+//	
+//	int castImgNum = DONT;
+//	switch(gameCnt%50)
+//	{
+//	case 41:castImgNum = 0;	break;
+//	case 42:castImgNum = 1;	break;
+//	case 43:castImgNum = 2;	break;
+//	case 44:castImgNum = 3;	break;
+//	case 45:castImgNum = 4;	break;
+//	}
+//	
+//	if(castImgNum != DONT)
+//	{
+//		xGame.isBlend = TRUE;
+//		xGame.blendType = BLEND_ADDP;
+//		drawPacker(imgModelCastingBtn2, subTemp[XPOS], subTemp[YPOS], 0, imgH(imgModelCastingBtn2)/5*castImgNum, imgW(imgModelCastingBtn2), imgH(imgModelCastingBtn2)/5, VH);
+//		xGame.isBlend = FALSE;
+//	}
+//	
+//	if(gameCnt%50 == 0)
+//	{
+//		setModelEff(subTemp[XPOS]-63, subTemp[YPOS]-26);
+//		setModelEff(subTemp[XPOS]+67, subTemp[YPOS]+23);
+//	}
+//
+//	
+//	
+//	xModel.xTouchCastingBtn.wPos = imgW(imgModelCastingBtn1);
+//	xModel.xTouchCastingBtn.hPos = imgH(imgModelCastingBtn1);
+//	xModel.xTouchCastingBtn.xPos = subTemp[XPOS]-xModel.xTouchCastingBtn.wPos/2;
+//	xModel.xTouchCastingBtn.yPos = subTemp[YPOS]-xModel.xTouchCastingBtn.hPos/2;
+//	
+//	
+//	subTemp[XPOS] = lcdW-40;
+//	subTemp[YPOS] = py-232;
+//		
+//	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+//	{
+//		switch(xQuestTuto.nowNum)
+//		{
+//		case TUTO_22_RESULT:
+//			xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
+//			xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
+//			xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
+//			break;
+//		}
+//	}
+//		
+//	xTouchClr.wPos = 80;
+//	xTouchClr.hPos = 80;
+//	xTouchClr.xPos = subTemp[XPOS]-xTouchClr.wPos/2;
+//	xTouchClr.yPos = subTemp[YPOS]-xTouchClr.hPos/2;
+//	
+//    /*
+//	gSetColor(255, 0, 0);
+//	setAlpha(100);
+//	fillRect(xTouchClr.xPos, xTouchClr.yPos, xTouchClr.wPos, xTouchClr.hPos);
+//	setAlpha(ALPHA_MAX);
+//    */
+//
+//}
 
 
-void drawModelSlot(int x,int y,int selectNum)
-{
-	
-	XFACE xFaceTemp;
-	int code = xInventoryModel[selectNum].code;
-	int upGrade = xInventoryModel[selectNum].upGrade;
-	
-	
-	
-	drawPacker(imgModelUpGradeSlot0, x,y, 0, 0, imgW(imgModelUpGradeSlot0), imgH(imgModelUpGradeSlot0), VH);
-	
-	xFaceTemp.hairNum = 1000+code;
-	xFaceTemp.faceNum = 1000+code;
-	xFaceTemp.faceType = FACE_TYPE_SMILE;
-	xGame.fgameScale = 0.7f;
-	xGame.fgameScaleCx = x;
-	xGame.fgameScaleCy = lcdH-(y-50);
-	drawFittingBody(x, y-50,&xInventoryModel[selectNum].xF,&xFaceTemp,TRUE,xModelData[code].sex);
-	xGame.fgameScaleCx = cx;
-	xGame.fgameScaleCy = cy;
-	xGame.fgameScale = 1.0f;
-	
-	
-	xGame.isReSizeDraw = TRUE;
-	xGame.reSize = 70;
-	drawModelName(x, y+74, code);
-	xGame.isReSizeDraw = FALSE;
-			
-	gSetColor(255, 255, 255);
-	gDrawString(x-88, y+108, "모델 랭크", VL);
-	gDrawString(x-88, y+108+20, "모델 레벨", VL);
-	gDrawString(x-88, y+108+40, "레이어드 수", VL);
-	
-	
-	gSetColor(253, 173, 10);
-	switch(xModelData[code].grade)
-	{
-	case 0:sprintf(strTempS,"C랭크");break;
-	case 1:sprintf(strTempS,"B랭크");break;
-	case 2:sprintf(strTempS,"A랭크");break;
-	case 3:sprintf(strTempS,"S랭크");break;
-	}
-	gDrawString(x+80, y+108, strTempS, VR);
-	
-	
-	xGame.isReSizeDraw = TRUE;
-	xGame.reSize = 80;
-	for(int k=0;k<xModelData[code].upGradeMax;k++)
-	{
-		if(upGrade > k)
-			drawPacker(imgModelLv, x-5+(20*k), y+114+20-7, imgW(imgModelLv)/2, 0, imgW(imgModelLv)/2, imgH(imgModelLv), VH);
-		else
-			drawPacker(imgModelLv, x-5+(20*k), y+114+20-7, 0, 0, imgW(imgModelLv)/2, imgH(imgModelLv), VH);
-	}
-	xGame.isReSizeDraw = FALSE;
-	
-	sprintf(strTempS, "%d회",xModelData[code].layeredNum+getModelLayered(selectNum,0));
-	gDrawString(x+80, y+108+40, strTempS, VR);
-}
 
-void drawNewModel()
-{
-	int px = cx;
-	int py = cy;
-	
-	drawBgFillRect();
-	int startAnyCnt;
-	int alpha = 100;
-	int resize = 100;
-	int rot = 0;
-	int x;
-	int y;
-	
-	startAnyCnt = xWorldMap.newModelAnyCnt-72;
-	
-	if(startAnyCnt >= 0)
-	{
-		drawModelRotEff(px+132, py-90,startAnyCnt);
-	}
-	
-	startAnyCnt = xWorldMap.newModelAnyCnt;
-	
-	if(startAnyCnt >= 0)
-	{
-		switch(startAnyCnt)
-		{
-		case 0:alpha=	100;resize=	0;x=	480;y=	320;rot=	0;break;
-		case 1:alpha=	100;resize=	24;x=	480;y=	320;rot=	0;break;
-		case 2:alpha=	100;resize=	48;x=	480;y=	320;rot=	0;break;
-		case 3:alpha=	100;resize=	72;x=	480;y=	320;rot=	0;break;
-		case 4:alpha=	100;resize=	96;x=	480;y=	320;rot=	0;break;
-		case 5:alpha=	100;resize=	120;x=	480;y=	320;rot=	0;break;
-		case 6:alpha=	100;resize=	113.333;x=	480;y=	320;rot=	0;break;
-		case 7:alpha=	100;resize=	106.667;x=	480;y=	320;rot=	0;break;
-		case 8:alpha=	100;resize=	100;x=	480;y=	320;rot=	0;break;
-		case 9:alpha=	100;resize=	100;x=	480;y=	320;rot=	0;break;
-		case 10:alpha=	100;resize=	100;x=	480;y=	320;rot=	0;break;
-		case 11:alpha=	100;resize=	100;x=	480;y=	320;rot=	0;break;
-		case 12:alpha=	100;resize=	100;x=	480;y=	320;rot=	0;break;
-		case 13:alpha=	100;resize=	100;x=	480;y=	320;rot=	0;break;
-		case 14:alpha=	100;resize=	100;x=	480;y=	326.001;rot=	0;break;
-		case 15:alpha=	100;resize=	100;x=	480;y=	332.006;rot=	0;break;
-		case 16:alpha=	100;resize=	100;x=	480;y=	338;rot=	0;break;
-		case 17:alpha=	100;resize=	100;x=	480;y=	331.999;rot=	0;break;
-		case 18:alpha=	100;resize=	100;x=	480;y=	325.994;rot=	0;break;
-		case 19:alpha=	100;resize=	100;x=	480;y=	320;rot=	0;break;
-		case 20:alpha=	100;resize=	100;x=	480;y=	326.001;rot=	0;break;
-		case 21:alpha=	100;resize=	100;x=	480;y=	331.995;rot=	0;break;
-		case 22:alpha=	100;resize=	100;x=	480;y=	338;rot=	0;break;
-		case 23:alpha=	100;resize=	100;x=	480;y=	331.999;rot=	0;break;
-		case 24:alpha=	100;resize=	100;x=	480;y=	325.994;rot=	0;break;
-		case 25:alpha=	100;resize=	100;x=	480;y=	320;rot=	0;break;
-		case 26:alpha=	100;resize=	100;x=	480;y=	326.001;rot=	0;break;
-		case 27:alpha=	100;resize=	100;x=	480;y=	331.995;rot=	0;break;
-		case 28:alpha=	100;resize=	100;x=	480;y=	338;rot=	0;break;
-		case 29:alpha=	100;resize=	100;x=	480;y=	331.999;rot=	0;break;
-		case 30:alpha=	100;resize=	100;x=	480;y=	325.994;rot=	0;break;
-		case 31:alpha=	100;resize=	100;x=	480;y=	320;rot=	0;break;
-		case 32:alpha=	100;resize=	100;x=	480;y=	326.004;rot=	0;break;
-		case 33:alpha=	100;resize=	100;x=	480;y=	332.004;rot=	0;break;
-		case 34:alpha=	100;resize=	100;x=	480;y=	338;rot=	0;break;
-		case 35:alpha=	100;resize=	100;x=	480;y=	338;rot=	-14;break;
-		case 36:alpha=	100;resize=	100;x=	480;y=	338;rot=	-14;break;
-		case 37:alpha=	100;resize=	100;x=	480;y=	338;rot=	-14;break;
-		case 38:alpha=	100;resize=	100;x=	480;y=	338;rot=	-14;break;
-		case 39:alpha=	83.3333;resize=	133.333;x=	480;y=	338;rot=	-14;break;
-		case 40:alpha=	66.6667;resize=	166.667;x=	480;y=	338;rot=	-14;break;
-		case 41:alpha=	50;resize=	200;x=	480;y=	338;rot=	-14;break;
-		case 42:alpha=	33.3333;resize=	233.333;x=	480;y=	338;rot=	-14;break;
-		case 43:alpha=	16.6667;resize=	266.667;x=	480;y=	338;rot=	-14;break;
-		default:alpha=	0;resize=	300;x=	480;y=	338;rot=	-14;break;
-		}
-
-		x -=480;
-		y -=320;
-		x +=cx;
-		y +=cy;
-		
-		if(alpha != 100)
-			setAlpha(alpha*ALPHA_MAX/100);
-		
-		if(resize != 100)
-		{
-			xGame.isReSizeDraw = TRUE;
-			xGame.reSize = resize;
-		}
-		
-		if(rot != 0)
-		{
-			xGame.isRotate = TRUE;
-			xGame.rotateNum = rot;
-		}
-		if(startAnyCnt >= 35)
-		{
-			switch(xWorldMap.newModelType)
-			{
-			case 0:
-            case 3:
-				drawPacker(imgNewModel1, x,	y, 0, 0, imgW(imgNewModel1), imgH(imgNewModel1), VH);
-				break;
-			case 1:
-			case 2:
-            case 4:
-				drawPacker(imgNewModel3, x,	y, 0, 0, imgW(imgNewModel3), imgH(imgNewModel3), VH);
-				break;
-			}
-		}
-		else
-		{
-			switch(xWorldMap.newModelType)
-			{
-			case 0:
-            case 3:
-				drawPacker(imgNewModel0, x,	y, 0, 0, imgW(imgNewModel0), imgH(imgNewModel0), VH);
-				break;
-			case 1:
-			case 2:
-            case 4:
-				drawPacker(imgNewModel2, x,	y, 0, 0, imgW(imgNewModel2), imgH(imgNewModel2), VH);
-				break;
-			}
-		}
-		xGame.isRotate = FALSE;
-		xGame.isReSizeDraw = FALSE;
-		setAlpha(ALPHA_MAX);
-	}
-	
-	
-	XFITTINGLAYER xFTemp;
-	for(int i=0;i<16;i++)
-		xFTemp.code[i] = DONT;
-	drawModelShow(xModel.newModelCode,&xFTemp,xWorldMap.newModelAnyCnt-44);
-	
-	if(xWorldMap.newModelAnyCnt == 0)
-		playSnd(SND_MODEL_CASTING);
-		
-	if(xWorldMap.newModelAnyCnt == 45)
-	{
-		playSnd(SND_MODEL_RESULT);
-		setQuest(23,1,DONT);
-	}
-	
-	++xWorldMap.newModelAnyCnt;
-}
-
-
-int addInventoryModel(int modelCode)
-{
-	setModelList(DONT);
-	
-	
-	int checkSort = DONT;
-	for(int i=0;i<xModel.totalInventoryModel;i++)
-	{
-		if((xModelData[modelCode].grade > xModelData[xInventoryModel[i].code].grade)
-		   ||(xModelData[modelCode].grade == xModelData[xInventoryModel[i].code].grade && xInventoryModel[i].upGrade == 0 && xInventoryModel[i].code >= modelCode))
-		{
-			checkSort = i;
-			break;
-		}
-	}
-	if(checkSort != DONT)
-	{
-		for(int i=xModel.totalInventoryModel;i>checkSort;i--)
-		{
-			memcpy(&xInventoryModel[i], &xInventoryModel[i-1], sizeof(xInventoryModel[i]));
-		}
-	}
-	else
-		checkSort = xModel.totalInventoryModel;
-	
-	xInventoryModel[checkSort].key = DONT;
-	xInventoryModel[checkSort].vote = 0;
-	xInventoryModel[checkSort].isMapShow = FALSE;
-	xInventoryModel[checkSort].upGrade = 0;
-	xInventoryModel[checkSort].code = modelCode;
-	
-	
-	if(xModelData[modelCode].isOpen == FALSE)
-	{
-		xModelData[modelCode].isOpen = TRUE;
-	}
-	
-	xModel.totalInventoryModel++;
-	
-	
-	return checkSort;	
-}
-
-int addInventoryModel_FRIEND(int modelCode)
-{
-	int checkSort = 0;
-	for(int i=0;i<xModel.totalInventoryModel_FRIEND;i++)
-	{
-		if((xModelData[modelCode].grade > xModelData[xInventoryModel_FRIEND[i].code].grade)
-		   ||(xModelData[modelCode].grade == xModelData[xInventoryModel_FRIEND[i].code].grade && xInventoryModel_FRIEND[i].upGrade == 0 && xInventoryModel_FRIEND[i].code >= modelCode))
-		{
-			checkSort = i;
-			break;
-		}
-	}
-	
-	for(int i=xModel.totalInventoryModel_FRIEND;i>checkSort;i--)
-	{
-		memcpy(&xInventoryModel_FRIEND[i], &xInventoryModel_FRIEND[i-1], sizeof(xInventoryModel_FRIEND[i]));
-	}
-	
-	xInventoryModel_FRIEND[checkSort].upGrade = 0;
-	xInventoryModel_FRIEND[checkSort].code = modelCode;
-	
-	xModel.totalInventoryModel_FRIEND++;
-	
-	return checkSort;
-}
-
-void outPutInventoryModel(int slotNum)
-{
-	/////////////////////////////////////////////////////////////////////
-	int eslot = slotNum;
-	xEventQueueNet.action[xEventQueueNet.totalNum] = 2;//0:신규,1:업데이트,2삭제
-	xEventQueueNet.code[xEventQueueNet.totalNum] = xInventoryModel[eslot].code;
-	xEventQueueNet.haveNum[xEventQueueNet.totalNum] = xInventoryModel[eslot].upGrade;
-	xEventQueueNet.key[xEventQueueNet.totalNum] = xInventoryModel[eslot].key;
-	for(int f=0;f<16;f++)
-	{
-		xEventQueueNet.layer[xEventQueueNet.totalNum][f] = xInventoryModel[eslot].xF.code[f];
-	}
-	xEventQueueNet.open[xEventQueueNet.totalNum] = 0;//0:미출연1:출연
-	xEventQueueNet.mapX[xEventQueueNet.totalNum] = xInventoryModel[eslot].xF.isInFitting==FALSE?0:1;
-	addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SETMODEL, TRUE);
-	/////////////////////////////////////////////////////////////////////
-	
-		
-	for(int i=slotNum;i<xModel.totalInventoryModel;i++)
-	{
-		if(xModelUpGrade.inventoryNum == i+1)
-			xModelUpGrade.inventoryNum = i;
-		
-		memcpy(&xInventoryModel[i], &xInventoryModel[i+1], sizeof(xInventoryModel[i]));
-	}
-	xModel.totalInventoryModel--;
-}
-
-void setModelList(int grade)
-{
-	for(int i=0;i<xModel.totalInventoryModel;i++)
-	{
-		if(xInventoryModel[i].code == DONT)
-		{
-			outPutInventoryModel(i);
-			i--;
-		}
-	}
-}
-
-void sortModelList()
-{
-	XINVENTORYMODEL xInventoryModelTemp;
-	
-	
-	for(int i=0;i<xModel.totalInventoryModel;i++)
-	{
-		xInventoryModel[i].xF.layeredNum = 0;
-		for(int f=0;f<16;f++)
-		{
-			if(xInventoryModel[i].xF.code[f] != DONT)
-				xInventoryModel[i].xF.layeredNum++;
-		}
-	}
-	
-	M_Boolean isCheck;
-	for(int i=0;i<xModel.totalInventoryModel;i++)
-	{
-		for(int j=i+1;j<xModel.totalInventoryModel;j++)
-		{
-			isCheck =FALSE;
-			if(xInventoryModel[i].xF.layeredNum == 0 &&  xInventoryModel[j].xF.layeredNum > 0)
-			{
-				isCheck = TRUE;
-			}
-			
-			else if(((xInventoryModel[i].xF.layeredNum > 0 &&  xInventoryModel[j].xF.layeredNum > 0)||(xInventoryModel[i].xF.layeredNum == 0 &&  xInventoryModel[j].xF.layeredNum == 0))
-				&& (xModelData[xInventoryModel[i].code].grade < xModelData[xInventoryModel[j].code].grade))
-			{
-				isCheck = TRUE;
-			}
-
-			else if(((xInventoryModel[i].xF.layeredNum > 0 &&  xInventoryModel[j].xF.layeredNum > 0)||(xInventoryModel[i].xF.layeredNum == 0 &&  xInventoryModel[j].xF.layeredNum == 0))
-				&& (xModelData[xInventoryModel[i].code].grade == xModelData[xInventoryModel[j].code].grade)
-				&& (xInventoryModel[i].upGrade < xInventoryModel[j].upGrade))
-			{
-				isCheck = TRUE;
-			}
-			if(isCheck == TRUE)
-		    {
-				memcpy(&xInventoryModelTemp,&xInventoryModel[i],sizeof(xInventoryModelTemp));
-				memcpy(&xInventoryModel[i],&xInventoryModel[j],sizeof(xInventoryModelTemp));
-				memcpy(&xInventoryModel[j],&xInventoryModelTemp,sizeof(xInventoryModelTemp));
-		    }
-		}
-	}
-}
-
-void sortModelListFriend()
-{
-	XINVENTORYMODEL xInventoryModelTemp;
-	
-	
-	for(int i=0;i<xModel.totalInventoryModel_FRIEND;i++)
-	{
-		xInventoryModel_FRIEND[i].xF.layeredNum = 0;
-		for(int f=0;f<16;f++)
-		{
-			if(xInventoryModel_FRIEND[i].xF.code[f] != DONT)
-				xInventoryModel_FRIEND[i].xF.layeredNum++;
-		}
-	}
-	
-	M_Boolean isCheck;
-	for(int i=0;i<xModel.totalInventoryModel_FRIEND;i++)
-	{
-		for(int j=i+1;j<xModel.totalInventoryModel_FRIEND;j++)
-		{
-			isCheck =FALSE;
-			if(xInventoryModel_FRIEND[i].xF.layeredNum == 0 &&  xInventoryModel_FRIEND[j].xF.layeredNum > 0)
-			{
-				isCheck = TRUE;
-			}
-			
-			else if(((xInventoryModel_FRIEND[i].xF.layeredNum > 0 &&  xInventoryModel_FRIEND[j].xF.layeredNum > 0)||(xInventoryModel_FRIEND[i].xF.layeredNum == 0 &&  xInventoryModel_FRIEND[j].xF.layeredNum == 0))
-					&& (xModelData[xInventoryModel_FRIEND[i].code].grade < xModelData[xInventoryModel_FRIEND[j].code].grade))
-			{
-				isCheck = TRUE;
-			}
-			else if(((xInventoryModel_FRIEND[i].xF.layeredNum > 0 &&  xInventoryModel_FRIEND[j].xF.layeredNum > 0)||(xInventoryModel_FRIEND[i].xF.layeredNum == 0 &&  xInventoryModel_FRIEND[j].xF.layeredNum == 0))
-					&& (xModelData[xInventoryModel_FRIEND[i].code].grade == xModelData[xInventoryModel_FRIEND[j].code].grade)
-					&& (xInventoryModel_FRIEND[i].upGrade < xInventoryModel_FRIEND[j].upGrade))
-			{
-				isCheck = TRUE;
-			}
-			if(isCheck == TRUE)
-		    {
-				memcpy(&xInventoryModelTemp,&xInventoryModel_FRIEND[i],sizeof(xInventoryModelTemp));
-				memcpy(&xInventoryModel_FRIEND[i],&xInventoryModel_FRIEND[j],sizeof(xInventoryModelTemp));
-				memcpy(&xInventoryModel_FRIEND[j],&xInventoryModelTemp,sizeof(xInventoryModelTemp));
-		    }
-		}
-	}
-}
+//void drawModelUpGrade()
+//{
+//	int px = cx;
+//	int py = cy;
+//	
+//	drawBgFillRect();
+//	drawPacker(imgModelUpGradeBg, px-3, py-3, 0, 0, imgW(imgModelUpGradeBg), imgH(imgModelUpGradeBg), VH);
+//		
+//	int iMax;
+//	int pos;
+//	int code;
+//	int upGrade;
+//	
+//	code = xInventoryModel[xModelUpGrade.inventoryNum].code;
+//	upGrade = xInventoryModel[xModelUpGrade.inventoryNum].upGrade;
+//	
+//	
+//		
+//	subTemp[XPOS] = px-320;
+//	subTemp[YPOS] = py-106;
+//	
+//	XFACE xFaceTemp;
+//	xFaceTemp.hairNum = 1000+code;
+//	xFaceTemp.faceNum = 1000+code;
+//	xFaceTemp.faceType = FACE_TYPE_SMILE;
+//	drawFittingBody(subTemp[XPOS], subTemp[YPOS]+60,&xInventoryModel[xModelUpGrade.inventoryNum].xF,&xFaceTemp,TRUE,xModelData[code].sex);
+//	
+//	
+//	subTemp[XPOS] = px-320;
+//	subTemp[YPOS] = py+143;
+//	gSetColor(255, 255, 255);
+//	gDrawString(subTemp[XPOS]-88, subTemp[YPOS]-6, "모델 랭크", VL);
+//	gDrawString(subTemp[XPOS]-88, subTemp[YPOS]-6+20, "모델 레벨", VL);
+//	gDrawString(subTemp[XPOS]-88, subTemp[YPOS]-6+40, "레이어드 수", VL);
+//
+//	
+//	gSetColor(253, 173, 10);
+//	switch(xModelData[code].grade)
+//	{
+//	case 0:sprintf(strTempS,"C랭크");break;
+//	case 1:sprintf(strTempS,"B랭크");break;
+//	case 2:sprintf(strTempS,"A랭크");break;
+//	case 3:sprintf(strTempS,"S랭크");break;
+//	}
+//	gDrawString(subTemp[XPOS]+88, subTemp[YPOS]-6, strTempS, VR);
+//	
+//	
+//	xGame.isReSizeDraw = TRUE;
+//	xGame.reSize = 80;
+//	for(int k=0;k<xModelData[code].upGradeMax;k++)
+//	{
+//		if(upGrade > k)
+//			drawPacker(imgModelLv, subTemp[XPOS]+2+(20*k), subTemp[YPOS]+20-7, imgW(imgModelLv)/2, 0, imgW(imgModelLv)/2, imgH(imgModelLv), VH);
+//		else
+//			drawPacker(imgModelLv, subTemp[XPOS]+2+(20*k), subTemp[YPOS]+20-7, 0, 0, imgW(imgModelLv)/2, imgH(imgModelLv), VH);
+//	}
+//	xGame.isReSizeDraw = FALSE;
+//	
+//	
+//		
+//	sprintf(strTempS, "%d회",xModelData[code].layeredNum+getModelLayered(xModelUpGrade.inventoryNum,0));
+//	gDrawString(subTemp[XPOS]+88, subTemp[YPOS]-6+40, strTempS, VR);
+//	
+//	
+//	subTemp[XPOS] = px-320;
+//	subTemp[YPOS] = py+238;
+//	
+//	gSetColor(254, 177, 0);
+//	gDrawString(subTemp[XPOS]-88, subTemp[YPOS]-36, "활동 보상", VL);
+//
+//	drawIcon(subTemp[XPOS]-90+10,subTemp[YPOS]-6, ICON_TYPE_TIME);
+//	gSetColor(255, 255, 255);
+//	drawTimeSprintf(strTempS,getModelGiftTime(xModelUpGrade.inventoryNum,0),4);
+//	gDrawString(subTemp[XPOS]-90+10+20, subTemp[YPOS]-6, strTempS, VL);
+//		
+//	drawPacker(imgModelMainInfo4, subTemp[XPOS]-10, subTemp[YPOS]-4, 0, 0, imgW(imgModelMainInfo4), imgH(imgModelMainInfo4), VH);
+//	
+//	//254	188	10
+//	gSetColor(254, 188, 10);
+//	setCommaNum(strTempS, getModelGiftNum(xModelUpGrade.inventoryNum,0));
+//	gDrawString(subTemp[XPOS]+90, subTemp[YPOS]-6, strTempS, VR);
+//	
+//	int giftTypeImgNum;
+//	switch(xModelData[code].giftType)
+//	{
+//		case MODEL_GIFTTYPE_GOLD:giftTypeImgNum=ICON_TYPE_GOLD;break;
+//		case MODEL_GIFTTYPE_LOOK:giftTypeImgNum=ICON_TYPE_LOOK;break;
+//		case MODEL_GIFTTYPE_CANDY:giftTypeImgNum=ICON_TYPE_CANDY;break;
+//		case MODEL_GIFTTYPE_EXP:giftTypeImgNum=ICON_TYPE_EXP;break;
+//	}
+//	drawIcon(subTemp[XPOS]+15, subTemp[YPOS]-6, giftTypeImgNum);
+//
+//	//세부메뉴
+//	subTemp[XPOS] = px-88;
+//	subTemp[YPOS] = py-38;
+//	
+//	xModelUpGrade.xDragScrollS.totalNum = xModelUpGrade.totalModelList;
+//	xModelUpGrade.xDragScrollS.posGab = 202;
+//	
+//	xModelUpGrade.xDragScrollS.endPos = -(((xModelUpGrade.xDragScrollS.totalNum-3)*xModelUpGrade.xDragScrollS.posGab));
+//	
+//	if(xModelUpGrade.xDragScrollS.totalNum < 3)
+//		xModelUpGrade.xDragScrollS.endPos = 0;
+//	
+//	iMax = xModelUpGrade.xDragScrollS.totalNum;
+//	dragScrollPrc(&xModelUpGrade.xDragScrollS,1,FALSE);
+//	
+//	gSetClip(true,px+110-305,0,610,lcdH);
+//	
+//	for(int i=0;i<iMax;i++)
+//	{
+//		pos = xModelUpGrade.xDragScrollS.pos+(xModelUpGrade.xDragScrollS.posGab*i);
+//		if(subTemp[XPOS]+pos < -xModelUpGrade.xDragScrollS.posGab)
+//			continue;
+//				
+//		if(xModelUpGrade.isUpgrade == TRUE && xModelUpGrade.selectSlot == i)
+//			continue;
+//			
+//		drawModelSlot(subTemp[XPOS]+pos,subTemp[YPOS],xModelUpGrade.modelListSlot[i]);
+//			
+//		
+//				
+//		if(xModelUpGrade.selectSlot == i)
+//		{
+//			xModelUpGrade.slotX = subTemp[XPOS]+pos;
+//			xModelUpGrade.slotY = subTemp[YPOS];
+//			drawPacker(imgModelUpGradeSlot1, subTemp[XPOS]+pos, subTemp[YPOS], 0, 0, imgW(imgModelUpGradeSlot1), imgH(imgModelUpGradeSlot1), VH);
+//		}
+//		else if(xModelUpGrade.selectSlot != DONT)
+//			drawPacker(imgModelUpGradeSlot2, subTemp[XPOS]+pos, subTemp[YPOS], 0, 0, imgW(imgModelUpGradeSlot2), imgH(imgModelUpGradeSlot2), VH);
+//	}
+//    gSetClip(false,0, 0, lcdW, lcdH);
+//	//거리별 스크롤 방식에서 셀럭트넘은 첫 시작 값으로 취급한다
+//	xModelUpGrade.xDragScrollS.selectNum = (-xModelUpGrade.xDragScrollS.pos/xModelUpGrade.xDragScrollS.posGab);
+//	for(int i=0;i<4;i++)
+//	{
+//		xModelUpGrade.xTouchSelectSlot[i].wPos = xModelUpGrade.xDragScrollS.posGab-4;
+//		xModelUpGrade.xTouchSelectSlot[i].hPos = 300;
+//		xModelUpGrade.xTouchSelectSlot[i].xPos = subTemp[XPOS]+(xModelUpGrade.xDragScrollS.posGab*i)+(xModelUpGrade.xDragScrollS.pos%xModelUpGrade.xDragScrollS.posGab) - xModelUpGrade.xTouchSelectSlot[i].wPos/2;
+//		xModelUpGrade.xTouchSelectSlot[i].yPos = subTemp[YPOS] - xModelUpGrade.xTouchSelectSlot[i].hPos/2;
+//		
+//		/*
+//		gSetColor(255, 0, 0);
+//		setAlpha(100);
+//		fillRect(xModelUpGrade.xTouchSelectSlot[i].xPos, xModelUpGrade.xTouchSelectSlot[i].yPos, xModelUpGrade.xTouchSelectSlot[i].wPos, xModelUpGrade.xTouchSelectSlot[i].hPos);
+//		setAlpha(ALPHA_MAX);
+//		 */
+//	}
+//		
+//	subTemp[XPOS] = px+315;
+//	subTemp[YPOS] = py+210;
+//	setFontSize(20);
+//		
+//	M_Boolean isClose = FALSE;
+//	
+//	
+//	switch(xModelUpGrade.upgradeType)
+//	{
+//	case 0:
+//		sprintf(strTempS,"업그레이드");
+//		if(xInventoryModel[xModelUpGrade.inventoryNum].upGrade >= xModelData[xInventoryModel[xModelUpGrade.inventoryNum].code].upGradeMax)
+//		{
+//			isClose = TRUE;
+//		}
+//		break;
+//	case 1:
+//		sprintf(strTempS,"조합하기");
+//		break;
+//	}
+//		
+//	if(isClose == FALSE && xModelUpGrade.selectSlot >= 0 && xModelUpGrade.selectSlot < xModelUpGrade.totalModelList)
+//	{
+//		drawPacker(imgUpGrageBtn, subTemp[XPOS], subTemp[YPOS], 0, imgH(imgUpGrageBtn)/2, imgW(imgUpGrageBtn), imgH(imgUpGrageBtn)/2, VH);
+//		gDrawStringBold(subTemp[XPOS], subTemp[YPOS], strTempS, VH, 255, 255, 255, 186, 70, 10);
+//	}
+//	else
+//	{
+//		
+//		drawPacker(imgUpGrageBtn, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgUpGrageBtn), imgH(imgUpGrageBtn)/2, VH);
+//		gDrawStringBold(subTemp[XPOS], subTemp[YPOS], strTempS, VH, 166, 156, 126, 81, 19, 2);
+//	}
+//	setFontSize(11);
+//	xTouchOk.wPos = imgW(imgUpGrageBtn);
+//	xTouchOk.hPos = imgH(imgUpGrageBtn)/2;
+//	xTouchOk.xPos = subTemp[XPOS]-xTouchOk.wPos/2;
+//	xTouchOk.yPos = subTemp[YPOS]-xTouchOk.hPos/2;
+//		
+//	xTouchClr.wPos = 100;
+//	xTouchClr.hPos = 100;
+//	xTouchClr.xPos = px+402-xTouchClr.wPos/2;
+//	xTouchClr.yPos = py-250-xTouchClr.hPos/2;
+//	
+//	/*
+//	gSetColor(255, 0, 0);
+//	setAlpha(100);
+//	fillRect(xTouchClr.xPos, xTouchClr.yPos, xTouchClr.wPos, xTouchClr.hPos);
+//	setAlpha(ALPHA_MAX);
+//	 */
+//	
+//	
+//	switch(xModelUpGrade.upgradeType)
+//	{
+//	case 0:
+//		gDrawStringBold(px-162, py+170, "업그레이드에 이용되는 모델은 사라집니다.", VL, 97, 255, 227, 44, 27, 26);
+//		break;
+//	case 1:
+//		gDrawStringBold(px-162, py+170, "조합 성공시 윗등급의 모델이 랜덤하게 나와요", VL, 97, 255, 227, 44, 27, 26);
+//		break;
+//	}
+//	int per = 0;
+//	int price = 0;
+//	if(xModelUpGrade.selectSlot != DONT)
+//	{
+//		per = getModelUpgradePer(xModelUpGrade.inventoryNum,xModelUpGrade.modelListSlot[xModelUpGrade.selectSlot]);
+//		price = getModelUpgradePrice(xModelUpGrade.inventoryNum,xModelUpGrade.modelListSlot[xModelUpGrade.selectSlot]);
+//	}
+//	gDrawStringBold(px-183, py+225, "비용", VL, 97, 255, 227, 44, 27, 26);
+//	gDrawStringBold(px+35, py+225, "확률", VL, 97, 255, 227, 44, 27, 26);
+//	
+//	setCommaNum(strTempS, price);
+//	setFontSize(14);
+//	gDrawStringBold(px-40, py+225, strTempS, VR, 97, 255, 227, 44, 27, 26);
+//	setFontSize(11);
+//	
+//	
+//	
+//	
+//	
+//	setFontSize(14);
+//	sprintf(strTempS, " %d%% ",per);
+//	gDrawStringBold(px+180, py+225, strTempS, VR, 97, 255, 227, 44, 27, 26);
+//	setFontSize(11);
+//	
+//	if(xModelUpGrade.totalModelList == 0)
+//	{
+//		setFontSize(14);
+//		switch(xModelUpGrade.upgradeType)
+//		{
+//		case 0:
+//			xLinkInfo.total = 0;
+//			sprintf(xLinkInfo.strTemp[xLinkInfo.total++],"모델을 업그레이드 하실려면");
+//			sprintf(xLinkInfo.strTemp[xLinkInfo.total++],"다른 모델이 필요합니다.");
+//			drawLinkInfo(px-70,py-40,0);
+//
+//			break;
+//		case 1:
+//			xLinkInfo.total = 0;
+//			sprintf(xLinkInfo.strTemp[xLinkInfo.total++],"업그레이드가 완료된");
+//			sprintf(xLinkInfo.strTemp[xLinkInfo.total++],"동일등급의 모델이 필요합니다.");
+//			drawLinkInfo(px-70,py-40,0);
+//			break;
+//		}
+//		setFontSize(11);
+//	}
+//}
 
 
-void setModelUpGradeList(int slotNum)
-{
-	xModelUpGrade.totalModelList = 0;
-	
-	for(int i=0;i<xModel.totalInventoryModel;i++)
-	{
-		if(i != slotNum && xInventoryModel[i].code != DONT && getModelMainSlot(xInventoryModel[i].key) == DONT)
-		{
-			switch(xModelUpGrade.upgradeType)
-			{
-			case 0:
-				xModelUpGrade.modelListSlot[xModelUpGrade.totalModelList++] = i;
-				break;
-			case 1:
-				if(xInventoryModel[i].upGrade == xModelData[xInventoryModel[i].code].upGradeMax)
-				{
-					if(xModelData[xInventoryModel[slotNum].code].grade == xModelData[xInventoryModel[i].code].grade)
-					{
-						xModelUpGrade.modelListSlot[xModelUpGrade.totalModelList++] = i;
-					}
-				}
-				break;
-			}
-		}
-	}
-}
-
-void setNewModel(int type)
-{
-	setQuest(30,1,DONT);
-	
-	xCollection.selectSkill = DONT;
-	xWorldMap.isNewModel = TRUE;
-	xWorldMap.newModelAnyCnt = 0;
-	xWorldMap.newModelType = type;
-	
-	int selectSlot = 0;
-	int selectGrade = 0;
-	int perTemp = 0;
-	int perRandom = ranDom(0, 1000-1);
-	
-	
-	switch(type)
-	{
-	case 0: //일반뽑기권
-		for(int i=0;i<xModel.newModelTotal[type];i++)
-		{
-			if(xModel.newModelCountNum <= xModel.newModelCount[i])
-			{
-				selectSlot = i;
-				break;
-			}
-		}
-		for(int i=0;i<4;i++)
-		{
-			perTemp += xModel.newModelPer[selectSlot][i];
-			if(perRandom < perTemp)
-			{
-				selectGrade = i;
-				break;
-			}
-		}
-		xModel.newModelCountNum+=xModel.newModelCountPlus[selectSlot][selectGrade];
-		break;
-	case 1: //프리미엄
-	case 2: //A~S
-		for(int i=0;i<xModel.newModelTotal[1];i++)
-		{
-			if(xModel.newModelCountNum <= xModel.newModelCount_Cash[i])
-			{
-				selectSlot = i;
-				break;
-			}
-		}
-		for(int i=0;i<4;i++)
-		{
-			perTemp += xModel.newModelPer_Cash[selectSlot][i];
-			if(perRandom < perTemp)
-			{
-				selectGrade = i;
-				break;
-			}
-		}
-            
-        if(xAmulet.buff[JEWELBUFF_TYPE_CASTING_S] > 0)
-        {
-            if(ranDom(0, 10000-1) < xAmulet.buff[JEWELBUFF_TYPE_CASTING_S])      //안오는얘
-            {
-                selectGrade = 3;
-            }
-        }
-        
-		xModel.newModelCountNum+=xModel.newModelCountPlus_Cash[selectSlot][selectGrade];
-		break;
-    case 3:     //A급확정
-        selectGrade = 2;
-        break;
-    case 4:     //S급확정
-        selectGrade = 3;
-        break;
-    case 5: //캐릭지정
-        break;
-	}
-    
-    if(type == 5)
-    {
-        xModel.newModelCode = xMail.giftModelCode;
-
-        if(xModelData[xModel.newModelCode].grade >= 2)
-            xWorldMap.newModelType = 1;
-        else
-            xWorldMap.newModelType = 0;
-    }
-    else
-    {
-        switch(selectGrade)
-        {
-        case 0:
-            xModel.newModelCode = xModel.ranDomSlotC[ranDom(0,xModel.totalRanDomSlotC-1)];
-            break;
-        case 1:
-            xModel.newModelCode = xModel.ranDomSlotB[ranDom(0,xModel.totalRanDomSlotB-1)];
-            if(type == 2)
-                xModel.newModelCode = xModel.ranDomSlotA[ranDom(0,xModel.totalRanDomSlotA-1)];
-            break;
-        case 2:
-            xModel.newModelCode = xModel.ranDomSlotA[ranDom(0,xModel.totalRanDomSlotA-1)];
-            break;
-        case 3:
-            xModel.newModelCode = xModel.ranDomSlotS[ranDom(0,xModel.totalRanDomSlotS-1)];
-            break;
-        }
-    }
-	
-	
-	switch(type)
-	{
-	case 0:
-	case 1:
-		///////////////////////////////////////////////////////////////////
-		xEventQueueNet.layer[xEventQueueNet.totalNum][0] = 1;//0:골드,1프리미엄,2캔디머쉰,3직원의상,모델뽑기
-		xEventQueueNet.layer[xEventQueueNet.totalNum][1] = 0;//아이템종류(0~5)직원의상 구매시
-		xEventQueueNet.code[xEventQueueNet.totalNum] = type;
-		addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_BUYGOLD, TRUE);
-		///////////////////////////////////////////////////////////////////
-		break;
-	}
-	
-	///////////////////////////////////////////////////////////////////
-	xEventQueueNet.layer[xEventQueueNet.totalNum][0] = 4;//0:골드,1프리미엄,2캔디머쉰,3직원의상,4모델뽑기,100:첫구매이벤트,101:스페션세일이벤트,102:리뷰이벤트,200:해킹로그,300:출석로그,301:친구초대로그
-	xEventQueueNet.layer[xEventQueueNet.totalNum][1] = 0;//아이템종류(0~5)직원의상 구매시
-	xEventQueueNet.code[xEventQueueNet.totalNum] = xModel.newModelCode;
-	addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_BUYGOLD, TRUE);
-	///////////////////////////////////////////////////////////////////
-
-
-	if(type == 0 || type == 1)
-	{
-		switch(selectGrade)
-		{
-		case 0:
-			sprintf(xRocks.strTemp, "%s",xModelData[xModel.newModelCode].strName);
-			if(type == 0)
-				setFiveRocksCustom("모델","일반캐스팅","C급",xRocks.strTemp,1);
-			else
-				setFiveRocksCustom("모델","고급캐스팅","C급",xRocks.strTemp,1);
-			break;
-		case 1:
-			sprintf(xRocks.strTemp, "%s",xModelData[xModel.newModelCode].strName);
-			if(type == 0)
-				setFiveRocksCustom("모델","일반캐스팅","B급",xRocks.strTemp,1);
-			else
-				setFiveRocksCustom("모델","고급캐스팅","B급",xRocks.strTemp,1);
-			break;
-		case 2:
-			sprintf(xRocks.strTemp, "%s",xModelData[xModel.newModelCode].strName);
-			if(type == 0)
-				setFiveRocksCustom("모델","일반캐스팅","A급",xRocks.strTemp,1);
-			else
-				setFiveRocksCustom("모델","고급캐스팅","A급",xRocks.strTemp,1);
-			break;
-		case 3:
-			sprintf(xRocks.strTemp, "%s",xModelData[xModel.newModelCode].strName);
-			if(type == 0)
-				setFiveRocksCustom("모델","일반캐스팅","S급",xRocks.strTemp,1);
-			else
-				setFiveRocksCustom("모델","고급캐스팅","S급",xRocks.strTemp,1);
-			break;
-		}                  
-	}
-	
-	if(xModel.newModelCountNum < 0)
-		xModel.newModelCountNum = 0;
-}
+//void drawModelSlot(int x,int y,int selectNum)
+//{
+//	
+//	XFACE xFaceTemp;
+//	int code = xInventoryModel[selectNum].code;
+//	int upGrade = xInventoryModel[selectNum].upGrade;
+//	
+//	
+//	
+//	drawPacker(imgModelUpGradeSlot0, x,y, 0, 0, imgW(imgModelUpGradeSlot0), imgH(imgModelUpGradeSlot0), VH);
+//	
+//	xFaceTemp.hairNum = 1000+code;
+//	xFaceTemp.faceNum = 1000+code;
+//	xFaceTemp.faceType = FACE_TYPE_SMILE;
+//	xGame.fgameScale = 0.7f;
+//	xGame.fgameScaleCx = x;
+//	xGame.fgameScaleCy = lcdH-(y-50);
+//	drawFittingBody(x, y-50,&xInventoryModel[selectNum].xF,&xFaceTemp,TRUE,xModelData[code].sex);
+//	xGame.fgameScaleCx = cx;
+//	xGame.fgameScaleCy = cy;
+//	xGame.fgameScale = 1.0f;
+//	
+//	
+//	xGame.isReSizeDraw = TRUE;
+//	xGame.reSize = 70;
+//	drawModelName(x, y+74, code);
+//	xGame.isReSizeDraw = FALSE;
+//			
+//	gSetColor(255, 255, 255);
+//	gDrawString(x-88, y+108, "모델 랭크", VL);
+//	gDrawString(x-88, y+108+20, "모델 레벨", VL);
+//	gDrawString(x-88, y+108+40, "레이어드 수", VL);
+//	
+//	
+//	gSetColor(253, 173, 10);
+//	switch(xModelData[code].grade)
+//	{
+//	case 0:sprintf(strTempS,"C랭크");break;
+//	case 1:sprintf(strTempS,"B랭크");break;
+//	case 2:sprintf(strTempS,"A랭크");break;
+//	case 3:sprintf(strTempS,"S랭크");break;
+//	}
+//	gDrawString(x+80, y+108, strTempS, VR);
+//	
+//	
+//	xGame.isReSizeDraw = TRUE;
+//	xGame.reSize = 80;
+//	for(int k=0;k<xModelData[code].upGradeMax;k++)
+//	{
+//		if(upGrade > k)
+//			drawPacker(imgModelLv, x-5+(20*k), y+114+20-7, imgW(imgModelLv)/2, 0, imgW(imgModelLv)/2, imgH(imgModelLv), VH);
+//		else
+//			drawPacker(imgModelLv, x-5+(20*k), y+114+20-7, 0, 0, imgW(imgModelLv)/2, imgH(imgModelLv), VH);
+//	}
+//	xGame.isReSizeDraw = FALSE;
+//	
+//	sprintf(strTempS, "%d회",xModelData[code].layeredNum+getModelLayered(selectNum,0));
+//	gDrawString(x+80, y+108+40, strTempS, VR);
+//}
+//
+//void drawNewModel()
+//{
+//	int px = cx;
+//	int py = cy;
+//	
+//	drawBgFillRect();
+//	int startAnyCnt;
+//	int alpha = 100;
+//	int resize = 100;
+//	int rot = 0;
+//	int x;
+//	int y;
+//	
+//	startAnyCnt = xWorldMap.newModelAnyCnt-72;
+//	
+//	if(startAnyCnt >= 0)
+//	{
+//		drawModelRotEff(px+132, py-90,startAnyCnt);
+//	}
+//	
+//	startAnyCnt = xWorldMap.newModelAnyCnt;
+//	
+//	if(startAnyCnt >= 0)
+//	{
+//		switch(startAnyCnt)
+//		{
+//		case 0:alpha=	100;resize=	0;x=	480;y=	320;rot=	0;break;
+//		case 1:alpha=	100;resize=	24;x=	480;y=	320;rot=	0;break;
+//		case 2:alpha=	100;resize=	48;x=	480;y=	320;rot=	0;break;
+//		case 3:alpha=	100;resize=	72;x=	480;y=	320;rot=	0;break;
+//		case 4:alpha=	100;resize=	96;x=	480;y=	320;rot=	0;break;
+//		case 5:alpha=	100;resize=	120;x=	480;y=	320;rot=	0;break;
+//		case 6:alpha=	100;resize=	113.333;x=	480;y=	320;rot=	0;break;
+//		case 7:alpha=	100;resize=	106.667;x=	480;y=	320;rot=	0;break;
+//		case 8:alpha=	100;resize=	100;x=	480;y=	320;rot=	0;break;
+//		case 9:alpha=	100;resize=	100;x=	480;y=	320;rot=	0;break;
+//		case 10:alpha=	100;resize=	100;x=	480;y=	320;rot=	0;break;
+//		case 11:alpha=	100;resize=	100;x=	480;y=	320;rot=	0;break;
+//		case 12:alpha=	100;resize=	100;x=	480;y=	320;rot=	0;break;
+//		case 13:alpha=	100;resize=	100;x=	480;y=	320;rot=	0;break;
+//		case 14:alpha=	100;resize=	100;x=	480;y=	326.001;rot=	0;break;
+//		case 15:alpha=	100;resize=	100;x=	480;y=	332.006;rot=	0;break;
+//		case 16:alpha=	100;resize=	100;x=	480;y=	338;rot=	0;break;
+//		case 17:alpha=	100;resize=	100;x=	480;y=	331.999;rot=	0;break;
+//		case 18:alpha=	100;resize=	100;x=	480;y=	325.994;rot=	0;break;
+//		case 19:alpha=	100;resize=	100;x=	480;y=	320;rot=	0;break;
+//		case 20:alpha=	100;resize=	100;x=	480;y=	326.001;rot=	0;break;
+//		case 21:alpha=	100;resize=	100;x=	480;y=	331.995;rot=	0;break;
+//		case 22:alpha=	100;resize=	100;x=	480;y=	338;rot=	0;break;
+//		case 23:alpha=	100;resize=	100;x=	480;y=	331.999;rot=	0;break;
+//		case 24:alpha=	100;resize=	100;x=	480;y=	325.994;rot=	0;break;
+//		case 25:alpha=	100;resize=	100;x=	480;y=	320;rot=	0;break;
+//		case 26:alpha=	100;resize=	100;x=	480;y=	326.001;rot=	0;break;
+//		case 27:alpha=	100;resize=	100;x=	480;y=	331.995;rot=	0;break;
+//		case 28:alpha=	100;resize=	100;x=	480;y=	338;rot=	0;break;
+//		case 29:alpha=	100;resize=	100;x=	480;y=	331.999;rot=	0;break;
+//		case 30:alpha=	100;resize=	100;x=	480;y=	325.994;rot=	0;break;
+//		case 31:alpha=	100;resize=	100;x=	480;y=	320;rot=	0;break;
+//		case 32:alpha=	100;resize=	100;x=	480;y=	326.004;rot=	0;break;
+//		case 33:alpha=	100;resize=	100;x=	480;y=	332.004;rot=	0;break;
+//		case 34:alpha=	100;resize=	100;x=	480;y=	338;rot=	0;break;
+//		case 35:alpha=	100;resize=	100;x=	480;y=	338;rot=	-14;break;
+//		case 36:alpha=	100;resize=	100;x=	480;y=	338;rot=	-14;break;
+//		case 37:alpha=	100;resize=	100;x=	480;y=	338;rot=	-14;break;
+//		case 38:alpha=	100;resize=	100;x=	480;y=	338;rot=	-14;break;
+//		case 39:alpha=	83.3333;resize=	133.333;x=	480;y=	338;rot=	-14;break;
+//		case 40:alpha=	66.6667;resize=	166.667;x=	480;y=	338;rot=	-14;break;
+//		case 41:alpha=	50;resize=	200;x=	480;y=	338;rot=	-14;break;
+//		case 42:alpha=	33.3333;resize=	233.333;x=	480;y=	338;rot=	-14;break;
+//		case 43:alpha=	16.6667;resize=	266.667;x=	480;y=	338;rot=	-14;break;
+//		default:alpha=	0;resize=	300;x=	480;y=	338;rot=	-14;break;
+//		}
+//
+//		x -=480;
+//		y -=320;
+//		x +=cx;
+//		y +=cy;
+//		
+//		if(alpha != 100)
+//			setAlpha(alpha*ALPHA_MAX/100);
+//		
+//		if(resize != 100)
+//		{
+//			xGame.isReSizeDraw = TRUE;
+//			xGame.reSize = resize;
+//		}
+//		
+//		if(rot != 0)
+//		{
+//			xGame.isRotate = TRUE;
+//			xGame.rotateNum = rot;
+//		}
+//		if(startAnyCnt >= 35)
+//		{
+//			switch(xWorldMap.newModelType)
+//			{
+//			case 0:
+//            case 3:
+//				drawPacker(imgNewModel1, x,	y, 0, 0, imgW(imgNewModel1), imgH(imgNewModel1), VH);
+//				break;
+//			case 1:
+//			case 2:
+//            case 4:
+//				drawPacker(imgNewModel3, x,	y, 0, 0, imgW(imgNewModel3), imgH(imgNewModel3), VH);
+//				break;
+//			}
+//		}
+//		else
+//		{
+//			switch(xWorldMap.newModelType)
+//			{
+//			case 0:
+//            case 3:
+//				drawPacker(imgNewModel0, x,	y, 0, 0, imgW(imgNewModel0), imgH(imgNewModel0), VH);
+//				break;
+//			case 1:
+//			case 2:
+//            case 4:
+//				drawPacker(imgNewModel2, x,	y, 0, 0, imgW(imgNewModel2), imgH(imgNewModel2), VH);
+//				break;
+//			}
+//		}
+//		xGame.isRotate = FALSE;
+//		xGame.isReSizeDraw = FALSE;
+//		setAlpha(ALPHA_MAX);
+//	}
+//	
+//	
+//	XFITTINGLAYER xFTemp;
+//	for(int i=0;i<16;i++)
+//		xFTemp.code[i] = DONT;
+//	drawModelShow(xModel.newModelCode,&xFTemp,xWorldMap.newModelAnyCnt-44);
+//	
+//	if(xWorldMap.newModelAnyCnt == 0)
+//		playSnd(SND_MODEL_CASTING);
+//		
+//	if(xWorldMap.newModelAnyCnt == 45)
+//	{
+//		playSnd(SND_MODEL_RESULT);
+//		setQuest(23,1,DONT);
+//	}
+//	
+//	++xWorldMap.newModelAnyCnt;
+//}
+//
+//
+//int addInventoryModel(int modelCode)
+//{
+//	setModelList(DONT);
+//	
+//	
+//	int checkSort = DONT;
+//	for(int i=0;i<xModel.totalInventoryModel;i++)
+//	{
+//		if((xModelData[modelCode].grade > xModelData[xInventoryModel[i].code].grade)
+//		   ||(xModelData[modelCode].grade == xModelData[xInventoryModel[i].code].grade && xInventoryModel[i].upGrade == 0 && xInventoryModel[i].code >= modelCode))
+//		{
+//			checkSort = i;
+//			break;
+//		}
+//	}
+//	if(checkSort != DONT)
+//	{
+//		for(int i=xModel.totalInventoryModel;i>checkSort;i--)
+//		{
+//			memcpy(&xInventoryModel[i], &xInventoryModel[i-1], sizeof(xInventoryModel[i]));
+//		}
+//	}
+//	else
+//		checkSort = xModel.totalInventoryModel;
+//	
+//	xInventoryModel[checkSort].key = DONT;
+//	xInventoryModel[checkSort].vote = 0;
+//	xInventoryModel[checkSort].isMapShow = FALSE;
+//	xInventoryModel[checkSort].upGrade = 0;
+//	xInventoryModel[checkSort].code = modelCode;
+//	
+//	
+//	if(xModelData[modelCode].isOpen == FALSE)
+//	{
+//		xModelData[modelCode].isOpen = TRUE;
+//	}
+//	
+//	xModel.totalInventoryModel++;
+//	
+//	
+//	return checkSort;	
+//}
+//
+//int addInventoryModel_FRIEND(int modelCode)
+//{
+//	int checkSort = 0;
+//	for(int i=0;i<xModel.totalInventoryModel_FRIEND;i++)
+//	{
+//		if((xModelData[modelCode].grade > xModelData[xInventoryModel_FRIEND[i].code].grade)
+//		   ||(xModelData[modelCode].grade == xModelData[xInventoryModel_FRIEND[i].code].grade && xInventoryModel_FRIEND[i].upGrade == 0 && xInventoryModel_FRIEND[i].code >= modelCode))
+//		{
+//			checkSort = i;
+//			break;
+//		}
+//	}
+//	
+//	for(int i=xModel.totalInventoryModel_FRIEND;i>checkSort;i--)
+//	{
+//		memcpy(&xInventoryModel_FRIEND[i], &xInventoryModel_FRIEND[i-1], sizeof(xInventoryModel_FRIEND[i]));
+//	}
+//	
+//	xInventoryModel_FRIEND[checkSort].upGrade = 0;
+//	xInventoryModel_FRIEND[checkSort].code = modelCode;
+//	
+//	xModel.totalInventoryModel_FRIEND++;
+//	
+//	return checkSort;
+//}
+//
+//void outPutInventoryModel(int slotNum)
+//{
+//	/////////////////////////////////////////////////////////////////////
+//	int eslot = slotNum;
+//	xEventQueueNet.action[xEventQueueNet.totalNum] = 2;//0:신규,1:업데이트,2삭제
+//	xEventQueueNet.code[xEventQueueNet.totalNum] = xInventoryModel[eslot].code;
+//	xEventQueueNet.haveNum[xEventQueueNet.totalNum] = xInventoryModel[eslot].upGrade;
+//	xEventQueueNet.key[xEventQueueNet.totalNum] = xInventoryModel[eslot].key;
+//	for(int f=0;f<16;f++)
+//	{
+//		xEventQueueNet.layer[xEventQueueNet.totalNum][f] = xInventoryModel[eslot].xF.code[f];
+//	}
+//	xEventQueueNet.open[xEventQueueNet.totalNum] = 0;//0:미출연1:출연
+//	xEventQueueNet.mapX[xEventQueueNet.totalNum] = xInventoryModel[eslot].xF.isInFitting==FALSE?0:1;
+//	addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SETMODEL, TRUE);
+//	/////////////////////////////////////////////////////////////////////
+//	
+//		
+//	for(int i=slotNum;i<xModel.totalInventoryModel;i++)
+//	{
+//		if(xModelUpGrade.inventoryNum == i+1)
+//			xModelUpGrade.inventoryNum = i;
+//		
+//		memcpy(&xInventoryModel[i], &xInventoryModel[i+1], sizeof(xInventoryModel[i]));
+//	}
+//	xModel.totalInventoryModel--;
+//}
+//
+//void setModelList(int grade)
+//{
+//	for(int i=0;i<xModel.totalInventoryModel;i++)
+//	{
+//		if(xInventoryModel[i].code == DONT)
+//		{
+//			outPutInventoryModel(i);
+//			i--;
+//		}
+//	}
+//}
+//
+//void sortModelList()
+//{
+//	XINVENTORYMODEL xInventoryModelTemp;
+//	
+//	
+//	for(int i=0;i<xModel.totalInventoryModel;i++)
+//	{
+//		xInventoryModel[i].xF.layeredNum = 0;
+//		for(int f=0;f<16;f++)
+//		{
+//			if(xInventoryModel[i].xF.code[f] != DONT)
+//				xInventoryModel[i].xF.layeredNum++;
+//		}
+//	}
+//	
+//	M_Boolean isCheck;
+//	for(int i=0;i<xModel.totalInventoryModel;i++)
+//	{
+//		for(int j=i+1;j<xModel.totalInventoryModel;j++)
+//		{
+//			isCheck =FALSE;
+//			if(xInventoryModel[i].xF.layeredNum == 0 &&  xInventoryModel[j].xF.layeredNum > 0)
+//			{
+//				isCheck = TRUE;
+//			}
+//			
+//			else if(((xInventoryModel[i].xF.layeredNum > 0 &&  xInventoryModel[j].xF.layeredNum > 0)||(xInventoryModel[i].xF.layeredNum == 0 &&  xInventoryModel[j].xF.layeredNum == 0))
+//				&& (xModelData[xInventoryModel[i].code].grade < xModelData[xInventoryModel[j].code].grade))
+//			{
+//				isCheck = TRUE;
+//			}
+//
+//			else if(((xInventoryModel[i].xF.layeredNum > 0 &&  xInventoryModel[j].xF.layeredNum > 0)||(xInventoryModel[i].xF.layeredNum == 0 &&  xInventoryModel[j].xF.layeredNum == 0))
+//				&& (xModelData[xInventoryModel[i].code].grade == xModelData[xInventoryModel[j].code].grade)
+//				&& (xInventoryModel[i].upGrade < xInventoryModel[j].upGrade))
+//			{
+//				isCheck = TRUE;
+//			}
+//			if(isCheck == TRUE)
+//		    {
+//				memcpy(&xInventoryModelTemp,&xInventoryModel[i],sizeof(xInventoryModelTemp));
+//				memcpy(&xInventoryModel[i],&xInventoryModel[j],sizeof(xInventoryModelTemp));
+//				memcpy(&xInventoryModel[j],&xInventoryModelTemp,sizeof(xInventoryModelTemp));
+//		    }
+//		}
+//	}
+//}
+//
+//void sortModelListFriend()
+//{
+//	XINVENTORYMODEL xInventoryModelTemp;
+//	
+//	
+//	for(int i=0;i<xModel.totalInventoryModel_FRIEND;i++)
+//	{
+//		xInventoryModel_FRIEND[i].xF.layeredNum = 0;
+//		for(int f=0;f<16;f++)
+//		{
+//			if(xInventoryModel_FRIEND[i].xF.code[f] != DONT)
+//				xInventoryModel_FRIEND[i].xF.layeredNum++;
+//		}
+//	}
+//	
+//	M_Boolean isCheck;
+//	for(int i=0;i<xModel.totalInventoryModel_FRIEND;i++)
+//	{
+//		for(int j=i+1;j<xModel.totalInventoryModel_FRIEND;j++)
+//		{
+//			isCheck =FALSE;
+//			if(xInventoryModel_FRIEND[i].xF.layeredNum == 0 &&  xInventoryModel_FRIEND[j].xF.layeredNum > 0)
+//			{
+//				isCheck = TRUE;
+//			}
+//			
+//			else if(((xInventoryModel_FRIEND[i].xF.layeredNum > 0 &&  xInventoryModel_FRIEND[j].xF.layeredNum > 0)||(xInventoryModel_FRIEND[i].xF.layeredNum == 0 &&  xInventoryModel_FRIEND[j].xF.layeredNum == 0))
+//					&& (xModelData[xInventoryModel_FRIEND[i].code].grade < xModelData[xInventoryModel_FRIEND[j].code].grade))
+//			{
+//				isCheck = TRUE;
+//			}
+//			else if(((xInventoryModel_FRIEND[i].xF.layeredNum > 0 &&  xInventoryModel_FRIEND[j].xF.layeredNum > 0)||(xInventoryModel_FRIEND[i].xF.layeredNum == 0 &&  xInventoryModel_FRIEND[j].xF.layeredNum == 0))
+//					&& (xModelData[xInventoryModel_FRIEND[i].code].grade == xModelData[xInventoryModel_FRIEND[j].code].grade)
+//					&& (xInventoryModel_FRIEND[i].upGrade < xInventoryModel_FRIEND[j].upGrade))
+//			{
+//				isCheck = TRUE;
+//			}
+//			if(isCheck == TRUE)
+//		    {
+//				memcpy(&xInventoryModelTemp,&xInventoryModel_FRIEND[i],sizeof(xInventoryModelTemp));
+//				memcpy(&xInventoryModel_FRIEND[i],&xInventoryModel_FRIEND[j],sizeof(xInventoryModelTemp));
+//				memcpy(&xInventoryModel_FRIEND[j],&xInventoryModelTemp,sizeof(xInventoryModelTemp));
+//		    }
+//		}
+//	}
+//}
+//
+//
+//void setModelUpGradeList(int slotNum)
+//{
+//	xModelUpGrade.totalModelList = 0;
+//	
+//	for(int i=0;i<xModel.totalInventoryModel;i++)
+//	{
+//		if(i != slotNum && xInventoryModel[i].code != DONT && getModelMainSlot(xInventoryModel[i].key) == DONT)
+//		{
+//			switch(xModelUpGrade.upgradeType)
+//			{
+//			case 0:
+//				xModelUpGrade.modelListSlot[xModelUpGrade.totalModelList++] = i;
+//				break;
+//			case 1:
+//				if(xInventoryModel[i].upGrade == xModelData[xInventoryModel[i].code].upGradeMax)
+//				{
+//					if(xModelData[xInventoryModel[slotNum].code].grade == xModelData[xInventoryModel[i].code].grade)
+//					{
+//						xModelUpGrade.modelListSlot[xModelUpGrade.totalModelList++] = i;
+//					}
+//				}
+//				break;
+//			}
+//		}
+//	}
+//}
+//
+//void setNewModel(int type)
+//{
+//	setQuest(30,1,DONT);
+//	
+//	xCollection.selectSkill = DONT;
+//	xWorldMap.isNewModel = TRUE;
+//	xWorldMap.newModelAnyCnt = 0;
+//	xWorldMap.newModelType = type;
+//	
+//	int selectSlot = 0;
+//	int selectGrade = 0;
+//	int perTemp = 0;
+//	int perRandom = ranDom(0, 1000-1);
+//	
+//	
+//	switch(type)
+//	{
+//	case 0: //일반뽑기권
+//		for(int i=0;i<xModel.newModelTotal[type];i++)
+//		{
+//			if(xModel.newModelCountNum <= xModel.newModelCount[i])
+//			{
+//				selectSlot = i;
+//				break;
+//			}
+//		}
+//		for(int i=0;i<4;i++)
+//		{
+//			perTemp += xModel.newModelPer[selectSlot][i];
+//			if(perRandom < perTemp)
+//			{
+//				selectGrade = i;
+//				break;
+//			}
+//		}
+//		xModel.newModelCountNum+=xModel.newModelCountPlus[selectSlot][selectGrade];
+//		break;
+//	case 1: //프리미엄
+//	case 2: //A~S
+//		for(int i=0;i<xModel.newModelTotal[1];i++)
+//		{
+//			if(xModel.newModelCountNum <= xModel.newModelCount_Cash[i])
+//			{
+//				selectSlot = i;
+//				break;
+//			}
+//		}
+//		for(int i=0;i<4;i++)
+//		{
+//			perTemp += xModel.newModelPer_Cash[selectSlot][i];
+//			if(perRandom < perTemp)
+//			{
+//				selectGrade = i;
+//				break;
+//			}
+//		}
+//            
+//        if(xAmulet.buff[JEWELBUFF_TYPE_CASTING_S] > 0)
+//        {
+//            if(ranDom(0, 10000-1) < xAmulet.buff[JEWELBUFF_TYPE_CASTING_S])      //안오는얘
+//            {
+//                selectGrade = 3;
+//            }
+//        }
+//        
+//		xModel.newModelCountNum+=xModel.newModelCountPlus_Cash[selectSlot][selectGrade];
+//		break;
+//    case 3:     //A급확정
+//        selectGrade = 2;
+//        break;
+//    case 4:     //S급확정
+//        selectGrade = 3;
+//        break;
+//    case 5: //캐릭지정
+//        break;
+//	}
+//    
+//    if(type == 5)
+//    {
+//        xModel.newModelCode = xMail.giftModelCode;
+//
+//        if(xModelData[xModel.newModelCode].grade >= 2)
+//            xWorldMap.newModelType = 1;
+//        else
+//            xWorldMap.newModelType = 0;
+//    }
+//    else
+//    {
+//        switch(selectGrade)
+//        {
+//        case 0:
+//            xModel.newModelCode = xModel.ranDomSlotC[ranDom(0,xModel.totalRanDomSlotC-1)];
+//            break;
+//        case 1:
+//            xModel.newModelCode = xModel.ranDomSlotB[ranDom(0,xModel.totalRanDomSlotB-1)];
+//            if(type == 2)
+//                xModel.newModelCode = xModel.ranDomSlotA[ranDom(0,xModel.totalRanDomSlotA-1)];
+//            break;
+//        case 2:
+//            xModel.newModelCode = xModel.ranDomSlotA[ranDom(0,xModel.totalRanDomSlotA-1)];
+//            break;
+//        case 3:
+//            xModel.newModelCode = xModel.ranDomSlotS[ranDom(0,xModel.totalRanDomSlotS-1)];
+//            break;
+//        }
+//    }
+//	
+//	
+//	switch(type)
+//	{
+//	case 0:
+//	case 1:
+//		///////////////////////////////////////////////////////////////////
+//		xEventQueueNet.layer[xEventQueueNet.totalNum][0] = 1;//0:골드,1프리미엄,2캔디머쉰,3직원의상,모델뽑기
+//		xEventQueueNet.layer[xEventQueueNet.totalNum][1] = 0;//아이템종류(0~5)직원의상 구매시
+//		xEventQueueNet.code[xEventQueueNet.totalNum] = type;
+//		addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_BUYGOLD, TRUE);
+//		///////////////////////////////////////////////////////////////////
+//		break;
+//	}
+//	
+//	///////////////////////////////////////////////////////////////////
+//	xEventQueueNet.layer[xEventQueueNet.totalNum][0] = 4;//0:골드,1프리미엄,2캔디머쉰,3직원의상,4모델뽑기,100:첫구매이벤트,101:스페션세일이벤트,102:리뷰이벤트,200:해킹로그,300:출석로그,301:친구초대로그
+//	xEventQueueNet.layer[xEventQueueNet.totalNum][1] = 0;//아이템종류(0~5)직원의상 구매시
+//	xEventQueueNet.code[xEventQueueNet.totalNum] = xModel.newModelCode;
+//	addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_BUYGOLD, TRUE);
+//	///////////////////////////////////////////////////////////////////
+//
+//
+//	if(type == 0 || type == 1)
+//	{
+//		switch(selectGrade)
+//		{
+//		case 0:
+//			sprintf(xRocks.strTemp, "%s",xModelData[xModel.newModelCode].strName);
+//			if(type == 0)
+//				setFiveRocksCustom("모델","일반캐스팅","C급",xRocks.strTemp,1);
+//			else
+//				setFiveRocksCustom("모델","고급캐스팅","C급",xRocks.strTemp,1);
+//			break;
+//		case 1:
+//			sprintf(xRocks.strTemp, "%s",xModelData[xModel.newModelCode].strName);
+//			if(type == 0)
+//				setFiveRocksCustom("모델","일반캐스팅","B급",xRocks.strTemp,1);
+//			else
+//				setFiveRocksCustom("모델","고급캐스팅","B급",xRocks.strTemp,1);
+//			break;
+//		case 2:
+//			sprintf(xRocks.strTemp, "%s",xModelData[xModel.newModelCode].strName);
+//			if(type == 0)
+//				setFiveRocksCustom("모델","일반캐스팅","A급",xRocks.strTemp,1);
+//			else
+//				setFiveRocksCustom("모델","고급캐스팅","A급",xRocks.strTemp,1);
+//			break;
+//		case 3:
+//			sprintf(xRocks.strTemp, "%s",xModelData[xModel.newModelCode].strName);
+//			if(type == 0)
+//				setFiveRocksCustom("모델","일반캐스팅","S급",xRocks.strTemp,1);
+//			else
+//				setFiveRocksCustom("모델","고급캐스팅","S급",xRocks.strTemp,1);
+//			break;
+//		}                  
+//	}
+//	
+//	if(xModel.newModelCountNum < 0)
+//		xModel.newModelCountNum = 0;
+//}
 
 
 void drawFashionShowMainNew()
@@ -65273,1144 +65305,1144 @@ void drawModelEff()
 	}
 }
 
-void drawModelCasting()
-{
-	int px = cx;
-	int py = cy;
-	
-	drawBgFillRect();
-	
-	drawPacker(imgModelCastingBtn4, px, py, 0, 0, imgW(imgModelCastingBtn4), imgH(imgModelCastingBtn4), VH);
-	
-	gDrawStringBold(px, py-122, "모델을 캐스팅 할 수 있어요", VH, 86, 255, 220, 44, 25, 26);
-	
-	drawPacker(imgModelCastingBtn5, px-90, py+13, 0, 0, imgW(imgModelCastingBtn5), imgH(imgModelCastingBtn5), VH);
-	drawPacker(imgModelCastingBtn6, px+90, py+13, 0, 0, imgW(imgModelCastingBtn6), imgH(imgModelCastingBtn6), VH);
-		
-	xModel.xTouchCasting[0].wPos = imgW(imgModelCastingBtn5);
-	xModel.xTouchCasting[0].hPos = imgH(imgModelCastingBtn5);
-	xModel.xTouchCasting[0].xPos = px-90-xModel.xTouchCasting[0].wPos/2;
-	xModel.xTouchCasting[0].yPos = py+13-xModel.xTouchCasting[0].hPos/2;
-	
-	xModel.xTouchCasting[1].wPos = imgW(imgModelCastingBtn6);
-	xModel.xTouchCasting[1].hPos = imgH(imgModelCastingBtn6);
-	xModel.xTouchCasting[1].xPos = px+90-xModel.xTouchCasting[1].wPos/2;
-	xModel.xTouchCasting[1].yPos = py+13-xModel.xTouchCasting[1].hPos/2;
-	
-	
-		
-	
-	switch(xShop.premiumPriceType[0])
-	{
-	case 2:
-		drawPacker(imgProductionMenuObj0, px-90-63, py+13+67, imgW(imgProductionMenuObj0)/8*6, 0, imgW(imgProductionMenuObj0)/8, imgH(imgProductionMenuObj0), VL);
-		break;
-	default:
-		drawPacker(imgProductionMenuObj0, px-90-63, py+13+67, imgW(imgProductionMenuObj0)/8*xShop.premiumPriceType[0], 0, imgW(imgProductionMenuObj0)/8, imgH(imgProductionMenuObj0), VL);
-		break;
-	}
-	
-	
-	
-	setCommaNum(strTempS, xShop.premiumPrice[0].oriData);
-	gSetColor(82, 49, 38);
-	gDrawString(px-90+63, py+13+67, strTempS, VR);
-	
-	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-	{
-		switch(xQuestTuto.nowNum)
-		{
-		case TUTO_22_MODELCASTING:
-			if(playState == PLAY_PLAY)
-			{
-				xTutoInfo.x[xTutoInfo.totalNum] = px-90;
-				xTutoInfo.y[xTutoInfo.totalNum] = py+13;
-				xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
-			}
-			break;
-		}
-	}
-	
-	
-	
-	switch(xShop.premiumPriceType[0])
-	{
-		case 2:
-			drawPacker(imgProductionMenuObj0, px+90-63, py+13+67, imgW(imgProductionMenuObj0)/8*6, 0, imgW(imgProductionMenuObj0)/8, imgH(imgProductionMenuObj0), VL);
-			break;
-		default:
-			drawPacker(imgProductionMenuObj0, px+90-63, py+13+67, imgW(imgProductionMenuObj0)/8*xShop.premiumPriceType[1], 0, imgW(imgProductionMenuObj0)/8, imgH(imgProductionMenuObj0), VL);
-			break;
-	}
-	
-	
-	sprintf(strTempS, "%d",xShop.premiumPrice[1].oriData);
-	gSetColor(82, 49, 38);
-	gDrawString(px+90+63, py+13+67, strTempS, VR);
-	
-	
-	
-	if(xQuestTuto.state == QUEST_TUTO_KEY)
-	{
-		switch(xQuestTuto.nowNum)
-		{
-		case TUTO_22_MODELCASTING:
-			if(xWorldMap.isNewModel == FALSE)
-			{
-				if(xModel.totalInventoryModel > 0)
-					xQuestTuto.isTutoClean = TRUE;
-			}
-			break;
-		}
-	}
-	
-		
-	drawBtn(px, py+170, BTN_OK_CONFIRM);
-				
-	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-	{
-		switch(xQuestTuto.nowNum)
-		{
-		case TUTO_22_MODELCASTINGEXIT:
-			xTutoInfo.x[xTutoInfo.totalNum] = px;
-			xTutoInfo.y[xTutoInfo.totalNum] = py+170;
-			xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
-			break;
-		}
-	}
-		
-}
-
-
-int getModelUpgradePrice(int oriInvenSlot,int targetInvenSlot)
-{
-	int oriGrade = xModelData[xInventoryModel[oriInvenSlot].code].grade;
-	int oriUpgrade = xInventoryModel[oriInvenSlot].upGrade;
-	int price = 0;
-	
-	switch(xModelUpGrade.upgradeType)
-	{
-	case 0:		//업그레이드
-		price = xModel.upgradePrice[oriGrade][oriUpgrade];
-		break;
-	case 1:		//조합
-		price = xModel.mixPrice[oriGrade];
-		break;
-	}
-	return price;
-}
-
-int getModelUpgradePer(int oriInvenSlot,int targetInvenSlot)
-{
-	int oriGrade = xModelData[xInventoryModel[oriInvenSlot].code].grade;
-	int oriUpgrade = xInventoryModel[oriInvenSlot].upGrade;
-	int targetGrade = xModelData[xInventoryModel[targetInvenSlot].code].grade;
-	int per = 0;
-	
-	switch(xModelUpGrade.upgradeType)
-	{
-	case 0:		//업그레이드
-		per = xModel.upgradePer[oriGrade][oriUpgrade][targetGrade];
-		break;
-	case 1:		//조합
-		per = xModel.mixPer[oriGrade];
-		break;
-	}
-	return per;
-}
-
-void drawModelShow(int modelCode,XFITTINGLAYER *xF,int anyCnt)
-{
-	int resize;
-	int x;
-	int y;
-	
-	if(anyCnt >= 0)
-	{
-		if(gameCnt%2 == 0)
-			makeColorPaper(1);
-		//받침
-		switch(anyCnt)
-		{
-			case 0:	x=344;y=	-86;break;
-			case 1:	x=344;y=	16.3346;break;
-			case 2:	x=344;y=	118.671;break;
-			case 3:	x=344;y=	221.007;break;
-			case 4:	x=344;y=	323.336;break;
-			case 5:	x=344;y=	425.657;break;
-			case 6:	x=344;y=	528;break;
-			case 7:	x=344;y=	516;break;
-			case 8:	x=344;y=	522;break;
-			case 9:	x=344;y=	522;break;
-			case 10:x=344;y=	522;break;
-			case 11:	x=344;y=	522;break;
-			case 12:	x=344;y=	522;break;
-			case 13:	x=344;y=	522;break;
-			case 14:	x=344;y=	522;break;
-			case 15:	x=344;y=	522;break;
-			case 16:	x=344;y=	522;break;
-			case 17:	x=344;y=	522;break;
-			case 18:	x=344;y=	522;break;
-			case 19:	x=344;y=	522;break;
-			case 20:	x=344;y=	522;break;
-			case 21:	x=344;y=	522;break;
-			case 22:	x=344;y=	522;break;
-			case 23:	x=344;y=	522;break;
-			case 24:	x=344;y=	522;break;
-			case 25:	x=344;y=	522;break;
-			case 26:	x=344;y=	522;break;
-			case 27:	x=344;y=	522;break;
-			case 28:	x=344;y=	522;break;
-			default:	x=344;y=	522;break;
-		}
-		
-		drawPacker(imgModelSlot1, x, y, 0, 0, imgW(imgModelSlot1), imgH(imgModelSlot1), VH);
-		
-		if(anyCnt == 13 && xWorldMap.isNewModel == TRUE)
-		{
-			int slot = addInventoryModel(xModel.newModelCode);
-			
-			
-			for(int i=0;i<xModelData[xInventoryModel[slot].code].grade+1;i++)
-			{
-				setQuest(54, 999, i);
-			}
-						
-			for(int ff=0;ff<SPRIT_IMGLAYERMAX;ff++)
-				xInventoryModel[slot].xF.code[ff] = DONT;
-			
-			/////////////////////////////////////////////////////////////////////
-			int eslot = slot;
-			xEventQueueNet.slotNum[xEventQueueNet.totalNum] = slot;
-			xEventQueueNet.action[xEventQueueNet.totalNum] = 0;//0:신규,1:업데이트,2삭제
-			xEventQueueNet.code[xEventQueueNet.totalNum] = xInventoryModel[eslot].code;
-			xEventQueueNet.haveNum[xEventQueueNet.totalNum] = xInventoryModel[eslot].upGrade;
-			xEventQueueNet.key[xEventQueueNet.totalNum] = xInventoryModel[eslot].key;
-			
-			for(int f=0;f<16;f++)
-			{
-				xEventQueueNet.layer[xEventQueueNet.totalNum][f] = xInventoryModel[eslot].xF.code[f];
-			}
-			xEventQueueNet.open[xEventQueueNet.totalNum] = 0;//0:미출연1:출연
-			xEventQueueNet.mapX[xEventQueueNet.totalNum] = 0;
-			addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SETMODEL, TRUE);
-			/////////////////////////////////////////////////////////////////////
-			setModelList(xModel.listTabNum);
-			////////////////////////////////////////////
-			addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SETETC, FALSE);
-			///////////////////////////////////////////
-		}
-				
-		//아랫조명
-		if(anyCnt >= 17)
-		{
-			x = 344;
-			y = 345;
-			drawPacker(imgModelSlot2, x, y, 0, 0, imgW(imgModelSlot2), imgH(imgModelSlot2), VH);
-		}
-		//윗조명
-		if(anyCnt >= 28)
-		{
-			x = 353;
-			y = 280;
-			xGame.isBlend = TRUE;
-			xGame.blendType = BLEND_ADDP;
-			drawPacker(imgModelSlot3, x, y, 0, 0, imgW(imgModelSlot3), imgH(imgModelSlot3), VH);
-			xGame.isBlend = FALSE;
-		}
-		//마네킹
-		if(anyCnt >= 10)
-		{
-			switch(anyCnt)
-			{
-			case 10:	x=	342;y=	-228;break;
-			case 11:	x=	342;y=	-52.6598;break;
-			case 12:	x=	342;y=	122.67;break;
-			case 13:	x=	342;y=	298;break;
-			case 14:	x=	342;y=	327.444;break;
-			case 15:	x=	342;y=	286;break;
-			case 16:	x=	342;y=	287.77;break;
-			case 17:	x=	342;y=	290;break;
-			case 18:	x=	342;y=	290;break;
-			case 19:	x=	342;y=	290;break;
-			case 20:	x=	342;y=	290;break;
-			case 21:	x=	342;y=	290;break;
-			case 22:	x=	342;y=	290;break;
-			case 23:	x=	342;y=	290;break;
-			case 24:	x=	342;y=	290;break;
-			case 25:	x=	342;y=	290;break;
-			case 26:	x=	342;y=	290;break;
-			case 27:	x=	342;y=	290;break;
-			case 28:	x=	342;y=	290;break;
-			default:	x=	342;y=	290;break;
-			}
-									
-			switch(anyCnt)
-			{
-			case 15:
-				makeFire(x-100, y-70, 15);
-				break;
-			case 25:
-				makeFire(x+120, y-130, 15);
-				break;
-			case 35:
-				makeFire(x+30, y+140, 15);
-				break;
-			case 45:
-				makeFire(x, y, 30);
-				break;
-			}
-			
-			XFACE xFaceTemp;
-			int code = modelCode;
-			xFaceTemp.hairNum = code+1000;
-			xFaceTemp.faceNum = code+1000;
-			xFaceTemp.faceType = FACE_TYPE_SMILE;
-
-						
-			y+=30;
-			xGame.fgameScale = 1.4f;
-			xGame.fgameScaleCx = x;
-			xGame.fgameScaleCy = lcdH-y;
-			
-									
-			drawFittingBody(x, y,xF,&xFaceTemp,TRUE,xModelData[code].sex);
-			
-				
-			if(xWorldMap.isNewModel == TRUE)
-			{
-				if(xModelData[code].sex == 0)
-					drawPacker(imgNewModel6, x+(7-90), y+(76-215), 0, 0, imgW(imgNewModel6), imgH(imgNewModel6), TL);
-				else
-					drawPacker(imgNewModel7, x+(29-90), y+(120-215), 0, 0, imgW(imgNewModel7), imgH(imgNewModel7), TL);
-			}
-			
-			xGame.fgameScale = 1.0f;
-			xGame.fgameScaleCx = cx;
-			xGame.fgameScaleCy = cy;
-		}
-	}
-	
-	
-	anyCnt = anyCnt-20;
-	if(anyCnt >= 0)
-	{
-		switch(anyCnt)
-		{
-		case 0:resize=	0;break;
-		case 1:resize=	40;break;
-		case 2:resize=	80;break;
-		case 3:resize=	120;break;
-		case 4:resize=	110;break;
-		case 5:resize=	100;break;
-		case 6:resize=	100;break;
-		default:resize=100;break;
-		}
-		
-		
-		if(resize != 100)
-		{
-			xGame.fgameScale = resize*0.01f;
-		}
-		
-		//모델이름
-		switch(anyCnt)
-		{
-			case 0:	x=604.5;y=	321.5;break;
-			case 1:	x=604.5;y=	321.5;break;
-			case 2:	x=613.76;y=	322.924;break;
-			case 3:	x=622.998;y=	324.5;break;
-			case 4:	x=628.296;y=	325.853;break;
-			case 5:	x=633.5;y=	327.5;break;
-			case 6:	x=633.5;y=	327.5;break;
-			default:x=633.5;y=	327.5;break;
-		}
-				
-		xGame.fgameScaleCx = x;
-		xGame.fgameScaleCy = lcdH-y;
-		
-		
-		
-		if(xModelUpGrade.isUpgrade == TRUE && xModelUpGrade.upgradeType == 0)
-		{
-			y -= 150;
-			drawPacker(imgNewModel5, x-24, y-44, 0, 0, imgW(imgNewModel5), imgH(imgNewModel5), VH);
-		}
-		else		//뽑기
-		{
-			y -= 80;
-			
-			drawModelName(x, y-40, modelCode);
-			switch(xModelData[modelCode].grade)
-			{
-				case 0:drawPacker(imgNewModelRank0, x-120, y-34, 0, 0, imgW(imgNewModelRank0), imgH(imgNewModelRank0), VH);break;
-				case 1:drawPacker(imgNewModelRank1, x-120, y-34, 0, 0, imgW(imgNewModelRank1), imgH(imgNewModelRank1), VH);break;
-				case 2:drawPacker(imgNewModelRank2, x-120, y-34, 0, 0, imgW(imgNewModelRank2), imgH(imgNewModelRank2), VH);break;
-				case 3:drawPacker(imgNewModelRank3, x-120, y-34, 0, 0, imgW(imgNewModelRank3), imgH(imgNewModelRank3), VH);break;
-			}
-			drawPacker(imgNewModel4, x, y-2, 0, 0, imgW(imgNewModel4), imgH(imgNewModel4), VH);
-		}
-				
-		if(xModelUpGrade.isUpgrade == TRUE && xModelUpGrade.upgradeType == 0)
-		{
-			subTemp[XPOS] = x-30;
-			subTemp[YPOS] = y+155;
-			drawPacker(imgModelUpGrade0, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgModelUpGrade0), imgH(imgModelUpGrade0), VH);
-			
-						
-			subTemp[XPOS] = x-30;
-			subTemp[YPOS] = y+24;
-			if(anyCnt > 6)
-			{
-				//모델정보
-				gSetColor(255, 255, 255);
-				gDrawString(subTemp[XPOS]-105, subTemp[YPOS], "모델 레벨", VL);
-				gDrawString(subTemp[XPOS]-105, subTemp[YPOS]+22, "레이어드 수", VL);
-				
-				if(xModelUpGrade.isUpgrade == TRUE)
-				{
-					switch(xModelUpGrade.upgradeType)
-					{
-						case 0:
-							for(int k=0;k<xModelData[xInventoryModel[xModelUpGrade.inventoryNum].code].upGradeMax;k++)
-							{
-								if(xInventoryModel[xModelUpGrade.inventoryNum].upGrade-1 > k)
-									drawPacker(imgModelLv, subTemp[XPOS]+120-(24*xModelData[xInventoryModel[xModelUpGrade.inventoryNum].code].upGradeMax)+(24*k), subTemp[YPOS], imgW(imgModelLv)/2, 0, imgW(imgModelLv)/2, imgH(imgModelLv), VH);
-								else
-									drawPacker(imgModelLv, subTemp[XPOS]+120-(24*xModelData[xInventoryModel[xModelUpGrade.inventoryNum].code].upGradeMax)+(24*k), subTemp[YPOS], 0, 0, imgW(imgModelLv)/2, imgH(imgModelLv), VH);
-							}
-							break;
-					}
-				}
-				
-				
-				
-				
-				sprintf(strTempS,"%d회",xModelData[modelCode].layeredNum+getModelLayered(xModelUpGrade.inventoryNum,-1));
-				gSetColor(255, 255, 255);
-				gDrawString(subTemp[XPOS]+105, subTemp[YPOS]+22, strTempS, VR);
-				
-				gSetColor(254, 177, 0);
-				gDrawString(subTemp[XPOS]-105, subTemp[YPOS]+55, "활동 보상", VL);
-				
-				drawIcon(subTemp[XPOS]-105+10,subTemp[YPOS]+86, ICON_TYPE_TIME);
-				gSetColor(255, 255, 255);
-				drawTimeSprintf(strTempS,getModelGiftTime(xModelUpGrade.inventoryNum,-1),4);
-				gDrawString(subTemp[XPOS]-105+15+20, subTemp[YPOS]+86, strTempS, VL);
-				
-				drawPacker(imgModelMainInfo4, subTemp[XPOS]-8, subTemp[YPOS]+88, 0, 0, imgW(imgModelMainInfo4), imgH(imgModelMainInfo4), VH);
-				
-				
-				//254	188	10
-				gSetColor(254, 188, 10);
-				setCommaNum(strTempS, getModelGiftNum(xModelUpGrade.inventoryNum,-1));
-				gDrawString(subTemp[XPOS]+105, subTemp[YPOS]+86, strTempS, VR);
-				int giftTypeImgNum;
-				switch(xModelData[modelCode].giftType)
-				{
-					case MODEL_GIFTTYPE_GOLD:giftTypeImgNum=ICON_TYPE_GOLD;break;
-					case MODEL_GIFTTYPE_LOOK:giftTypeImgNum=ICON_TYPE_LOOK;break;
-					case MODEL_GIFTTYPE_CANDY:giftTypeImgNum=ICON_TYPE_CANDY;break;
-					case MODEL_GIFTTYPE_EXP:giftTypeImgNum=ICON_TYPE_EXP;break;
-				}
-				drawIcon(subTemp[XPOS]+23, subTemp[YPOS]+86, giftTypeImgNum);
-			}
-			
-			
-			subTemp[XPOS] = x-30;
-			subTemp[YPOS] = y+190;
-			if(anyCnt > 6)
-			{
-				//모델정보
-				gSetColor(255, 255, 255);
-				gDrawString(subTemp[XPOS]-105, subTemp[YPOS], "모델 레벨", VL);
-				gDrawString(subTemp[XPOS]-105, subTemp[YPOS]+22, "레이어드 수", VL);
-				
-				if(xModelUpGrade.isUpgrade == TRUE)
-				{
-					switch(xModelUpGrade.upgradeType)
-					{
-					case 0:
-						for(int k=0;k<xModelData[xInventoryModel[xModelUpGrade.inventoryNum].code].upGradeMax;k++)
-						{
-							if(xInventoryModel[xModelUpGrade.inventoryNum].upGrade > k)
-								drawPacker(imgModelLv, subTemp[XPOS]+120-(24*xModelData[xInventoryModel[xModelUpGrade.inventoryNum].code].upGradeMax)+(24*k), subTemp[YPOS], imgW(imgModelLv)/2, 0, imgW(imgModelLv)/2, imgH(imgModelLv), VH);
-							else
-								drawPacker(imgModelLv, subTemp[XPOS]+120-(24*xModelData[xInventoryModel[xModelUpGrade.inventoryNum].code].upGradeMax)+(24*k), subTemp[YPOS], 0, 0, imgW(imgModelLv)/2, imgH(imgModelLv), VH);
-						}
-						break;
-					}
-				}
-				
-				
-				
-				
-				sprintf(strTempS,"%d회",xModelData[modelCode].layeredNum+getModelLayered(xModelUpGrade.inventoryNum,0));
-				gSetColor(255, 255, 255);
-				gDrawString(subTemp[XPOS]+105, subTemp[YPOS]+22, strTempS, VR);
-				
-				gSetColor(254, 177, 0);
-				gDrawString(subTemp[XPOS]-105, subTemp[YPOS]+55, "활동 보상", VL);
-				
-				drawIcon(subTemp[XPOS]-105+10,subTemp[YPOS]+86, ICON_TYPE_TIME);
-				gSetColor(255, 255, 255);
-				drawTimeSprintf(strTempS,getModelGiftTime(xModelUpGrade.inventoryNum,0),4);
-				gDrawString(subTemp[XPOS]-105+15+20, subTemp[YPOS]+86, strTempS, VL);
-				
-				drawPacker(imgModelMainInfo4, subTemp[XPOS]-8, subTemp[YPOS]+88, 0, 0, imgW(imgModelMainInfo4), imgH(imgModelMainInfo4), VH);
-				
-				
-				//254	188	10
-				gSetColor(254, 188, 10);
-				setCommaNum(strTempS, getModelGiftNum(xModelUpGrade.inventoryNum,0));
-				gDrawString(subTemp[XPOS]+105, subTemp[YPOS]+86, strTempS, VR);
-				int giftTypeImgNum;
-				switch(xModelData[modelCode].giftType)
-				{
-					case MODEL_GIFTTYPE_GOLD:giftTypeImgNum=ICON_TYPE_GOLD;break;
-					case MODEL_GIFTTYPE_LOOK:giftTypeImgNum=ICON_TYPE_LOOK;break;
-					case MODEL_GIFTTYPE_CANDY:giftTypeImgNum=ICON_TYPE_CANDY;break;
-					case MODEL_GIFTTYPE_EXP:giftTypeImgNum=ICON_TYPE_EXP;break;
-				}
-				drawIcon(subTemp[XPOS]+23, subTemp[YPOS]+86, giftTypeImgNum);
-			}
-			
-			subTemp[XPOS] = x-30;
-			subTemp[YPOS] = y+355;
-			drawPacker(imgPopupBtn0, subTemp[XPOS], subTemp[YPOS], 0, imgH(imgPopupBtn0)/2, imgW(imgPopupBtn0), imgH(imgPopupBtn0)/2, VH);
-			if(anyCnt > 6)
-			{
-				setFontSize(20);
-				gDrawStringBold(subTemp[XPOS], subTemp[YPOS], "확인", VH, ALPHA_MAX, ALPHA_MAX, ALPHA_MAX, 186, 70, 10);
-				setFontSize(11);
-			}
-			xTouchOk.wPos = imgW(imgPopupBtn0);
-			xTouchOk.hPos = imgH(imgPopupBtn0)/2;
-			xTouchOk.xPos = subTemp[XPOS]-xTouchOk.wPos/2;
-			xTouchOk.yPos = subTemp[YPOS]-xTouchOk.hPos/2;
-
-			subTemp[XPOS] = x-30;
-			subTemp[YPOS] = y+155;
-			if(anyCnt > 6)
-			{
-				switch(anyCnt)
-				{
-				case 7: setAlpha(1*ALPHA_MAX);
-				case 8: setAlpha(0.9*ALPHA_MAX);
-				case 9: setAlpha(0.8*ALPHA_MAX);
-				case 10: setAlpha(0.7*ALPHA_MAX);
-				case 11: setAlpha(0.6*ALPHA_MAX);
-				case 12: setAlpha(0.5*ALPHA_MAX);
-				case 13: setAlpha(0.4*ALPHA_MAX);
-				case 14: setAlpha(0.3*ALPHA_MAX);
-				case 15: setAlpha(0.2*ALPHA_MAX);
-				case 16: setAlpha(0.1*ALPHA_MAX);
-				default:
-					setAlpha(0);
-					break;
-				}
-				drawPacker(imgModelUpGrade1, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgModelUpGrade1), imgH(imgModelUpGrade1), VH);
-				setAlpha(ALPHA_MAX);
-			}
-			
-			
-		}
-		else		//뽑기
-		{
-			subTemp[XPOS] = x-30;
-			subTemp[YPOS] = y+105;
-			drawPacker(imgNewModelInfo0, subTemp[XPOS], subTemp[YPOS]+90, 0, 0, imgW(imgNewModelInfo0), imgH(imgNewModelInfo0), VH);
-			if(anyCnt > 6)
-			{
-				
-				
-				
-				//모델정보
-				gSetColor(255, 255, 255);
-				gDrawString(subTemp[XPOS]-105, subTemp[YPOS], "모델 랭크", VL);
-				gDrawString(subTemp[XPOS]-105, subTemp[YPOS]+22, "레이어드 수", VL);
-				
-				switch(xModelData[modelCode].grade)
-				{
-				case 0:gSetColor(217, 227, 235);sprintf(strTempS, "C랭크");break;
-				case 1:gSetColor(29, 255, 252);sprintf(strTempS, "B랭크");break;
-				case 2:gSetColor(255, 54, 253);sprintf(strTempS, "A랭크");break;
-				case 3:gSetColor(255, 196, 16);sprintf(strTempS, "S랭크");break;
-				}
-				gDrawString(subTemp[XPOS]+105, subTemp[YPOS], strTempS, VR);
-												
-				sprintf(strTempS,"%d회",xModelData[modelCode].layeredNum);
-				gSetColor(255, 255, 255);
-				gDrawString(subTemp[XPOS]+105, subTemp[YPOS]+22, strTempS, VR);
-							
-				gSetColor(254, 177, 0);
-				gDrawString(subTemp[XPOS]-105, subTemp[YPOS]+55, "활동 보상", VL);
-				
-				drawIcon(subTemp[XPOS]-105+10,subTemp[YPOS]+86, ICON_TYPE_TIME);
-				gSetColor(255, 255, 255);
-				drawTimeSprintf(strTempS,xModelData[modelCode].giftTime.oriData,4);
-				gDrawString(subTemp[XPOS]-105+15+20, subTemp[YPOS]+86, strTempS, VL);
-				
-				drawPacker(imgModelMainInfo4, subTemp[XPOS]-8, subTemp[YPOS]+88, 0, 0, imgW(imgModelMainInfo4), imgH(imgModelMainInfo4), VH);
-				
-				
-				//254	188	10
-				gSetColor(254, 188, 10);
-				setCommaNum(strTempS, xModelData[modelCode].giftNum.oriData);
-				gDrawString(subTemp[XPOS]+105, subTemp[YPOS]+86, strTempS, VR);
-				int giftTypeImgNum;
-				switch(xModelData[modelCode].giftType)
-				{
-					case MODEL_GIFTTYPE_GOLD:giftTypeImgNum=ICON_TYPE_GOLD;break;
-					case MODEL_GIFTTYPE_LOOK:giftTypeImgNum=ICON_TYPE_LOOK;break;
-					case MODEL_GIFTTYPE_CANDY:giftTypeImgNum=ICON_TYPE_CANDY;break;
-					case MODEL_GIFTTYPE_EXP:giftTypeImgNum=ICON_TYPE_EXP;break;
-				}
-				drawIcon(subTemp[XPOS]+23, subTemp[YPOS]+86, giftTypeImgNum);
-				
-				
-				
-				//스킬
-				for(int i=0;i<3;i++)
-				{
-					subTemp[XPOS] = x-30-70+(70*i);;
-					subTemp[YPOS] = y+105+137;
-					drawPacker(imgSkillSlot, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgSkillSlot), imgH(imgSkillSlot), VH);
-					if(xModelData[modelCode].totalSkillNum > i)
-					{
-						int packImgNum = imgSkillIcon0+xModelData[modelCode].skillType[i];
-						drawPacker(packImgNum, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(packImgNum), imgH(packImgNum), VH);
-						
-						xCollection.xTouchSkill[i].wPos = imgW(packImgNum);
-						xCollection.xTouchSkill[i].hPos = imgH(packImgNum);
-						xCollection.xTouchSkill[i].xPos = subTemp[XPOS]-xCollection.xTouchSkill[i].wPos/2;
-						xCollection.xTouchSkill[i].yPos = subTemp[YPOS]-xCollection.xTouchSkill[i].hPos/2;
-						
-						if(xCollection.selectSkill == i)
-						{
-							drawPacker(imgSkillSelect, subTemp[XPOS]-2, subTemp[YPOS]-2, 0, 0, imgW(imgSkillSelect), imgH(imgSkillSelect), VH);
-							drawPacker(imgSkillTextBox, subTemp[XPOS]+68, subTemp[YPOS]-64, 0, 0, imgW(imgSkillTextBox), imgH(imgSkillTextBox), VH);
-							
-							gSetColor(255, 255, 255);
-							setFontSize(8);
-							getSprintfSKillInfo(strTempS,modelCode,xCollection.selectSkill,0);
-							
-							
-							setPopupStringLine(strTempS,lcdW);
-							
-							
-							int fontGab = 20;
-							
-							switch(xPopup.totalLine)
-							{
-								case 2:
-									fontGab = 20;
-									break;
-								case 3:
-								case 4:
-									fontGab = 16;
-									break;
-							}
-							
-							for(int li=0;li<xPopup.totalLine;li++)
-								gDrawString(subTemp[XPOS]+68-80, subTemp[YPOS]-64-3-(fontGab/2*(xPopup.totalLine-1))+(fontGab*li), xPopup.strTextLine[li], VL);
-							
-							setFontSize(11);
-						}
-					}
-					else
-						drawPacker(imgSkillSlotEmpty, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgSkillSlotEmpty), imgH(imgSkillSlotEmpty), VH);
-				}
-				
-			}
-			
-			
-			subTemp[XPOS] = x-30;
-			subTemp[YPOS] = y+105;
-			
-			drawPacker(imgPopupBtn0, subTemp[XPOS], subTemp[YPOS]+200, 0, imgH(imgPopupBtn0)/2, imgW(imgPopupBtn0), imgH(imgPopupBtn0)/2, VH);
-			if(anyCnt > 6)
-			{
-				setFontSize(20);
-				gDrawStringBold(subTemp[XPOS], subTemp[YPOS]+200, "확인", VH, ALPHA_MAX, ALPHA_MAX, ALPHA_MAX, 186, 70, 10);
-				setFontSize(11);
-				
-				if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-				{
-					switch(xQuestTuto.nowNum)
-					{
-						case TUTO_22_MODELCASTING:
-							xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
-							xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS]+200;
-							xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
-							break;
-					}
-				}
-			}
-			xTouchOk.wPos = imgW(imgPopupBtn0);
-			xTouchOk.hPos = imgH(imgPopupBtn0)/2;
-			xTouchOk.xPos = subTemp[XPOS]-xTouchOk.wPos/2;
-			xTouchOk.yPos = subTemp[YPOS]+200-xTouchOk.hPos/2;
-		}
-		
-		
-		xGame.fgameScale = 1.0f;
-		xGame.fgameScaleCx = cx;
-		xGame.fgameScaleCy = cy;
-	}
-}
-
-void drawModelRotEff(int xPos,int yPos,int anyCnt)
-{
-	if(anyCnt > 0)
-	{
-	switch(anyCnt)
-	{
-		case 0:
-			xGame.isReSizeDraw = TRUE;
-			xGame.reSize = 50;
-			break;
-		case 1:
-			xGame.isReSizeDraw = TRUE;
-			xGame.reSize = 130;
-			break;
-		case 2:
-			xGame.isReSizeDraw = TRUE;
-			xGame.reSize = 120;
-			break;
-		case 3:
-			xGame.isReSizeDraw = TRUE;
-			xGame.reSize = 110;
-			break;
-		case 4:
-			xGame.isReSizeDraw = TRUE;
-			xGame.reSize = 105;
-			break;
-		default:
-			xGame.isReSizeDraw = TRUE;
-			switch(anyCnt%20)
-		{
-			case 0:
-				xGame.reSize = 140;
-				setAlpha(120);
-				break;
-			case 1:
-			case 19:
-				xGame.reSize = 136;
-				setAlpha(130);
-				break;
-			case 2:
-			case 18:
-				xGame.reSize = 132;
-				setAlpha(140);
-				break;
-			case 3:
-			case 17:
-				xGame.reSize = 128;
-				setAlpha(150);
-				break;
-			case 4:
-			case 16:
-				xGame.reSize = 124;
-				setAlpha(160);
-				break;
-			case 5:
-			case 15:
-				xGame.reSize = 120;
-				setAlpha(170);
-				break;
-			case 6:
-			case 14:
-				xGame.reSize = 116;
-				setAlpha(180);
-				break;
-			case 7:
-			case 13:
-				xGame.reSize = 112;
-				setAlpha(195);
-				break;
-			case 8:
-			case 12:
-				xGame.reSize = 108;
-				setAlpha(210);
-				break;
-			case 9:
-			case 11:
-				xGame.reSize = 104;
-				setAlpha(225);
-				break;
-			case 10:
-				xGame.reSize = 100;
-				break;
-				
-		}
-			break;
-	}
-	//뺑뺑이
-	xGame.isRotate = TRUE;
-	xGame.rotateNum = 360-((gameCnt%180)*2);
-	drawPacker(imgEff3, xPos, yPos, 0, 0, imgW(imgEff3), imgH(imgEff3), VH);
-	setAlpha(ALPHA_MAX);
-	xGame.isRotate = FALSE;
-	xGame.isReSizeDraw = FALSE;
-	}
-}
-
-void drawModelUpgradeOn()
-{
-	int px = cx;
-	int py = cy;
-	if(xModelUpGrade.isUpgrade == TRUE)
-	{
-		float rad;
-		float speedMax;
-		int tAlpha;
-		
-		
-		int per = 0;
-		int price = 0;
-		if(xModelUpGrade.selectSlot != DONT)
-		{
-			per = getModelUpgradePer(xModelUpGrade.inventoryNum,xModelUpGrade.modelListSlot[xModelUpGrade.selectSlot]);
-			price = getModelUpgradePrice(xModelUpGrade.inventoryNum,xModelUpGrade.modelListSlot[xModelUpGrade.selectSlot]);
-		}
-		
-		
-		XFITTINGLAYER xFTemp;
-		for(int i=0;i<16;i++)
-			xFTemp.code[i] = DONT;
-		
-		
-		switch(xModelUpGrade.upgradeState)
-		{
-			case MODELUPGRADE_STATE_SLOTMOVE:
-				switch(xModelUpGrade.anyCnt++)
-			{
-				case 0:
-					xModelUpGrade.slotX += 24;
-					xModelUpGrade.slotY -= 13;
-					break;
-				case 1:
-					xModelUpGrade.slotX += 24;
-					xModelUpGrade.slotY -= 13;
-					break;
-				case 2:
-					xModelUpGrade.slotX -= 10;
-					xModelUpGrade.slotY += 13;
-					break;
-				default:
-					xModelUpGrade.slotEndX = cx - 320;
-					xModelUpGrade.slotEndY = cy + 90;
-					
-					rad = getArcTan(xModelUpGrade.slotX,xModelUpGrade.slotY,xModelUpGrade.slotEndX,xModelUpGrade.slotEndY);
-					speedMax = getRadiusSpeed(xModelUpGrade.slotEndX,xModelUpGrade.slotEndY,xModelUpGrade.slotX,xModelUpGrade.slotY,rad);
-					
-					getRadiusPos(xModelUpGrade.slotX,xModelUpGrade.slotY,(speedMax*0.5f),rad);
-					xModelUpGrade.slotX = xRadius.pos[XPOS];
-					xModelUpGrade.slotY = xRadius.pos[YPOS];
-					
-					subTemp[5] = xModelUpGrade.slotX - xModelUpGrade.slotEndX;
-					subTemp[6] = xModelUpGrade.slotY - xModelUpGrade.slotEndY;
-					
-					if(subTemp[5] < 0)
-						subTemp[5] = -subTemp[5];
-					
-					if(subTemp[6] < 0)
-						subTemp[6] = -subTemp[6];
-					
-					if(subTemp[5] < 5 && subTemp[6] < 5)
-					{
-						xModelUpGrade.upgradeState = MODELUPGRADE_STATE_GAGE;
-						xModelUpGrade.anyCnt = 0;
-						setEff(xModelUpGrade.slotX, xModelUpGrade.slotY,300);
-					}
-					break;
-				}
-				drawModelSlot(xModelUpGrade.slotX,xModelUpGrade.slotY,xModelUpGrade.modelListSlot[xModelUpGrade.selectSlot]);
-				break;
-			case MODELUPGRADE_STATE_GAGE:
-				drawBgFillRect();
-				subTemp[XPOS] = cx;
-				subTemp[YPOS] = cy-70;
-				
-				tAlpha = ALPHA_MAX;
-				xGame.blendNum = 0;
-				
-				if(xModelUpGrade.anyCnt == 0)
-					playSnd(SND_MODEL_UPGRADE);
-				
-				int tW;
-				switch(++xModelUpGrade.anyCnt)
-				{
-				case 30:	tAlpha=100*ALPHA_MAX/100;xGame.blendNum=	1 * ALPHA_MAX;		break;
-				case 31:	tAlpha=100*ALPHA_MAX/100;xGame.blendNum=	0.9 * ALPHA_MAX;	break;
-				case 32:	tAlpha=100*ALPHA_MAX/100;xGame.blendNum=	0.8 * ALPHA_MAX;	break;
-				case 33:	tAlpha=100*ALPHA_MAX/100;xGame.blendNum=	0.7 * ALPHA_MAX;	break;
-				case 34:	tAlpha=100*ALPHA_MAX/100;xGame.blendNum=	0.6 * ALPHA_MAX;	break;
-				case 35:	tAlpha=100*ALPHA_MAX/100;xGame.blendNum=	0.5 * ALPHA_MAX;	break;
-				case 36:	tAlpha=100*ALPHA_MAX/100;xGame.blendNum=	0.4 * ALPHA_MAX;	break;
-				case 37:	tAlpha=100*ALPHA_MAX/100;xGame.blendNum=	0.3 * ALPHA_MAX;	break;
-				case 38:	tAlpha=100*ALPHA_MAX/100;xGame.blendNum=	0.2 * ALPHA_MAX;	break;
-				case 39:	tAlpha=100*ALPHA_MAX/100;xGame.blendNum=	0.1 * ALPHA_MAX;	break;
-				case 40:tAlpha=100*ALPHA_MAX/100;xGame.blendNum= 0;		break;
-				case 41:tAlpha=90*ALPHA_MAX/100;xGame.blendNum=	0;		break;
-				case 42:tAlpha=80*ALPHA_MAX/100;xGame.blendNum=	0;		break;
-				case 43:tAlpha=70*ALPHA_MAX/100;xGame.blendNum=	0;		break;
-				case 44:tAlpha=60*ALPHA_MAX/100;xGame.blendNum=	0;		break;
-				case 45:tAlpha=50*ALPHA_MAX/100;xGame.blendNum=	0;		break;
-				case 46:tAlpha=40*ALPHA_MAX/100;xGame.blendNum=	0;		break;
-				case 47:tAlpha=30*ALPHA_MAX/100;xGame.blendNum=	0;		break;
-				case 48:tAlpha=20*ALPHA_MAX/100;xGame.blendNum=	0;		break;
-				case 49:tAlpha=10*ALPHA_MAX/100;xGame.blendNum=	0;		break;
-				default:
-					if(xModelUpGrade.anyCnt>=50)
-					{
-						tAlpha=0;
-						//종료처리
-						playSnd(SND_MODEL_RESULT);
-						
-						
-						switch(xModelUpGrade.upgradeType)
-						{
-							case 0:
-								if(ranDom(0, 100) <= per)
-								{
-									xModelUpGrade.upgradeState = MODELUPGRADE_STATE_RESULT_SUCCESS;
-									xModelUpGrade.anyCnt = 0;
-									//성공
-									++xInventoryModel[xModelUpGrade.inventoryNum].upGrade;
-									/////////////////////////////////////////////////////////////////////
-									int eslot = xModelUpGrade.inventoryNum;
-									xEventQueueNet.action[xEventQueueNet.totalNum] = 1;//0:신규,1:업데이트,2삭제
-									xEventQueueNet.code[xEventQueueNet.totalNum] = xInventoryModel[eslot].code;
-									xEventQueueNet.haveNum[xEventQueueNet.totalNum] = xInventoryModel[eslot].upGrade;
-									xEventQueueNet.key[xEventQueueNet.totalNum] = xInventoryModel[eslot].key;
-									for(int f=0;f<16;f++)
-									{
-										xEventQueueNet.layer[xEventQueueNet.totalNum][f] = xInventoryModel[eslot].xF.code[f];
-									}
-									xEventQueueNet.open[xEventQueueNet.totalNum] = 0;//0:미출연1:출연
-									xEventQueueNet.mapX[xEventQueueNet.totalNum] = xInventoryModel[eslot].xF.isInFitting==FALSE?0:1;//0:미출연1:출연
-									addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SETMODEL, TRUE);
-									/////////////////////////////////////////////////////////////////////
-									setQuest(53,1,DONT);
-																		
-									setMoney(-price);
-									/////////////////////////////////////////////////////////////////////
-									addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GAMEINFO, TRUE);
-									/////////////////////////////////////////////////////////////////////
-									
-									
-									switch(xModelData[xInventoryModel[xModelUpGrade.inventoryNum].code].grade)
-									{
-									case 0:
-										sprintf(xRocks.strTemp, "C급%d강",xInventoryModel[xModelUpGrade.inventoryNum].upGrade);
-										setFiveRocksCustom("모델","강화","강화성공",xRocks.strTemp,1);
-										break;
-									case 1:
-										sprintf(xRocks.strTemp, "B급%d강",xInventoryModel[xModelUpGrade.inventoryNum].upGrade);
-										setFiveRocksCustom("모델","강화","강화성공",xRocks.strTemp,1);
-										break;
-									case 2:
-										sprintf(xRocks.strTemp, "A급%d강",xInventoryModel[xModelUpGrade.inventoryNum].upGrade);
-										setFiveRocksCustom("모델","강화","강화성공",xRocks.strTemp,1);
-										break;
-									case 3:
-										sprintf(xRocks.strTemp, "S급%d강",xInventoryModel[xModelUpGrade.inventoryNum].upGrade);
-										setFiveRocksCustom("모델","강화","강화성공",xRocks.strTemp,1);
-										break;
-									}
-								}
-								else
-								{
-									
-									setMoney(-price);
-									/////////////////////////////////////////////////////////////////////
-									addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GAMEINFO, TRUE);
-									/////////////////////////////////////////////////////////////////////
-									
-									
-									//실패
-									xModelUpGrade.isUpgrade = FALSE;
-									xModelUpGrade.anyCnt = 0;
-									setPopup(POPUP_MODELUPGRADEFAIL, playState, playState, 0, DONT);
-									
-									switch(xModelData[xInventoryModel[xModelUpGrade.inventoryNum].code].grade)
-									{
-									case 0:
-										sprintf(xRocks.strTemp, "C급%d강",xInventoryModel[xModelUpGrade.inventoryNum].upGrade+1);
-										setFiveRocksCustom("모델","강화","강화실패",xRocks.strTemp,1);
-										break;
-									case 1:
-										sprintf(xRocks.strTemp, "B급%d강",xInventoryModel[xModelUpGrade.inventoryNum].upGrade+1);
-										setFiveRocksCustom("모델","강화","강화실패",xRocks.strTemp,1);
-										break;
-									case 2:
-										sprintf(xRocks.strTemp, "A급%d강",xInventoryModel[xModelUpGrade.inventoryNum].upGrade+1);
-										setFiveRocksCustom("모델","강화","강화실패",xRocks.strTemp,1);
-										break;
-									case 3:
-										sprintf(xRocks.strTemp, "S급%d강",xInventoryModel[xModelUpGrade.inventoryNum].upGrade+1);
-										setFiveRocksCustom("모델","강화","강화실패",xRocks.strTemp,1);
-										break;
-									}
-								}
-								xInventoryModel[xModelUpGrade.modelListSlot[xModelUpGrade.selectSlot]].code = DONT;
-								xModelUpGrade.selectSlot = DONT;
-								setModelList(DONT);
-								setModelUpGradeList(xModelUpGrade.inventoryNum);
-								break;
-							case 1:
-							{
-								switch(xModel.state)
-								{
-								case MODELCOLLECT_STATE_MAINUPGRADE:
-									xModel.state = MODELCOLLECT_STATE_MAIN;
-									break;
-								case MODELCOLLECT_STATE_LISTUPGRADE:
-									xModel.state = MODELCOLLECT_STATE_LIST;
-									break;
-								}
-								
-								
-								
-								xModelUpGrade.upgradeState = MODELUPGRADE_STATE_RESULT_SUCCESS;
-								xModelUpGrade.anyCnt = 0;
-								
-								int grade = xModelData[xInventoryModel[xModelUpGrade.inventoryNum].code].grade;
-																									
-								xInventoryModel[xModelUpGrade.inventoryNum].code = DONT;
-								xInventoryModel[xModelUpGrade.modelListSlot[xModelUpGrade.selectSlot]].code = DONT;
-									
-								switch(grade)
-								{
-								case 0:		//c
-									xModel.newModelCode = xModel.ranDomSlotB[ranDom(0,xModel.totalRanDomSlotB-1)];
-									break;
-								case 1:		//b
-									xModel.newModelCode = xModel.ranDomSlotA[ranDom(0,xModel.totalRanDomSlotA-1)];
-									break;
-								case 2:		//a
-									xModel.newModelCode = xModel.ranDomSlotS[ranDom(0,xModel.totalRanDomSlotS-1)];
-									break;
-								}
-								
-								int slot = addInventoryModel(xModel.newModelCode);
-								
-								for(int f=0;f<16;f++)
-									xInventoryModel[slot].xF.code[f] = DONT;
-								
-								/////////////////////////////////////////////////////////////////////
-								int eslot = slot;
-								xEventQueueNet.slotNum[xEventQueueNet.totalNum] = slot;
-								xEventQueueNet.action[xEventQueueNet.totalNum] = 0;//0:신규,1:업데이트,2삭제
-								xEventQueueNet.code[xEventQueueNet.totalNum] = xInventoryModel[eslot].code;
-								xEventQueueNet.haveNum[xEventQueueNet.totalNum] = xInventoryModel[eslot].upGrade;
-								xEventQueueNet.key[xEventQueueNet.totalNum] = xInventoryModel[eslot].key;
-								
-								for(int f=0;f<16;f++)
-								{
-									xEventQueueNet.layer[xEventQueueNet.totalNum][f] = xInventoryModel[eslot].xF.code[f];
-								}
-								xEventQueueNet.open[xEventQueueNet.totalNum] = 0;//0:미출연1:출연
-								xEventQueueNet.mapX[xEventQueueNet.totalNum] = 0;
-								addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SETMODEL, TRUE);
-								/////////////////////////////////////////////////////////////////////
-								setMoney(-price);
-								/////////////////////////////////////////////////////////////////////
-								addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GAMEINFO, TRUE);
-								/////////////////////////////////////////////////////////////////////
-								switch(grade)
-								{
-								case 0:
-									setFiveRocksCustom("모델","합성","합성성공","B급",1);
-									break;
-								case 1:
-									setFiveRocksCustom("모델","합성","합성성공","A급",1);
-									break;
-								case 2:
-									setFiveRocksCustom("모델","합성","합성성공","S급",1);
-									break;
-								}
-							}
-							break;
-						}
-					}
-					break;
-				}
-				
-				xGame.blendType = BLEND_WHITEALPHA;
-				tW = imgW(imgFittingMenu2)*(xModelUpGrade.anyCnt)/30;
-				if(tW > imgW(imgFittingMenu2))
-					tW = imgW(imgFittingMenu2);
-				setAlpha(tAlpha);
-				if(xGame.blendNum != 0)
-					xGame.isBlend = TRUE;
-				
-				drawModelRotEff(subTemp[XPOS], subTemp[YPOS]+23,gameCnt);
-				
-				drawPacker(imgFittingMenu2, subTemp[XPOS]-imgW(imgFittingMenu2)/2, subTemp[YPOS]+120, 0, imgH(imgFittingMenu2)/4*3, imgW(imgFittingMenu2), imgH(imgFittingMenu2)/4, VL);
-
-				
-								
-				switch(xModelUpGrade.upgradeType)
-				{
-				case 0:
-					drawPacker(imgHiPing1, subTemp[XPOS], subTemp[YPOS]+23, 0, 0, imgW(imgHiPing1), imgH(imgHiPing1), VH);
-					break;
-				case 1:
-					drawPacker(imgHiPing2, subTemp[XPOS], subTemp[YPOS]+23, 0, 0, imgW(imgHiPing2), imgH(imgHiPing2), VH);
-					break;
-				}
-				
-				drawPacker(imgFittingMenu2, subTemp[XPOS]-imgW(imgFittingMenu2)/2, subTemp[YPOS]+120, 0, imgH(imgFittingMenu2)/4*2, tW, imgH(imgFittingMenu2)/4, VL);
-				
-				switch(xModelUpGrade.upgradeType)
-				{
-				case 0:
-					gDrawStringBold(subTemp[XPOS], subTemp[YPOS]+120, "모델 업그레이드중", VH, 255, 255, 255, 186, 70, 10);
-					break;
-				case 1:
-					gDrawStringBold(subTemp[XPOS], subTemp[YPOS]+120, "모델 조합중", VH, 255, 255, 255, 186, 70, 10);
-					break;
-				}
-				
-				
-				setAlpha(ALPHA_MAX);
-				xGame.isBlend = FALSE;
-				
-				break;
-			case MODELUPGRADE_STATE_RESULT_SUCCESS:
-				drawBgFillRect();
-				
-				
-				
-				switch(xModelUpGrade.upgradeType)
-				{
-				case 0:
-					drawModelRotEff(px+110, py-160,xModelUpGrade.anyCnt-27);
-					drawModelShow(xInventoryModel[xModelUpGrade.inventoryNum].code, &xInventoryModel[xModelUpGrade.inventoryNum].xF, xModelUpGrade.anyCnt++);
-					break;
-				case 1:
-					drawModelRotEff(px+132, py-90,xModelUpGrade.anyCnt-27);
-					drawModelShow(xModel.newModelCode, &xFTemp, xModelUpGrade.anyCnt++);
-					break;
-				}
-				break;
-		}
-		
-		/*
-		 if(++xModelUpGrade.anyCnt > MODELUPGRADEANYCNT)
-		 {
-		 xModelUpGrade.isUpgrade = FALSE;
-		 xInventoryModel[xModelUpGrade.modelListNum].upGrade++;
-		 xInventoryModel[xModelUpGrade.modelListSlot[xModelUpGrade.selectSlot]].code = DONT;
-		 setModelUpGradeList(xModelUpGrade.modelListNum);
-		 xModel.selectSlot = DONT;
-		 }
-		 */
-	}
-}
+//void drawModelCasting()
+//{
+//	int px = cx;
+//	int py = cy;
+//	
+//	drawBgFillRect();
+//	
+//	drawPacker(imgModelCastingBtn4, px, py, 0, 0, imgW(imgModelCastingBtn4), imgH(imgModelCastingBtn4), VH);
+//	
+//	gDrawStringBold(px, py-122, "모델을 캐스팅 할 수 있어요", VH, 86, 255, 220, 44, 25, 26);
+//	
+//	drawPacker(imgModelCastingBtn5, px-90, py+13, 0, 0, imgW(imgModelCastingBtn5), imgH(imgModelCastingBtn5), VH);
+//	drawPacker(imgModelCastingBtn6, px+90, py+13, 0, 0, imgW(imgModelCastingBtn6), imgH(imgModelCastingBtn6), VH);
+//		
+//	xModel.xTouchCasting[0].wPos = imgW(imgModelCastingBtn5);
+//	xModel.xTouchCasting[0].hPos = imgH(imgModelCastingBtn5);
+//	xModel.xTouchCasting[0].xPos = px-90-xModel.xTouchCasting[0].wPos/2;
+//	xModel.xTouchCasting[0].yPos = py+13-xModel.xTouchCasting[0].hPos/2;
+//	
+//	xModel.xTouchCasting[1].wPos = imgW(imgModelCastingBtn6);
+//	xModel.xTouchCasting[1].hPos = imgH(imgModelCastingBtn6);
+//	xModel.xTouchCasting[1].xPos = px+90-xModel.xTouchCasting[1].wPos/2;
+//	xModel.xTouchCasting[1].yPos = py+13-xModel.xTouchCasting[1].hPos/2;
+//	
+//	
+//		
+//	
+//	switch(xShop.premiumPriceType[0])
+//	{
+//	case 2:
+//		drawPacker(imgProductionMenuObj0, px-90-63, py+13+67, imgW(imgProductionMenuObj0)/8*6, 0, imgW(imgProductionMenuObj0)/8, imgH(imgProductionMenuObj0), VL);
+//		break;
+//	default:
+//		drawPacker(imgProductionMenuObj0, px-90-63, py+13+67, imgW(imgProductionMenuObj0)/8*xShop.premiumPriceType[0], 0, imgW(imgProductionMenuObj0)/8, imgH(imgProductionMenuObj0), VL);
+//		break;
+//	}
+//	
+//	
+//	
+//	setCommaNum(strTempS, xShop.premiumPrice[0].oriData);
+//	gSetColor(82, 49, 38);
+//	gDrawString(px-90+63, py+13+67, strTempS, VR);
+//	
+//	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+//	{
+//		switch(xQuestTuto.nowNum)
+//		{
+//		case TUTO_22_MODELCASTING:
+//			if(playState == PLAY_PLAY)
+//			{
+//				xTutoInfo.x[xTutoInfo.totalNum] = px-90;
+//				xTutoInfo.y[xTutoInfo.totalNum] = py+13;
+//				xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
+//			}
+//			break;
+//		}
+//	}
+//	
+//	
+//	
+//	switch(xShop.premiumPriceType[0])
+//	{
+//		case 2:
+//			drawPacker(imgProductionMenuObj0, px+90-63, py+13+67, imgW(imgProductionMenuObj0)/8*6, 0, imgW(imgProductionMenuObj0)/8, imgH(imgProductionMenuObj0), VL);
+//			break;
+//		default:
+//			drawPacker(imgProductionMenuObj0, px+90-63, py+13+67, imgW(imgProductionMenuObj0)/8*xShop.premiumPriceType[1], 0, imgW(imgProductionMenuObj0)/8, imgH(imgProductionMenuObj0), VL);
+//			break;
+//	}
+//	
+//	
+//	sprintf(strTempS, "%d",xShop.premiumPrice[1].oriData);
+//	gSetColor(82, 49, 38);
+//	gDrawString(px+90+63, py+13+67, strTempS, VR);
+//	
+//	
+//	
+//	if(xQuestTuto.state == QUEST_TUTO_KEY)
+//	{
+//		switch(xQuestTuto.nowNum)
+//		{
+//		case TUTO_22_MODELCASTING:
+//			if(xWorldMap.isNewModel == FALSE)
+//			{
+//				if(xModel.totalInventoryModel > 0)
+//					xQuestTuto.isTutoClean = TRUE;
+//			}
+//			break;
+//		}
+//	}
+//	
+//		
+//	drawBtn(px, py+170, BTN_OK_CONFIRM);
+//				
+//	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+//	{
+//		switch(xQuestTuto.nowNum)
+//		{
+//		case TUTO_22_MODELCASTINGEXIT:
+//			xTutoInfo.x[xTutoInfo.totalNum] = px;
+//			xTutoInfo.y[xTutoInfo.totalNum] = py+170;
+//			xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
+//			break;
+//		}
+//	}
+//		
+//}
+//
+//
+//int getModelUpgradePrice(int oriInvenSlot,int targetInvenSlot)
+//{
+//	int oriGrade = xModelData[xInventoryModel[oriInvenSlot].code].grade;
+//	int oriUpgrade = xInventoryModel[oriInvenSlot].upGrade;
+//	int price = 0;
+//	
+//	switch(xModelUpGrade.upgradeType)
+//	{
+//	case 0:		//업그레이드
+//		price = xModel.upgradePrice[oriGrade][oriUpgrade];
+//		break;
+//	case 1:		//조합
+//		price = xModel.mixPrice[oriGrade];
+//		break;
+//	}
+//	return price;
+//}
+//
+//int getModelUpgradePer(int oriInvenSlot,int targetInvenSlot)
+//{
+//	int oriGrade = xModelData[xInventoryModel[oriInvenSlot].code].grade;
+//	int oriUpgrade = xInventoryModel[oriInvenSlot].upGrade;
+//	int targetGrade = xModelData[xInventoryModel[targetInvenSlot].code].grade;
+//	int per = 0;
+//	
+//	switch(xModelUpGrade.upgradeType)
+//	{
+//	case 0:		//업그레이드
+//		per = xModel.upgradePer[oriGrade][oriUpgrade][targetGrade];
+//		break;
+//	case 1:		//조합
+//		per = xModel.mixPer[oriGrade];
+//		break;
+//	}
+//	return per;
+//}
+//
+//void drawModelShow(int modelCode,XFITTINGLAYER *xF,int anyCnt)
+//{
+//	int resize;
+//	int x;
+//	int y;
+//	
+//	if(anyCnt >= 0)
+//	{
+//		if(gameCnt%2 == 0)
+//			makeColorPaper(1);
+//		//받침
+//		switch(anyCnt)
+//		{
+//			case 0:	x=344;y=	-86;break;
+//			case 1:	x=344;y=	16.3346;break;
+//			case 2:	x=344;y=	118.671;break;
+//			case 3:	x=344;y=	221.007;break;
+//			case 4:	x=344;y=	323.336;break;
+//			case 5:	x=344;y=	425.657;break;
+//			case 6:	x=344;y=	528;break;
+//			case 7:	x=344;y=	516;break;
+//			case 8:	x=344;y=	522;break;
+//			case 9:	x=344;y=	522;break;
+//			case 10:x=344;y=	522;break;
+//			case 11:	x=344;y=	522;break;
+//			case 12:	x=344;y=	522;break;
+//			case 13:	x=344;y=	522;break;
+//			case 14:	x=344;y=	522;break;
+//			case 15:	x=344;y=	522;break;
+//			case 16:	x=344;y=	522;break;
+//			case 17:	x=344;y=	522;break;
+//			case 18:	x=344;y=	522;break;
+//			case 19:	x=344;y=	522;break;
+//			case 20:	x=344;y=	522;break;
+//			case 21:	x=344;y=	522;break;
+//			case 22:	x=344;y=	522;break;
+//			case 23:	x=344;y=	522;break;
+//			case 24:	x=344;y=	522;break;
+//			case 25:	x=344;y=	522;break;
+//			case 26:	x=344;y=	522;break;
+//			case 27:	x=344;y=	522;break;
+//			case 28:	x=344;y=	522;break;
+//			default:	x=344;y=	522;break;
+//		}
+//		
+//		drawPacker(imgModelSlot1, x, y, 0, 0, imgW(imgModelSlot1), imgH(imgModelSlot1), VH);
+//		
+//		if(anyCnt == 13 && xWorldMap.isNewModel == TRUE)
+//		{
+//			int slot = addInventoryModel(xModel.newModelCode);
+//			
+//			
+//			for(int i=0;i<xModelData[xInventoryModel[slot].code].grade+1;i++)
+//			{
+//				setQuest(54, 999, i);
+//			}
+//						
+//			for(int ff=0;ff<SPRIT_IMGLAYERMAX;ff++)
+//				xInventoryModel[slot].xF.code[ff] = DONT;
+//			
+//			/////////////////////////////////////////////////////////////////////
+//			int eslot = slot;
+//			xEventQueueNet.slotNum[xEventQueueNet.totalNum] = slot;
+//			xEventQueueNet.action[xEventQueueNet.totalNum] = 0;//0:신규,1:업데이트,2삭제
+//			xEventQueueNet.code[xEventQueueNet.totalNum] = xInventoryModel[eslot].code;
+//			xEventQueueNet.haveNum[xEventQueueNet.totalNum] = xInventoryModel[eslot].upGrade;
+//			xEventQueueNet.key[xEventQueueNet.totalNum] = xInventoryModel[eslot].key;
+//			
+//			for(int f=0;f<16;f++)
+//			{
+//				xEventQueueNet.layer[xEventQueueNet.totalNum][f] = xInventoryModel[eslot].xF.code[f];
+//			}
+//			xEventQueueNet.open[xEventQueueNet.totalNum] = 0;//0:미출연1:출연
+//			xEventQueueNet.mapX[xEventQueueNet.totalNum] = 0;
+//			addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SETMODEL, TRUE);
+//			/////////////////////////////////////////////////////////////////////
+//			setModelList(xModel.listTabNum);
+//			////////////////////////////////////////////
+//			addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SETETC, FALSE);
+//			///////////////////////////////////////////
+//		}
+//				
+//		//아랫조명
+//		if(anyCnt >= 17)
+//		{
+//			x = 344;
+//			y = 345;
+//			drawPacker(imgModelSlot2, x, y, 0, 0, imgW(imgModelSlot2), imgH(imgModelSlot2), VH);
+//		}
+//		//윗조명
+//		if(anyCnt >= 28)
+//		{
+//			x = 353;
+//			y = 280;
+//			xGame.isBlend = TRUE;
+//			xGame.blendType = BLEND_ADDP;
+//			drawPacker(imgModelSlot3, x, y, 0, 0, imgW(imgModelSlot3), imgH(imgModelSlot3), VH);
+//			xGame.isBlend = FALSE;
+//		}
+//		//마네킹
+//		if(anyCnt >= 10)
+//		{
+//			switch(anyCnt)
+//			{
+//			case 10:	x=	342;y=	-228;break;
+//			case 11:	x=	342;y=	-52.6598;break;
+//			case 12:	x=	342;y=	122.67;break;
+//			case 13:	x=	342;y=	298;break;
+//			case 14:	x=	342;y=	327.444;break;
+//			case 15:	x=	342;y=	286;break;
+//			case 16:	x=	342;y=	287.77;break;
+//			case 17:	x=	342;y=	290;break;
+//			case 18:	x=	342;y=	290;break;
+//			case 19:	x=	342;y=	290;break;
+//			case 20:	x=	342;y=	290;break;
+//			case 21:	x=	342;y=	290;break;
+//			case 22:	x=	342;y=	290;break;
+//			case 23:	x=	342;y=	290;break;
+//			case 24:	x=	342;y=	290;break;
+//			case 25:	x=	342;y=	290;break;
+//			case 26:	x=	342;y=	290;break;
+//			case 27:	x=	342;y=	290;break;
+//			case 28:	x=	342;y=	290;break;
+//			default:	x=	342;y=	290;break;
+//			}
+//									
+//			switch(anyCnt)
+//			{
+//			case 15:
+//				makeFire(x-100, y-70, 15);
+//				break;
+//			case 25:
+//				makeFire(x+120, y-130, 15);
+//				break;
+//			case 35:
+//				makeFire(x+30, y+140, 15);
+//				break;
+//			case 45:
+//				makeFire(x, y, 30);
+//				break;
+//			}
+//			
+//			XFACE xFaceTemp;
+//			int code = modelCode;
+//			xFaceTemp.hairNum = code+1000;
+//			xFaceTemp.faceNum = code+1000;
+//			xFaceTemp.faceType = FACE_TYPE_SMILE;
+//
+//						
+//			y+=30;
+//			xGame.fgameScale = 1.4f;
+//			xGame.fgameScaleCx = x;
+//			xGame.fgameScaleCy = lcdH-y;
+//			
+//									
+//			drawFittingBody(x, y,xF,&xFaceTemp,TRUE,xModelData[code].sex);
+//			
+//				
+//			if(xWorldMap.isNewModel == TRUE)
+//			{
+//				if(xModelData[code].sex == 0)
+//					drawPacker(imgNewModel6, x+(7-90), y+(76-215), 0, 0, imgW(imgNewModel6), imgH(imgNewModel6), TL);
+//				else
+//					drawPacker(imgNewModel7, x+(29-90), y+(120-215), 0, 0, imgW(imgNewModel7), imgH(imgNewModel7), TL);
+//			}
+//			
+//			xGame.fgameScale = 1.0f;
+//			xGame.fgameScaleCx = cx;
+//			xGame.fgameScaleCy = cy;
+//		}
+//	}
+//	
+//	
+//	anyCnt = anyCnt-20;
+//	if(anyCnt >= 0)
+//	{
+//		switch(anyCnt)
+//		{
+//		case 0:resize=	0;break;
+//		case 1:resize=	40;break;
+//		case 2:resize=	80;break;
+//		case 3:resize=	120;break;
+//		case 4:resize=	110;break;
+//		case 5:resize=	100;break;
+//		case 6:resize=	100;break;
+//		default:resize=100;break;
+//		}
+//		
+//		
+//		if(resize != 100)
+//		{
+//			xGame.fgameScale = resize*0.01f;
+//		}
+//		
+//		//모델이름
+//		switch(anyCnt)
+//		{
+//			case 0:	x=604.5;y=	321.5;break;
+//			case 1:	x=604.5;y=	321.5;break;
+//			case 2:	x=613.76;y=	322.924;break;
+//			case 3:	x=622.998;y=	324.5;break;
+//			case 4:	x=628.296;y=	325.853;break;
+//			case 5:	x=633.5;y=	327.5;break;
+//			case 6:	x=633.5;y=	327.5;break;
+//			default:x=633.5;y=	327.5;break;
+//		}
+//				
+//		xGame.fgameScaleCx = x;
+//		xGame.fgameScaleCy = lcdH-y;
+//		
+//		
+//		
+//		if(xModelUpGrade.isUpgrade == TRUE && xModelUpGrade.upgradeType == 0)
+//		{
+//			y -= 150;
+//			drawPacker(imgNewModel5, x-24, y-44, 0, 0, imgW(imgNewModel5), imgH(imgNewModel5), VH);
+//		}
+//		else		//뽑기
+//		{
+//			y -= 80;
+//			
+//			drawModelName(x, y-40, modelCode);
+//			switch(xModelData[modelCode].grade)
+//			{
+//				case 0:drawPacker(imgNewModelRank0, x-120, y-34, 0, 0, imgW(imgNewModelRank0), imgH(imgNewModelRank0), VH);break;
+//				case 1:drawPacker(imgNewModelRank1, x-120, y-34, 0, 0, imgW(imgNewModelRank1), imgH(imgNewModelRank1), VH);break;
+//				case 2:drawPacker(imgNewModelRank2, x-120, y-34, 0, 0, imgW(imgNewModelRank2), imgH(imgNewModelRank2), VH);break;
+//				case 3:drawPacker(imgNewModelRank3, x-120, y-34, 0, 0, imgW(imgNewModelRank3), imgH(imgNewModelRank3), VH);break;
+//			}
+//			drawPacker(imgNewModel4, x, y-2, 0, 0, imgW(imgNewModel4), imgH(imgNewModel4), VH);
+//		}
+//				
+//		if(xModelUpGrade.isUpgrade == TRUE && xModelUpGrade.upgradeType == 0)
+//		{
+//			subTemp[XPOS] = x-30;
+//			subTemp[YPOS] = y+155;
+//			drawPacker(imgModelUpGrade0, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgModelUpGrade0), imgH(imgModelUpGrade0), VH);
+//			
+//						
+//			subTemp[XPOS] = x-30;
+//			subTemp[YPOS] = y+24;
+//			if(anyCnt > 6)
+//			{
+//				//모델정보
+//				gSetColor(255, 255, 255);
+//				gDrawString(subTemp[XPOS]-105, subTemp[YPOS], "모델 레벨", VL);
+//				gDrawString(subTemp[XPOS]-105, subTemp[YPOS]+22, "레이어드 수", VL);
+//				
+//				if(xModelUpGrade.isUpgrade == TRUE)
+//				{
+//					switch(xModelUpGrade.upgradeType)
+//					{
+//						case 0:
+//							for(int k=0;k<xModelData[xInventoryModel[xModelUpGrade.inventoryNum].code].upGradeMax;k++)
+//							{
+//								if(xInventoryModel[xModelUpGrade.inventoryNum].upGrade-1 > k)
+//									drawPacker(imgModelLv, subTemp[XPOS]+120-(24*xModelData[xInventoryModel[xModelUpGrade.inventoryNum].code].upGradeMax)+(24*k), subTemp[YPOS], imgW(imgModelLv)/2, 0, imgW(imgModelLv)/2, imgH(imgModelLv), VH);
+//								else
+//									drawPacker(imgModelLv, subTemp[XPOS]+120-(24*xModelData[xInventoryModel[xModelUpGrade.inventoryNum].code].upGradeMax)+(24*k), subTemp[YPOS], 0, 0, imgW(imgModelLv)/2, imgH(imgModelLv), VH);
+//							}
+//							break;
+//					}
+//				}
+//				
+//				
+//				
+//				
+//				sprintf(strTempS,"%d회",xModelData[modelCode].layeredNum+getModelLayered(xModelUpGrade.inventoryNum,-1));
+//				gSetColor(255, 255, 255);
+//				gDrawString(subTemp[XPOS]+105, subTemp[YPOS]+22, strTempS, VR);
+//				
+//				gSetColor(254, 177, 0);
+//				gDrawString(subTemp[XPOS]-105, subTemp[YPOS]+55, "활동 보상", VL);
+//				
+//				drawIcon(subTemp[XPOS]-105+10,subTemp[YPOS]+86, ICON_TYPE_TIME);
+//				gSetColor(255, 255, 255);
+//				drawTimeSprintf(strTempS,getModelGiftTime(xModelUpGrade.inventoryNum,-1),4);
+//				gDrawString(subTemp[XPOS]-105+15+20, subTemp[YPOS]+86, strTempS, VL);
+//				
+//				drawPacker(imgModelMainInfo4, subTemp[XPOS]-8, subTemp[YPOS]+88, 0, 0, imgW(imgModelMainInfo4), imgH(imgModelMainInfo4), VH);
+//				
+//				
+//				//254	188	10
+//				gSetColor(254, 188, 10);
+//				setCommaNum(strTempS, getModelGiftNum(xModelUpGrade.inventoryNum,-1));
+//				gDrawString(subTemp[XPOS]+105, subTemp[YPOS]+86, strTempS, VR);
+//				int giftTypeImgNum;
+//				switch(xModelData[modelCode].giftType)
+//				{
+//					case MODEL_GIFTTYPE_GOLD:giftTypeImgNum=ICON_TYPE_GOLD;break;
+//					case MODEL_GIFTTYPE_LOOK:giftTypeImgNum=ICON_TYPE_LOOK;break;
+//					case MODEL_GIFTTYPE_CANDY:giftTypeImgNum=ICON_TYPE_CANDY;break;
+//					case MODEL_GIFTTYPE_EXP:giftTypeImgNum=ICON_TYPE_EXP;break;
+//				}
+//				drawIcon(subTemp[XPOS]+23, subTemp[YPOS]+86, giftTypeImgNum);
+//			}
+//			
+//			
+//			subTemp[XPOS] = x-30;
+//			subTemp[YPOS] = y+190;
+//			if(anyCnt > 6)
+//			{
+//				//모델정보
+//				gSetColor(255, 255, 255);
+//				gDrawString(subTemp[XPOS]-105, subTemp[YPOS], "모델 레벨", VL);
+//				gDrawString(subTemp[XPOS]-105, subTemp[YPOS]+22, "레이어드 수", VL);
+//				
+//				if(xModelUpGrade.isUpgrade == TRUE)
+//				{
+//					switch(xModelUpGrade.upgradeType)
+//					{
+//					case 0:
+//						for(int k=0;k<xModelData[xInventoryModel[xModelUpGrade.inventoryNum].code].upGradeMax;k++)
+//						{
+//							if(xInventoryModel[xModelUpGrade.inventoryNum].upGrade > k)
+//								drawPacker(imgModelLv, subTemp[XPOS]+120-(24*xModelData[xInventoryModel[xModelUpGrade.inventoryNum].code].upGradeMax)+(24*k), subTemp[YPOS], imgW(imgModelLv)/2, 0, imgW(imgModelLv)/2, imgH(imgModelLv), VH);
+//							else
+//								drawPacker(imgModelLv, subTemp[XPOS]+120-(24*xModelData[xInventoryModel[xModelUpGrade.inventoryNum].code].upGradeMax)+(24*k), subTemp[YPOS], 0, 0, imgW(imgModelLv)/2, imgH(imgModelLv), VH);
+//						}
+//						break;
+//					}
+//				}
+//				
+//				
+//				
+//				
+//				sprintf(strTempS,"%d회",xModelData[modelCode].layeredNum+getModelLayered(xModelUpGrade.inventoryNum,0));
+//				gSetColor(255, 255, 255);
+//				gDrawString(subTemp[XPOS]+105, subTemp[YPOS]+22, strTempS, VR);
+//				
+//				gSetColor(254, 177, 0);
+//				gDrawString(subTemp[XPOS]-105, subTemp[YPOS]+55, "활동 보상", VL);
+//				
+//				drawIcon(subTemp[XPOS]-105+10,subTemp[YPOS]+86, ICON_TYPE_TIME);
+//				gSetColor(255, 255, 255);
+//				drawTimeSprintf(strTempS,getModelGiftTime(xModelUpGrade.inventoryNum,0),4);
+//				gDrawString(subTemp[XPOS]-105+15+20, subTemp[YPOS]+86, strTempS, VL);
+//				
+//				drawPacker(imgModelMainInfo4, subTemp[XPOS]-8, subTemp[YPOS]+88, 0, 0, imgW(imgModelMainInfo4), imgH(imgModelMainInfo4), VH);
+//				
+//				
+//				//254	188	10
+//				gSetColor(254, 188, 10);
+//				setCommaNum(strTempS, getModelGiftNum(xModelUpGrade.inventoryNum,0));
+//				gDrawString(subTemp[XPOS]+105, subTemp[YPOS]+86, strTempS, VR);
+//				int giftTypeImgNum;
+//				switch(xModelData[modelCode].giftType)
+//				{
+//					case MODEL_GIFTTYPE_GOLD:giftTypeImgNum=ICON_TYPE_GOLD;break;
+//					case MODEL_GIFTTYPE_LOOK:giftTypeImgNum=ICON_TYPE_LOOK;break;
+//					case MODEL_GIFTTYPE_CANDY:giftTypeImgNum=ICON_TYPE_CANDY;break;
+//					case MODEL_GIFTTYPE_EXP:giftTypeImgNum=ICON_TYPE_EXP;break;
+//				}
+//				drawIcon(subTemp[XPOS]+23, subTemp[YPOS]+86, giftTypeImgNum);
+//			}
+//			
+//			subTemp[XPOS] = x-30;
+//			subTemp[YPOS] = y+355;
+//			drawPacker(imgPopupBtn0, subTemp[XPOS], subTemp[YPOS], 0, imgH(imgPopupBtn0)/2, imgW(imgPopupBtn0), imgH(imgPopupBtn0)/2, VH);
+//			if(anyCnt > 6)
+//			{
+//				setFontSize(20);
+//				gDrawStringBold(subTemp[XPOS], subTemp[YPOS], "확인", VH, ALPHA_MAX, ALPHA_MAX, ALPHA_MAX, 186, 70, 10);
+//				setFontSize(11);
+//			}
+//			xTouchOk.wPos = imgW(imgPopupBtn0);
+//			xTouchOk.hPos = imgH(imgPopupBtn0)/2;
+//			xTouchOk.xPos = subTemp[XPOS]-xTouchOk.wPos/2;
+//			xTouchOk.yPos = subTemp[YPOS]-xTouchOk.hPos/2;
+//
+//			subTemp[XPOS] = x-30;
+//			subTemp[YPOS] = y+155;
+//			if(anyCnt > 6)
+//			{
+//				switch(anyCnt)
+//				{
+//				case 7: setAlpha(1*ALPHA_MAX);
+//				case 8: setAlpha(0.9*ALPHA_MAX);
+//				case 9: setAlpha(0.8*ALPHA_MAX);
+//				case 10: setAlpha(0.7*ALPHA_MAX);
+//				case 11: setAlpha(0.6*ALPHA_MAX);
+//				case 12: setAlpha(0.5*ALPHA_MAX);
+//				case 13: setAlpha(0.4*ALPHA_MAX);
+//				case 14: setAlpha(0.3*ALPHA_MAX);
+//				case 15: setAlpha(0.2*ALPHA_MAX);
+//				case 16: setAlpha(0.1*ALPHA_MAX);
+//				default:
+//					setAlpha(0);
+//					break;
+//				}
+//				drawPacker(imgModelUpGrade1, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgModelUpGrade1), imgH(imgModelUpGrade1), VH);
+//				setAlpha(ALPHA_MAX);
+//			}
+//			
+//			
+//		}
+//		else		//뽑기
+//		{
+//			subTemp[XPOS] = x-30;
+//			subTemp[YPOS] = y+105;
+//			drawPacker(imgNewModelInfo0, subTemp[XPOS], subTemp[YPOS]+90, 0, 0, imgW(imgNewModelInfo0), imgH(imgNewModelInfo0), VH);
+//			if(anyCnt > 6)
+//			{
+//				
+//				
+//				
+//				//모델정보
+//				gSetColor(255, 255, 255);
+//				gDrawString(subTemp[XPOS]-105, subTemp[YPOS], "모델 랭크", VL);
+//				gDrawString(subTemp[XPOS]-105, subTemp[YPOS]+22, "레이어드 수", VL);
+//				
+//				switch(xModelData[modelCode].grade)
+//				{
+//				case 0:gSetColor(217, 227, 235);sprintf(strTempS, "C랭크");break;
+//				case 1:gSetColor(29, 255, 252);sprintf(strTempS, "B랭크");break;
+//				case 2:gSetColor(255, 54, 253);sprintf(strTempS, "A랭크");break;
+//				case 3:gSetColor(255, 196, 16);sprintf(strTempS, "S랭크");break;
+//				}
+//				gDrawString(subTemp[XPOS]+105, subTemp[YPOS], strTempS, VR);
+//												
+//				sprintf(strTempS,"%d회",xModelData[modelCode].layeredNum);
+//				gSetColor(255, 255, 255);
+//				gDrawString(subTemp[XPOS]+105, subTemp[YPOS]+22, strTempS, VR);
+//							
+//				gSetColor(254, 177, 0);
+//				gDrawString(subTemp[XPOS]-105, subTemp[YPOS]+55, "활동 보상", VL);
+//				
+//				drawIcon(subTemp[XPOS]-105+10,subTemp[YPOS]+86, ICON_TYPE_TIME);
+//				gSetColor(255, 255, 255);
+//				drawTimeSprintf(strTempS,xModelData[modelCode].giftTime.oriData,4);
+//				gDrawString(subTemp[XPOS]-105+15+20, subTemp[YPOS]+86, strTempS, VL);
+//				
+//				drawPacker(imgModelMainInfo4, subTemp[XPOS]-8, subTemp[YPOS]+88, 0, 0, imgW(imgModelMainInfo4), imgH(imgModelMainInfo4), VH);
+//				
+//				
+//				//254	188	10
+//				gSetColor(254, 188, 10);
+//				setCommaNum(strTempS, xModelData[modelCode].giftNum.oriData);
+//				gDrawString(subTemp[XPOS]+105, subTemp[YPOS]+86, strTempS, VR);
+//				int giftTypeImgNum;
+//				switch(xModelData[modelCode].giftType)
+//				{
+//					case MODEL_GIFTTYPE_GOLD:giftTypeImgNum=ICON_TYPE_GOLD;break;
+//					case MODEL_GIFTTYPE_LOOK:giftTypeImgNum=ICON_TYPE_LOOK;break;
+//					case MODEL_GIFTTYPE_CANDY:giftTypeImgNum=ICON_TYPE_CANDY;break;
+//					case MODEL_GIFTTYPE_EXP:giftTypeImgNum=ICON_TYPE_EXP;break;
+//				}
+//				drawIcon(subTemp[XPOS]+23, subTemp[YPOS]+86, giftTypeImgNum);
+//				
+//				
+//				
+//				//스킬
+//				for(int i=0;i<3;i++)
+//				{
+//					subTemp[XPOS] = x-30-70+(70*i);;
+//					subTemp[YPOS] = y+105+137;
+//					drawPacker(imgSkillSlot, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgSkillSlot), imgH(imgSkillSlot), VH);
+//					if(xModelData[modelCode].totalSkillNum > i)
+//					{
+//						int packImgNum = imgSkillIcon0+xModelData[modelCode].skillType[i];
+//						drawPacker(packImgNum, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(packImgNum), imgH(packImgNum), VH);
+//						
+//						xCollection.xTouchSkill[i].wPos = imgW(packImgNum);
+//						xCollection.xTouchSkill[i].hPos = imgH(packImgNum);
+//						xCollection.xTouchSkill[i].xPos = subTemp[XPOS]-xCollection.xTouchSkill[i].wPos/2;
+//						xCollection.xTouchSkill[i].yPos = subTemp[YPOS]-xCollection.xTouchSkill[i].hPos/2;
+//						
+//						if(xCollection.selectSkill == i)
+//						{
+//							drawPacker(imgSkillSelect, subTemp[XPOS]-2, subTemp[YPOS]-2, 0, 0, imgW(imgSkillSelect), imgH(imgSkillSelect), VH);
+//							drawPacker(imgSkillTextBox, subTemp[XPOS]+68, subTemp[YPOS]-64, 0, 0, imgW(imgSkillTextBox), imgH(imgSkillTextBox), VH);
+//							
+//							gSetColor(255, 255, 255);
+//							setFontSize(8);
+//							getSprintfSKillInfo(strTempS,modelCode,xCollection.selectSkill,0);
+//							
+//							
+//							setPopupStringLine(strTempS,lcdW);
+//							
+//							
+//							int fontGab = 20;
+//							
+//							switch(xPopup.totalLine)
+//							{
+//								case 2:
+//									fontGab = 20;
+//									break;
+//								case 3:
+//								case 4:
+//									fontGab = 16;
+//									break;
+//							}
+//							
+//							for(int li=0;li<xPopup.totalLine;li++)
+//								gDrawString(subTemp[XPOS]+68-80, subTemp[YPOS]-64-3-(fontGab/2*(xPopup.totalLine-1))+(fontGab*li), xPopup.strTextLine[li], VL);
+//							
+//							setFontSize(11);
+//						}
+//					}
+//					else
+//						drawPacker(imgSkillSlotEmpty, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgSkillSlotEmpty), imgH(imgSkillSlotEmpty), VH);
+//				}
+//				
+//			}
+//			
+//			
+//			subTemp[XPOS] = x-30;
+//			subTemp[YPOS] = y+105;
+//			
+//			drawPacker(imgPopupBtn0, subTemp[XPOS], subTemp[YPOS]+200, 0, imgH(imgPopupBtn0)/2, imgW(imgPopupBtn0), imgH(imgPopupBtn0)/2, VH);
+//			if(anyCnt > 6)
+//			{
+//				setFontSize(20);
+//				gDrawStringBold(subTemp[XPOS], subTemp[YPOS]+200, "확인", VH, ALPHA_MAX, ALPHA_MAX, ALPHA_MAX, 186, 70, 10);
+//				setFontSize(11);
+//				
+//				if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+//				{
+//					switch(xQuestTuto.nowNum)
+//					{
+//						case TUTO_22_MODELCASTING:
+//							xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
+//							xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS]+200;
+//							xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
+//							break;
+//					}
+//				}
+//			}
+//			xTouchOk.wPos = imgW(imgPopupBtn0);
+//			xTouchOk.hPos = imgH(imgPopupBtn0)/2;
+//			xTouchOk.xPos = subTemp[XPOS]-xTouchOk.wPos/2;
+//			xTouchOk.yPos = subTemp[YPOS]+200-xTouchOk.hPos/2;
+//		}
+//		
+//		
+//		xGame.fgameScale = 1.0f;
+//		xGame.fgameScaleCx = cx;
+//		xGame.fgameScaleCy = cy;
+//	}
+//}
+//
+//void drawModelRotEff(int xPos,int yPos,int anyCnt)
+//{
+//	if(anyCnt > 0)
+//	{
+//	switch(anyCnt)
+//	{
+//		case 0:
+//			xGame.isReSizeDraw = TRUE;
+//			xGame.reSize = 50;
+//			break;
+//		case 1:
+//			xGame.isReSizeDraw = TRUE;
+//			xGame.reSize = 130;
+//			break;
+//		case 2:
+//			xGame.isReSizeDraw = TRUE;
+//			xGame.reSize = 120;
+//			break;
+//		case 3:
+//			xGame.isReSizeDraw = TRUE;
+//			xGame.reSize = 110;
+//			break;
+//		case 4:
+//			xGame.isReSizeDraw = TRUE;
+//			xGame.reSize = 105;
+//			break;
+//		default:
+//			xGame.isReSizeDraw = TRUE;
+//			switch(anyCnt%20)
+//		{
+//			case 0:
+//				xGame.reSize = 140;
+//				setAlpha(120);
+//				break;
+//			case 1:
+//			case 19:
+//				xGame.reSize = 136;
+//				setAlpha(130);
+//				break;
+//			case 2:
+//			case 18:
+//				xGame.reSize = 132;
+//				setAlpha(140);
+//				break;
+//			case 3:
+//			case 17:
+//				xGame.reSize = 128;
+//				setAlpha(150);
+//				break;
+//			case 4:
+//			case 16:
+//				xGame.reSize = 124;
+//				setAlpha(160);
+//				break;
+//			case 5:
+//			case 15:
+//				xGame.reSize = 120;
+//				setAlpha(170);
+//				break;
+//			case 6:
+//			case 14:
+//				xGame.reSize = 116;
+//				setAlpha(180);
+//				break;
+//			case 7:
+//			case 13:
+//				xGame.reSize = 112;
+//				setAlpha(195);
+//				break;
+//			case 8:
+//			case 12:
+//				xGame.reSize = 108;
+//				setAlpha(210);
+//				break;
+//			case 9:
+//			case 11:
+//				xGame.reSize = 104;
+//				setAlpha(225);
+//				break;
+//			case 10:
+//				xGame.reSize = 100;
+//				break;
+//				
+//		}
+//			break;
+//	}
+//	//뺑뺑이
+//	xGame.isRotate = TRUE;
+//	xGame.rotateNum = 360-((gameCnt%180)*2);
+//	drawPacker(imgEff3, xPos, yPos, 0, 0, imgW(imgEff3), imgH(imgEff3), VH);
+//	setAlpha(ALPHA_MAX);
+//	xGame.isRotate = FALSE;
+//	xGame.isReSizeDraw = FALSE;
+//	}
+//}
+//
+//void drawModelUpgradeOn()
+//{
+//	int px = cx;
+//	int py = cy;
+//	if(xModelUpGrade.isUpgrade == TRUE)
+//	{
+//		float rad;
+//		float speedMax;
+//		int tAlpha;
+//		
+//		
+//		int per = 0;
+//		int price = 0;
+//		if(xModelUpGrade.selectSlot != DONT)
+//		{
+//			per = getModelUpgradePer(xModelUpGrade.inventoryNum,xModelUpGrade.modelListSlot[xModelUpGrade.selectSlot]);
+//			price = getModelUpgradePrice(xModelUpGrade.inventoryNum,xModelUpGrade.modelListSlot[xModelUpGrade.selectSlot]);
+//		}
+//		
+//		
+//		XFITTINGLAYER xFTemp;
+//		for(int i=0;i<16;i++)
+//			xFTemp.code[i] = DONT;
+//		
+//		
+//		switch(xModelUpGrade.upgradeState)
+//		{
+//			case MODELUPGRADE_STATE_SLOTMOVE:
+//				switch(xModelUpGrade.anyCnt++)
+//			{
+//				case 0:
+//					xModelUpGrade.slotX += 24;
+//					xModelUpGrade.slotY -= 13;
+//					break;
+//				case 1:
+//					xModelUpGrade.slotX += 24;
+//					xModelUpGrade.slotY -= 13;
+//					break;
+//				case 2:
+//					xModelUpGrade.slotX -= 10;
+//					xModelUpGrade.slotY += 13;
+//					break;
+//				default:
+//					xModelUpGrade.slotEndX = cx - 320;
+//					xModelUpGrade.slotEndY = cy + 90;
+//					
+//					rad = getArcTan(xModelUpGrade.slotX,xModelUpGrade.slotY,xModelUpGrade.slotEndX,xModelUpGrade.slotEndY);
+//					speedMax = getRadiusSpeed(xModelUpGrade.slotEndX,xModelUpGrade.slotEndY,xModelUpGrade.slotX,xModelUpGrade.slotY,rad);
+//					
+//					getRadiusPos(xModelUpGrade.slotX,xModelUpGrade.slotY,(speedMax*0.5f),rad);
+//					xModelUpGrade.slotX = xRadius.pos[XPOS];
+//					xModelUpGrade.slotY = xRadius.pos[YPOS];
+//					
+//					subTemp[5] = xModelUpGrade.slotX - xModelUpGrade.slotEndX;
+//					subTemp[6] = xModelUpGrade.slotY - xModelUpGrade.slotEndY;
+//					
+//					if(subTemp[5] < 0)
+//						subTemp[5] = -subTemp[5];
+//					
+//					if(subTemp[6] < 0)
+//						subTemp[6] = -subTemp[6];
+//					
+//					if(subTemp[5] < 5 && subTemp[6] < 5)
+//					{
+//						xModelUpGrade.upgradeState = MODELUPGRADE_STATE_GAGE;
+//						xModelUpGrade.anyCnt = 0;
+//						setEff(xModelUpGrade.slotX, xModelUpGrade.slotY,300);
+//					}
+//					break;
+//				}
+//				drawModelSlot(xModelUpGrade.slotX,xModelUpGrade.slotY,xModelUpGrade.modelListSlot[xModelUpGrade.selectSlot]);
+//				break;
+//			case MODELUPGRADE_STATE_GAGE:
+//				drawBgFillRect();
+//				subTemp[XPOS] = cx;
+//				subTemp[YPOS] = cy-70;
+//				
+//				tAlpha = ALPHA_MAX;
+//				xGame.blendNum = 0;
+//				
+//				if(xModelUpGrade.anyCnt == 0)
+//					playSnd(SND_MODEL_UPGRADE);
+//				
+//				int tW;
+//				switch(++xModelUpGrade.anyCnt)
+//				{
+//				case 30:	tAlpha=100*ALPHA_MAX/100;xGame.blendNum=	1 * ALPHA_MAX;		break;
+//				case 31:	tAlpha=100*ALPHA_MAX/100;xGame.blendNum=	0.9 * ALPHA_MAX;	break;
+//				case 32:	tAlpha=100*ALPHA_MAX/100;xGame.blendNum=	0.8 * ALPHA_MAX;	break;
+//				case 33:	tAlpha=100*ALPHA_MAX/100;xGame.blendNum=	0.7 * ALPHA_MAX;	break;
+//				case 34:	tAlpha=100*ALPHA_MAX/100;xGame.blendNum=	0.6 * ALPHA_MAX;	break;
+//				case 35:	tAlpha=100*ALPHA_MAX/100;xGame.blendNum=	0.5 * ALPHA_MAX;	break;
+//				case 36:	tAlpha=100*ALPHA_MAX/100;xGame.blendNum=	0.4 * ALPHA_MAX;	break;
+//				case 37:	tAlpha=100*ALPHA_MAX/100;xGame.blendNum=	0.3 * ALPHA_MAX;	break;
+//				case 38:	tAlpha=100*ALPHA_MAX/100;xGame.blendNum=	0.2 * ALPHA_MAX;	break;
+//				case 39:	tAlpha=100*ALPHA_MAX/100;xGame.blendNum=	0.1 * ALPHA_MAX;	break;
+//				case 40:tAlpha=100*ALPHA_MAX/100;xGame.blendNum= 0;		break;
+//				case 41:tAlpha=90*ALPHA_MAX/100;xGame.blendNum=	0;		break;
+//				case 42:tAlpha=80*ALPHA_MAX/100;xGame.blendNum=	0;		break;
+//				case 43:tAlpha=70*ALPHA_MAX/100;xGame.blendNum=	0;		break;
+//				case 44:tAlpha=60*ALPHA_MAX/100;xGame.blendNum=	0;		break;
+//				case 45:tAlpha=50*ALPHA_MAX/100;xGame.blendNum=	0;		break;
+//				case 46:tAlpha=40*ALPHA_MAX/100;xGame.blendNum=	0;		break;
+//				case 47:tAlpha=30*ALPHA_MAX/100;xGame.blendNum=	0;		break;
+//				case 48:tAlpha=20*ALPHA_MAX/100;xGame.blendNum=	0;		break;
+//				case 49:tAlpha=10*ALPHA_MAX/100;xGame.blendNum=	0;		break;
+//				default:
+//					if(xModelUpGrade.anyCnt>=50)
+//					{
+//						tAlpha=0;
+//						//종료처리
+//						playSnd(SND_MODEL_RESULT);
+//						
+//						
+//						switch(xModelUpGrade.upgradeType)
+//						{
+//							case 0:
+//								if(ranDom(0, 100) <= per)
+//								{
+//									xModelUpGrade.upgradeState = MODELUPGRADE_STATE_RESULT_SUCCESS;
+//									xModelUpGrade.anyCnt = 0;
+//									//성공
+//									++xInventoryModel[xModelUpGrade.inventoryNum].upGrade;
+//									/////////////////////////////////////////////////////////////////////
+//									int eslot = xModelUpGrade.inventoryNum;
+//									xEventQueueNet.action[xEventQueueNet.totalNum] = 1;//0:신규,1:업데이트,2삭제
+//									xEventQueueNet.code[xEventQueueNet.totalNum] = xInventoryModel[eslot].code;
+//									xEventQueueNet.haveNum[xEventQueueNet.totalNum] = xInventoryModel[eslot].upGrade;
+//									xEventQueueNet.key[xEventQueueNet.totalNum] = xInventoryModel[eslot].key;
+//									for(int f=0;f<16;f++)
+//									{
+//										xEventQueueNet.layer[xEventQueueNet.totalNum][f] = xInventoryModel[eslot].xF.code[f];
+//									}
+//									xEventQueueNet.open[xEventQueueNet.totalNum] = 0;//0:미출연1:출연
+//									xEventQueueNet.mapX[xEventQueueNet.totalNum] = xInventoryModel[eslot].xF.isInFitting==FALSE?0:1;//0:미출연1:출연
+//									addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SETMODEL, TRUE);
+//									/////////////////////////////////////////////////////////////////////
+//									setQuest(53,1,DONT);
+//																		
+//									setMoney(-price);
+//									/////////////////////////////////////////////////////////////////////
+//									addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GAMEINFO, TRUE);
+//									/////////////////////////////////////////////////////////////////////
+//									
+//									
+//									switch(xModelData[xInventoryModel[xModelUpGrade.inventoryNum].code].grade)
+//									{
+//									case 0:
+//										sprintf(xRocks.strTemp, "C급%d강",xInventoryModel[xModelUpGrade.inventoryNum].upGrade);
+//										setFiveRocksCustom("모델","강화","강화성공",xRocks.strTemp,1);
+//										break;
+//									case 1:
+//										sprintf(xRocks.strTemp, "B급%d강",xInventoryModel[xModelUpGrade.inventoryNum].upGrade);
+//										setFiveRocksCustom("모델","강화","강화성공",xRocks.strTemp,1);
+//										break;
+//									case 2:
+//										sprintf(xRocks.strTemp, "A급%d강",xInventoryModel[xModelUpGrade.inventoryNum].upGrade);
+//										setFiveRocksCustom("모델","강화","강화성공",xRocks.strTemp,1);
+//										break;
+//									case 3:
+//										sprintf(xRocks.strTemp, "S급%d강",xInventoryModel[xModelUpGrade.inventoryNum].upGrade);
+//										setFiveRocksCustom("모델","강화","강화성공",xRocks.strTemp,1);
+//										break;
+//									}
+//								}
+//								else
+//								{
+//									
+//									setMoney(-price);
+//									/////////////////////////////////////////////////////////////////////
+//									addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GAMEINFO, TRUE);
+//									/////////////////////////////////////////////////////////////////////
+//									
+//									
+//									//실패
+//									xModelUpGrade.isUpgrade = FALSE;
+//									xModelUpGrade.anyCnt = 0;
+//									setPopup(POPUP_MODELUPGRADEFAIL, playState, playState, 0, DONT);
+//									
+//									switch(xModelData[xInventoryModel[xModelUpGrade.inventoryNum].code].grade)
+//									{
+//									case 0:
+//										sprintf(xRocks.strTemp, "C급%d강",xInventoryModel[xModelUpGrade.inventoryNum].upGrade+1);
+//										setFiveRocksCustom("모델","강화","강화실패",xRocks.strTemp,1);
+//										break;
+//									case 1:
+//										sprintf(xRocks.strTemp, "B급%d강",xInventoryModel[xModelUpGrade.inventoryNum].upGrade+1);
+//										setFiveRocksCustom("모델","강화","강화실패",xRocks.strTemp,1);
+//										break;
+//									case 2:
+//										sprintf(xRocks.strTemp, "A급%d강",xInventoryModel[xModelUpGrade.inventoryNum].upGrade+1);
+//										setFiveRocksCustom("모델","강화","강화실패",xRocks.strTemp,1);
+//										break;
+//									case 3:
+//										sprintf(xRocks.strTemp, "S급%d강",xInventoryModel[xModelUpGrade.inventoryNum].upGrade+1);
+//										setFiveRocksCustom("모델","강화","강화실패",xRocks.strTemp,1);
+//										break;
+//									}
+//								}
+//								xInventoryModel[xModelUpGrade.modelListSlot[xModelUpGrade.selectSlot]].code = DONT;
+//								xModelUpGrade.selectSlot = DONT;
+//								setModelList(DONT);
+//								setModelUpGradeList(xModelUpGrade.inventoryNum);
+//								break;
+//							case 1:
+//							{
+//								switch(xModel.state)
+//								{
+//								case MODELCOLLECT_STATE_MAINUPGRADE:
+//									xModel.state = MODELCOLLECT_STATE_MAIN;
+//									break;
+//								case MODELCOLLECT_STATE_LISTUPGRADE:
+//									xModel.state = MODELCOLLECT_STATE_LIST;
+//									break;
+//								}
+//								
+//								
+//								
+//								xModelUpGrade.upgradeState = MODELUPGRADE_STATE_RESULT_SUCCESS;
+//								xModelUpGrade.anyCnt = 0;
+//								
+//								int grade = xModelData[xInventoryModel[xModelUpGrade.inventoryNum].code].grade;
+//																									
+//								xInventoryModel[xModelUpGrade.inventoryNum].code = DONT;
+//								xInventoryModel[xModelUpGrade.modelListSlot[xModelUpGrade.selectSlot]].code = DONT;
+//									
+//								switch(grade)
+//								{
+//								case 0:		//c
+//									xModel.newModelCode = xModel.ranDomSlotB[ranDom(0,xModel.totalRanDomSlotB-1)];
+//									break;
+//								case 1:		//b
+//									xModel.newModelCode = xModel.ranDomSlotA[ranDom(0,xModel.totalRanDomSlotA-1)];
+//									break;
+//								case 2:		//a
+//									xModel.newModelCode = xModel.ranDomSlotS[ranDom(0,xModel.totalRanDomSlotS-1)];
+//									break;
+//								}
+//								
+//								int slot = addInventoryModel(xModel.newModelCode);
+//								
+//								for(int f=0;f<16;f++)
+//									xInventoryModel[slot].xF.code[f] = DONT;
+//								
+//								/////////////////////////////////////////////////////////////////////
+//								int eslot = slot;
+//								xEventQueueNet.slotNum[xEventQueueNet.totalNum] = slot;
+//								xEventQueueNet.action[xEventQueueNet.totalNum] = 0;//0:신규,1:업데이트,2삭제
+//								xEventQueueNet.code[xEventQueueNet.totalNum] = xInventoryModel[eslot].code;
+//								xEventQueueNet.haveNum[xEventQueueNet.totalNum] = xInventoryModel[eslot].upGrade;
+//								xEventQueueNet.key[xEventQueueNet.totalNum] = xInventoryModel[eslot].key;
+//								
+//								for(int f=0;f<16;f++)
+//								{
+//									xEventQueueNet.layer[xEventQueueNet.totalNum][f] = xInventoryModel[eslot].xF.code[f];
+//								}
+//								xEventQueueNet.open[xEventQueueNet.totalNum] = 0;//0:미출연1:출연
+//								xEventQueueNet.mapX[xEventQueueNet.totalNum] = 0;
+//								addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SETMODEL, TRUE);
+//								/////////////////////////////////////////////////////////////////////
+//								setMoney(-price);
+//								/////////////////////////////////////////////////////////////////////
+//								addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GAMEINFO, TRUE);
+//								/////////////////////////////////////////////////////////////////////
+//								switch(grade)
+//								{
+//								case 0:
+//									setFiveRocksCustom("모델","합성","합성성공","B급",1);
+//									break;
+//								case 1:
+//									setFiveRocksCustom("모델","합성","합성성공","A급",1);
+//									break;
+//								case 2:
+//									setFiveRocksCustom("모델","합성","합성성공","S급",1);
+//									break;
+//								}
+//							}
+//							break;
+//						}
+//					}
+//					break;
+//				}
+//				
+//				xGame.blendType = BLEND_WHITEALPHA;
+//				tW = imgW(imgFittingMenu2)*(xModelUpGrade.anyCnt)/30;
+//				if(tW > imgW(imgFittingMenu2))
+//					tW = imgW(imgFittingMenu2);
+//				setAlpha(tAlpha);
+//				if(xGame.blendNum != 0)
+//					xGame.isBlend = TRUE;
+//				
+//				drawModelRotEff(subTemp[XPOS], subTemp[YPOS]+23,gameCnt);
+//				
+//				drawPacker(imgFittingMenu2, subTemp[XPOS]-imgW(imgFittingMenu2)/2, subTemp[YPOS]+120, 0, imgH(imgFittingMenu2)/4*3, imgW(imgFittingMenu2), imgH(imgFittingMenu2)/4, VL);
+//
+//				
+//								
+//				switch(xModelUpGrade.upgradeType)
+//				{
+//				case 0:
+//					drawPacker(imgHiPing1, subTemp[XPOS], subTemp[YPOS]+23, 0, 0, imgW(imgHiPing1), imgH(imgHiPing1), VH);
+//					break;
+//				case 1:
+//					drawPacker(imgHiPing2, subTemp[XPOS], subTemp[YPOS]+23, 0, 0, imgW(imgHiPing2), imgH(imgHiPing2), VH);
+//					break;
+//				}
+//				
+//				drawPacker(imgFittingMenu2, subTemp[XPOS]-imgW(imgFittingMenu2)/2, subTemp[YPOS]+120, 0, imgH(imgFittingMenu2)/4*2, tW, imgH(imgFittingMenu2)/4, VL);
+//				
+//				switch(xModelUpGrade.upgradeType)
+//				{
+//				case 0:
+//					gDrawStringBold(subTemp[XPOS], subTemp[YPOS]+120, "모델 업그레이드중", VH, 255, 255, 255, 186, 70, 10);
+//					break;
+//				case 1:
+//					gDrawStringBold(subTemp[XPOS], subTemp[YPOS]+120, "모델 조합중", VH, 255, 255, 255, 186, 70, 10);
+//					break;
+//				}
+//				
+//				
+//				setAlpha(ALPHA_MAX);
+//				xGame.isBlend = FALSE;
+//				
+//				break;
+//			case MODELUPGRADE_STATE_RESULT_SUCCESS:
+//				drawBgFillRect();
+//				
+//				
+//				
+//				switch(xModelUpGrade.upgradeType)
+//				{
+//				case 0:
+//					drawModelRotEff(px+110, py-160,xModelUpGrade.anyCnt-27);
+//					drawModelShow(xInventoryModel[xModelUpGrade.inventoryNum].code, &xInventoryModel[xModelUpGrade.inventoryNum].xF, xModelUpGrade.anyCnt++);
+//					break;
+//				case 1:
+//					drawModelRotEff(px+132, py-90,xModelUpGrade.anyCnt-27);
+//					drawModelShow(xModel.newModelCode, &xFTemp, xModelUpGrade.anyCnt++);
+//					break;
+//				}
+//				break;
+//		}
+//		
+//		/*
+//		 if(++xModelUpGrade.anyCnt > MODELUPGRADEANYCNT)
+//		 {
+//		 xModelUpGrade.isUpgrade = FALSE;
+//		 xInventoryModel[xModelUpGrade.modelListNum].upGrade++;
+//		 xInventoryModel[xModelUpGrade.modelListSlot[xModelUpGrade.selectSlot]].code = DONT;
+//		 setModelUpGradeList(xModelUpGrade.modelListNum);
+//		 xModel.selectSlot = DONT;
+//		 }
+//		 */
+//	}
+//}
 
 void drawFashionShowInfo()
 {
@@ -67917,671 +67949,671 @@ void setModelNpcSpeakWelCome(int floor,M_Boolean isIn)
 	}
 }
 
-void prcModelShopNpc()
-{
-		
-	
-	for(int i=0;i<MODELSKILLMAX;i++)
-		xModelSkill.bonusPer[i] = 0;
-	
-	int modelCode = 0;
-	for(int i=0;i<xModel.totalInventoryModel;i++)
-	{
-		
-		if(getModelMainSlot(xInventoryModel[i].key) != DONT && checkXfLimit(&xInventoryModel[i].xF) == TRUE)
-		{
-			modelCode = xInventoryModel[i].code;
-			
-			for(int mm=0;mm<xModelData[modelCode].totalSkillNum;mm++)
-			{
-				switch(xModelData[modelCode].skillType[mm])
-				{
-				case MODELSKILL_TYPE_SELLMONEY_FLOOR1:
-				case MODELSKILL_TYPE_SELLEXP_FLOOR1:
-				case MODELSKILL_TYPE_SELLMONEY_FLOOR2:
-				case MODELSKILL_TYPE_SELLEXP_FLOOR2:
-				case MODELSKILL_TYPE_TREND_TIME:
-				case MODELSKILL_TYPE_TREND_PER:
-				case MODELSKILL_TYPE_FAME:
-				case MODELSKILL_TYPE_CHAIR_COFFEE:
-				case MODELSKILL_TYPE_CHAIR_PHONE:
-				case MODELSKILL_TYPE_CHAIR_IPAD:
-				case MODELSKILL_TYPE_CHAIR_BOOK:
-				case MODELSKILL_TYPE_SEX_MAN:
-				case MODELSKILL_TYPE_SEX_WOMAN:
-				case MODELSKILL_TYPE_SEX_PORTER:
-				case MODELSKILL_TYPE_SEX_PORTER_MM:
-				case MODELSKILL_TYPE_SEX_PORTER_WW:
-				case MODELSKILL_TYPE_HELPCOUNT:
-				case MODELSKILL_TYPE_MODELVOTE:
-				case MODELSKILL_TYPE_ORDER_MONEY:
-				case MODELSKILL_TYPE_ORDER_RECV:
-				case MODELSKILL_RUNWAY_GOLD:
-				case MODELSKILL_RUNWAY_EXP:
-				case MODELSKILL_TYPE_ORDER_SELECTITEM:
-					//누적형태
-					xModelSkill.bonusPer[xModelData[modelCode].skillType[mm]] += xModelData[modelCode].skillPer[mm];
-					break;
-				default:
-					//중첩금지(가장 큰값으로 처리)
-					if(xModelSkill.bonusPer[xModelData[modelCode].skillType[mm]] < xModelData[modelCode].skillPer[mm])
-						xModelSkill.bonusPer[xModelData[modelCode].skillType[mm]] = xModelData[modelCode].skillPer[mm];
-					break;
-				}
-			}
-		}
-	}
-	
-	
-	xModelSkill.totalWorldMapUiSlot = 0;
-	for(int i=0;i<MODELSKILLMAX;i++)
-	{
-		if(xModelSkill.bonusPer[i] > 0)
-		{
-			switch(i)
-			{
-			case 20:
-			case 21:
-			case 22:
-				//친구샵
-				if(xWorldMap.isFriendMap == TRUE)
-					xModelSkill.slotWorldMapUiSlot[xModelSkill.totalWorldMapUiSlot++] = i;
-				break;
-			case 26:
-			case 27:
-			case 28:
-			case 29:
-			case 30:
-			case 31:
-			case 32:
-			case 33:
-			case 34:
-			case 35:
-			case 36:
-			case 37:
-			case 38:
-			case 39:
-			case 40:
-			case 41:
-			case 42:
-			case 43:
-			case 44:
-			case 45:
-			case 46:
-			case 47:
-			case 48:
-			case 49:
-			case 50:
-				//패션쇼
-				break;
-			case 6:
-			case 7:
-				//내샵이지만 안보여줌
-				break;
-			default:
-				//내샵
-				if(xWorldMap.isFriendMap == FALSE)
-					xModelSkill.slotWorldMapUiSlot[xModelSkill.totalWorldMapUiSlot++] = i;
-				break;
-			}
-		}
-	}
-	
-	int endX;
-	int endY;
-	for(int i=0;i<MODELNPCMAX;i++)
-	{
-		if(xModelNpc[i].state != MODELNPC_STATE_DONT)
-		{
-			++xModelNpc[i].interiorInfoCnt;
-			
-			switch(xModelNpc[i].state)
-			{
-			case MODELNPC_STATE_WAIT:
-				switch(xModelNpc[i].moveType)
-				{
-				case MOVETYPE_XPLUS:
-				case MOVETYPE_YPLUS:
-					prcSprit(&xSpritNpc[NPC_ACT_STOP][ACT_FRONT],&xModelNpc[i].nowDelay,&xModelNpc[i].nowFrame);
-					break;
-				case MOVETYPE_XMINUS:
-				case MOVETYPE_YMINUS:
-					prcSprit(&xSpritNpc[NPC_ACT_STOP][ACT_BACK],&xModelNpc[i].nowDelay,&xModelNpc[i].nowFrame);
-					break;
-				}
-															
-				if(xModelNpc[i].x < xMap.shopPointX
-				   ||xModelNpc[i].y < xMap.shopPointY
-				   ||xModelNpc[i].x > xMap.shopPointX+xMap.shopPointW-1
-				   ||xModelNpc[i].y > xMap.shopPointY+xMap.shopPointH-1)
-				{
-					xModelNpc[i].state = MODELNPC_STATE_WAIT;
-					xModelNpc[i].nowDelay = 0;
-					xModelNpc[i].nowFrame = 0;
-					xModelNpc[i].anyCnt = 999;
-					
-					if(xPayMentInfo[xModelNpc[i].floor].codeNum >= 0)
-					{
-						xModelNpc[i].makeX = xPayMentInfo[xModelNpc[i].floor].x-1;
-						xModelNpc[i].makeY = xPayMentInfo[xModelNpc[i].floor].y;
-					}
-					else
-					{
-						xModelNpc[i].makeX = xPayMentInfo[xModelNpc[i].floor].x;
-						xModelNpc[i].makeY = xPayMentInfo[xModelNpc[i].floor].y-1;
-					}
-
-					xModelNpc[i].actLook = MOVETYPE_YPLUS;
-					xModelNpc[i].x = xModelNpc[i].makeX;
-					xModelNpc[i].y = xModelNpc[i].makeY;
-					xModelNpc[i].drawX = 0;
-					xModelNpc[i].drawY = 0;
-				}
-					
-				switch(xModelNpc[i].anyCnt)
-				{
-				case 30:
-					if(xModelNpc[i].xSpeak.state == SPEAK_STATE_DONT)
-					{
-						if(ranDom(0, 100) < 10)
-						{
-							switch(ranDom(0, 4))
-							{
-							case 0:
-								setSpeak(&xModelNpc[i].xSpeak, "의상은 중요한 게 퀄리티지!", SPEAKFRAMEMAX);
-								break;
-							case 1:
-								setSpeak(&xModelNpc[i].xSpeak, "몸매관리 좀 더 해야겠는데..", SPEAKFRAMEMAX);
-								break;
-							case 2:
-								setSpeak(&xModelNpc[i].xSpeak, "여기 커피샵 차려도 되겠는데?", SPEAKFRAMEMAX);
-								break;
-							case 3:
-								setSpeak(&xModelNpc[i].xSpeak, "트렌드에 뒤쳐지는 건 용납할 수 없어.", SPEAKFRAMEMAX);
-								break;
-							case 4:
-								setSpeak(&xModelNpc[i].xSpeak, "최신 패션 잡지들 보고 가세요.", SPEAKFRAMEMAX);
-								break;
-							}
-							
-						}
-					}
-					break;
-				}
-					
-				if(++xModelNpc[i].anyCnt > 180)
-				{
-					if(xModelNpc[i].floor < xModelNpc[i].floorTarget)
-					{
-						//올라가기로
-						setModelNpcStateFloorUp(i, xModelNpc[i].floor);
-					}
-					else if(xModelNpc[i].floor > xModelNpc[i].floorTarget)
-					{
-						//내려가기
-						setModelNpcStateFloorDown(i, xModelNpc[i].floor);
-					}
-					else if(ranDom(0,100) < 5)
-					{
-						if(xMap.totalFloor > 1)
-						{
-							if(xModelNpc[i].floorTarget == 0)
-								xModelNpc[i].floorTarget = 1;
-							else
-								xModelNpc[i].floorTarget = 0;
-						}
-					}
-					else if(xModelNpc[i].interiorInfoCnt > 30*30)
-					{
-						xModelNpc[i].interiorInfoCnt = 0;
-						resetSellTableInfo(xModelNpc[i].floor);
-												
-						//쇼윈도검색
-						//카운터검색
-						//쇼파검색
-						int totalSelectCnt = 0;
-						int selectType[30];
-						xModelNpc[i].interiorInfoType = DONT;
-						////////////////////////////////
-						//옷걸이검색
-						//진열대검색
-						int selectSellTable = DONT;
-						
-							
-						if(xSell.totalTotal[xModelNpc[i].floor] > 0)
-						{
-							selectType[totalSelectCnt++] = 0;
-							selectSellTable = xSell.tableNumSlot_Total[xModelNpc[i].floor][ranDom(0, xSell.totalTotal[xModelNpc[i].floor]-1)];
-							
-						}
-						
-						/////////////////////////////////////////////
-						//피팅룸검색
-						int selectFittingRoom = DONT;
-						resetFittingRoomInfo(xModelNpc[i].floor);
-						if(xFittingRoomInfo[xModelNpc[i].floor].totalNumAll > 0)
-						{
-							selectType[totalSelectCnt++] = 2;
-							selectFittingRoom = ranDom(0,xFittingRoomInfo[xModelNpc[i].floor].totalNumAll-1);
-						}
-						
-						/////////////////////////////////////////////
-						//쇼윈도우검색
-						int selectShowWindow = DONT;
-						resetShowWindowInfo();
-						if(xFitting.totalShowWindow[xModelNpc[i].floor] > 0)
-						{
-							selectType[totalSelectCnt++] = 3;
-							selectShowWindow = xFitting.showWindowSlotNum[xModelNpc[i].floor][ranDom(0, xFitting.totalShowWindow[xModelNpc[i].floor]-1)];
-						}
-						/////////////////////////////////////////////
-						//계산대검색
-						int selectPayMent = DONT;
-						resetPayMentInfo(xModelNpc[i].floor);
-						if(xPayMentInfo[xModelNpc[i].floor].codeNum == 0)
-						{
-							selectType[totalSelectCnt++] = 4;
-							selectPayMent = 0;
-						}
-						/////////////////////////////////////////////
-						//의자검색
-						int selectChair = DONT;
-						if(xChairInfo[xModelNpc[i].floor].totalNum > 0)
-						{
-							selectType[totalSelectCnt++] = 5;
-							selectChair = ranDom(0,xChairInfo[xModelNpc[i].floor].totalNum-1);
-						}
-
-						if(totalSelectCnt > 0)
-						{
-							xModelNpc[i].interiorInfoType = selectType[ranDom(0,totalSelectCnt-1)];
-						}
-																								
-						
-						endX = DONT;
-						endY = DONT;
-						
-						if(xModelNpc[i].interiorInfoType == 0 && selectSellTable != DONT)
-						{
-							setMapData(xSellTableInfo[xModelNpc[i].floor][selectSellTable].interiorCode);
-							if(xMap.rever == 0)
-							{
-								
-								endX = xSellTableInfo[xModelNpc[i].floor][selectSellTable].x + 1;
-								endY = xSellTableInfo[xModelNpc[i].floor][selectSellTable].y + ranDom(0, xObj.xObjData[xMap.type][xMap.listNum].h[xMap.rever]-1);
-								xModelNpc[i].actLook = MOVETYPE_XMINUS;
-							}
-							else
-							{
-								endX = xSellTableInfo[xModelNpc[i].floor][selectSellTable].x + ranDom(0, xObj.xObjData[xMap.type][xMap.listNum].w[xMap.rever]-1);
-								endY = xSellTableInfo[xModelNpc[i].floor][selectSellTable].y + 1;
-								xModelNpc[i].actLook = MOVETYPE_YMINUS;
-							}
-						}
-						else if(xModelNpc[i].interiorInfoType == 2 && selectFittingRoom != DONT)
-						{
-							if(xFittingRoomInfo[xModelNpc[i].floor].codeNum[selectFittingRoom] > 0)
-							{
-								endX = xFittingRoomInfo[xModelNpc[i].floor].x[selectFittingRoom]+1;
-								endY = xFittingRoomInfo[xModelNpc[i].floor].y[selectFittingRoom];
-								xModelNpc[i].actLook = MOVETYPE_XMINUS;
-							}
-							else
-							{
-								endX = xFittingRoomInfo[xModelNpc[i].floor].x[selectFittingRoom];
-								endY = xFittingRoomInfo[xModelNpc[i].floor].y[selectFittingRoom]+1;
-								xModelNpc[i].actLook = MOVETYPE_YMINUS;
-							}
-						}
-						else if(xModelNpc[i].interiorInfoType == 3 && selectShowWindow != DONT)
-						{
-							if(xShowWindowInfo[xModelNpc[i].floor][selectShowWindow].interiorCode > 0)
-							{
-								endX = xShowWindowInfo[xModelNpc[i].floor][selectShowWindow].x+2;
-								endY = xShowWindowInfo[xModelNpc[i].floor][selectShowWindow].y;
-								xModelNpc[i].actLook = MOVETYPE_XMINUS;
-							}
-							else
-							{
-								endX = xShowWindowInfo[xModelNpc[i].floor][selectShowWindow].x;
-								endY = xShowWindowInfo[xModelNpc[i].floor][selectShowWindow].y+2;
-								xModelNpc[i].actLook = MOVETYPE_YMINUS;
-							}
-						}
-						else if(xModelNpc[i].interiorInfoType == 4 && selectPayMent != DONT)
-						{
-							if(xPayMentInfo[xModelNpc[i].floor].codeNum > 0)
-							{
-								endX = xPayMentInfo[xModelNpc[i].floor].x+1;
-								endY = xPayMentInfo[xModelNpc[i].floor].y;
-								xModelNpc[i].actLook = MOVETYPE_XMINUS;
-							}
-							else
-							{
-								endX = xPayMentInfo[xModelNpc[i].floor].x;
-								endY = xPayMentInfo[xModelNpc[i].floor].y+1;
-								xModelNpc[i].actLook = MOVETYPE_YMINUS;
-							}
-						}
-						else if(xModelNpc[i].interiorInfoType == 5 && selectChair != DONT)
-						{
-							if(xChairInfo[xModelNpc[i].floor].interiorCode[selectChair] > 0)
-							{
-								endX = xChairInfo[xModelNpc[i].floor].x[selectChair]+1;
-								endY = xChairInfo[xModelNpc[i].floor].y[selectChair];
-								xModelNpc[i].actLook = MOVETYPE_XPLUS;
-							}
-							else
-							{
-								endX = xChairInfo[xModelNpc[i].floor].x[selectChair];
-								endY = xChairInfo[xModelNpc[i].floor].y[selectChair]+1;
-								xModelNpc[i].actLook = MOVETYPE_YPLUS;
-							}
-						}
-						
-						if(endX == DONT)
-						{
-							xModelNpc[i].state = MODELNPC_STATE_WAIT;
-							xModelNpc[i].nowDelay = 0;
-							xModelNpc[i].nowFrame = 0;
-							xModelNpc[i].isActEnd = FALSE;
-							xModelNpc[i].anyCnt = 0;
-						}
-						else
-						{
-							
-							if(setAstar(xModelNpc[i].x-xMap.shopPointX, xModelNpc[i].y-xMap.shopPointY, endX-xMap.shopPointX, endY-xMap.shopPointY, MAP_TYPE_OBJ,xModelNpc[i].floor) == FALSE)
-							{
-								xModelNpc[i].state = MODELNPC_STATE_WAIT;
-								xModelNpc[i].nowDelay = 0;
-								xModelNpc[i].nowFrame = 0;
-								xModelNpc[i].isActEnd = FALSE;
-								xModelNpc[i].anyCnt = 0;
-							}
-							else
-							{
-								xModelNpc[i].state = MODELNPC_STATE_INTERIORINFOMOVE;
-								xModelNpc[i].nowDelay = 0;
-								xModelNpc[i].nowFrame = 0;
-								
-								xModelNpc[i].bestTotalCnt = xAstar.totalCnt;
-								xModelNpc[i].bestNowCnt = 0;
-								for(int totalI=0;totalI<xAstar.totalCnt;totalI++)
-								{
-									xModelNpc[i].bestX[totalI] = xAstar.bestX[totalI]+xMap.shopPointX;
-									xModelNpc[i].bestY[totalI] = xAstar.bestY[totalI]+xMap.shopPointY;
-								}
-								
-								//다음이동
-								if(xModelNpc[i].bestX[xModelNpc[i].bestNowCnt] < xModelNpc[i].bestX[xModelNpc[i].bestNowCnt+1])
-									xModelNpc[i].moveType = MOVETYPE_XPLUS;
-								else if(xModelNpc[i].bestX[xModelNpc[i].bestNowCnt] > xModelNpc[i].bestX[xModelNpc[i].bestNowCnt+1])
-									xModelNpc[i].moveType = MOVETYPE_XMINUS;
-								else if(xModelNpc[i].bestY[xModelNpc[i].bestNowCnt] < xModelNpc[i].bestY[xModelNpc[i].bestNowCnt+1])
-									xModelNpc[i].moveType = MOVETYPE_YPLUS;
-								else if(xModelNpc[i].bestY[xModelNpc[i].bestNowCnt] > xModelNpc[i].bestY[xModelNpc[i].bestNowCnt+1])
-									xModelNpc[i].moveType = MOVETYPE_YMINUS;
-							}
-						}
-					}
-					else
-					{
-						////////////
-						M_Boolean isWaitMove = FALSE;
-						int waitMoveWhileCnt = 0;
-						while (true)
-						{
-							xModelNpc[i].makeX = ranDom(0, xMap.shopPointW-1);
-							xModelNpc[i].makeY = ranDom(0, xMap.shopPointH-1);
-														
-													
-							if(xMap.shopData[xModelNpc[i].floor][MAP_TYPE_OBJ][xModelNpc[i].makeX][xModelNpc[i].makeY] == FALSE)
-							{
-								isWaitMove = TRUE;
-								break;
-							}
-							if(++waitMoveWhileCnt>30)
-								break;
-						}
-						//////////
-												
-						
-						endX = xModelNpc[i].makeX+xMap.shopPointX;
-						endY = xModelNpc[i].makeY+xMap.shopPointY;
-						
-						
-						
-						if(isWaitMove == FALSE)
-						{
-						}
-						else if(setAstar(xModelNpc[i].x-xMap.shopPointX, xModelNpc[i].y-xMap.shopPointY, endX-xMap.shopPointX, endY-xMap.shopPointY, MAP_TYPE_OBJ,xModelNpc[i].floor) == FALSE)
-						{
-						}
-						else
-						{
-							xModelNpc[i].state = MODELNPC_STATE_WAITMOVE;
-							xModelNpc[i].nowDelay = 0;
-							xModelNpc[i].nowFrame = 0;
-							
-							xModelNpc[i].bestTotalCnt = xAstar.totalCnt;
-							xModelNpc[i].bestNowCnt = 0;
-							for(int totalI=0;totalI<xAstar.totalCnt;totalI++)
-							{
-								xModelNpc[i].bestX[totalI] = xAstar.bestX[totalI]+xMap.shopPointX;
-								xModelNpc[i].bestY[totalI] = xAstar.bestY[totalI]+xMap.shopPointY;
-							}
-							
-							//다음이동
-							if(xModelNpc[i].bestX[xModelNpc[i].bestNowCnt] < xModelNpc[i].bestX[xModelNpc[i].bestNowCnt+1])
-								xModelNpc[i].moveType = MOVETYPE_XPLUS;
-							else if(xModelNpc[i].bestX[xModelNpc[i].bestNowCnt] > xModelNpc[i].bestX[xModelNpc[i].bestNowCnt+1])
-								xModelNpc[i].moveType = MOVETYPE_XMINUS;
-							else if(xModelNpc[i].bestY[xModelNpc[i].bestNowCnt] < xModelNpc[i].bestY[xModelNpc[i].bestNowCnt+1])
-								xModelNpc[i].moveType = MOVETYPE_YPLUS;
-							else if(xModelNpc[i].bestY[xModelNpc[i].bestNowCnt] > xModelNpc[i].bestY[xModelNpc[i].bestNowCnt+1])
-								xModelNpc[i].moveType = MOVETYPE_YMINUS;
-						}
-					}
-				}
-				break;
-			case MODELNPC_STATE_WAITMOVE:
-			case MODELNPC_STATE_FLOORUPMOVE:
-			case MODELNPC_STATE_FLOORDOWNMOVE:
-			case MODELNPC_STATE_INTERIORINFOMOVE:
-				switch(xModelNpc[i].moveType)
-				{
-				case MOVETYPE_XPLUS:
-				case MOVETYPE_YPLUS:
-					prcSprit(&xSpritNpc[NPC_ACT_WALKING][ACT_FRONT],&xModelNpc[i].nowDelay,&xModelNpc[i].nowFrame);
-					break;
-				case MOVETYPE_XMINUS:
-				case MOVETYPE_YMINUS:
-					prcSprit(&xSpritNpc[NPC_ACT_WALKING][ACT_BACK],&xModelNpc[i].nowDelay,&xModelNpc[i].nowFrame);
-					break;
-				}
-				
-				switch(xModelNpc[i].moveType)
-				{
-				case MOVETYPE_XPLUS:
-					xModelNpc[i].drawX -= (float)(xModelNpc[i].speed * 2);
-					xModelNpc[i].drawY += (float)(xModelNpc[i].speed * 1);
-					if(xModelNpc[i].drawX  <= -(TILEW/4))
-					{
-						xModelNpc[i].x++;
-						xModelNpc[i].drawX = (TILEW/4);
-						xModelNpc[i].drawY = -(TILEH/4);
-					}
-					break;
-				case MOVETYPE_XMINUS:
-					xModelNpc[i].drawX += (float)(xModelNpc[i].speed * 2);
-					xModelNpc[i].drawY -= (float)(xModelNpc[i].speed * 1);
-					if(xModelNpc[i].drawX  >= (TILEW/4))
-					{
-						xModelNpc[i].x--;
-						xModelNpc[i].drawX = -(TILEW/4);
-						xModelNpc[i].drawY = (TILEH/4);
-					}
-					break;
-				case MOVETYPE_YPLUS:
-					xModelNpc[i].drawX += (float)(xModelNpc[i].speed * 2);
-					xModelNpc[i].drawY += (float)(xModelNpc[i].speed * 1);
-					if(xModelNpc[i].drawY  >= (TILEH/4))
-					{
-						xModelNpc[i].y++;
-						xModelNpc[i].drawX = -(TILEW/4);
-						xModelNpc[i].drawY = -(TILEH/4);
-					}
-					break;
-				case MOVETYPE_YMINUS:
-					xModelNpc[i].drawX -= (float)(xModelNpc[i].speed * 2);
-					xModelNpc[i].drawY -= (float)(xModelNpc[i].speed * 1);
-					if(xModelNpc[i].drawY  <= -(TILEH/4))
-					{
-						xModelNpc[i].y--;
-						xModelNpc[i].drawX = (TILEW/4);
-						xModelNpc[i].drawY = (TILEH/4);
-					}
-					break;
-				}
-				
-				//도착 위치 검색 및 위치 보정
-				if(xModelNpc[i].drawX == 0)
-				{
-					//목표위치도착
-					if(++xModelNpc[i].bestNowCnt >= xModelNpc[i].bestTotalCnt-1)
-					{
-						switch(xModelNpc[i].state)
-						{
-						case MODELNPC_STATE_WAITMOVE:		//진열대로 이동중
-							xModelNpc[i].state = MODELNPC_STATE_WAIT;
-							xModelNpc[i].nowDelay = 0;
-							xModelNpc[i].nowFrame = 0;
-							xModelNpc[i].isActEnd = FALSE;
-							xModelNpc[i].anyCnt = 0;
-							break;
-						case MODELNPC_STATE_FLOORUPMOVE:
-							xModelNpc[i].state = MODELNPC_STATE_FLOORUP;
-							xModelNpc[i].moveType = MOVETYPE_YMINUS;
-							xModelNpc[i].actLook = MOVETYPE_YMINUS;
-							xModelNpc[i].anyCnt = 0;
-							break;
-						case MODELNPC_STATE_FLOORDOWNMOVE:
-							xModelNpc[i].state = MODELNPC_STATE_FLOORDOWN;
-							xModelNpc[i].anyCnt = 0;
-							break;
-						case MODELNPC_STATE_INTERIORINFOMOVE:
-							xModelNpc[i].state = MODELNPC_STATE_INTERIORINFO;
-							xModelNpc[i].anyCnt = 0;
-							xModelNpc[i].moveType = xModelNpc[i].actLook;
-							break;
-						}
-					}
-					else
-					{
-						//다음이동
-						if(xModelNpc[i].bestX[xModelNpc[i].bestNowCnt] < xModelNpc[i].bestX[xModelNpc[i].bestNowCnt+1])
-							xModelNpc[i].moveType = MOVETYPE_XPLUS;
-						else if(xModelNpc[i].bestX[xModelNpc[i].bestNowCnt] > xModelNpc[i].bestX[xModelNpc[i].bestNowCnt+1])
-							xModelNpc[i].moveType = MOVETYPE_XMINUS;
-						else if(xModelNpc[i].bestY[xModelNpc[i].bestNowCnt] < xModelNpc[i].bestY[xModelNpc[i].bestNowCnt+1])
-							xModelNpc[i].moveType = MOVETYPE_YPLUS;
-						else if(xModelNpc[i].bestY[xModelNpc[i].bestNowCnt] > xModelNpc[i].bestY[xModelNpc[i].bestNowCnt+1])
-							xModelNpc[i].moveType = MOVETYPE_YMINUS;
-					}
-				}
-				break;
-			case MODELNPC_STATE_INTERIORINFO:					
-				switch(xModelNpc[i].anyCnt)
-				{
-				case 10:
-					switch(xModelNpc[i].interiorInfoType)
-					{
-					case 0:		//옷걸이
-						setSpeak(&xModelNpc[i].xSpeak, "옷걸이는 옷을 진열할수 있어요.", SPEAKFRAMEMAX);
-						break;
-					case 1:		//진열대
-						setSpeak(&xModelNpc[i].xSpeak, "진열대는 잡화를 진열할수 있어요.", SPEAKFRAMEMAX);
-						break;
-					case 2:		//피팅룸
-						setSpeak(&xModelNpc[i].xSpeak, "피팅룸에선 손님들이 옷을 갈아 입어요.", SPEAKFRAMEMAX);
-						break;
-					case 3:		//쇼윈도
-						setSpeak(&xModelNpc[i].xSpeak, "쇼윈도에선 마네킹을 피팅 시킬 수 있어요.", SPEAKFRAMEMAX);
-						break;
-					case 4:		//카운터
-						setSpeak(&xModelNpc[i].xSpeak, "카운터에선 의상을 주문할수 있어요.", SPEAKFRAMEMAX);
-						break;
-					case 5:		//쇼파
-						setSpeak(&xModelNpc[i].xSpeak, "의자에 쉬고 간 손님은 의상을 추가로 구매 한답니다.", SPEAKFRAMEMAX);
-						break;
-					}
-					break;
-				}
-					
-				if(++xModelNpc[i].anyCnt > 90)
-				{
-					xModelNpc[i].state = MODELNPC_STATE_WAIT;
-					xModelNpc[i].anyCnt=999;
-				}
-				break;
-			case MODELNPC_STATE_FLOORUP:
-				//10에변경
-				//17에 행동변경
-				switch(++xModelNpc[i].anyCnt)
-				{
-				case 10:
-					xModelNpc[i].floor++;
-					xModelNpc[i].moveType = MOVETYPE_YPLUS;
-					xModelNpc[i].actLook = MOVETYPE_YPLUS;
-					
-					xModelNpc[i].x = xWorldMap.floorDownX;
-					xModelNpc[i].y = xWorldMap.floorDownY;
-					break;
-				case 17:
-					if(xModelNpc[i].floor < xModelNpc[i].floorTarget)
-					{
-						//올라가기로
-						setModelNpcStateFloorUp(i, xModelNpc[i].floor);
-					}
-					else
-					{
-						xModelNpc[i].state = MODELNPC_STATE_WAIT;
-						xModelNpc[i].anyCnt=999;
-					}
-					break;
-				}
-				break;
-			case MODELNPC_STATE_FLOORDOWN:
-				xModelNpc[i].moveType = xModelNpc[i].actLook;
-				//10에변경
-				//17에 행동변경
-				switch(++xModelNpc[i].anyCnt)
-				{
-				case 10:
-					xModelNpc[i].floor--;
-					xModelNpc[i].moveType = MOVETYPE_YPLUS;
-					xModelNpc[i].actLook = MOVETYPE_YPLUS;
-					xModelNpc[i].x = xWorldMap.floorUpX;
-					xModelNpc[i].y = xWorldMap.floorUpY;
-					break;
-				case 17:
-					if(xModelNpc[i].floor > xModelNpc[i].floorTarget)
-					{
-						//내려가기
-						setModelNpcStateFloorDown(i, xModelNpc[i].floor);
-					}
-					else
-					{
-						xModelNpc[i].state = MODELNPC_STATE_WAIT;
-						xModelNpc[i].anyCnt=999;
-					}
-					break;
-				}
-				break;
-			}
-		}
-	}
-}
+//void prcModelShopNpc()
+//{
+//		
+//	
+//	for(int i=0;i<MODELSKILLMAX;i++)
+//		xModelSkill.bonusPer[i] = 0;
+//	
+//	int modelCode = 0;
+//	for(int i=0;i<xModel.totalInventoryModel;i++)
+//	{
+//		
+//		if(getModelMainSlot(xInventoryModel[i].key) != DONT && checkXfLimit(&xInventoryModel[i].xF) == TRUE)
+//		{
+//			modelCode = xInventoryModel[i].code;
+//			
+//			for(int mm=0;mm<xModelData[modelCode].totalSkillNum;mm++)
+//			{
+//				switch(xModelData[modelCode].skillType[mm])
+//				{
+//				case MODELSKILL_TYPE_SELLMONEY_FLOOR1:
+//				case MODELSKILL_TYPE_SELLEXP_FLOOR1:
+//				case MODELSKILL_TYPE_SELLMONEY_FLOOR2:
+//				case MODELSKILL_TYPE_SELLEXP_FLOOR2:
+//				case MODELSKILL_TYPE_TREND_TIME:
+//				case MODELSKILL_TYPE_TREND_PER:
+//				case MODELSKILL_TYPE_FAME:
+//				case MODELSKILL_TYPE_CHAIR_COFFEE:
+//				case MODELSKILL_TYPE_CHAIR_PHONE:
+//				case MODELSKILL_TYPE_CHAIR_IPAD:
+//				case MODELSKILL_TYPE_CHAIR_BOOK:
+//				case MODELSKILL_TYPE_SEX_MAN:
+//				case MODELSKILL_TYPE_SEX_WOMAN:
+//				case MODELSKILL_TYPE_SEX_PORTER:
+//				case MODELSKILL_TYPE_SEX_PORTER_MM:
+//				case MODELSKILL_TYPE_SEX_PORTER_WW:
+//				case MODELSKILL_TYPE_HELPCOUNT:
+//				case MODELSKILL_TYPE_MODELVOTE:
+//				case MODELSKILL_TYPE_ORDER_MONEY:
+//				case MODELSKILL_TYPE_ORDER_RECV:
+//				case MODELSKILL_RUNWAY_GOLD:
+//				case MODELSKILL_RUNWAY_EXP:
+//				case MODELSKILL_TYPE_ORDER_SELECTITEM:
+//					//누적형태
+//					xModelSkill.bonusPer[xModelData[modelCode].skillType[mm]] += xModelData[modelCode].skillPer[mm];
+//					break;
+//				default:
+//					//중첩금지(가장 큰값으로 처리)
+//					if(xModelSkill.bonusPer[xModelData[modelCode].skillType[mm]] < xModelData[modelCode].skillPer[mm])
+//						xModelSkill.bonusPer[xModelData[modelCode].skillType[mm]] = xModelData[modelCode].skillPer[mm];
+//					break;
+//				}
+//			}
+//		}
+//	}
+//	
+//	
+//	xModelSkill.totalWorldMapUiSlot = 0;
+//	for(int i=0;i<MODELSKILLMAX;i++)
+//	{
+//		if(xModelSkill.bonusPer[i] > 0)
+//		{
+//			switch(i)
+//			{
+//			case 20:
+//			case 21:
+//			case 22:
+//				//친구샵
+//				if(xWorldMap.isFriendMap == TRUE)
+//					xModelSkill.slotWorldMapUiSlot[xModelSkill.totalWorldMapUiSlot++] = i;
+//				break;
+//			case 26:
+//			case 27:
+//			case 28:
+//			case 29:
+//			case 30:
+//			case 31:
+//			case 32:
+//			case 33:
+//			case 34:
+//			case 35:
+//			case 36:
+//			case 37:
+//			case 38:
+//			case 39:
+//			case 40:
+//			case 41:
+//			case 42:
+//			case 43:
+//			case 44:
+//			case 45:
+//			case 46:
+//			case 47:
+//			case 48:
+//			case 49:
+//			case 50:
+//				//패션쇼
+//				break;
+//			case 6:
+//			case 7:
+//				//내샵이지만 안보여줌
+//				break;
+//			default:
+//				//내샵
+//				if(xWorldMap.isFriendMap == FALSE)
+//					xModelSkill.slotWorldMapUiSlot[xModelSkill.totalWorldMapUiSlot++] = i;
+//				break;
+//			}
+//		}
+//	}
+//	
+//	int endX;
+//	int endY;
+//	for(int i=0;i<MODELNPCMAX;i++)
+//	{
+//		if(xModelNpc[i].state != MODELNPC_STATE_DONT)
+//		{
+//			++xModelNpc[i].interiorInfoCnt;
+//			
+//			switch(xModelNpc[i].state)
+//			{
+//			case MODELNPC_STATE_WAIT:
+//				switch(xModelNpc[i].moveType)
+//				{
+//				case MOVETYPE_XPLUS:
+//				case MOVETYPE_YPLUS:
+//					prcSprit(&xSpritNpc[NPC_ACT_STOP][ACT_FRONT],&xModelNpc[i].nowDelay,&xModelNpc[i].nowFrame);
+//					break;
+//				case MOVETYPE_XMINUS:
+//				case MOVETYPE_YMINUS:
+//					prcSprit(&xSpritNpc[NPC_ACT_STOP][ACT_BACK],&xModelNpc[i].nowDelay,&xModelNpc[i].nowFrame);
+//					break;
+//				}
+//															
+//				if(xModelNpc[i].x < xMap.shopPointX
+//				   ||xModelNpc[i].y < xMap.shopPointY
+//				   ||xModelNpc[i].x > xMap.shopPointX+xMap.shopPointW-1
+//				   ||xModelNpc[i].y > xMap.shopPointY+xMap.shopPointH-1)
+//				{
+//					xModelNpc[i].state = MODELNPC_STATE_WAIT;
+//					xModelNpc[i].nowDelay = 0;
+//					xModelNpc[i].nowFrame = 0;
+//					xModelNpc[i].anyCnt = 999;
+//					
+//					if(xPayMentInfo[xModelNpc[i].floor].codeNum >= 0)
+//					{
+//						xModelNpc[i].makeX = xPayMentInfo[xModelNpc[i].floor].x-1;
+//						xModelNpc[i].makeY = xPayMentInfo[xModelNpc[i].floor].y;
+//					}
+//					else
+//					{
+//						xModelNpc[i].makeX = xPayMentInfo[xModelNpc[i].floor].x;
+//						xModelNpc[i].makeY = xPayMentInfo[xModelNpc[i].floor].y-1;
+//					}
+//
+//					xModelNpc[i].actLook = MOVETYPE_YPLUS;
+//					xModelNpc[i].x = xModelNpc[i].makeX;
+//					xModelNpc[i].y = xModelNpc[i].makeY;
+//					xModelNpc[i].drawX = 0;
+//					xModelNpc[i].drawY = 0;
+//				}
+//					
+//				switch(xModelNpc[i].anyCnt)
+//				{
+//				case 30:
+//					if(xModelNpc[i].xSpeak.state == SPEAK_STATE_DONT)
+//					{
+//						if(ranDom(0, 100) < 10)
+//						{
+//							switch(ranDom(0, 4))
+//							{
+//							case 0:
+//								setSpeak(&xModelNpc[i].xSpeak, "의상은 중요한 게 퀄리티지!", SPEAKFRAMEMAX);
+//								break;
+//							case 1:
+//								setSpeak(&xModelNpc[i].xSpeak, "몸매관리 좀 더 해야겠는데..", SPEAKFRAMEMAX);
+//								break;
+//							case 2:
+//								setSpeak(&xModelNpc[i].xSpeak, "여기 커피샵 차려도 되겠는데?", SPEAKFRAMEMAX);
+//								break;
+//							case 3:
+//								setSpeak(&xModelNpc[i].xSpeak, "트렌드에 뒤쳐지는 건 용납할 수 없어.", SPEAKFRAMEMAX);
+//								break;
+//							case 4:
+//								setSpeak(&xModelNpc[i].xSpeak, "최신 패션 잡지들 보고 가세요.", SPEAKFRAMEMAX);
+//								break;
+//							}
+//							
+//						}
+//					}
+//					break;
+//				}
+//					
+//				if(++xModelNpc[i].anyCnt > 180)
+//				{
+//					if(xModelNpc[i].floor < xModelNpc[i].floorTarget)
+//					{
+//						//올라가기로
+//						setModelNpcStateFloorUp(i, xModelNpc[i].floor);
+//					}
+//					else if(xModelNpc[i].floor > xModelNpc[i].floorTarget)
+//					{
+//						//내려가기
+//						setModelNpcStateFloorDown(i, xModelNpc[i].floor);
+//					}
+//					else if(ranDom(0,100) < 5)
+//					{
+//						if(xMap.totalFloor > 1)
+//						{
+//							if(xModelNpc[i].floorTarget == 0)
+//								xModelNpc[i].floorTarget = 1;
+//							else
+//								xModelNpc[i].floorTarget = 0;
+//						}
+//					}
+//					else if(xModelNpc[i].interiorInfoCnt > 30*30)
+//					{
+//						xModelNpc[i].interiorInfoCnt = 0;
+//						resetSellTableInfo(xModelNpc[i].floor);
+//												
+//						//쇼윈도검색
+//						//카운터검색
+//						//쇼파검색
+//						int totalSelectCnt = 0;
+//						int selectType[30];
+//						xModelNpc[i].interiorInfoType = DONT;
+//						////////////////////////////////
+//						//옷걸이검색
+//						//진열대검색
+//						int selectSellTable = DONT;
+//						
+//							
+//						if(xSell.totalTotal[xModelNpc[i].floor] > 0)
+//						{
+//							selectType[totalSelectCnt++] = 0;
+//							selectSellTable = xSell.tableNumSlot_Total[xModelNpc[i].floor][ranDom(0, xSell.totalTotal[xModelNpc[i].floor]-1)];
+//							
+//						}
+//						
+//						/////////////////////////////////////////////
+//						//피팅룸검색
+//						int selectFittingRoom = DONT;
+//						resetFittingRoomInfo(xModelNpc[i].floor);
+//						if(xFittingRoomInfo[xModelNpc[i].floor].totalNumAll > 0)
+//						{
+//							selectType[totalSelectCnt++] = 2;
+//							selectFittingRoom = ranDom(0,xFittingRoomInfo[xModelNpc[i].floor].totalNumAll-1);
+//						}
+//						
+//						/////////////////////////////////////////////
+//						//쇼윈도우검색
+//						int selectShowWindow = DONT;
+//						resetShowWindowInfo();
+//						if(xFitting.totalShowWindow[xModelNpc[i].floor] > 0)
+//						{
+//							selectType[totalSelectCnt++] = 3;
+//							selectShowWindow = xFitting.showWindowSlotNum[xModelNpc[i].floor][ranDom(0, xFitting.totalShowWindow[xModelNpc[i].floor]-1)];
+//						}
+//						/////////////////////////////////////////////
+//						//계산대검색
+//						int selectPayMent = DONT;
+//						resetPayMentInfo(xModelNpc[i].floor);
+//						if(xPayMentInfo[xModelNpc[i].floor].codeNum == 0)
+//						{
+//							selectType[totalSelectCnt++] = 4;
+//							selectPayMent = 0;
+//						}
+//						/////////////////////////////////////////////
+//						//의자검색
+//						int selectChair = DONT;
+//						if(xChairInfo[xModelNpc[i].floor].totalNum > 0)
+//						{
+//							selectType[totalSelectCnt++] = 5;
+//							selectChair = ranDom(0,xChairInfo[xModelNpc[i].floor].totalNum-1);
+//						}
+//
+//						if(totalSelectCnt > 0)
+//						{
+//							xModelNpc[i].interiorInfoType = selectType[ranDom(0,totalSelectCnt-1)];
+//						}
+//																								
+//						
+//						endX = DONT;
+//						endY = DONT;
+//						
+//						if(xModelNpc[i].interiorInfoType == 0 && selectSellTable != DONT)
+//						{
+//							setMapData(xSellTableInfo[xModelNpc[i].floor][selectSellTable].interiorCode);
+//							if(xMap.rever == 0)
+//							{
+//								
+//								endX = xSellTableInfo[xModelNpc[i].floor][selectSellTable].x + 1;
+//								endY = xSellTableInfo[xModelNpc[i].floor][selectSellTable].y + ranDom(0, xObj.xObjData[xMap.type][xMap.listNum].h[xMap.rever]-1);
+//								xModelNpc[i].actLook = MOVETYPE_XMINUS;
+//							}
+//							else
+//							{
+//								endX = xSellTableInfo[xModelNpc[i].floor][selectSellTable].x + ranDom(0, xObj.xObjData[xMap.type][xMap.listNum].w[xMap.rever]-1);
+//								endY = xSellTableInfo[xModelNpc[i].floor][selectSellTable].y + 1;
+//								xModelNpc[i].actLook = MOVETYPE_YMINUS;
+//							}
+//						}
+//						else if(xModelNpc[i].interiorInfoType == 2 && selectFittingRoom != DONT)
+//						{
+//							if(xFittingRoomInfo[xModelNpc[i].floor].codeNum[selectFittingRoom] > 0)
+//							{
+//								endX = xFittingRoomInfo[xModelNpc[i].floor].x[selectFittingRoom]+1;
+//								endY = xFittingRoomInfo[xModelNpc[i].floor].y[selectFittingRoom];
+//								xModelNpc[i].actLook = MOVETYPE_XMINUS;
+//							}
+//							else
+//							{
+//								endX = xFittingRoomInfo[xModelNpc[i].floor].x[selectFittingRoom];
+//								endY = xFittingRoomInfo[xModelNpc[i].floor].y[selectFittingRoom]+1;
+//								xModelNpc[i].actLook = MOVETYPE_YMINUS;
+//							}
+//						}
+//						else if(xModelNpc[i].interiorInfoType == 3 && selectShowWindow != DONT)
+//						{
+//							if(xShowWindowInfo[xModelNpc[i].floor][selectShowWindow].interiorCode > 0)
+//							{
+//								endX = xShowWindowInfo[xModelNpc[i].floor][selectShowWindow].x+2;
+//								endY = xShowWindowInfo[xModelNpc[i].floor][selectShowWindow].y;
+//								xModelNpc[i].actLook = MOVETYPE_XMINUS;
+//							}
+//							else
+//							{
+//								endX = xShowWindowInfo[xModelNpc[i].floor][selectShowWindow].x;
+//								endY = xShowWindowInfo[xModelNpc[i].floor][selectShowWindow].y+2;
+//								xModelNpc[i].actLook = MOVETYPE_YMINUS;
+//							}
+//						}
+//						else if(xModelNpc[i].interiorInfoType == 4 && selectPayMent != DONT)
+//						{
+//							if(xPayMentInfo[xModelNpc[i].floor].codeNum > 0)
+//							{
+//								endX = xPayMentInfo[xModelNpc[i].floor].x+1;
+//								endY = xPayMentInfo[xModelNpc[i].floor].y;
+//								xModelNpc[i].actLook = MOVETYPE_XMINUS;
+//							}
+//							else
+//							{
+//								endX = xPayMentInfo[xModelNpc[i].floor].x;
+//								endY = xPayMentInfo[xModelNpc[i].floor].y+1;
+//								xModelNpc[i].actLook = MOVETYPE_YMINUS;
+//							}
+//						}
+//						else if(xModelNpc[i].interiorInfoType == 5 && selectChair != DONT)
+//						{
+//							if(xChairInfo[xModelNpc[i].floor].interiorCode[selectChair] > 0)
+//							{
+//								endX = xChairInfo[xModelNpc[i].floor].x[selectChair]+1;
+//								endY = xChairInfo[xModelNpc[i].floor].y[selectChair];
+//								xModelNpc[i].actLook = MOVETYPE_XPLUS;
+//							}
+//							else
+//							{
+//								endX = xChairInfo[xModelNpc[i].floor].x[selectChair];
+//								endY = xChairInfo[xModelNpc[i].floor].y[selectChair]+1;
+//								xModelNpc[i].actLook = MOVETYPE_YPLUS;
+//							}
+//						}
+//						
+//						if(endX == DONT)
+//						{
+//							xModelNpc[i].state = MODELNPC_STATE_WAIT;
+//							xModelNpc[i].nowDelay = 0;
+//							xModelNpc[i].nowFrame = 0;
+//							xModelNpc[i].isActEnd = FALSE;
+//							xModelNpc[i].anyCnt = 0;
+//						}
+//						else
+//						{
+//							
+//							if(setAstar(xModelNpc[i].x-xMap.shopPointX, xModelNpc[i].y-xMap.shopPointY, endX-xMap.shopPointX, endY-xMap.shopPointY, MAP_TYPE_OBJ,xModelNpc[i].floor) == FALSE)
+//							{
+//								xModelNpc[i].state = MODELNPC_STATE_WAIT;
+//								xModelNpc[i].nowDelay = 0;
+//								xModelNpc[i].nowFrame = 0;
+//								xModelNpc[i].isActEnd = FALSE;
+//								xModelNpc[i].anyCnt = 0;
+//							}
+//							else
+//							{
+//								xModelNpc[i].state = MODELNPC_STATE_INTERIORINFOMOVE;
+//								xModelNpc[i].nowDelay = 0;
+//								xModelNpc[i].nowFrame = 0;
+//								
+//								xModelNpc[i].bestTotalCnt = xAstar.totalCnt;
+//								xModelNpc[i].bestNowCnt = 0;
+//								for(int totalI=0;totalI<xAstar.totalCnt;totalI++)
+//								{
+//									xModelNpc[i].bestX[totalI] = xAstar.bestX[totalI]+xMap.shopPointX;
+//									xModelNpc[i].bestY[totalI] = xAstar.bestY[totalI]+xMap.shopPointY;
+//								}
+//								
+//								//다음이동
+//								if(xModelNpc[i].bestX[xModelNpc[i].bestNowCnt] < xModelNpc[i].bestX[xModelNpc[i].bestNowCnt+1])
+//									xModelNpc[i].moveType = MOVETYPE_XPLUS;
+//								else if(xModelNpc[i].bestX[xModelNpc[i].bestNowCnt] > xModelNpc[i].bestX[xModelNpc[i].bestNowCnt+1])
+//									xModelNpc[i].moveType = MOVETYPE_XMINUS;
+//								else if(xModelNpc[i].bestY[xModelNpc[i].bestNowCnt] < xModelNpc[i].bestY[xModelNpc[i].bestNowCnt+1])
+//									xModelNpc[i].moveType = MOVETYPE_YPLUS;
+//								else if(xModelNpc[i].bestY[xModelNpc[i].bestNowCnt] > xModelNpc[i].bestY[xModelNpc[i].bestNowCnt+1])
+//									xModelNpc[i].moveType = MOVETYPE_YMINUS;
+//							}
+//						}
+//					}
+//					else
+//					{
+//						////////////
+//						M_Boolean isWaitMove = FALSE;
+//						int waitMoveWhileCnt = 0;
+//						while (true)
+//						{
+//							xModelNpc[i].makeX = ranDom(0, xMap.shopPointW-1);
+//							xModelNpc[i].makeY = ranDom(0, xMap.shopPointH-1);
+//														
+//													
+//							if(xMap.shopData[xModelNpc[i].floor][MAP_TYPE_OBJ][xModelNpc[i].makeX][xModelNpc[i].makeY] == FALSE)
+//							{
+//								isWaitMove = TRUE;
+//								break;
+//							}
+//							if(++waitMoveWhileCnt>30)
+//								break;
+//						}
+//						//////////
+//												
+//						
+//						endX = xModelNpc[i].makeX+xMap.shopPointX;
+//						endY = xModelNpc[i].makeY+xMap.shopPointY;
+//						
+//						
+//						
+//						if(isWaitMove == FALSE)
+//						{
+//						}
+//						else if(setAstar(xModelNpc[i].x-xMap.shopPointX, xModelNpc[i].y-xMap.shopPointY, endX-xMap.shopPointX, endY-xMap.shopPointY, MAP_TYPE_OBJ,xModelNpc[i].floor) == FALSE)
+//						{
+//						}
+//						else
+//						{
+//							xModelNpc[i].state = MODELNPC_STATE_WAITMOVE;
+//							xModelNpc[i].nowDelay = 0;
+//							xModelNpc[i].nowFrame = 0;
+//							
+//							xModelNpc[i].bestTotalCnt = xAstar.totalCnt;
+//							xModelNpc[i].bestNowCnt = 0;
+//							for(int totalI=0;totalI<xAstar.totalCnt;totalI++)
+//							{
+//								xModelNpc[i].bestX[totalI] = xAstar.bestX[totalI]+xMap.shopPointX;
+//								xModelNpc[i].bestY[totalI] = xAstar.bestY[totalI]+xMap.shopPointY;
+//							}
+//							
+//							//다음이동
+//							if(xModelNpc[i].bestX[xModelNpc[i].bestNowCnt] < xModelNpc[i].bestX[xModelNpc[i].bestNowCnt+1])
+//								xModelNpc[i].moveType = MOVETYPE_XPLUS;
+//							else if(xModelNpc[i].bestX[xModelNpc[i].bestNowCnt] > xModelNpc[i].bestX[xModelNpc[i].bestNowCnt+1])
+//								xModelNpc[i].moveType = MOVETYPE_XMINUS;
+//							else if(xModelNpc[i].bestY[xModelNpc[i].bestNowCnt] < xModelNpc[i].bestY[xModelNpc[i].bestNowCnt+1])
+//								xModelNpc[i].moveType = MOVETYPE_YPLUS;
+//							else if(xModelNpc[i].bestY[xModelNpc[i].bestNowCnt] > xModelNpc[i].bestY[xModelNpc[i].bestNowCnt+1])
+//								xModelNpc[i].moveType = MOVETYPE_YMINUS;
+//						}
+//					}
+//				}
+//				break;
+//			case MODELNPC_STATE_WAITMOVE:
+//			case MODELNPC_STATE_FLOORUPMOVE:
+//			case MODELNPC_STATE_FLOORDOWNMOVE:
+//			case MODELNPC_STATE_INTERIORINFOMOVE:
+//				switch(xModelNpc[i].moveType)
+//				{
+//				case MOVETYPE_XPLUS:
+//				case MOVETYPE_YPLUS:
+//					prcSprit(&xSpritNpc[NPC_ACT_WALKING][ACT_FRONT],&xModelNpc[i].nowDelay,&xModelNpc[i].nowFrame);
+//					break;
+//				case MOVETYPE_XMINUS:
+//				case MOVETYPE_YMINUS:
+//					prcSprit(&xSpritNpc[NPC_ACT_WALKING][ACT_BACK],&xModelNpc[i].nowDelay,&xModelNpc[i].nowFrame);
+//					break;
+//				}
+//				
+//				switch(xModelNpc[i].moveType)
+//				{
+//				case MOVETYPE_XPLUS:
+//					xModelNpc[i].drawX -= (float)(xModelNpc[i].speed * 2);
+//					xModelNpc[i].drawY += (float)(xModelNpc[i].speed * 1);
+//					if(xModelNpc[i].drawX  <= -(TILEW/4))
+//					{
+//						xModelNpc[i].x++;
+//						xModelNpc[i].drawX = (TILEW/4);
+//						xModelNpc[i].drawY = -(TILEH/4);
+//					}
+//					break;
+//				case MOVETYPE_XMINUS:
+//					xModelNpc[i].drawX += (float)(xModelNpc[i].speed * 2);
+//					xModelNpc[i].drawY -= (float)(xModelNpc[i].speed * 1);
+//					if(xModelNpc[i].drawX  >= (TILEW/4))
+//					{
+//						xModelNpc[i].x--;
+//						xModelNpc[i].drawX = -(TILEW/4);
+//						xModelNpc[i].drawY = (TILEH/4);
+//					}
+//					break;
+//				case MOVETYPE_YPLUS:
+//					xModelNpc[i].drawX += (float)(xModelNpc[i].speed * 2);
+//					xModelNpc[i].drawY += (float)(xModelNpc[i].speed * 1);
+//					if(xModelNpc[i].drawY  >= (TILEH/4))
+//					{
+//						xModelNpc[i].y++;
+//						xModelNpc[i].drawX = -(TILEW/4);
+//						xModelNpc[i].drawY = -(TILEH/4);
+//					}
+//					break;
+//				case MOVETYPE_YMINUS:
+//					xModelNpc[i].drawX -= (float)(xModelNpc[i].speed * 2);
+//					xModelNpc[i].drawY -= (float)(xModelNpc[i].speed * 1);
+//					if(xModelNpc[i].drawY  <= -(TILEH/4))
+//					{
+//						xModelNpc[i].y--;
+//						xModelNpc[i].drawX = (TILEW/4);
+//						xModelNpc[i].drawY = (TILEH/4);
+//					}
+//					break;
+//				}
+//				
+//				//도착 위치 검색 및 위치 보정
+//				if(xModelNpc[i].drawX == 0)
+//				{
+//					//목표위치도착
+//					if(++xModelNpc[i].bestNowCnt >= xModelNpc[i].bestTotalCnt-1)
+//					{
+//						switch(xModelNpc[i].state)
+//						{
+//						case MODELNPC_STATE_WAITMOVE:		//진열대로 이동중
+//							xModelNpc[i].state = MODELNPC_STATE_WAIT;
+//							xModelNpc[i].nowDelay = 0;
+//							xModelNpc[i].nowFrame = 0;
+//							xModelNpc[i].isActEnd = FALSE;
+//							xModelNpc[i].anyCnt = 0;
+//							break;
+//						case MODELNPC_STATE_FLOORUPMOVE:
+//							xModelNpc[i].state = MODELNPC_STATE_FLOORUP;
+//							xModelNpc[i].moveType = MOVETYPE_YMINUS;
+//							xModelNpc[i].actLook = MOVETYPE_YMINUS;
+//							xModelNpc[i].anyCnt = 0;
+//							break;
+//						case MODELNPC_STATE_FLOORDOWNMOVE:
+//							xModelNpc[i].state = MODELNPC_STATE_FLOORDOWN;
+//							xModelNpc[i].anyCnt = 0;
+//							break;
+//						case MODELNPC_STATE_INTERIORINFOMOVE:
+//							xModelNpc[i].state = MODELNPC_STATE_INTERIORINFO;
+//							xModelNpc[i].anyCnt = 0;
+//							xModelNpc[i].moveType = xModelNpc[i].actLook;
+//							break;
+//						}
+//					}
+//					else
+//					{
+//						//다음이동
+//						if(xModelNpc[i].bestX[xModelNpc[i].bestNowCnt] < xModelNpc[i].bestX[xModelNpc[i].bestNowCnt+1])
+//							xModelNpc[i].moveType = MOVETYPE_XPLUS;
+//						else if(xModelNpc[i].bestX[xModelNpc[i].bestNowCnt] > xModelNpc[i].bestX[xModelNpc[i].bestNowCnt+1])
+//							xModelNpc[i].moveType = MOVETYPE_XMINUS;
+//						else if(xModelNpc[i].bestY[xModelNpc[i].bestNowCnt] < xModelNpc[i].bestY[xModelNpc[i].bestNowCnt+1])
+//							xModelNpc[i].moveType = MOVETYPE_YPLUS;
+//						else if(xModelNpc[i].bestY[xModelNpc[i].bestNowCnt] > xModelNpc[i].bestY[xModelNpc[i].bestNowCnt+1])
+//							xModelNpc[i].moveType = MOVETYPE_YMINUS;
+//					}
+//				}
+//				break;
+//			case MODELNPC_STATE_INTERIORINFO:					
+//				switch(xModelNpc[i].anyCnt)
+//				{
+//				case 10:
+//					switch(xModelNpc[i].interiorInfoType)
+//					{
+//					case 0:		//옷걸이
+//						setSpeak(&xModelNpc[i].xSpeak, "옷걸이는 옷을 진열할수 있어요.", SPEAKFRAMEMAX);
+//						break;
+//					case 1:		//진열대
+//						setSpeak(&xModelNpc[i].xSpeak, "진열대는 잡화를 진열할수 있어요.", SPEAKFRAMEMAX);
+//						break;
+//					case 2:		//피팅룸
+//						setSpeak(&xModelNpc[i].xSpeak, "피팅룸에선 손님들이 옷을 갈아 입어요.", SPEAKFRAMEMAX);
+//						break;
+//					case 3:		//쇼윈도
+//						setSpeak(&xModelNpc[i].xSpeak, "쇼윈도에선 마네킹을 피팅 시킬 수 있어요.", SPEAKFRAMEMAX);
+//						break;
+//					case 4:		//카운터
+//						setSpeak(&xModelNpc[i].xSpeak, "카운터에선 의상을 주문할수 있어요.", SPEAKFRAMEMAX);
+//						break;
+//					case 5:		//쇼파
+//						setSpeak(&xModelNpc[i].xSpeak, "의자에 쉬고 간 손님은 의상을 추가로 구매 한답니다.", SPEAKFRAMEMAX);
+//						break;
+//					}
+//					break;
+//				}
+//					
+//				if(++xModelNpc[i].anyCnt > 90)
+//				{
+//					xModelNpc[i].state = MODELNPC_STATE_WAIT;
+//					xModelNpc[i].anyCnt=999;
+//				}
+//				break;
+//			case MODELNPC_STATE_FLOORUP:
+//				//10에변경
+//				//17에 행동변경
+//				switch(++xModelNpc[i].anyCnt)
+//				{
+//				case 10:
+//					xModelNpc[i].floor++;
+//					xModelNpc[i].moveType = MOVETYPE_YPLUS;
+//					xModelNpc[i].actLook = MOVETYPE_YPLUS;
+//					
+//					xModelNpc[i].x = xWorldMap.floorDownX;
+//					xModelNpc[i].y = xWorldMap.floorDownY;
+//					break;
+//				case 17:
+//					if(xModelNpc[i].floor < xModelNpc[i].floorTarget)
+//					{
+//						//올라가기로
+//						setModelNpcStateFloorUp(i, xModelNpc[i].floor);
+//					}
+//					else
+//					{
+//						xModelNpc[i].state = MODELNPC_STATE_WAIT;
+//						xModelNpc[i].anyCnt=999;
+//					}
+//					break;
+//				}
+//				break;
+//			case MODELNPC_STATE_FLOORDOWN:
+//				xModelNpc[i].moveType = xModelNpc[i].actLook;
+//				//10에변경
+//				//17에 행동변경
+//				switch(++xModelNpc[i].anyCnt)
+//				{
+//				case 10:
+//					xModelNpc[i].floor--;
+//					xModelNpc[i].moveType = MOVETYPE_YPLUS;
+//					xModelNpc[i].actLook = MOVETYPE_YPLUS;
+//					xModelNpc[i].x = xWorldMap.floorUpX;
+//					xModelNpc[i].y = xWorldMap.floorUpY;
+//					break;
+//				case 17:
+//					if(xModelNpc[i].floor > xModelNpc[i].floorTarget)
+//					{
+//						//내려가기
+//						setModelNpcStateFloorDown(i, xModelNpc[i].floor);
+//					}
+//					else
+//					{
+//						xModelNpc[i].state = MODELNPC_STATE_WAIT;
+//						xModelNpc[i].anyCnt=999;
+//					}
+//					break;
+//				}
+//				break;
+//			}
+//		}
+//	}
+//}
 
 
 
@@ -70138,7 +70170,7 @@ void drawAccessBonus()
 					setTired(xAccessBonus.slotNum[xAccessBonus.accessCount]);
 					break;
 				case ACCESSBONUS_TYPE_MODEL:
-					setNewModel(xAccessBonus.slotNum[xAccessBonus.accessCount]);
+//					setNewModel(xAccessBonus.slotNum[xAccessBonus.accessCount]);
 					break;
 				case ACCESSBONUS_TYPE_TREND:
 					setTrendTemp(xAccessBonus.slotNum[xAccessBonus.accessCount],1);
@@ -70903,1039 +70935,1039 @@ int getUserH(int totalCnt,int nowCnt,int rever)
 }
 
 
-void drawModelMain()
-{
-	int px = cx;
-	int py = cy;
-	
-	
-	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-	{
-		switch(xQuestTuto.nowNum)
-		{
-		case TUTO_22_MODELCASTINGEXIT:
-			if(xModel.state == MODELCOLLECT_STATE_MAIN)
-				xQuestTuto.isTutoClean = TRUE;
-			break;
-		}
-	}
-	
-	drawPacker(imgModelMainBg0, px, py, 0, 0, imgW(imgModelMainBg0), imgH(imgModelMainBg0), VH);
-		
-	if(xModelMainSlot[0].state == MODELMAINSLOT_STATE_LOCK)
-		xModelMainSlot[0].state = MODELMAINSLOT_STATE_EMPTY;
-	
-	XFACE xFaceTemp;
-	XFITTINGLAYER xFTemp;
-	
-	int castImgNum = DONT;
-	int giftTypeImgNum = 0;
-	int modelCode;
-	int slotX;
-	int slotY;
-	for(int i=0;i<MODELMAINSLOTMAX;i++)
-	{
-		switch(i)
-		{
-		case 0:
-			slotX = px-357;
-			slotY = py+147;
-			break;
-		case 1:
-			slotX = px-187;
-			slotY = py+117;
-			break;
-		case 2:
-			slotX = px;
-			slotY = py+103;
-			break;
-		case 3:
-			slotX = px+187;
-			slotY = py+117;
-			break;
-		case 4:
-			slotX = px+357;
-			slotY = py+147;
-			break;
-		}
-		
-		
-				
-		
-		subTemp[XPOS] = slotX;
-		subTemp[YPOS] = slotY-135;
-		
-		xFaceTemp.hairNum = DONT;
-		xFaceTemp.faceNum = DONT;
-		xFaceTemp.faceType = FACE_TYPE_SMILE;
-		
-		for(int f=0;f<16;f++)
-			xFTemp.code[f] = DONT;
-		
-		
-		xModelMainSlot[i].xTouchSlot.wPos = 120;
-		xModelMainSlot[i].xTouchSlot.hPos = 340;
-		xModelMainSlot[i].xTouchSlot.xPos = subTemp[XPOS]-xModelMainSlot[i].xTouchSlot.wPos/2;
-		xModelMainSlot[i].xTouchSlot.yPos = subTemp[YPOS]+50-xModelMainSlot[i].xTouchSlot.hPos/2;
-		
-		/*
-		gSetColor(255, 0, 0);
-		setAlpha(100);
-		fillRect(xModelMainSlot[i].xTouchSlot.xPos, xModelMainSlot[i].xTouchSlot.yPos, xModelMainSlot[i].xTouchSlot.wPos, xModelMainSlot[i].xTouchSlot.hPos);
-		setAlpha(ALPHA_MAX);
-		 */
-		
-		switch(xModelMainSlot[i].state)
-		{
-		case MODELMAINSLOT_STATE_WAIT:
-		case MODELMAINSLOT_STATE_PLAY:
-			xModelMainSlot[i].inventoryNum = getModelKeyToSlotNum(xModelMainSlot[i].modelKey);
-			modelCode = xInventoryModel[xModelMainSlot[i].inventoryNum].code;
-			break;
-		}
-
-		
-		switch(xModelMainSlot[i].state)
-		{
-		case MODELMAINSLOT_STATE_LOCK:
-			//잠긴슬롯
-			if(xSaveTemp.lv.oriData < xModelMainSlot[i].openLv)
-			{
-				
-				drawPacker(imgModelMainSlotLv0, slotX, slotY-30, 0, imgH(imgModelMainSlotLv0)/4*(i-1), imgW(imgModelMainSlotLv0), imgH(imgModelMainSlotLv0)/4, VH);
-			}
-			else
-			{
-				drawPacker(imgModelMainBg3, slotX, slotY-15, imgW(imgModelMainBg3)/2*(i<2?0:1), 0, imgW(imgModelMainBg3)/2, imgH(imgModelMainBg3), VH);
-			}
-			break;
-		case MODELMAINSLOT_STATE_EMPTY:
-			//빈슬롯
-			drawPacker(imgModelMainBg1, slotX, slotY-90, 0, 0, imgW(imgModelMainBg1), imgH(imgModelMainBg1), VH);
-			if(i<2)
-				xGame.isReverse = TRUE;
-			drawFittingBody(subTemp[XPOS]+(i<2?-15:0), subTemp[YPOS], &xFTemp, &xFaceTemp, FALSE, 0);
-			xGame.isReverse = FALSE;
-			drawPacker(imgModelMainEmpty, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgModelMainEmpty), imgH(imgModelMainEmpty), VH);
-
-				
-				
-			if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-			{
-				switch(xQuestTuto.nowNum)
-				{
-				case TUTO_22_MODELMAINSLOTSELECT:
-					xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
-					xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
-					xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
-					break;
-				}
-			}
-				
-			break;
-		case MODELMAINSLOT_STATE_WAIT:
-		case MODELMAINSLOT_STATE_PLAY:
-			if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-			{
-				switch(xQuestTuto.nowNum)
-				{
-				case TUTO_22_MODELSELECTMODEL:
-				case TUTO_22_MODELMAINSLOTSELECT:
-					xQuestTuto.isTutoClean = TRUE;
-					break;
-				case TUTO_22_MODELMODELINFO:
-					if(xModel.state == MODELCOLLECT_STATE_MAIN)
-					{
-						xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
-						xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
-						xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
-					}
-					break;
-				case TUTO_22_MODELFITTINGOK:
-					if(checkXfLimit(&xInventoryModel[xModelMainSlot[i].inventoryNum].xF) == TRUE)
-						xQuestTuto.isTutoClean = TRUE;
-					break;
-				}
-			}
-				
-			//모델슬롯
-			xGame.isBlend = TRUE;
-			xGame.blendType = BLEND_ADDP;
-			drawPacker(imgModelMainBg4, slotX, slotY-210, 0, 0, imgW(imgModelMainBg4), imgH(imgModelMainBg4), VH);
-			xGame.isBlend = FALSE;
-			drawPacker(imgModelMainBg2, slotX, slotY-90, 0, 0, imgW(imgModelMainBg2), imgH(imgModelMainBg2), VH);
-			if(i<2)
-				xGame.isReverse = TRUE;
-				
-			xFaceTemp.hairNum = 1000+modelCode;
-			xFaceTemp.faceNum = 1000+modelCode;
-			xFaceTemp.faceType = FACE_TYPE_NORMAL;
-												
-			memcpy(&xFTemp, &xInventoryModel[xModelMainSlot[i].inventoryNum].xF, sizeof(xFTemp));
-			drawFittingBody(subTemp[XPOS]+(i<2?-15:0), subTemp[YPOS], &xFTemp, &xFaceTemp, TRUE, xModelData[modelCode].sex);
-			xGame.isReverse = FALSE;
-											
-			switch(xModelData[modelCode].sex)
-			{
-			case 0:
-				drawModelNameString(subTemp[XPOS]+(i<2?-5:10),subTemp[YPOS]-166,VH,modelCode);
-				break;
-			case 1:
-				drawModelNameString(subTemp[XPOS]+(i<2?-5:10),subTemp[YPOS]-181,VH,modelCode);
-				break;
-			}
-					
-				
-			subTemp[XPOS] = slotX;
-			subTemp[YPOS] = slotY+40;
-			drawPacker(imgModelMainGage0, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgModelMainGage0), imgH(imgModelMainGage0), VH);
-			xModelMainSlot[i].xTouchBtn.wPos = imgW(imgModelMainGage0);
-			xModelMainSlot[i].xTouchBtn.hPos = imgH(imgModelMainGage0);
-			xModelMainSlot[i].xTouchBtn.xPos = subTemp[XPOS]-xModelMainSlot[i].xTouchBtn.wPos/2;
-			xModelMainSlot[i].xTouchBtn.yPos = subTemp[YPOS]-xModelMainSlot[i].xTouchBtn.hPos/2;
-			
-			/*
-			 gSetColor(255, 0, 0);
-			 setAlpha(100);
-			 fillRect(xModelMainSlot[i].xTouchBtn.xPos, xModelMainSlot[i].xTouchBtn.yPos, xModelMainSlot[i].xTouchBtn.wPos, xModelMainSlot[i].xTouchBtn.hPos);
-			 setAlpha(ALPHA_MAX);
-			 */
-			if(checkXfLimit(&xInventoryModel[xModelMainSlot[i].inventoryNum].xF) == FALSE)
-			{
-				gDrawStringBold(subTemp[XPOS]+43, subTemp[YPOS]-17, "활동불가", VR,251,51,23,17,11,11);
-				drawPacker(imgModelMainGage1, subTemp[XPOS], subTemp[YPOS]+15, 0, imgH(imgModelMainGage1)/9*8, imgW(imgModelMainGage1), imgH(imgModelMainGage1)/9, VH);
-			}
-			else
-			{
-				
-				setCommaNum(strTempS, getModelGiftNum(xModelMainSlot[i].inventoryNum,0));
-				gSetColor(58, 28, 17);
-				gDrawString(subTemp[XPOS]+43, subTemp[YPOS]-17, strTempS, VR);
-				switch(xModelData[modelCode].giftType)
-				{
-				case MODEL_GIFTTYPE_GOLD:giftTypeImgNum=5;break;
-				case MODEL_GIFTTYPE_LOOK:giftTypeImgNum=1;break;
-				case MODEL_GIFTTYPE_CANDY:giftTypeImgNum=6;break;
-				case MODEL_GIFTTYPE_EXP:giftTypeImgNum=3;break;
-				}
-				drawPacker(imgProductionMenuObj0, subTemp[XPOS]+48, subTemp[YPOS]-17, imgW(imgProductionMenuObj0)/8*giftTypeImgNum, 0, imgW(imgProductionMenuObj0)/8, imgH(imgProductionMenuObj0), VL);
-					
-				
-			
-				int endTimeTemp = xModelMainSlot[i].endTime;
-				
-				switch(xModelMainSlot[i].state)
-				{
-				case MODELMAINSLOT_STATE_WAIT:
-					drawPacker(imgModelMainGage1, subTemp[XPOS], subTemp[YPOS]+15, 0, imgH(imgModelMainGage1)/9*6, imgW(imgModelMainGage1), imgH(imgModelMainGage1)/9, VH);
-					break;
-				case MODELMAINSLOT_STATE_PLAY:
-						
-						
-						
-					//완료
-					if(xCalendar.nowTime > endTimeTemp)
-					{
-						drawPacker(imgModelMainGage1, subTemp[XPOS], subTemp[YPOS]+15, 0, imgH(imgModelMainGage1)/9*7, imgW(imgModelMainGage1), imgH(imgModelMainGage1)/9, VH);
-						castImgNum = DONT;
-						switch(gameCnt%50)
-						{
-							case 41:castImgNum = 0;	break;
-							case 42:castImgNum = 1;	break;
-							case 43:castImgNum = 2;	break;
-							case 44:castImgNum = 3;	break;
-							case 45:castImgNum = 4;	break;
-						}
-						
-						if(castImgNum != DONT)
-						{
-							xGame.isBlend = TRUE;
-							xGame.blendType = BLEND_ADDP;
-							drawPacker(imgModelMainGage2, subTemp[XPOS], subTemp[YPOS]+15, 0, imgH(imgModelMainGage2)/5*castImgNum, imgW(imgModelMainGage2), imgH(imgModelMainGage2)/5, VH);
-							xGame.isBlend = FALSE;
-						}
-					}
-					else
-					{
-						drawPacker(imgModelMainGage1, subTemp[XPOS], subTemp[YPOS]+15, 0, imgH(imgModelMainGage1)/9*5, imgW(imgModelMainGage1), imgH(imgModelMainGage1)/9, VH);
-						
-						switch(xModelData[modelCode].giftType)
-						{
-						case MODEL_GIFTTYPE_GOLD:giftTypeImgNum=1;break;
-						case MODEL_GIFTTYPE_LOOK:giftTypeImgNum=2;break;
-						case MODEL_GIFTTYPE_CANDY:giftTypeImgNum=4;break;
-						case MODEL_GIFTTYPE_EXP:giftTypeImgNum=3;break;
-						}
-						subTemp[WPOS] = imgW(imgModelMainGage1);
-						drawPacker(imgModelMainGage1, subTemp[XPOS]-imgW(imgModelMainGage1)/2, subTemp[YPOS]+15, 0, imgH(imgModelMainGage1)/9*giftTypeImgNum, subTemp[WPOS], imgH(imgModelMainGage1)/9, VL);
-						drawPacker(imgModelMainGage1, subTemp[XPOS], subTemp[YPOS]+15, 0, 0, imgW(imgModelMainGage1), imgH(imgModelMainGage1)/9, VH);
-						drawTimeSprintf(strTempS,(endTimeTemp - xCalendar.nowTime),1);
-						
-						switch(xModelData[modelCode].giftType)
-						{
-						case MODEL_GIFTTYPE_GOLD:gDrawStringBold(subTemp[XPOS]+60, subTemp[YPOS]+16, strTempS, VR, 253, 117, 6, 51, 21, 14);break;
-						case MODEL_GIFTTYPE_LOOK:gDrawStringBold(subTemp[XPOS]+60, subTemp[YPOS]+16, strTempS, VR, 26, 215, 255, 51, 21, 14);break;
-						case MODEL_GIFTTYPE_CANDY:gDrawStringBold(subTemp[XPOS]+60, subTemp[YPOS]+16, strTempS, VR, 251, 20, 10, 51, 21, 14);break;
-						case MODEL_GIFTTYPE_EXP:gDrawStringBold(subTemp[XPOS]+60, subTemp[YPOS]+16, strTempS, VR, 251, 85, 8, 51, 21, 14);break;
-						}
-					}
-					break;
-				}
-			}
-			break;
-		}
-		
-		
-	}
-	
-	
-	
-	//모델가이드버튼
-	subTemp[XPOS] = 85;
-	subTemp[YPOS] = 35;
-	drawPacker(imgModelHelp4, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgModelHelp4), imgH(imgModelHelp4), VH);
-	xModel.xTouchHelpBtn.wPos = imgW(imgModelHelp4);
-	xModel.xTouchHelpBtn.hPos = imgH(imgModelHelp4);
-	xModel.xTouchHelpBtn.xPos = subTemp[XPOS]-xModel.xTouchHelpBtn.wPos/2;
-	xModel.xTouchHelpBtn.yPos = subTemp[YPOS]-xModel.xTouchHelpBtn.hPos/2;
-		
-	
-	subTemp[XPOS] = lcdW-97;
-	subTemp[YPOS] = lcdH-47;
-	
-	drawPacker(imgModelCastingBtn0, subTemp[XPOS]+3, subTemp[YPOS]+1, 0, 0, imgW(imgModelCastingBtn0), imgH(imgModelCastingBtn0), VH);
-	drawPacker(imgModelCastingBtn1, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgModelCastingBtn1), imgH(imgModelCastingBtn1), VH);
-	
-	if(xWorldMap.isTuto == TRUE)
-	{
-		switch(xQuestTuto.nowNum)
-		{
-		case TUTO_22_MODELCASTING:
-			if(xModel.state == MODELCOLLECT_FRIEND_STATE_MAIN)
-			{
-				xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
-				xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
-				xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
-			}
-			break;
-		}
-	}
-			
-	
-	castImgNum = DONT;
-	switch(gameCnt%50)
-	{
-	case 41:castImgNum = 0;	break;
-	case 42:castImgNum = 1;	break;
-	case 43:castImgNum = 2;	break;
-	case 44:castImgNum = 3;	break;
-	case 45:castImgNum = 4;	break;
-	}
-	
-	if(castImgNum != DONT)
-	{
-		xGame.isBlend = TRUE;
-		xGame.blendType = BLEND_ADDP;
-		drawPacker(imgModelCastingBtn2, subTemp[XPOS], subTemp[YPOS], 0, imgH(imgModelCastingBtn2)/5*castImgNum, imgW(imgModelCastingBtn2), imgH(imgModelCastingBtn2)/5, VH);
-		xGame.isBlend = FALSE;
-	}
-	
-	if(gameCnt%50 == 0)
-	{
-		setModelEff(subTemp[XPOS]-63, subTemp[YPOS]-26);
-		setModelEff(subTemp[XPOS]+67, subTemp[YPOS]+23);
-	}
-
-	xModel.xTouchCastingBtn.wPos = imgW(imgModelCastingBtn1);
-	xModel.xTouchCastingBtn.hPos = imgH(imgModelCastingBtn1);
-	xModel.xTouchCastingBtn.xPos = subTemp[XPOS]-xModel.xTouchCastingBtn.wPos/2;
-	xModel.xTouchCastingBtn.yPos = subTemp[YPOS]-xModel.xTouchCastingBtn.hPos/2;
-	
-	subTemp[XPOS] = 97;
-	subTemp[YPOS] = lcdH-47;
-	
-	drawPacker(imgModelCastingBtn0, subTemp[XPOS]+3, subTemp[YPOS]+1, 0, 0, imgW(imgModelCastingBtn0), imgH(imgModelCastingBtn0), VH);
-	drawPacker(imgModelListBtn, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgModelListBtn), imgH(imgModelListBtn), VH);
-		
-	xModel.xTouchModelListBtn.wPos = imgW(imgModelListBtn);
-	xModel.xTouchModelListBtn.hPos = imgH(imgModelListBtn);
-	xModel.xTouchModelListBtn.xPos = subTemp[XPOS]-xModel.xTouchModelListBtn.wPos/2;
-	xModel.xTouchModelListBtn.yPos = subTemp[YPOS]-xModel.xTouchModelListBtn.hPos/2;
-	
-	
-	subTemp[XPOS] = lcdW-48;
-	subTemp[YPOS] = py-282;
-	
-	drawPacker(imgBtn0, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgBtn0), imgH(imgBtn0)/2, VH);
-	
-	xTouchClr.wPos = imgW(imgBtn0);
-	xTouchClr.hPos = imgH(imgBtn0)/2;
-	xTouchClr.xPos = subTemp[XPOS]-xTouchClr.wPos/2;
-	xTouchClr.yPos = subTemp[YPOS]-xTouchClr.hPos/2;
-	
-	
-	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-	{
-		switch(xQuestTuto.nowNum)
-		{
-		case TUTO_22_MODELEXIT:
-			if(xModel.state == MODELCOLLECT_STATE_MAIN)
-			{
-				xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
-				xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
-				xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
-			}
-			break;
-		}
-	}
-	
-	/*
-	 gSetColor(255,0,0);
-	 setAlpha(100);
-	 fillRect(xTouchClr.xPos,xTouchClr.yPos,xTouchClr.wPos,xTouchClr.hPos);
-	 setAlpha(ALPHA_MAX);
-	 */
-}
-
-void drawModelHelp()
-{
-	int px = cx;
-	int py = cy;
-	drawBgFillRect();
-	drawPacker(imgModelHelp0, px, py, 0, 0, imgW(imgModelHelp0), imgH(imgModelHelp0), VH);
-	
-	int giftTemp[2][4];
-	int giftTypeTemp[2][4];
-	int giftIconNumTemp[2][4];
-	for(int i=0;i<MODELDATAMAX;i++)
-	{
-		if(xModelData[i].layeredNum > 0)
-		{
-			if(xModelData[i].sex < 2 && xModelData[i].grade < 4)
-			{
-				giftTypeTemp[xModelData[i].sex][xModelData[i].grade] = xModelData[i].giftType;
-				giftTemp[xModelData[i].sex][xModelData[i].grade] = xModelData[i].giftNum.oriData;
-				giftIconNumTemp[xModelData[i].sex][xModelData[i].grade] = xModelData[i].giftIconNum;
-                
-                
-                    
-                
-                
-                
-			}
-		}
-	}
-	
-	
-	
-	//활동타입 :성별,등급 = 활동타입
-	//활동값	 :성별,등급 = 활동값
-	//아이콘   :성별,등급 = 아이콘번호
-	
-	
-	
-	
-	for(int i=0;i<2;i++)
-	{
-		subTemp[XPOS] = px+96+(i*84);
-		subTemp[YPOS] = py-195;
-		if(i == xModel.selectHelpTab)
-			drawPacker(imgModelHelp5, subTemp[XPOS]+3, subTemp[YPOS]+6, imgW(imgModelHelp5)/2, 0, imgW(imgModelHelp5)/2, imgH(imgModelHelp5), VH);
-		
-		drawPacker(imgModelHelp3, subTemp[XPOS], subTemp[YPOS], imgW(imgModelHelp3)/2*i, 0, imgW(imgModelHelp3)/2, imgH(imgModelHelp3), VH);
-				
-		xModel.xTouchHelpTab[i].wPos = imgW(imgModelHelp3)/2;
-		xModel.xTouchHelpTab[i].hPos = imgH(imgModelHelp3);
-		xModel.xTouchHelpTab[i].xPos = subTemp[XPOS]-xModel.xTouchHelpTab[i].wPos/2;
-		xModel.xTouchHelpTab[i].yPos = subTemp[YPOS]-xModel.xTouchHelpTab[i].hPos/2;
-	}
-	
-	
-	int giftTypeImgNum=0;
-	switch(xModel.selectHelpTab)
-	{
-	case 0:
-		drawPacker(imgModelHelp2, px, py, 0, 0, imgW(imgModelHelp2), imgH(imgModelHelp2), VH);
-		for(int sex = 0;sex<2;sex++)
-		{
-			for(int grade = 0;grade<4;grade++)
-			{
-				subTemp[XPOS] = px-100+(92*grade);
-				subTemp[YPOS] = py+90-(82*sex);
-				
-				switch(giftTypeTemp[sex][grade])
-				{
-				case MODEL_GIFTTYPE_GOLD:
-					giftTypeImgNum = imgModelHelpGoldIcon0+giftIconNumTemp[sex][grade];
-					break;
-				case MODEL_GIFTTYPE_LOOK:
-					giftTypeImgNum = imgModelHelpLookIcon0+giftIconNumTemp[sex][grade];
-					break;
-				case MODEL_GIFTTYPE_CANDY:
-					giftTypeImgNum = imgModelHelpCandyIcon0+giftIconNumTemp[sex][grade];
-					break;
-				case MODEL_GIFTTYPE_EXP:
-					giftTypeImgNum = imgModelHelpExpIcon0+giftIconNumTemp[sex][grade];
-					break;
-				}
-                
-                if(grade == 3)
-                {
-                    giftTypeImgNum = imgModelHelpLookIcon0+1;
-                }
-                
-                
-                
-				drawPacker(giftTypeImgNum, subTemp[XPOS], subTemp[YPOS]-14, 0, 0, imgW(giftTypeImgNum), imgH(giftTypeImgNum), VH);
-				sprintf(strTempS, "%d",giftTemp[sex][grade]);
-                
-                if(grade != 3)
-                    gDrawStringBold(subTemp[XPOS], subTemp[YPOS]+16, strTempS, VH,242,228,212,82,49,38);
-			}
-		}
-		break;
-	case 1:
-		drawPacker(imgModelHelp1, px, py, 0, 0, imgW(imgModelHelp1), imgH(imgModelHelp1), VH);
-		break;
-	}
-	
-	drawBtn(px, py+190, BTN_OK_CONFIRM);
-}
-
-void drawModelMain_FRIEND()
-{
-	int px = cx;
-	int py = cy;
-	
-	if(xQuestTuto.state == QUEST_TUTO_KEY)
-	{
-		switch(xQuestTuto.nowNum)
-		{
-			case TUTO_18_FRIENDMODEL_MENUTOUCH:
-				xQuestTuto.isTutoClean = TRUE;
-				break;
-		}
-	}
-	
-	drawPacker(imgModelMainBg0, px, py, 0, 0, imgW(imgModelMainBg0), imgH(imgModelMainBg0), VH);
-		
-	if(xModelMainSlotFRIEND[0].state == MODELMAINSLOT_STATE_LOCK)
-		xModelMainSlotFRIEND[0].state = MODELMAINSLOT_STATE_EMPTY;
-	
-	XFACE xFaceTemp;
-	XFITTINGLAYER xFTemp;
-	
-	int modelCode;
-	int slotX;
-	int slotY;
-	for(int i=0;i<MODELMAINSLOTMAX;i++)
-	{
-		switch(i)
-		{
-        case 0:
-            slotX = px-357;
-            slotY = py+147;
-            break;
-        case 1:
-            slotX = px-187;
-            slotY = py+117;
-            break;
-        case 2:
-            slotX = px;
-            slotY = py+103;
-            break;
-        case 3:
-            slotX = px+187;
-            slotY = py+117;
-            break;
-        case 4:
-            slotX = px+357;
-            slotY = py+147;
-            break;
-		}
-		
-		subTemp[XPOS] = slotX;
-		subTemp[YPOS] = slotY-135;
-		
-		xFaceTemp.hairNum = DONT;
-		xFaceTemp.faceNum = DONT;
-		xFaceTemp.faceType = FACE_TYPE_SMILE;
-		
-		for(int f=0;f<16;f++)
-			xFTemp.code[f] = DONT;
-		
-		
-		xModelMainSlot[i].xTouchSlot.wPos = 120;
-		xModelMainSlot[i].xTouchSlot.hPos = 340;
-		xModelMainSlot[i].xTouchSlot.xPos = subTemp[XPOS]-xModelMainSlot[i].xTouchSlot.wPos/2;
-		xModelMainSlot[i].xTouchSlot.yPos = subTemp[YPOS]+50-xModelMainSlot[i].xTouchSlot.hPos/2;
-		
-		/*
-		 gSetColor(255, 0, 0);
-		 setAlpha(100);
-		 fillRect(xModelMainSlot[i].xTouchSlot.xPos, xModelMainSlot[i].xTouchSlot.yPos, xModelMainSlot[i].xTouchSlot.wPos, xModelMainSlot[i].xTouchSlot.hPos);
-		 setAlpha(ALPHA_MAX);
-		 */
-				
-		switch(xModelMainSlotFRIEND[i].state)
-		{
-		case MODELMAINSLOT_STATE_WAIT:
-		case MODELMAINSLOT_STATE_PLAY:
-			xModelMainSlotFRIEND[i].inventoryNum = getModelKeyToSlotNumFRIEND(xModelMainSlotFRIEND[i].modelKey);
-			modelCode = xInventoryModel_FRIEND[xModelMainSlotFRIEND[i].inventoryNum].code;
-			break;
-		}
-				
-		switch(xModelMainSlotFRIEND[i].state)
-		{
-		case MODELMAINSLOT_STATE_LOCK:
-			//잠긴슬롯
-			drawPacker(imgModelMainBg3, slotX, slotY-15, imgW(imgModelMainBg3)/2*(i<2?0:1), 0, imgW(imgModelMainBg3)/2, imgH(imgModelMainBg3), VH);
-			break;
-		case MODELMAINSLOT_STATE_EMPTY:
-			//빈슬롯
-			drawPacker(imgModelMainBg1, slotX, slotY-90, 0, 0, imgW(imgModelMainBg1), imgH(imgModelMainBg1), VH);
-			if(i<2)
-				xGame.isReverse = TRUE;
-			drawFittingBody(subTemp[XPOS]+(i<2?-15:0), subTemp[YPOS], &xFTemp, &xFaceTemp, FALSE, 0);
-			xGame.isReverse = FALSE;
-			break;
-		case MODELMAINSLOT_STATE_WAIT:
-		case MODELMAINSLOT_STATE_PLAY:
-			//모델슬롯
-			xGame.isBlend = TRUE;
-			xGame.blendType = BLEND_ADDP;
-			drawPacker(imgModelMainBg4, slotX, slotY-210, 0, 0, imgW(imgModelMainBg4), imgH(imgModelMainBg4), VH);
-			xGame.isBlend = FALSE;
-			drawPacker(imgModelMainBg2, slotX, slotY-90, 0, 0, imgW(imgModelMainBg2), imgH(imgModelMainBg2), VH);
-			if(i<2)
-				xGame.isReverse = TRUE;
-			
-			xFaceTemp.hairNum = 1000+modelCode;
-			xFaceTemp.faceNum = 1000+modelCode;
-			xFaceTemp.faceType = FACE_TYPE_NORMAL;
-			
-			memcpy(&xFTemp, &xInventoryModel_FRIEND[xModelMainSlotFRIEND[i].inventoryNum].xF, sizeof(xFTemp));
-			drawFittingBody(subTemp[XPOS]+(i<2?-15:0), subTemp[YPOS], &xFTemp, &xFaceTemp, TRUE, xModelData[modelCode].sex);
-			xGame.isReverse = FALSE;
-							
-			switch(xModelData[modelCode].sex)
-			{
-			case 0:
-				drawModelNameString(subTemp[XPOS]+(i<2?-5:10),subTemp[YPOS]-166,VH,modelCode);
-				break;
-			case 1:
-				drawModelNameString(subTemp[XPOS]+(i<2?-5:10),subTemp[YPOS]-181,VH,modelCode);
-				break;
-			}
-				
-			//추천수
-			switch(i)
-			{
-			case 0:
-				subTemp[XPOS] = slotX+70;
-				subTemp[YPOS] = slotY+70+30;
-				break;
-			case 1:
-				subTemp[XPOS] = slotX+70-20;
-				subTemp[YPOS] = slotY+70;
-				break;
-			case 2:
-				subTemp[XPOS] = slotX+70;
-				subTemp[YPOS] = slotY+70-20;
-				break;
-			case 3:
-				subTemp[XPOS] = slotX+70+20;
-				subTemp[YPOS] = slotY+70;
-				break;
-			case 4:
-				subTemp[XPOS] = slotX+70;
-				subTemp[YPOS] = slotY+70+30;
-				break;
-			}
-			
-			drawPacker(imgModelFriendBg2, subTemp[XPOS]-100, subTemp[YPOS]-3, 0, 0, imgW(imgModelFriendBg2), imgH(imgModelFriendBg2), VH);
-			
-			gSetColor(86, 255, 220);
-			sprintf(strTempS, "추천수:%d",xInventoryModel_FRIEND[xModelMainSlotFRIEND[i].inventoryNum].vote);
-			gDrawString(subTemp[XPOS]-100, subTemp[YPOS]-3, strTempS, VH);
-											
-			drawPacker(imgModelFriendBg4, subTemp[XPOS], subTemp[YPOS], 0, imgH(imgModelFriendBg4)/2*(xFriendData[xModel.modelFriendDataSlotNum].isVote == FALSE?1:0), imgW(imgModelFriendBg4), imgH(imgModelFriendBg4)/2, VH);
-			
-			xModel.xTouchFriendVote[i].wPos = imgW(imgModelFriendBg4);
-			xModel.xTouchFriendVote[i].hPos = imgH(imgModelFriendBg4)/2;
-			xModel.xTouchFriendVote[i].xPos = subTemp[XPOS]-xModel.xTouchFriendVote[i].wPos/2;
-			xModel.xTouchFriendVote[i].yPos = subTemp[YPOS]-xModel.xTouchFriendVote[i].hPos/2;
-			break;
-		}
-	}
-			
-	subTemp[XPOS] = px+531;
-	subTemp[YPOS] = py-282;
-	
-	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-	{
-		switch(xQuestTuto.nowNum)
-		{
-		case TUTO_18_RESULT:
-			xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
-			xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
-			xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
-			break;
-		}
-	}
-	
-	drawPacker(imgBtn0, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgBtn0), imgH(imgBtn0)/2, VH);
-	
-	xTouchClr.wPos = imgW(imgBtn0);
-	xTouchClr.hPos = imgH(imgBtn0)/2;
-	xTouchClr.xPos = subTemp[XPOS]-xTouchClr.wPos/2;
-	xTouchClr.yPos = subTemp[YPOS]-xTouchClr.hPos/2;
-	/*
-	 gSetColor(255,0,0);
-	 setAlpha(100);
-	 fillRect(xTouchClr.xPos,xTouchClr.yPos,xTouchClr.wPos,xTouchClr.hPos);
-	 setAlpha(ALPHA_MAX);
-	 */
-	
-	
-	subTemp[XPOS] = px+388;
-	subTemp[YPOS] = py-288;
-	drawPacker(imgWorldMapLv8, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgWorldMapLv8), imgH(imgWorldMapLv8), VH);
-	if(xModelSkill.bonusPer[MODELSKILL_TYPE_MODELVOTE] > 0)
-		drawNumPacker(imgWorldMapNum0, subTemp[XPOS]+60, subTemp[YPOS], xSaveTemp.socialModelVoteCnt+xModelSkill.bonusPer[MODELSKILL_TYPE_MODELVOTE], -3, VR);
-	else
-	{
-		if(xSaveTemp.socialModelVoteCnt < 0)
-			drawNumPacker(imgWorldMapNum0, subTemp[XPOS]+60, subTemp[YPOS], 0, -3, VR);
-		else
-			drawNumPacker(imgWorldMapNum0, subTemp[XPOS]+60, subTemp[YPOS], xSaveTemp.socialModelVoteCnt, -3, VR);
-	}
-	drawPacker(imgWorldMapLv7, subTemp[XPOS]+72, subTemp[YPOS], 0, 0, imgW(imgWorldMapLv7)/2, imgH(imgWorldMapLv7), VH);
-		
-		
-	subTemp[XPOS] = 60;
-	subTemp[YPOS] = 60;
-	drawFriendProfile(subTemp[XPOS], subTemp[YPOS], xFriendData[xModel.modelFriendDataSlotNum].userNum, 100);
-	
-	subTemp[XPOS] = -1;
-	subTemp[YPOS] = 0;
-	drawPacker(imgWorldMapLv4, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgWorldMapLv4), imgH(imgWorldMapLv4), TL);
-	
-	subTemp[XPOS] = 132;
-	subTemp[YPOS] = 38;
-	gSetColor(133, 80, 56);
-	sprintf(strTempS, "Lv.%d",xFriendData[xModel.modelFriendDataSlotNum].lv);
-	gDrawString(subTemp[XPOS], subTemp[YPOS]-8, strTempS, VL);
-	setFontSize(14);
-	gDrawString(subTemp[XPOS], subTemp[YPOS]+17, xFriendData[xModel.modelFriendDataSlotNum].strNickName, VL);
-	setFontSize(11);
-	
-	xGame.isReSizeDraw = TRUE;
-	xGame.reSize = 90;
-	drawPacker(imgMailSex, subTemp[XPOS]+10, subTemp[YPOS]+47, imgW(imgMailSex)/2*xFriendData[xModel.modelFriendDataSlotNum].sex, 0, imgW(imgMailSex)/2, imgH(imgMailSex), VH);
-	xGame.isReSizeDraw = FALSE;
-	gSetColor(82, 49, 38);
-	getSprintfArea(strTempS,xFriendData[xModel.modelFriendDataSlotNum].area);
-	sprintf(strTempB, "%d세 / %s",(xCalendar.nowYear+1)-xFriendData[xModel.modelFriendDataSlotNum].age,strTempS);
-	gDrawString(subTemp[XPOS]+30, subTemp[YPOS]+47, strTempB, VL);
-}
-
-void drawModelInfo()
-{
-	int px = cx;
-	int py = cy;
-	
-	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-	{
-		switch(xQuestTuto.nowNum)
-		{
-		case TUTO_22_MODELMODELINFO:
-			xQuestTuto.isTutoClean = TRUE;
-			break;
-		}
-	}
-	
-	
-	
-	
-	drawBgFillRect();
-	
-	drawPacker(imgModelMainInfo0, px, py, 0, 0, imgW(imgModelMainInfo0), imgH(imgModelMainInfo0), VH);
-	
-	subTemp[XPOS] = px-125;
-	subTemp[YPOS] = py+5;
-	
-	
-	
-	
-	int modelCode = xInventoryModel[xModel.infoInventoryNum].code;
-	int upGrade = xInventoryModel[xModel.infoInventoryNum].upGrade;
-	XFACE xFaceTemp;
-	XFITTINGLAYER xFTemp;
-	
-	xFaceTemp.hairNum = modelCode+1000;
-	xFaceTemp.faceNum = modelCode+1000;
-	xFaceTemp.faceType = FACE_TYPE_NORMAL;
-	
-	
-	memcpy(&xFTemp,&xInventoryModel[xModel.infoInventoryNum].xF,sizeof(xFTemp));
-	drawFittingBody(subTemp[XPOS], subTemp[YPOS], &xFTemp, &xFaceTemp, TRUE, xModelData[modelCode].sex);
-			
-	subTemp[XPOS] = px-125;
-	subTemp[YPOS] = py+245;
-	xGame.isReSizeDraw = TRUE;
-	xGame.reSize = 70;
-	switch(xModelData[modelCode].grade)
-	{
-	case 0:drawPacker(imgNewModelRank0, subTemp[XPOS]-64, subTemp[YPOS], 0, 0, imgW(imgNewModelRank0), imgH(imgNewModelRank0), VH);break;
-	case 1:drawPacker(imgNewModelRank1, subTemp[XPOS]-64, subTemp[YPOS], 0, 0, imgW(imgNewModelRank1), imgH(imgNewModelRank1), VH);break;
-	case 2:drawPacker(imgNewModelRank2, subTemp[XPOS]-64, subTemp[YPOS], 0, 0, imgW(imgNewModelRank2), imgH(imgNewModelRank2), VH);break;
-	case 3:drawPacker(imgNewModelRank3, subTemp[XPOS]-64, subTemp[YPOS], 0, 0, imgW(imgNewModelRank3), imgH(imgNewModelRank3), VH);break;
-	}
-	
-	drawModelName(subTemp[XPOS]+20, subTemp[YPOS],modelCode);
-	xGame.isReSizeDraw = FALSE;
-		
-	//모델정보
-	subTemp[XPOS] = px+116;
-	subTemp[YPOS] = py-130;
-	gSetColor(255, 255, 255);
-	gDrawString(subTemp[XPOS]-105, subTemp[YPOS]-6, "모델 랭크", VL);
-	gDrawString(subTemp[XPOS]-105, subTemp[YPOS]-6+22, "모델 레벨", VL);
-	gDrawString(subTemp[XPOS]-105, subTemp[YPOS]-6+44, "레이어드 수", VL);
-	gDrawString(subTemp[XPOS]-105, subTemp[YPOS]-6+66, "모델 추천 수", VL);
-	
-	switch(xModelData[modelCode].grade)
-	{
-	case 0:gSetColor(217, 227, 235);sprintf(strTempS, "C랭크");break;
-	case 1:gSetColor(29, 255, 252);sprintf(strTempS, "B랭크");break;
-	case 2:gSetColor(255, 54, 253);sprintf(strTempS, "A랭크");break;
-	case 3:gSetColor(255, 196, 16);sprintf(strTempS, "S랭크");break;
-	}
-	gDrawString(subTemp[XPOS]+105, subTemp[YPOS]-6, strTempS, VR);
-	
-	
-	xGame.isReSizeDraw = TRUE;
-	xGame.reSize = 80;
-	for(int k=0;k<xModelData[modelCode].upGradeMax;k++)
-	{
-		if(upGrade > k)
-			drawPacker(imgModelLv, subTemp[XPOS]-((xModelData[modelCode].upGradeMax-1)*20)+100+(20*k), subTemp[YPOS]+22-7, imgW(imgModelLv)/2, 0, imgW(imgModelLv)/2, imgH(imgModelLv), VH);
-		else
-			drawPacker(imgModelLv, subTemp[XPOS]-((xModelData[modelCode].upGradeMax-1)*20)+100+(20*k), subTemp[YPOS]+22-7, 0, 0, imgW(imgModelLv)/2, imgH(imgModelLv), VH);
-	}
-		
-	xGame.isReSizeDraw = FALSE;
-	
-	int layeredNum = 0;
-	for(int f=0;f<16;f++)
-	{
-		if(xFTemp.code[f] != DONT)
-			layeredNum++;
-	}
-	sprintf(strTempS,"%d회",layeredNum);
-	gDrawString(subTemp[XPOS]+105, subTemp[YPOS]+38, strTempS, VR);
-	
-	sprintf(strTempS,"%d회",xInventoryModel[xModel.infoInventoryNum].vote);
-	gDrawString(subTemp[XPOS]+105, subTemp[YPOS]+59, strTempS, VR);
-			
-	gSetColor(254, 177, 0);
-	gDrawString(subTemp[XPOS]-105, subTemp[YPOS]+98, "활동 보상", VL);
-	
-	drawIcon(subTemp[XPOS]-105+10,subTemp[YPOS]+134, ICON_TYPE_TIME);
-	gSetColor(255, 255, 255);
-	drawTimeSprintf(strTempS,getModelGiftTime(xModel.infoInventoryNum,0),4);
-	gDrawString(subTemp[XPOS]-105+15+20, subTemp[YPOS]+134, strTempS, VL);
-			
-	drawPacker(imgModelMainInfo4, subTemp[XPOS]-8, subTemp[YPOS]+140-4, 0, 0, imgW(imgModelMainInfo4), imgH(imgModelMainInfo4), VH);
-	
-	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-	{
-		if(xModel.state == MODELCOLLECT_STATE_MAININFO)
-		{
-			switch(xQuestTuto.nowNum)
-			{
-			case TUTO_22_MODELGIFTINFOSHOW:
-				xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
-				xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS]+140;
-				xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_SHOW;
-				break;
-			}
-		}
-	}
-	
-	//254	188	10
-	gSetColor(254, 188, 10);
-	setCommaNum(strTempS, getModelGiftNum(xModel.infoInventoryNum,0));
-	gDrawString(subTemp[XPOS]+105, subTemp[YPOS]+134, strTempS, VR);
-	
-	
-	int giftTypeImgNum;
-	switch(xModelData[modelCode].giftType)
-	{
-	case MODEL_GIFTTYPE_GOLD:giftTypeImgNum=ICON_TYPE_GOLD;break;
-	case MODEL_GIFTTYPE_LOOK:giftTypeImgNum=ICON_TYPE_LOOK;break;
-	case MODEL_GIFTTYPE_CANDY:giftTypeImgNum=ICON_TYPE_CANDY;break;
-	case MODEL_GIFTTYPE_EXP:giftTypeImgNum=ICON_TYPE_EXP;break;
-	}
-	drawIcon(subTemp[XPOS]+23, subTemp[YPOS]+140-6, giftTypeImgNum);
-
-	
-	
-	//스킬
-	for(int i=0;i<3;i++)
-	{
-		subTemp[XPOS] = px+117-70+(70*i);
-		subTemp[YPOS] = py+66;
-		drawPacker(imgSkillSlot, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgSkillSlot), imgH(imgSkillSlot), VH);
-		if(xModelData[modelCode].totalSkillNum > i)
-		{
-			int packImgNum = imgSkillIcon0+xModelData[modelCode].skillType[i];
-			drawPacker(packImgNum, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(packImgNum), imgH(packImgNum), VH);
-			
-			xCollection.xTouchSkill[i].wPos = imgW(packImgNum);
-			xCollection.xTouchSkill[i].hPos = imgH(packImgNum);
-			xCollection.xTouchSkill[i].xPos = subTemp[XPOS]-xCollection.xTouchSkill[i].wPos/2;
-			xCollection.xTouchSkill[i].yPos = subTemp[YPOS]-xCollection.xTouchSkill[i].hPos/2;
-						
-			if(xCollection.selectSkill == i)
-			{
-				drawPacker(imgSkillSelect, subTemp[XPOS]-2, subTemp[YPOS]-2, 0, 0, imgW(imgSkillSelect), imgH(imgSkillSelect), VH);
-				drawPacker(imgSkillTextBox, subTemp[XPOS]+68, subTemp[YPOS]-64, 0, 0, imgW(imgSkillTextBox), imgH(imgSkillTextBox), VH);
-												
-				gSetColor(255, 255, 255);
-				setFontSize(8);
-				getSprintfSKillInfo(strTempS,modelCode,xCollection.selectSkill,0);
-				
-												
-				setPopupStringLine(strTempS,lcdW);
-				
-								
-				int fontGab = 20;
-				
-				switch(xPopup.totalLine)
-				{
-				case 2:
-					fontGab = 20;
-					break;
-				case 3:
-				case 4:
-					fontGab = 16;
-					break;
-				}
-								
-				for(int li=0;li<xPopup.totalLine;li++)
-					gDrawString(subTemp[XPOS]+68-80, subTemp[YPOS]-64-3-(fontGab/2*(xPopup.totalLine-1))+(fontGab*li), xPopup.strTextLine[li], VL);
-				
-				setFontSize(11);
-			}
-		}
-		else
-			drawPacker(imgSkillSlotEmpty, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgSkillSlotEmpty), imgH(imgSkillSlotEmpty), VH);
-	}
-		
-		
-	subTemp[XPOS] = px+117;
-	subTemp[YPOS] = py+128;
-	drawPacker(imgModelMainInfo1, subTemp[XPOS], subTemp[YPOS], 0, imgH(imgModelMainInfo1)/2, imgW(imgModelMainInfo1), imgH(imgModelMainInfo1)/2, VH);
-	setFontSize(14);
-	gDrawStringBold(subTemp[XPOS], subTemp[YPOS], "피팅하기", VH, 255, 255, 255, 170, 50, 10);
-	setFontSize(11);
-	
-	xModel.xTouchInfoBtn[0].wPos = imgW(imgModelMainInfo1);
-	xModel.xTouchInfoBtn[0].hPos = imgH(imgModelMainInfo1)/2;
-	xModel.xTouchInfoBtn[0].xPos = subTemp[XPOS]-xModel.xTouchInfoBtn[0].wPos/2;
-	xModel.xTouchInfoBtn[0].yPos = subTemp[YPOS]-xModel.xTouchInfoBtn[0].hPos/2;
-	
-	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-	{
-		if(xModel.state == MODELCOLLECT_STATE_MAININFO)
-		{
-			switch(xQuestTuto.nowNum)
-			{
-			case TUTO_22_MODELFITTINGBTN:
-				xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
-				xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
-				xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
-				break;
-			}
-		}
-	}
-			
-	subTemp[XPOS] = px+117;
-	subTemp[YPOS] = py+128+52;
-	drawPacker(imgModelMainInfo2, subTemp[XPOS], subTemp[YPOS], 0, imgH(imgModelMainInfo2)/2, imgW(imgModelMainInfo2), imgH(imgModelMainInfo2)/2, VH);
-	
-	setFontSize(14);
-	if(upGrade >= xModelData[modelCode].upGradeMax)
-	{
-		if(xModelData[modelCode].grade == 3)
-			gDrawStringBold(subTemp[XPOS], subTemp[YPOS], "MAX", VH, 255, 255, 255, 19, 79, 77);
-		else
-			gDrawStringBold(subTemp[XPOS], subTemp[YPOS], "조합하기", VH, 255, 255, 255, 19, 79, 77);
-	}
-	else
-	{
-		gDrawStringBold(subTemp[XPOS], subTemp[YPOS], "업그레이드", VH, 255, 255, 255, 19, 79, 77);
-	}
-	setFontSize(11);
-		
-	xModel.xTouchInfoBtn[1].wPos = imgW(imgModelMainInfo2);
-	xModel.xTouchInfoBtn[1].hPos = imgH(imgModelMainInfo2)/2;
-	xModel.xTouchInfoBtn[1].xPos = subTemp[XPOS]-xModel.xTouchInfoBtn[1].wPos/2;
-	xModel.xTouchInfoBtn[1].yPos = subTemp[YPOS]-xModel.xTouchInfoBtn[1].hPos/2;
-
-	subTemp[XPOS] = px+117;
-	subTemp[YPOS] = py+128+104;
-	drawPacker(imgModelMainInfo3, subTemp[XPOS], subTemp[YPOS], 0, imgH(imgModelMainInfo3)/2, imgW(imgModelMainInfo3), imgH(imgModelMainInfo3)/2, VH);
-	
-	setFontSize(14);
-	switch(xModel.state)
-	{
-	case MODELCOLLECT_STATE_LISTINFO:
-		gDrawStringBold(subTemp[XPOS], subTemp[YPOS], "판매하기", VH, 255, 255, 255, 57, 57, 57);
-		break;
-	case MODELCOLLECT_STATE_MAININFO:
-		gDrawStringBold(subTemp[XPOS], subTemp[YPOS], "활동해제", VH, 255, 255, 255, 57, 57, 57);
-		break;
-	}
-	setFontSize(11);
-		
-	
-	xModel.xTouchInfoBtn[2].wPos = imgW(imgModelMainInfo3);
-	xModel.xTouchInfoBtn[2].hPos = imgH(imgModelMainInfo3)/2;
-	xModel.xTouchInfoBtn[2].xPos = subTemp[XPOS]-xModel.xTouchInfoBtn[2].wPos/2;
-	xModel.xTouchInfoBtn[2].yPos = subTemp[YPOS]-xModel.xTouchInfoBtn[2].hPos/2;
-			
-	
-	
-	subTemp[XPOS] = px+214;
-	subTemp[YPOS] = py-230;
-	xTouchClr.wPos = 80;
-	xTouchClr.hPos = 80;
-	xTouchClr.xPos = subTemp[XPOS]-xTouchClr.wPos/2;
-	xTouchClr.yPos = subTemp[YPOS]-xTouchClr.hPos/2;
-		
-	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-	{
-		switch(xQuestTuto.nowNum)
-		{
-		case TUTO_22_MODELEXIT:
-			xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
-			xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
-			xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
-			break;
-		}
-	}
-	
-	/*
-	gSetColor(255, 0, 0);
-	setAlpha(100);
-	fillRect(xTouchClr.xPos, xTouchClr.yPos, xTouchClr.wPos, xTouchClr.hPos);
-	setAlpha(ALPHA_MAX);
-	*/
-}
+//void drawModelMain()
+//{
+//	int px = cx;
+//	int py = cy;
+//	
+//	
+//	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+//	{
+//		switch(xQuestTuto.nowNum)
+//		{
+//		case TUTO_22_MODELCASTINGEXIT:
+//			if(xModel.state == MODELCOLLECT_STATE_MAIN)
+//				xQuestTuto.isTutoClean = TRUE;
+//			break;
+//		}
+//	}
+//	
+//	drawPacker(imgModelMainBg0, px, py, 0, 0, imgW(imgModelMainBg0), imgH(imgModelMainBg0), VH);
+//		
+//	if(xModelMainSlot[0].state == MODELMAINSLOT_STATE_LOCK)
+//		xModelMainSlot[0].state = MODELMAINSLOT_STATE_EMPTY;
+//	
+//	XFACE xFaceTemp;
+//	XFITTINGLAYER xFTemp;
+//	
+//	int castImgNum = DONT;
+//	int giftTypeImgNum = 0;
+//	int modelCode;
+//	int slotX;
+//	int slotY;
+//	for(int i=0;i<MODELMAINSLOTMAX;i++)
+//	{
+//		switch(i)
+//		{
+//		case 0:
+//			slotX = px-357;
+//			slotY = py+147;
+//			break;
+//		case 1:
+//			slotX = px-187;
+//			slotY = py+117;
+//			break;
+//		case 2:
+//			slotX = px;
+//			slotY = py+103;
+//			break;
+//		case 3:
+//			slotX = px+187;
+//			slotY = py+117;
+//			break;
+//		case 4:
+//			slotX = px+357;
+//			slotY = py+147;
+//			break;
+//		}
+//		
+//		
+//				
+//		
+//		subTemp[XPOS] = slotX;
+//		subTemp[YPOS] = slotY-135;
+//		
+//		xFaceTemp.hairNum = DONT;
+//		xFaceTemp.faceNum = DONT;
+//		xFaceTemp.faceType = FACE_TYPE_SMILE;
+//		
+//		for(int f=0;f<16;f++)
+//			xFTemp.code[f] = DONT;
+//		
+//		
+//		xModelMainSlot[i].xTouchSlot.wPos = 120;
+//		xModelMainSlot[i].xTouchSlot.hPos = 340;
+//		xModelMainSlot[i].xTouchSlot.xPos = subTemp[XPOS]-xModelMainSlot[i].xTouchSlot.wPos/2;
+//		xModelMainSlot[i].xTouchSlot.yPos = subTemp[YPOS]+50-xModelMainSlot[i].xTouchSlot.hPos/2;
+//		
+//		/*
+//		gSetColor(255, 0, 0);
+//		setAlpha(100);
+//		fillRect(xModelMainSlot[i].xTouchSlot.xPos, xModelMainSlot[i].xTouchSlot.yPos, xModelMainSlot[i].xTouchSlot.wPos, xModelMainSlot[i].xTouchSlot.hPos);
+//		setAlpha(ALPHA_MAX);
+//		 */
+//		
+//		switch(xModelMainSlot[i].state)
+//		{
+//		case MODELMAINSLOT_STATE_WAIT:
+//		case MODELMAINSLOT_STATE_PLAY:
+//			xModelMainSlot[i].inventoryNum = getModelKeyToSlotNum(xModelMainSlot[i].modelKey);
+//			modelCode = xInventoryModel[xModelMainSlot[i].inventoryNum].code;
+//			break;
+//		}
+//
+//		
+//		switch(xModelMainSlot[i].state)
+//		{
+//		case MODELMAINSLOT_STATE_LOCK:
+//			//잠긴슬롯
+//			if(xSaveTemp.lv.oriData < xModelMainSlot[i].openLv)
+//			{
+//				
+//				drawPacker(imgModelMainSlotLv0, slotX, slotY-30, 0, imgH(imgModelMainSlotLv0)/4*(i-1), imgW(imgModelMainSlotLv0), imgH(imgModelMainSlotLv0)/4, VH);
+//			}
+//			else
+//			{
+//				drawPacker(imgModelMainBg3, slotX, slotY-15, imgW(imgModelMainBg3)/2*(i<2?0:1), 0, imgW(imgModelMainBg3)/2, imgH(imgModelMainBg3), VH);
+//			}
+//			break;
+//		case MODELMAINSLOT_STATE_EMPTY:
+//			//빈슬롯
+//			drawPacker(imgModelMainBg1, slotX, slotY-90, 0, 0, imgW(imgModelMainBg1), imgH(imgModelMainBg1), VH);
+//			if(i<2)
+//				xGame.isReverse = TRUE;
+//			drawFittingBody(subTemp[XPOS]+(i<2?-15:0), subTemp[YPOS], &xFTemp, &xFaceTemp, FALSE, 0);
+//			xGame.isReverse = FALSE;
+//			drawPacker(imgModelMainEmpty, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgModelMainEmpty), imgH(imgModelMainEmpty), VH);
+//
+//				
+//				
+//			if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+//			{
+//				switch(xQuestTuto.nowNum)
+//				{
+//				case TUTO_22_MODELMAINSLOTSELECT:
+//					xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
+//					xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
+//					xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
+//					break;
+//				}
+//			}
+//				
+//			break;
+//		case MODELMAINSLOT_STATE_WAIT:
+//		case MODELMAINSLOT_STATE_PLAY:
+//			if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+//			{
+//				switch(xQuestTuto.nowNum)
+//				{
+//				case TUTO_22_MODELSELECTMODEL:
+//				case TUTO_22_MODELMAINSLOTSELECT:
+//					xQuestTuto.isTutoClean = TRUE;
+//					break;
+//				case TUTO_22_MODELMODELINFO:
+//					if(xModel.state == MODELCOLLECT_STATE_MAIN)
+//					{
+//						xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
+//						xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
+//						xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
+//					}
+//					break;
+//				case TUTO_22_MODELFITTINGOK:
+//					if(checkXfLimit(&xInventoryModel[xModelMainSlot[i].inventoryNum].xF) == TRUE)
+//						xQuestTuto.isTutoClean = TRUE;
+//					break;
+//				}
+//			}
+//				
+//			//모델슬롯
+//			xGame.isBlend = TRUE;
+//			xGame.blendType = BLEND_ADDP;
+//			drawPacker(imgModelMainBg4, slotX, slotY-210, 0, 0, imgW(imgModelMainBg4), imgH(imgModelMainBg4), VH);
+//			xGame.isBlend = FALSE;
+//			drawPacker(imgModelMainBg2, slotX, slotY-90, 0, 0, imgW(imgModelMainBg2), imgH(imgModelMainBg2), VH);
+//			if(i<2)
+//				xGame.isReverse = TRUE;
+//				
+//			xFaceTemp.hairNum = 1000+modelCode;
+//			xFaceTemp.faceNum = 1000+modelCode;
+//			xFaceTemp.faceType = FACE_TYPE_NORMAL;
+//												
+//			memcpy(&xFTemp, &xInventoryModel[xModelMainSlot[i].inventoryNum].xF, sizeof(xFTemp));
+//			drawFittingBody(subTemp[XPOS]+(i<2?-15:0), subTemp[YPOS], &xFTemp, &xFaceTemp, TRUE, xModelData[modelCode].sex);
+//			xGame.isReverse = FALSE;
+//											
+//			switch(xModelData[modelCode].sex)
+//			{
+//			case 0:
+//				drawModelNameString(subTemp[XPOS]+(i<2?-5:10),subTemp[YPOS]-166,VH,modelCode);
+//				break;
+//			case 1:
+//				drawModelNameString(subTemp[XPOS]+(i<2?-5:10),subTemp[YPOS]-181,VH,modelCode);
+//				break;
+//			}
+//					
+//				
+//			subTemp[XPOS] = slotX;
+//			subTemp[YPOS] = slotY+40;
+//			drawPacker(imgModelMainGage0, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgModelMainGage0), imgH(imgModelMainGage0), VH);
+//			xModelMainSlot[i].xTouchBtn.wPos = imgW(imgModelMainGage0);
+//			xModelMainSlot[i].xTouchBtn.hPos = imgH(imgModelMainGage0);
+//			xModelMainSlot[i].xTouchBtn.xPos = subTemp[XPOS]-xModelMainSlot[i].xTouchBtn.wPos/2;
+//			xModelMainSlot[i].xTouchBtn.yPos = subTemp[YPOS]-xModelMainSlot[i].xTouchBtn.hPos/2;
+//			
+//			/*
+//			 gSetColor(255, 0, 0);
+//			 setAlpha(100);
+//			 fillRect(xModelMainSlot[i].xTouchBtn.xPos, xModelMainSlot[i].xTouchBtn.yPos, xModelMainSlot[i].xTouchBtn.wPos, xModelMainSlot[i].xTouchBtn.hPos);
+//			 setAlpha(ALPHA_MAX);
+//			 */
+//			if(checkXfLimit(&xInventoryModel[xModelMainSlot[i].inventoryNum].xF) == FALSE)
+//			{
+//				gDrawStringBold(subTemp[XPOS]+43, subTemp[YPOS]-17, "활동불가", VR,251,51,23,17,11,11);
+//				drawPacker(imgModelMainGage1, subTemp[XPOS], subTemp[YPOS]+15, 0, imgH(imgModelMainGage1)/9*8, imgW(imgModelMainGage1), imgH(imgModelMainGage1)/9, VH);
+//			}
+//			else
+//			{
+//				
+//				setCommaNum(strTempS, getModelGiftNum(xModelMainSlot[i].inventoryNum,0));
+//				gSetColor(58, 28, 17);
+//				gDrawString(subTemp[XPOS]+43, subTemp[YPOS]-17, strTempS, VR);
+//				switch(xModelData[modelCode].giftType)
+//				{
+//				case MODEL_GIFTTYPE_GOLD:giftTypeImgNum=5;break;
+//				case MODEL_GIFTTYPE_LOOK:giftTypeImgNum=1;break;
+//				case MODEL_GIFTTYPE_CANDY:giftTypeImgNum=6;break;
+//				case MODEL_GIFTTYPE_EXP:giftTypeImgNum=3;break;
+//				}
+//				drawPacker(imgProductionMenuObj0, subTemp[XPOS]+48, subTemp[YPOS]-17, imgW(imgProductionMenuObj0)/8*giftTypeImgNum, 0, imgW(imgProductionMenuObj0)/8, imgH(imgProductionMenuObj0), VL);
+//					
+//				
+//			
+//				int endTimeTemp = xModelMainSlot[i].endTime;
+//				
+//				switch(xModelMainSlot[i].state)
+//				{
+//				case MODELMAINSLOT_STATE_WAIT:
+//					drawPacker(imgModelMainGage1, subTemp[XPOS], subTemp[YPOS]+15, 0, imgH(imgModelMainGage1)/9*6, imgW(imgModelMainGage1), imgH(imgModelMainGage1)/9, VH);
+//					break;
+//				case MODELMAINSLOT_STATE_PLAY:
+//						
+//						
+//						
+//					//완료
+//					if(xCalendar.nowTime > endTimeTemp)
+//					{
+//						drawPacker(imgModelMainGage1, subTemp[XPOS], subTemp[YPOS]+15, 0, imgH(imgModelMainGage1)/9*7, imgW(imgModelMainGage1), imgH(imgModelMainGage1)/9, VH);
+//						castImgNum = DONT;
+//						switch(gameCnt%50)
+//						{
+//							case 41:castImgNum = 0;	break;
+//							case 42:castImgNum = 1;	break;
+//							case 43:castImgNum = 2;	break;
+//							case 44:castImgNum = 3;	break;
+//							case 45:castImgNum = 4;	break;
+//						}
+//						
+//						if(castImgNum != DONT)
+//						{
+//							xGame.isBlend = TRUE;
+//							xGame.blendType = BLEND_ADDP;
+//							drawPacker(imgModelMainGage2, subTemp[XPOS], subTemp[YPOS]+15, 0, imgH(imgModelMainGage2)/5*castImgNum, imgW(imgModelMainGage2), imgH(imgModelMainGage2)/5, VH);
+//							xGame.isBlend = FALSE;
+//						}
+//					}
+//					else
+//					{
+//						drawPacker(imgModelMainGage1, subTemp[XPOS], subTemp[YPOS]+15, 0, imgH(imgModelMainGage1)/9*5, imgW(imgModelMainGage1), imgH(imgModelMainGage1)/9, VH);
+//						
+//						switch(xModelData[modelCode].giftType)
+//						{
+//						case MODEL_GIFTTYPE_GOLD:giftTypeImgNum=1;break;
+//						case MODEL_GIFTTYPE_LOOK:giftTypeImgNum=2;break;
+//						case MODEL_GIFTTYPE_CANDY:giftTypeImgNum=4;break;
+//						case MODEL_GIFTTYPE_EXP:giftTypeImgNum=3;break;
+//						}
+//						subTemp[WPOS] = imgW(imgModelMainGage1);
+//						drawPacker(imgModelMainGage1, subTemp[XPOS]-imgW(imgModelMainGage1)/2, subTemp[YPOS]+15, 0, imgH(imgModelMainGage1)/9*giftTypeImgNum, subTemp[WPOS], imgH(imgModelMainGage1)/9, VL);
+//						drawPacker(imgModelMainGage1, subTemp[XPOS], subTemp[YPOS]+15, 0, 0, imgW(imgModelMainGage1), imgH(imgModelMainGage1)/9, VH);
+//						drawTimeSprintf(strTempS,(endTimeTemp - xCalendar.nowTime),1);
+//						
+//						switch(xModelData[modelCode].giftType)
+//						{
+//						case MODEL_GIFTTYPE_GOLD:gDrawStringBold(subTemp[XPOS]+60, subTemp[YPOS]+16, strTempS, VR, 253, 117, 6, 51, 21, 14);break;
+//						case MODEL_GIFTTYPE_LOOK:gDrawStringBold(subTemp[XPOS]+60, subTemp[YPOS]+16, strTempS, VR, 26, 215, 255, 51, 21, 14);break;
+//						case MODEL_GIFTTYPE_CANDY:gDrawStringBold(subTemp[XPOS]+60, subTemp[YPOS]+16, strTempS, VR, 251, 20, 10, 51, 21, 14);break;
+//						case MODEL_GIFTTYPE_EXP:gDrawStringBold(subTemp[XPOS]+60, subTemp[YPOS]+16, strTempS, VR, 251, 85, 8, 51, 21, 14);break;
+//						}
+//					}
+//					break;
+//				}
+//			}
+//			break;
+//		}
+//		
+//		
+//	}
+//	
+//	
+//	
+//	//모델가이드버튼
+//	subTemp[XPOS] = 85;
+//	subTemp[YPOS] = 35;
+//	drawPacker(imgModelHelp4, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgModelHelp4), imgH(imgModelHelp4), VH);
+//	xModel.xTouchHelpBtn.wPos = imgW(imgModelHelp4);
+//	xModel.xTouchHelpBtn.hPos = imgH(imgModelHelp4);
+//	xModel.xTouchHelpBtn.xPos = subTemp[XPOS]-xModel.xTouchHelpBtn.wPos/2;
+//	xModel.xTouchHelpBtn.yPos = subTemp[YPOS]-xModel.xTouchHelpBtn.hPos/2;
+//		
+//	
+//	subTemp[XPOS] = lcdW-97;
+//	subTemp[YPOS] = lcdH-47;
+//	
+//	drawPacker(imgModelCastingBtn0, subTemp[XPOS]+3, subTemp[YPOS]+1, 0, 0, imgW(imgModelCastingBtn0), imgH(imgModelCastingBtn0), VH);
+//	drawPacker(imgModelCastingBtn1, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgModelCastingBtn1), imgH(imgModelCastingBtn1), VH);
+//	
+//	if(xWorldMap.isTuto == TRUE)
+//	{
+//		switch(xQuestTuto.nowNum)
+//		{
+//		case TUTO_22_MODELCASTING:
+//			if(xModel.state == MODELCOLLECT_FRIEND_STATE_MAIN)
+//			{
+//				xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
+//				xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
+//				xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
+//			}
+//			break;
+//		}
+//	}
+//			
+//	
+//	castImgNum = DONT;
+//	switch(gameCnt%50)
+//	{
+//	case 41:castImgNum = 0;	break;
+//	case 42:castImgNum = 1;	break;
+//	case 43:castImgNum = 2;	break;
+//	case 44:castImgNum = 3;	break;
+//	case 45:castImgNum = 4;	break;
+//	}
+//	
+//	if(castImgNum != DONT)
+//	{
+//		xGame.isBlend = TRUE;
+//		xGame.blendType = BLEND_ADDP;
+//		drawPacker(imgModelCastingBtn2, subTemp[XPOS], subTemp[YPOS], 0, imgH(imgModelCastingBtn2)/5*castImgNum, imgW(imgModelCastingBtn2), imgH(imgModelCastingBtn2)/5, VH);
+//		xGame.isBlend = FALSE;
+//	}
+//	
+//	if(gameCnt%50 == 0)
+//	{
+//		setModelEff(subTemp[XPOS]-63, subTemp[YPOS]-26);
+//		setModelEff(subTemp[XPOS]+67, subTemp[YPOS]+23);
+//	}
+//
+//	xModel.xTouchCastingBtn.wPos = imgW(imgModelCastingBtn1);
+//	xModel.xTouchCastingBtn.hPos = imgH(imgModelCastingBtn1);
+//	xModel.xTouchCastingBtn.xPos = subTemp[XPOS]-xModel.xTouchCastingBtn.wPos/2;
+//	xModel.xTouchCastingBtn.yPos = subTemp[YPOS]-xModel.xTouchCastingBtn.hPos/2;
+//	
+//	subTemp[XPOS] = 97;
+//	subTemp[YPOS] = lcdH-47;
+//	
+//	drawPacker(imgModelCastingBtn0, subTemp[XPOS]+3, subTemp[YPOS]+1, 0, 0, imgW(imgModelCastingBtn0), imgH(imgModelCastingBtn0), VH);
+//	drawPacker(imgModelListBtn, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgModelListBtn), imgH(imgModelListBtn), VH);
+//		
+//	xModel.xTouchModelListBtn.wPos = imgW(imgModelListBtn);
+//	xModel.xTouchModelListBtn.hPos = imgH(imgModelListBtn);
+//	xModel.xTouchModelListBtn.xPos = subTemp[XPOS]-xModel.xTouchModelListBtn.wPos/2;
+//	xModel.xTouchModelListBtn.yPos = subTemp[YPOS]-xModel.xTouchModelListBtn.hPos/2;
+//	
+//	
+//	subTemp[XPOS] = lcdW-48;
+//	subTemp[YPOS] = py-282;
+//	
+//	drawPacker(imgBtn0, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgBtn0), imgH(imgBtn0)/2, VH);
+//	
+//	xTouchClr.wPos = imgW(imgBtn0);
+//	xTouchClr.hPos = imgH(imgBtn0)/2;
+//	xTouchClr.xPos = subTemp[XPOS]-xTouchClr.wPos/2;
+//	xTouchClr.yPos = subTemp[YPOS]-xTouchClr.hPos/2;
+//	
+//	
+//	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+//	{
+//		switch(xQuestTuto.nowNum)
+//		{
+//		case TUTO_22_MODELEXIT:
+//			if(xModel.state == MODELCOLLECT_STATE_MAIN)
+//			{
+//				xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
+//				xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
+//				xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
+//			}
+//			break;
+//		}
+//	}
+//	
+//	/*
+//	 gSetColor(255,0,0);
+//	 setAlpha(100);
+//	 fillRect(xTouchClr.xPos,xTouchClr.yPos,xTouchClr.wPos,xTouchClr.hPos);
+//	 setAlpha(ALPHA_MAX);
+//	 */
+//}
+//
+//void drawModelHelp()
+//{
+//	int px = cx;
+//	int py = cy;
+//	drawBgFillRect();
+//	drawPacker(imgModelHelp0, px, py, 0, 0, imgW(imgModelHelp0), imgH(imgModelHelp0), VH);
+//	
+//	int giftTemp[2][4];
+//	int giftTypeTemp[2][4];
+//	int giftIconNumTemp[2][4];
+//	for(int i=0;i<MODELDATAMAX;i++)
+//	{
+//		if(xModelData[i].layeredNum > 0)
+//		{
+//			if(xModelData[i].sex < 2 && xModelData[i].grade < 4)
+//			{
+//				giftTypeTemp[xModelData[i].sex][xModelData[i].grade] = xModelData[i].giftType;
+//				giftTemp[xModelData[i].sex][xModelData[i].grade] = xModelData[i].giftNum.oriData;
+//				giftIconNumTemp[xModelData[i].sex][xModelData[i].grade] = xModelData[i].giftIconNum;
+//                
+//                
+//                    
+//                
+//                
+//                
+//			}
+//		}
+//	}
+//	
+//	
+//	
+//	//활동타입 :성별,등급 = 활동타입
+//	//활동값	 :성별,등급 = 활동값
+//	//아이콘   :성별,등급 = 아이콘번호
+//	
+//	
+//	
+//	
+//	for(int i=0;i<2;i++)
+//	{
+//		subTemp[XPOS] = px+96+(i*84);
+//		subTemp[YPOS] = py-195;
+//		if(i == xModel.selectHelpTab)
+//			drawPacker(imgModelHelp5, subTemp[XPOS]+3, subTemp[YPOS]+6, imgW(imgModelHelp5)/2, 0, imgW(imgModelHelp5)/2, imgH(imgModelHelp5), VH);
+//		
+//		drawPacker(imgModelHelp3, subTemp[XPOS], subTemp[YPOS], imgW(imgModelHelp3)/2*i, 0, imgW(imgModelHelp3)/2, imgH(imgModelHelp3), VH);
+//				
+//		xModel.xTouchHelpTab[i].wPos = imgW(imgModelHelp3)/2;
+//		xModel.xTouchHelpTab[i].hPos = imgH(imgModelHelp3);
+//		xModel.xTouchHelpTab[i].xPos = subTemp[XPOS]-xModel.xTouchHelpTab[i].wPos/2;
+//		xModel.xTouchHelpTab[i].yPos = subTemp[YPOS]-xModel.xTouchHelpTab[i].hPos/2;
+//	}
+//	
+//	
+//	int giftTypeImgNum=0;
+//	switch(xModel.selectHelpTab)
+//	{
+//	case 0:
+//		drawPacker(imgModelHelp2, px, py, 0, 0, imgW(imgModelHelp2), imgH(imgModelHelp2), VH);
+//		for(int sex = 0;sex<2;sex++)
+//		{
+//			for(int grade = 0;grade<4;grade++)
+//			{
+//				subTemp[XPOS] = px-100+(92*grade);
+//				subTemp[YPOS] = py+90-(82*sex);
+//				
+//				switch(giftTypeTemp[sex][grade])
+//				{
+//				case MODEL_GIFTTYPE_GOLD:
+//					giftTypeImgNum = imgModelHelpGoldIcon0+giftIconNumTemp[sex][grade];
+//					break;
+//				case MODEL_GIFTTYPE_LOOK:
+//					giftTypeImgNum = imgModelHelpLookIcon0+giftIconNumTemp[sex][grade];
+//					break;
+//				case MODEL_GIFTTYPE_CANDY:
+//					giftTypeImgNum = imgModelHelpCandyIcon0+giftIconNumTemp[sex][grade];
+//					break;
+//				case MODEL_GIFTTYPE_EXP:
+//					giftTypeImgNum = imgModelHelpExpIcon0+giftIconNumTemp[sex][grade];
+//					break;
+//				}
+//                
+//                if(grade == 3)
+//                {
+//                    giftTypeImgNum = imgModelHelpLookIcon0+1;
+//                }
+//                
+//                
+//                
+//				drawPacker(giftTypeImgNum, subTemp[XPOS], subTemp[YPOS]-14, 0, 0, imgW(giftTypeImgNum), imgH(giftTypeImgNum), VH);
+//				sprintf(strTempS, "%d",giftTemp[sex][grade]);
+//                
+//                if(grade != 3)
+//                    gDrawStringBold(subTemp[XPOS], subTemp[YPOS]+16, strTempS, VH,242,228,212,82,49,38);
+//			}
+//		}
+//		break;
+//	case 1:
+//		drawPacker(imgModelHelp1, px, py, 0, 0, imgW(imgModelHelp1), imgH(imgModelHelp1), VH);
+//		break;
+//	}
+//	
+//	drawBtn(px, py+190, BTN_OK_CONFIRM);
+//}
+//
+//void drawModelMain_FRIEND()
+//{
+//	int px = cx;
+//	int py = cy;
+//	
+//	if(xQuestTuto.state == QUEST_TUTO_KEY)
+//	{
+//		switch(xQuestTuto.nowNum)
+//		{
+//			case TUTO_18_FRIENDMODEL_MENUTOUCH:
+//				xQuestTuto.isTutoClean = TRUE;
+//				break;
+//		}
+//	}
+//	
+//	drawPacker(imgModelMainBg0, px, py, 0, 0, imgW(imgModelMainBg0), imgH(imgModelMainBg0), VH);
+//		
+//	if(xModelMainSlotFRIEND[0].state == MODELMAINSLOT_STATE_LOCK)
+//		xModelMainSlotFRIEND[0].state = MODELMAINSLOT_STATE_EMPTY;
+//	
+//	XFACE xFaceTemp;
+//	XFITTINGLAYER xFTemp;
+//	
+//	int modelCode;
+//	int slotX;
+//	int slotY;
+//	for(int i=0;i<MODELMAINSLOTMAX;i++)
+//	{
+//		switch(i)
+//		{
+//        case 0:
+//            slotX = px-357;
+//            slotY = py+147;
+//            break;
+//        case 1:
+//            slotX = px-187;
+//            slotY = py+117;
+//            break;
+//        case 2:
+//            slotX = px;
+//            slotY = py+103;
+//            break;
+//        case 3:
+//            slotX = px+187;
+//            slotY = py+117;
+//            break;
+//        case 4:
+//            slotX = px+357;
+//            slotY = py+147;
+//            break;
+//		}
+//		
+//		subTemp[XPOS] = slotX;
+//		subTemp[YPOS] = slotY-135;
+//		
+//		xFaceTemp.hairNum = DONT;
+//		xFaceTemp.faceNum = DONT;
+//		xFaceTemp.faceType = FACE_TYPE_SMILE;
+//		
+//		for(int f=0;f<16;f++)
+//			xFTemp.code[f] = DONT;
+//		
+//		
+//		xModelMainSlot[i].xTouchSlot.wPos = 120;
+//		xModelMainSlot[i].xTouchSlot.hPos = 340;
+//		xModelMainSlot[i].xTouchSlot.xPos = subTemp[XPOS]-xModelMainSlot[i].xTouchSlot.wPos/2;
+//		xModelMainSlot[i].xTouchSlot.yPos = subTemp[YPOS]+50-xModelMainSlot[i].xTouchSlot.hPos/2;
+//		
+//		/*
+//		 gSetColor(255, 0, 0);
+//		 setAlpha(100);
+//		 fillRect(xModelMainSlot[i].xTouchSlot.xPos, xModelMainSlot[i].xTouchSlot.yPos, xModelMainSlot[i].xTouchSlot.wPos, xModelMainSlot[i].xTouchSlot.hPos);
+//		 setAlpha(ALPHA_MAX);
+//		 */
+//				
+//		switch(xModelMainSlotFRIEND[i].state)
+//		{
+//		case MODELMAINSLOT_STATE_WAIT:
+//		case MODELMAINSLOT_STATE_PLAY:
+//			xModelMainSlotFRIEND[i].inventoryNum = getModelKeyToSlotNumFRIEND(xModelMainSlotFRIEND[i].modelKey);
+//			modelCode = xInventoryModel_FRIEND[xModelMainSlotFRIEND[i].inventoryNum].code;
+//			break;
+//		}
+//				
+//		switch(xModelMainSlotFRIEND[i].state)
+//		{
+//		case MODELMAINSLOT_STATE_LOCK:
+//			//잠긴슬롯
+//			drawPacker(imgModelMainBg3, slotX, slotY-15, imgW(imgModelMainBg3)/2*(i<2?0:1), 0, imgW(imgModelMainBg3)/2, imgH(imgModelMainBg3), VH);
+//			break;
+//		case MODELMAINSLOT_STATE_EMPTY:
+//			//빈슬롯
+//			drawPacker(imgModelMainBg1, slotX, slotY-90, 0, 0, imgW(imgModelMainBg1), imgH(imgModelMainBg1), VH);
+//			if(i<2)
+//				xGame.isReverse = TRUE;
+//			drawFittingBody(subTemp[XPOS]+(i<2?-15:0), subTemp[YPOS], &xFTemp, &xFaceTemp, FALSE, 0);
+//			xGame.isReverse = FALSE;
+//			break;
+//		case MODELMAINSLOT_STATE_WAIT:
+//		case MODELMAINSLOT_STATE_PLAY:
+//			//모델슬롯
+//			xGame.isBlend = TRUE;
+//			xGame.blendType = BLEND_ADDP;
+//			drawPacker(imgModelMainBg4, slotX, slotY-210, 0, 0, imgW(imgModelMainBg4), imgH(imgModelMainBg4), VH);
+//			xGame.isBlend = FALSE;
+//			drawPacker(imgModelMainBg2, slotX, slotY-90, 0, 0, imgW(imgModelMainBg2), imgH(imgModelMainBg2), VH);
+//			if(i<2)
+//				xGame.isReverse = TRUE;
+//			
+//			xFaceTemp.hairNum = 1000+modelCode;
+//			xFaceTemp.faceNum = 1000+modelCode;
+//			xFaceTemp.faceType = FACE_TYPE_NORMAL;
+//			
+//			memcpy(&xFTemp, &xInventoryModel_FRIEND[xModelMainSlotFRIEND[i].inventoryNum].xF, sizeof(xFTemp));
+//			drawFittingBody(subTemp[XPOS]+(i<2?-15:0), subTemp[YPOS], &xFTemp, &xFaceTemp, TRUE, xModelData[modelCode].sex);
+//			xGame.isReverse = FALSE;
+//							
+//			switch(xModelData[modelCode].sex)
+//			{
+//			case 0:
+//				drawModelNameString(subTemp[XPOS]+(i<2?-5:10),subTemp[YPOS]-166,VH,modelCode);
+//				break;
+//			case 1:
+//				drawModelNameString(subTemp[XPOS]+(i<2?-5:10),subTemp[YPOS]-181,VH,modelCode);
+//				break;
+//			}
+//				
+//			//추천수
+//			switch(i)
+//			{
+//			case 0:
+//				subTemp[XPOS] = slotX+70;
+//				subTemp[YPOS] = slotY+70+30;
+//				break;
+//			case 1:
+//				subTemp[XPOS] = slotX+70-20;
+//				subTemp[YPOS] = slotY+70;
+//				break;
+//			case 2:
+//				subTemp[XPOS] = slotX+70;
+//				subTemp[YPOS] = slotY+70-20;
+//				break;
+//			case 3:
+//				subTemp[XPOS] = slotX+70+20;
+//				subTemp[YPOS] = slotY+70;
+//				break;
+//			case 4:
+//				subTemp[XPOS] = slotX+70;
+//				subTemp[YPOS] = slotY+70+30;
+//				break;
+//			}
+//			
+//			drawPacker(imgModelFriendBg2, subTemp[XPOS]-100, subTemp[YPOS]-3, 0, 0, imgW(imgModelFriendBg2), imgH(imgModelFriendBg2), VH);
+//			
+//			gSetColor(86, 255, 220);
+//			sprintf(strTempS, "추천수:%d",xInventoryModel_FRIEND[xModelMainSlotFRIEND[i].inventoryNum].vote);
+//			gDrawString(subTemp[XPOS]-100, subTemp[YPOS]-3, strTempS, VH);
+//											
+//			drawPacker(imgModelFriendBg4, subTemp[XPOS], subTemp[YPOS], 0, imgH(imgModelFriendBg4)/2*(xFriendData[xModel.modelFriendDataSlotNum].isVote == FALSE?1:0), imgW(imgModelFriendBg4), imgH(imgModelFriendBg4)/2, VH);
+//			
+//			xModel.xTouchFriendVote[i].wPos = imgW(imgModelFriendBg4);
+//			xModel.xTouchFriendVote[i].hPos = imgH(imgModelFriendBg4)/2;
+//			xModel.xTouchFriendVote[i].xPos = subTemp[XPOS]-xModel.xTouchFriendVote[i].wPos/2;
+//			xModel.xTouchFriendVote[i].yPos = subTemp[YPOS]-xModel.xTouchFriendVote[i].hPos/2;
+//			break;
+//		}
+//	}
+//			
+//	subTemp[XPOS] = px+531;
+//	subTemp[YPOS] = py-282;
+//	
+//	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+//	{
+//		switch(xQuestTuto.nowNum)
+//		{
+//		case TUTO_18_RESULT:
+//			xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
+//			xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
+//			xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
+//			break;
+//		}
+//	}
+//	
+//	drawPacker(imgBtn0, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgBtn0), imgH(imgBtn0)/2, VH);
+//	
+//	xTouchClr.wPos = imgW(imgBtn0);
+//	xTouchClr.hPos = imgH(imgBtn0)/2;
+//	xTouchClr.xPos = subTemp[XPOS]-xTouchClr.wPos/2;
+//	xTouchClr.yPos = subTemp[YPOS]-xTouchClr.hPos/2;
+//	/*
+//	 gSetColor(255,0,0);
+//	 setAlpha(100);
+//	 fillRect(xTouchClr.xPos,xTouchClr.yPos,xTouchClr.wPos,xTouchClr.hPos);
+//	 setAlpha(ALPHA_MAX);
+//	 */
+//	
+//	
+//	subTemp[XPOS] = px+388;
+//	subTemp[YPOS] = py-288;
+//	drawPacker(imgWorldMapLv8, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgWorldMapLv8), imgH(imgWorldMapLv8), VH);
+//	if(xModelSkill.bonusPer[MODELSKILL_TYPE_MODELVOTE] > 0)
+//		drawNumPacker(imgWorldMapNum0, subTemp[XPOS]+60, subTemp[YPOS], xSaveTemp.socialModelVoteCnt+xModelSkill.bonusPer[MODELSKILL_TYPE_MODELVOTE], -3, VR);
+//	else
+//	{
+//		if(xSaveTemp.socialModelVoteCnt < 0)
+//			drawNumPacker(imgWorldMapNum0, subTemp[XPOS]+60, subTemp[YPOS], 0, -3, VR);
+//		else
+//			drawNumPacker(imgWorldMapNum0, subTemp[XPOS]+60, subTemp[YPOS], xSaveTemp.socialModelVoteCnt, -3, VR);
+//	}
+//	drawPacker(imgWorldMapLv7, subTemp[XPOS]+72, subTemp[YPOS], 0, 0, imgW(imgWorldMapLv7)/2, imgH(imgWorldMapLv7), VH);
+//		
+//		
+//	subTemp[XPOS] = 60;
+//	subTemp[YPOS] = 60;
+//	drawFriendProfile(subTemp[XPOS], subTemp[YPOS], xFriendData[xModel.modelFriendDataSlotNum].userNum, 100);
+//	
+//	subTemp[XPOS] = -1;
+//	subTemp[YPOS] = 0;
+//	drawPacker(imgWorldMapLv4, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgWorldMapLv4), imgH(imgWorldMapLv4), TL);
+//	
+//	subTemp[XPOS] = 132;
+//	subTemp[YPOS] = 38;
+//	gSetColor(133, 80, 56);
+//	sprintf(strTempS, "Lv.%d",xFriendData[xModel.modelFriendDataSlotNum].lv);
+//	gDrawString(subTemp[XPOS], subTemp[YPOS]-8, strTempS, VL);
+//	setFontSize(14);
+//	gDrawString(subTemp[XPOS], subTemp[YPOS]+17, xFriendData[xModel.modelFriendDataSlotNum].strNickName, VL);
+//	setFontSize(11);
+//	
+//	xGame.isReSizeDraw = TRUE;
+//	xGame.reSize = 90;
+//	drawPacker(imgMailSex, subTemp[XPOS]+10, subTemp[YPOS]+47, imgW(imgMailSex)/2*xFriendData[xModel.modelFriendDataSlotNum].sex, 0, imgW(imgMailSex)/2, imgH(imgMailSex), VH);
+//	xGame.isReSizeDraw = FALSE;
+//	gSetColor(82, 49, 38);
+//	getSprintfArea(strTempS,xFriendData[xModel.modelFriendDataSlotNum].area);
+//	sprintf(strTempB, "%d세 / %s",(xCalendar.nowYear+1)-xFriendData[xModel.modelFriendDataSlotNum].age,strTempS);
+//	gDrawString(subTemp[XPOS]+30, subTemp[YPOS]+47, strTempB, VL);
+//}
+//
+//void drawModelInfo()
+//{
+//	int px = cx;
+//	int py = cy;
+//	
+//	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+//	{
+//		switch(xQuestTuto.nowNum)
+//		{
+//		case TUTO_22_MODELMODELINFO:
+//			xQuestTuto.isTutoClean = TRUE;
+//			break;
+//		}
+//	}
+//	
+//	
+//	
+//	
+//	drawBgFillRect();
+//	
+//	drawPacker(imgModelMainInfo0, px, py, 0, 0, imgW(imgModelMainInfo0), imgH(imgModelMainInfo0), VH);
+//	
+//	subTemp[XPOS] = px-125;
+//	subTemp[YPOS] = py+5;
+//	
+//	
+//	
+//	
+//	int modelCode = xInventoryModel[xModel.infoInventoryNum].code;
+//	int upGrade = xInventoryModel[xModel.infoInventoryNum].upGrade;
+//	XFACE xFaceTemp;
+//	XFITTINGLAYER xFTemp;
+//	
+//	xFaceTemp.hairNum = modelCode+1000;
+//	xFaceTemp.faceNum = modelCode+1000;
+//	xFaceTemp.faceType = FACE_TYPE_NORMAL;
+//	
+//	
+//	memcpy(&xFTemp,&xInventoryModel[xModel.infoInventoryNum].xF,sizeof(xFTemp));
+//	drawFittingBody(subTemp[XPOS], subTemp[YPOS], &xFTemp, &xFaceTemp, TRUE, xModelData[modelCode].sex);
+//			
+//	subTemp[XPOS] = px-125;
+//	subTemp[YPOS] = py+245;
+//	xGame.isReSizeDraw = TRUE;
+//	xGame.reSize = 70;
+//	switch(xModelData[modelCode].grade)
+//	{
+//	case 0:drawPacker(imgNewModelRank0, subTemp[XPOS]-64, subTemp[YPOS], 0, 0, imgW(imgNewModelRank0), imgH(imgNewModelRank0), VH);break;
+//	case 1:drawPacker(imgNewModelRank1, subTemp[XPOS]-64, subTemp[YPOS], 0, 0, imgW(imgNewModelRank1), imgH(imgNewModelRank1), VH);break;
+//	case 2:drawPacker(imgNewModelRank2, subTemp[XPOS]-64, subTemp[YPOS], 0, 0, imgW(imgNewModelRank2), imgH(imgNewModelRank2), VH);break;
+//	case 3:drawPacker(imgNewModelRank3, subTemp[XPOS]-64, subTemp[YPOS], 0, 0, imgW(imgNewModelRank3), imgH(imgNewModelRank3), VH);break;
+//	}
+//	
+//	drawModelName(subTemp[XPOS]+20, subTemp[YPOS],modelCode);
+//	xGame.isReSizeDraw = FALSE;
+//		
+//	//모델정보
+//	subTemp[XPOS] = px+116;
+//	subTemp[YPOS] = py-130;
+//	gSetColor(255, 255, 255);
+//	gDrawString(subTemp[XPOS]-105, subTemp[YPOS]-6, "모델 랭크", VL);
+//	gDrawString(subTemp[XPOS]-105, subTemp[YPOS]-6+22, "모델 레벨", VL);
+//	gDrawString(subTemp[XPOS]-105, subTemp[YPOS]-6+44, "레이어드 수", VL);
+//	gDrawString(subTemp[XPOS]-105, subTemp[YPOS]-6+66, "모델 추천 수", VL);
+//	
+//	switch(xModelData[modelCode].grade)
+//	{
+//	case 0:gSetColor(217, 227, 235);sprintf(strTempS, "C랭크");break;
+//	case 1:gSetColor(29, 255, 252);sprintf(strTempS, "B랭크");break;
+//	case 2:gSetColor(255, 54, 253);sprintf(strTempS, "A랭크");break;
+//	case 3:gSetColor(255, 196, 16);sprintf(strTempS, "S랭크");break;
+//	}
+//	gDrawString(subTemp[XPOS]+105, subTemp[YPOS]-6, strTempS, VR);
+//	
+//	
+//	xGame.isReSizeDraw = TRUE;
+//	xGame.reSize = 80;
+//	for(int k=0;k<xModelData[modelCode].upGradeMax;k++)
+//	{
+//		if(upGrade > k)
+//			drawPacker(imgModelLv, subTemp[XPOS]-((xModelData[modelCode].upGradeMax-1)*20)+100+(20*k), subTemp[YPOS]+22-7, imgW(imgModelLv)/2, 0, imgW(imgModelLv)/2, imgH(imgModelLv), VH);
+//		else
+//			drawPacker(imgModelLv, subTemp[XPOS]-((xModelData[modelCode].upGradeMax-1)*20)+100+(20*k), subTemp[YPOS]+22-7, 0, 0, imgW(imgModelLv)/2, imgH(imgModelLv), VH);
+//	}
+//		
+//	xGame.isReSizeDraw = FALSE;
+//	
+//	int layeredNum = 0;
+//	for(int f=0;f<16;f++)
+//	{
+//		if(xFTemp.code[f] != DONT)
+//			layeredNum++;
+//	}
+//	sprintf(strTempS,"%d회",layeredNum);
+//	gDrawString(subTemp[XPOS]+105, subTemp[YPOS]+38, strTempS, VR);
+//	
+//	sprintf(strTempS,"%d회",xInventoryModel[xModel.infoInventoryNum].vote);
+//	gDrawString(subTemp[XPOS]+105, subTemp[YPOS]+59, strTempS, VR);
+//			
+//	gSetColor(254, 177, 0);
+//	gDrawString(subTemp[XPOS]-105, subTemp[YPOS]+98, "활동 보상", VL);
+//	
+//	drawIcon(subTemp[XPOS]-105+10,subTemp[YPOS]+134, ICON_TYPE_TIME);
+//	gSetColor(255, 255, 255);
+//	drawTimeSprintf(strTempS,getModelGiftTime(xModel.infoInventoryNum,0),4);
+//	gDrawString(subTemp[XPOS]-105+15+20, subTemp[YPOS]+134, strTempS, VL);
+//			
+//	drawPacker(imgModelMainInfo4, subTemp[XPOS]-8, subTemp[YPOS]+140-4, 0, 0, imgW(imgModelMainInfo4), imgH(imgModelMainInfo4), VH);
+//	
+//	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+//	{
+//		if(xModel.state == MODELCOLLECT_STATE_MAININFO)
+//		{
+//			switch(xQuestTuto.nowNum)
+//			{
+//			case TUTO_22_MODELGIFTINFOSHOW:
+//				xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
+//				xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS]+140;
+//				xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_SHOW;
+//				break;
+//			}
+//		}
+//	}
+//	
+//	//254	188	10
+//	gSetColor(254, 188, 10);
+//	setCommaNum(strTempS, getModelGiftNum(xModel.infoInventoryNum,0));
+//	gDrawString(subTemp[XPOS]+105, subTemp[YPOS]+134, strTempS, VR);
+//	
+//	
+//	int giftTypeImgNum;
+//	switch(xModelData[modelCode].giftType)
+//	{
+//	case MODEL_GIFTTYPE_GOLD:giftTypeImgNum=ICON_TYPE_GOLD;break;
+//	case MODEL_GIFTTYPE_LOOK:giftTypeImgNum=ICON_TYPE_LOOK;break;
+//	case MODEL_GIFTTYPE_CANDY:giftTypeImgNum=ICON_TYPE_CANDY;break;
+//	case MODEL_GIFTTYPE_EXP:giftTypeImgNum=ICON_TYPE_EXP;break;
+//	}
+//	drawIcon(subTemp[XPOS]+23, subTemp[YPOS]+140-6, giftTypeImgNum);
+//
+//	
+//	
+//	//스킬
+//	for(int i=0;i<3;i++)
+//	{
+//		subTemp[XPOS] = px+117-70+(70*i);
+//		subTemp[YPOS] = py+66;
+//		drawPacker(imgSkillSlot, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgSkillSlot), imgH(imgSkillSlot), VH);
+//		if(xModelData[modelCode].totalSkillNum > i)
+//		{
+//			int packImgNum = imgSkillIcon0+xModelData[modelCode].skillType[i];
+//			drawPacker(packImgNum, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(packImgNum), imgH(packImgNum), VH);
+//			
+//			xCollection.xTouchSkill[i].wPos = imgW(packImgNum);
+//			xCollection.xTouchSkill[i].hPos = imgH(packImgNum);
+//			xCollection.xTouchSkill[i].xPos = subTemp[XPOS]-xCollection.xTouchSkill[i].wPos/2;
+//			xCollection.xTouchSkill[i].yPos = subTemp[YPOS]-xCollection.xTouchSkill[i].hPos/2;
+//						
+//			if(xCollection.selectSkill == i)
+//			{
+//				drawPacker(imgSkillSelect, subTemp[XPOS]-2, subTemp[YPOS]-2, 0, 0, imgW(imgSkillSelect), imgH(imgSkillSelect), VH);
+//				drawPacker(imgSkillTextBox, subTemp[XPOS]+68, subTemp[YPOS]-64, 0, 0, imgW(imgSkillTextBox), imgH(imgSkillTextBox), VH);
+//												
+//				gSetColor(255, 255, 255);
+//				setFontSize(8);
+//				getSprintfSKillInfo(strTempS,modelCode,xCollection.selectSkill,0);
+//				
+//												
+//				setPopupStringLine(strTempS,lcdW);
+//				
+//								
+//				int fontGab = 20;
+//				
+//				switch(xPopup.totalLine)
+//				{
+//				case 2:
+//					fontGab = 20;
+//					break;
+//				case 3:
+//				case 4:
+//					fontGab = 16;
+//					break;
+//				}
+//								
+//				for(int li=0;li<xPopup.totalLine;li++)
+//					gDrawString(subTemp[XPOS]+68-80, subTemp[YPOS]-64-3-(fontGab/2*(xPopup.totalLine-1))+(fontGab*li), xPopup.strTextLine[li], VL);
+//				
+//				setFontSize(11);
+//			}
+//		}
+//		else
+//			drawPacker(imgSkillSlotEmpty, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgSkillSlotEmpty), imgH(imgSkillSlotEmpty), VH);
+//	}
+//		
+//		
+//	subTemp[XPOS] = px+117;
+//	subTemp[YPOS] = py+128;
+//	drawPacker(imgModelMainInfo1, subTemp[XPOS], subTemp[YPOS], 0, imgH(imgModelMainInfo1)/2, imgW(imgModelMainInfo1), imgH(imgModelMainInfo1)/2, VH);
+//	setFontSize(14);
+//	gDrawStringBold(subTemp[XPOS], subTemp[YPOS], "피팅하기", VH, 255, 255, 255, 170, 50, 10);
+//	setFontSize(11);
+//	
+//	xModel.xTouchInfoBtn[0].wPos = imgW(imgModelMainInfo1);
+//	xModel.xTouchInfoBtn[0].hPos = imgH(imgModelMainInfo1)/2;
+//	xModel.xTouchInfoBtn[0].xPos = subTemp[XPOS]-xModel.xTouchInfoBtn[0].wPos/2;
+//	xModel.xTouchInfoBtn[0].yPos = subTemp[YPOS]-xModel.xTouchInfoBtn[0].hPos/2;
+//	
+//	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+//	{
+//		if(xModel.state == MODELCOLLECT_STATE_MAININFO)
+//		{
+//			switch(xQuestTuto.nowNum)
+//			{
+//			case TUTO_22_MODELFITTINGBTN:
+//				xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
+//				xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
+//				xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
+//				break;
+//			}
+//		}
+//	}
+//			
+//	subTemp[XPOS] = px+117;
+//	subTemp[YPOS] = py+128+52;
+//	drawPacker(imgModelMainInfo2, subTemp[XPOS], subTemp[YPOS], 0, imgH(imgModelMainInfo2)/2, imgW(imgModelMainInfo2), imgH(imgModelMainInfo2)/2, VH);
+//	
+//	setFontSize(14);
+//	if(upGrade >= xModelData[modelCode].upGradeMax)
+//	{
+//		if(xModelData[modelCode].grade == 3)
+//			gDrawStringBold(subTemp[XPOS], subTemp[YPOS], "MAX", VH, 255, 255, 255, 19, 79, 77);
+//		else
+//			gDrawStringBold(subTemp[XPOS], subTemp[YPOS], "조합하기", VH, 255, 255, 255, 19, 79, 77);
+//	}
+//	else
+//	{
+//		gDrawStringBold(subTemp[XPOS], subTemp[YPOS], "업그레이드", VH, 255, 255, 255, 19, 79, 77);
+//	}
+//	setFontSize(11);
+//		
+//	xModel.xTouchInfoBtn[1].wPos = imgW(imgModelMainInfo2);
+//	xModel.xTouchInfoBtn[1].hPos = imgH(imgModelMainInfo2)/2;
+//	xModel.xTouchInfoBtn[1].xPos = subTemp[XPOS]-xModel.xTouchInfoBtn[1].wPos/2;
+//	xModel.xTouchInfoBtn[1].yPos = subTemp[YPOS]-xModel.xTouchInfoBtn[1].hPos/2;
+//
+//	subTemp[XPOS] = px+117;
+//	subTemp[YPOS] = py+128+104;
+//	drawPacker(imgModelMainInfo3, subTemp[XPOS], subTemp[YPOS], 0, imgH(imgModelMainInfo3)/2, imgW(imgModelMainInfo3), imgH(imgModelMainInfo3)/2, VH);
+//	
+//	setFontSize(14);
+//	switch(xModel.state)
+//	{
+//	case MODELCOLLECT_STATE_LISTINFO:
+//		gDrawStringBold(subTemp[XPOS], subTemp[YPOS], "판매하기", VH, 255, 255, 255, 57, 57, 57);
+//		break;
+//	case MODELCOLLECT_STATE_MAININFO:
+//		gDrawStringBold(subTemp[XPOS], subTemp[YPOS], "활동해제", VH, 255, 255, 255, 57, 57, 57);
+//		break;
+//	}
+//	setFontSize(11);
+//		
+//	
+//	xModel.xTouchInfoBtn[2].wPos = imgW(imgModelMainInfo3);
+//	xModel.xTouchInfoBtn[2].hPos = imgH(imgModelMainInfo3)/2;
+//	xModel.xTouchInfoBtn[2].xPos = subTemp[XPOS]-xModel.xTouchInfoBtn[2].wPos/2;
+//	xModel.xTouchInfoBtn[2].yPos = subTemp[YPOS]-xModel.xTouchInfoBtn[2].hPos/2;
+//			
+//	
+//	
+//	subTemp[XPOS] = px+214;
+//	subTemp[YPOS] = py-230;
+//	xTouchClr.wPos = 80;
+//	xTouchClr.hPos = 80;
+//	xTouchClr.xPos = subTemp[XPOS]-xTouchClr.wPos/2;
+//	xTouchClr.yPos = subTemp[YPOS]-xTouchClr.hPos/2;
+//		
+//	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+//	{
+//		switch(xQuestTuto.nowNum)
+//		{
+//		case TUTO_22_MODELEXIT:
+//			xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
+//			xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
+//			xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
+//			break;
+//		}
+//	}
+//	
+//	/*
+//	gSetColor(255, 0, 0);
+//	setAlpha(100);
+//	fillRect(xTouchClr.xPos, xTouchClr.yPos, xTouchClr.wPos, xTouchClr.hPos);
+//	setAlpha(ALPHA_MAX);
+//	*/
+//}
 
 int getModelMainSlot(int key)
 {
@@ -72734,10 +72766,10 @@ void setKakaoinviteOk()
 			//////////////////////////////////////////////////////////////////////////////
 			break;
 		case KAKAOINVITE_TYPE_MODEL_CA:
-			setNewModel(0);
+//			setNewModel(0);
 			break;
 		case KAKAOINVITE_TYPE_MODEL_BS:
-			setNewModel(1);
+//			setNewModel(1);
 			break;
 		}
 	}
@@ -72787,8 +72819,8 @@ void subLoading()
 				xWorldMap.state = WORLDMAP_STATE_MODEL;
 				xModel.state = MODELCOLLECT_STATE_MAIN;
 				xModel.inventoryNum = DONT;
-				sortModelList();
-				setModelList(xModel.listTabNum);
+//				sortModelList();
+//				setModelList(xModel.listTabNum);
 				break;
 			case WORLDMAP_STATE_FASHIONSHOWNEW:
 				xWorldMap.isKeyReturn = FALSE;

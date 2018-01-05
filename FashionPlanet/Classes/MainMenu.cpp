@@ -1636,7 +1636,7 @@ void googleLogin()
     xIdMake.state = IDMAKE_STATE_LOGINKAKAOING;
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    sprintf(xKakaoData.xUserInfo.strUserId, "102500557792235657915"); //재원
+    sprintf(xKakaoData.xUserInfo.strUserId, "112568368855147217704"); //나
     
     /*
     test5   116722146348515101027     
