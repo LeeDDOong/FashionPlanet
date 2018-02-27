@@ -602,14 +602,67 @@
 #define CMD_AUTOSELL						2000
 #define CMD_AUTOSELL_RECV							-2000
 
+#define CMD_PRODUCTIONSLOTUPDATE            10000
+#define CMD_PRODUCTIONSLOTUPDATE_RECV               -10000
 
-#define CMD_AUTOPRODUCT						10000
-#define CMD_AUTOPRODUCT_RECV						-10000
+#define CMD_PRODUCTIONSLOTOPEN              10001
+#define CMD_PRODUCTIONSLOTOPEN_RECV                 -10001
 
-#define CMD_AUTOPRODUCTSLOTUPDATE			10001
-#define CMD_AUTOPRODUCTSLOTUPDATE_RECV				-10001
+#define CMD_PRODUCTIONINFOUPDATE            10002
+#define CMD_PRODUCTIONINFOUPDATE_RECV               -10002
 
+#define CMD_PRODUCTIONSLOTINFOUPDATE        10003
+#define CMD_PRODUCTIONSLOTINFOUPDATE_RECV           -10003
 
+//#define CMD_PRODUCTIONREGIST                10004
+//#define CMD_PRODUCTIONREGIST_RECV                   -10004
+//
+//#define CMD_PRODUCTIONDELETE                10005
+//#define CMD_PRODUCTIONDELETE_RECV                   -10005
+
+#define CMD_SENDMACHINEINFO                 10004
+#define CMD_SENDMACHINEINFO_RECV                    -10004
+
+#define CMD_SENDMACHINESLOTINFO             10005
+#define CMD_SENDMACHINESLOTINFO_RECV                -10005
+
+#define CMD_SENDMACHINESLOTOPEN             10006
+#define CMD_SENDMACHINESLOTOPEN_RECV                -10006
+
+#define CMD_SENDMACHINESLOTUPDATE           10007
+#define CMD_SENDMACHINESLOTUPDATE_RECV              -10007
+
+#define CMD_GETDRESSINFO                    10008
+#define CMD_GETDRESSINFO_RECV                       -10008
+
+#define CMD_GREENHOUSEINFOUPDATE            10009
+#define CMD_GREENHOUSEINFOUPDATE_RECV               -10009
+
+#define CMD_GREENHOUSESLOTUPDATE            10010
+#define CMD_GREENHOUSESLOTUPDATE_RECV               -10010
+
+#define CMD_SPINNINGWHEELINFOUPDATE         10011
+#define CMD_SPINNINGWHEELINFOUPDATE_RECV            -10011
+
+#define CMD_SPINNINGWHEELSLOTUPDATE         10012
+#define CMD_SPINNINGWHEELSLOTUPDATE_RECV            -10012
+
+#define CMD_GETCARROT                       10013
+#define CMD_GETCARROT_RECV                          -10013
+
+/////////////////////////////////////////////////////////////
+//10014번 들어올 자리
+
+#define CMD_GETDRESSROOMINFO                10014
+#define CMD_GETDRESSROOMINFO_RECV						-10014
+
+/////////////////////////////////////////////////////////////
+
+#define CMD_BUYDRESSCHAR                    10015
+#define CMD_BUYDRESSCHAR_RECV                       -10015
+
+#define CMD_UPDATEMYDRESS                10016
+#define CMD_UPDATEMYDRESS_RECV						-10016
 
 #define NET_CONN			0
 #define NET_SEND			1
@@ -1123,6 +1176,37 @@ typedef struct _XNETMAP
 } XNETMAP;
 extern XNETMAP xNetMap;
 
+typedef struct _XNETPRODUCTIONSLOT
+{
+    int type;
+    int slot;
+    int itemcode;
+    int time;
+}XNETPRODUCTIONSLOT;
+extern XNETPRODUCTIONSLOT xNetProductionSlot;
+
+typedef struct _XNETGREENHOUSESLOT
+{
+    int type;
+    int slot;
+    int ItemIndex;
+    int ItemCnt;
+    int time;
+}XNETGREENHOUSESLOT;
+
+extern XNETGREENHOUSESLOT xNetGreenHouseSlot;
+
+typedef struct _XNETSPINNINGWHEELSLOT
+{
+    int type;
+    int slot;
+    int ItemIndex;
+    int ItemCnt;
+    int time;
+}XNETSPINNINGWHEELSLOT;
+
+extern XNETSPINNINGWHEELSLOT xNetSpinningWheelSlot;
+
 typedef struct _XNETFORMER
 {
     int key;
@@ -1492,8 +1576,75 @@ typedef struct
 } XNETCLUBDRESSBUY;
 extern XNETCLUBDRESSBUY xNetClubDressBuy;
 
+/////////////////////////////////////////////////////////////////////
+//전송기 이벤트큐 추가 LJW 2018.01.22
+typedef struct
+{
+	int bkey;
+}XNETSENDMACHINESLOTINFO;
+extern XNETSENDMACHINESLOTINFO xNetSendMachineSlotInfo;
 
+typedef struct
+{
+	int slot;
+	int bkey;
+}XNETSENDMACHINESLOTOPEN;
+extern XNETSENDMACHINESLOTOPEN xNetSendMachineSlotOpen;
 
+typedef struct
+{
+	int type;
+	int bkey;
+	int idx;
+	int item_index;
+	int item_count;
+	int start_time;
+	int end_time;
+}XNETSENDMACHINESLOTUPDATE;
+extern XNETSENDMACHINESLOTUPDATE xNetSendMachineSlotUpdate;
+/////////////////////////////////////////////////////////////////////
+//당근 KBY
+typedef struct
+{
+    int endTime;
+}XNETCARROT;
+extern XNETCARROT xNetCarrot;
+/////////////////////////////////////////////////////////////////////
+//의상 구매 KBY
+typedef struct
+{
+    int DressCode;
+}XNETBUYDRESS;
+extern XNETBUYDRESS xNetBuyDress;
+
+/////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////
+//옷장 이벤트큐 추가 LJW 2018.02.12
+typedef struct
+{
+    int type;
+}XNETGETDRESSROOMINFO;
+extern XNETGETDRESSROOMINFO xNetGetDressRoomInfo;
+/////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////
+//내 캐릭터 의상 입히기 이벤트큐 추가 LJW 2018.02.12
+typedef struct
+{
+    int DRESS0;
+    int DRESS1;
+    int DRESS2;
+    int DRESS3;
+    int DRESS4;
+    int DRESS5;
+    int DRESS6;
+    int DRESS7;
+    int DRESS8;
+    int DRESS9;
+}XNETUPDATEMYDRESS;
+extern XNETUPDATEMYDRESS xNetUpdateMyDress;
+/////////////////////////////////////////////////////////////////////
 
 
 void netSend(M_Int32 cmd,M_Int32 subIndex);

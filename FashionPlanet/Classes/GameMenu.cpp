@@ -165,7 +165,13 @@ void setPopup(M_Int32 type, M_Int32 yes, M_Int32 no,int speakingNpc,M_Int32 setT
 		sprintf(xPopup.strText,"서버와의 연결이 원활하지 않습니다.\n잠시후 다시 시도해 주세요.\n(에러코드:%d)",2000+xPopup.num);
 		xPopup.btnType = BTN_OK_CONFIRM;
 		break;
-	case POPUP_KAKAOLOGINERR:
+    case POPUP_SERVER_TIMEOVER_EVENTQUEUENET:
+        sprintf(xPopup.strTitle,"알림");
+        sprintf(xPopup.strText,"서버와의 연결이 원활하지 않습니다.\n잠시후 다시 시도해 주세요.\n(에러코드:%d)",3000+xPopup.num);
+        xPopup.btnType = BTN_OK_CONFIRM;
+        break;
+            
+    case POPUP_KAKAOLOGINERR:
 		sprintf(xPopup.strTitle,"알림");
 		sprintf(xPopup.strText, "해당 사용자의 카카오\n계정 정보를 찾을 수 없습니다\n재로그인 바랍니다");
 		xPopup.btnType = BTN_OK_CONFIRM;
@@ -937,8 +943,107 @@ void setPopup(M_Int32 type, M_Int32 yes, M_Int32 no,int speakingNpc,M_Int32 setT
         sprintf(xPopup.strText, "캔디가 완성되지 않았습니다.");
         xPopup.btnType=BTN_OK_CONFIRM;
         break;
+    //////////////////////
+    //제작기 KBY
+    case POPUP_PRODUCTIONLACKMATERIAL:
+        sprintf(xPopup.strTitle, "제작기");
+        sprintf(xPopup.strText, "재료가 부족합니다.");
+        xPopup.btnType=BTN_OK_CONFIRM;
+        break;
+            
+    case POPUP_PRODUCTIONOPENSLOTLACKDIA:
+        sprintf(xPopup.strTitle, "제작기");
+        sprintf(xPopup.strText, "다이아가 부족합니다.");
+        xPopup.btnType=BTN_OK_CONFIRM;
+        break;
+            
+    case POPUP_PRODUCTIONCANTOPENSLOT:
+        sprintf(xPopup.strTitle, "제작기");
+        sprintf(xPopup.strText, "이미 추가된 슬롯 입니다.");
+        xPopup.btnType=BTN_OK_CONFIRM;
+        break;
+            
+    case POPUP_PRODUCTIONOVERLAP:
+        sprintf(xPopup.strTitle, "인테리어 설치");
+        sprintf(xPopup.strText, "이미 설치된 인테리어입니다.");
+        xPopup.btnType=BTN_OK_CONFIRM;
+        break;
+            
+    case POPUP_PRODUCTIONSLOTOPEN:
+        sprintf(xPopup.strTitle, "제작기");
+        sprintf(xPopup.strText,"제작 슬롯을 확장하시겠습니까?");
+        xPopup.btnType = BTN_YESNO;
+        break;
+    
+    case POPUP_PRODUCTIONCANCELOK:
+        sprintf(xPopup.strTitle, "제작기");
+        sprintf(xPopup.strText,"제작을 취소하시겠습니까?");
+        xPopup.btnType = BTN_YESNO;
+        break;
 
-    }
+    case POPUP_PRODUCTIONFASTOK:
+        sprintf(xPopup.strTitle, "제작기");
+        sprintf(xPopup.strText,"제작중인 상품을\n즉시완료 하시겠습니까?");
+        xPopup.btnType = BTN_YESNO;
+        break;
+    //////////////////////
+    //온실 KBY
+    case POPUP_GREENHOUSESLOTOPEN:
+        sprintf(xPopup.strTitle, "온실");
+        sprintf(xPopup.strText, "온실 슬롯을 확장하시겠습니까?");
+        xPopup.btnType = BTN_YESNO;
+        break;
+            
+    case POPUP_GREENHOUSESLOTUPGRADE:
+        sprintf(xPopup.strTitle, "온실");
+        sprintf(xPopup.strText, "온실 슬롯을 업그레이드 하시겠습니까?");
+        xPopup.btnType = BTN_YESNO;
+        break;
+            
+    case POPUP_GREENHOUSESLOTFASTOK:
+        sprintf(xPopup.strTitle, "온실");
+        sprintf(xPopup.strText, "제작중인 상품을\n즉시완료 하시겠습니까?");
+        xPopup.btnType = BTN_YESNO;
+        break;
+    //////////////////////
+    //////////////////////
+    //온실 KBY
+    case POPUP_SPINNINGWHEELSLOTOPEN:
+        sprintf(xPopup.strTitle, "물레");
+        sprintf(xPopup.strText, "물레 슬롯을 확장하시겠습니까?");
+        xPopup.btnType = BTN_YESNO;
+        break;
+            
+    case POPUP_SPINNINGWHEELSLOTUPGRADE:
+        sprintf(xPopup.strTitle, "물레");
+        sprintf(xPopup.strText, "물레 슬롯을 업그레이드 하시겠습니까?");
+        xPopup.btnType = BTN_YESNO;
+        break;
+            
+    case POPUP_SPINNINGWHEELSLOTFASTOK:
+        sprintf(xPopup.strTitle, "물레");
+        sprintf(xPopup.strText, "제작중인 상품을\n즉시완료 하시겠습니까?");
+        xPopup.btnType = BTN_YESNO;
+        break;
+    //////////////////////
+    //상점 KBY
+    case POPUP_SHOPLACKLV:
+        sprintf(xPopup.strTitle, "상점");
+        sprintf(xPopup.strText, "선택하신 상품을 구매하실 수 없습니다.");
+        xPopup.btnType=BTN_OK_CONFIRM;
+        break;
+    //////////////////////
+    case POPUP_SENDMACHINESLOTOPEN:
+		sprintf(xPopup.strTitle, "전송기");
+		sprintf(xPopup.strText,"전송 슬롯을 확장 하시겠습니까?");
+		xPopup.btnType = BTN_YESNO;
+		break;
+	case POPUP_SENDMACHINEUPGRADE:
+		sprintf(xPopup.strTitle, "전송기");
+		sprintf(xPopup.strText,"전송기 업그레이드를 하시겠습니까?");
+		xPopup.btnType = BTN_YESNO;
+		break;
+	}
 }
 
 void keyPopup(M_Int32 type,M_Int32 param1,M_Int32 param2)
@@ -1614,6 +1719,9 @@ void setPopupResult()
 	case POPUP_SERVER_TIMEOVER:
 		gameExit();
 		break;
+    case POPUP_SERVER_TIMEOVER_EVENTQUEUENET:
+        gameExit();
+        break;
 	case POPUP_MODELGIFTFASTCASHYESNO:
 		if(xPopup.selectNum == POPUPYES)
 		{
@@ -1714,7 +1822,8 @@ void setPopupResult()
 		if(xPopup.selectNum == POPUPYES)
 		{
 			playState = xPopup.yes;
-			setShop(SHOPTAB_TYPE_PREMIUM);
+            setShop_FP(4, 3);
+//			setShop(SHOPTAB_TYPE_PREMIUM);
 		}
 		else
 			playState = xPopup.no;
@@ -1743,11 +1852,20 @@ void setPopupResult()
 			playState = xPopup.no;
 		break;
 	case POPUP_CASHEMPTY:
-	case POPUP_MONEYEMPTY:
+        if(xPopup.selectNum == POPUPYES)
+        {
+            playState = xPopup.yes;
+            setShop_FP(4, 1);
+        }
+        else
+            playState = xPopup.no;
+        break;
+        case POPUP_MONEYEMPTY:
 		if(xPopup.selectNum == POPUPYES)
 		{
 			playState = xPopup.yes;
-			setShop(SHOPTAB_TYPE_MONEY);
+//            setShop(SHOPTAB_TYPE_MONEY);
+			setShop_FP(4, 2);
 		}
 		else
 			playState = xPopup.no;
@@ -3438,6 +3556,182 @@ void setPopupResult()
         {
             playState=xPopup.no;
         }
+        break;
+    case POPUP_PRODUCTIONSLOTOPEN:
+        if(xPopup.selectNum==POPUPYES)
+        {
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_PRODUCTIONSLOTOPEN, TRUE);
+            playState = xPopup.yes;
+        }
+        else
+        {
+            playState = xPopup.no;
+        }
+        break;
+            
+    case POPUP_PRODUCTIONCANCELOK:
+        if(xPopup.selectNum==POPUPYES)
+        {
+            xEventQueueNet.action[xEventQueueNet.totalNum] = 1;
+            xEventQueueNet.slotNum[xEventQueueNet.totalNum] = xProduction_FP.selectSlot;
+            xEventQueueNet.ITEM_INDEX[xEventQueueNet.totalNum] = -1;
+            xEventQueueNet.time[xEventQueueNet.totalNum] = 0;
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_PRODUCTIONSLOTUPDATE, TRUE);
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_PRODUCTIONSLOTINFOUPDATE, TRUE);
+            playState = xPopup.yes;
+        }
+        else
+        {
+            playState = xPopup.no;
+        }
+        break;
+            
+    case POPUP_PRODUCTIONFASTOK:
+        if(xPopup.selectNum==POPUPYES)
+        {
+            xEventQueueNet.action[xEventQueueNet.totalNum] = 3;
+            xEventQueueNet.slotNum[xEventQueueNet.totalNum] = xProduction_FP.selectSlot;
+            xEventQueueNet.ITEM_INDEX[xEventQueueNet.totalNum] = -1;
+            xEventQueueNet.time[xEventQueueNet.totalNum] = 0;
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_PRODUCTIONSLOTUPDATE, TRUE);
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_PRODUCTIONSLOTINFOUPDATE, TRUE);
+            playState = xPopup.yes;
+        }
+        else
+        {
+            playState = xPopup.no;
+        }
+        break;
+    case POPUP_GREENHOUSESLOTOPEN:
+        if(xPopup.selectNum==POPUPYES)
+        {
+            xEventQueueNet.action[xEventQueueNet.totalNum]=5;
+            xEventQueueNet.slotNum[xEventQueueNet.totalNum]=xGreenHouse_FP.totalSlot;
+            xEventQueueNet.ITEM_INDEX[xEventQueueNet.totalNum]=-1;
+            xEventQueueNet.ITEM_COUNT[xEventQueueNet.totalNum]=0;
+            xEventQueueNet.time[xEventQueueNet.totalNum]=0;
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GREENHOUSESLOTINFOUPDATE, TRUE);
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GREENHOUSEINFOUPDATE, TRUE);
+            playState = xPopup.yes;
+        }
+        else
+        {
+            playState = xPopup.no;
+        }
+        break;
+        
+    case POPUP_GREENHOUSESLOTUPGRADE:
+        if(xPopup.selectNum==POPUPYES)
+        {
+            xEventQueueNet.action[xEventQueueNet.totalNum]=4;
+            xEventQueueNet.slotNum[xEventQueueNet.totalNum]=xGreenHouse_FP.selectSlot;
+            xEventQueueNet.ITEM_INDEX[xEventQueueNet.totalNum]=-1;
+            xEventQueueNet.ITEM_COUNT[xEventQueueNet.totalNum]=0;
+            xEventQueueNet.time[xEventQueueNet.totalNum]=0;
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GREENHOUSESLOTINFOUPDATE, TRUE);
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GREENHOUSEINFOUPDATE, TRUE);
+            playState = xPopup.yes;
+        }
+        else
+        {
+            playState = xPopup.no;
+        }
+        break;
+
+    case POPUP_GREENHOUSESLOTFASTOK:
+        if(xPopup.selectNum==POPUPYES)
+        {
+            xEventQueueNet.action[xEventQueueNet.totalNum]=2;
+            xEventQueueNet.slotNum[xEventQueueNet.totalNum]=xGreenHouse_FP.selectSlot;
+            xEventQueueNet.ITEM_INDEX[xEventQueueNet.totalNum]=-1;
+            xEventQueueNet.ITEM_COUNT[xEventQueueNet.totalNum]=0;
+            xEventQueueNet.time[xEventQueueNet.totalNum]=0;
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GREENHOUSESLOTINFOUPDATE, TRUE);
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GREENHOUSEINFOUPDATE, TRUE);
+            playState = xPopup.yes;        }
+        else
+        {
+            playState = xPopup.no;
+        }
+        break;
+            
+    case POPUP_SPINNINGWHEELSLOTOPEN:
+        if(xPopup.selectNum==POPUPYES)
+        {
+            xEventQueueNet.action[xEventQueueNet.totalNum]=5;
+            xEventQueueNet.slotNum[xEventQueueNet.totalNum]=xSpinning_FP.totalSlot;
+            xEventQueueNet.ITEM_INDEX[xEventQueueNet.totalNum]=-1;
+            xEventQueueNet.ITEM_COUNT[xEventQueueNet.totalNum]=0;
+            xEventQueueNet.time[xEventQueueNet.totalNum]=0;
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SPINNINGWHEELSLOTINFOUPDATE, TRUE);
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SPINNINGWHEELINFOUPDATE, TRUE);
+            playState = xPopup.yes;
+        }
+        else
+        {
+            playState = xPopup.no;
+        }
+        break;
+            
+    case POPUP_SPINNINGWHEELSLOTUPGRADE:
+        if(xPopup.selectNum==POPUPYES)
+        {
+            xEventQueueNet.action[xEventQueueNet.totalNum]=4;
+            xEventQueueNet.slotNum[xEventQueueNet.totalNum]=xSpinning_FP.selectSlot;
+            xEventQueueNet.ITEM_INDEX[xEventQueueNet.totalNum]=-1;
+            xEventQueueNet.ITEM_COUNT[xEventQueueNet.totalNum]=0;
+            xEventQueueNet.time[xEventQueueNet.totalNum]=0;
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SPINNINGWHEELSLOTINFOUPDATE, TRUE);
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SPINNINGWHEELINFOUPDATE, TRUE);
+            playState = xPopup.yes;
+        }
+        else
+        {
+            playState = xPopup.no;
+        }
+        break;
+            
+    case POPUP_SPINNINGWHEELSLOTFASTOK:
+        if(xPopup.selectNum==POPUPYES)
+        {
+            xEventQueueNet.action[xEventQueueNet.totalNum]=2;
+            xEventQueueNet.slotNum[xEventQueueNet.totalNum]=xSpinning_FP.selectSlot;
+            xEventQueueNet.ITEM_INDEX[xEventQueueNet.totalNum]=-1;
+            xEventQueueNet.ITEM_COUNT[xEventQueueNet.totalNum]=0;
+            xEventQueueNet.time[xEventQueueNet.totalNum]=0;
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SPINNINGWHEELSLOTINFOUPDATE, TRUE);
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SPINNINGWHEELINFOUPDATE, TRUE);
+            playState = xPopup.yes;
+        }
+        else
+        {
+            playState = xPopup.no;
+        }
+        break;
+    case POPUP_SENDMACHINESLOTOPEN:
+		if(xPopup.selectNum == POPUPYES)
+		{
+			xEventQueueNet.slotNum[xEventQueueNet.totalNum] = xSendMachine_FP.xData[0].totalSlot+1;
+			xEventQueueNet.bkey[xEventQueueNet.totalNum] = xSendMachine_FP.xData[0].bkey;
+			addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SENDMACHINESLOTOPEN, TRUE);
+			playState = xPopup.yes;
+		}
+		else
+		{
+			playState = xPopup.no;
+		}
+		break;
+	case POPUP_SENDMACHINEUPGRADE:
+		if(xPopup.selectNum == POPUPYES)
+		{
+			
+			playState = xPopup.yes;
+		}
+		else
+		{
+			playState = xPopup.no;
+		}
+		break;
 	default:
 		switch(xPopup.selectNum)
 		{
@@ -3512,15 +3806,33 @@ void dragScrollKeyPrc(XDRAGSCROLL *dragScroll, M_Int32 type)
 			dragScroll->touchYposBefore = dragScroll->touchYpos;
 			dragScroll->touchXpos = xTouch.xPos;
 			dragScroll->touchYpos = xTouch.yPos;
-									
+			
 			if(dragScroll->touchXposBefore != DONT)
 			{
 				dragScroll->pos += (dragScroll->touchXpos - dragScroll->touchXposBefore);
 			}
 			
 			dragScroll->speed = 0;
+			
+			///////////////////////////////////////////////
+			//LJW 스크롤 수정 2018.02.21
+			dragScroll->isDrag = TRUE;
+			dragScroll->isStart = FALSE;
+			dragScroll->isEnd = FALSE;
+			dragScroll->backLength = 100;
+			
+			if(dragScroll->pos >= dragScroll->backLength)
+				dragScroll->pos = dragScroll->backLength;
+			else if(dragScroll->pos <= dragScroll->endPos-dragScroll->backLength)
+				dragScroll->pos = dragScroll->endPos-dragScroll->backLength;
+			///////////////////////////////////////////////
 			break;
 		case 1:	//땜
+			///////////////////////////////////////////////
+			//LJW 스크롤 수정 2018.02.21
+			dragScroll->isDrag = FALSE;
+			///////////////////////////////////////////////
+			
 			//같을경우 버그발생 예외처리
 			if(dragScroll->touchXposBefore == dragScroll->touchXpos)
 				dragScroll->touchXposBefore = DONT;
@@ -3533,7 +3845,7 @@ void dragScrollKeyPrc(XDRAGSCROLL *dragScroll, M_Int32 type)
 				dragScroll->touchYposBefore = DONT;
 				return;
 			}
-		 	
+			
 			dragScroll->speed = dragScroll->touchXpos - dragScroll->touchXposBefore;
 			dragScroll->speed = dragScroll->speed*3;
 			
@@ -3541,8 +3853,6 @@ void dragScrollKeyPrc(XDRAGSCROLL *dragScroll, M_Int32 type)
 				dragScroll->speed = 100;
 			else if(dragScroll->speed < -100)
 				dragScroll->speed = -100;
-			
-			
 			
 			
 			if(dragScroll->speed == 0 && dragScroll->pos != 0)
@@ -3563,8 +3873,6 @@ void dragScrollKeyPrc(XDRAGSCROLL *dragScroll, M_Int32 type)
 			dragScroll->touchYpos = DONT;
 			dragScroll->touchXposBefore = DONT;
 			dragScroll->touchYposBefore = DONT;
-			
-			
 			break;
 		case 2:
 			if(dragScroll->touchXposBefore == DONT || dragScroll->touchXposBefore != dragScroll->touchXpos)
@@ -3577,15 +3885,32 @@ void dragScrollKeyPrc(XDRAGSCROLL *dragScroll, M_Int32 type)
 				if(dragScroll->touchXposBefore != DONT)
 					dragScroll->pos += (dragScroll->touchXpos - dragScroll->touchXposBefore);
 			}
+			
 			dragScroll->speed = 0;
+			
+			///////////////////////////////////////////////
+			//LJW 스크롤 수정 2018.02.21
+			dragScroll->isDrag = TRUE;
+			dragScroll->isStart = FALSE;
+			dragScroll->isEnd = FALSE;
+			dragScroll->backLength = 50;
+			
+			if(dragScroll->pos >= dragScroll->backLength)
+				dragScroll->pos = dragScroll->backLength;
+			else if(dragScroll->pos <= dragScroll->endPos-dragScroll->backLength)
+				dragScroll->pos = dragScroll->endPos-dragScroll->backLength;
+			///////////////////////////////////////////////
 			break;
 		case 3:
-			
+			///////////////////////////////////////////////
+			//LJW 스크롤 수정 2018.02.21
+			dragScroll->isDrag = FALSE;
+			///////////////////////////////////////////////
 			
 			//같을경우 버그발생 예외처리
 			if(dragScroll->touchXposBefore == dragScroll->touchXpos)
 				dragScroll->touchXposBefore = DONT;
-						
+			
 			if(dragScroll->touchXposBefore == DONT)
 			{
 				dragScroll->touchXpos = DONT;
@@ -3603,8 +3928,6 @@ void dragScrollKeyPrc(XDRAGSCROLL *dragScroll, M_Int32 type)
 			else if(dragScroll->speed < -100)
 				dragScroll->speed = -100;
 			
-			
-									
 			
 			if(dragScroll->speed == 0 && dragScroll->pos != 0)
 			{
@@ -3652,136 +3975,169 @@ void dragScrollPrc(XDRAGSCROLL *dragScroll,M_Int32 type,M_Boolean isRolling)
 	
 	switch(type)
 	{
-	case 0:
+		case 0:
 			
-		while(TRUE)
-		{
-			if(dragScroll->pos >= dragScroll->posGab/2)
+			while(TRUE)
 			{
-				dragScroll->selectNum--;
-				dragScroll->pos -= dragScroll->posGab;
+				if(dragScroll->pos >= dragScroll->posGab/2)
+				{
+					dragScroll->selectNum--;
+					dragScroll->pos -= dragScroll->posGab;
+					
+				}
+				else if(dragScroll->pos < -(dragScroll->posGab/2))
+				{
+					dragScroll->selectNum++;
+					dragScroll->pos += dragScroll->posGab;
+				}
+				else
+				{
+					break;
+				}
 				
 			}
-			else if(dragScroll->pos < -(dragScroll->posGab/2))
+			
+			if(isRolling == TRUE)
 			{
-				dragScroll->selectNum++;
-				dragScroll->pos += dragScroll->posGab;
+				while (TRUE)
+				{
+					if(dragScroll->selectNum < 0)
+						dragScroll->selectNum = dragScroll->totalNum+dragScroll->selectNum;
+					else if(dragScroll->selectNum >= dragScroll->totalNum)
+						dragScroll->selectNum = dragScroll->totalNum-dragScroll->selectNum;
+					else
+						break;
+				}
 			}
-			else
+			
+			if(dragScroll->selectNum < 0)
 			{
-				break;
+				dragScroll->selectNum = 0;
+				dragScroll->pos = dragScroll->posGab/3;
+				dragScroll->speed = 0;
 			}
-		
-		}
-	
-		if(isRolling == TRUE)
-		{
-			while (TRUE)
+			else if(dragScroll->selectNum == 0 && dragScroll->pos > 0)
 			{
-				if(dragScroll->selectNum < 0)
-					dragScroll->selectNum = dragScroll->totalNum+dragScroll->selectNum;
-				else if(dragScroll->selectNum >= dragScroll->totalNum)
-					dragScroll->selectNum = dragScroll->totalNum-dragScroll->selectNum;
-				else
-					break;
+				if(isRolling == FALSE)
+				{
+					if(dragScroll->pos <=2)
+						dragScroll->pos --;
+					else
+						dragScroll->pos -= dragScroll->pos/3;
+					dragScroll->speed = 0;
+				}
 			}
-		}		
-		
-		if(dragScroll->selectNum < 0)
-		{
-			dragScroll->selectNum = 0;
-			dragScroll->pos = dragScroll->posGab/3;
-			dragScroll->speed = 0;
-		}
-		else if(dragScroll->selectNum == 0 && dragScroll->pos > 0)
-		{
-			if(isRolling == FALSE)
+			
+			if(dragScroll->selectNum > dragScroll->totalNum-1)
+			{
+				dragScroll->selectNum = dragScroll->totalNum-1;
+				dragScroll->pos = -dragScroll->posGab/3;
+				dragScroll->speed = 0;
+			}
+			else if(dragScroll->selectNum == dragScroll->totalNum-1 && dragScroll->pos < 0)
+			{
+				if(isRolling == FALSE)
+				{
+					if(dragScroll->pos >=-2)
+					{
+						dragScroll->pos ++;
+					}
+					else
+					{
+						dragScroll->pos -= dragScroll->pos/3;
+					}
+					
+					dragScroll->speed = 0;
+				}
+			}
+			
+			//위치 보정
+			if(dragScroll->touchXpos == DONT)
+			{
+				if(dragScroll->speed == 0)
+				{
+					if(dragScroll->pos != 0)
+					{
+						if(dragScroll->pos > 0)
+						{
+							dragScroll->speed = -((dragScroll->pos/2)+1);
+						}
+						else
+						{
+							dragScroll->speed = ((-(dragScroll->pos/2))+1);
+						}
+					}
+				}
+			}
+			break;
+		case 1:
+			if(dragScroll->isDrag == FALSE)
+			{
+				if(dragScroll->pos > 0)
+					dragScroll->isStart = TRUE;
+				else if(dragScroll->pos < dragScroll->endPos)
+					dragScroll->isEnd = TRUE;
+			}
+			
+			//if(dragScroll->pos > 100)
+			if(dragScroll->isStart == TRUE)
 			{
 				if(dragScroll->pos <=2)
 					dragScroll->pos --;
 				else
 					dragScroll->pos -= dragScroll->pos/3;
-				dragScroll->speed = 0;
-			}
-		}
-		
-		if(dragScroll->selectNum > dragScroll->totalNum-1)
-		{
-			dragScroll->selectNum = dragScroll->totalNum-1;
-			dragScroll->pos = -dragScroll->posGab/3;
-			dragScroll->speed = 0;
-		}
-		else if(dragScroll->selectNum == dragScroll->totalNum-1 && dragScroll->pos < 0)
-		{
-			if(isRolling == FALSE)
-			{
-				if(dragScroll->pos >=-2)
-				{
-					dragScroll->pos ++;
-				}
-				else
-				{
-					dragScroll->pos -= dragScroll->pos/3;
-				}
 				
-				dragScroll->speed = 0;
+				if(dragScroll->pos == 0)
+					dragScroll->isStart = FALSE;
 			}
-		}
 			
-		//위치 보정
-		if(dragScroll->touchXpos == DONT)
-		{
-			if(dragScroll->speed == 0)
+			//if(dragScroll->pos < dragScroll->endPos)
+			if(dragScroll->isEnd == TRUE)
 			{
-				if(dragScroll->pos != 0)
-				{
-					if(dragScroll->pos > 0)
-					{
-						dragScroll->speed = -((dragScroll->pos/2)+1);
-					}
-					else
-					{
-						dragScroll->speed = ((-(dragScroll->pos/2))+1);
-					}
-				}
+				if(((-dragScroll->pos) - (-dragScroll->endPos)) <=2)
+					dragScroll->pos ++;
+				else
+					dragScroll->pos += ((-dragScroll->pos) - (-dragScroll->endPos))/3;
+				
+				if(dragScroll->pos == dragScroll->endPos)
+					dragScroll->isEnd = FALSE;
 			}
-		}
-		break;
-	case 1:
-		if(dragScroll->pos > 0)
-		{
-			if(dragScroll->pos <=2)
-				dragScroll->pos --;
-			else
-				dragScroll->pos -= dragScroll->pos/3;
-		}
-		 
-	
-		if(dragScroll->pos < dragScroll->endPos)
-		{
-			if(((-dragScroll->pos) - (-dragScroll->endPos)) <=2)
-				dragScroll->pos ++;
-			else
-				dragScroll->pos += ((-dragScroll->pos) - (-dragScroll->endPos))/3;
-		}
-		break;
+			break;
 	}
+	
+	///////////////////////////////////////////////
+	//LJW 스크롤 수정 2018.02.21
+	if(dragScroll->pos >= dragScroll->backLength)
+		dragScroll->pos = dragScroll->backLength;
+	if(dragScroll->pos <= dragScroll->endPos - dragScroll->backLength)
+		dragScroll->pos = dragScroll->endPos - dragScroll->backLength;
+	
+	if(dragScroll->pos > 0 && dragScroll->isStart == TRUE)
+		dragScroll->isStart = FALSE;
+	else if(dragScroll->pos < dragScroll->endPos && dragScroll->isEnd == TRUE)
+		dragScroll->isEnd = FALSE;
+	///////////////////////////////////////////////
+}
+
+void setScrollPrc(XDRAGSCROLL *dragScroll)
+{
+	dragScroll->isDrag = FALSE;
 }
 
 void setPopupStringLine(M_Char *pChar,M_Int32 w)
 {
-    xPopup.totalLine = 0;
-    memset(xPopup.strTextLine, 0, sizeof(xPopup.strTextLine));
-    
-    int index = 0;
-    int kor = 0;
-    int eng = 0;
-    
-    
-    for(int i=0; i<strlen(pChar); i++)
-    {
-        if((unsigned char)pChar[i] >= 0xA4)
-        {
+	xPopup.totalLine = 0;
+	memset(xPopup.strTextLine, 0, sizeof(xPopup.strTextLine));
+	
+	int index = 0;
+	int kor = 0;
+	int eng = 0;
+	
+	
+	for(int i=0; i<strlen(pChar); i++)
+	{
+		if((unsigned char)pChar[i] >= 0xA4)
+		{
             //한글
             xPopup.strTextLine[xPopup.totalLine][index++] = pChar[i++];
             xPopup.strTextLine[xPopup.totalLine][index++] = pChar[i++];

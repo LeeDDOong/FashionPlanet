@@ -45,6 +45,14 @@ typedef struct
 	M_Int32 endPos;
 	
 	M_Int32 speed;
+	
+	///////////////////////////////////////////////
+	//LJW 스크롤 수정 2018.02.21
+	M_Boolean isStart;
+	M_Boolean isEnd;
+	M_Boolean isDrag;
+	M_Int32 backLength;
+	///////////////////////////////////////////////
 } XDRAGSCROLL;
 
 //***********************************************************************
@@ -478,22 +486,44 @@ extern Xdialog xDialog;
 #define POPUP_NONFORMER                      159
 #define POPUP_INPUTINVENTORYFORMERERR2       160   
 
-#define POPUP_AUTOPRODUCTSLEEP       161
-#define POPUP_AUTOSELLSLEEP       162
+#define POPUP_AUTOPRODUCTSLEEP               161
+#define POPUP_AUTOSELLSLEEP                  162
 
+#define POPUP_PRODUCTIONLACKMATERIAL         163
+#define POPUP_PRODUCTIONOPENSLOTLACKDIA      164
+#define POPUP_PRODUCTIONCANTOPENSLOT         165
+#define POPUP_PRODUCTIONOVERLAP              166
+#define POPUP_PRODUCTIONSLOTOPEN             167
+#define POPUP_PRODUCTIONCANCELOK             168
+#define POPUP_PRODUCTIONFASTOK               169
+
+#define POPUP_SERVER_TIMEOVER_EVENTQUEUENET  170
+
+#define POPUP_SENDMACHINESLOTOPEN            POPUP_SERVER_TIMEOVER_EVENTQUEUENET+1
+#define POPUP_SENDMACHINEUPGRADE             POPUP_SENDMACHINESLOTOPEN+1
+
+///////////
+//온실 팝업 KBY
+#define POPUP_GREENHOUSESLOTOPEN             POPUP_SENDMACHINEUPGRADE+1
+#define POPUP_GREENHOUSESLOTLACKDIA          POPUP_GREENHOUSESLOTOPEN+1
+#define POPUP_GREENHOUSESLOTCLOSE            POPUP_GREENHOUSESLOTLACKDIA+1
+#define POPUP_GREENHOUSESLOTUPGRADE          POPUP_GREENHOUSESLOTCLOSE+1
+#define POPUP_GREENHOUSESLOTFASTOK           POPUP_GREENHOUSESLOTUPGRADE+1
+
+
+//////////////
+//물레 팝업 KBY
+#define POPUP_SPINNINGWHEELSLOTOPEN             POPUP_GREENHOUSESLOTFASTOK+1
+#define POPUP_SPINNINGWHEELSLOTLACKDIA          POPUP_SPINNINGWHEELSLOTOPEN+1
+#define POPUP_SPINNINGWHEELSLOTCLOSE            POPUP_SPINNINGWHEELSLOTLACKDIA+1
+#define POPUP_SPINNINGWHEELSLOTUPGRADE          POPUP_SPINNINGWHEELSLOTCLOSE+1
+#define POPUP_SPINNINGWHEELSLOTFASTOK           POPUP_SPINNINGWHEELSLOTUPGRADE+1
+
+//////////////
+//상점 팝업 KBY
+#define POPUP_SHOPLACKLV                        POPUP_SPINNINGWHEELSLOTFASTOK+1
 
 //#define POPUP_TESTTEST        123
-
-
-
-
-
-
-
-
-
-
-
 
 
 void setPopup(M_Int32 type, M_Int32 yes, M_Int32 no,int speakingNpc,M_Int32 setTemp);
@@ -505,6 +535,7 @@ void dragScrollPrc(XDRAGSCROLL *dragScroll,M_Int32 type,M_Boolean isRolling);
 void dragScrollKeyPrc(XDRAGSCROLL *dragScroll, M_Int32 type);
 void setPopupStringLine(M_Char *pChar,M_Int32 w);
 
+void setScrollPrc(XDRAGSCROLL *dragScroll);
 
 #endif
 

@@ -290,7 +290,7 @@ void loadExcelParserByte(int type)
             
 			sprintf(xFashionData[fashionType][fashionList].strName, "%s",bData[i][1]);
 			xFashionData[fashionType][fashionList].lv = atoi(bData[i][3]);
-           
+            
 			xFashionData[fashionType][fashionList].layer = atoi(bData[i][5]);
 			xFashionData[fashionType][fashionList].gender = atoi(bData[i][6]);
 			
@@ -1182,7 +1182,7 @@ void loadExcelParserByte(int type)
 			xCollection.totalFashionTheme++;
 		}
 		break;
-   
+
 	case EXCEL_PS_DRESSCOLOR:
 		colsMax +=1;
 		for(i=1;i<colsMax;i++)
@@ -1867,7 +1867,6 @@ void loadExcelParserByte(int type)
         i=99;
         xFormer.OnOff=atoi(bData[i][0]);
         
-       
         break;
     case EXCEL_PS_PACKAGE:
         colsMax +=1;
@@ -2329,9 +2328,153 @@ void loadExcelParserByte(int type)
             xClubShop.xData[Num].coin=atoi(bData[i][3]);
         }
         break;
-   
+
+    case EXCEL_PS_PDRESS_DATA:
+        colsMax+=1;
+        for(i=1;i<colsMax;i++)
+        {
+            int fashionType = atoi(bData[i][2])/1000;
+            int fashionList = atoi(bData[i][2])%1000;
+            
+            sprintf(xFashionData_FP[fashionType][fashionList].strName, "%s", bData[i][1]);
+            xFashionData_FP[fashionType][fashionList].lv = atoi(bData[i][3]);
+            xFashionData_FP[fashionType][fashionList].materialType[0] = atoi(bData[i][4]);
+            xFashionData_FP[fashionType][fashionList].materialCnt[0] = atoi(bData[i][5]);
+            xFashionData_FP[fashionType][fashionList].materialType[1] = atoi(bData[i][6]);
+            xFashionData_FP[fashionType][fashionList].materialCnt[1] = atoi(bData[i][7]);
+            xFashionData_FP[fashionType][fashionList].materialType[2] = atoi(bData[i][8]);
+            xFashionData_FP[fashionType][fashionList].materialCnt[2] = atoi(bData[i][9]);
+            xFashionData_FP[fashionType][fashionList].makeTime = atoi(bData[i][10]);
+            initSecurity(&xFashionData_FP[fashionType][fashionList].price, atoi(bData[i][11]));
+        }
+        break;
+    case EXCEL_PS_PDRESS_LIST:
+        for(int t=0;t<7;t++)
+        {
+            xCatalog_FP.totalSlot[t] = 0;
+        }
+        colsMax +=1;
+        for(i=1;i<colsMax;i++)
+        {
+            int fashionType = atoi(bData[i][1]);
+            
+            xCatalog_FP.xSlot[fashionType][xCatalog_FP.totalSlot[fashionType]].code = atoi(bData[i][2]);
+            xCatalog_FP.xSlot[fashionType][xCatalog_FP.totalSlot[fashionType]].isNew = atoi(bData[i][3]);
+            xCatalog_FP.xSlot[fashionType][xCatalog_FP.totalSlot[fashionType]].isHot = atoi(bData[i][4]);
+            xCatalog_FP.xSlot[fashionType][xCatalog_FP.totalSlot[fashionType]].isEvent = atoi(bData[i][5]);
+            xCatalog_FP.xSlot[fashionType][xCatalog_FP.totalSlot[fashionType]].isSale = atoi(bData[i][6]);
+            
+            xCatalog_FP.totalSlot[fashionType]++;
+        }
+        break;
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////의상 Data KBY
+    case EXCEL_PS_CLOTHES_DATA:
+        for(int t=0;t<7;t++)
+        {
+            xFashionList_FP.totalSlotNum[t] = 0;
+        }
+        colsMax+=1;
+        for(i=1;i<colsMax;i++)
+        {
+            int fashionType = atoi(bData[i][0])/1000;
+            
+            xFashionList_FP.xSlot[fashionType][xFashionList_FP.totalSlotNum[fashionType]].code = atoi(bData[i][0]);
+            sprintf(xFashionList_FP.xSlot[fashionType][xFashionList_FP.totalSlotNum[fashionType]].strName, "%s", bData[i][1]);
+            xFashionList_FP.xSlot[fashionType][xFashionList_FP.totalSlotNum[fashionType]].lv = atoi(bData[i][2]);
+//            xFashionList_FP.xSlot[fashionType][xFashionList_FP.totalSlotNum[fashionType]].lv = 70;
+            xFashionList_FP.xSlot[fashionType][xFashionList_FP.totalSlotNum[fashionType]].warmth = atoi(bData[i][3]);
+            xFashionList_FP.xSlot[fashionType][xFashionList_FP.totalSlotNum[fashionType]].priceType = atoi(bData[i][4]);
+//            xFashionList_FP.xSlot[fashionType][xFashionList_FP.totalSlotNum[fashionType]].priceType = 1;
+            xFashionList_FP.xSlot[fashionType][xFashionList_FP.totalSlotNum[fashionType]].price = atoi(bData[i][5]);
+            xFashionList_FP.xSlot[fashionType][xFashionList_FP.totalSlotNum[fashionType]].buffType = atoi(bData[i][6]);
+            xFashionList_FP.xSlot[fashionType][xFashionList_FP.totalSlotNum[fashionType]].buff = atoi(bData[i][7]);
+            xFashionList_FP.xSlot[fashionType][xFashionList_FP.totalSlotNum[fashionType]].SetNum = atoi(bData[i][8]);
+            xFashionList_FP.xSlot[fashionType][xFashionList_FP.totalSlotNum[fashionType]].layer = atoi(bData[i][9]);
+            xFashionList_FP.xSlot[fashionType][xFashionList_FP.totalSlotNum[fashionType]].SellOnOff = atoi(bData[i][10]);
+//            xFashionList_FP.xSlot[fashionType][xFashionList_FP.totalSlotNum[fashionType]].SellOnOff = 1;
+            xFashionList_FP.xSlot[fashionType][xFashionList_FP.totalSlotNum[fashionType]].isNew = atoi(bData[i][11]);
+            xFashionList_FP.xSlot[fashionType][xFashionList_FP.totalSlotNum[fashionType]].sale = atoi(bData[i][12]);
+//            xFashionList_FP.xSlot[fashionType][xFashionList_FP.totalSlotNum[fashionType]].sale = 0;
+            xFashionList_FP.totalSlotNum[fashionType]++;
+            xFashionList_FP.totalNum++;
+        }
+        break;
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////재료 KBY
+    case EXCEL_PS_MATERIAL_DATA:
+        colsMax+=1;
+        for (i=1; i<colsMax; i++)
+        {
+            index = atoi(bData[i][0]);
+            xGreenHouse_MaterialData_FP.xSlot[index].code = index;
+            sprintf(xGreenHouse_MaterialData_FP.xSlot[index].strName, "%s",bData[i][1]);
+            xGreenHouse_MaterialData_FP.xSlot[index].lv = atoi(bData[i][2]);
+            xGreenHouse_MaterialData_FP.xSlot[index].cnt = atoi(bData[i][3]);
+//            xGreenHouse_MaterialData_FP.xSlot[index].makeTime = atoi(bData[i][4]);
+            xGreenHouse_MaterialData_FP.xSlot[index].makeTime = 10;
+            
+            xGreenHouse_MaterialData_FP.totalNum++;
+        }
+        break;
+            
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////VARIABLE KBY
+    case EXCEL_PS_VARIABLE:
+        colsMax+=1;
+        for(i=1;i<colsMax;i++)
+        {
+            index = atoi(bData[i][1]);
+            switch (index)
+            {
+                case 0:
+                    xChs.levelMax = atoi(bData[i][2]);
+                    break;
+                case 1:
+                    xChs.carrotMax = atoi(bData[i][2]);
+                    break;
+                case 2:
+                    xChs.carrotTime = atoi(bData[i][2]);
+                    break;
+                default:
+                    break;
+            }
+        }
+        break;
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	case EXCEL_PS_HAIRMAKEUP_DATA:
+		colsMax+=1;
+		xHairMakeUp.total = 0;
+		for(i=1;i<colsMax;i++)
+		{
+			int type = atoi(bData[i][0])/1000;
+			int code = atoi(bData[i][0])%1000;
+			
+			sprintf(xHairMakeUp.xData[type][code].strName, "%s", bData[i][1]);
+			xHairMakeUp.xData[type][code].lv = atoi(bData[i][2]);
+			xHairMakeUp.xData[type][code].price = atoi(bData[i][3]);
+			xHairMakeUp.xData[type][code].layerNum = atoi(bData[i][4]);
+			xHairMakeUp.total++;
+		}
+		break;
+	case EXCEL_PS_LAYERTYPE_DATA:
+		colsMax+=1;
+		xLayer.total=0;
+		for(i=1;i<colsMax;i++)
+		{
+			int fashionType = atoi(bData[i][0])%1000;
+			
+			sprintf(xLayer.xData[fashionType].strName, "%s", bData[i][1]);
+			for(int j=0; j < 15; j++)
+			{
+				xLayer.xData[fashionType].xData[ACT_FRONT][j] = atoi(bData[i][2+j]);
+				xLayer.xData[fashionType].xData[ACT_BACK][j] = atoi(bData[i][17+j]);
+			}
+			xLayer.total++;
+		}
+		break;
 	}
-    
+	
 	for( i = 0; i < size1; i++)
 		for( j = 0; j < size2; j++)
 			free(bData[i][j]);
@@ -2359,10 +2502,6 @@ void loadSpriteData(const char* strFileName,XSPRIT* Xsprit)
 	sprintf(strFileSprite,"%s",strFileName);
 	loadData(strFileSprite,FALSE);
 			
-
-    
-    
-    
 	index = 0;
 	//이미지 갯수 1개 구조체 1:1대응할꺼임 쓸꺼임
 	Xsprit->totalImg = getByteToInt(bufData, index);
@@ -2513,14 +2652,227 @@ int prcSprit(XSPRIT *Xsprit ,int *nowDelay,int *nowFrame)
 	return 0;
 }
 
+void drawSpritcharacter(XIMG* img, float x, float y, float imgX, float imgY, float imgW, float imgH, int ank, float fGameScale)
+{
+    if(xGame.alpha == 0)
+        return;
+    
+    switch(ank)
+    {
+        case TL:
+            x += imgW/2;
+            y += imgH/2;
+            ank = VH;
+            break;
+        case BL:
+            x += imgW/2;
+            y -= imgH/2;
+            ank = VH;
+            break;
+            
+    }
+    
+    if(xGame.isSpriteGroupBuf == true)
+        y += lcdH-xGame.spriteGroup->getTexture()->getPixelsHigh();
+    
+    y =lcdH-y;
+    
+    float fscale;
+    float fscaleX;
+    float fscaleY;
+    
+   
+//    xGame.reSize = 50;
+    
+    if(xGame.isReSizeDraw == true)
+    {
+        if(fGameScale != 1.0f)
+            fscale = fGameScale * ((float)(xGame.reSize)/100.f);
+        else
+        {
+            fscale = fGameScale + ((float)(xGame.reSize-100)/100.f);
+        }
+        
+        fscaleX = fscale;
+        fscaleY = fscale;
+    }
+    else if(xGame.isReSizeDrawXY == true)
+    {
+        if(fGameScale != 1.0f)
+        {
+            fscaleX = fGameScale * ((float)(xGame.reSizeX)/100.f);
+            fscaleY = fGameScale * ((float)(xGame.reSizeY)/100.f);
+        }
+        else
+        {
+            fscaleX = fGameScale + ((float)(xGame.reSizeX-100)/100.f);
+            fscaleY = fGameScale + ((float)(xGame.reSizeY-100)/100.f);
+        }
+    }
+    else
+    {
+        fscale = xGame.fgameScale;
+        fscaleX = fscale;
+        fscaleY = fscale;
+    }
+    
+    x += ((x-xGame.fgameScaleCx) * (xGame.fgameScale-1.f));
+    y += ((y-xGame.fgameScaleCy) * (xGame.fgameScale-1.f));
+//    x += ((x-xGame.fgameScaleCx) * (fGameScale-1.0f));
+//    y += ((y-xGame.fgameScaleCy) * (fGameScale-1.0f));
+    
+    if(fscaleX == 0 || fscaleY == 0)
+        return;
+    
+    Sprite* sprite;
+    
+    if(xGame.isSpriteGroupDraw == true)
+        sprite = xGame.spriteGroup;
+    else
+    {
+        sprite = Sprite::createWithTexture(img->texture, Rect(imgX, imgY, imgW, imgH));
+    }
+    
+    /*
+     if(xGame.isMask == true)
+     {
+     Sprite* sprite1 = Sprite::createWithTexture(xGame.imgMask->texture);
+     sprite1->setPosition(sprite->getTexture()->getPixelsWide()/2,sprite->getTexture()->getPixelsHigh()/2);
+     sprite = maskedSpriteWithSprite(sprite, sprite1);
+     }
+     */
+    
+    if(xGame.isClip == true && xGame.isSpriteGroupBuf == false)
+    {
+        x -= clip->getPosition().x;
+        y -= clip->getPosition().y;
+    }
+    
+    
+    sprite->setPosition(x, y);
+    
+    if(xGame.isDrawRect == true)
+        sprite->setColor(Color3B(xGame.r, xGame.g, xGame.b));
+    else
+        sprite->setColor(Color3B(ALPHA_MAX, ALPHA_MAX, ALPHA_MAX));
+    
+    if(xGame.isRotate == true)
+    {
+        if(xGame.rotateNum < 0)
+            xGame.rotateNum = 360+xGame.rotateNum;
+        if(xGame.rotateNum < 0)
+            xGame.rotateNum = 360+xGame.rotateNum;
+        if(xGame.rotateNum < 0)
+            xGame.rotateNum = 360+xGame.rotateNum;
+        
+        sprite->setRotation(360-xGame.rotateNum);
+    }
+    
+    if(xGame.isReverse == true)
+        sprite->setFlippedX(true);
+    else
+        sprite->setFlippedX(false);
+    
+    sprite->setScale(fscaleX, fscaleY);
+    
+    
+    switch(ank)
+    {
+        case TL:sprite->setAnchorPoint(Vec2(0, 1.0f));break;
+        case VL:sprite->setAnchorPoint(Vec2(0, 0.5f));break;
+        case VR:sprite->setAnchorPoint(Vec2(1.0f, 0.5f));break;
+        case VH:sprite->setAnchorPoint(Vec2(0.5f, 0.5f));break;
+        case TH:sprite->setAnchorPoint(Vec2(0.5f, 1.0f));break;
+        case BH:sprite->setAnchorPoint(Vec2(0.5f, 0));break;
+        case BR:sprite->setAnchorPoint(Vec2(1.0f, 0));break;
+        case BL:sprite->setAnchorPoint(Vec2(0, 0));break;
+        case TR:sprite->setAnchorPoint(Vec2(1.0f, 1.0f));break;
+    }
+    
+    if(xGame.isBlend == true)
+    {
+        BlendFunc additive;
+        
+        
+        switch(xGame.blendType)
+        {
+            case BLEND_ADDP:
+                additive = {GL_SRC_ALPHA, GL_ONE};
+                sprite->setBlendFunc(additive);
+                break;
+            case BLEND_SCREEN:
+                break;
+            case BLEND_MULTIPLY:
+                break;
+            case BLEND_SHADOW:
+                break;
+            case BLEND_HARDLIGHT:
+            case BLEND_LINEARLIGHT:
+                break;
+            case BLEND_WHITE:
+                sprite->setColor(Color3B(255, 255, 255));
+                additive = {GL_ONE, GL_ONE};
+                sprite->setBlendFunc(additive);
+                break;
+            case BLEND_WHITEALPHA:
+                sprite->setColor(Color3B(255, 255, 255));
+                additive = {GL_ONE, GL_ONE};
+                sprite->setBlendFunc(additive);
+                sprite->setOpacity(xGame.blendNum);
+                break;
+            case BLEND_RED:
+            case BLEND_REDALPHA:
+                sprite->setColor(Color3B(255, 0, 0));
+                additive = {GL_ONE, GL_ONE};
+                sprite->setBlendFunc(additive);
+                sprite->setOpacity(xGame.blendNum);
+                break;
+            case BLEND_BLACK:
+                sprite->setColor(Color3B(0, 0, 0));
+                break;
+            case BLEND_BLACK_WHITE:
+                sprite->setColor(Color3B(xGame.blendNum, xGame.blendNum, xGame.blendNum));
+                break;
+            case BLEND_SETCOLOR:
+                sprite->setColor(Color3B(xGame.r, xGame.g, xGame.b));
+                break;
+            default:
+                break;
+        }
+    }
+    else if(xGame.alpha != ALPHA_MAX)
+    {
+        sprite->setOpacity(xGame.alpha);
+    }
+    
+    if(xGame.isSpriteGroupBuf == true)
+    {
+        xGame.spriteGroup->addChild(sprite,0,100);
+    }
+    else if(xGame.isClip == true)
+    {
+        clip->addChild(sprite,0,100);
+    }
+    else
+    {
+        xGame.layer->addChild(sprite,0,100);
+    }
+    
+}
+
 void drawSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 {
-	int i;
-	int imgX,imgY,imgW,imgH,drawX,drawY,imgNum;
-	int origI=0;
-	int drawXsub;
-	int drawYsub;
-	if(Xsprit->nowFrame >= Xsprit->totalFrame || Xsprit->nowFrame < 0)
+    int i;
+    int imgX,imgY,imgW,imgH,drawX,drawY,imgNum;
+    int drawXsub;
+    int drawYsub;
+//    float fGameScaleOri = xGame.fgameScale/2.0f;
+    float fGameScaleOri = xGame.fgameScale;
+    xGame.fgameScale = xGame.fgameScale;
+    
+    
+    
+    if(Xsprit->nowFrame >= Xsprit->totalFrame || Xsprit->nowFrame < 0)
 	{
 		return;
 	}		
@@ -2551,12 +2903,12 @@ void drawSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 				drawHair(drawX, drawY, xFace->hairNum,8, pos, 0);
 				xGame.isRotate = FALSE;
 			}
-		}
-	}
+        }
+    }
 	
 	
-	xGame.isReSizeDraw = FALSE;
-	
+//	xGame.isReSizeDraw = FALSE;
+    
 	
 	//그리기
 	for(i=0;i<Xsprit->xFrame[Xsprit->nowFrame].totalLayer;i++)
@@ -2565,20 +2917,17 @@ void drawSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 		imgY = Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].imgY;
 		imgW = Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].imgW;
 		imgH = Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].imgH;
-		drawX = x+Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].drawX;
+        drawX = x+Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].drawX;
 		drawY = y+Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].drawY;
 		imgNum = Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].imgNum;
-		
-		
-		//ppppppppppp
+
+//		//ppppppppppp
 		/*
 		 for(int imgI=0;imgI<ACTLAYERMAX;imgI++)
 		 xSpritNpc[xShopNpc[xObjSort[b_a].code[num]].actingType][ACT_FRONT].img[imgI] = &imgActBody[imgI][ACT_FRONT];
 		 for(int imgI=0;imgI<ACTLAYERMAX;imgI++)
 		 xSpritNpc[xShopNpc[xObjSort[b_a].code[num]].actingType][ACT_BACK].img[imgI] = &imgActBody[imgI][ACT_BACK];
 		 */
-		
-		
 		
 		if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].imgRot != 0)
 		{			
@@ -2613,7 +2962,6 @@ void drawSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 			//14두상(좌측)
 			switch(imgNum)
 			{
-			
                 case 6:
                     if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].imgScale == 100)
                     {
@@ -2625,20 +2973,29 @@ void drawSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 			}
 		}
 		
+		
+		
+						
 		if(Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum] != NULL)
 		{
 			drawXsub = drawX-(Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum]->w - imgActBody[imgNum][pos].w)/2;
 			drawYsub = drawY-(Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum]->h - imgActBody[imgNum][pos].h)/2;
-			drawImage(Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum], drawXsub, drawYsub, imgX, imgY, Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum]->w, Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum]->h, TL);
+            drawImage(Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum], drawXsub, drawYsub, imgX, imgY, Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum]->w, Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum]->h, TL);
+//			drawSpritcharacter(Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum], drawXsub, drawYsub, imgX, imgY, Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum]->w, Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum]->h, TL, fGameScaleOri);
 		}
 		
+		
+				
 		
 		if(pos == ACT_FRONT)
 		{
+//            drawSpritcharacter(&imgActBody[imgNum][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL, fGameScaleOri);
             drawImage(&imgActBody[imgNum][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL);
 		}
+        
 		else if(pos == ACT_BACK)
 		{
+//            drawSpritcharacter(&imgActBody[imgNum][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL, fGameScaleOri);
             drawImage(&imgActBody[imgNum][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL);
 		}
 				
@@ -2646,11 +3003,12 @@ void drawSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 		{
 			if(Xsprit->img[layerI][imgNum] != NULL)
 			{
-				 drawXsub = drawX-(Xsprit->img[layerI][imgNum]->w - imgActBody[imgNum][pos].w)/2;
-				 drawYsub = drawY-(Xsprit->img[layerI][imgNum]->h - imgActBody[imgNum][pos].h)/2;
+                drawXsub = drawX-(Xsprit->img[layerI][imgNum]->w - imgActBody[imgNum][pos].w)/2;
+                drawYsub = drawY-(Xsprit->img[layerI][imgNum]->h - imgActBody[imgNum][pos].h)/2;
 				
-				drawImage(Xsprit->img[layerI][imgNum], drawXsub, drawYsub, imgX, imgY, Xsprit->img[layerI][imgNum]->w, Xsprit->img[layerI][imgNum]->h, TL);
-			}
+//				drawSpritcharacter(Xsprit->img[layerI][imgNum], drawXsub, drawYsub, imgX, imgY, Xsprit->img[layerI][imgNum]->w, Xsprit->img[layerI][imgNum]->h, TL, fGameScaleOri);
+                drawImage(Xsprit->img[layerI][imgNum], drawXsub, drawYsub, imgX, imgY, Xsprit->img[layerI][imgNum]->w, Xsprit->img[layerI][imgNum]->h, TL);
+            }
 			//특정레이어뒤에 한번만 그려주자
 			if(layerI == FACELAYER)
 			{
@@ -2702,14 +3060,16 @@ void drawSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
                                 }
                             }
                             break;
-					}
+                    }
 				}
 			}
 		}
 		xGame.isRotate = FALSE;
 		xGame.isReSizeDraw = FALSE;
-		
-	}	
+	}
+    xGame.isReSizeDraw = FALSE;
+
+    xGame.fgameScale = fGameScaleOri;
 }
 
 void reverseSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
@@ -2719,7 +3079,10 @@ void reverseSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 	int drawXsub;
 	int drawYsub;
 	int reverX;
-	
+//    float fGameScaleOri = xGame.fgameScale/2.0f;
+    float fGameScaleOri = xGame.fgameScale;
+    xGame.fgameScale = xGame.fgameScale;
+    
 	if(Xsprit->nowFrame >= Xsprit->totalFrame || Xsprit->nowFrame < 0)
 	{
 		return;
@@ -2749,7 +3112,7 @@ void reverseSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 				if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[8].imgRot != 0)
 				{
 					xGame.isRotate = TRUE;
-					xGame.rotateNum = 360-Xsprit->xFrame[Xsprit->nowFrame].xLayer[8].imgRot;
+					xGame.rotateNum = 360-Xsprit->xFrame[Xsprit->nowFrame].xLayer[13].imgRot;
 					xGame.rotateNum = -xGame.rotateNum;
 					
 				}
@@ -2759,8 +3122,8 @@ void reverseSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 		}
 		xGame.isReverse = FALSE;
 	}
-	xGame.isReSizeDraw = FALSE;
-	
+	xGame.isReSizeDraw = TRUE;
+    
 	//그리기
 	for(i=0;i<Xsprit->xFrame[Xsprit->nowFrame].totalLayer;i++)
 	{
@@ -2770,10 +3133,8 @@ void reverseSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 		imgH = Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].imgH;
 		
 		reverX = (Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].drawX+imgW/2)*2;
-		
 		drawX = x+Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].drawX-(reverX);
 		drawY = y+Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].drawY;
-		
 		imgNum = Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].imgNum;
 				
 		if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].imgRot != 0)
@@ -2802,7 +3163,7 @@ void reverseSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
                         drawY+=Xsprit->hairResizeY;
                     }
                     break;
-            }
+			}
 		}
 		else
 		{
@@ -2811,7 +3172,7 @@ void reverseSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 			//13두상(우측)
 			//14두상(좌측)
 			switch(imgNum)
-            {
+			{
                 case 6:
                     if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[i].imgScale == 100)
                     {
@@ -2820,7 +3181,7 @@ void reverseSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
                         drawY+=Xsprit->hairResizeY;
                     }
                     break;
-            }
+			}
 		}
 		
 		xGame.isReverse = TRUE;
@@ -2829,21 +3190,20 @@ void reverseSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 		{
 			drawXsub = drawX-(Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum]->w - imgActBody[imgNum][pos].w)/2;
 			drawYsub = drawY-(Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum]->h - imgActBody[imgNum][pos].h)/2;
-			drawImage(Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum], drawXsub, drawYsub, imgX, imgY, Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum]->w, Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum]->h, TL);
+//			drawSpritcharacter(Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum], drawXsub, drawYsub, imgX, imgY, Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum]->w, Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum]->h, TL,fGameScaleOri);
+            drawImage(Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum], drawXsub, drawYsub, imgX, imgY, Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum]->w, Xsprit->img[SPRIT_IMGLAYER_BACKLAYER][imgNum]->h, TL);
 		}
 		
 		if(pos == ACT_FRONT)
 		{
+//			drawSpritcharacter(&imgActBody[imgNum][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL, fGameScaleOri);
             drawImage(&imgActBody[imgNum][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL);
 		}
 		else if(pos == ACT_BACK)
 		{
+//            drawSpritcharacter(&imgActBody[imgNum][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL, fGameScaleOri);
             drawImage(&imgActBody[imgNum][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL);
 		}
-
-		
-		
-		
 		
 		for(int layerI=0;layerI<SPRIT_IMGLAYERMAX;layerI++)
 		{
@@ -2851,11 +3211,9 @@ void reverseSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 			{
 				drawXsub = drawX - (Xsprit->img[layerI][imgNum]->w - imgActBody[imgNum][pos].w)/2;
 				drawYsub = drawY - (Xsprit->img[layerI][imgNum]->h - imgActBody[imgNum][pos].h)/2;
-				drawImage(Xsprit->img[layerI][imgNum], drawXsub, drawYsub, imgX, imgY, Xsprit->img[layerI][imgNum]->w, Xsprit->img[layerI][imgNum]->h, TL);
-			}
-			
-			
-			
+//				drawSpritcharacter(Xsprit->img[layerI][imgNum], drawXsub, drawYsub, imgX, imgY, Xsprit->img[layerI][imgNum]->w, Xsprit->img[layerI][imgNum]->h, TL, fGameScaleOri);
+                drawImage(&imgActBody[imgNum][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL);
+            }
 			//특정레이어뒤에 한번만 그려주자
 			if(layerI == FACELAYER)
 			{
@@ -2890,8 +3248,8 @@ void reverseSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
 					//12두상(정면)
 					//13두상(우측)
 					//14두상(좌측)
-                    switch(imgNum)
-                    {
+					switch(imgNum)
+					{
                         case 6:
                             if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[imgNum].imgScale == 100)
                             {
@@ -2907,17 +3265,1063 @@ void reverseSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
                                 }
                             }
                             break;
-                    }
+					}
 				}
 			}
 		}
-		
+        
 		xGame.isReverse = FALSE;
 		xGame.isRotate = FALSE;
 		xGame.isReSizeDraw = FALSE;
 		
 	}
+    xGame.isReSizeDraw = FALSE;
+    xGame.fgameScale = fGameScaleOri;
 }
+
+
+void delSprit_FP(XSPRIT *xSprit)
+{
+	//초기화
+	for(int layerI=0;layerI<40;layerI++)
+	{
+		for(int f=0;f<2;f++)
+		{
+			xSprit->imgLayer[layerI][f] = NULL;
+		}
+	}
+}
+
+void drawSprit_FP(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
+{
+	int i;
+	int imgX,imgY,imgW,imgH,drawX,drawY,imgNum;
+	int drawXsub;
+	int drawYsub;
+	int type;
+	int listNum;
+	int layer = 0;
+	float fGameScaleOri = xGame.fgameScale;
+	xGame.fgameScale = xGame.fgameScale;
+	
+	if(Xsprit->nowFrame >= Xsprit->totalFrame || Xsprit->nowFrame < 0)
+	{
+		return;
+	}
+	
+	Xsprit->hairResize = 100;
+	xGame.isReSizeDraw = TRUE;
+	xGame.reSize = Xsprit->hairResize;
+	
+	if(pos == ACT_FRONT)
+	{
+		for(i=36;i>=0;i--)
+		{
+			if(Xsprit->imgLayer[i][pos] == NULL)
+				continue;
+			
+			switch(i)
+			{
+				case 30:
+				case 28:
+					layer = 0;
+					break;
+				case 27:
+				case 29:
+					layer = 1;
+					break;
+				case 18:
+				case 22:
+				case 26:
+					layer = 2;
+					break;
+				case 21:
+				case 25:
+					layer = 3;
+					break;
+				case 17:
+				case 20:
+				case 24:
+					layer = 4;
+					break;
+				case 19:
+				case 23:
+					layer = 5;
+					break;
+				case 14:
+				case 16:
+				case 33:
+				case 34:
+					layer = 6;
+					break;
+				case 10:
+				case 13:
+				case 15:
+				case 35:
+				case 36:
+					layer = 7;
+					break;
+				case 0:
+				case 1:
+				case 2:
+				case 3:
+				case 4:
+				case 11:
+				case 12:
+				case 31:
+				case 32:
+					layer = 8;
+					break;
+				case 6:
+				case 8:
+					layer = 9;
+					break;
+				case 5:
+				case 7:
+				case 9:
+					layer = 10;
+					break;
+			}
+			imgX = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgX;
+			imgY = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgY;
+			imgW = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgW;
+			imgH = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgH;
+			drawX = x+Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].drawX;
+			drawY = y+Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].drawY;
+			imgNum = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgNum;
+			drawXsub = drawX-(Xsprit->imgLayer[i][pos]->w - imgActBody[imgNum][pos].w)/2;
+			drawYsub = drawY-(Xsprit->imgLayer[i][pos]->h - imgActBody[imgNum][pos].h)/2;
+			
+			
+			if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgRot != 0)
+			{
+				xGame.isRotate = TRUE;
+				xGame.rotateNum = 360-Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgRot;
+			}
+			xGame.isReSizeDraw = TRUE;
+			xGame.reSize = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgScale;
+			
+			
+			switch(i)
+			{
+				case 30:
+				case 29:
+				case 26:
+				case 25:
+				case 24:
+				case 23:
+				case 16:
+				case 15:
+				case 12:
+				case 8:
+				case 7:
+					//마네킹
+					drawImage(Xsprit->imgLayer[i][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL);
+					break;
+				default:
+					//의상, 헤어, 표정
+					drawImage(Xsprit->imgLayer[i][pos], drawXsub, drawYsub, imgX, imgY, Xsprit->imgLayer[i][pos]->w, Xsprit->imgLayer[i][pos]->h, TL);
+					break;
+			}
+			
+			xGame.isRotate = FALSE;
+			xGame.isReSizeDraw = FALSE;
+		}
+	}
+	else
+	{
+		for(i=32;i>=0;i--)
+		{
+			if(Xsprit->imgLayer[i][pos] == NULL)
+				continue;
+			
+			switch(i)
+			{
+				case 30:
+				case 32:
+					layer = 0;
+					break;
+				case 29:
+				case 31:
+					layer = 1;
+					break;
+				case 23:
+				case 27:
+					layer = 2;
+					break;
+				case 20:
+				case 24:
+				case 28:
+					layer = 3;
+					break;
+				case 21:
+				case 25:
+					layer = 4;
+					break;
+				case 19:
+				case 22:
+				case 26:
+					layer = 5;
+					break;
+				case 3:
+				case 4:
+				case 5:
+				case 6:
+				case 7:
+				case 14:
+					layer = 6;
+					break;
+				case 2:
+				case 16:
+				case 18:
+					layer = 7;
+					break;
+				case 0:
+				case 1:
+				case 13:
+				case 15:
+				case 17:
+					layer = 8;
+					break;
+				case 9:
+				case 11:
+					layer = 9;
+					break;
+				case 8:
+				case 10:
+				case 12:
+					layer = 10;
+					break;
+			}
+			imgX = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgX;
+			imgY = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgY;
+			imgW = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgW;
+			imgH = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgH;
+			drawX = x+Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].drawX;
+			drawY = y+Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].drawY;
+			imgNum = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgNum;
+			
+			drawXsub = drawX-(Xsprit->imgLayer[i][pos]->w - imgActBody[imgNum][pos].w)/2;
+			drawYsub = drawY-(Xsprit->imgLayer[i][pos]->h - imgActBody[imgNum][pos].h)/2;
+			
+			
+			if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgRot != 0)
+			{
+				xGame.isRotate = TRUE;
+				xGame.rotateNum = 360-Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgRot;
+			}
+			xGame.isReSizeDraw = TRUE;
+			xGame.reSize = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgScale;
+			
+			
+			switch(i)
+			{
+				case 32:
+				case 31:
+				case 27:
+				case 28:
+				case 25:
+				case 26:
+				case 14:
+				case 18:
+				case 17:
+				case 11:
+				case 10:
+					//마네킹
+					drawImage(Xsprit->imgLayer[i][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL);
+					break;
+				default:
+					//의상, 헤어, 표정
+					drawImage(Xsprit->imgLayer[i][pos], drawXsub, drawYsub, imgX, imgY, Xsprit->imgLayer[i][pos]->w, Xsprit->imgLayer[i][pos]->h, TL);
+					break;
+			}
+			
+			xGame.isRotate = FALSE;
+			xGame.isReSizeDraw = FALSE;
+		}
+	}xGame.isReSizeDraw = FALSE;
+	
+	xGame.fgameScale = fGameScaleOri;
+	
+	//의상 레이어 초기화
+	delSprit_FP(Xsprit);
+}
+
+void reverseSprit_FP(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
+{
+	int i;
+	int imgX,imgY,imgW,imgH,drawX,drawY,imgNum,reverseX;
+	int drawXsub;
+	int drawYsub;
+	int type;
+	int listNum;
+	int layer = 0;
+	float fGameScaleOri = xGame.fgameScale;
+	xGame.fgameScale = xGame.fgameScale;
+	
+	if(Xsprit->nowFrame >= Xsprit->totalFrame || Xsprit->nowFrame < 0)
+	{
+		return;
+	}
+	
+	Xsprit->hairResize = 100;
+	xGame.isReSizeDraw = TRUE;
+	xGame.reSize = Xsprit->hairResize;
+	
+	if(pos == ACT_FRONT)
+	{
+		for(i=36;i>=0;i--)
+		{
+			if(Xsprit->imgLayer[i][pos] == NULL)
+				continue;
+			
+			switch(i)
+			{
+				case 30:
+				case 28:
+					layer = 0;
+					break;
+				case 27:
+				case 29:
+					layer = 1;
+					break;
+				case 18:
+				case 22:
+				case 26:
+					layer = 2;
+					break;
+				case 21:
+				case 25:
+					layer = 3;
+					break;
+				case 17:
+				case 20:
+				case 24:
+					layer = 4;
+					break;
+				case 19:
+				case 23:
+					layer = 5;
+					break;
+				case 14:
+				case 16:
+				case 33:
+				case 34:
+					layer = 6;
+					break;
+				case 10:
+				case 13:
+				case 15:
+				case 35:
+				case 36:
+					layer = 7;
+					break;
+				case 0:
+				case 1:
+				case 2:
+				case 3:
+				case 4:
+				case 11:
+				case 12:
+				case 31:
+				case 32:
+					layer = 8;
+					break;
+				case 6:
+				case 8:
+					layer = 9;
+					break;
+				case 5:
+				case 7:
+				case 9:
+					layer = 10;
+					break;
+			}
+			imgX = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgX;
+			imgY = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgY;
+			imgW = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgW;
+			imgH = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgH;
+			reverseX = (Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].drawX+imgW/2)*2;
+			drawX = x+Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].drawX-(reverseX);
+			drawY = y+Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].drawY;
+			imgNum = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgNum;
+			
+			drawXsub = drawX-(Xsprit->imgLayer[i][pos]->w - imgActBody[imgNum][pos].w)/2;
+			drawYsub = drawY-(Xsprit->imgLayer[i][pos]->h - imgActBody[imgNum][pos].h)/2;
+			
+			
+			if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgRot != 0)
+			{
+				xGame.isRotate = TRUE;
+				xGame.rotateNum = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgRot;
+			}
+			xGame.isReSizeDraw = TRUE;
+			xGame.reSize = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgScale;
+			
+			xGame.isReverse = TRUE;
+			switch(i)
+			{
+				case 30:
+				case 29:
+				case 26:
+				case 25:
+				case 24:
+				case 23:
+				case 16:
+				case 15:
+				case 12:
+				case 8:
+				case 7:
+					//마네킹
+					drawImage(Xsprit->imgLayer[i][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL);
+					break;
+				default:
+					//의상, 헤어, 표정
+					drawImage(Xsprit->imgLayer[i][pos], drawXsub, drawYsub, imgX, imgY, Xsprit->imgLayer[i][pos]->w, Xsprit->imgLayer[i][pos]->h, TL);
+					break;
+			}
+			xGame.isReverse = FALSE;
+			xGame.isRotate = FALSE;
+			xGame.isReSizeDraw = FALSE;
+		}
+	}
+	else
+	{
+		for(i=32;i>=0;i--)
+		{
+			if(Xsprit->imgLayer[i][pos] == NULL)
+				continue;
+			
+			switch(i)
+			{
+				case 30:
+				case 32:
+					layer = 0;
+					break;
+				case 29:
+				case 31:
+					layer = 1;
+					break;
+				case 23:
+				case 27:
+					layer = 2;
+					break;
+				case 20:
+				case 24:
+				case 28:
+					layer = 3;
+					break;
+				case 21:
+				case 25:
+					layer = 4;
+					break;
+				case 19:
+				case 22:
+				case 26:
+					layer = 5;
+					break;
+				case 3:
+				case 4:
+				case 5:
+				case 6:
+				case 7:
+				case 14:
+					layer = 6;
+					break;
+				case 2:
+				case 16:
+				case 18:
+					layer = 7;
+					break;
+				case 0:
+				case 1:
+				case 13:
+				case 15:
+				case 17:
+					layer = 8;
+					break;
+				case 9:
+				case 11:
+					layer = 9;
+					break;
+				case 8:
+				case 10:
+				case 12:
+					layer = 10;
+					break;
+			}
+			imgX = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgX;
+			imgY = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgY;
+			imgW = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgW;
+			imgH = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgH;
+			reverseX = (Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].drawX+imgW/2)*2;
+			drawX = x+Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].drawX-(reverseX);
+			drawY = y+Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].drawY;
+			imgNum = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgNum;
+			
+			drawXsub = drawX-(Xsprit->imgLayer[i][pos]->w - imgActBody[imgNum][pos].w)/2;
+			drawYsub = drawY-(Xsprit->imgLayer[i][pos]->h - imgActBody[imgNum][pos].h)/2;
+			
+			
+			if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgRot != 0)
+			{
+				xGame.isRotate = TRUE;
+				xGame.rotateNum = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgRot;
+			}
+			xGame.isReSizeDraw = TRUE;
+			xGame.reSize = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgScale;
+			
+			xGame.isReverse = TRUE;
+			switch(i)
+			{
+				case 32:
+				case 31:
+				case 27:
+				case 28:
+				case 25:
+				case 26:
+				case 14:
+				case 18:
+				case 17:
+				case 11:
+				case 10:
+					//마네킹
+					drawImage(Xsprit->imgLayer[i][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL);
+					break;
+				default:
+					//의상, 헤어, 표정
+					drawImage(Xsprit->imgLayer[i][pos], drawXsub, drawYsub, imgX, imgY, Xsprit->imgLayer[i][pos]->w, Xsprit->imgLayer[i][pos]->h, TL);
+					break;
+			}
+			
+			xGame.isRotate = FALSE;
+			xGame.isReSizeDraw = FALSE;
+			xGame.isReverse = FALSE;
+		}
+	}xGame.isReSizeDraw = FALSE;
+	
+	xGame.fgameScale = fGameScaleOri;
+	
+	//의상 레이어 초기화
+	delSprit_FP(Xsprit);
+}
+
+void drawSpritBig_FP(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
+{
+	int i;
+	int imgX,imgY,imgW,imgH,drawX,drawY,imgNum;
+	int drawXsub;
+	int drawYsub;
+	int type;
+	int listNum;
+	int layer = 0;
+	float fGameScaleOri = xGame.fgameScale;
+	xGame.fgameScale = xGame.fgameScale;
+	
+	if(Xsprit->nowFrame >= Xsprit->totalFrame || Xsprit->nowFrame < 0)
+	{
+		return;
+	}
+	
+	Xsprit->hairResize = 100;
+	xGame.isReSizeDraw = TRUE;
+	xGame.reSize = Xsprit->hairResize;
+	
+	if(pos == ACT_FRONT)
+	{
+		for(i=36;i>=0;i--)
+		{
+			if(Xsprit->imgLayer[i][pos] == NULL)
+				continue;
+			
+			switch(i)
+			{
+				case 30:
+				case 28:
+					layer = 0;
+					break;
+				case 27:
+				case 29:
+					layer = 1;
+					break;
+				case 18:
+				case 22:
+				case 26:
+					layer = 2;
+					break;
+				case 21:
+				case 25:
+					layer = 3;
+					break;
+				case 17:
+				case 20:
+				case 24:
+					layer = 4;
+					break;
+				case 19:
+				case 23:
+					layer = 5;
+					break;
+				case 14:
+				case 16:
+				case 33:
+				case 34:
+					layer = 6;
+					break;
+				case 10:
+				case 13:
+				case 15:
+				case 35:
+				case 36:
+					layer = 7;
+					break;
+				case 0:
+				case 1:
+				case 2:
+				case 3:
+				case 4:
+				case 11:
+				case 12:
+				case 31:
+				case 32:
+					layer = 8;
+					break;
+				case 6:
+				case 8:
+					layer = 9;
+					break;
+				case 5:
+				case 7:
+				case 9:
+					layer = 10;
+					break;
+			}
+			imgX = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgX;
+			imgY = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgY;
+			imgW = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgW;
+			imgH = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgH;
+			drawX = x+Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].drawX;
+			drawY = y+Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].drawY;
+			imgNum = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgNum;
+			drawXsub = drawX-(Xsprit->imgLayer[i][pos]->w - imgActBodySub[imgNum][pos].w)/2;
+			drawYsub = drawY-(Xsprit->imgLayer[i][pos]->h - imgActBodySub[imgNum][pos].h)/2;
+			
+			
+			if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgRot != 0)
+			{
+				xGame.isRotate = TRUE;
+				xGame.rotateNum = 360-Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgRot;
+			}
+			xGame.isReSizeDraw = TRUE;
+			xGame.reSize = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgScale;
+			
+			
+			switch(i)
+			{
+				case 30:
+				case 29:
+				case 26:
+				case 25:
+				case 24:
+				case 23:
+				case 16:
+				case 15:
+				case 12:
+				case 8:
+				case 7:
+					//마네킹
+					drawImage(Xsprit->imgLayer[i][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL);
+					break;
+				default:
+					//의상, 헤어, 표정
+					drawImage(Xsprit->imgLayer[i][pos], drawXsub, drawYsub, imgX, imgY, Xsprit->imgLayer[i][pos]->w, Xsprit->imgLayer[i][pos]->h, TL);
+					break;
+			}
+			
+			xGame.isRotate = FALSE;
+			xGame.isReSizeDraw = FALSE;
+		}
+	}
+	else
+	{
+		for(i=32;i>=0;i--)
+		{
+			if(Xsprit->imgLayer[i][pos] == NULL)
+				continue;
+			
+			switch(i)
+			{
+				case 30:
+				case 32:
+					layer = 0;
+					break;
+				case 29:
+				case 31:
+					layer = 1;
+					break;
+				case 23:
+				case 27:
+					layer = 2;
+					break;
+				case 20:
+				case 24:
+				case 28:
+					layer = 3;
+					break;
+				case 21:
+				case 25:
+					layer = 4;
+					break;
+				case 19:
+				case 22:
+				case 26:
+					layer = 5;
+					break;
+				case 3:
+				case 4:
+				case 5:
+				case 6:
+				case 7:
+				case 14:
+					layer = 6;
+					break;
+				case 2:
+				case 16:
+				case 18:
+					layer = 7;
+					break;
+				case 0:
+				case 1:
+				case 13:
+				case 15:
+				case 17:
+					layer = 8;
+					break;
+				case 9:
+				case 11:
+					layer = 9;
+					break;
+				case 8:
+				case 10:
+				case 12:
+					layer = 10;
+					break;
+			}
+			imgX = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgX;
+			imgY = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgY;
+			imgW = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgW;
+			imgH = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgH;
+			drawX = x+Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].drawX;
+			drawY = y+Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].drawY;
+			imgNum = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgNum;
+			
+			drawXsub = drawX-(Xsprit->imgLayer[i][pos]->w - imgActBodySub[imgNum][pos].w)/2;
+			drawYsub = drawY-(Xsprit->imgLayer[i][pos]->h - imgActBodySub[imgNum][pos].h)/2;
+			
+			
+			if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgRot != 0)
+			{
+				xGame.isRotate = TRUE;
+				xGame.rotateNum = 360-Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgRot;
+			}
+			xGame.isReSizeDraw = TRUE;
+			xGame.reSize = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgScale;
+			
+			
+			switch(i)
+			{
+				case 32:
+				case 31:
+				case 27:
+				case 28:
+				case 25:
+				case 26:
+				case 14:
+				case 18:
+				case 17:
+				case 11:
+				case 10:
+					//마네킹
+					drawImage(Xsprit->imgLayer[i][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL);
+					break;
+				default:
+					//의상, 헤어, 표정
+					drawImage(Xsprit->imgLayer[i][pos], drawXsub, drawYsub, imgX, imgY, Xsprit->imgLayer[i][pos]->w, Xsprit->imgLayer[i][pos]->h, TL);
+					break;
+			}
+			
+			xGame.isRotate = FALSE;
+			xGame.isReSizeDraw = FALSE;
+		}
+	}xGame.isReSizeDraw = FALSE;
+	
+	xGame.fgameScale = fGameScaleOri;
+	
+	//의상 레이어 초기화
+	delSprit_FP(Xsprit);
+}
+
+void reverseSpritBig_FP(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace)
+{
+	int i;
+	int imgX,imgY,imgW,imgH,drawX,drawY,imgNum,reverseX;
+	int drawXsub;
+	int drawYsub;
+	int type;
+	int listNum;
+	int layer = 0;
+	float fGameScaleOri = xGame.fgameScale;
+	xGame.fgameScale = xGame.fgameScale;
+	
+	if(Xsprit->nowFrame >= Xsprit->totalFrame || Xsprit->nowFrame < 0)
+	{
+		return;
+	}
+	
+	Xsprit->hairResize = 100;
+	xGame.isReSizeDraw = TRUE;
+	xGame.reSize = Xsprit->hairResize;
+	
+	if(pos == ACT_FRONT)
+	{
+		for(i=36;i>=0;i--)
+		{
+			if(Xsprit->imgLayer[i][pos] == NULL)
+				continue;
+			
+			switch(i)
+			{
+				case 30:
+				case 28:
+					layer = 0;
+					break;
+				case 27:
+				case 29:
+					layer = 1;
+					break;
+				case 18:
+				case 22:
+				case 26:
+					layer = 2;
+					break;
+				case 21:
+				case 25:
+					layer = 3;
+					break;
+				case 17:
+				case 20:
+				case 24:
+					layer = 4;
+					break;
+				case 19:
+				case 23:
+					layer = 5;
+					break;
+				case 14:
+				case 16:
+				case 33:
+				case 34:
+					layer = 6;
+					break;
+				case 10:
+				case 13:
+				case 15:
+				case 35:
+				case 36:
+					layer = 7;
+					break;
+				case 0:
+				case 1:
+				case 2:
+				case 3:
+				case 4:
+				case 11:
+				case 12:
+				case 31:
+				case 32:
+					layer = 8;
+					break;
+				case 6:
+				case 8:
+					layer = 9;
+					break;
+				case 5:
+				case 7:
+				case 9:
+					layer = 10;
+					break;
+			}
+			imgX = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgX;
+			imgY = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgY;
+			imgW = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgW;
+			imgH = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgH;
+			reverseX = (Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].drawX+imgW/2)*2;
+			drawX = x+Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].drawX-(reverseX);
+			drawY = y+Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].drawY;
+			imgNum = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgNum;
+			
+			drawXsub = drawX-(Xsprit->imgLayer[i][pos]->w - imgActBodySub[imgNum][pos].w)/2;
+			drawYsub = drawY-(Xsprit->imgLayer[i][pos]->h - imgActBodySub[imgNum][pos].h)/2;
+			
+			
+			if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgRot != 0)
+			{
+				xGame.isRotate = TRUE;
+				xGame.rotateNum = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgRot;
+			}
+			xGame.isReSizeDraw = TRUE;
+			xGame.reSize = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgScale;
+			
+			xGame.isReverse = TRUE;
+			switch(i)
+			{
+				case 30:
+				case 29:
+				case 26:
+				case 25:
+				case 24:
+				case 23:
+				case 16:
+				case 15:
+				case 12:
+				case 8:
+				case 7:
+					//마네킹
+					drawImage(Xsprit->imgLayer[i][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL);
+					break;
+				default:
+					//의상, 헤어, 표정
+					drawImage(Xsprit->imgLayer[i][pos], drawXsub, drawYsub, imgX, imgY, Xsprit->imgLayer[i][pos]->w, Xsprit->imgLayer[i][pos]->h, TL);
+					break;
+			}
+			xGame.isReverse = FALSE;
+			xGame.isRotate = FALSE;
+			xGame.isReSizeDraw = FALSE;
+		}
+	}
+	else
+	{
+		for(i=32;i>=0;i--)
+		{
+			if(Xsprit->imgLayer[i][pos] == NULL)
+				continue;
+			
+			switch(i)
+			{
+				case 30:
+				case 32:
+					layer = 0;
+					break;
+				case 29:
+				case 31:
+					layer = 1;
+					break;
+				case 23:
+				case 27:
+					layer = 2;
+					break;
+				case 20:
+				case 24:
+				case 28:
+					layer = 3;
+					break;
+				case 21:
+				case 25:
+					layer = 4;
+					break;
+				case 19:
+				case 22:
+				case 26:
+					layer = 5;
+					break;
+				case 3:
+				case 4:
+				case 5:
+				case 6:
+				case 7:
+				case 14:
+					layer = 6;
+					break;
+				case 2:
+				case 16:
+				case 18:
+					layer = 7;
+					break;
+				case 0:
+				case 1:
+				case 13:
+				case 15:
+				case 17:
+					layer = 8;
+					break;
+				case 9:
+				case 11:
+					layer = 9;
+					break;
+				case 8:
+				case 10:
+				case 12:
+					layer = 10;
+					break;
+			}
+			imgX = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgX;
+			imgY = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgY;
+			imgW = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgW;
+			imgH = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgH;
+			reverseX = (Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].drawX+imgW/2)*2;
+			drawX = x+Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].drawX-(reverseX);
+			drawY = y+Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].drawY;
+			imgNum = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgNum;
+			
+			drawXsub = drawX-(Xsprit->imgLayer[i][pos]->w - imgActBodySub[imgNum][pos].w)/2;
+			drawYsub = drawY-(Xsprit->imgLayer[i][pos]->h - imgActBodySub[imgNum][pos].h)/2;
+			
+			
+			if(Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgRot != 0)
+			{
+				xGame.isRotate = TRUE;
+				xGame.rotateNum = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgRot;
+			}
+			xGame.isReSizeDraw = TRUE;
+			xGame.reSize = Xsprit->xFrame[Xsprit->nowFrame].xLayer[layer].imgScale;
+			
+			xGame.isReverse = TRUE;
+			switch(i)
+			{
+				case 32:
+				case 31:
+				case 27:
+				case 28:
+				case 25:
+				case 26:
+				case 14:
+				case 18:
+				case 17:
+				case 11:
+				case 10:
+					//마네킹
+					drawImage(Xsprit->imgLayer[i][pos], drawX, drawY, imgX, imgY, imgW, imgH, TL);
+					break;
+				default:
+					//의상, 헤어, 표정
+					drawImage(Xsprit->imgLayer[i][pos], drawXsub, drawYsub, imgX, imgY, Xsprit->imgLayer[i][pos]->w, Xsprit->imgLayer[i][pos]->h, TL);
+					break;
+			}
+			
+			xGame.isRotate = FALSE;
+			xGame.isReSizeDraw = FALSE;
+			xGame.isReverse = FALSE;
+		}
+	}xGame.isReSizeDraw = FALSE;
+	
+	xGame.fgameScale = fGameScaleOri;
+	
+	//의상 레이어 초기화
+	delSprit_FP(Xsprit);
+}
+
+
+
 
 XSPRITFRAME xFrame[50];
 //Byte -> int 변환
@@ -2926,10 +4330,10 @@ int getByteToIntPar(unsigned char data[], int idx)
 {
 	int result = 0;
 	
-	result = 
+	result =
 	((data[idx] & 0xFF)		<< 24) |
 	((data[idx+1] & 0xFF)	<< 16) |
-	((data[idx+2] & 0xFF)	<<  8) | 
+	((data[idx+2] & 0xFF)	<<  8) |
 	( data[idx+3] & 0xFF);
 	
 	return result;
@@ -2937,30 +4341,30 @@ int getByteToIntPar(unsigned char data[], int idx)
 
 int getExcelTypeNum(const char* strFileName)
 {
-		
+	
 	if(strcmp(strFileName, EXCEL_PS_INTERIOR_DATA_FILE) == 0)
-	return EXCEL_PS_INTERIOR_DATA;
+		return EXCEL_PS_INTERIOR_DATA;
 	
 	if(strcmp(strFileName, EXCEL_PS_INTERIOR_LIST_FILE) == 0)
-	return EXCEL_PS_INTERIOR_LIST;
+		return EXCEL_PS_INTERIOR_LIST;
 	
 	if(strcmp(strFileName, EXCEL_PS_THEME_FILE) == 0)
-	return EXCEL_PS_THEME;
-
+		return EXCEL_PS_THEME;
+	
 	if(strcmp(strFileName, EXCEL_PS_DRESS_DATA_FILE) == 0)
-	return EXCEL_PS_DRESS_DATA;
+		return EXCEL_PS_DRESS_DATA;
 	
 	if(strcmp(strFileName, EXCEL_PS_DRESS_LIST_FILE) == 0)
-	return EXCEL_PS_DRESS_LIST;
+		return EXCEL_PS_DRESS_LIST;
 	
 	if(strcmp(strFileName, EXCEL_PS_STAFF_DATA_FILE) == 0)
-	return EXCEL_PS_STAFF_DATA;
-
-
+		return EXCEL_PS_STAFF_DATA;
+	
+	
 	if(strcmp(strFileName, EXCEL_PS_STAFF_LIST_FILE) == 0)
-	return EXCEL_PS_STAFF_LIST;
-
-
+		return EXCEL_PS_STAFF_LIST;
+	
+	
 	if(strcmp(strFileName, EXCEL_PS_LVTABLE_FILE) == 0)
 	return EXCEL_PS_LVTABLE;
 		
@@ -3106,6 +4510,27 @@ int getExcelTypeNum(const char* strFileName)
     
     if(strcmp(strFileName, EXCEL_PS_R_UPGRADE_FILE)==0)
         return EXCEL_PS_R_UPGRADE;
+    
+    if(strcmp(strFileName, EXCEL_PS_PDRESS_DATA_FILE)==0)
+        return EXCEL_PS_PDRESS_DATA;
+    
+    if(strcmp(strFileName, EXCEL_PS_PDRESS_LIST_FILE)==0)
+        return EXCEL_PS_PDRESS_LIST;
+    
+    if(strcmp(strFileName, EXCEL_PS_CLOTHES_DATA_FILE)==0)
+        return EXCEL_PS_CLOTHES_DATA;
+	
+	if(strcmp(strFileName, EXCEL_PS_HAIRMAKEUP_DATA_FILE)==0)
+		return EXCEL_PS_HAIRMAKEUP_DATA;
+	
+	if(strcmp(strFileName, EXCEL_PS_LAYERTYPE_DATA_FILE)==0)
+		return EXCEL_PS_LAYERTYPE_DATA;
+	
+    if (strcmp(strFileName, EXCEL_PS_MATERIAL_DATA_FILE)==0)
+        return EXCEL_PS_MATERIAL_DATA;
+    
+    if(strcmp(strFileName, EXCEL_PS_VARIABLE_FILE)==0)
+        return EXCEL_PS_VARIABLE;
     
 	printf("여기까지들어온거면 완전에러!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!>>%s\n",strFileName);
 	

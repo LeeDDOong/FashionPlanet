@@ -362,7 +362,39 @@ typedef struct
 extern XSAVENOTICEPOPUP xSaveNoticePopup;
 
 
+/////////////////////////////////////////////
+//내 캐릭터 LJW 2018.02.12
+#define MYCHARACTER_STATE_WAIT	0
+#define MYCHARACTER_STATE_MOVE	1
 
+typedef struct{
+	int state;
+	int actingType;
+	int moveType;
+	int floorTarget;
+	int floor;
+	int x;
+	int y;
+	int actLook;
+	int speed;
+	int drawX;
+	int drawY;
+	int makeX;
+	int makeY;
+	int gender;
+	int bestX[128];
+	int bestY[128];
+	int bestTotalCnt;
+	int bestNowCnt;
+	int nowDelay;
+	int nowFrame;
+	char strName[64];
+	XFACE xFace;
+	XFITTINGLAYER xF;
+	M_Boolean isActEnd;
+}XMYCHARACTER;
+extern XMYCHARACTER xMyCharacter;
+/////////////////////////////////////////////
 
 typedef struct
 {
@@ -374,6 +406,7 @@ typedef struct
 	SECURITY lv;
 	SECURITY tired;
     SECURITY mileage;
+    SECURITY carrot;
     
 		
 	M_Int64 tiredTime;
@@ -518,7 +551,13 @@ extern XSAVETEMP xSaveTemp;
 
 #define WORLDMAP_STATE_CANDYFORMER                  59//캔디 제작기
 #define WORLDMAP_STATE_LULUPANG						60
-
+/////////////////////////////////////////////////////////////////
+//월드맵의 상태 KBY
+#define WORLDMAP_STATE_FITTING_FP                   61
+#define WORLDMAP_STATE_SENDMACHINE_FP				WORLDMAP_STATE_FITTING_FP+1
+#define WORLDMAP_STATE_GREENHOUSE_FP                WORLDMAP_STATE_SENDMACHINE_FP+1
+#define WORLDMAP_STATE_SPINNINGWHEEL_FP             WORLDMAP_STATE_GREENHOUSE_FP+1
+#define WORLDMAP_STATE_SHOP_FP                         WORLDMAP_STATE_SPINNINGWHEEL_FP+1
 
 
 #define NEWMODELANYCNTMAX			100
@@ -1204,6 +1243,101 @@ typedef struct
 extern XFASHOINDATA xFashionData[FASHIONDATATYPEMAX][FASHIONDATAMAX];
 
 
+typedef struct
+{
+    int lv;
+    
+    int makeTime;
+    SECURITY price;
+    
+    int materialType[3];
+    int materialCnt[3];
+    
+    char strName[64];
+    
+    
+}XFASHIONDATA_FP;
+extern XFASHIONDATA_FP xFashionData_FP[FASHIONDATATYPEMAX][FASHIONDATAMAX];
+
+typedef struct
+{
+    M_Int32 code;
+    M_Int32 num;
+    M_Boolean isInfoOpen;
+    M_Boolean isSelectV;
+    
+    M_Boolean isModelUse;
+    
+    M_Boolean isNew;
+    M_Boolean isHot;
+    M_Boolean isEvent;
+    M_Boolean isSale;
+    
+} XCATALOGSLOT_FP;
+
+typedef struct
+{
+    int state;
+    int selectTabB;
+    int selectTabS;
+    int selectSlot;
+    
+    
+    M_Int32 totalNumB;
+    M_Int32 totalNumS;
+    
+    
+    ////////////////////////////////사용///////////////
+    M_Int32 totalSlotS;
+    XCATALOGSLOT_FP xSlotS[512];
+    /////////////////////////////////데이터////////////////
+    M_Int32 totalSlot[CATALOGSLOTBMAX];
+    XCATALOGSLOT_FP xSlot[CATALOGSLOTBMAX][CATALOGSLOTSMAX];
+    
+    
+    M_Int32 totalSlotFriendOrder[CATALOGSLOTBMAX];
+    XCATALOGSLOT_FP xSlotFriendOrder[CATALOGSLOTBMAX][CATALOGSLOTSMAX];
+    
+    M_Int32 totalSlotFriendOrderTemp[CATALOGSLOTBMAX];		//정렬용
+    XCATALOGSLOT_FP xSlotFriendOrderTemp[CATALOGSLOTBMAX][CATALOGSLOTSMAX];//정렬용
+    
+    /////////////////////////////////////////////////////
+    M_Boolean isListOpen;
+    int selectTabList;	
+} XCATALOG_FP;
+extern XCATALOG_FP xCatalog_FP;
+
+typedef struct
+{
+    int code;
+    int isNew;
+    int price;
+    int priceType;
+    int lv;
+    int warmth;
+    int sale;
+    int buffType;
+    int buff;
+    int SetNum;
+    int layer;
+    int SellOnOff;
+    bool isOpen;
+    char strName[512];
+}XFASHIONLISTSLOT_FP;
+
+typedef struct
+{
+    int totalNum;//데이터 원본 전체합계
+    int parsingTotalNum;//판매중지된거 뺀 전체합계
+    int parsingSlotTotalNum[FASHIONDATATYPEMAX];//판매중지된거 빼고 타입별 총합
+    int totalSlotNum[FASHIONDATATYPEMAX];//데이터 원본 타입별 합계
+    XFASHIONLISTSLOT_FP xSlot[FASHIONDATATYPEMAX][FASHIONDATAMAX];//읽기용
+    XFASHIONLISTSLOT_FP xSlotS[FASHIONDATAMAX];//전체용
+    XFASHIONLISTSLOT_FP xSlotTemp[FASHIONDATATYPEMAX][FASHIONDATAMAX];//실 사용데이터
+}XFASHIONLIST_FP;
+extern XFASHIONLIST_FP xFashionList_FP;
+
+
 /////////////헤어데이터///////////////////
 #define HAIRDATAMAX			100
 typedef struct
@@ -1289,8 +1423,22 @@ extern XIMG imgClubScoreIcon;
 extern XIMG imgClubFitting[5];
 
 
+extern XIMG imgTest[10];
+extern XIMG imgProduction[30];
+extern XIMG imgWealthIcon[5];
+extern XIMG imgWealth;
+extern XIMG imgMenu;
+extern XIMG imgMenuIcon1;
+extern XIMG imgMenuIcon2;
 
-
+extern XIMG imgMainExpWarmth;
+extern XIMG imgBarExp;
+extern XIMG imgBarWarmth;
+extern XIMG imgBarEmpty;
+extern XIMG imgBtnYesNo;
+extern XIMG imgBtn;
+extern XIMG imgProductionBg;
+extern XIMG imgProductionTitle;
 extern XIMG imgFashionWeek[30];
 
 extern XIMG imgMasterUi[10];
@@ -1585,7 +1733,63 @@ typedef struct
 } XPRODUCTIONMENU;
 extern XPRODUCTIONMENU xProductionMenu;
 ////////////////////////////
+#define PRODUCTMENUSLOTMAX 12
+#define PRODUCTLISTMAX     24
+#define PRODUCTIONMAX      64
+typedef struct
+{
+    int state;//슬롯의 상태 -1: 잠금(자물쇠) 0: 잠금(추가), 1: 대기, 2: 제작중, 3: 제작완료
+    int itemCode;//의상번호
+    int endTime;//생산완료시간
+    bool produce;//생산중인가?
+}XPRODUCTION_FP_SLOT;
 
+typedef struct
+{
+    int key;//제작기의 고유번호
+    int code;//제작기의 인테리어번호
+    int Upgrade;//업그레이드 정
+    int totalSlot;//슬롯 수
+    int index;//슬롯 찾는 인덱스
+    XPRODUCTION_FP_SLOT xSlot[PRODUCTMENUSLOTMAX];
+}XPRODUCTIONDATA;
+
+typedef struct
+{
+    int state;
+    int selectProduct;//선택된 제작기
+    int index;//제작기의 인덱스
+    int totalData;//등록된 제작기의 수
+    int EndTimer[PRODUCTIONMAX][PRODUCTMENUSLOTMAX];//앞은 제작기번호, 뒤는 슬롯번호
+    int selectSlot;
+    bool isTouchProduct;//제작할 의상을 터치했는가
+    bool isTouchLeftBtn;//의상 리스트 왼쪽 버튼 눌렀는가?
+    bool isTouchRightBtn;//의상 리스트 오른쪽 버튼 눌렀는가?
+    bool isTouchLeftArrow;//제작 슬롯 왼쪽 화살표를 눌렀는가?
+    bool isTouchRightArrow;//제작 슬롯 오른쪽 화살표를 눌렀는가?
+    bool isTouchClr;//닫기 버튼을 눌렀는가?
+    bool isTouchOpen;//확장버튼을 눌렀는가?
+    bool isTouchPopupClr;//제작취소의 닫기버튼을 눌렀는가?
+    bool isTouchYes;
+    bool isTouchNo;
+    
+    XDRAGSCROLL xDragScrollProductionS;//의상리스트 스크롤
+    XDRAGSCROLL xDragScrollProductionB;//제작슬롯 스크롤
+    
+    XTOUCH  xTouchLeftBtn;//의상 리스트 왼쪽 버튼
+    XTOUCH  xTouchRightBtn;//의상 리스트 오른쪽 버튼
+    XTOUCH  xTouchLeftArrow;//제작 슬롯 왼쪽 버튼
+    XTOUCH  xTouchRightArrow;//제작 슬롯 오른쪽 버튼
+    XTOUCH  xTouchList[PRODUCTLISTMAX];//의상 리스트 터치영역들
+    XTOUCH  xTouchSlot[PRODUCTMENUSLOTMAX];//제작 슬롯의 터치 영역들
+    XTOUCH  xTouchOpen;//확장버튼
+    XTOUCH  xTouchFast[PRODUCTMENUSLOTMAX];//즉시 완료 버튼
+    XTOUCH  xTouchYes;//제작취소 팝업의 yes
+    XTOUCH  xTouchNo;//제작취소 팝업의 No
+    
+    XPRODUCTIONDATA xData[PRODUCTIONMAX];//제작기 데이터들
+} XPRODUCTION_FP;
+extern XPRODUCTION_FP xProduction_FP;
 
 #define PRODUCTIONMENULATESTMAX     10
 typedef struct
@@ -1836,7 +2040,7 @@ typedef struct
 	XMAILSLOTDATA xMailSlot[MAILSLOTMAX];
 	int pageNum;
 	int rowNum;
-	
+
 	
     bool bTemp;
 	int mailLastKey;
@@ -2051,13 +2255,7 @@ extern XIMG imgAccessBonusIcon[5];
 extern XIMG imgAccessBonusSlot[5];
 
 
-
 extern XIMG imgModelName[100][4];
-
-
-
-
-
 
 extern XIMG imgAliceShockBg;
 extern XIMG imgAliceShockIcon;
@@ -2065,127 +2263,19 @@ extern XIMG imgAliceShockSlot;
 extern XIMG imgAliceShockArrow;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 extern XIMG imgExternalWallIcon[20];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 extern XIMG imgModelMainGiftIcon[5];
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 extern XIMG imgStaffMakeBg;
 extern XIMG imgStaffMake[5];
 
-
-
-
 extern XIMG imgQuestIcon[80];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 extern XIMG imgFriendOrderBg;
 extern XIMG imgFriendOrderItemBg;
 extern XIMG imgFriendOrderSelectSlot;
-
-
-
 
 extern XIMG imgShopMusicIcon;
 extern XIMG imgShopPremiumIcon[CASHSHOPICONMAX];
@@ -2196,15 +2286,6 @@ extern XIMG imgShopBg;
 
 extern XIMG imgShopTabIcon;
 extern XIMG imgShopTab;
-
-
-
-
-
-
-
-
-
 
 
 extern XIMG imgNotice[10];
@@ -2237,7 +2318,9 @@ extern XIMG imgFittingBodyBlack3Sub[2];
 extern XIMG imgFittingBodyBlack[2][ACTLAYERMAX];
 
 extern M_Boolean isFreeFittingF[FASHIONDATATYPEMAX][FASHIONDATAMAX];
+extern M_Boolean isFreeFittingF_FP[FASHIONDATATYPEMAX][FASHIONDATAMAX];
 extern M_Boolean isImgFittingF[FASHIONDATATYPEMAX][FASHIONDATAMAX];
+extern M_Boolean isImgFittingF_FP[FASHIONDATATYPEMAX][FASHIONDATAMAX];
 
 extern XIMG imgFittingF0[FASHIONDATAMAX][ACTLAYERMAX][20];
 extern XIMG imgFittingInOut0[FASHIONDATAMAX][ACTLAYERMAX][20];
@@ -2257,38 +2340,24 @@ extern XIMG imgFittingInOut6[FASHIONDATAMAX][ACTLAYERMAX][20];
 extern XIMG imgFittingItem[FASHIONDATATYPEMAX][FASHIONDATAMAX];
 extern XIMG imgFittingFBackPack[FASHIONDATAMAX];
 
+extern XIMG imgFittingF_FP[FASHIONDATATYPEMAX][FASHIONDATAMAX];
+extern XIMG imgFittingItem_FP[FASHIONDATATYPEMAX][FASHIONDATAMAX];
 
 
 extern  XIMG imgFittingBg[5];
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 extern M_Boolean isImgFLayer[FASHIONDATATYPEMAX][FASHIONDATAMAX];
 extern  XIMG imgFLayer[FASHIONDATATYPEMAX][FASHIONDATAMAX][FASHIONDATALAYERMAX][2];
 extern  XIMG imgFLayerSub[FASHIONDATATYPEMAX][FASHIONDATAMAX][FASHIONDATALAYERMAX][2];
-
+////////////////////////////////////////////////////////////////////////////////////////////////
+//LJW 추가 2018.02.05
+extern M_Boolean isImgFLayerBig_FP[FASHIONDATATYPEMAX][FASHIONDATAMAX];
+extern M_Boolean isImgFLayer_FP[FASHIONDATATYPEMAX][FASHIONDATAMAX];
+extern XIMG ImgFLayerBig_FP[FASHIONDATATYPEMAX][FASHIONDATAMAX][FASHIONDATALAYERMAX][2];
+extern XIMG ImgFLayer_FP[FASHIONDATATYPEMAX][FASHIONDATAMAX][FASHIONDATALAYERMAX][2];
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 ////////////////////////////////////////////////월드맵 건물 인벤
@@ -2303,25 +2372,6 @@ extern  XIMG imgWorldMapStorage[BUILDINGMAX];//창고
 extern  XIMG imgWorldMapVinylHouse[BUILDINGMAX];//비닐하우스
 extern  XIMG imgWorldMapAntenna[BUILDINGMAX];//안테나
 ////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2377,6 +2427,23 @@ extern XTOUCH xTouchBuildIconMoveObj;
 extern XTOUCH xTouchBuildIconInven;
 extern XTOUCH xTouchBuildIconRot;
 
+///////////////////////////////////////////
+//인테리어 체크 여부 KBY
+extern bool isTouchBuildIconOk;
+extern bool isTouchBuildIconClr;
+extern bool isTouchBuildIconMove;
+extern bool isTouchBuildIconMoveObj;
+extern bool isTouchBuildIconInven;
+extern bool isTouchBuildIconRot;
+///////////////////////////////////////////
+
+///////////////////////////////////////////
+//사진 등록 터치 여부 KBY
+extern bool isTouchPhotoSelect;
+extern bool isTouchPhotoDel;
+extern bool isTouchPhotoClr;
+///////////////////////////////////////////
+
 extern XTOUCH xTouchPlayerInfoIcon;
 
 
@@ -2429,9 +2496,10 @@ extern XTOUCH xTouchFittingS[10];
 extern XTOUCH xTouchInteriorBtn[4][2];
 
 
-//extern XTOUCH xTouchWorldMapFriendIcon;
+extern XTOUCH xTouchWorldMapFriendIcon;
 extern XTOUCH xTouchWorldMapMainMenuIcon;
 
+extern XTOUCH xTouchWorldMapMoneyIcon;
 extern XTOUCH xTouchWorldMapCashIcon;
 extern XTOUCH xTouchWorldMapItemShop;
 extern XTOUCH xTouchWorldMapCandyIcon;
@@ -3581,6 +3649,39 @@ extern XEVENTQUEUE xEventQueue;
 #define NETQUEUE_TYPE_AUTOPRODUCT					172
 #define NETQUEUE_TYPE_AUTOPRODUCTSLOTUPDATE			173
 
+#define NETQUEUE_TYPE_PRODUCTIONINFOUPDATE          174
+#define NETQUEUE_TYPE_PRODUCTIONSLOTINFOUPDATE      175
+#define NETQUEUE_TYPE_PRODUCTIONREGIST              176
+#define NETQUEUE_TYPE_PRODUCTIONSLOTOPEN            177
+#define NETQUEUE_TYPE_PRODUCTIONDELETE              178
+#define NETQUEUE_TYPE_PRODUCTIONSLOTUPDATE          179
+
+#define NETQUEUE_TYPE_SENDMACHINEINFO				NETQUEUE_TYPE_PRODUCTIONSLOTUPDATE + 1
+#define NETQUEUE_TYPE_SENDMACHINESLOTINFO			NETQUEUE_TYPE_SENDMACHINEINFO + 1
+#define NETQUEUE_TYPE_SENDMACHINESLOTOPEN			NETQUEUE_TYPE_SENDMACHINESLOTINFO + 1
+#define NETQUEUE_TYPE_SENDMACHINESLOTUPDATE			NETQUEUE_TYPE_SENDMACHINESLOTOPEN + 1
+#define NETQUEUE_TYPE_GETDRESSINFO					NETQUEUE_TYPE_SENDMACHINESLOTUPDATE + 1
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////온실, 물레, 상점관련 EVENTQUEUE KBY
+#define NETQUEUE_TYPE_GREENHOUSEINFOUPDATE          NETQUEUE_TYPE_GETDRESSINFO+1
+#define NETQUEUE_TYPE_GREENHOUSESLOTINFOUPDATE      NETQUEUE_TYPE_GREENHOUSEINFOUPDATE+1
+
+#define NETQUEUE_TYPE_SPINNINGWHEELINFOUPDATE       NETQUEUE_TYPE_GREENHOUSESLOTINFOUPDATE+1
+#define NETQUEUE_TYPE_SPINNINGWHEELSLOTINFOUPDATE   NETQUEUE_TYPE_SPINNINGWHEELINFOUPDATE+1
+
+#define NETQUEUE_TYPE_GETCARROT                     NETQUEUE_TYPE_SPINNINGWHEELSLOTINFOUPDATE+1
+
+#define NETQUEUE_TYPE_GETWARDROBEINFO               NETQUEUE_TYPE_GETCARROT+1
+#define NETQUEUE_TYPE_BUYDRESSCHAR                  NETQUEUE_TYPE_GETWARDROBEINFO+1
+
+#define NETQUEUE_TYPE_GETDRESSROOMINFO				NETQUEUE_TYPE_BUYDRESSCHAR + 1
+#define NETQUEUE_TYPE_UPDATEMYDRESS					NETQUEUE_TYPE_GETDRESSROOMINFO + 1
+
+//#define NETQUEUE_TYPE_GETDRESSROOMINFO				NETQUEUE_TYPE_GETDRESSINFO + 1
+//#define NETQUEUE_TYPE_UPDATEMYDRESS					NETQUEUE_TYPE_GETDRESSROOMINFO + 1
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 typedef struct
 {
     M_Int32 totalNum;
@@ -3590,6 +3691,14 @@ typedef struct
 	M_Int32 anyCnt[EVENTQUEUEMAX];
 	M_Int32 x[EVENTQUEUEMAX];
 	M_Int32 y[EVENTQUEUEMAX];
+	///////////////////////////////////////////
+	//XEVENTQUEUENET 변수 추가 LJW 2018.01.22
+	M_Int32 typeNum[EVENTQUEUEMAX];
+	M_Int32 bkey[EVENTQUEUEMAX];
+	M_Int32 idx[EVENTQUEUEMAX];
+	M_Int32 start_time[EVENTQUEUEMAX];
+	M_Int64 end_time[EVENTQUEUEMAX];
+	///////////////////////////////////////////
 	
 	M_Int32 code[EVENTQUEUEMAX];
 	M_Int32 haveNum[EVENTQUEUEMAX];
@@ -4063,10 +4172,60 @@ typedef struct
 		
 } XFRIEND;
 extern XFRIEND xFriend;
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////친구행성 KBY
+#define FRIEND_FP_STATE_PLAY		0
+#define FRIEND_FP_STATE_SEARCH		FRIEND_FP_STATE_PLAY+1
 
+#define FRIENDSEARCH_FP_STATE_PLAY          0
+#define FRIENDSEARCH_FP_STATE_NOTUSER		FRIENDSEARCH_FP_STATE_PLAY+1
+#define FRIENDSEARCH_FP_STATE_RESULT		FRIENDSEARCH_FP_STATE_NOTUSER+1
+#define FRIENDSEARCH_FP_STATE_OK            FRIENDSEARCH_FP_STATE_RESULT+1
+#define FRIENDSEARCH_FP_STATE_INPUT         FRIENDSEARCH_FP_STATE_OK+1
+#define FRIENDSLOTMAX                       512
+typedef struct
+{
+    XTOUCH xTouchLeftArrow;
+    XTOUCH xTouchRightArrow;
+    XTOUCH xTouchSearch;
+    XTOUCH xTouchSearchFriend;
+    XTOUCH xTouchRecommend;
+    XTOUCH xTouchEdit;
+    XTOUCH xTouchFavorite[FRIENDSLOTMAX];
+    XTOUCH xTouchDel[FRIENDSLOTMAX];
+    XTOUCH xTouchJoin[FRIENDSLOTMAX];
+    XTOUCH xTouchVisit[FRIENDSLOTMAX];
+    XTOUCH xTouchSearchBar;
+    XTOUCH xTouchTab[2];
+    
+    XDRAGSCROLL xDragScrollFriendResult;
+    int selectTabB;
+    int state;
+    int SearchState;
+    
+    bool isTouchLeftArrow;
+    bool isTouchRightArrow;
+    bool isTouchSearchLeftArrow;
+    bool isTouchSearchRightArrow;
+    bool isTouchSearch;
+    bool isTouchPopUpSearch;
+    bool isTouchRecommend;
+    bool isTouchVisit[FRIENDSLOTMAX];
+    bool isTouchDel[FRIENDSLOTMAX];
+    bool isTouchJoin[FRIENDSLOTMAX];
+    bool isTouchSearchJoin[FRIENDSLOTMAX];
+    bool isTouchSearchVisit[FRIENDSLOTMAX];
+    bool isTouchSearchBar;
+    bool isTouchEdit;
+    bool isTouchClr;
+    bool isTouchSearchClr;
+    
+    char strName[128];
+    
+} XFRIEND_FP;
+extern XFRIEND_FP xFriend_FP;
 
-
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 ///////////////////////친구맵/////////////////////
@@ -8038,9 +8197,198 @@ typedef struct
 	XLULUPANGRANKSLOT xRankChangeSlot;
 }XLULUPANGRANK;
 extern XLULUPANGRANK xLuluPangRank;
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////
+//헤어,메이크업 데이터 LJW 2018.02.01
+#define HAIRMAKEUPTYPEMAX			2
+#define HAIRMAKEUPDATAMAX			100
+
+typedef struct
+{
+	char strName[64];
+	int lv;
+	int price;
+	int priceType;
+	int layerNum;
+} XHAIRMAKEUPDATA;
 
 
+typedef struct
+{
+	int total;
+	XHAIRMAKEUPDATA xData[HAIRMAKEUPTYPEMAX][HAIRMAKEUPDATAMAX];
+} XHAIRMAKEUP;
+extern XHAIRMAKEUP xHairMakeUp;
+////////////////////////////////////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////////////////////////////////
+//레이어 데이터 LJW 2018.02.01
+#define LAYERTYPEMAX			128
+#define LAYERDATAMAX			15
+
+typedef struct
+{
+	char strName[64];
+	int xData[2][LAYERDATAMAX];
+} XLAYERDATA;
+
+
+typedef struct
+{
+	int total;
+	XLAYERDATA xData[LAYERTYPEMAX];
+} XLAYER;
+extern XLAYER xLayer;
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+//////////옷장 KBY
+typedef struct
+{
+	bool isfitting;
+	int buff;
+	int code;
+	char strItemName[512];
+	char buffinfo[512];
+	
+}XFITTING_FP_SLOT;
+
+#define FITTING_FP_TAPMAX       6
+#define FITTING_FP_SLOTMAX      512
+#define FITTING_FP_PLACEMAX     12
+typedef struct
+{
+	bool isTouchClr;
+	bool isinfo;
+	bool isTouchLeftArrow;
+	bool isTouchRightArrow;
+	bool isRollBack;
+	bool isSave;
+	int buff[10];
+	int maxPlace;
+	int nowPlace;
+	int totalNum;
+	int selectTabB;
+	int selectSlot;
+	////////////////////////////////////
+	//옷장 구조체 변수추가 LJW 2018.02.01
+	XSPRIT xSprit;
+	XFACE xFace;
+	XFITTINGLAYER xFG;
+	XWORLDMAPNPC xModel;
+	XIMG imgFace;
+	XIMG imgHair[2][LAYERDATAMAX];//[방향(앞/뒤)][이미지번호]
+	int pos;
+	int faceNum;
+	int hairNum;
+	bool isChange;//의상이 변경됐을시
+	XTOUCH xTouchRollBack;
+	XTOUCH xTouchSave;
+	////////////////////////////////////
+	XTOUCH xTouchInfo;
+	XTOUCH xTouchOpenPlace;
+	XTOUCH xTouchShop;
+	XTOUCH xTouchLeftArrow;
+	XTOUCH xTouchRightArrow;
+	XTOUCH xTouchSelectTap[FITTING_FP_TAPMAX];
+	XTOUCH xTouchSlot[FITTING_FP_SLOTMAX];
+	XFITTING_FP_SLOT xSlot[FITTING_FP_SLOTMAX];
+	XDRAGSCROLL xDragScrollFittingList;
+}XFITTING_FP;
+extern XFITTING_FP xFitting_FP;
+///////////////////////////////////////////
+#define SENDMACHINE_MAX	1
+#define SENDMACHINE_SLOTMAX	15
+
+#define SENDMACHINE_STATE_WAIT	0
+#define SENDMACHINE_STATE_START	1
+#define SENDMACHINE_STATE_LOOP	2
+
+#define SENDMACHINE_SUBSTATE_NONE	0
+#define SENDMACHINE_SUBSTATE_INFO	1
+#define SENDMACHINE_SUBSTATE_ADD	2
+#define SENDMACHINE_SUBSTATE_END	3
+
+
+#define SENDMACHINE_BTNTYPE_NONE	0
+#define SENDMACHINE_BTNTYPE_EXIT	SENDMACHINE_BTNTYPE_NONE+1
+#define SENDMACHINE_BTNTYPE_UPGRADE	SENDMACHINE_BTNTYPE_EXIT+1
+#define SENDMACHINE_BTNTYPE_STORAGEL	SENDMACHINE_BTNTYPE_UPGRADE+1
+#define SENDMACHINE_BTNTYPE_STORAGER	SENDMACHINE_BTNTYPE_STORAGEL+1
+#define SENDMACHINE_BTNTYPE_SLOTL	SENDMACHINE_BTNTYPE_STORAGER+1
+#define SENDMACHINE_BTNTYPE_SLOTR	SENDMACHINE_BTNTYPE_SLOTL+1
+#define SENDMACHINE_BTNTYPE_LOCK	SENDMACHINE_BTNTYPE_SLOTR+1
+
+#define SENDMACHINE_BTNDIR_LEFT 0
+#define SENDMACHINE_BTNDIR_RIGHT 1
+
+#define DRESS_TYPE_MAX 16
+#define DRESS_COUNT_MAX 512
+
+//보유 의상 정보
+typedef struct
+{
+	int state;//0:대기,1:드래그중
+	int itemNum;//보유의상번호
+	int itemCnt;//보유의상개수
+}XPRODUCTDRESSINFO_FP;
+
+//전송기 슬롯 구조체
+typedef struct
+{
+	int key;//전송테이블 큐 키값(슬롯업데이트시 보내줘야 함!!!)
+	int state;//0:오픈, 1:잠김
+	int itemNum;//보유의상번호
+	int itemCnt;//보유의상개수
+	long startTime;//시작시간
+	long endTime;//완료시간
+}XSENDMACHINESLOT;
+
+//전송기 데이터
+typedef struct
+{
+	int state;//상태(0:대기, 1:전송준비, 2:전송중)
+	int bkey;//인테리어키
+	int itemNum;//인테리어 번호
+	int totalSlot;//전송기 슬롯개수
+	int lv;//전송기 레벨
+	int startTime;//전송시작시간
+}XSENDMACHINEDATA_FP;
+
+//전송기 구조체
+typedef struct
+{
+	int state;//상태(0:대기, 1:전송시작, 2:전송중)
+	int stateSub;//상태(0:슬롯정보, 1:대기슬롯에 의상추가, 2:전송완료)
+	int anyCnt;//전송연출용 카운트
+	int gameCnt;//게임카운트
+	int endCnt;
+	int startTime;//전송시작 시간(대기 -> 전송준비 할때)
+	int btnType;//버튼 Pressed 이미지 변경용
+	int total;//전송기 총개수
+	int dressSlotTotal;//총유저보유의상슬롯
+	int selectNum;//보유의상 터치 인덱스
+	bool isSelectDress;
+	bool isSendEnd;//전송완료 연출
+	
+	XDRAGSCROLL xDragScrollS;//의상리스트 스크롤
+	XDRAGSCROLL xDragScrollB;//제작슬롯 스크롤
+	XTOUCH xTouchExit;
+	XTOUCH xTouchUpgrade;
+	XTOUCH xTouchLock;
+	XTOUCH xTouchArrow[2][2];
+	XTOUCH xTouchStorage[16];
+	XTOUCH xTouchOpenSlot;
+	XTOUCH xTouchSlot;
+	XSENDMACHINESLOT xSendSlot;//전송기 전송슬롯
+	XSENDMACHINESLOT xSlot[SENDMACHINE_SLOTMAX];//전송기 대기슬롯 데이터
+	XSENDMACHINESLOT xDressSlot[SENDMACHINE_SLOTMAX];//전송기 보유의상슬롯 데이터
+	XPRODUCTDRESSINFO_FP xDress[DRESS_TYPE_MAX*DRESS_COUNT_MAX];//유저 보유의상
+	XSENDMACHINEDATA_FP xData[SENDMACHINE_MAX];//유저 전송기 데이터
+}XSENDMACHINE;
+extern XSENDMACHINE xSendMachine_FP;
+///////////////////////////////////////////
 
 
 
@@ -8049,6 +8397,7 @@ extern XLULUPANGRANK xLuluPangRank;
 
 extern XTOUCH xTouchBuildIconExit;
 extern XTOUCH xTouchBuildIconShop;
+
 extern XTOUCH xTouchScrollOk;
 extern XTOUCH xTouchScrollStepUp;
 extern XTOUCH xTouchScrollStepDown;
@@ -8087,6 +8436,46 @@ extern XIMG imgStaticNpc[20][2][40];
 extern XIMG imgFormer[10];
 extern XIMG imgMerchin[20];
 
+extern XIMG imgFitting[20];
+
+///////////////////////////////////////////
+//전송기UI 이미지
+extern XIMG imgSendMachine_DisplayArrow;
+extern XIMG imgSendMachine_Controler;
+extern XIMG imgSendMachine_Display;
+extern XIMG imgSendMachine_Num;
+extern XIMG imgSendMachine_Rail;
+extern XIMG imgSendMachine_RailRabbit;
+extern XIMG imgSendMachine_Slot[5];
+extern XIMG imgSendMachine_Sticker[7];
+extern XIMG imgSendMachine_StorageTitle;
+extern XIMG imgSendMachine_Title;
+extern XIMG imgSendMachine_BG;
+extern XIMG imgSendMachine_BtnExit;
+extern XIMG imgSendMachine_Storage[4];
+extern XIMG imgSendMachine_BtnArrow[2];
+extern XIMG imgSendMachine_Lock;
+extern XIMG imgSendMachine_BtnUpgrade;
+///////////////////////////////////////////
+
+///////////////////////////////////////////
+//캐릭터 레이어 시스템 LJW 2018.02.08
+extern XIMG imgLayer[40][2];
+extern bool isLayer[40][2];
+///////////////////////////////////////////
+
+//////////////////////////////////////////////////////
+//헤어, 얼굴표정 이미지 추가 LJW 2018.02.08
+extern M_Boolean isImgHair_FP[HAIRDATAMAX];
+extern M_Boolean isImgHairBig_FP[HAIRDATAMAX];
+extern M_Boolean isImgFace_FP[FACEDATAMAX];
+extern M_Boolean isImgFaceBig_FP[FACEDATAMAX];
+extern XIMG imgHair_FP[HAIRDATAMAX][2][2];//[헤어코드][방향][헤어파일]
+extern XIMG imgHairBig_FP[HAIRDATAMAX][2][2];//[헤어코드][방향][헤어파일]
+extern XIMG imgFace_FP[HAIRDATAMAX];
+extern XIMG imgFaceBig_FP[HAIRDATAMAX];
+//////////////////////////////////////////////////////
+
 void worldMapCarPrc(void);
 void worldMapNpcPrc(void);
 void shopNpcPrc(void);
@@ -8109,6 +8498,10 @@ void makeShopNpc(int worldMapNpcCode,int optionType,int optionNum);
 int makeWorldMapNpc(int x,int y,int type,float speed,int moveType);
 
 void drawSwitch(int x,int y,XSWITCH * xSwitch,int XIMG,int totalNum, int gab);
+//////////////////////////////////////////////////////////////////////////////
+//메뉴 버튼 연출 KBY
+void drawSwitchImg(int x,int y,XSWITCH * xSwitch, XIMG xImg,int totalNum, int gab);
+////////////////////////////////////////////////////////////////////////////////////
 void drawWorldMapUi(void);
 void drawInteriorShop(void);
 void initDragScroll(void);
@@ -8360,6 +8753,7 @@ void drawExtensionStamp(void);
 M_Boolean drawExtensionContract(int x,int y,int anyCnt);
 void drawExtensionTile(int anyCnt);
 void drawProductionMenu(void);
+
 int inputProductionMenu(int code);
 int getProductionMenu(int code);
 void outputProductionMenu(int code);
@@ -8367,7 +8761,7 @@ void setProductionMenuMake(void);
 void makeProductionMain(void);
 void inputProductionRecord(int code);
 int getEmptySlot(void);
-void setStateProductionMenu(void);
+
 int linkProductionMenu(int code);
 int linkInteriorShop(int code);
 void drawExternalWall(int x,int y,int floor);
@@ -8432,6 +8826,7 @@ int checkKakaoAppInvite(char *strId);
 void prcInShopPer(void);
 void shopNpcErrSpeak(int npcNum);
 void loadFashionFImg(int imgType,int imgList);
+
 void drawGiftShopResult(void);
 void makeModelShopNpc(void);
 //void prcModelShopNpc(void);
@@ -8467,7 +8862,7 @@ void initFashionConcept(int main,float t0,float t1,float t2,float t3,float t4,fl
 M_Boolean checkXfLimit(XFITTINGLAYER *xF);
 int getWorldmapNpcMakeTime(void);
 void drawProductionCashPopup(void);
-
+void drawProductionCashPopup_FP();
 void drawSellTableCashPopup(void);
 float getSellPer(void);
 float getSellTime(void);
@@ -8785,6 +9180,8 @@ int getFormerIndex2(int index);
 void prcFormerTimer();
 void prcFormerCount();
 
+void prcProductionSlotTimer();
+int getProductionIndex(int key);
 void initWorldMapRocket();
 void playWorldMapRocket();
 void prcWorldMapRocket();
@@ -8813,4 +9210,375 @@ void keyLuluPangSettingFitting(int type, int param1, int param2);
 void drawNoticeLuluPang();
 int getModelMainSlot_LULUPANG(int key);
 
+//여기서부터 작업한 것....KBY
+////////////////////
+//제작기
+void loadFashionFImg_FP(int imgType,int imgList);
+///////////////////////////////////////////////////////////////////
+//추가 수정 사항 KBY 2018.2.26
+void productionFreeLoad_FP(bool isLoad);
+///////////////////////////////////////////////////////////////////
+void setStateProductionMenu(void);
+void drawProduction_FP();
+/////////////////////
+//옷장
+extern XTOUCH xTouchFitting;
+void initFitting_FP();
+void loadFittingImg_FP(int imgType, int imgListNum);
+void fittingFreeLoad_FP(bool isLoad);
+void drawFitting_FP();
+void keyFitting_FP(int type, int param1, int param2, int touchId);
+bool keyFastScroll_FP(int type, int param1, int param2,int touchId,int touchCount);
+/////////////////////
+//온실
+#define MATERIALSLOTMAX                     64
+#define GREENHOUSESLOT_LV_MAX               5
+#define GREENHOUSE_STATE_MAIN               0
+#define GREENHOUSE_STATE_CANCLEPOPUP      GREENHOUSE_STATE_MAIN+1
+
+//온실의 제작 요소
+typedef struct
+{
+    int code;
+    int lv;
+    int makeTime;
+    int cnt;
+    
+    char strName[64];
+}XGREENHOUSE_MATERIALSLOT_FP;
+
+typedef struct
+{
+    int totalNum;
+    XGREENHOUSE_MATERIALSLOT_FP xSlot[MATERIALSLOTMAX];
+
+}XGREENHOUSE_MATERIALDATA_FP;
+extern XGREENHOUSE_MATERIALDATA_FP xGreenHouse_MaterialData_FP;
+
+typedef struct
+{
+    int state;//온실 토양의 상태
+    int MaterialCode;//재배중인 꽃
+    int endTime;//꽃 수확완료 시간
+    int itemCnt;//한번에 수확시 획득되는 양
+    int Upgrade;//업그레이드 정도
+    bool produce;//생산중인가?
+}XGREENHOUSE_FP_SLOT;
+
+typedef struct
+{
+    int state;//온실의 상태
+    int EndTimer[MATERIALSLOTMAX];//각 슬롯별 온료시간
+    int selectSlot;//선택된 토양
+    int selectProduct;//선택된 꽃
+    int totalSlot;//총 슬롯 수
+    int index;
+    int imgNum[MATERIALSLOTMAX];
+    int AnyCnt[MATERIALSLOTMAX];
+    //버튼 연출을 위한 변수
+    bool isTouchMaterial;
+    bool isTouchUpgrade[MATERIALSLOTMAX];
+    bool isTouchFast[MATERIALSLOTMAX];
+    bool isTouchLeftBtn;
+    bool isTouchRightBtn;
+    bool isTouchLeftArrow;
+    bool isTouchRightArrow;
+    bool isTouchClr;
+    bool isTouchOpen;
+    bool isTouchProduct;
+    bool isTouchPopupClr;
+    bool isTouchYes;
+    bool isTouchNo;
+    
+    //온실 스크롤
+    XDRAGSCROLL xDragScrollGreenHouseS;//토양 스크롤
+    XDRAGSCROLL xDragScrollGreenHouseB;//꽃 스크롤
+    
+    XTOUCH  xTouchLeftBtn;//꽃 왼쪽버튼
+    XTOUCH  xTouchRightBtn;//꽃 오른쪽 버튼
+    XTOUCH  xTouchLeftArrow;//토양 왼쪽 버튼
+    XTOUCH  xTouchRightArrow;//토양 오른쪽 버튼
+    XTOUCH  xTouchList[MATERIALSLOTMAX];//꽃 터치영역
+    XTOUCH  xTouchSlot[MATERIALSLOTMAX];//토양 토치영역
+    XTOUCH  xTouchOpen;//토양 해금 터치영역
+    XTOUCH  xTouchFast[MATERIALSLOTMAX];//즉시완료 터치영역
+    XTOUCH  xTouchUpgrade[MATERIALSLOTMAX];//업그레이드 터치영역
+    XTOUCH  xTouchYes;//제작 취소 터치영역
+    XTOUCH  xTouchNo;//제작 취소의 취소 터치영역
+
+    XGREENHOUSE_FP_SLOT xSlot[MATERIALSLOTMAX];
+}XGREENHOUSE_FP;
+extern XGREENHOUSE_FP xGreenHouse_FP;
+
+extern XTOUCH xTouchGreenHouse;
+extern XIMG imgGreenHouse[30];
+extern XIMG imgFlower[128][4];
+extern XIMG imgSlotLv[GREENHOUSESLOT_LV_MAX];
+void initGreenHouse_FP();
+void greenHouseFreeLoad_FP(bool isLoad);
+void drawGreenHouse_FP();
+void keyGreenHouse_FP(int type, int param1, int param2);
+void prcGreenHouseSlotTimer();
+void drawGreenHouseSlotCanclePopup_FP();
+void keyGreenHouseSlotCanclePopup_FP(int type, int param1, int param2);
+/////////////////////
+//친구리스트
+extern XIMG imgfriendList[30];
+void friendListFreeLoad_FP(bool isLoad);
+void drawfriendList_FP();
+void keyfriendList_FP(int type, int param1, int param2);
+/////////////////////
+//친구리스트 검색
+void drawfriendSearch_FP();
+void keyfriendSearch_FP(int type, int param1, int param2);
+
+///////////////////////////////////////////
+//전송기
+void startSendMachine_FP();
+void endSendMachine_FP();
+void drawSendMachine_FP();
+void prcSendMachine_FP();
+void FreeLoadSendMachine_FP(bool isLoad);
+void keySendMachine_FP(M_Int32 type,M_Int32 param1,M_Int32 param2);
+void setSendMachineBtnType_FP(int btnType);
+void setSlotDress(int dressNum, int dressCnt);
+bool isPlaySendMachine();
+void setSendMachineGameCnt(int cnt);
+
+///////////////////////////////////////////
+//물레
+#define SPINNINGWHEEL_STATE_MAIN               0
+#define SPINNINGWHEEL_STATE_CANCLEPOPUP      GREENHOUSE_STATE_MAIN+1
+//물레의 실타래 정보
+typedef struct
+{
+    int code;
+    int lv;
+    int makeTime;
+    int cnt;
+    
+    char strName[64];
+}XSPINNING_MATERIALSLOT_FP;
+
+typedef struct
+{
+    int totalNum;
+    XSPINNING_MATERIALSLOT_FP xSlot[MATERIALSLOTMAX];
+    
+}XSPINNING_MATERIALDATA_FP;
+extern XSPINNING_MATERIALDATA_FP xSPinning_MaterialData_FP;
+
+typedef struct
+{
+    int state;//물레의 상태
+    int MaterialCode;//물레가 제작중인 실타래
+    int endTime;//완료 시간
+    int itemCnt;//생산되는 개수
+    int Upgrade;//업그레이드 정도
+    bool produce;//생산중인가?
+}XSPINNING_FP_SLOT;
+
+typedef struct
+{
+    int state;//물레의 상태
+    int EndTimer[MATERIALSLOTMAX];//물레 슬롯들의 완료시간
+    int selectSlot;//선택된 물레
+    int selectProduct;//선택된 실타래
+    int totalSlot;//총 슬롯의 수
+    int index;
+    int AnyCnt[MATERIALSLOTMAX];
+    int imgNum[MATERIALSLOTMAX];
+    int StarAnyCnt[MATERIALSLOTMAX];
+    
+    //버튼 이팩트를 위한 변수
+    bool isTouchMaterial;
+    bool isTouchUpgrade[MATERIALSLOTMAX];
+    bool isTouchFast[MATERIALSLOTMAX];
+    bool isTouchLeftBtn;
+    bool isTouchRightBtn;
+    bool isTouchLeftArrow;
+    bool isTouchRightArrow;
+    bool isTouchClr;
+    bool isTouchOpen;
+    bool isTouchProduct;
+    bool isTouchPopupClr;
+    bool isTouchYes;
+    bool isTouchNo;
+    
+    //스크롤
+    XDRAGSCROLL xDragScrollSpinningS;//제작 스크롤
+    XDRAGSCROLL xDragScrollSpinningB;//슬롯 스크롤
+    
+    XTOUCH  xTouchLeftBtn;//제작 스크롤 왼쪽
+    XTOUCH  xTouchRightBtn;//제작 스크롤 오른쪽
+    XTOUCH  xTouchLeftArrow;//슬롯 스크롤 왼쪽
+    XTOUCH  xTouchRightArrow;//슬롯 스크롤 오른쪽
+    XTOUCH  xTouchList[MATERIALSLOTMAX];//제작 터치영역
+    XTOUCH  xTouchSlot[MATERIALSLOTMAX];//슬롯 터치영역
+    XTOUCH  xTouchOpen;//슬롯 해금 버튼 터치영역
+    XTOUCH  xTouchFast[MATERIALSLOTMAX];//즉시완료 터치영역
+    XTOUCH  xTouchUpgrade[MATERIALSLOTMAX];//업그레이드 터치영역
+    XTOUCH  xTouchYes;//제작 취소 확인
+    XTOUCH  xTouchNo;//제작 취소의 취소버튼
+    
+    XSPINNING_FP_SLOT xSlot[MATERIALSLOTMAX];//물레의 정보
+}XSPINNING_FP;
+extern XSPINNING_FP xSpinning_FP;
+
+extern XTOUCH xTouchSpinningWheel;
+extern XIMG imgSpinningWheel[30];
+void initSpinningWheel_FP();
+void spinningWheelFreeLoad_FP(bool isLoad);
+void drawSpinningWheel_FP();
+void keySpinningWheel_FP(int type, int param1, int param2);
+void drawSpinningWheelSlotCanclePopup_FP();
+void keySpinningWheelSlotCanclePopup_FP(int type, int param1, int param2);
+void prcSpinningWheelSlotTimer();
+///////////////////////////////////////////
+//Variable
+
+typedef struct
+{
+    int levelMax;
+    int carrotMax;
+    int carrotTime;
+    
+}XCHS;
+extern XCHS xChs;
+
+///////////////////////////////////////////
+//당근 획득
+
+typedef struct
+{
+    int carrotComplete;
+    int carrotTemp;
+    int time;
+    int TimeTemp;
+    bool isAdd;
+}XCALCCARROT;
+extern XCALCCARROT xCalcCarrot;
+void prcCarrot();
+
+///////////////////////////////////////////
+//상점
+#define SHOPSELECTTABBMAX       5
+#define SHOPSELECTTABSMAX       20
+#define SHOP_FP_SLOTMAX         512
+
+#define SHOP_STATE_MAIN         0
+#define SHOP_STATE_DRESSPOPUP   SHOP_STATE_MAIN+1
+#define SHOP_STATE_POPUP        SHOP_STATE_DRESSPOPUP+1
+
+#define SHOPPOPUP_STATE_MAIN    0
+#define SHOPPOPUP_STATE_POPUP   SHOPPOPUP_STATE_MAIN+1
+
+extern XIMG imgShop[30];
+extern XIMG imgInterior_FP[INTERIORSLOTBMAX][INTERIORSLOTSMAX];
+typedef struct
+{
+    int buff;
+    int code;
+    char strItemName[512];
+    char buffInfo[512];
+}XSHOP_FP_SLOT;
+typedef struct
+{
+    bool isTouchInfo;//정보 보기 버튼을 눌렀는가?
+    bool isTouchClr;//상점의 닫기버튼을 눌렀는가?
+    bool isTouchPopUpClr;//구매확인 팝업의 닫기버튼을 눌렀는가?
+    bool isTouchPreviewClr;//미리보기 창의 닫기버튼을 눌렀는가?
+    bool isTouchYes;//구매확인 버튼을 눌렀는가?
+    bool isTouchNo;//구매취소 버튼을 눌렀는가?
+    bool isTouchLeftArrow;//미리보기에서 왼쪽화살표를 눌렀는가?
+    bool isTouchRightArrow;//미리보기에서 오른쪽화살표를 눌렀는가?
+    
+    
+    int state;//상점 메인 상태
+    int state2;//상점 팝업의 상태
+    int totalNum;//아이템의 총개수
+    int selectTabB;//선택된 왼쪽 탭
+    int selectTabS;//선택된 윗쪽 탭
+    int selectSlot;//선택된 슬롯
+    int totalTabS;//윗쪽 탭의 총 개수
+    int index;//
+    int pos;//캐릭터가 바라보는 방향
+    
+    XTOUCH xTouchSlot[SHOP_FP_SLOTMAX];//슬롯 터치영역
+    XTOUCH xTouchTabB[SHOPSELECTTABBMAX];//왼쪽 탭의 터치영역
+    XTOUCH xTouchTabS[SHOPSELECTTABSMAX];//위쪽 탭의 터치영역
+    XTOUCH xTouchInfo;//정보보기 터치영역
+    XTOUCH xTouchPreview;//미리보기 터치영역
+    XTOUCH xTouchYes;//구매확인 터치영역
+    XTOUCH xTouchNo;//구매취소 터치영역
+    XTOUCH xTouchLeftArrow;//미리보기 왼쪽회전 터치영역
+    XTOUCH xTouchRightArrow;//미리보기 오른쪽 회전 터치영역
+    
+    XSHOP_FP_SLOT xSlot[SHOP_FP_SLOTMAX];
+    XDRAGSCROLL xDragScrollShopList;//상점의 스크롤
+    
+}XSHOP_FP;
+extern XSHOP_FP xShop_FP;
+
+void shopFreeload_FP(bool isLoad);
+void initShop_FP();
+void drawShop_FP();
+void keyShop_FP(int type, int param1, int param2,int touchId);
+void drawDressShop_PopUp_FP();
+void keyDressShopPopUp_FP(int type, int param1, int param2);
+void drawDressShopPreview_FP();
+void keyDressShopPreview_FP(int type, int param1, int param2);
+void drawShopPopUp();
+void keyShopPopUp(int type, int param1, int param2);
+void loadInteriorImg_FP(int imgType, int imgListNum);
+
+///////////////////////////////////////////
+//상점 함수 추가 (Cash UI에서 재화를 누를 경우 연결할때 쓰는 함수들...) KBY 2018.2.23
+
+void setShop_FP(int selectTabB, int selectTabS);
+
+
+///////////////////////////////////////////
+
+///////////////////////////////////////////
+//npc 헤어, 얼굴 draw함수 추가
+void loadFashionFImgWorldMap_FP(XSPRIT *xSprit, int code, int pos);
+void loadFashionFImgWorldMapBig_FP(XSPRIT *xSprit, int code, int pos);
+void freeFashionFLayerBig_FP();
+void setSpritF_FP(XSPRIT *xSprit,XFITTINGLAYER *xF,int pos);
+void setSpritFBig_FP(XSPRIT *xSprit,XFITTINGLAYER *xF,int pos);
+void setNpcBody_FP(XSPRIT *xSprit, int pos);
+void setNpcBodyBig_FP(XSPRIT *xSprit, int pos);
+void setFittingSlot_FP(int tab);
+void setNpcHair_FP(XSPRIT *xSprit, int hairNum, int pos);
+void setNpcFace_FP(XSPRIT *xSprit, int faceNum, int pos);
+void setNpcHairBig_FP(XSPRIT *xSprit, int hairNum, int pos);
+void setNpcFaceBig_FP(XSPRIT *xSprit, int faceNum, int pos);
+bool isDressChange();
+///////////////////////////////////////////
+
+void makeShopAssistant();
+void makeMyCharacter();
+void drawMyCharacter();
+///////////////////////////////////////////
+//인테리어 편집
+extern XIMG imgInteriorBuild[20];
+
+//추가 사항 KBY 2018.2.26
+void interiorbuildFreeLoad_FP(bool isLoad);
+///////////////////////////////////////////
+//우편함 KBY
+
+extern XIMG imgMail[30];
+void mailFreeLoad_FP(bool isLaod);
+void drawMail_FP();
+void keyMail_FP(int type, int param1, int param2);
+
+///////////////////////////////////////////
+//프로필 편집 KBY 2018.2.26
+extern XIMG imgProfile;
+extern XIMG imgPhoto[10];
+extern XIMG imgNonProfile;
+
+void profilePhotoFreeLoad_FP(bool isLoad);
 #endif

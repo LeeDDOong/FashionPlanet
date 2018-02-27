@@ -312,8 +312,9 @@ void gDrawStringBold(float x, float y,const char* src, int ankNum, int r, int g,
     }
     label->setScale(fscale);
     label->setPosition(x,lcdH-y);
-    label->setColor(Color3B(r, g,b));
-    label->enableOutline(Color4B(rr,gg,bb,255),2);
+//    label->setColor(Color3B(r, g, b));
+    label->setTextColor(Color4B(Color3B(r, g, b)));
+    label->enableOutline(Color4B(rr, gg, bb, 255),2);
     label->setAdditionalKerning(fCharWidth);
     label->setOpacity(xGame.alpha);
     

@@ -10,6 +10,10 @@ XIMG imgYoung;
 XIMG imgPermissions;
 XIMG imgTitleBG;
 
+///////////////////////////////////////////
+//회원가입 KBY 2018.2.26 수정
+XIMG imgIdMake[30];
+///////////////////////////////////////////
 void initMainMenu()
 {
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
@@ -90,126 +94,219 @@ void MainMenuCletEvent(int type, int param1, int param2,int touchId)
 			gameExit();
 		}
 		break;
+        //회원가입 키입력 KBY 2018.2.23
 	case MAINMENU_STATE_IDMAKE:
 		switch(xIdMake.state)
 		{
 		case IDMAKE_STATE_IDMAKE:
 			if(touchType == USER_POINT_PRESS_EVENT)
 			{
-				if(touchCheck(&xIdMake.xTouchArea) == TRUE)
-				{
-					xIdMake.isSelectArea = TRUE;
-				}
-				else
-					xIdMake.isSelectArea = FALSE;
-				
-				if(xIdMake.isSelectArea == FALSE && touchCheck(&xIdMake.xTouchAge) == TRUE)
-				{
-					xIdMake.isSelectAge = TRUE;
-				}
-				else
-					xIdMake.isSelectAge = FALSE;
-			}
-			
-			if(xIdMake.isSelectArea == TRUE)
-			{
-				if(type == MH_KEY_PRESSEVENT)
-				{
-					dragScrollKeyPrc(&xIdMake.xDragScrollArea,2);
-				}
-				else if(type == MH_KEY_RELEASEEVENT)
-				{
-					if(xIdMake.xDragScrollArea.touchXposBefore != DONT)
-					{
-						dragScrollKeyPrc(&xIdMake.xDragScrollArea,3);
-					}					
-					xIdMake.xDragScrollArea.touchXpos = DONT;
-					xIdMake.xDragScrollArea.touchYpos = DONT;
-					xIdMake.xDragScrollArea.touchXposBefore = DONT;
-					xIdMake.xDragScrollArea.touchYposBefore = DONT;
-					xIdMake.isSelectArea = FALSE;
-				}
-			}
-			else if(xIdMake.isSelectAge == TRUE)
-			{
-				if(type == MH_KEY_PRESSEVENT)
-				{
-					dragScrollKeyPrc(&xIdMake.xDragScrollAge,2);
-				}
-				else if(type == MH_KEY_RELEASEEVENT)
-				{
-					if(xIdMake.xDragScrollAge.touchXposBefore != DONT)
-					{
-						dragScrollKeyPrc(&xIdMake.xDragScrollAge,3);
-					}
-					xIdMake.xDragScrollAge.touchXpos = DONT;
-					xIdMake.xDragScrollAge.touchYpos = DONT;
-					xIdMake.xDragScrollAge.touchXposBefore = DONT;
-					xIdMake.xDragScrollAge.touchYposBefore = DONT;
-					xIdMake.isSelectAge = FALSE;
-				}
-			}
-			else if(type == MH_KEY_PRESSEVENT)
-			{
-				if(touchCheck(&xIdMake.xTouchNickName) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-				{
-					playSnd(SND_MENU_OK);
-					xIdMake.nickNameErr = IDMAKEERR_TYPE_DONT;
+                for(int i=0;i<3;i++)
+                {
+                    if(touchCheck(&xIdMake.xTouchHair[i])==TRUE&&touchType == USER_POINT_PRESS_EVENT)
+                    {
+                        xIdMake.selectHair=i;
+                        break;
+                    }
+                }
+                
+                for(int e=0;e<3;e++)
+                {
+                    if(touchCheck(&xIdMake.xTouchFace[e])==TRUE&&touchType == USER_POINT_PRESS_EVENT)
+                    {
+                        xIdMake.selectFace=e;
+                        break;
+                    }
+
+                }
+                
+                for (int h=0; h<12; h++)
+                {
+                    if(touchCheck(&xIdMake.xTouchStar[h])==TRUE&&touchType == USER_POINT_PRESS_EVENT)
+                    {
+                        xIdMake.selectStar=h;
+                        break;
+                    }
+
+                }
+                //닉네임 입력중 다른 버튼을 막도록 하기 위해 상태 추가 KBY 2018.2.26
+                if(touchCheck(&xIdMake.xTouchNickName) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+                {
+                    playSnd(SND_MENU_OK);
+                    xIdMake.state = IDMAKE_STATE_INPUTNAME;
+                    xIdMake.nickNameErr = IDMAKEERR_TYPE_DONT;
                     
                     setTextField(TEXTBOX_TYPE_NICKNAME, lcdW/2, lcdH+999, 200, 25);
-				}
-				else if(touchCheck(&xIdMake.xTouchSex[0]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-				{
-					playSnd(SND_MENU_OK);
-					xIdMake.sex = 0;
-				}
-				else if(touchCheck(&xIdMake.xTouchSex[1]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-				{
-					playSnd(SND_MENU_OK);
-					xIdMake.sex = 1;
-				}
-				else if(touchCheck(&xTouchOk) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-				{
-					playSnd(SND_MENU_OK);
-					
-													
-					
-					if(strcmp(xIdMake.strNickName, "대표자명 입력") != 0)
-					{
-						int strByte = getStringByte(xIdMake.strNickName);
-						int kor = strByte/1000;
-						int eng = strByte%1000;
-						int korEng = kor+eng;
-						//한글 1자~6자
-						//영문 2자~8자
-												
-						if(kor > 0)
-						{
-							if(korEng < 1 || korEng > 6)
-								xIdMake.nickNameErr = IDMAKEERR_TYPE_NICKNAMEERR;
-						}
-						else
-						{
-							if(korEng < 2 || korEng > 8)
-								xIdMake.nickNameErr = IDMAKEERR_TYPE_NICKNAMEERR;
-						}
-						
-						if(getCharSpecialCnt(xIdMake.strNickName) > 0)
-							xIdMake.nickNameErr = IDMAKEERR_TYPE_NICKNAMEERR3;
-						
-							
-						xIdMake.age = AGESTART-xIdMake.xDragScrollAge.selectNum;
-                        xIdMake.area = xIdMake.xDragScrollArea.selectNum;
-						
-						if(xIdMake.nickNameErr == IDMAKEERR_TYPE_DONT)
-						{                            
-                            netSend(CMD_IDMAKE,DONT);
-						}
-					}
-				}
+                }
+                else if(touchCheck(&xIdMake.xTouchSex[0]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+                {
+                    playSnd(SND_MENU_OK);
+                    xIdMake.isTouchMan=true;
+                    xIdMake.isTouchWoman=false;
+                    xIdMake.sex = 0;
+                }
+                else if(touchCheck(&xIdMake.xTouchSex[1]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+                {
+                    playSnd(SND_MENU_OK);
+                    xIdMake.isTouchMan=false;
+                    xIdMake.isTouchWoman=true;
+                    xIdMake.sex = 1;
+                }
+                else if(touchCheck(&xIdMake.xTouchArrow[0])==TRUE && touchType == USER_POINT_PRESS_EVENT)
+                {
+                    playSnd(SND_MENU_OK);
+                    xIdMake.isTouchLeftArrow=true;
+                    xIdMake.isTouchRightArrow=false;
+                }
+                else if(touchCheck(&xIdMake.xTouchArrow[1])==TRUE && touchType == USER_POINT_PRESS_EVENT)
+                {
+                    playSnd(SND_MENU_OK);
+                    xIdMake.isTouchLeftArrow=false;
+                    xIdMake.isTouchRightArrow=true;
+                }
+                else if(touchCheck(&xTouchOk) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+                {
+                    //닉네임 입력중 다른 버튼을 막도록 하기 위해 상태 추가 KBY 2018.2.26
+                    if(xIdMake.state!=IDMAKE_STATE_INPUTNAME)
+                    {
+                        //성별 선택 안했을시 버튼이 안눌리도록 추가 KBY 2018.2.26
+                        if(xIdMake.isTouchMan==true||xIdMake.isTouchWoman==true)
+                        {
+                            playSnd(SND_MENU_OK);
+                            xIdMake.isTouchOk=true;
+                        }
+                    }
+                }
+                    //				if(touchCheck(&xIdMake.xTouchArea) == TRUE)
+//				{
+//					xIdMake.isSelectArea = TRUE;
+//				}
+//				else
+//					xIdMake.isSelectArea = FALSE;
+//				
+//				if(xIdMake.isSelectArea == FALSE && touchCheck(&xIdMake.xTouchAge) == TRUE)
+//				{
+//					xIdMake.isSelectAge = TRUE;
+//				}
+//				else
+//					xIdMake.isSelectAge = FALSE;
 			}
+			
+//			if(xIdMake.isSelectArea == TRUE)
+//			{
+//				if(type == MH_KEY_PRESSEVENT)
+//				{
+//					dragScrollKeyPrc(&xIdMake.xDragScrollArea,2);
+//				}
+//				else if(type == MH_KEY_RELEASEEVENT)
+//				{
+//					if(xIdMake.xDragScrollArea.touchXposBefore != DONT)
+//					{
+//						dragScrollKeyPrc(&xIdMake.xDragScrollArea,3);
+//					}					
+//					xIdMake.xDragScrollArea.touchXpos = DONT;
+//					xIdMake.xDragScrollArea.touchYpos = DONT;
+//					xIdMake.xDragScrollArea.touchXposBefore = DONT;
+//					xIdMake.xDragScrollArea.touchYposBefore = DONT;
+//					xIdMake.isSelectArea = FALSE;
+//				}
+//			}
+//			else if(xIdMake.isSelectAge == TRUE)
+//			{
+//				if(type == MH_KEY_PRESSEVENT)
+//				{
+//					dragScrollKeyPrc(&xIdMake.xDragScrollAge,2);
+//				}
+//				else if(type == MH_KEY_RELEASEEVENT)
+//				{
+//					if(xIdMake.xDragScrollAge.touchXposBefore != DONT)
+//					{
+//						dragScrollKeyPrc(&xIdMake.xDragScrollAge,3);
+//					}
+//					xIdMake.xDragScrollAge.touchXpos = DONT;
+//					xIdMake.xDragScrollAge.touchYpos = DONT;
+//					xIdMake.xDragScrollAge.touchXposBefore = DONT;
+//					xIdMake.xDragScrollAge.touchYposBefore = DONT;
+//					xIdMake.isSelectAge = FALSE;
+//				}
+//			}
+            else if(type==MH_KEY_RELEASEEVENT)
+            {
+                if(touchCheck(&xIdMake.xTouchArrow[0])==TRUE&&xIdMake.isTouchLeftArrow==true&&touchType==USER_POINT_RELEASE_EVENT)
+                {
+                    xIdMake.isTouchLeftArrow=false;
+                    //행동처리
+                    xIdMake.pos--;
+                    if (xIdMake.pos<0)
+                    {
+                        xIdMake.pos=3;
+                    }
+
+                }
+                else if(touchCheck(&xIdMake.xTouchArrow[1])==TRUE&&xIdMake.isTouchRightArrow&&touchType==USER_POINT_RELEASE_EVENT)
+                {
+                    xIdMake.isTouchRightArrow=false;
+                    //행동처리
+                    xIdMake.pos++;
+                    if (xIdMake.pos>3)
+                    {
+                        xIdMake.pos=0;
+                    }
+
+                }
+                else if(touchCheck(&xTouchOk)==TRUE&&touchType==USER_POINT_RELEASE_EVENT)
+                {
+                    //닉네임 입력중 다른 버튼을 막도록 하기 위해 상태 추가 KBY 2018.2.26
+                    if(xIdMake.state!=IDMAKE_STATE_INPUTNAME)
+                    {
+                        //성별 선택 안했을시 버튼이 안눌리도록 추가 KBY 2018.2.26
+                        if(xIdMake.isTouchMan==true||xIdMake.isTouchWoman==true)
+                        {
+                            xIdMake.isTouchOk=false;
+                            if(strcmp(xIdMake.strNickName, "대표자명 입력") != 0)
+                            {
+                                int strByte = getStringByte(xIdMake.strNickName);
+                                int kor = strByte/1000;
+                                int eng = strByte%1000;
+                                int korEng = kor+eng;
+                                //한글 1자~6자
+                                //영문 2자~8자
+                                
+                                if(kor > 0)
+                                {
+                                    if(korEng < 1 || korEng > 6)
+                                        xIdMake.nickNameErr = IDMAKEERR_TYPE_NICKNAMEERR;
+                                }
+                                else
+                                {
+                                    if(korEng < 2 || korEng > 8)
+                                        xIdMake.nickNameErr = IDMAKEERR_TYPE_NICKNAMEERR;
+                                }
+                                
+                                if(getCharSpecialCnt(xIdMake.strNickName) > 0)
+                                    xIdMake.nickNameErr = IDMAKEERR_TYPE_NICKNAMEERR3;
+                                
+                                
+                                //                        xIdMake.age = AGESTART-xIdMake.xDragScrollAge.selectNum;
+                                //                        xIdMake.area = xIdMake.xDragScrollArea.selectNum;
+                                
+                                if(xIdMake.nickNameErr == IDMAKEERR_TYPE_DONT)
+                                {
+                                    netSend(CMD_IDMAKE,DONT);
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    xIdMake.isTouchRightArrow=false;
+                    xIdMake.isTouchLeftArrow=false;
+                    xIdMake.isTouchOk=false;
+                }
+            }
 			break;
-		case IDMAKE_STATE_LOGINKAKAO:				
+		case IDMAKE_STATE_LOGINKAKAO:
 			if(type == MH_KEY_PRESSEVENT)
 			{
 				if(touchCheck(&xIdMake.xTouchLoginBtn) == TRUE && touchType == USER_POINT_PRESS_EVENT)
@@ -523,18 +620,19 @@ void paintMainMenu()
 					sprintf(strTempS,"loadingbg%d.png", xMainMenu.loadingImgSlot[loadImgNum]);
 					loadImgDocuments(strTempS, &imgLoadingBg);
                     
+                    
                     if(xSave.isKakaoLogin == FALSE)
-					{
-						xMainMenu.state = MAINMENU_STATE_IDMAKE;
-						xIdMake.state = IDMAKE_STATE_CLAUSE;
-					}
-					else
-					{
-						xMainMenu.state = MAINMENU_STATE_LOGIN;
-						xMainMenu.anyCnt = 0;
+                    {
+                        xMainMenu.state = MAINMENU_STATE_IDMAKE;
+                        xIdMake.state = IDMAKE_STATE_CLAUSE;
+                    }
+                    else
+                    {
+                        xMainMenu.state = MAINMENU_STATE_LOGIN;
+                        xMainMenu.anyCnt = 0;
                         googleLogin();
-					}
-				}
+                    }
+                }
 				break;
 			}
 			break;
@@ -647,6 +745,8 @@ void paintMainMenu()
 			break;
 		}
 		break;
+        ///////////////////////////////////////////////
+        //회원가입 그리는 곳 KBY 2018.2.23
 	case MAINMENU_STATE_IDMAKE:
 		drawIdMake();
 		break;
@@ -1162,6 +1262,38 @@ void paintMainMenu()
 	setFontSize(11);
 }
 
+void idmakeFreeLoad_FP(bool isLoad)
+{
+    if(isLoad==true)
+    {
+        //회원가입 UI 이미지 로딩 KBY   2018.2.23
+        //imgIdMake[0] 이미지 교체 KBY 2018.2.27
+        loadImg("idmake_frame_base.png", &imgIdMake[0]);
+        loadImg("idmake_title.png", &imgIdMake[1]);
+        loadImg("idmake_frame_info.png", &imgIdMake[2]);
+        loadImg("idmake_frame_char.png", &imgIdMake[3]);
+        loadImg("idmake_btn_man.png", &imgIdMake[4]);
+        loadImg("idmake_btn_woman.png", &imgIdMake[5]);
+        loadImg("idmake_slot_select.png", &imgIdMake[6]);
+        loadImg("idmake_btn_ok.png", &imgIdMake[7]);
+        loadImg("fitting_btn_arrow.png", &imgIdMake[8]);
+        loadImg("fitting_slot_select.png", &imgIdMake[9]);
+        /////////////////////////////////////////////////
+    }
+    else
+    {
+        freeImg(&imgIdMake[0]);
+        freeImg(&imgIdMake[1]);
+        freeImg(&imgIdMake[2]);
+        freeImg(&imgIdMake[3]);
+        freeImg(&imgIdMake[4]);
+        freeImg(&imgIdMake[5]);
+        freeImg(&imgIdMake[6]);
+        freeImg(&imgIdMake[7]);
+        freeImg(&imgIdMake[8]);
+        freeImg(&imgIdMake[9]);
+    }
+}
 void drawIdMake()
 {
 	int px = cx;
@@ -1281,39 +1413,66 @@ void drawIdMake()
 		}
 		break;
 	case IDMAKE_STATE_IDMAKE:
+    //수정 사항 KBY 2018.2.26
+    case IDMAKE_STATE_INPUTNAME:
 	case IDMAKE_STATE_STAMP:
-		drawPacker(IMG_IdMakeBg, px, py, 0, 0, imgW(IMG_IdMakeBg), imgH(IMG_IdMakeBg), VH);
-		subTemp[XPOS] = px-160;
-		subTemp[YPOS] = py-42;
-		gSetColor(109, 108, 121);
+            drawImage(&imgIdMake[0], px, py+50, 0, 0, imgIdMake[0].w, imgIdMake[0].h, VH);
+//		drawPacker(IMG_IdMakeBg, px, py, 0, 0, imgW(IMG_IdMakeBg), imgH(IMG_IdMakeBg), VH);
+        subTemp[XPOS] = px-454;
+        subTemp[YPOS] = py-220;
+            
+        drawImage(&imgIdMake[1], subTemp[XPOS], subTemp[YPOS], 0, 0, imgIdMake[1].w, imgIdMake[1].h, VH);
+            
+        subTemp[XPOS] = px-160;
+        subTemp[YPOS] = py+65;
+            
+        drawImage(&imgIdMake[2], subTemp[XPOS], subTemp[YPOS], 0, 0, imgIdMake[2].w, imgIdMake[2].h, VH);
+            
+        subTemp[XPOS] = px+360;
+        subTemp[YPOS] = py+85;
+        
+        drawImage(&imgIdMake[3], subTemp[XPOS], subTemp[YPOS], 0, 0, imgIdMake[3].w, imgIdMake[3].h, VH);
+            
+        subTemp[XPOS]=px+350;
+        subTemp[YPOS]=py-140;
+        setFontSizeORI(16);
+        gSetColor(101, 48, 150);
+        gDrawString(subTemp[XPOS], subTemp[YPOS], "* 한 번 선택한 성별은 바꿀 수 없어요!", VH);
+        setFontSize(11);
+            
+        //계정 입력
+		subTemp[XPOS] = px+260;
+		subTemp[YPOS] = py+195;
+        gSetColor(204, 169, 219);
+        setFontSizeORI(16);
 		switch(xIdMake.nickNameErr)
 		{
 		case IDMAKEERR_TYPE_DONT:
-			gSetColor(109, 108, 121);
-			gDrawString(subTemp[XPOS], subTemp[YPOS], xIdMake.strNickName, VH);
+			gDrawString(subTemp[XPOS], subTemp[YPOS], xIdMake.strNickName, VL);
 			break;
 		case IDMAKEERR_TYPE_NICKNAMEERR:
-			drawPacker(IMG_MainMenu3, subTemp[XPOS]+131, subTemp[YPOS], 0, 0, imgW(IMG_MainMenu3), imgH(IMG_MainMenu3), VH);
-			gSetColor(255, 0, 0);
-			gDrawString(subTemp[XPOS], subTemp[YPOS],"한글(1~6),영문(2~8)제한", VH);
+//			drawPacker(IMG_MainMenu3, subTemp[XPOS]+131, subTemp[YPOS], 0, 0, imgW(IMG_MainMenu3), imgH(IMG_MainMenu3), VH);
+//			gSetColor(255, 0, 0);
+			gDrawString(subTemp[XPOS], subTemp[YPOS],"한글(1~6),영문(2~8)제한", VL);
 			break;
 		case IDMAKEERR_TYPE_NICKNAMEERR2:
-			drawPacker(IMG_MainMenu3, subTemp[XPOS]+131, subTemp[YPOS], 0, 0, imgW(IMG_MainMenu3), imgH(IMG_MainMenu3), VH);
-			gSetColor(255, 0, 0);
-			gDrawString(subTemp[XPOS], subTemp[YPOS],"대표자명 중복", VH);
+//			drawPacker(IMG_MainMenu3, subTemp[XPOS]+131, subTemp[YPOS], 0, 0, imgW(IMG_MainMenu3), imgH(IMG_MainMenu3), VH);
+//			gSetColor(255, 0, 0);
+			gDrawString(subTemp[XPOS], subTemp[YPOS],"닉네임 중복", VL);
 			break;
 		case IDMAKEERR_TYPE_NICKNAMEERR3:
-			drawPacker(IMG_MainMenu3, subTemp[XPOS]+131, subTemp[YPOS], 0, 0, imgW(IMG_MainMenu3), imgH(IMG_MainMenu3), VH);
-			gSetColor(255, 0, 0);
-			gDrawString(subTemp[XPOS], subTemp[YPOS],"특수문자 사용 금지", VH);
+//			drawPacker(IMG_MainMenu3, subTemp[XPOS]+131, subTemp[YPOS], 0, 0, imgW(IMG_MainMenu3), imgH(IMG_MainMenu3), VH);
+//			gSetColor(255, 0, 0);
+			gDrawString(subTemp[XPOS], subTemp[YPOS],"특수문자 사용 금지", VL);
 			break;
 		}
-			
-			
-		xIdMake.xTouchNickName.wPos = imgW(IMG_MainMenu2);
-		xIdMake.xTouchNickName.hPos = imgH(IMG_MainMenu2);
-		xIdMake.xTouchNickName.xPos = subTemp[XPOS] - xIdMake.xTouchNickName.wPos/2;
-		xIdMake.xTouchNickName.yPos = subTemp[YPOS] - xIdMake.xTouchNickName.hPos/2;
+        setFontSize(11);
+//
+//			
+//		xIdMake.xTouchNickName.wPos = imgW(IMG_MainMenu2);
+//		xIdMake.xTouchNickName.hPos = imgH(IMG_MainMenu2);
+//		xIdMake.xTouchNickName.xPos = subTemp[XPOS] - xIdMake.xTouchNickName.wPos/2;
+//		xIdMake.xTouchNickName.yPos = subTemp[YPOS] - xIdMake.xTouchNickName.hPos/2;
 		
 		/*
 		setAlpha(100);
@@ -1322,124 +1481,363 @@ void drawIdMake()
 		setAlpha(ALPHA_MAX);
 		*/
 			
-			
-		subTemp[XPOS] = px-170-83;
-		subTemp[YPOS] = py+97;
-			
-		drawPacker(IMG_MainMenu8, subTemp[XPOS], subTemp[YPOS], 0, imgH(IMG_MainMenu8)/2*(xIdMake.sex==0?0:1), imgW(IMG_MainMenu8)/2, imgH(IMG_MainMenu8)/2, VH);
-		xIdMake.xTouchSex[0].wPos = imgW(IMG_MainMenu8)/2;
-		xIdMake.xTouchSex[0].hPos = imgH(IMG_MainMenu8)/2;
-		xIdMake.xTouchSex[0].xPos = subTemp[XPOS]-xIdMake.xTouchSex[0].wPos/2;
-		xIdMake.xTouchSex[0].yPos = subTemp[YPOS]-xIdMake.xTouchSex[0].hPos/2;
-						
-		subTemp[XPOS] = px-170+83;
-		subTemp[YPOS] = py+97;
-		drawPacker(IMG_MainMenu8, subTemp[XPOS], subTemp[YPOS], imgW(IMG_MainMenu8)/2, imgH(IMG_MainMenu8)/2*(xIdMake.sex==1?0:1), imgW(IMG_MainMenu8)/2, imgH(IMG_MainMenu8)/2, VH);
-		xIdMake.xTouchSex[1].wPos = imgW(IMG_MainMenu8)/2;
-		xIdMake.xTouchSex[1].hPos = imgW(IMG_MainMenu8)/2;
-		xIdMake.xTouchSex[1].xPos = subTemp[XPOS]-xIdMake.xTouchSex[0].wPos/2;
-		xIdMake.xTouchSex[1].yPos = subTemp[YPOS]-xIdMake.xTouchSex[0].hPos/2;
+        //헤어 슬롯
+            
+        for(int i=0;i<3;i++)
+        {
+            subTemp[XPOS] = px-360+(140*i);
+            subTemp[YPOS] = py-62;
+            
+            xIdMake.xTouchHair[i].wPos=130;
+            xIdMake.xTouchHair[i].hPos=130;
+            xIdMake.xTouchHair[i].xPos=subTemp[XPOS]-xIdMake.xTouchHair[i].wPos/2;
+            xIdMake.xTouchHair[i].yPos=subTemp[YPOS]-xIdMake.xTouchHair[i].hPos/2;
+            
+            if(i==xIdMake.selectHair)
+            {
+                drawImage(&imgIdMake[9], subTemp[XPOS], subTemp[YPOS], 0, 0, imgIdMake[9].w, imgIdMake[9].h, VH);
+            }
+//            setAlpha(100);
+//            gSetColor(0, 255, 0);
+//            fillRect(xIdMake.xTouchHair[i].xPos, xIdMake.xTouchHair[i].yPos, xIdMake.xTouchHair[i].wPos, xIdMake.xTouchHair[i].hPos);
+//            setAlpha(ALPHA_MAX);
+        }
+            
+        //머리 슬롯
+        for (int ee=0; ee<3; ee++)
+        {
+            subTemp[XPOS] = px-360+(140*ee);
+            subTemp[YPOS] = py+97;
+            
+            xIdMake.xTouchFace[ee].wPos=130;
+            xIdMake.xTouchFace[ee].hPos=130;
+            xIdMake.xTouchFace[ee].xPos=subTemp[XPOS]-xIdMake.xTouchFace[ee].wPos/2;
+            xIdMake.xTouchFace[ee].yPos=subTemp[YPOS]-xIdMake.xTouchFace[ee].hPos/2;
+            
+            if(ee==xIdMake.selectFace)
+            {
+                drawImage(&imgIdMake[9], subTemp[XPOS], subTemp[YPOS], 0, 0, imgIdMake[9].w, imgIdMake[9].h, VH);
+            }
+            
+//            setAlpha(100);
+//            gSetColor(0, 0, 255);
+//            fillRect(xIdMake.xTouchFace[ee].xPos, xIdMake.xTouchFace[ee].yPos, xIdMake.xTouchFace[ee].wPos, xIdMake.xTouchFace[ee].hPos);
+//            setAlpha(ALPHA_MAX);
+
+        }
+            
+        //별자리 슬롯
+        for(int j=0;j<12;j++)
+        {
+            subTemp[XPOS] = px+52+(62*(j%2));
+            subTemp[YPOS] = py-70+(62*(j/2));
+            
+            if(j==xIdMake.selectStar)
+            {
+                drawImage(&imgIdMake[6], subTemp[XPOS], subTemp[YPOS], 0, 0, imgIdMake[6].w, imgIdMake[6].h, VH);
+            }
+            
+            xIdMake.xTouchStar[j].wPos = 55;
+            xIdMake.xTouchStar[j].hPos = 55;
+            xIdMake.xTouchStar[j].xPos = subTemp[XPOS]-xIdMake.xTouchStar[j].wPos/2;
+            xIdMake.xTouchStar[j].yPos = subTemp[YPOS]-xIdMake.xTouchStar[j].hPos/2;
+            
+//            setAlpha(100);
+//            gSetColor(255, 0, 0);
+//            fillRect(xIdMake.xTouchStar[j].xPos, xIdMake.xTouchStar[j].yPos, xIdMake.xTouchStar[j].wPos, xIdMake.xTouchStar[j].hPos);
+//            setAlpha(ALPHA_MAX);
+            
+        }
+        
+		//성별
+            
+        subTemp[XPOS] = px-295;
+        subTemp[YPOS] = py+235;
+        
+        if(xIdMake.isTouchMan==false)
+        {
+            drawImage(&imgIdMake[4], subTemp[XPOS], subTemp[YPOS], 0, 0, imgIdMake[4].w/2, imgIdMake[4].h, VH);
+        }
+        else
+        {
+            drawImage(&imgIdMake[4], subTemp[XPOS], subTemp[YPOS], imgIdMake[4].w/2, 0, imgIdMake[4].w/2, imgIdMake[4].h, VH);
+        }
+            
+        xIdMake.xTouchSex[0].wPos = imgIdMake[4].w/2;
+        xIdMake.xTouchSex[0].hPos = imgIdMake[4].h;
+        xIdMake.xTouchSex[0].xPos = subTemp[XPOS]-xIdMake.xTouchSex[0].wPos/2;
+        xIdMake.xTouchSex[0].yPos = subTemp[YPOS]-xIdMake.xTouchSex[0].hPos/2;
+            
+//        setAlpha(100);
+//        gSetColor(255, 0, 255);
+//        fillRect(xIdMake.xTouchSex[0].xPos, xIdMake.xTouchSex[0].yPos, xIdMake.xTouchSex[0].wPos, xIdMake.xTouchSex[0].hPos);
+//        setAlpha(ALPHA_MAX);
+            
+        subTemp[XPOS] = px-140;
+        subTemp[YPOS] = py+235;
+            
+        if(xIdMake.isTouchWoman==false)
+        {
+            drawImage(&imgIdMake[5], subTemp[XPOS], subTemp[YPOS], 0, 0, imgIdMake[5].w/2, imgIdMake[5].h, VH);
+        }
+        else
+        {
+            drawImage(&imgIdMake[5], subTemp[XPOS], subTemp[YPOS], imgIdMake[5].w/2, 0, imgIdMake[5].w/2, imgIdMake[5].h, VH);
+        }
+        xIdMake.xTouchSex[1].wPos = imgIdMake[5].w/2;
+        xIdMake.xTouchSex[1].hPos = imgIdMake[5].h;
+        xIdMake.xTouchSex[1].xPos = subTemp[XPOS]-xIdMake.xTouchSex[1].wPos/2;
+        xIdMake.xTouchSex[1].yPos = subTemp[YPOS]-xIdMake.xTouchSex[1].hPos/2;
+            
+//        setAlpha(100);
+//        gSetColor(255, 255, 0);
+//        fillRect(xIdMake.xTouchSex[1].xPos, xIdMake.xTouchSex[1].yPos, xIdMake.xTouchSex[1].wPos, xIdMake.xTouchSex[1].hPos);
+//        setAlpha(ALPHA_MAX);
+            
+//		subTemp[XPOS] = px-170-83;
+//		subTemp[YPOS] = py+97;
+//			
+//		drawPacker(IMG_MainMenu8, subTemp[XPOS], subTemp[YPOS], 0, imgH(IMG_MainMenu8)/2*(xIdMake.sex==0?0:1), imgW(IMG_MainMenu8)/2, imgH(IMG_MainMenu8)/2, VH);
+//		xIdMake.xTouchSex[0].wPos = imgW(IMG_MainMenu8)/2;
+//		xIdMake.xTouchSex[0].hPos = imgH(IMG_MainMenu8)/2;
+//		xIdMake.xTouchSex[0].xPos = subTemp[XPOS]-xIdMake.xTouchSex[0].wPos/2;
+//		xIdMake.xTouchSex[0].yPos = subTemp[YPOS]-xIdMake.xTouchSex[0].hPos/2;
+//						
+//		subTemp[XPOS] = px-170+83;
+//		subTemp[YPOS] = py+97;
+//		drawPacker(IMG_MainMenu8, subTemp[XPOS], subTemp[YPOS], imgW(IMG_MainMenu8)/2, imgH(IMG_MainMenu8)/2*(xIdMake.sex==1?0:1), imgW(IMG_MainMenu8)/2, imgH(IMG_MainMenu8)/2, VH);
+//		xIdMake.xTouchSex[1].wPos = imgW(IMG_MainMenu8)/2;
+//		xIdMake.xTouchSex[1].hPos = imgW(IMG_MainMenu8)/2;
+//		xIdMake.xTouchSex[1].xPos = subTemp[XPOS]-xIdMake.xTouchSex[0].wPos/2;
+//		xIdMake.xTouchSex[1].yPos = subTemp[YPOS]-xIdMake.xTouchSex[0].hPos/2;
 					
 		//나이
-		subTemp[XPOS] = px+112;
-		subTemp[YPOS] = py+47;		
+//		subTemp[XPOS] = px+112;
+//		subTemp[YPOS] = py+47;		
+//		
+//		//거리별 스크롤 방식에서 셀럭트넘은 첫 시작 값으로 취급한다
+//		xIdMake.xTouchAge.wPos = 140;
+//		xIdMake.xTouchAge.hPos = 221;
+//		xIdMake.xTouchAge.xPos = subTemp[XPOS]-xIdMake.xTouchAge.wPos/2;
+//		xIdMake.xTouchAge.yPos = subTemp[YPOS]-xIdMake.xTouchAge.hPos/2;
+//		/*
+//		gSetColor(255, 0, 0);
+//		setAlpha(100);
+//		fillRect(xIdMake.xTouchAge.xPos, xIdMake.xTouchAge.yPos, xIdMake.xTouchAge.wPos, xIdMake.xTouchAge.hPos);
+//		setAlpha(ALPHA_MAX);
+//		*/
+//		
+//		xIdMake.xDragScrollAge.totalNum = AGEMAX;
+//		xIdMake.xDragScrollAge.posGab = 48;
+//		
+//		dragScrollPrc(&xIdMake.xDragScrollAge,0,FALSE);
+//			
+//		
+//		
+//		gSetClip(true,xIdMake.xTouchAge.xPos, xIdMake.xTouchAge.yPos, xIdMake.xTouchAge.wPos, xIdMake.xTouchAge.hPos);
+//		for(int i=-2;i<=2;i++)
+//		{
+//			if(xIdMake.xDragScrollAge.selectNum+i >= 0 && xIdMake.xDragScrollAge.selectNum+i < xIdMake.xDragScrollAge.totalNum)
+//			{
+//				int pos = xIdMake.xDragScrollAge.pos+(xIdMake.xDragScrollAge.posGab*i);
+//				
+//				getSprintfAge(strTempS,xIdMake.xDragScrollAge.selectNum+i);
+//				gSetColor(109, 108, 121);
+//				
+//				gDrawString(subTemp[XPOS], subTemp[YPOS]+pos, strTempS, VH);
+//				drawPacker(IMG_MainMenu4, subTemp[XPOS], subTemp[YPOS]+20+pos, 0, 0, imgW(IMG_MainMenu4), imgH(IMG_MainMenu4), VH);
+//			}
+//		}
+//		gSetClip(false,0, 0, lcdW, lcdH);
+//		drawPacker(IMG_MainMenu9, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(IMG_MainMenu9), imgH(IMG_MainMenu9), VH);
+//		//지역
+//		subTemp[XPOS] = px+263;
+//		subTemp[YPOS] = py+47;
+//
+//		
+//		//거리별 스크롤 방식에서 셀럭트넘은 첫 시작 값으로 취급한다
+//		xIdMake.xTouchArea.wPos = 146;
+//		xIdMake.xTouchArea.hPos = 221;
+//		xIdMake.xTouchArea.xPos = subTemp[XPOS]-xIdMake.xTouchArea.wPos/2;
+//		xIdMake.xTouchArea.yPos = subTemp[YPOS]-xIdMake.xTouchArea.hPos/2;
+//		/*
+//		 gSetColor(255, 0, 0);
+//		 setAlpha(100);
+//		 fillRect(xIdMake.xTouchArea.xPos, xIdMake.xTouchArea.yPos, xIdMake.xTouchArea.wPos, xIdMake.xTouchArea.hPos);
+//		 setAlpha(ALPHA_MAX);
+//		 */
+//
+//		xIdMake.xDragScrollArea.totalNum = AREAMAX;
+//		xIdMake.xDragScrollArea.posGab = 48;
+//
+//		dragScrollPrc(&xIdMake.xDragScrollArea,0,FALSE);
+//		
+//		gSetClip(true,xIdMake.xTouchArea.xPos, xIdMake.xTouchArea.yPos, xIdMake.xTouchArea.wPos, xIdMake.xTouchArea.hPos);
+//		for(int i=-2;i<=2;i++)
+//		{
+//			if(xIdMake.xDragScrollArea.selectNum+i >= 0 && xIdMake.xDragScrollArea.selectNum+i < xIdMake.xDragScrollArea.totalNum)
+//			{
+//				int pos = xIdMake.xDragScrollArea.pos+(xIdMake.xDragScrollArea.posGab*i);
+//								
+//				getSprintfArea(strTempS,xIdMake.xDragScrollArea.selectNum+i);
+//				gSetColor(109, 108, 121);
+//				
+//				gDrawString(subTemp[XPOS], subTemp[YPOS]+pos, strTempS, VH);
+//				drawPacker(IMG_MainMenu4, subTemp[XPOS], subTemp[YPOS]+20+pos, 0, 0, imgW(IMG_MainMenu4), imgH(IMG_MainMenu4), VH);
+//			}
+//		}			
+//		gSetClip(false,0, 0, lcdW, lcdH);
+//		drawPacker(IMG_MainMenu10, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(IMG_MainMenu10), imgH(IMG_MainMenu10), VH);
 		
-		//거리별 스크롤 방식에서 셀럭트넘은 첫 시작 값으로 취급한다
-		xIdMake.xTouchAge.wPos = 140;
-		xIdMake.xTouchAge.hPos = 221;
-		xIdMake.xTouchAge.xPos = subTemp[XPOS]-xIdMake.xTouchAge.wPos/2;
-		xIdMake.xTouchAge.yPos = subTemp[YPOS]-xIdMake.xTouchAge.hPos/2;
-		/*
-		gSetColor(255, 0, 0);
-		setAlpha(100);
-		fillRect(xIdMake.xTouchAge.xPos, xIdMake.xTouchAge.yPos, xIdMake.xTouchAge.wPos, xIdMake.xTouchAge.hPos);
-		setAlpha(ALPHA_MAX);
-		*/
-		
-		xIdMake.xDragScrollAge.totalNum = AGEMAX;
-		xIdMake.xDragScrollAge.posGab = 48;
-		
-		dragScrollPrc(&xIdMake.xDragScrollAge,0,FALSE);
-			
-		
-		
-		gSetClip(true,xIdMake.xTouchAge.xPos, xIdMake.xTouchAge.yPos, xIdMake.xTouchAge.wPos, xIdMake.xTouchAge.hPos);
-		for(int i=-2;i<=2;i++)
-		{
-			if(xIdMake.xDragScrollAge.selectNum+i >= 0 && xIdMake.xDragScrollAge.selectNum+i < xIdMake.xDragScrollAge.totalNum)
-			{
-				int pos = xIdMake.xDragScrollAge.pos+(xIdMake.xDragScrollAge.posGab*i);
-				
-				getSprintfAge(strTempS,xIdMake.xDragScrollAge.selectNum+i);
-				gSetColor(109, 108, 121);
-				
-				gDrawString(subTemp[XPOS], subTemp[YPOS]+pos, strTempS, VH);
-				drawPacker(IMG_MainMenu4, subTemp[XPOS], subTemp[YPOS]+20+pos, 0, 0, imgW(IMG_MainMenu4), imgH(IMG_MainMenu4), VH);
-			}
-		}
-		gSetClip(false,0, 0, lcdW, lcdH);
-		drawPacker(IMG_MainMenu9, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(IMG_MainMenu9), imgH(IMG_MainMenu9), VH);
-		//지역
-		subTemp[XPOS] = px+263;
-		subTemp[YPOS] = py+47;
+//		subTemp[XPOS] = px;
+//		subTemp[YPOS] = py+210;
+//		drawPacker(imgPopupBtn0, subTemp[XPOS], subTemp[YPOS], 0, imgH(imgPopupBtn0)/2, imgW(imgPopupBtn0), imgH(imgPopupBtn0)/2, VH);
+//		gDrawStringBold(subTemp[XPOS], subTemp[YPOS], "등록", VH, ALPHA_MAX, ALPHA_MAX, ALPHA_MAX, 186, 70, 10);
+//
+                
+        subTemp[XPOS] = px+251;
+        subTemp[YPOS] = py+50;
+        
+        if(xIdMake.isTouchLeftArrow==false)
+        {
+            drawImage(&imgIdMake[8], subTemp[XPOS], subTemp[YPOS], 0, 0, imgIdMake[8].w/4, imgIdMake[8].h, VH);
+        }
+        else
+        {
+            drawImage(&imgIdMake[8], subTemp[XPOS], subTemp[YPOS], imgIdMake[8].w/4, 0, imgIdMake[8].w/4, imgIdMake[8].h, VH);
+        }
+        xIdMake.xTouchArrow[0].wPos = imgIdMake[8].w/4;
+        xIdMake.xTouchArrow[0].hPos = imgIdMake[8].h;
+        xIdMake.xTouchArrow[0].xPos = subTemp[XPOS]-xIdMake.xTouchArrow[0].wPos/2;
+        xIdMake.xTouchArrow[0].yPos = subTemp[YPOS]-xIdMake.xTouchArrow[0].hPos/2;
+            
+//        setAlpha(100);
+//        gSetColor(0, 255, 255);
+//        fillRect(xIdMake.xTouchArrow[0].xPos, xIdMake.xTouchArrow[0].yPos, xIdMake.xTouchArrow[0].wPos, xIdMake.xTouchArrow[0].hPos);
+//        setAlpha(ALPHA_MAX);
+            
+            
+        subTemp[XPOS] = px+468;
+        subTemp[YPOS] = py+50;
+        xGame.isReverse = true;
+        
+        if(xIdMake.isTouchRightArrow==false)
+        {
+            drawImage(&imgIdMake[8], subTemp[XPOS], subTemp[YPOS], 0, 0, imgIdMake[8].w/4, imgIdMake[8].h, VH);
+        }
+        else
+        {
+            drawImage(&imgIdMake[8], subTemp[XPOS], subTemp[YPOS], imgIdMake[8].w/4, 0, imgIdMake[8].w/4, imgIdMake[8].h, VH);
+        }
+        xIdMake.xTouchArrow[1].wPos = imgIdMake[8].w/4;
+        xIdMake.xTouchArrow[1].hPos = imgIdMake[8].h;
+        xIdMake.xTouchArrow[1].xPos = subTemp[XPOS]-xIdMake.xTouchArrow[0].wPos/2;
+        xIdMake.xTouchArrow[1].yPos = subTemp[YPOS]-xIdMake.xTouchArrow[0].hPos/2;
+            
+//        setAlpha(100);
+//        gSetColor(255, 0, 128);
+//        fillRect(xIdMake.xTouchArrow[1].xPos, xIdMake.xTouchArrow[1].yPos, xIdMake.xTouchArrow[1].wPos, xIdMake.xTouchArrow[1].hPos);
+//        setAlpha(ALPHA_MAX);
 
-		
-		//거리별 스크롤 방식에서 셀럭트넘은 첫 시작 값으로 취급한다
-		xIdMake.xTouchArea.wPos = 146;
-		xIdMake.xTouchArea.hPos = 221;
-		xIdMake.xTouchArea.xPos = subTemp[XPOS]-xIdMake.xTouchArea.wPos/2;
-		xIdMake.xTouchArea.yPos = subTemp[YPOS]-xIdMake.xTouchArea.hPos/2;
-		/*
-		 gSetColor(255, 0, 0);
-		 setAlpha(100);
-		 fillRect(xIdMake.xTouchArea.xPos, xIdMake.xTouchArea.yPos, xIdMake.xTouchArea.wPos, xIdMake.xTouchArea.hPos);
-		 setAlpha(ALPHA_MAX);
-		 */
-
-		xIdMake.xDragScrollArea.totalNum = AREAMAX;
-		xIdMake.xDragScrollArea.posGab = 48;
-
-		dragScrollPrc(&xIdMake.xDragScrollArea,0,FALSE);
-		
-		gSetClip(true,xIdMake.xTouchArea.xPos, xIdMake.xTouchArea.yPos, xIdMake.xTouchArea.wPos, xIdMake.xTouchArea.hPos);
-		for(int i=-2;i<=2;i++)
-		{
-			if(xIdMake.xDragScrollArea.selectNum+i >= 0 && xIdMake.xDragScrollArea.selectNum+i < xIdMake.xDragScrollArea.totalNum)
-			{
-				int pos = xIdMake.xDragScrollArea.pos+(xIdMake.xDragScrollArea.posGab*i);
-								
-				getSprintfArea(strTempS,xIdMake.xDragScrollArea.selectNum+i);
-				gSetColor(109, 108, 121);
-				
-				gDrawString(subTemp[XPOS], subTemp[YPOS]+pos, strTempS, VH);
-				drawPacker(IMG_MainMenu4, subTemp[XPOS], subTemp[YPOS]+20+pos, 0, 0, imgW(IMG_MainMenu4), imgH(IMG_MainMenu4), VH);
-			}
-		}			
-		gSetClip(false,0, 0, lcdW, lcdH);
-		drawPacker(IMG_MainMenu10, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(IMG_MainMenu10), imgH(IMG_MainMenu10), VH);
-		
-		subTemp[XPOS] = px;
-		subTemp[YPOS] = py+210;
-		drawPacker(imgPopupBtn0, subTemp[XPOS], subTemp[YPOS], 0, imgH(imgPopupBtn0)/2, imgW(imgPopupBtn0), imgH(imgPopupBtn0)/2, VH);
-		gDrawStringBold(subTemp[XPOS], subTemp[YPOS], "등록", VH, ALPHA_MAX, ALPHA_MAX, ALPHA_MAX, 186, 70, 10);
-						
-		xTouchOk.wPos = imgW(imgPopupBtn0);
-		xTouchOk.hPos = imgH(imgPopupBtn0)/2;
+        xGame.isReverse = false;
+            
+        subTemp[XPOS] = px+360;
+        subTemp[YPOS] = py+248;
+        
+        if(xIdMake.isTouchOk==false)
+        {
+            drawImage(&imgIdMake[7], subTemp[XPOS], subTemp[YPOS], 0, 0, imgIdMake[7].w/2, imgIdMake[7].h, VH);
+        }
+        else
+        {
+            drawImage(&imgIdMake[7], subTemp[XPOS], subTemp[YPOS], imgIdMake[7].w/2, 0, imgIdMake[7].w/2, imgIdMake[7].h, VH);
+        }
+		xTouchOk.wPos = imgIdMake[7].w/2;
+		xTouchOk.hPos = imgIdMake[7].h;
 		xTouchOk.xPos = subTemp[XPOS] - xTouchOk.wPos/2;
 		xTouchOk.yPos = subTemp[YPOS] - xTouchOk.hPos/2;
-		
-		if(xIdMake.state == IDMAKE_STATE_STAMP)
-		{
-			if(drawStamp(cx, cy, xIdMake.anyCnt++,0) == TRUE)
-			{
-				playSnd(SND_MENU_OK);
-				xMainMenu.state = MAINMENU_STATE_LOGIN;
-				xMainMenu.anyCnt = 0;
-				
+            
+//        setAlpha(100);
+//        gSetColor(255, 128, 0);
+//        fillRect(xTouchOk.xPos, xTouchOk.yPos, xTouchOk.wPos, xTouchOk.hPos);
+//        setAlpha(ALPHA_MAX);
+            
+        subTemp[XPOS] = px+365;
+        subTemp[YPOS] = py+195;
+            
+        xIdMake.xTouchNickName.wPos = 240;
+        xIdMake.xTouchNickName.hPos = 40;
+        xIdMake.xTouchNickName.xPos = subTemp[XPOS]-xIdMake.xTouchNickName.wPos/2;
+		xIdMake.xTouchNickName.yPos = subTemp[YPOS]-xIdMake.xTouchNickName.hPos/2;
+            
+//        setAlpha(100);
+//        gSetColor(128, 255, 0);
+//        fillRect(xIdMake.xTouchNickName.xPos, xIdMake.xTouchNickName.yPos, xIdMake.xTouchNickName.wPos, xIdMake.xTouchNickName.hPos);
+//        setAlpha(ALPHA_MAX);
+        int slotHair=xIdMake.selectHair;
+        int slotFace=1000+xIdMake.selectFace;
+        int type = 0;
+        int code = 0;
+        int layer = 0;
+        int pos = ACT_FRONT;
+            
+        switch(xIdMake.pos)
+        {
+            case 0:
+            case 1:
+                pos = ACT_FRONT;
+                break;
+            case 2:
+            case 3:
+                pos = ACT_BACK;
+                break;
+            default:
+                pos = ACT_FRONT;
+                break;
+        }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //의상 레이어에 마네킹바디 넣기
+        setNpcBodyBig_FP(&xSpritNpc[NPC_ACT_FITTINGROOM][pos], pos);
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            
+        //의상 레이어에 의상 넣기
+        setSpritFBig_FP(&xSpritNpc[NPC_ACT_FITTINGROOM][pos],&xFitting_FP.xModel.xF,pos);
+        
+        //헤어셋팅
+        setNpcHairBig_FP(&xSpritNpc[NPC_ACT_FITTINGROOM][pos], slotHair, pos);
+        //얼굴셋팅
+        setNpcFaceBig_FP(&xSpritNpc[NPC_ACT_FITTINGROOM][pos], slotFace, pos);
+        
+        xSpritNpc[NPC_ACT_FITTINGROOM][pos].nowDelay = xFitting_FP.xModel.nowDelay;
+        xSpritNpc[NPC_ACT_FITTINGROOM][pos].nowFrame = xFitting_FP.xModel.nowFrame;
+        prcSprit(&xSpritNpc[NPC_ACT_FITTINGROOM][pos], &xFitting_FP.xModel.nowDelay, &xFitting_FP.xModel.nowFrame);
+        subTemp[XPOS] = px+360;
+        subTemp[YPOS] = py;
+        switch(xIdMake.pos)
+        {
+            case 1:
+            case 3:
+                reverseSpritBig_FP(&xSpritNpc[NPC_ACT_FITTINGROOM][pos],subTemp[XPOS],subTemp[YPOS],pos,&xFitting_FP.xModel.xFace);
+                break;
+            default:
+                drawSpritBig_FP(&xSpritNpc[NPC_ACT_FITTINGROOM][pos],subTemp[XPOS],subTemp[YPOS],pos,&xFitting_FP.xModel.xFace);
+                break;
+        }
+            
+            
+            
+        if(xIdMake.state == IDMAKE_STATE_STAMP)
+        {
+            if(drawStamp(cx, cy, xIdMake.anyCnt++,0) == TRUE)
+            {
+                playSnd(SND_MENU_OK);
+                xMainMenu.state = MAINMENU_STATE_LOGIN;
+                xMainMenu.anyCnt = 0;
+                
                 netSend(CMD_LOGIN,DONT);
             }
-		}
-		break;
+        }
+        break;
 	}
 }
 

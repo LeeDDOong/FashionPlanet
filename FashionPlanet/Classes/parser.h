@@ -40,7 +40,8 @@ extern int sortSlot[2][20];
 
 typedef struct 
 {
-	XIMG *img[17][20];
+	XIMG *img[64][20];
+	XIMG *imgLayer[40][2];
 	int totalImg;
 	int endAction;
 	int totalFrame;
@@ -48,9 +49,9 @@ typedef struct
 	///////////////운영부분/////////////////
 	int nowFrame;
 	int nowDelay;
-		
+	
 	int buyItemCode;
-		
+	
 	M_Boolean isHighHeeled;
 	
 	int hairResize;
@@ -66,7 +67,7 @@ typedef struct
 	M_Boolean isCleaning;
 	M_Boolean isPorterMan_LEFT;
 	M_Boolean isPorterMan_RIGHT;
-				
+	
 	M_Boolean isChairBook;
 	M_Boolean isChairCoffee;
 	M_Boolean isFitting;
@@ -74,7 +75,7 @@ typedef struct
 	
 	M_Boolean isPen;
 	M_Boolean isNote;
-
+	
 	
 } XSPRIT;
 
@@ -105,7 +106,7 @@ typedef struct
 
 
 //////////////////////////////////캐릭터액팅///////////////////////
-#define SPRITNPCMAX		90
+#define SPRITNPCMAX		128
 #define ACT_FRONT		0
 #define ACT_BACK		1
 
@@ -187,7 +188,7 @@ typedef struct
 
 #define NPC_ACT_PORTER_WW_W_FITTING	88
 #define NPC_ACT_PORTER_WW_W_ANGRY	89
-
+#define NPC_ACT_FITTINGROOM	NPC_ACT_PORTER_WW_W_ANGRY + 1
 
 extern XSPRIT xSpritNpc[SPRITNPCMAX][2];		//[액팅번호][앞뒤구분]
 extern XSPRIT xSpritDrawSub;
@@ -217,9 +218,15 @@ extern char strFileNameTemp[64];
 
 #define EXCEL_PS_STAFF_LIST				6
 #define EXCEL_PS_STAFF_LIST_FILE		"staff_list.dat"
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////Level Data KBY
 #define EXCEL_PS_LVTABLE				7
 #define EXCEL_PS_LVTABLE_FILE			"level.dat"
+
+//#define EXCEL_PS_LVTABLE				7
+//#define EXCEL_PS_LVTABLE_FILE			"LevelTable.dat"
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 #define EXCEL_PS_RESDOWN				8
 #define EXCEL_PS_RESDOWN_FILE			"resdownload.dat"
@@ -364,6 +371,29 @@ extern char strFileNameTemp[64];
 
 #define EXCEL_PS_R_UPGRADE                      50
 #define EXCEL_PS_R_UPGRADE_FILE                 "R_Upgrade.dat"
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////패션플래닛 추가 Data KBY
+#define EXCEL_PS_PDRESS_DATA                    EXCEL_PS_R_UPGRADE+1
+#define EXCEL_PS_PDRESS_DATA_FILE               "pdress_data.dat"
+
+#define EXCEL_PS_PDRESS_LIST                    EXCEL_PS_PDRESS_DATA+1
+#define EXCEL_PS_PDRESS_LIST_FILE               "pdress_list.dat"
+
+#define EXCEL_PS_CLOTHES_DATA                   EXCEL_PS_PDRESS_LIST+1
+#define EXCEL_PS_CLOTHES_DATA_FILE              "Clothes_Data.dat"
+
+#define EXCEL_PS_HAIRMAKEUP_DATA                EXCEL_PS_CLOTHES_DATA+1
+#define EXCEL_PS_HAIRMAKEUP_DATA_FILE           "HairMakeup.dat"
+
+#define EXCEL_PS_LAYERTYPE_DATA                 EXCEL_PS_HAIRMAKEUP_DATA+1
+#define EXCEL_PS_LAYERTYPE_DATA_FILE            "LayerType.dat"
+
+#define EXCEL_PS_MATERIAL_DATA                  EXCEL_PS_LAYERTYPE_DATA+1
+#define EXCEL_PS_MATERIAL_DATA_FILE             "Material.dat"
+
+#define EXCEL_PS_VARIABLE                       EXCEL_PS_MATERIAL_DATA+1
+#define EXCEL_PS_VARIABLE_FILE                  "Variable.dat"
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 int prcSprit(XSPRIT *Xsprit ,int *nowDelay,int *nowFrame);
 void initSprit(XSPRIT *Xsprit);
@@ -371,7 +401,20 @@ void loadSpriteData(const char* strFileName,XSPRIT* Xsprit);
 void drawSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace);
 void reverseSprit(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace);
 void loadExcelParserByte(int type);
+void drawSpritcharacter(XIMG* img, float x, float y, float imgX, float imgY, float imgW, float imgH, int ank, float fGameScale);
 int getExcelTypeNum(const char* strFileName);
+
+////////////////////////////////////////////////////////////////////////////
+//LJW 추가
+void drawSprit_FP(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace);
+void reverseSprit_FP(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace);
+void drawSpritBig_FP(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace);
+void reverseSpritBig_FP(XSPRIT *Xsprit,int x,int y,int pos,XFACE *xFace);
+
+void delSprit_FP(XSPRIT *xSprit);
+int prcSpritBig_FP(XSPRIT *Xsprit ,int *nowDelay,int *nowFrame);
+////////////////////////////////////////////////////////////////////////////
+
 #endif
 
 

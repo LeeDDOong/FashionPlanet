@@ -89,6 +89,14 @@ void setState(M_Int8 nexts, M_Int8 plays,M_Int8 subplays)
 	playState = plays;
 	loadingCnt = 0;
 	subStateTemp = subplays;
+	
+	//수정 사항 회원가입후 이미지 메모리 삭제 KBY 2018.2.23
+	for(int k=0;k<10;k++)
+	{
+		freeImg(&imgIdMake[k]);
+	}
+	
+	
 }
 
 /*

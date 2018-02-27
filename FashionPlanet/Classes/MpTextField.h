@@ -54,6 +54,8 @@ public:
 #define TEXTBOX_TYPE_CLUBBOOK               18
 #define TEXTBOX_TYPE_CLUBNAMEMODIFY         19
 
+#define TEXTBOX_TYPE_FRIENDID_FP            20
+
 
 
 

@@ -91,8 +91,22 @@ XNETCLUBHISTORYLIST xNetClubHistoryList;
 XNETCLUBBOOKLIST xNetClubBookList;
 XNETCLUBJOINAPPLY xNetClubJoinApply;
 XNETCLUBDRESSBUY xNetClubDressBuy;
-
-
+//KBY 작업한 구조체
+XNETPRODUCTIONSLOT xNetProductionSlot;//제작기
+XNETGREENHOUSESLOT xNetGreenHouseSlot;//온실
+XNETSPINNINGWHEELSLOT xNetSpinningWheelSlot;//물레
+XNETCARROT xNetCarrot;//당근
+XNETBUYDRESS xNetBuyDress;//의상 구매
+/////////////////////////////////////////////////////////////////////
+//전송기 이벤트큐 추가 LJW 2018.01.22
+XNETSENDMACHINESLOTUPDATE xNetSendMachineSlotUpdate;
+XNETSENDMACHINESLOTOPEN xNetSendMachineSlotOpen;
+XNETSENDMACHINESLOTINFO xNetSendMachineSlotInfo;
+/////////////////////////////////////////////////////////////////////
+//과장님이 작업하신 것....
+XNETUPDATEMYDRESS xNetUpdateMyDress;
+XNETGETDRESSROOMINFO xNetGetDressRoomInfo;
+/////////////////////////////////////////////////////////////////////
 
 int fashionNum;	//패션카테고리넘버
 int floorNum;	//로딩층
@@ -186,8 +200,12 @@ void netSend(M_Int32 cmd,M_Int32 subIndex)
 //        root["PASSWORD"]="106403318778630873593";//다솜씨 계정
 //        root["ID"]="116455304159778020587";
 //        root["PASSWORD"]="116455304159778020587";//내 계정
+//        root["ID"]="112568368855147217704";
+//        root["PASSWORD"]="112568368855147217704";//내 계정 2
+            
         root["ID"]=xKakaoData.xUserInfo.strUserId;
         root["PASSWORD"]=xKakaoData.xUserInfo.strUserId;
+            
         root["CLIENT"]=client;
         root["TOKEN"]=xNetData.strUid;
         break;
@@ -233,10 +251,11 @@ void netSend(M_Int32 cmd,M_Int32 subIndex)
         root["PASSWORD"]=xKakaoData.xUserInfo.strUserId;
         root["NICKNAME"]=xIdMake.strNickName;
         root["CLIENT"]=client;
+        root["UID"]=xIdMake.strUID;
         root["SEX"]=xIdMake.sex;
-        root["AGE"]=xIdMake.age;
-        root["ZONE"]=xIdMake.area;
-        root["UID"]=xNetData.strUid;
+        root["STAR"]=xIdMake.selectStar;
+        root["HAIR"]=xIdMake.selectHair;
+        root["FACE"]=xIdMake.selectFace+1000;
         break;
     case CMD_DELPROFILEPHOTO:
         root["PROTOCOL"]=xnet.cmd;
@@ -377,24 +396,23 @@ void netSend(M_Int32 cmd,M_Int32 subIndex)
 		root["CASH"]=xSaveTemp.cash.oriData;
 		break;
 
-		case CMD_GETGAMEDATA:			
-			if(xWorldMap.isFriendMap == TRUE)
-            {
-				xNetGetGameInfo.userNum = xFriendData[xFriendMap.selectDataSlotNum].userNum;
-             
-                root["UPDATE"]=0;
-                
-            }
-			else
-			{
-				xNetGetGameInfo.userNum = xNetData.userNum;
-                root["UPDATE"]=1;
-
-			}
-			root["PROTOCOL"]=xnet.cmd;
-			root["AUTHENTICODE"]=xNetData.strAuthentiCode;
-			root["USERNUM"]=xNetGetGameInfo.userNum;
-			break;
+    case CMD_GETGAMEDATA:
+        if(xWorldMap.isFriendMap == TRUE)
+        {
+            xNetGetGameInfo.userNum = xFriendData[xFriendMap.selectDataSlotNum].userNum;
+            
+            root["UPDATE"]=0;
+            
+        }
+        else
+        {
+            xNetGetGameInfo.userNum = xNetData.userNum;
+            root["UPDATE"]=1;
+        }
+        root["PROTOCOL"]=xnet.cmd;
+        root["AUTHENTICODE"]=xNetData.strAuthentiCode;
+        root["USERNUM"]=xNetGetGameInfo.userNum;
+        break;
 		case CMD_MINIPROFILE:
 			root["PROTOCOL"]=xnet.cmd;
 			root["AUTHENTICODE"]=xNetData.strAuthentiCode;
@@ -1725,59 +1743,174 @@ void netSend(M_Int32 cmd,M_Int32 subIndex)
 		root["USERNUM"]=xNetData.userNum;
 		root["GOLD"]=xNetAutoSell.gold;
 		break;
-	case CMD_AUTOPRODUCT:
+	///////////////////////////////////////////////////
+    //제작기
+    case CMD_PRODUCTIONSLOTUPDATE:
+        root["PROTOCOL"]=xnet.cmd;
+        root["AUTHENTICODE"]=xNetData.strAuthentiCode;
+        root["USERNUM"]=xNetData.userNum;
+        root["TYPE"]=xNetProductionSlot.type;
+        root["BKEY"]=xProduction_FP.xData[xProduction_FP.index].key;
+        root["SLOT"]=xNetProductionSlot.slot;
+        root["ITEM_INDEX"]=xNetProductionSlot.itemcode;
+        root["TIME"]=xNetProductionSlot.time;
+		break;
+            
+    case CMD_PRODUCTIONSLOTOPEN:
+        root["PROTOCOL"]=xnet.cmd;
+        root["AUTHENTICODE"]=xNetData.strAuthentiCode;
+        root["USERNUM"]=xNetData.userNum;
+        root["BKEY"]=xProduction_FP.xData[xProduction_FP.index].key;
+        root["SLOT"]=xProduction_FP.xData[xProduction_FP.index].totalSlot;
+        break;
+            
+    case CMD_PRODUCTIONINFOUPDATE:
+        root["PROTOCOL"]=xnet.cmd;
+        root["AUTHENTICODE"]=xNetData.strAuthentiCode;
+        root["USERNUM"]=xNetData.userNum;
+        break;
+            
+    case CMD_PRODUCTIONSLOTINFOUPDATE:
+        root["PROTOCOL"]=xnet.cmd;
+        root["AUTHENTICODE"]=xNetData.strAuthentiCode;
+        root["USERNUM"]=xNetData.userNum;
+        root["BKEY"]=xProduction_FP.xData[xProduction_FP.index].key;
+        break;
+            
+        ///////////////////////////////////////////////////
+        //온실 KBY
+    case CMD_GREENHOUSEINFOUPDATE:
+        root["PROTOCOL"]=xnet.cmd;
+        root["AUTHENTICODE"]=xNetData.strAuthentiCode;
+        root["USERNUM"]=xNetData.userNum;
+        break;
+    
+    case CMD_GREENHOUSESLOTUPDATE:
+        root["PROTOCOL"]=xnet.cmd;
+        root["AUTHENTICODE"]=xNetData.strAuthentiCode;
+        root["USERNUM"]=xNetData.userNum;
+        root["TYPE"] = xNetGreenHouseSlot.type;
+        root["SLOT"] = xNetGreenHouseSlot.slot;
+        root["ITEM_INDEX"] = xNetGreenHouseSlot.ItemIndex;
+        root["ITEM_COUNT"] = xNetGreenHouseSlot.ItemCnt;
+        root["TIME"] = xNetGreenHouseSlot.time;
+        break;
+        
+        ///////////////////////////////////////////////////
+        //물레 KBY
+            
+    case CMD_SPINNINGWHEELINFOUPDATE:
+        root["PROTOCOL"]=xnet.cmd;
+        root["AUTHENTICODE"]=xNetData.strAuthentiCode;
+        root["USERNUM"]=xNetData.userNum;
+        break;
+            
+    case CMD_SPINNINGWHEELSLOTUPDATE:
+        root["PROTOCOL"]=xnet.cmd;
+        root["AUTHENTICODE"]=xNetData.strAuthentiCode;
+        root["USERNUM"]=xNetData.userNum;
+        root["TYPE"] = xNetGreenHouseSlot.type;
+        root["SLOT"] = xNetGreenHouseSlot.slot;
+        root["ITEM_INDEX"] = xNetGreenHouseSlot.ItemIndex;
+        root["ITEM_COUNT"] = xNetGreenHouseSlot.ItemCnt;
+        root["TIME"] = xNetGreenHouseSlot.time;
+        break;
+            //    case CMD_PRODUCTIONREGIST:
+//        root["PROTOCOL"]=xnet.cmd;
+//        root["AUTHENTICODE"]=xNetData.strAuthentiCode;
+//        root["USERNUM"]=xNetData.userNum;
+//        root["BKEY"]=subIndex;
+//        root["ITEM_INDEX"]=xNetMap.code;
+//        break;
+//            
+//    case CMD_PRODUCTIONDELETE:
+//        root["PROTOCOL"]=xnet.cmd;
+//        root["AUTHENTICODE"]=xNetData.strAuthentiCode;
+//        root["USERNUM"]=xNetData.userNum;
+//        root["BKEY"]=subIndex;
+//        break;
+    ////////////////////////////////////////////////////////////////////
+    //의상 구매 관련 프로토콜 KBY
+            
+    case CMD_BUYDRESSCHAR:
+        root["PROTOCOL"]=xnet.cmd;
+        root["AUTHENTICODE"]=xNetData.strAuthentiCode;
+        root["USERNUM"]=xNetData.userNum;
+        root["DRESS"]=xNetBuyDress.DressCode;
+        break;
+    ////////////////////////////////////////////////////////////////////
+	//전송기 netSend 추가
+	case CMD_SENDMACHINEINFO:
 		root["PROTOCOL"]=xnet.cmd;
 		root["AUTHENTICODE"]=xNetData.strAuthentiCode;
 		root["USERNUM"]=xNetData.userNum;
-		arrayIndex = 0;
-		for(int i=0;i<xEventQueueNet.item_total[0];i++)
-		{
-			array[arrayIndex]["CATEGORY"] = xEventQueueNet.item_category[0][i];
-			array[arrayIndex]["ITEM_INDEX"] = xEventQueueNet.item_index[0][i];
-			array[arrayIndex]["ITEM_COUNT"] = xEventQueueNet.item_count[0][i];
-			arrayRoot.append(array[arrayIndex]);
-			arrayIndex++;
-		}
-		root["DRESS"] = arrayRoot;
 		break;
-	case CMD_AUTOPRODUCTSLOTUPDATE:
+	case CMD_SENDMACHINESLOTINFO:
 		root["PROTOCOL"]=xnet.cmd;
 		root["AUTHENTICODE"]=xNetData.strAuthentiCode;
 		root["USERNUM"]=xNetData.userNum;
-		arrayIndex = 0;
-			
-		for(int i=0;i<12;i++)
-		{
-			int type = i/6;
-			int slot = i%6;
-			
-			array[arrayIndex]["SLOT"]=i;
-			array[arrayIndex]["OPEN"]=xProductionMenu.isOpen[type][slot];
-			array[arrayIndex]["TYPE"]=xProductionMenu.isFriend[type][slot];
-			array[arrayIndex]["KEY"]=xProductionMenu.orderKey[type][slot];
-			array[arrayIndex]["STATE"]=xProductionMenu.state[type][slot];
-			array[arrayIndex]["ITEM_INDEX"]=xProductionMenu.slotCode[type][slot];
-			array[arrayIndex]["START_TIME"]=0;
-			array[arrayIndex]["BONUS"]=xProductionMenu.minigameBonus[type][slot];
-			array[arrayIndex]["TOKEN"]=xNetData.strUid;
-			array[arrayIndex]["PUSH_STATE"]=xProductionMenu.pushState[type][slot];
-			array[arrayIndex]["CLIENT"]=client;
-			array[arrayIndex]["PUSH_TIME"]=xProductionMenu.pushTime[type][slot];
-			array[arrayIndex]["COOK"]=xProductionMenu.useLook[type][slot];
-			
-			arrayRoot.append(array[arrayIndex]);
-			arrayIndex++;
-
-		}
-		root["SLOT"] = arrayRoot;
-		
+		root["BKEY"]=xSendMachine_FP.xData[0].bkey;
 		break;
-	}
-	
-	
-	
-	
-	
+	case CMD_SENDMACHINESLOTOPEN:
+		root["PROTOCOL"]=xnet.cmd;
+		root["AUTHENTICODE"]=xNetData.strAuthentiCode;
+		root["USERNUM"]=xNetData.userNum;
+		root["BKEY"]=xNetSendMachineSlotOpen.bkey;
+		root["SLOT"]=xNetSendMachineSlotOpen.slot;
+		break;
+	case CMD_SENDMACHINESLOTUPDATE:
+		root["PROTOCOL"]=xnet.cmd;
+		root["AUTHENTICODE"]=xNetData.strAuthentiCode;
+		root["USERNUM"]=xNetData.userNum;
+		root["TYPE"]=xNetSendMachineSlotUpdate.type;
+		root["BKEY"]=xNetSendMachineSlotUpdate.bkey;
+		root["IDX"]=xNetSendMachineSlotUpdate.idx;
+		root["ITEM_INDEX"]=xNetSendMachineSlotUpdate.item_index;
+		root["ITEM_COUNT"]=xNetSendMachineSlotUpdate.item_count;
+		root["STARTTIME"]=xNetSendMachineSlotUpdate.start_time;
+		root["ENDTIME"]=xNetSendMachineSlotUpdate.end_time;
+		break;
+	case CMD_GETDRESSINFO:
+		root["PROTOCOL"]=xnet.cmd;
+		root["AUTHENTICODE"]=xNetData.strAuthentiCode;
+		root["USERNUM"]=xNetData.userNum;
+		break;
+	////////////////////////////////////////////////////////////////////
+    //당근 획득 KBY
+    case CMD_GETCARROT:
+        root["PROTOCOL"]=xnet.cmd;
+        root["AUTHENTICODE"]=xNetData.strAuthentiCode;
+        root["USERNUM"]=xNetData.userNum;
+        root["TIME"]= xNetCarrot.endTime;
+        break;
+    ////////////////////////////////////////////////////////////////////
+    case CMD_GETDRESSROOMINFO:
+        root["PROTOCOL"]=xnet.cmd;
+        root["AUTHENTICODE"]=xNetData.strAuthentiCode;
+        root["USERNUM"]=xNetData.userNum;
+        root["TYPE"]=xNetGetDressRoomInfo.type;
+        break;
+    case CMD_UPDATEMYDRESS:
+        root["PROTOCOL"]=xnet.cmd;
+        root["AUTHENTICODE"]=xNetData.strAuthentiCode;
+        root["USERNUM"]=xNetData.userNum;
+        root["DRESS0"]=xNetUpdateMyDress.DRESS0;
+        root["DRESS1"]=xNetUpdateMyDress.DRESS1;
+        root["DRESS2"]=xNetUpdateMyDress.DRESS2;
+        root["DRESS3"]=xNetUpdateMyDress.DRESS3;
+        root["DRESS4"]=xNetUpdateMyDress.DRESS4;
+        root["DRESS5"]=xNetUpdateMyDress.DRESS5;
+        root["DRESS6"]=xNetUpdateMyDress.DRESS6;
+        root["DRESS7"]=xNetUpdateMyDress.DRESS7;
+        root["DRESS8"]=xNetUpdateMyDress.DRESS8;
+        root["DRESS9"]=xNetUpdateMyDress.DRESS9;
+        break;
+    }
+    
+    
+    
+    
+    
 	
 	char strUrl[256];
     Json::StyledWriter writer;
@@ -1792,7 +1925,7 @@ void netSend(M_Int32 cmd,M_Int32 subIndex)
 #if(SERVER_TYPE == SEVER_TYPE_RELEASE)
     sprintf(strUrl, "%s","http://14.63.223.48:2010/Contact.aspx"); //마이부띠크
 #else
-    sprintf(strUrl, "%s","http://125.129.247.61:6071/Contact.aspx"); //DEV
+    sprintf(strUrl, "%s","http://125.129.247.114:6071/Contact.aspx"); //DEV
         headers.push_back("Content-Type: application/json");
         request->setHeaders(headers);
 #endif
@@ -2235,9 +2368,80 @@ void setRecv(char* strJson)
 			xMainMenu.state = MAINMENU_STATE_INITFILEDOWN;
 			xResCheck.state = RESCHECK_STATE_MAINSCRIPT_DOWNLOAD_START;
 			xMainMenu.anyCnt = 0;
-			/*
-			안드로이드 파일 다운로드 미구현시 이걸로
-			xMainMenu.state = MAINMENU_STATE_RESCHECK;
+            //접속과 동시에 기본 캐릭터 세팅 KBY 2018.2.23
+            loadSpriteData("waitf_200.spt",&xSpritNpc[NPC_ACT_FITTINGROOM][ACT_FRONT]);
+            loadSpriteData("waitb_200.spt",&xSpritNpc[NPC_ACT_FITTINGROOM][ACT_BACK]);
+                
+                for(int k=0;k<ACTLAYERMAX;k++)
+                {
+                    //팔이랑 다리
+                    switch(k)
+                    {
+                        case 1:
+                        case 2:
+                        case 3:
+                        case 4:
+                        case 9:
+                        case 10:
+                        case 17:
+                        case 18:
+                        case 5:
+                        case 6:
+                        case 11:
+                        case 12:
+                            xGame.isUnAnti = TRUE;
+                            break;
+                        default:
+                            xGame.isUnAnti = FALSE;
+                            break;
+                    }
+                    sprintf(strTempS, "%d.png",k);
+                    loadImg(strTempS,&imgActBody[k][ACT_FRONT]);
+                    
+                    sprintf(strTempS, "%d_200.png",k);
+                    loadImg(strTempS,&imgActBodySub[k][ACT_FRONT]);
+                    
+                    //				xGame.isUnAnti = FALSE;
+                    //				sprintf(strTempS, "s%d.png",k);
+                    //				loadImg(strTempS,&imgActBodySub[k][ACT_FRONT]);
+                    //				xGame.isUnAnti = FALSE;
+                    //팔이랑 다리
+                    switch(k)
+                    {
+                        case 0:
+                        case 2:
+                        case 5:
+                        case 6:
+                        case 10:
+                        case 11:
+                        case 16:
+                        case 18:
+                        case 3:
+                        case 4:
+                        case 8:
+                        case 9:
+                            xGame.isUnAnti = TRUE;
+                            break;
+                        default:
+                            xGame.isUnAnti = FALSE;
+                            break;
+                    }
+                    sprintf(strTempS, "b%d.png",k);
+                    loadImg(strTempS,&imgActBody[k][ACT_BACK]);
+                    
+                    sprintf(strTempS, "b%d_200.png",k);
+                    loadImg(strTempS,&imgActBodySub[k][ACT_BACK]);
+                    
+                    //				xGame.isUnAnti = FALSE;
+                    //				sprintf(strTempS, "sb%d.png",k);
+                    //				loadImg(strTempS,&imgActBodySub[k][ACT_BACK]);
+                    //				xGame.isUnAnti = FALSE;
+                }
+                xGame.isUnAnti = FALSE;
+                //////////////////////////////////////////////////////
+                /*
+                 안드로이드 파일 다운로드 미구현시 이걸로
+                 xMainMenu.state = MAINMENU_STATE_RESCHECK;
 			xResCheck.state = RESCHECK_STATE_MAINSCRIPT_DOWNLOAD_START;
 			xMainMenu.anyCnt = 0;
 			*/
@@ -2490,15 +2694,18 @@ void setRecv(char* strJson)
 			break;
 		case 1:	//아이디,패스 불일친
             xSave.isKakaoLogin = FALSE;
-			 xMainMenu.state = MAINMENU_STATE_IDMAKE;
-			 xIdMake.state = IDMAKE_STATE_IDMAKE;
-			 sprintf(xIdMake.strNickName, "대표자명 입력");
-			 
-			 xIdMake.sex = 0;
-			 xIdMake.emailErr = IDMAKEERR_TYPE_DONT;
-			 xIdMake.passErr = IDMAKEERR_TYPE_DONT;
-			 xIdMake.nickNameErr = IDMAKEERR_TYPE_DONT;
-			 xIdMake.ageErr = IDMAKEERR_TYPE_DONT;
+            //계정생성 이미지 로드 추가 KBY 2018.2.26
+            idmakeFreeLoad_FP(true);
+            ////////////////////////////////////
+            xMainMenu.state = MAINMENU_STATE_IDMAKE;
+            xIdMake.state = IDMAKE_STATE_IDMAKE;
+            sprintf(xIdMake.strNickName, "닉네임을 입력해주세요.");
+            
+            xIdMake.sex = 0;
+            xIdMake.emailErr = IDMAKEERR_TYPE_DONT;
+            xIdMake.passErr = IDMAKEERR_TYPE_DONT;
+            xIdMake.nickNameErr = IDMAKEERR_TYPE_DONT;
+            xIdMake.ageErr = IDMAKEERR_TYPE_DONT;
 			break;
 		case 2:	//블럭유저
 			setPopup(POPUP_BLACKUSER, playState, playState, 0, DONT);
@@ -2587,9 +2794,15 @@ void setRecv(char* strJson)
 				}
 
 				if(xFriend.totalNumListRanDom == 0)
-					xFriend.addState = FRIENDADD_STATE_NOTUSER;
+                {
+                    xFriend.addState = FRIENDADD_STATE_NOTUSER;
+                    xFriend_FP.SearchState = FRIENDSEARCH_FP_STATE_NOTUSER;
+                }
 				else
-					xFriend.addState = FRIENDADD_STATE_RESULT;
+                {
+                    xFriend.addState = FRIENDADD_STATE_RESULT;
+                    xFriend_FP.SearchState = FRIENDSEARCH_FP_STATE_RESULT;
+                }
 
 			}
 			break;
@@ -3068,23 +3281,24 @@ void setRecv(char* strJson)
 					{
 					case 0:	//친구리스트
                         xFriendData[slotNum].isAdd = TRUE;
-                        if(xFriend.selectTabB == 0)
-                        {
-                            xFriend.dataSlotNumList[xFriend.totalNumList++] = slotNum;
-                            //친구추가 버튼으로 사용하자
-                            if(xFriend.totalNumList == 1)
-                            {
-                                xFriend.dataSlotNumList[xFriend.totalNumList++] = DONT;
-                            }
-
-                        }
-                        else if(xFriend.selectTabB == 2)
-                        {
-                            if(xFriendData[slotNum].isBookMark == true)
-                            {
-                                xFriend.dataSlotNumList[xFriend.totalNumList++] = slotNum;
-                            }
-                        }
+                        xFriend.dataSlotNumList[xFriend.totalNumList++]=slotNum;
+//                        if(xFriend.selectTabB == 0)
+//                        {
+//                            xFriend.dataSlotNumList[xFriend.totalNumList++] = slotNum;
+//                            //친구추가 버튼으로 사용하자
+//                            if(xFriend.totalNumList == 1)
+//                            {
+//                                xFriend.dataSlotNumList[xFriend.totalNumList++] = DONT;
+//                            }
+//
+//                        }
+//                        else if(xFriend.selectTabB == 2)
+//                        {
+//                            if(xFriendData[slotNum].isBookMark == true)
+//                            {
+//                                xFriend.dataSlotNumList[xFriend.totalNumList++] = slotNum;
+//                            }
+//                        }
                         break;
 					case 1:	//팔로잉
 						xFriend.dataSlotNumListFollow[xFriend.totalNumListFollow++] = slotNum;
@@ -3350,9 +3564,15 @@ void setRecv(char* strJson)
 				initSecurity(&xSaveTemp.fame,root["FAME"].asInt());
                 
                 initSecurity(&xSaveTemp.mileage,root["MILEAGE"].asInt());
+                initSecurity(&xSaveTemp.carrot, root["CARROT"].asInt());
                 
+                xCalcCarrot.carrotTemp = root["CARROT_TIME"].asInt();
                 
-
+                if(xCalcCarrot.carrotTemp == 0)
+                    xCalcCarrot.carrotComplete = xCalendar.nowTime+xChs.carrotTime;
+                else
+                    xCalcCarrot.carrotComplete = xCalcCarrot.carrotTemp+xChs.carrotTime;
+                xCalcCarrot.isAdd = false;
 				sprintf(xSaveTemp.profileUrl	,"%s",root["PROFILE_URL"] .asCString());	//닉네임
 				if(xSaveTemp.profileUrl[0] == '0')
 					xProfile.isPhoto = FALSE;
@@ -3504,16 +3724,38 @@ void setRecv(char* strJson)
 					xCarPark[slot].orderKey = array[i]["KEY"].asInt();
 				}
 			}
-
-
 				
-			if(xWorldMap.isFriendMap == TRUE)
+				////////////////////////////////////////////////////////////
+				//LJW 유저정보 내 캐릭터 착용의상 적용 2018.02.12
+				for(int i = 0; i < SPRIT_IMGLAYERMAX; i++)
+					xMyCharacter.xF.code[i] = DONT;
+				
+				xMyCharacter.xFace.faceNum = root["FACE"].asInt();
+				xMyCharacter.xFace.hairNum = root["HAIR"].asInt();
+				
+				xMyCharacter.xF.code[0] = root["DRESS0"].asInt();
+				xMyCharacter.xF.code[1] = root["DRESS1"].asInt();
+				xMyCharacter.xF.code[2] = root["DRESS2"].asInt();
+				xMyCharacter.xF.code[3] = root["DRESS3"].asInt();
+				xMyCharacter.xF.code[4] = root["DRESS4"].asInt();
+				xMyCharacter.xF.code[5] = root["DRESS5"].asInt();
+				xMyCharacter.xF.code[6] = root["DRESS6"].asInt();
+				xMyCharacter.xF.code[7] = root["DRESS7"].asInt();
+				xMyCharacter.xF.code[8] = root["DRESS8"].asInt();
+				xMyCharacter.xF.code[9] = root["DRESS9"].asInt();
+				////////////////////////////////////////////////////////////
+				
+				
+				
+				if(xWorldMap.isFriendMap == TRUE)
 				xFriendMap.isLoadingOk = TRUE;
 			else
 			{
 				if(xMainMenu.initCnt >= 2)
 				{
 					netSend(CMD_GETEVENT, DONT);
+                    xNetCarrot.endTime = xCalendar.nowTime;
+                    netSend(CMD_GETCARROT, DONT);
 				}
 			}
 			break;
@@ -3635,6 +3877,7 @@ void setRecv(char* strJson)
 				xNetGetMap.friendNum = 0;
 				netSend(CMD_GETMAP, 0);
                 netSend(CMD_FORMERLISTUPDATE,0);
+                netSend(CMD_PRODUCTIONINFOUPDATE, 0);
 				///////////////////////////////////////////
 			}
 			break;
@@ -4061,9 +4304,14 @@ void setRecv(char* strJson)
 							/////////////////////////////////////////////////////////////////////////////
 						}
 						break;
+                    case INTERIOR_TYPE_OBJ:
+                            netSend(CMD_PRODUCTIONINFOUPDATE, 0);
+//                        netSend(CMD_PRODUCTIONREGIST,root["KEY"].asInt());
+                        break;
 					}
 				}
 			}
+            
             netSend(CMD_FORMERLISTUPDATE,DONT);
 			break;
 		case 1:	//실패
@@ -4071,10 +4319,12 @@ void setRecv(char* strJson)
 			break;
         case 2:
             netSend(CMD_FORMERLISTUPDATE,DONT);
+            netSend(CMD_PRODUCTIONINFOUPDATE, 0);
             break;
         case 3:
             setPopup(POPUP_NONFORMER, PLAY_PLAY, PLAY_PLAY, 0, DONT);
             netSend(CMD_FORMERLISTUPDATE,DONT);
+            netSend(CMD_PRODUCTIONINFOUPDATE, 0);
             break;
 		}
 		break;
@@ -4685,7 +4935,7 @@ void setRecv(char* strJson)
             xHotDeal.remainTime= root["TIME"].asInt();
             xHotDeal.hotDealCode = root["DATANUM"].asInt();
                 
-            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_HOTDEALDETAILLIST, TRUE);
+//            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_HOTDEALDETAILLIST, TRUE);
             break;
         case 1:	//실패
             setPopup(POPUP_SERVERERR, playState, playState, 0, root["PROTOCOL"].asInt());
@@ -4838,8 +5088,18 @@ void setRecv(char* strJson)
 			loadSpriteData("sptnpc87b.spt",&xSpritNpc[NPC_ACT_PORTER_MM_W_ANGRY][ACT_BACK]);
 			loadSpriteData("sptnpc88b.spt",&xSpritNpc[NPC_ACT_PORTER_WW_W_FITTING][ACT_BACK]);
 			loadSpriteData("sptnpc89b.spt",&xSpritNpc[NPC_ACT_PORTER_WW_W_ANGRY][ACT_BACK]);
-								
-							
+				
+            ////////////////////////////////////////////////////////////////////////////////////////////
+            //회원가입 이미지 메모리 해제 KBY 2018.2.26
+                
+            idmakeFreeLoad_FP(false);
+                
+			////////////////////////////////////////////////////////////////////////////////////////////
+			//옷장 액팅 추가 LJW 2018.02.01
+//			loadSpriteData("waitf_200.spt",&xSpritNpc[NPC_ACT_FITTINGROOM][ACT_FRONT]);
+//			loadSpriteData("waitb_200.spt",&xSpritNpc[NPC_ACT_FITTINGROOM][ACT_BACK]);
+			////////////////////////////////////////////////////////////////////////////////////////////
+				
 			netSend(CMD_GETGAMEDATA, DONT);
 			break;
 		}
@@ -6215,122 +6475,593 @@ void setRecv(char* strJson)
 			}
 		}
 		break;
-	case CMD_AUTOPRODUCT_RECV:
+	
+    case CMD_PRODUCTIONSLOTUPDATE_RECV:
+        {
+            switch (root["RESULT"].asInt())
+            {
+                case 0:
+                    {
+                        initSecurity(&xSaveTemp.cash, root["CASH"].asInt());
+                    }
+                    break;
+                case 1:
+                    setPopup(POPUP_SERVERERR, playState, playState, 0, root["PROTOCOL"].asInt());
+                    break;
+                case 2:
+                    setPopup(POPUP_PRODUCTIONLACKMATERIAL, PLAY_PLAY, PLAY_PLAY, 0, DONT);
+                    break;
+                default:
+                    break;
+            }
+        }
+        break;
+    case CMD_PRODUCTIONSLOTOPEN_RECV:
+        {
+            switch (root["RESULT"].asInt())
+            {
+                case 0:
+                    {
+                        initSecurity(&xSaveTemp.cash, root["CASH"].asInt());
+                        netSend(CMD_PRODUCTIONINFOUPDATE, DONT);
+                        netSend(CMD_PRODUCTIONSLOTINFOUPDATE, DONT);
+                    }
+                    break;
+                case 1:
+                    setPopup(POPUP_SERVERERR, playState, playState, 0, root["PROTOCOL"].asInt());
+                    break;
+                case 2:
+                    setPopup(POPUP_PRODUCTIONOPENSLOTLACKDIA, PLAY_PLAY, PLAY_PLAY, 0, DONT);
+                    netSend(CMD_PRODUCTIONINFOUPDATE, DONT);
+                    netSend(CMD_PRODUCTIONSLOTINFOUPDATE, DONT);
+                    break;
+                case 3:
+                    setPopup(POPUP_PRODUCTIONCANTOPENSLOT, PLAY_PLAY, PLAY_PLAY, 0, DONT);
+                    netSend(CMD_PRODUCTIONINFOUPDATE, DONT);
+                    netSend(CMD_PRODUCTIONSLOTINFOUPDATE, DONT);
+                    break;
+                default:
+                    break;
+            }
+        }
+        break;
+    case CMD_PRODUCTIONINFOUPDATE_RECV:
+        {
+            switch (root["RESULT"].asInt())
+            {
+                case 0:
+                    xProduction_FP.totalData=0;
+                    for(int k=0;k<PRODUCTIONMAX;k++)
+                    {
+                        xProduction_FP.xData[k].key = 0;
+                        xProduction_FP.xData[k].totalSlot = 3;
+                        xProduction_FP.xData[k].Upgrade = 0;
+                    }
+                    array=root["PRODUCT"];
+                    for(int k=0;k<array.size();k++)
+                    {
+                        xProduction_FP.xData[xProduction_FP.totalData].key=array[k]["BKEY"].asInt();
+                        xProduction_FP.xData[xProduction_FP.totalData].code=array[k]["ITEM_INDEX"].asInt();
+                        xProduction_FP.xData[xProduction_FP.totalData].Upgrade=array[k]["UPGRADE"].asInt();
+                        xProduction_FP.xData[xProduction_FP.totalData].totalSlot = array[k]["SLOT"].asInt();
+                        xProduction_FP.totalData++;
+                    }
+                    break;
+                case 1:
+                    setPopup(POPUP_SERVERERR, playState, playState, 0, root["PROTOCOL"].asInt());
+                    break;
+                default:
+                    break;
+            }
+        }
+        break;
+    case CMD_PRODUCTIONSLOTINFOUPDATE_RECV:
+        {
+            switch (root["RESULT"].asInt())
+            {
+                case 0:
+                    {
+                        array=root["SLOT"];
+                        for(int k=0;k<array.size();k++)
+                        {
+                            xProduction_FP.xData[xProduction_FP.index].key = array[k]["BKEY"].asInt();
+                            xProduction_FP.xData[xProduction_FP.index].xSlot[array[k]["SLOT"].asInt()].itemCode = array[k]["ITEM_INDEX"].asInt();
+                            xProduction_FP.xData[xProduction_FP.index].xSlot[array[k]["SLOT"].asInt()].endTime = array[k]["TIME"].asInt();
+                        }
+                        for(int k=0;k<PRODUCTMENUSLOTMAX;k++)
+                        {
+                            if(k<xProduction_FP.xData[xProduction_FP.index].totalSlot)
+                            {
+                                if(xProduction_FP.xData[xProduction_FP.index].xSlot[k].itemCode<0)
+                                {
+                                    xProduction_FP.xData[xProduction_FP.index].xSlot[k].state = 1;
+                                }
+                                else
+                                {
+                                    xProduction_FP.xData[xProduction_FP.index].xSlot[k].state = 2;
+                                }
+                            }
+                            else if(k==xProduction_FP.xData[xProduction_FP.index].totalSlot)
+                            {
+                                xProduction_FP.xData[xProduction_FP.index].xSlot[k].state = 0;
+                            }
+                            else if(k>xProduction_FP.xData[xProduction_FP.index].totalSlot)
+                            {
+                                xProduction_FP.xData[xProduction_FP.index].xSlot[k].state = -1;
+                            }
+                        }
+                    }
+                    break;
+                case 1:
+                    setPopup(POPUP_SERVERERR, playState, playState, 0, root["PROTOCOL"].asInt());
+                    break;
+                default:
+                    break;
+            }
+        }
+        break;
+            
+            
+    case CMD_GREENHOUSEINFOUPDATE_RECV:
+        {
+            switch (root["RESULT"].asInt())
+            {
+                case 0:
+                    {
+                        xGreenHouse_FP.totalSlot = root["TOTALSLOT"].asInt();
+                        array=root["SLOT"];
+                        for (int k=0; k<array.size(); k++)
+                        {
+                            xGreenHouse_FP.xSlot[k].Upgrade = array[k]["LV"].asInt();
+                            xGreenHouse_FP.xSlot[k].MaterialCode = array[k]["ITEM_INDEX"].asInt();
+                            xGreenHouse_FP.xSlot[k].itemCnt = array[k]["ITEM_COUNT"].asInt();
+                            xGreenHouse_FP.xSlot[k].endTime = array[k]["TIME"].asInt();
+                        }
+                        
+                        for(int k=0;k<PRODUCTMENUSLOTMAX;k++)
+                        {
+                            if(k<xGreenHouse_FP.totalSlot)
+                            {
+                                if(xGreenHouse_FP.xSlot[k].MaterialCode<0)
+                                {
+                                    xGreenHouse_FP.xSlot[k].state=1;
+                                }
+                                else
+                                {
+                                    xGreenHouse_FP.xSlot[k].state=2;
+                                }
+                            }
+                            else if (k==xGreenHouse_FP.totalSlot)
+                            {
+                                xGreenHouse_FP.xSlot[k].state=0;
+                            }
+                            else if(k>xGreenHouse_FP.totalSlot)
+                            {
+                                xGreenHouse_FP.xSlot[k].state=-1;
+                            }
+                        }
+                    }
+                    break;
+                case 1:
+                    setPopup(POPUP_SERVERERR, playState, playState, 0, root["PROTOCOL"].asInt());
+                    break;
+                case 2:
+                    break;
+                default:
+                    break;
+            }
+        }
+        break;
+    case CMD_GREENHOUSESLOTUPDATE:
+        {
+            switch (root["RESULT"].asInt())
+            {
+                case 0:
+                    {
+                        xGreenHouse_FP.xSlot[root["SLOT"].asInt()].Upgrade = root["LV"].asInt();
+                        initSecurity(&xSaveTemp.cash, root["CASH"].asInt());
+                    }
+                    break;
+                    
+                    
+                default:
+                    break;
+            }
+        }
+        break;
+    case CMD_SPINNINGWHEELINFOUPDATE_RECV:
+    {
+        switch (root["RESULT"].asInt())
+        {
+            case 0:
+                {
+                    xSpinning_FP.totalSlot = root["TOTALSLOT"].asInt();
+                    array=root["SLOT"];
+                    for (int k=0; k<array.size(); k++)
+                    {
+                        xSpinning_FP.xSlot[k].Upgrade = array[k]["LV"].asInt();
+                        xSpinning_FP.xSlot[k].MaterialCode = array[k]["ITEM_INDEX"].asInt();
+                        xSpinning_FP.xSlot[k].itemCnt = array[k]["ITEM_COUNT"].asInt();
+                        xSpinning_FP.xSlot[k].endTime = array[k]["TIME"].asInt();
+                    }
+                
+                    for(int k=0;k<PRODUCTMENUSLOTMAX;k++)
+                    {
+                        if(k<xSpinning_FP.totalSlot)
+                        {
+                            if(xSpinning_FP.xSlot[k].MaterialCode<0)
+                            {
+                                xSpinning_FP.xSlot[k].state=1;
+                            }
+                            else
+                            {
+                                xSpinning_FP.xSlot[k].state=2;
+                            }
+                        }
+                        else if (k==xSpinning_FP.totalSlot)
+                        {
+                            xSpinning_FP.xSlot[k].state=0;
+                        }
+                        else if(k>xSpinning_FP.totalSlot)
+                        {
+                            xSpinning_FP.xSlot[k].state=-1;
+                        }
+                    }
+                }
+                break;
+            case 1:
+                setPopup(POPUP_SERVERERR, playState, playState, 0, root["PROTOCOL"].asInt());
+                break;
+            case 2:
+                break;
+            default:
+                break;
+            }
+        }
+            
+        break;
+    case CMD_SPINNINGWHEELSLOTUPDATE:
+        {
+            switch (root["RESULT"].asInt())
+            {
+                case 0:
+                    xSpinning_FP.xSlot[root["SLOT"].asInt()].Upgrade = root["LV"].asInt();
+                    initSecurity(&xSaveTemp.cash, root["CASH"].asInt());
+                    break;
+                case 1:
+                    setPopup(POPUP_SERVERERR, playState, playState, 0, root["PROTOCOL"].asInt());
+                    break;
+                default:
+                    break;
+            }
+        }
+        break;
+            
+    case CMD_GETCARROT_RECV:
+        {
+            xCalcCarrot.isAdd = false;
+            switch (root["RESULT"].asInt())
+            {
+                case 0:
+                    initSecurity(&xSaveTemp.carrot, root["CARROT"].asInt());
+                    break;
+                default:
+                    break;
+            }
+        }
+            
+    case CMD_BUYDRESSCHAR_RECV:
+        {
+            switch (root["RESULT"].asInt())
+            {
+                case 0:
+                    {
+                        initSecurity(&xSaveTemp.money, root["GOLD"].asInt());
+                        initSecurity(&xSaveTemp.cash, root["CASH"].asInt());
+                        
+                    }
+                    break;
+                case 1:
+                    setPopup(POPUP_SERVERERR, playState, playState, 0, root["PROTOCOL"].asInt());
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                default:
+                    break;
+            }
+        }
+            
+            //    case CMD_PRODUCTIONREGIST_RECV:
+            //        {
+//            switch (root["RESULT"].asInt())
+//            {
+//                case 0:
+////                    netSend(CMD_PRODUCTIONINFOUPDATE, 0);
+//                    break;
+//                case 1:
+//                    setPopup(POPUP_SERVERERR, playState, playState, 0, root["PROTOCOL"].asInt());
+//                    break;
+//                case 2:
+//                    setPopup(POPUP_PRODUCTIONOVERLAP, PLAY_PLAY, PLAY_PLAY, 0, DONT);
+//                    break;
+//                default:
+//                    break;
+//            }
+//        }
+//        break;
+//            
+//    case CMD_PRODUCTIONDELETE_RECV:
+//        {
+//            switch (root["RESULT"].asInt())
+//            {
+//                case 0:
+//                    break;
+//                case 1:
+//                    setPopup(POPUP_SERVERERR, playState, playState, 0, root["PROTOCOL"].asInt());
+//                    break;
+//                default:
+//                    break;
+//            }
+//        }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//전송기 setRecv 추가
+	case CMD_SENDMACHINEINFO_RECV:
+	{
+		switch (root["RESULT"].asInt())
 		{
-			switch (root["RESULT"].asInt())
-			{
-				case 0:
-				{
-					array = root["DRESS"];
-					
-					for(int i=0;i<array.size();i++)
-					{
-						int code = array[i]["ITEM_INDEX"].asInt();
-						int rever = code < 0?1:0;
-						int type = code/1000;
-						int list = code%1000;
-						type = rever==0?type:-type;
-						list = rever==0?list:-list;
-						
-						if(xWorldMap.isFriendMap == TRUE)
-						{
-							int minLv = xSaveTemp.lv.oriData <= xFriendData[xFriendMap.selectDataSlotNum].lv?xSaveTemp.lv.oriData:xFriendData[xFriendMap.selectDataSlotNum].lv;
-							
-							if(xInventoryFashion.isOpen[type][list] == TRUE && minLv >= xFashionData[type][list].lv && xFashionData[type][list].isStaff == 0)
-							{
-								xCatalog.xSlotFriendOrder[type][xCatalog.totalSlotFriendOrder[type]++].code = code;
-							}
-							
-						}
-						else
-						{
-							xInventoryFashion.isOpen[type][list] = TRUE;
-							xInventoryFashion.haveNum[type][list] = array[i]["ITEM_COUNT"].asInt();
-						}
-					}
-					
-					//setSellSelectItemSlot();
-					xSell.totalSlot = 0;
-					
-					for(int z=0;z<7;z++)
-					{
-						for(int t=0;t<FASHIONDATAMAX;t++)
-						{
-							if(xSell.totalSlot>256)
-								break;
-							
-							if(z <= 3 && xInventoryFashion.haveNum[z][t] > 0 && xFashionData[z][t].isStaff == 0)
-							{
-								xSell.xSlot[xSell.totalSlot++].maxNum = xInventoryFashion.haveNum[z][t];
-							}
-							else if(z >= 4 && xInventoryFashion.haveNum[z][t] > 0 && (xFashionData[z][t].isStaff == 0 || xFashionData[z][t].isStaff == 3))
-							{
-								xSell.xSlot[xSell.totalSlot++].maxNum = xInventoryFashion.haveNum[z][t]%xFashionData[z][t].makeNum.oriData;
-							}
-						}
-					}
-					
-					if(xAutoProduct.isSleep == TRUE)
-					{
-						setPopup(POPUP_AUTOPRODUCTSLEEP, xPopup.yes, xPopup.no, 0, DONT);
-						sprintf(xPopup.strText, "의상 %d벌을 획득했습니다.", xAutoProduct.sleepCount);
-						xAutoProduct.isSleep = FALSE;
-					}
-					
-					
-					if(xAutoSell.isSleep == TRUE)
-					{
-						setPopup(POPUP_AUTOSELLSLEEP, xPopup.yes, xPopup.no, 0, DONT);
-						sprintf(xPopup.strText, "의상판매로 %d골드를 획득했습니다.", xAutoSell.gold);
-						xAutoSell.isSleep = FALSE;
-						xAutoSell.gold = 0;
-					}
-					
-				}
-					break;
-				case 1:
-					setPopup(POPUP_SERVERERR, playState, playState, 0, root["PROTOCOL"].asInt());
-					break;
-				case 2:
-					setPopup(POPUP_FORMERCANTTAKE, PLAY_PLAY, PLAY_PLAY, 0, DONT);
-					break;
-				default:
-					break;
-			}
-		}
-			break;
-	case CMD_AUTOPRODUCTSLOTUPDATE_RECV:
-		{
-			switch (root["RESULT"].asInt())
-			{
 			case 0:
+			{
+				array=root["SEND"];
+				for(int k=0;k<array.size();k++)
+				{
+					xSendMachine_FP.xData[k].bkey= array[k]["BKEY"].asInt();
+					xSendMachine_FP.xData[k].itemNum = array[k]["ITEM_INDEX"].asInt();
+					xSendMachine_FP.xData[k].lv = array[k]["UPGRADE"].asInt();
+					xSendMachine_FP.xData[k].totalSlot = array[k]["SLOT"].asInt();
+					xSendMachine_FP.xData[k].startTime = array[k]["TIME"].asInt();
+				}
+				xSendMachine_FP.total = array.size();
+			}
+				
 				break;
 			case 1:
 				setPopup(POPUP_SERVERERR, playState, playState, 0, root["PROTOCOL"].asInt());
 				break;
-			case 2:
-				setPopup(POPUP_FORMERCANTTAKE, PLAY_PLAY, PLAY_PLAY, 0, DONT);
+			default:
+				break;
+		}
+	}
+		break;
+	case CMD_SENDMACHINESLOTINFO_RECV:
+	{
+		switch (root["RESULT"].asInt())
+		{
+			case 0:
+			{
+				for(int k = 0; k < xSendMachine_FP.xData[0].totalSlot; k++)
+				{
+					xSendMachine_FP.xSlot[k].key = 0;
+					xSendMachine_FP.xSlot[k].itemNum = DONT;
+					xSendMachine_FP.xSlot[k].itemCnt = 0;
+					xSendMachine_FP.xSlot[k].startTime = 0;
+					xSendMachine_FP.xSlot[k].endTime = 0;
+				}
+				
+				xSendMachine_FP.xSendSlot.itemNum = DONT;
+				xSendMachine_FP.xSendSlot.itemCnt = 0;
+				xSendMachine_FP.xSendSlot.startTime = 0;
+				xSendMachine_FP.xSendSlot.endTime = 0;
+				xSendMachine_FP.xSendSlot.key = 0;
+				
+				array=root["SLOT"];
+				for(int k=0;k<array.size();k++)
+				{
+					xSendMachine_FP.xSlot[k].key = array[k]["IDX"].asInt();
+					xSendMachine_FP.xSlot[k].itemNum = array[k]["ITEM_INDEX"].asInt();
+					xSendMachine_FP.xSlot[k].itemCnt = array[k]["ITEM_COUNT"].asInt();
+					xSendMachine_FP.xSlot[k].endTime = array[k]["TIME"].asInt();
+				}
+				
+				xSendMachine_FP.xSendSlot.key = xSendMachine_FP.xSlot[0].key;
+				xSendMachine_FP.xSendSlot.itemNum = xSendMachine_FP.xSlot[0].itemNum;
+				xSendMachine_FP.xSendSlot.itemCnt = xSendMachine_FP.xSlot[0].itemCnt;
+				xSendMachine_FP.xSendSlot.startTime = xSendMachine_FP.xSlot[0].startTime;
+				xSendMachine_FP.xSendSlot.endTime = xSendMachine_FP.xSlot[0].endTime;
+				
+				
+				for(int i = 0; i < xSendMachine_FP.xData[0].totalSlot; i++)
+				{
+					xSendMachine_FP.xSlot[i].key = xSendMachine_FP.xSlot[i+1].key;
+					xSendMachine_FP.xSlot[i].itemNum = xSendMachine_FP.xSlot[i+1].itemNum;
+					xSendMachine_FP.xSlot[i].itemCnt = xSendMachine_FP.xSlot[i+1].itemCnt;
+					xSendMachine_FP.xSlot[i].startTime = xSendMachine_FP.xSlot[i+1].startTime;
+					xSendMachine_FP.xSlot[i].endTime = xSendMachine_FP.xSlot[i+1].endTime;
+					
+					xSendMachine_FP.xSlot[i+1].key = 0;
+					xSendMachine_FP.xSlot[i+1].itemNum = DONT;
+					xSendMachine_FP.xSlot[i+1].itemCnt = 0;
+					xSendMachine_FP.xSlot[i+1].startTime = 0;
+					xSendMachine_FP.xSlot[i+1].endTime = 0;
+				}
+				
+				switch(xSendMachine_FP.stateSub)
+				{
+					case SENDMACHINE_SUBSTATE_ADD:
+						if(array.size() == 1)
+						{
+							setSendMachineGameCnt(0);
+							xSendMachine_FP.state = SENDMACHINE_STATE_START;
+						}
+						else if(array.size() > 1)
+						{
+							xSendMachine_FP.state = SENDMACHINE_STATE_LOOP;
+						}
+						break;
+					case SENDMACHINE_SUBSTATE_END:
+						setSendMachineGameCnt(0);
+						
+						if(array.size() > 0)
+							xSendMachine_FP.state = SENDMACHINE_STATE_START;
+						else
+							xSendMachine_FP.state = SENDMACHINE_STATE_WAIT;
+						
+						xSendMachine_FP.isSendEnd = true;
+						break;
+				}
+				
+				xSendMachine_FP.stateSub = SENDMACHINE_SUBSTATE_NONE;
+				
+				
+			}
+				break;
+			case 1:
+				setPopup(POPUP_SERVERERR, playState, playState, 0, root["PROTOCOL"].asInt());
 				break;
 			default:
 				break;
-			}
 		}
-		break;
-			
-		default:
-			switch(root["RESULT"].asInt())
-		{
-		case 0:	//성공
-			break;
-		case 1:	//실패
-			setPopup(POPUP_SERVERERR, playState, playState, 0, root["PROTOCOL"].asInt());
-			break;
-		}
-		break;
 	}
-	
-	if(xInventoryFashion.haveNum[0][13] > 0)
-		printf("setRecv2 >>>%d\n",xInventoryFashion.haveNum[0][13]);
+		break;
+	case CMD_SENDMACHINESLOTOPEN_RECV:
+	{
+		switch (root["RESULT"].asInt())
+		{
+			case 0:
+			{
+				//최종슬롯개수
+				xSendMachine_FP.xData[0].totalSlot = root["SLOT"].asInt();
+			}
+				break;
+			case 1:
+				setPopup(POPUP_SERVERERR, playState, playState, 0, root["PROTOCOL"].asInt());
+				break;
+			default:
+				break;
+		}
+	}
+		break;
+	case CMD_SENDMACHINESLOTUPDATE_RECV:
+	{
+		switch (root["RESULT"].asInt())
+		{
+			case 0:
+			{
+				//최종캐시개수
+			}
+				break;
+			case 1:
+				setPopup(POPUP_SERVERERR, playState, playState, 0, root["PROTOCOL"].asInt());
+				break;
+			default:
+				break;
+		}
+	}
+		break;
+	case CMD_GETDRESSINFO_RECV:
+	{
+		switch (root["RESULT"].asInt())
+		{
+			case 0:
+			{
+				array=root["DRESS"];
+				for(int k=0;k<array.size();k++)
+				{
+					xSendMachine_FP.xDress[k].itemNum = array[k]["ITEM_INDEX"].asInt();
+					xSendMachine_FP.xDress[k].itemCnt = array[k]["ITEM_COUNT"].asInt();
+				}
+			}
+				xSendMachine_FP.dressSlotTotal=array.size();
+				break;
+			case 1:
+				setPopup(POPUP_SERVERERR, playState, playState, 0, root["PROTOCOL"].asInt());
+				break;
+			default:
+				break;
+		}
+	}
+		break;
+        case CMD_GETDRESSROOMINFO_RECV:
+        {
+            switch (root["RESULT"].asInt())
+            {
+                case 0:
+                {
+                    int type = 0;
+                    int code = 0;
+                    array=root["SLOT"];
+                    for(int k=0;k<array.size();k++)
+                    {
+                        xFashionList_FP.xSlotS[k].code = array[k]["DRESS"].asInt();
+                        type = xFashionList_FP.xSlotS[k].code/1000;
+                        code = xFashionList_FP.xSlotS[k].code%1000;
+                        xFashionList_FP.xSlotS[k].layer = xFashionList_FP.xSlot[type][code].layer;
+                        sprintf(xFashionList_FP.xSlotS[k].strName, "%s", xFashionList_FP.xSlot[type][code].strName);
+                        
+                    }
+                    xFitting_FP.totalNum = array.size();
+                }
+                    break;
+                case 1:
+                    setPopup(POPUP_SERVERERR, playState, playState, 0, root["PROTOCOL"].asInt());
+                    break;
+                default:
+                    break;
+            }
+        }
+            break;
+        case CMD_UPDATEMYDRESS_RECV:
+        {
+            switch (root["RESULT"].asInt())
+            {
+                case 0:
+                {
+                    xFitting_FP.xModel.xF.code[0] = root["DRESS0"].asInt();
+                    xFitting_FP.xModel.xF.code[1] = root["DRESS1"].asInt();
+                    xFitting_FP.xModel.xF.code[2] = root["DRESS2"].asInt();
+                    xFitting_FP.xModel.xF.code[3] = root["DRESS3"].asInt();
+                    xFitting_FP.xModel.xF.code[4] = root["DRESS4"].asInt();
+                    xFitting_FP.xModel.xF.code[5] = root["DRESS5"].asInt();
+                    xFitting_FP.xModel.xF.code[6] = root["DRESS6"].asInt();
+                    xFitting_FP.xModel.xF.code[7] = root["DRESS7"].asInt();
+                    xFitting_FP.xModel.xF.code[8] = root["DRESS8"].asInt();
+                    xFitting_FP.xModel.xF.code[9] = root["DRESS9"].asInt();
+					
+                    xMyCharacter.xF.code[0] = root["DRESS0"].asInt();
+                    xMyCharacter.xF.code[1] = root["DRESS1"].asInt();
+                    xMyCharacter.xF.code[2] = root["DRESS2"].asInt();
+                    xMyCharacter.xF.code[3] = root["DRESS3"].asInt();
+                    xMyCharacter.xF.code[4] = root["DRESS4"].asInt();
+                    xMyCharacter.xF.code[5] = root["DRESS5"].asInt();
+                    xMyCharacter.xF.code[6] = root["DRESS6"].asInt();
+                    xMyCharacter.xF.code[7] = root["DRESS7"].asInt();
+                    xMyCharacter.xF.code[8] = root["DRESS8"].asInt();
+                    xMyCharacter.xF.code[9] = root["DRESS9"].asInt();
+                }
+                    break;
+                case 1:
+                    setPopup(POPUP_SERVERERR, playState, playState, 0, root["PROTOCOL"].asInt());
+                    break;
+                case 2:
+                    setPopup(POPUP_USERTEXT, playState, playState, 0, DONT);
+                    sprintf(xPopup.strText, "보유하지 않는 의상입니다.");
+                    break;
+                default:
+                    break;
+            }
+        }
+            break;
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		
+		
+		
+		
+}
+
+if(xInventoryFashion.haveNum[0][13] > 0)
+	printf("setRecv2 >>>%d\n",xInventoryFashion.haveNum[0][13]);
 }
 
 

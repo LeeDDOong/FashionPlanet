@@ -78,6 +78,7 @@ void setTextField(int type, int x, int y, int w, int h)
     case TEXTBOX_TYPE_CLUBLOBBYNOTICE:      setTextLength(80);break;
     case TEXTBOX_TYPE_CLUBBOOK:             setTextLength(50);break;
     case TEXTBOX_TYPE_CLUBNAMEMODIFY:       setTextLength(6);break;
+    case TEXTBOX_TYPE_FRIENDID_FP:          setTextLength(32);break;
     default: setTextLength(32);break;
     }
     
@@ -262,6 +263,7 @@ void prcTextField()
                 else
                 {
                     sprintf(xIdMake.strNickName,"%s", xTextField.textfield->getString().c_str());
+                    xIdMake.state=IDMAKE_STATE_IDMAKE;
                 }
                 break;
             case TEXTBOX_TYPE_FRIENDID:
@@ -272,6 +274,19 @@ void prcTextField()
                 else
                 {
                     sprintf(xFriend.strUserName,"%s", xTextField.textfield->getString().c_str());
+                }
+                break;
+            case TEXTBOX_TYPE_FRIENDID_FP:
+                if(korEngByte == 0)
+                {
+                        
+                }
+                else
+                {
+                    if(xFriend_FP.SearchState==FRIENDSEARCH_FP_STATE_OK)
+                    {
+                        sprintf(xFriend_FP.strName,"%s", xTextField.textfield->getString().c_str());
+                    }
                 }
                 break;
             case TEXTBOX_TYPE_MAILTODAY:

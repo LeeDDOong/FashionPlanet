@@ -617,6 +617,7 @@ void paintClet(int x, int y, int w, int h)
 	{
 		if(xEventQueueNet.totalNum > 0)
 		{
+            //여기~
 			if(xCalendar.nowTime - xnet.heartBitTime22 > 10)
 				isSubTemp[11] = TRUE;
 			
@@ -624,7 +625,7 @@ void paintClet(int x, int y, int w, int h)
 			{
 				isSubTemp[11] = FALSE;
 				if(playState != PLAY_MSG)
-					setPopup(POPUP_SERVER_TIMEOVER, playState, playState, 0, xEventQueueNet.type[0]);
+					setPopup(POPUP_SERVER_TIMEOVER_EVENTQUEUENET, playState, playState, 0, xEventQueueNet.type[0]);
 			}
 		}
 		else
@@ -641,7 +642,7 @@ void paintClet(int x, int y, int w, int h)
     if(nowState == GAME_WORLDMAP && (xEventQuest.isNetLoad == true || xRival.isNetLoad == true))
         isSubTemp[11] = true;
     
-    
+    //여기2
 	if(isSubTemp[11] == TRUE)
 	{
 		xGame.isRotate = TRUE;
@@ -751,6 +752,7 @@ void drawLoading()
             loadImg("myshoprefresh2.png", &imgMyShopRefresh[2]);
                 
             loadImg("fastscroll.png",&imgFastScroll);
+            
             loadImg("helplisticon.png",&imgHelpListIcon);
                 
             loadImg("myshop0.png", &imgMyShop[0]);
@@ -920,69 +922,75 @@ void drawLoading()
 			break;
 		case 5:				
 			//적용안할껄 TRUE로
-			for(int k=0;k<ACTLAYERMAX;k++)
-			{
-				//팔이랑 다리
-				switch(k)
-				{
-					case 1:
-					case 2:
-					case 3:
-					case 4:
-					case 9:
-					case 10:
-					case 17:
-					case 18:
-					case 5:
-					case 6:
-					case 11:
-					case 12:
-						xGame.isUnAnti = TRUE;
-						break;
-					default:
-						xGame.isUnAnti = FALSE;
-						break;
-				}
-				sprintf(strTempS, "%d.png",k);
-				loadImg(strTempS,&imgActBody[k][ACT_FRONT]);
-				
-//				xGame.isUnAnti = FALSE;
-//				sprintf(strTempS, "s%d.png",k);
+//			for(int k=0;k<ACTLAYERMAX;k++)
+//			{
+//				//팔이랑 다리
+//				switch(k)
+//				{
+//					case 1:
+//					case 2:
+//					case 3:
+//					case 4:
+//					case 9:
+//					case 10:
+//					case 17:
+//					case 18:
+//					case 5:
+//					case 6:
+//					case 11:
+//					case 12:
+//						xGame.isUnAnti = TRUE;
+//						break;
+//					default:
+//						xGame.isUnAnti = FALSE;
+//						break;
+//				}
+//				sprintf(strTempS, "%d.png",k);
+//				loadImg(strTempS,&imgActBody[k][ACT_FRONT]);
+//				
+//				sprintf(strTempS, "%d_200.png",k);
 //				loadImg(strTempS,&imgActBodySub[k][ACT_FRONT]);
-//				xGame.isUnAnti = FALSE;
-				//팔이랑 다리
-				switch(k)
-				{
-					case 0:
-					case 2:
-					case 5:
-					case 6:
-					case 10:
-					case 11:
-					case 16:
-					case 18:
-					case 3:
-					case 4:
-					case 8:
-					case 9:
-						xGame.isUnAnti = TRUE;
-						break;
-					default:
-						xGame.isUnAnti = FALSE;
-						break;
-				}
-				sprintf(strTempS, "b%d.png",k);
-				loadImg(strTempS,&imgActBody[k][ACT_BACK]);
-				
-//				xGame.isUnAnti = FALSE;
-//				sprintf(strTempS, "sb%d.png",k);
+//				
+//				//				xGame.isUnAnti = FALSE;
+//				//				sprintf(strTempS, "s%d.png",k);
+//				//				loadImg(strTempS,&imgActBodySub[k][ACT_FRONT]);
+//				//				xGame.isUnAnti = FALSE;
+//				//팔이랑 다리
+//				switch(k)
+//				{
+//					case 0:
+//					case 2:
+//					case 5:
+//					case 6:
+//					case 10:
+//					case 11:
+//					case 16:
+//					case 18:
+//					case 3:
+//					case 4:
+//					case 8:
+//					case 9:
+//						xGame.isUnAnti = TRUE;
+//						break;
+//					default:
+//						xGame.isUnAnti = FALSE;
+//						break;
+//				}
+//				sprintf(strTempS, "b%d.png",k);
+//				loadImg(strTempS,&imgActBody[k][ACT_BACK]);
+//				
+//				sprintf(strTempS, "b%d_200.png",k);
 //				loadImg(strTempS,&imgActBodySub[k][ACT_BACK]);
-//				xGame.isUnAnti = FALSE;
-			}
-			xGame.isUnAnti = FALSE;
+//				
+//				//				xGame.isUnAnti = FALSE;
+//				//				sprintf(strTempS, "sb%d.png",k);
+//				//				loadImg(strTempS,&imgActBodySub[k][ACT_BACK]);
+//				//				xGame.isUnAnti = FALSE;
+//			}
+//			xGame.isUnAnti = FALSE;
 			break;
-		case 6:
-            loadModelShopNpcImg(0);
+			case 6:
+				loadModelShopNpcImg(0);
 			break;
 		case 8:
 			loadModelShopNpcImg(1);
@@ -1652,6 +1660,21 @@ void drawLogo()
 			setPacker(PACKER_STATE_INTERIOR);
 			setPacker(PACKER_STATE_MAINMENU);
 			setPacker(PACKER_STATE_SKILL);
+            /////////////////////////////////////////////////
+            ////메인 UI 이미지 로딩 KBY
+            loadImg("wealth.png", &imgWealth);
+            loadImg("main_btn_menu.png", &imgMenu);
+            loadImg("main_btn_menuicon1.png", &imgMenuIcon1);
+            loadImg("main_btn_menuicon2.png", &imgMenuIcon2);
+            loadImg("main_frame_profile.png", &imgProfile);
+            loadImg("non_profile_image.png", &imgNonProfile);
+            loadImg("main_bar_exp.png", &imgBarExp);
+            loadImg("main_bar_warmth.png", &imgBarWarmth);
+            loadImg("main_icon_exp_warmth.png", &imgMainExpWarmth);
+            loadImg("main_bar_empty.png", &imgBarEmpty);
+            /////////////////////////////////////////////////
+                
+           
 			break;
 		default:
 			if(xCalendar.nowTime - xLogo.endTime > 1)

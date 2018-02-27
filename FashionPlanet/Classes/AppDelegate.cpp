@@ -34,6 +34,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     //960
     lcdW = 1136;
     lcdH = 640;
+
+
+   
     
     Size visibleSize = Director::getInstance()->getWinSize();
     orilcdW = visibleSize.width;

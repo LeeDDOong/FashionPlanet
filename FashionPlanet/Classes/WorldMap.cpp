@@ -1,4 +1,5 @@
 #include "Global.h"
+XSENDMACHINE xSendMachine_FP;
 
 XIMG imgLuluPangLobby[10];
 XIMG imgLuluPang;
@@ -7,6 +8,10 @@ XLULUPANG xLuluPang;
 XLULUPANGLOBBY xLuluPangLobby;
 XLULUPANGRANK xLuluPangRank;
 XLULUPANGMODEL xLuluPangModel[LULUPANGSETTINGMAX];
+
+XFITTING_FP xFitting_FP;
+XFASHIONLIST_FP xFashionList_FP;
+XFRIEND_FP xFriend_FP;
 
 XAUTOPRODUCT xAutoProduct;
 XAUTOSELL xAutoSell;
@@ -204,9 +209,58 @@ XFASHIONWEEKRANK xFashionWeekRank;
 XFASHIONWEEKSETTING xFashionWeekSetting;
 XFASHIONWEEK xFashionWeek;
 XFASHIONWEEKMODEL xFashionWeekModel[FASHIONWEEKSETTINGMAX];
+XPRODUCTION_FP xProduction_FP;
+XFASHIONDATA_FP xFashionData_FP[FASHIONDATATYPEMAX][FASHIONDATAMAX];
+XCATALOG_FP xCatalog_FP;
+XGREENHOUSE_FP xGreenHouse_FP;
+
+////////////////////////////////////////////////////////////////////////////////////////
+//헤어,메이크업 데이터 LJW 2018.02.01
+XHAIRMAKEUP xHairMakeUp;
+////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////
+//레이어 데이터 LJW 2018.02.01
+XLAYER xLayer;
+////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////
+//내 캐릭터 LJW 2018.02.12
+XMYCHARACTER xMyCharacter;
+////////////////////////////////////////////////////////////////////////////////////////
+
+XIMG imgTest[10];
+XIMG imgProduction[30];
+XIMG imgProductionTitle;
+/////////////////
+//메인 UI
+XIMG imgWealth;
+XIMG imgMenu;
+XIMG imgMenuIcon1;
+XIMG imgMenuIcon2;
+XIMG imgMainExpWarmth;
+XIMG imgBarExp;
+XIMG imgBarWarmth;
+XIMG imgProfile;
+XIMG imgPhoto[10];
+XIMG imgNonProfile;
+XIMG imgBarEmpty;
+XIMG imgWealthIcon[5];
+XIMG imgBtnYesNo;
+XIMG imgBtn;
+/////////////////
+//인테리어 편집 UI
+XIMG imgInteriorBuild[20];
+/////////////////
+//우편함
+XIMG imgMail[30];
+/////////////////
+//회원가입 KBY 201.2.23
 
 
+/////////////////
 
+XIMG imgProductionBg;
 XIMG imgClubCostIcon;
 XIMG imgClubPointIcon;
 XIMG imgClubScoreIcon;
@@ -392,9 +446,17 @@ M_Boolean isImgFace[FACEDATAMAX];
 M_Boolean isImgFace_Model[FACEDATAMAX];
 M_Boolean isImgFace_Npc[FACEDATAMAX];
 
-
-
-
+//////////////////////////////////////////////////////
+//헤어, 얼굴표정 이미지 추가 LJW 2018.02.08
+M_Boolean isImgHair_FP[HAIRDATAMAX];
+M_Boolean isImgHairBig_FP[HAIRDATAMAX];
+M_Boolean isImgFace_FP[FACEDATAMAX];
+M_Boolean isImgFaceBig_FP[FACEDATAMAX];
+XIMG imgHair_FP[HAIRDATAMAX][2][2];//[헤어코드][방향][헤어파일]
+XIMG imgHairBig_FP[HAIRDATAMAX][2][2];//[헤어코드][방향][헤어파일]
+XIMG imgFace_FP[HAIRDATAMAX];
+XIMG imgFaceBig_FP[HAIRDATAMAX];
+//////////////////////////////////////////////////////
 
 
 XIMG imgActBodySub[ACTLAYERMAX][2];
@@ -404,7 +466,9 @@ XIMG imgFittingBody[2][ACTLAYERMAX];
 XIMG imgFittingBodyBlack3Sub[2];
 XIMG imgFittingBodyBlack[2][ACTLAYERMAX];
 M_Boolean isFreeFittingF[FASHIONDATATYPEMAX][FASHIONDATAMAX];
+M_Boolean isFreeFittingF_FP[FASHIONDATATYPEMAX][FASHIONDATAMAX];
 M_Boolean isImgFittingF[FASHIONDATATYPEMAX][FASHIONDATAMAX];
+M_Boolean isImgFittingF_FP[FASHIONDATATYPEMAX][FASHIONDATAMAX];
 
 XIMG imgFittingF0[FASHIONDATAMAX][ACTLAYERMAX][20];
 XIMG imgFittingFInOut0[FASHIONDATAMAX][ACTLAYERMAX][20];
@@ -428,7 +492,8 @@ XIMG imgFittingFBackPack[FASHIONDATAMAX];
 
 XIMG imgFittingBg[5];
 
-
+XIMG imgFittingF_FP[FASHIONDATATYPEMAX][FASHIONDATAMAX];
+XIMG imgFittingItem_FP[FASHIONDATATYPEMAX][FASHIONDATAMAX];
 
 
 
@@ -440,6 +505,10 @@ M_Boolean isImgFLayer[FASHIONDATATYPEMAX][FASHIONDATAMAX];
 XIMG imgFLayer[FASHIONDATATYPEMAX][FASHIONDATAMAX][FASHIONDATALAYERMAX][2];
 XIMG imgFLayerSub[FASHIONDATATYPEMAX][FASHIONDATAMAX][FASHIONDATALAYERMAX][2];
 
+M_Boolean isImgFLayerBig_FP[FASHIONDATATYPEMAX][FASHIONDATAMAX];
+M_Boolean isImgFLayer_FP[FASHIONDATATYPEMAX][FASHIONDATAMAX];
+XIMG ImgFLayerBig_FP[FASHIONDATATYPEMAX][FASHIONDATAMAX][FASHIONDATALAYERMAX][2];
+XIMG ImgFLayer_FP[FASHIONDATATYPEMAX][FASHIONDATAMAX][FASHIONDATALAYERMAX][2];
 
 XIMG imgThemaIconB[32];
 
@@ -449,6 +518,10 @@ XIMG imgStaticNpc[20][2][40];
 XIMG imgFormer[10];
 XIMG imgMerchin[20];
 
+
+XIMG imgFitting[20];//옷장
+XIMG imgfriendList[30];//친구행성
+
 XIMG imgWorldMapRocketEFF[2];//0:연기,1:불꽃
 XIMG imgWorldMapRocket[BUILDINGMAX];//로켓
 XIMG imgWorldMapRocketBottom[BUILDINGMAX];//로켓 발사대
@@ -456,11 +529,62 @@ XIMG imgWorldMapVinylHouse[BUILDINGMAX];//비닐하우스
 XIMG imgWorldMapStorage[BUILDINGMAX];//창고
 XIMG imgWorldMapAntenna[BUILDINGMAX];//안테나
 
+///////////////////////////////////////////
+//온실 이미지
+XIMG imgGreenHouse[30];
+XIMG imgFlower[128][4];
+XIMG imgSlotLv[GREENHOUSESLOT_LV_MAX];
+XIMG imgSpinningWheel[30];
 
+///////////////////////////////////////////
+//상점 이미지
+XIMG imgShop[30];
+XIMG imgInterior_FP[INTERIORSLOTBMAX][INTERIORSLOTSMAX];
 
+///////////////////////////////////////////
+//전송기UI 이미지
+XIMG imgSendMachine_DisplayArrow;
+XIMG imgSendMachine_Controler;
+XIMG imgSendMachine_Display;
+XIMG imgSendMachine_Num;
+XIMG imgSendMachine_Rail;
+XIMG imgSendMachine_RailRabbit;
+XIMG imgSendMachine_Slot[5];
+XIMG imgSendMachine_Sticker[7];
+XIMG imgSendMachine_StorageTitle;
+XIMG imgSendMachine_Title;
+XIMG imgSendMachine_BG;
+XIMG imgSendMachine_BtnExit;
+XIMG imgSendMachine_Storage[4];
+XIMG imgSendMachine_BtnArrow[2];
+XIMG imgSendMachine_Lock;
+XIMG imgSendMachine_BtnUpgrade;
 
+///////////////////////////////////////////
+//캐릭터 레이어 시스템 LJW 2018.02.08
+XIMG imgLayer[40][2];
+bool isLayer[40][2];
+///////////////////////////////////////////
 
+///////////////////////////////////////////
+//온실
+XGREENHOUSE_MATERIALDATA_FP xGreenHouse_MaterialData_FP;
 
+///////////////////////////////////////////
+//물레
+XSPINNING_MATERIALDATA_FP xSPinning_MaterialData_FP;
+XSPINNING_FP xSpinning_FP;
+///////////////////////////////////////////
+//Variable
+XCHS xChs;
+////////////////////////////////////////////
+//당근
+XCALCCARROT xCalcCarrot;
+////////////////////////////////////////////
+//상점
+XSHOP_FP xShop_FP;
+
+////////////////////////////////////////////
 XFORMER xFormer;
 
 XINTERIOR xInterior;
@@ -556,13 +680,31 @@ XTOUCH xTouchBuildIconMoveObj;
 XTOUCH xTouchBuildIconInven;
 XTOUCH xTouchBuildIconRot;
 
+///////////////////////////////////////////
+//인테리어 체크 여부
+bool isTouchBuildIconOk;
+bool isTouchBuildIconClr;
+bool isTouchBuildIconMove;
+bool isTouchBuildIconMoveObj;
+bool isTouchBuildIconInven;
+bool isTouchBuildIconRot;
+///////////////////////////////////////////
+
+///////////////////////////////////////////
+//사진 등록 터치 여부
+bool isTouchPhotoSelect;
+bool isTouchPhotoDel;
+bool isTouchPhotoClr;
+///////////////////////////////////////////
+
 XTOUCH xTouchScrollOk;
 XTOUCH xTouchScrollStepUp;
 XTOUCH xTouchScrollStepDown;
 
-//XTOUCH xTouchWorldMapFriendIcon;
+XTOUCH xTouchWorldMapFriendIcon;
 XTOUCH xTouchWorldMapMainMenuIcon;
 XTOUCH xTouchWorldMapCashIcon;
+XTOUCH xTouchWorldMapMoneyIcon;
 XTOUCH xTouchWorldMapItemShop;
 XTOUCH xTouchWorldMapCandyIcon;
 
@@ -572,6 +714,9 @@ XTOUCH xTouchWorldMapInShopPerIcon;
 XTOUCH xTouchPlayerInfoIcon;
 
 XTOUCH xTouchRocket;
+
+XTOUCH xTouchGreenHouse;
+XTOUCH xTouchSpinningWheel;
 
 void initWorldMap()
 {
@@ -610,7 +755,7 @@ void initWorldMap()
 	
 	//LJW 월드맵 진입시 공지팝업 및 네이버카페 호출 막기
 	xWorldMap.state = WORLDMAP_STATE_PLAY;
-	
+
 	xFriendMap.isPlay = FALSE;
 	
 	if(xWorldMap.isStartClet == TRUE)
@@ -737,10 +882,11 @@ void initWorldMap()
 	xLvUp.interiorInfoCode = DONT;
 	xLvUp.productionInfoCode = DONT;
 		
-	makeShopAssistant();
+	//makeShopAssistant(); //LJW 샵직원 삭제 2018.02.12
 	
-	
-	xWorldMapUi.totalNum = 6;
+    /////////////////////////////////////////////////
+    ////스위치 버튼 개수 변동 KBY
+	xWorldMapUi.totalNum = 7;
 	
 	
 	//스위치 초기화
@@ -858,7 +1004,7 @@ void initWorldMap()
         xEventQueueNet.questType[xEventQueueNet.totalNum] = -1;
         addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_EVENTQUESTDETAILLIST, TRUE);
         
-        addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_HOTDEALMAINLIST, TRUE);
+//        addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_HOTDEALMAINLIST, TRUE);
         
         xRival.isNetLoad = true;
         addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_RIVALLIST, TRUE);
@@ -1024,7 +1170,40 @@ void initWorldMap()
 
     
 	xAutoProduct.time = xCalendar.nowTime;
-	sleepAutoProduct();
+    
+    xFitting_FP.selectTabB=-1;
+    xFitting_FP.isinfo=false;
+    
+    xFriend_FP.selectTabB=0;
+	
+    
+	makeMyCharacter();
+    
+
+    isTouchBuildIconOk=false;
+    isTouchBuildIconClr=false;
+    isTouchBuildIconMove=false;
+    isTouchBuildIconMoveObj=false;
+    isTouchBuildIconInven=false;
+    isTouchBuildIconRot=false;
+    
+    isTouchPhotoSelect=false;
+    isTouchPhotoDel=false;
+    isTouchPhotoClr=false;
+//    xEventQueueNet.end_time[xEventQueueNet.totalNum]=xCalendar.nowTime;
+//    addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GETCARROT, TRUE);
+    
+//    for(int k=0;k<PRODUCTIONMAX;k++)
+//    {
+//        xProduction_FP.xData[k].totalSlot=0;
+//    }
+    
+//    loadImg("100_back.png", &imgTest[0]);
+//    loadImg("100_front.png", &imgTest[1]);
+//    loadImg("200_back.png", &imgTest[2]);
+//    loadImg("200_front.png", &imgTest[3]);
+//    loadImg("100_front_shape.png",&imgTest[4]);
+//	sleepAutoProduct();
 }
 
 
@@ -2429,6 +2608,15 @@ void initDragScroll()
 	xLvUp.xDragScroll.selectNum = 0;
 	xLvUp.xDragScroll.pos = 0;
 	xLvUp.xDragScroll.speed = 0;
+    
+    xProduction_FP.xDragScrollProductionS.touchXpos=DONT;
+    xProduction_FP.xDragScrollProductionS.touchYpos=DONT;
+    xProduction_FP.xDragScrollProductionS.touchXposBefore=DONT;
+    xProduction_FP.xDragScrollProductionS.touchYposBefore=DONT;
+    xProduction_FP.xDragScrollProductionS.selectNum=0;
+    xProduction_FP.xDragScrollProductionS.pos=0;
+    xProduction_FP.xDragScrollProductionS.speed=0;
+    
 }
 
 void setMapPosScale(int type, int param1, int param2,int touchId)
@@ -3262,6 +3450,9 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 	case PLAY_PLAY:
 		switch(xWorldMap.state)
 		{
+		case WORLDMAP_STATE_SENDMACHINE_FP:
+			keySendMachine_FP(type,param1,param2);
+			break;
 		case WORLDMAP_STATE_MODELMAINGIFTINFO:
 			if(type == MH_KEY_PRESSEVENT)
 			{
@@ -7409,852 +7600,852 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 				xFriend.xDragScrollOrderList.touchYposBefore = DONT;
 			}
 			break;
-		case WORLDMAP_STATE_FRIENDLIST:
-			switch(xFriend.state)
-			{
-			case FRIEND_STATE_ADD:
-				if(xFriend.isInvite == TRUE)
-				{
-					if(touchCheck(&xTouchOk) == TRUE && touchType == USER_POINT_RELEASE_EVENT)
-					{
-						xFriend.isInvite = FALSE;
-					}
-					return;
-				}
-									
-				if(xKakaoData.inveiteKeyReturn == TRUE)
-					return;
-					
-				//추천친구
-				switch(xFriend.addFriendTab)
-				{
-				case 0:		// 추천친구
-					if(type == MH_KEY_PRESSEVENT)
-					{
-						
-						if(touchCheck(&xFriend.xTouchAddTab[1]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-						{
-							playSnd(SND_MENU_OK);
-							xWorldMap.isKeyReturn = TRUE;
-							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_FIND] == TRUE)
-							{
-								
-							}
-							else
-							{
-								xFriend.totalNumListRanDom = 0;
-								xFriend.addFriendTab = 1;
-								xFriend.addState = FRIENDADD_STATE_PLAY;
-							}
-							
-							
-						}
-                        /*
-						else if(touchCheck(&xFriend.xTouchAddTab[2]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-						{
-							playSnd(SND_MENU_OK);
-							xWorldMap.isKeyReturn = TRUE;
-							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_KAKAOAPP] == TRUE)
-							{
-								
-							}
-							else
-							{
-								xFriend.addFriendTab = 2;
-							}
-						}
-						else if(touchCheck(&xFriend.xTouchAddTab[3]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-						{
-							playSnd(SND_MENU_OK);
-							xWorldMap.isKeyReturn = TRUE;
-							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_KAKAO] == TRUE)
-							{
-								
-							}
-							else
-							{
-								xFriend.addFriendTab = 3;
-							}
-						}
-                        */
-						else if(touchCheck(&xTouchClr) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-						{
-							playSnd(SND_MENU_OK);
-							
-							xWorldMap.isKeyReturn = TRUE;
-							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_CLOSE] == TRUE)
-							{
-								
-							}
-							else
-							{
-								xFriend.state = FRIEND_STATE_PLAY;
-								xFriend.totalNumList = 0;
-								xFriend.nowRowNumList = 0;
-								xFriend.nowPageNumList = 0;
-								xFriend.totalNumListFollow = 0;
-								xFriend.nowRowNumListFollow = 0;
-								xFriend.nowPageNumListFollow = 0;
-							}
-						}
-						else
-							dragScrollKeyPrc(&xFriend.xDragScrollRanDomList,2);							
-					}
-					else if(type == MH_KEY_RELEASEEVENT)
-					{
-						if(xFriend.xDragScrollRanDomList.touchXposBefore != DONT)
-						{
-							dragScrollKeyPrc(&xFriend.xDragScrollRanDomList,3);
-						}
-						else
-						{
-							isKeyEvent = FALSE;
-							keyEventNum = 0;
-							
-							for(int i=0;i<6;i++)
-							{
-								if(touchCheck(&xFriend.xTouchFriendAddBtn[i]) == TRUE)
-								{
-									isKeyEvent = TRUE;
-									keyEventNum = i;
-									break;
-								}
-							}
-							if(isKeyEvent == TRUE)
-							{
-								int selectSlot = keyEventNum+xFriend.xDragScrollRanDomList.selectNum;
-								
-								
-        
-								if(selectSlot >= 0 && selectSlot < xFriend.totalNumListRanDom)
-								{
-									playSnd(SND_MENU_OK);
-									if(xFriendData[xFriend.dataSlotNumListRanDom[selectSlot]].isAdd == FALSE)
-									{
-										if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_ADD] == TRUE)
-										{
-											
-										}
-										else
-										{
-											/////////////////////////////////
-											xEventQueueNet.friendNum[xEventQueueNet.totalNum] = xFriendData[xFriend.dataSlotNumListRanDom[selectSlot]].userNum;
-											addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_ADDFRIEND, FALSE);
-											////////////////////////////////
-											xFriendData[xFriend.dataSlotNumListRanDom[selectSlot]].isAdd = TRUE;
-											
-											
-											if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-											{
-												if(xWorldMap.isFriendMap == FALSE)
-												{
-													switch(xQuestTuto.nowNum)
-													{
-													case TUTO_28_ADDFRIEND_ADDTOUCH:
-														xQuestTuto.isTutoClean = TRUE;
-														xQuestTuto.tempValue = xFriendData[xFriend.dataSlotNumListRanDom[selectSlot]].userNum;
-														break;
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-						xFriend.xDragScrollRanDomList.touchXpos = DONT;
-						xFriend.xDragScrollRanDomList.touchYpos = DONT;
-						xFriend.xDragScrollRanDomList.touchXposBefore = DONT;
-						xFriend.xDragScrollRanDomList.touchYposBefore = DONT;
-					}
-					break;
-				case 1:		//친구검색
-					if(type == MH_KEY_PRESSEVENT)
-					{
-						if(touchCheck(&xFriend.xTouchAddTab[0]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-						{
-							playSnd(SND_MENU_OK);
-							xWorldMap.isKeyReturn = TRUE;
-							
-							
-							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_RECOMMEND] == TRUE)
-							{
-								
-							}
-							else
-							{
-								xFriend.addFriendTab = 0;
-								xFriend.totalNumListRanDom = 0;
-								/////////////////////////////////////////////////////////////
-								xEventQueueNet.action[xEventQueueNet.totalNum] = 0;	//0:추천검색1:직접검색
-								sprintf(xEventQueueNet.strNickName[xEventQueueNet.totalNum], "%s","randomuser");
-								addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GETFRIENDSEARCH, TRUE);
-								////////////////////////////////////////////////////////////
-							}
-						}
-                        /*
-						else if(touchCheck(&xFriend.xTouchAddTab[2]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-						{
-							playSnd(SND_MENU_OK);
-							xWorldMap.isKeyReturn = TRUE;
-							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_KAKAOAPP] == TRUE)
-							{
-								
-							}
-							else
-							{
-								xFriend.addFriendTab = 2;
-							}
-						}
-						else if(touchCheck(&xFriend.xTouchAddTab[3]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-						{
-							playSnd(SND_MENU_OK);
-							xWorldMap.isKeyReturn = TRUE;
-							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_FIND] == TRUE)
-							{
-								
-							}
-							else
-							{
-								xFriend.addFriendTab = 3;
-							}
-						}
-                        */
-						else if(touchCheck(&xTouchClr) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-						{
-							playSnd(SND_MENU_OK);
-							
-							xWorldMap.isKeyReturn = TRUE;
-							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_CLOSE] == TRUE)
-							{
-								
-							}
-							else
-							{
-								xFriend.state = FRIEND_STATE_PLAY;
-								xFriend.totalNumList = 0;
-								xFriend.nowRowNumList = 0;
-								xFriend.nowPageNumList = 0;
-								xFriend.totalNumListFollow = 0;
-								xFriend.nowRowNumListFollow = 0;
-								xFriend.nowPageNumListFollow = 0;
-							}
-						}
-						else if(touchCheck(&xFriend.xTouchTextBox) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-						{
-							playSnd(SND_MENU_OK);
-                            
-                            setTextField(TEXTBOX_TYPE_FRIENDID, lcdW/2, lcdH+999, 200, 25);
-                            
-						}
-						else if(touchCheck(&xFriend.xTouchSearch) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-						{
-							playSnd(SND_MENU_OK);
-							xWorldMap.isKeyReturn = TRUE;
-							/////////////////////////////////////////////////////////////
-							xEventQueueNet.action[xEventQueueNet.totalNum] = 1;	//0:추천검색1:직접검색
-							sprintf(xEventQueueNet.strNickName[xEventQueueNet.totalNum], "%s",xFriend.strUserName);
-							addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GETFRIENDSEARCH, TRUE);
-							////////////////////////////////////////////////////////////
-						}
-						else if(xFriend.totalNumListRanDom > 0 && touchCheck(&xFriend.xTouchFriendAddBtn[0]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-						{
-							
-							if(xFriendData[xFriend.dataSlotNumListRanDom[0]].isAdd == FALSE)
-							{
-								playSnd(SND_MENU_OK);
-								if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_ADD] == TRUE)
-								{
-									
-								}
-								else
-								{
-									/////////////////////////////////
-									xEventQueueNet.friendNum[xEventQueueNet.totalNum] = xFriendData[xFriend.dataSlotNumListRanDom[0]].userNum;
-									addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_ADDFRIEND, FALSE);
-									////////////////////////////////
-									xFriendData[xFriend.dataSlotNumListRanDom[0]].isAdd = TRUE;
-								}
-							}
-						}
-					}
-					break;
-				case 2:	//카카오친구관리
-					if(type == MH_KEY_PRESSEVENT)
-					{
-						if(touchCheck(&xFriend.xTouchAddTab[0]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-						{
-							playSnd(SND_MENU_OK);
-							xWorldMap.isKeyReturn = TRUE;
-							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_RECOMMEND] == TRUE)
-							{
-								
-							}
-							else
-							{
-								xFriend.addFriendTab = 0;
-								xFriend.totalNumListRanDom = 0;
-								/////////////////////////////////////////////////////////////
-								xEventQueueNet.action[xEventQueueNet.totalNum] = 0;	//0:추천검색1:직접검색
-								sprintf(xEventQueueNet.strNickName[xEventQueueNet.totalNum], "%s","randomuser");
-								addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GETFRIENDSEARCH, TRUE);
-								////////////////////////////////////////////////////////////
-							}
-						}
-						else if(touchCheck(&xFriend.xTouchAddTab[1]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-						{
-							playSnd(SND_MENU_OK);
-							xWorldMap.isKeyReturn = TRUE;
-							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_FIND] == TRUE)
-							{
-								
-							}
-							else
-							{
-								xFriend.addFriendTab = 1;
-								xFriend.totalNumListRanDom = 0;
-								xFriend.addState = FRIENDADD_STATE_PLAY;
-							}
-						}
-                        /*
-						else if(touchCheck(&xFriend.xTouchAddTab[3]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-						{
-							playSnd(SND_MENU_OK);
-							xWorldMap.isKeyReturn = TRUE;
-							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_KAKAO] == TRUE)
-							{
-								
-							}
-							else
-							{
-								xFriend.addFriendTab = 3;
-							}
-						}
-                        */
-						else if(touchCheck(&xTouchClr) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-						{
-							playSnd(SND_MENU_OK);
-							xWorldMap.isKeyReturn = TRUE;
-							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_CLOSE] == TRUE)
-							{
-								
-							}
-							else
-							{
-								xFriend.state = FRIEND_STATE_PLAY;
-								xFriend.totalNumList = 0;
-								xFriend.nowRowNumList = 0;
-								xFriend.nowPageNumList = 0;
-								xFriend.totalNumListFollow = 0;
-								xFriend.nowRowNumListFollow = 0;
-								xFriend.nowPageNumListFollow = 0;
-							}
-						}
-						else
-							dragScrollKeyPrc(&xFriend.xDragScrollRanDomList,2);
-					}
-					else if(type == MH_KEY_RELEASEEVENT)
-					{
-						if(xFriend.xDragScrollRanDomList.touchXposBefore != DONT)
-						{
-							dragScrollKeyPrc(&xFriend.xDragScrollRanDomList,3);
-						}
-						else
-						{
-							isKeyEvent = FALSE;
-							keyEventNum = 0;
-							
-							for(int i=0;i<6;i++)
-							{
-								if(touchCheck(&xFriend.xTouchFriendAddBtn[i]) == TRUE)
-								{
-									isKeyEvent = TRUE;
-									keyEventNum = i;
-									break;
-								}
-							}
-
-							if(isKeyEvent == TRUE)
-							{
-								int selectSlot = keyEventNum+xFriend.xDragScrollRanDomList.selectNum;								
-								
-																
-								if(selectSlot >= 0 && selectSlot < xFriend.xDragScrollRanDomList.totalNum)
-								{
-									if(xFriendData[xKakaoData.xFriendInfoApp[selectSlot].friendNum].isAdd == FALSE)
-									{
-										xFriendData[xKakaoData.xFriendInfoApp[selectSlot].friendNum].isAdd = TRUE;
-										playSnd(SND_MENU_OK);
-										//친구등록 네트워크등록
-										/////////////////////////////////////////////////////////////
-										sprintf(xEventQueueNet.strNickName[xEventQueueNet.totalNum], "%s",xFriendData[xKakaoData.xFriendInfoApp[selectSlot].friendNum].strKakaoId);
-										addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_ADDFRIENDID, TRUE);
-										////////////////////////////////////////////////////////////
-									}
-								}
-							}
-						}
-						xFriend.xDragScrollRanDomList.touchXpos = DONT;
-						xFriend.xDragScrollRanDomList.touchYpos = DONT;
-						xFriend.xDragScrollRanDomList.touchXposBefore = DONT;
-						xFriend.xDragScrollRanDomList.touchYposBefore = DONT;
-					}
-					break;
-				case 3:	//카카오톡친구초대
-					if(type == MH_KEY_PRESSEVENT)
-					{
-						if(touchCheck(&xFriend.xTouchAddTab[0]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-						{
-							playSnd(SND_MENU_OK);
-							xWorldMap.isKeyReturn = TRUE;
-							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_RECOMMEND] == TRUE)
-							{
-								
-							}
-							else
-							{
-								xFriend.addFriendTab = 0;
-								xFriend.totalNumListRanDom = 0;
-								/////////////////////////////////////////////////////////////
-								xEventQueueNet.action[xEventQueueNet.totalNum] = 0;	//0:추천검색1:직접검색
-								sprintf(xEventQueueNet.strNickName[xEventQueueNet.totalNum], "%s","randomuser");
-								addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GETFRIENDSEARCH, TRUE);
-								////////////////////////////////////////////////////////////
-							}
-						}
-						else if(touchCheck(&xFriend.xTouchAddTab[1]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-						{
-							playSnd(SND_MENU_OK);
-							xWorldMap.isKeyReturn = TRUE;
-							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_FIND] == TRUE)
-							{
-								
-							}
-							else
-							{
-								xFriend.addFriendTab = 1;
-								xFriend.totalNumListRanDom = 0;
-								xFriend.addState = FRIENDADD_STATE_PLAY;
-							}
-						}
-                        /*
-						else if(touchCheck(&xFriend.xTouchAddTab[2]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-						{
-							playSnd(SND_MENU_OK);
-							xWorldMap.isKeyReturn = TRUE;
-							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_KAKAOAPP] == TRUE)
-							{
-								
-							}
-							else
-							{
-								xFriend.addFriendTab = 2;
-							}
-						}
-                        */
-						else if(touchCheck(&xTouchClr) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-						{
-							playSnd(SND_MENU_OK);
-							xWorldMap.isKeyReturn = TRUE;
-							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_CLOSE] == TRUE)
-							{
-								
-							}
-							else
-							{
-								xFriend.state = FRIEND_STATE_PLAY;
-								xFriend.totalNumList = 0;
-								xFriend.nowRowNumList = 0;
-								xFriend.nowPageNumList = 0;
-								xFriend.totalNumListFollow = 0;
-								xFriend.nowRowNumListFollow = 0;
-								xFriend.nowPageNumListFollow = 0;
-							}
-						}
-						else
-							dragScrollKeyPrc(&xFriend.xDragScrollRanDomList,2);
-					}
-					else if(type == MH_KEY_RELEASEEVENT)
-					{
-						if(xFriend.xDragScrollRanDomList.touchXposBefore != DONT)
-						{
-							dragScrollKeyPrc(&xFriend.xDragScrollRanDomList,3);
-						}
-						else
-						{
-							isKeyEvent = FALSE;
-							keyEventNum = 0;
-							
-							for(int i=0;i<6;i++)
-							{
-								if(touchCheck(&xFriend.xTouchFriendAddBtn[i]) == TRUE)
-								{
-									isKeyEvent = TRUE;
-									keyEventNum = i;
-									break;
-								}
-							}
-							
-							
-							
-							
-							
-							if(isKeyEvent == TRUE)
-							{
-								
-								int selectSlot = keyEventNum+xFriend.xDragScrollRanDomList.selectNum;
-								
-								
-								
-								
-								
-								
-								
-								if(selectSlot >= 0 && selectSlot < xFriend.xDragScrollRanDomList.totalNum)
-								{
-									if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_ADD] == TRUE)
-									{
-										
-									}
-									else
-									{
-										
-										
-										if(xKakaoData.xFriendInfo[selectSlot].isInvite == FALSE)
-										{
-											playSnd(SND_MENU_OK);
-											xKakaoData.inveiteKakaoSlotNum = selectSlot;
-											setPopup(POPUP_KAKAOINVEITEYESNO, playState, playState, 0, DONT);											
-										}
-										else
-										{
-											
-											/*
-											 //테스트삼아
-											 kakaoDevSendMessage20_APP("88628863586313601", "패션타운 테스트입니다!!","shopmoneyicon0.png");
-											 //	//화정씨
-											 //88254944690806784	//한실장님
-											 */
-											
-										}
-									}
-								}
-							}
-						}
-						xFriend.xDragScrollRanDomList.touchXpos = DONT;
-						xFriend.xDragScrollRanDomList.touchYpos = DONT;
-						xFriend.xDragScrollRanDomList.touchXposBefore = DONT;
-						xFriend.xDragScrollRanDomList.touchYposBefore = DONT;
-					}
-					break;
-				}
-				break;
-			case FRIEND_STATE_PLAY:
-				if(type == MH_KEY_PRESSEVENT)
-				{
-					isKeyEvent = FALSE;
-					
-					for(int i=0;i<3;i++)
-					{
-						if(touchCheck(&xFriend.xTouchTabB[i]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-						{
-							isKeyEvent = TRUE;
-							keyEventNum = i;
-						}
-					}
-					
-					if(isKeyEvent == TRUE)
-					{
-						playSnd(SND_MENU_OK);
-						xWorldMap.isKeyReturn = TRUE;
-						if(keyEventNum == 0 && xTutoLimit.isLock[TUTOLIMIT_TYPE_FRIENDS_LIST] == TRUE)
-						{
-							
-						}
-						else if((keyEventNum == 1||keyEventNum == 2) && xTutoLimit.isLock[TUTOLIMIT_TYPE_FRIENDS_FOLLOW] == TRUE)
-						{
-							
-						}
-						else
-						{
-							if(xFriend.selectTabB != keyEventNum)
-							{
-								xFriend.selectTabB = keyEventNum;
-								
-								xDragScrollFriendSlot.touchXpos = DONT;
-								xDragScrollFriendSlot.touchYpos = DONT;
-								xDragScrollFriendSlot.touchXposBefore = DONT;
-								xDragScrollFriendSlot.touchYposBefore = DONT;
-								xDragScrollFriendSlot.selectNum = 0;
-								xDragScrollFriendSlot.pos = 0;
-								xDragScrollFriendSlot.speed = 0;
-																				
-								xFriend.totalNumList = 0;
-								xFriend.nowRowNumList = 0;
-								xFriend.nowPageNumList = 0;
-								xFriend.totalNumListFollow = 0;
-								xFriend.nowRowNumListFollow = 0;
-								xFriend.nowPageNumListFollow = 0;
-							}
-						}
-					}
-					else if(xFriend.selectTabB == 0 && touchCheck(&xFriend.xTouchEditBtn) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-					{
-						playSnd(SND_MENU_OK);
-						xWorldMap.isKeyReturn = TRUE;
-						if(xTutoLimit.isLock[TUTOLIMIT_TYPE_FRIENDS_EDIT] == TRUE)
-						{
-							
-						}
-						else
-						{
-							xFriend.isDelMode = (xFriend.isDelMode==TRUE?FALSE:TRUE);
-						}
-					}
-					else if(touchCheck(&xFriend.xTouchRandomBtn) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-					{
-						playSnd(SND_MENU_OK);
-						xWorldMap.isKeyReturn = TRUE;
-						if(xTutoLimit.isLock[TUTOLIMIT_TYPE_FRIENDS_RANDOM] == TRUE)
-						{
-							
-						}
-						else
-							addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_RANDOMFRIEND, TRUE);
-						
-					}
-					else if(touchCheck(&xTouchClr) == TRUE && touchType == USER_POINT_PRESS_EVENT)
-					{
-						playSnd(SND_MENU_OK);
-						xWorldMap.isKeyReturn = TRUE;
-						
-						if(xFriend.isDelMode == TRUE)
-						{
-							xFriend.isDelMode = FALSE;
-						}
-						else
-						{
-							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_FRIENDS_CLOSE] == TRUE)
-							{
-								
-							}
-							else
-							{
-								friendListFreeLoad(FALSE);
-								xWorldMap.state = WORLDMAP_STATE_PLAY;
-																
-								xOrder.totalNumListDataFriend = 0;
-								xOrder.totalNumListData = 0;
-								xOrder.isNetLoad = FALSE;
-								addEventQueueNet(xTouch.xPos, xTouch.xPos, NETQUEUE_TYPE_ORDERLIST, FALSE);
-								
-							}
-						}
-					}
-                    else if(keyFastScroll(type, param1, param2,touchId,0) == true || xTouch.yPos > lcdH-40)
-                    {
-                        
-                    }
-					else
-					{
-						dragScrollKeyPrc(&xDragScrollFriendSlot,0);
-					}
-				}
-				else if(type == MH_KEY_RELEASEEVENT)
-				{
-					if(xDragScrollFriendSlot.touchXposBefore != DONT)
-					{
-						dragScrollKeyPrc(&xDragScrollFriendSlot,1);
-					}
-					else
-					{
-						isKeyEvent = FALSE;
-						keyEventNum = 0;
-						int selectSlot;
-                        int isBookMark = false;
-                        
-                        
-						switch(xFriend.selectTabB)
-						{
-						case 0:
-                        case 2:
-							for(int i=0;i<16;i++)
-							{
-								if(xFriend.isDelMode == TRUE)
-								{
-									if(touchCheck(&xFriend.xTouchSelectDelBtn[i]) == TRUE)
-									{
-										isKeyEvent = TRUE;
-										keyEventNum = i;
-										break;
-									}
-								}
-								else
-								{
-									if(touchCheck(&xFriend.xTouchSelectSlot[i]) == TRUE)
-									{
-										isKeyEvent = TRUE;
-										keyEventNum = i;
-                                        
-                                        if(touchCheck(&xFriend.xTouchSelectBookMark[i]) == TRUE)
-                                        {
-                                            isBookMark = true;
-                                            
-                                        }
-										break;
-									}
-								}
-							}
-                            
-							selectSlot = keyEventNum+(xDragScrollFriendSlot.selectNum*2);
-							
-							if(selectSlot < 0|| selectSlot >= xDragScrollFriendSlot.totalNum)
-                            {
-                                isBookMark = false;
-								isKeyEvent = FALSE;
-                            }
-							if(isKeyEvent == TRUE)
-							{
-								playSnd(SND_MENU_OK);
-								if(xFriend.isDelMode == TRUE)
-								{
-									if(xFriend.dataSlotNumList[selectSlot] == DONT)
-									{
-										
-									}
-									else if(xFriendData[xFriend.dataSlotNumList[selectSlot]].isPM == TRUE)
-									{
-										
-									}
-									else if(xFriendData[xFriend.dataSlotNumList[selectSlot]].isAlliance == TRUE)
-									{
-										
-									}
-									else
-									{
-										int kakaoSlot = checkKakaoAppInvite(xFriendData[xFriend.dataSlotNumList[selectSlot]].strKakaoId);
-										if(kakaoSlot != DONT)
-										{
-											xSaveKakaoApp.isDel[kakaoSlot] = TRUE;
-											gameSave(SAVE_SLOT_KAKAOAPP);
-										}
-										
-										playSnd(SND_MENU_OK);
-										xFriendData[xFriend.dataSlotNumList[selectSlot]].isAdd = FALSE;
-										/////////////////////////////////
-										xEventQueueNet.friendNum[xEventQueueNet.totalNum] = xFriendData[xFriend.dataSlotNumList[selectSlot]].userNum;
-										addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_DELFRIEND, FALSE);
-										////////////////////////////////
-										
-										for(int s=selectSlot;s<xFriend.totalNumList;s++)
-										{
-											xFriend.dataSlotNumList[s] = xFriend.dataSlotNumList[s+1];
-										}
-										xFriend.totalNumList--;
-									}
-
-								}
-                                else if(isBookMark == true)
-                                {
-                                    /////////////////////////////////////////////////////////////
-                                    if(xFriendData[xFriend.dataSlotNumList[selectSlot]].isBookMark == false)
-                                    {
-                                        xFriendData[xFriend.dataSlotNumList[selectSlot]].isBookMark = true;
-                                        xEventQueueNet.action[xEventQueueNet.totalNum] = 1; //(0:해제,1추가)
-                                    }
-                                    else
-                                    {
-                                        xFriendData[xFriend.dataSlotNumList[selectSlot]].isBookMark = false;
-                                        xEventQueueNet.action[xEventQueueNet.totalNum] = 0; //(0:해제,1추가)
-                                    }
-                                    xEventQueueNet.friendNum[xEventQueueNet.totalNum] = xFriendData[xFriend.dataSlotNumList[selectSlot]].userNum;
-                                    addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_BOOKMARK, TRUE);
-                                    ////////////////////////////////////////////////////////////
-                                }
-								else
-								{
-									
-									//모델
-									if(xFriend.dataSlotNumList[selectSlot] == DONT)
-									{
-										if(xTutoLimit.isLock[TUTOLIMIT_TYPE_FRIENDS_ADD] == TRUE)
-										{
-											
-										}
-										else
-										{
-											friendListAddFreeLoad(TRUE);
-											xFriend.state = FRIEND_STATE_ADD;
-											xFriend.addState = FRIENDADD_STATE_PLAY;
-											xFriend.addFriendTab = 0;
-											xFriend.totalNumListRanDom = 0;
-											/////////////////////////////////////////////////////////////
-											xEventQueueNet.action[xEventQueueNet.totalNum] = 0;	//0:추천검색1:직접검색
-											sprintf(xEventQueueNet.strNickName[xEventQueueNet.totalNum], "%s","randomuser");
-											addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GETFRIENDSEARCH, TRUE);
-											////////////////////////////////////////////////////////////
-										}
-									}
-									else if(xTutoLimit.isLock[TUTOLIMIT_TYPE_FRIENDS_FRIENDS_PM] == TRUE && xFriendData[xFriend.dataSlotNumList[selectSlot]].isPM == TRUE)
-									{
-										
-									}
-									else if(xTutoLimit.isLock[TUTOLIMIT_TYPE_FRIENDS_FRIENDS] == TRUE && xFriendData[xFriend.dataSlotNumList[selectSlot]].isPM == FALSE)
-									{
-										
-									}
-									else
-									{
-										xFriend.selectSlot = selectSlot;
-										xFriendMap.selectDataSlotNum = xFriend.dataSlotNumList[xFriend.selectSlot];
-										xWorldMap.isFriendMap = TRUE;
-										xFriendMap.isPlay = TRUE;
-										xFriendMap.state = FRIENDMAP_STATE_LOADING0_START;
-										xFriendMap.type = 0;//0:리스트1:랜덤2:메일
-										xFriendMap.anyCnt = 0;
-									}
-								}
-							}
-							break;
-						case 1:
-								
-							for(int i=0;i<16;i++)
-							{
-								if(touchCheck(&xFriend.xTouchSelectSlot[i]) == TRUE)
-								{
-									isKeyEvent = TRUE;
-									keyEventNum = i;
-									break;
-								}
-							}
-							selectSlot = keyEventNum+(xDragScrollFriendSlot.selectNum*2);
-							
-							if(selectSlot < 0|| selectSlot >= xDragScrollFriendSlot.totalNum)
-								isKeyEvent = FALSE;
-																	
-							if(isKeyEvent == TRUE)
-							{
-								if(xFriendData[xFriend.dataSlotNumListFollow[selectSlot]].isAdd == FALSE)
-								{
-									playSnd(SND_MENU_OK);
-									/////////////////////////////////
-									xEventQueueNet.friendNum[xEventQueueNet.totalNum] = xFriendData[xFriend.dataSlotNumListFollow[selectSlot]].userNum;
-									addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_ADDFRIEND, FALSE);
-									////////////////////////////////
-									xFriendData[xFriend.dataSlotNumListFollow[selectSlot]].isAdd = TRUE;
-								}
-							}
-							break;
-						}
-					}
-					xDragScrollFriendSlot.touchXpos = DONT;
-					xDragScrollFriendSlot.touchYpos = DONT;
-					xDragScrollFriendSlot.touchXposBefore = DONT;
-					xDragScrollFriendSlot.touchYposBefore = DONT;
-				}
-				break;
-			}
-			break;
+//		case WORLDMAP_STATE_FRIENDLIST:
+//			switch(xFriend.state)
+//			{
+//			case FRIEND_STATE_ADD:
+//				if(xFriend.isInvite == TRUE)
+//				{
+//					if(touchCheck(&xTouchOk) == TRUE && touchType == USER_POINT_RELEASE_EVENT)
+//					{
+//						xFriend.isInvite = FALSE;
+//					}
+//					return;
+//				}
+//									
+//				if(xKakaoData.inveiteKeyReturn == TRUE)
+//					return;
+//					
+//				//추천친구
+//				switch(xFriend.addFriendTab)
+//				{
+//				case 0:		// 추천친구
+//					if(type == MH_KEY_PRESSEVENT)
+//					{
+//						
+//						if(touchCheck(&xFriend.xTouchAddTab[1]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+//						{
+//							playSnd(SND_MENU_OK);
+//							xWorldMap.isKeyReturn = TRUE;
+//							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_FIND] == TRUE)
+//							{
+//								
+//							}
+//							else
+//							{
+//								xFriend.totalNumListRanDom = 0;
+//								xFriend.addFriendTab = 1;
+//								xFriend.addState = FRIENDADD_STATE_PLAY;
+//							}
+//							
+//							
+//						}
+//                        /*
+//						else if(touchCheck(&xFriend.xTouchAddTab[2]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+//						{
+//							playSnd(SND_MENU_OK);
+//							xWorldMap.isKeyReturn = TRUE;
+//							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_KAKAOAPP] == TRUE)
+//							{
+//								
+//							}
+//							else
+//							{
+//								xFriend.addFriendTab = 2;
+//							}
+//						}
+//						else if(touchCheck(&xFriend.xTouchAddTab[3]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+//						{
+//							playSnd(SND_MENU_OK);
+//							xWorldMap.isKeyReturn = TRUE;
+//							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_KAKAO] == TRUE)
+//							{
+//								
+//							}
+//							else
+//							{
+//								xFriend.addFriendTab = 3;
+//							}
+//						}
+//                        */
+//						else if(touchCheck(&xTouchClr) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+//						{
+//							playSnd(SND_MENU_OK);
+//							
+//							xWorldMap.isKeyReturn = TRUE;
+//							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_CLOSE] == TRUE)
+//							{
+//								
+//							}
+//							else
+//							{
+//								xFriend.state = FRIEND_STATE_PLAY;
+//								xFriend.totalNumList = 0;
+//								xFriend.nowRowNumList = 0;
+//								xFriend.nowPageNumList = 0;
+//								xFriend.totalNumListFollow = 0;
+//								xFriend.nowRowNumListFollow = 0;
+//								xFriend.nowPageNumListFollow = 0;
+//							}
+//						}
+//						else
+//							dragScrollKeyPrc(&xFriend.xDragScrollRanDomList,2);							
+//					}
+//					else if(type == MH_KEY_RELEASEEVENT)
+//					{
+//						if(xFriend.xDragScrollRanDomList.touchXposBefore != DONT)
+//						{
+//							dragScrollKeyPrc(&xFriend.xDragScrollRanDomList,3);
+//						}
+//						else
+//						{
+//							isKeyEvent = FALSE;
+//							keyEventNum = 0;
+//							
+//							for(int i=0;i<6;i++)
+//							{
+//								if(touchCheck(&xFriend.xTouchFriendAddBtn[i]) == TRUE)
+//								{
+//									isKeyEvent = TRUE;
+//									keyEventNum = i;
+//									break;
+//								}
+//							}
+//							if(isKeyEvent == TRUE)
+//							{
+//								int selectSlot = keyEventNum+xFriend.xDragScrollRanDomList.selectNum;
+//								
+//								
+//        
+//								if(selectSlot >= 0 && selectSlot < xFriend.totalNumListRanDom)
+//								{
+//									playSnd(SND_MENU_OK);
+//									if(xFriendData[xFriend.dataSlotNumListRanDom[selectSlot]].isAdd == FALSE)
+//									{
+//										if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_ADD] == TRUE)
+//										{
+//											
+//										}
+//										else
+//										{
+//											/////////////////////////////////
+//											xEventQueueNet.friendNum[xEventQueueNet.totalNum] = xFriendData[xFriend.dataSlotNumListRanDom[selectSlot]].userNum;
+//											addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_ADDFRIEND, FALSE);
+//											////////////////////////////////
+//											xFriendData[xFriend.dataSlotNumListRanDom[selectSlot]].isAdd = TRUE;
+//											
+//											
+//											if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+//											{
+//												if(xWorldMap.isFriendMap == FALSE)
+//												{
+//													switch(xQuestTuto.nowNum)
+//													{
+//													case TUTO_28_ADDFRIEND_ADDTOUCH:
+//														xQuestTuto.isTutoClean = TRUE;
+//														xQuestTuto.tempValue = xFriendData[xFriend.dataSlotNumListRanDom[selectSlot]].userNum;
+//														break;
+//													}
+//												}
+//											}
+//										}
+//									}
+//								}
+//							}
+//						}
+//						xFriend.xDragScrollRanDomList.touchXpos = DONT;
+//						xFriend.xDragScrollRanDomList.touchYpos = DONT;
+//						xFriend.xDragScrollRanDomList.touchXposBefore = DONT;
+//						xFriend.xDragScrollRanDomList.touchYposBefore = DONT;
+//					}
+//					break;
+//				case 1:		//친구검색
+//					if(type == MH_KEY_PRESSEVENT)
+//					{
+//						if(touchCheck(&xFriend.xTouchAddTab[0]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+//						{
+//							playSnd(SND_MENU_OK);
+//							xWorldMap.isKeyReturn = TRUE;
+//							
+//							
+//							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_RECOMMEND] == TRUE)
+//							{
+//								
+//							}
+//							else
+//							{
+//								xFriend.addFriendTab = 0;
+//								xFriend.totalNumListRanDom = 0;
+//								/////////////////////////////////////////////////////////////
+//								xEventQueueNet.action[xEventQueueNet.totalNum] = 0;	//0:추천검색1:직접검색
+//								sprintf(xEventQueueNet.strNickName[xEventQueueNet.totalNum], "%s","randomuser");
+//								addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GETFRIENDSEARCH, TRUE);
+//								////////////////////////////////////////////////////////////
+//							}
+//						}
+//                        /*
+//						else if(touchCheck(&xFriend.xTouchAddTab[2]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+//						{
+//							playSnd(SND_MENU_OK);
+//							xWorldMap.isKeyReturn = TRUE;
+//							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_KAKAOAPP] == TRUE)
+//							{
+//								
+//							}
+//							else
+//							{
+//								xFriend.addFriendTab = 2;
+//							}
+//						}
+//						else if(touchCheck(&xFriend.xTouchAddTab[3]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+//						{
+//							playSnd(SND_MENU_OK);
+//							xWorldMap.isKeyReturn = TRUE;
+//							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_FIND] == TRUE)
+//							{
+//								
+//							}
+//							else
+//							{
+//								xFriend.addFriendTab = 3;
+//							}
+//						}
+//                        */
+//						else if(touchCheck(&xTouchClr) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+//						{
+//							playSnd(SND_MENU_OK);
+//							
+//							xWorldMap.isKeyReturn = TRUE;
+//							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_CLOSE] == TRUE)
+//							{
+//								
+//							}
+//							else
+//							{
+//								xFriend.state = FRIEND_STATE_PLAY;
+//								xFriend.totalNumList = 0;
+//								xFriend.nowRowNumList = 0;
+//								xFriend.nowPageNumList = 0;
+//								xFriend.totalNumListFollow = 0;
+//								xFriend.nowRowNumListFollow = 0;
+//								xFriend.nowPageNumListFollow = 0;
+//							}
+//						}
+//						else if(touchCheck(&xFriend.xTouchTextBox) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+//						{
+//							playSnd(SND_MENU_OK);
+//                            
+//                            setTextField(TEXTBOX_TYPE_FRIENDID, lcdW/2, lcdH+999, 200, 25);
+//                            
+//						}
+//						else if(touchCheck(&xFriend.xTouchSearch) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+//						{
+//							playSnd(SND_MENU_OK);
+//							xWorldMap.isKeyReturn = TRUE;
+//							/////////////////////////////////////////////////////////////
+//							xEventQueueNet.action[xEventQueueNet.totalNum] = 1;	//0:추천검색1:직접검색
+//							sprintf(xEventQueueNet.strNickName[xEventQueueNet.totalNum], "%s",xFriend.strUserName);
+//							addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GETFRIENDSEARCH, TRUE);
+//							////////////////////////////////////////////////////////////
+//						}
+//						else if(xFriend.totalNumListRanDom > 0 && touchCheck(&xFriend.xTouchFriendAddBtn[0]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+//						{
+//							
+//							if(xFriendData[xFriend.dataSlotNumListRanDom[0]].isAdd == FALSE)
+//							{
+//								playSnd(SND_MENU_OK);
+//								if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_ADD] == TRUE)
+//								{
+//									
+//								}
+//								else
+//								{
+//									/////////////////////////////////
+//									xEventQueueNet.friendNum[xEventQueueNet.totalNum] = xFriendData[xFriend.dataSlotNumListRanDom[0]].userNum;
+//									addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_ADDFRIEND, FALSE);
+//									////////////////////////////////
+//									xFriendData[xFriend.dataSlotNumListRanDom[0]].isAdd = TRUE;
+//								}
+//							}
+//						}
+//					}
+//					break;
+//				case 2:	//카카오친구관리
+//					if(type == MH_KEY_PRESSEVENT)
+//					{
+//						if(touchCheck(&xFriend.xTouchAddTab[0]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+//						{
+//							playSnd(SND_MENU_OK);
+//							xWorldMap.isKeyReturn = TRUE;
+//							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_RECOMMEND] == TRUE)
+//							{
+//								
+//							}
+//							else
+//							{
+//								xFriend.addFriendTab = 0;
+//								xFriend.totalNumListRanDom = 0;
+//								/////////////////////////////////////////////////////////////
+//								xEventQueueNet.action[xEventQueueNet.totalNum] = 0;	//0:추천검색1:직접검색
+//								sprintf(xEventQueueNet.strNickName[xEventQueueNet.totalNum], "%s","randomuser");
+//								addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GETFRIENDSEARCH, TRUE);
+//								////////////////////////////////////////////////////////////
+//							}
+//						}
+//						else if(touchCheck(&xFriend.xTouchAddTab[1]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+//						{
+//							playSnd(SND_MENU_OK);
+//							xWorldMap.isKeyReturn = TRUE;
+//							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_FIND] == TRUE)
+//							{
+//								
+//							}
+//							else
+//							{
+//								xFriend.addFriendTab = 1;
+//								xFriend.totalNumListRanDom = 0;
+//								xFriend.addState = FRIENDADD_STATE_PLAY;
+//							}
+//						}
+//                        /*
+//						else if(touchCheck(&xFriend.xTouchAddTab[3]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+//						{
+//							playSnd(SND_MENU_OK);
+//							xWorldMap.isKeyReturn = TRUE;
+//							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_KAKAO] == TRUE)
+//							{
+//								
+//							}
+//							else
+//							{
+//								xFriend.addFriendTab = 3;
+//							}
+//						}
+//                        */
+//						else if(touchCheck(&xTouchClr) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+//						{
+//							playSnd(SND_MENU_OK);
+//							xWorldMap.isKeyReturn = TRUE;
+//							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_CLOSE] == TRUE)
+//							{
+//								
+//							}
+//							else
+//							{
+//								xFriend.state = FRIEND_STATE_PLAY;
+//								xFriend.totalNumList = 0;
+//								xFriend.nowRowNumList = 0;
+//								xFriend.nowPageNumList = 0;
+//								xFriend.totalNumListFollow = 0;
+//								xFriend.nowRowNumListFollow = 0;
+//								xFriend.nowPageNumListFollow = 0;
+//							}
+//						}
+//						else
+//							dragScrollKeyPrc(&xFriend.xDragScrollRanDomList,2);
+//					}
+//					else if(type == MH_KEY_RELEASEEVENT)
+//					{
+//						if(xFriend.xDragScrollRanDomList.touchXposBefore != DONT)
+//						{
+//							dragScrollKeyPrc(&xFriend.xDragScrollRanDomList,3);
+//						}
+//						else
+//						{
+//							isKeyEvent = FALSE;
+//							keyEventNum = 0;
+//							
+//							for(int i=0;i<6;i++)
+//							{
+//								if(touchCheck(&xFriend.xTouchFriendAddBtn[i]) == TRUE)
+//								{
+//									isKeyEvent = TRUE;
+//									keyEventNum = i;
+//									break;
+//								}
+//							}
+//
+//							if(isKeyEvent == TRUE)
+//							{
+//								int selectSlot = keyEventNum+xFriend.xDragScrollRanDomList.selectNum;								
+//								
+//																
+//								if(selectSlot >= 0 && selectSlot < xFriend.xDragScrollRanDomList.totalNum)
+//								{
+//									if(xFriendData[xKakaoData.xFriendInfoApp[selectSlot].friendNum].isAdd == FALSE)
+//									{
+//										xFriendData[xKakaoData.xFriendInfoApp[selectSlot].friendNum].isAdd = TRUE;
+//										playSnd(SND_MENU_OK);
+//										//친구등록 네트워크등록
+//										/////////////////////////////////////////////////////////////
+//										sprintf(xEventQueueNet.strNickName[xEventQueueNet.totalNum], "%s",xFriendData[xKakaoData.xFriendInfoApp[selectSlot].friendNum].strKakaoId);
+//										addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_ADDFRIENDID, TRUE);
+//										////////////////////////////////////////////////////////////
+//									}
+//								}
+//							}
+//						}
+//						xFriend.xDragScrollRanDomList.touchXpos = DONT;
+//						xFriend.xDragScrollRanDomList.touchYpos = DONT;
+//						xFriend.xDragScrollRanDomList.touchXposBefore = DONT;
+//						xFriend.xDragScrollRanDomList.touchYposBefore = DONT;
+//					}
+//					break;
+//				case 3:	//카카오톡친구초대
+//					if(type == MH_KEY_PRESSEVENT)
+//					{
+//						if(touchCheck(&xFriend.xTouchAddTab[0]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+//						{
+//							playSnd(SND_MENU_OK);
+//							xWorldMap.isKeyReturn = TRUE;
+//							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_RECOMMEND] == TRUE)
+//							{
+//								
+//							}
+//							else
+//							{
+//								xFriend.addFriendTab = 0;
+//								xFriend.totalNumListRanDom = 0;
+//								/////////////////////////////////////////////////////////////
+//								xEventQueueNet.action[xEventQueueNet.totalNum] = 0;	//0:추천검색1:직접검색
+//								sprintf(xEventQueueNet.strNickName[xEventQueueNet.totalNum], "%s","randomuser");
+//								addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GETFRIENDSEARCH, TRUE);
+//								////////////////////////////////////////////////////////////
+//							}
+//						}
+//						else if(touchCheck(&xFriend.xTouchAddTab[1]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+//						{
+//							playSnd(SND_MENU_OK);
+//							xWorldMap.isKeyReturn = TRUE;
+//							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_FIND] == TRUE)
+//							{
+//								
+//							}
+//							else
+//							{
+//								xFriend.addFriendTab = 1;
+//								xFriend.totalNumListRanDom = 0;
+//								xFriend.addState = FRIENDADD_STATE_PLAY;
+//							}
+//						}
+//                        /*
+//						else if(touchCheck(&xFriend.xTouchAddTab[2]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+//						{
+//							playSnd(SND_MENU_OK);
+//							xWorldMap.isKeyReturn = TRUE;
+//							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_KAKAOAPP] == TRUE)
+//							{
+//								
+//							}
+//							else
+//							{
+//								xFriend.addFriendTab = 2;
+//							}
+//						}
+//                        */
+//						else if(touchCheck(&xTouchClr) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+//						{
+//							playSnd(SND_MENU_OK);
+//							xWorldMap.isKeyReturn = TRUE;
+//							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_CLOSE] == TRUE)
+//							{
+//								
+//							}
+//							else
+//							{
+//								xFriend.state = FRIEND_STATE_PLAY;
+//								xFriend.totalNumList = 0;
+//								xFriend.nowRowNumList = 0;
+//								xFriend.nowPageNumList = 0;
+//								xFriend.totalNumListFollow = 0;
+//								xFriend.nowRowNumListFollow = 0;
+//								xFriend.nowPageNumListFollow = 0;
+//							}
+//						}
+//						else
+//							dragScrollKeyPrc(&xFriend.xDragScrollRanDomList,2);
+//					}
+//					else if(type == MH_KEY_RELEASEEVENT)
+//					{
+//						if(xFriend.xDragScrollRanDomList.touchXposBefore != DONT)
+//						{
+//							dragScrollKeyPrc(&xFriend.xDragScrollRanDomList,3);
+//						}
+//						else
+//						{
+//							isKeyEvent = FALSE;
+//							keyEventNum = 0;
+//							
+//							for(int i=0;i<6;i++)
+//							{
+//								if(touchCheck(&xFriend.xTouchFriendAddBtn[i]) == TRUE)
+//								{
+//									isKeyEvent = TRUE;
+//									keyEventNum = i;
+//									break;
+//								}
+//							}
+//							
+//							
+//							
+//							
+//							
+//							if(isKeyEvent == TRUE)
+//							{
+//								
+//								int selectSlot = keyEventNum+xFriend.xDragScrollRanDomList.selectNum;
+//								
+//								
+//								
+//								
+//								
+//								
+//								
+//								if(selectSlot >= 0 && selectSlot < xFriend.xDragScrollRanDomList.totalNum)
+//								{
+//									if(xTutoLimit.isLock[TUTOLIMIT_TYPE_ADDFRIENDS_ADD] == TRUE)
+//									{
+//										
+//									}
+//									else
+//									{
+//										
+//										
+//										if(xKakaoData.xFriendInfo[selectSlot].isInvite == FALSE)
+//										{
+//											playSnd(SND_MENU_OK);
+//											xKakaoData.inveiteKakaoSlotNum = selectSlot;
+//											setPopup(POPUP_KAKAOINVEITEYESNO, playState, playState, 0, DONT);											
+//										}
+//										else
+//										{
+//											
+//											/*
+//											 //테스트삼아
+//											 kakaoDevSendMessage20_APP("88628863586313601", "패션타운 테스트입니다!!","shopmoneyicon0.png");
+//											 //	//화정씨
+//											 //88254944690806784	//한실장님
+//											 */
+//											
+//										}
+//									}
+//								}
+//							}
+//						}
+//						xFriend.xDragScrollRanDomList.touchXpos = DONT;
+//						xFriend.xDragScrollRanDomList.touchYpos = DONT;
+//						xFriend.xDragScrollRanDomList.touchXposBefore = DONT;
+//						xFriend.xDragScrollRanDomList.touchYposBefore = DONT;
+//					}
+//					break;
+//				}
+//				break;
+//			case FRIEND_STATE_PLAY:
+//				if(type == MH_KEY_PRESSEVENT)
+//				{
+//					isKeyEvent = FALSE;
+//					
+//					for(int i=0;i<3;i++)
+//					{
+//						if(touchCheck(&xFriend.xTouchTabB[i]) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+//						{
+//							isKeyEvent = TRUE;
+//							keyEventNum = i;
+//						}
+//					}
+//					
+//					if(isKeyEvent == TRUE)
+//					{
+//						playSnd(SND_MENU_OK);
+//						xWorldMap.isKeyReturn = TRUE;
+//						if(keyEventNum == 0 && xTutoLimit.isLock[TUTOLIMIT_TYPE_FRIENDS_LIST] == TRUE)
+//						{
+//							
+//						}
+//						else if((keyEventNum == 1||keyEventNum == 2) && xTutoLimit.isLock[TUTOLIMIT_TYPE_FRIENDS_FOLLOW] == TRUE)
+//						{
+//							
+//						}
+//						else
+//						{
+//							if(xFriend.selectTabB != keyEventNum)
+//							{
+//								xFriend.selectTabB = keyEventNum;
+//								
+//								xDragScrollFriendSlot.touchXpos = DONT;
+//								xDragScrollFriendSlot.touchYpos = DONT;
+//								xDragScrollFriendSlot.touchXposBefore = DONT;
+//								xDragScrollFriendSlot.touchYposBefore = DONT;
+//								xDragScrollFriendSlot.selectNum = 0;
+//								xDragScrollFriendSlot.pos = 0;
+//								xDragScrollFriendSlot.speed = 0;
+//																				
+//								xFriend.totalNumList = 0;
+//								xFriend.nowRowNumList = 0;
+//								xFriend.nowPageNumList = 0;
+//								xFriend.totalNumListFollow = 0;
+//								xFriend.nowRowNumListFollow = 0;
+//								xFriend.nowPageNumListFollow = 0;
+//							}
+//						}
+//					}
+//					else if(xFriend.selectTabB == 0 && touchCheck(&xFriend.xTouchEditBtn) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+//					{
+//						playSnd(SND_MENU_OK);
+//						xWorldMap.isKeyReturn = TRUE;
+//						if(xTutoLimit.isLock[TUTOLIMIT_TYPE_FRIENDS_EDIT] == TRUE)
+//						{
+//							
+//						}
+//						else
+//						{
+//							xFriend.isDelMode = (xFriend.isDelMode==TRUE?FALSE:TRUE);
+//						}
+//					}
+//					else if(touchCheck(&xFriend.xTouchRandomBtn) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+//					{
+//						playSnd(SND_MENU_OK);
+//						xWorldMap.isKeyReturn = TRUE;
+//						if(xTutoLimit.isLock[TUTOLIMIT_TYPE_FRIENDS_RANDOM] == TRUE)
+//						{
+//							
+//						}
+//						else
+//							addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_RANDOMFRIEND, TRUE);
+//						
+//					}
+//					else if(touchCheck(&xTouchClr) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+//					{
+//						playSnd(SND_MENU_OK);
+//						xWorldMap.isKeyReturn = TRUE;
+//						
+//						if(xFriend.isDelMode == TRUE)
+//						{
+//							xFriend.isDelMode = FALSE;
+//						}
+//						else
+//						{
+//							if(xTutoLimit.isLock[TUTOLIMIT_TYPE_FRIENDS_CLOSE] == TRUE)
+//							{
+//								
+//							}
+//							else
+//							{
+//								friendListFreeLoad(FALSE);
+//								xWorldMap.state = WORLDMAP_STATE_PLAY;
+//																
+//								xOrder.totalNumListDataFriend = 0;
+//								xOrder.totalNumListData = 0;
+//								xOrder.isNetLoad = FALSE;
+//								addEventQueueNet(xTouch.xPos, xTouch.xPos, NETQUEUE_TYPE_ORDERLIST, FALSE);
+//								
+//							}
+//						}
+//					}
+//                    else if(keyFastScroll(type, param1, param2,touchId,0) == true || xTouch.yPos > lcdH-40)
+//                    {
+//                        
+//                    }
+//					else
+//					{
+//						dragScrollKeyPrc(&xDragScrollFriendSlot,0);
+//					}
+//				}
+//				else if(type == MH_KEY_RELEASEEVENT)
+//				{
+//					if(xDragScrollFriendSlot.touchXposBefore != DONT)
+//					{
+//						dragScrollKeyPrc(&xDragScrollFriendSlot,1);
+//					}
+//					else
+//					{
+//						isKeyEvent = FALSE;
+//						keyEventNum = 0;
+//						int selectSlot;
+//                        int isBookMark = false;
+//                        
+//                        
+//						switch(xFriend.selectTabB)
+//						{
+//						case 0:
+//                        case 2:
+//							for(int i=0;i<16;i++)
+//							{
+//								if(xFriend.isDelMode == TRUE)
+//								{
+//									if(touchCheck(&xFriend.xTouchSelectDelBtn[i]) == TRUE)
+//									{
+//										isKeyEvent = TRUE;
+//										keyEventNum = i;
+//										break;
+//									}
+//								}
+//								else
+//								{
+//									if(touchCheck(&xFriend.xTouchSelectSlot[i]) == TRUE)
+//									{
+//										isKeyEvent = TRUE;
+//										keyEventNum = i;
+//                                        
+//                                        if(touchCheck(&xFriend.xTouchSelectBookMark[i]) == TRUE)
+//                                        {
+//                                            isBookMark = true;
+//                                            
+//                                        }
+//										break;
+//									}
+//								}
+//							}
+//                            
+//							selectSlot = keyEventNum+(xDragScrollFriendSlot.selectNum*2);
+//							
+//							if(selectSlot < 0|| selectSlot >= xDragScrollFriendSlot.totalNum)
+//                            {
+//                                isBookMark = false;
+//								isKeyEvent = FALSE;
+//                            }
+//							if(isKeyEvent == TRUE)
+//							{
+//								playSnd(SND_MENU_OK);
+//								if(xFriend.isDelMode == TRUE)
+//								{
+//									if(xFriend.dataSlotNumList[selectSlot] == DONT)
+//									{
+//										
+//									}
+//									else if(xFriendData[xFriend.dataSlotNumList[selectSlot]].isPM == TRUE)
+//									{
+//										
+//									}
+//									else if(xFriendData[xFriend.dataSlotNumList[selectSlot]].isAlliance == TRUE)
+//									{
+//										
+//									}
+//									else
+//									{
+//										int kakaoSlot = checkKakaoAppInvite(xFriendData[xFriend.dataSlotNumList[selectSlot]].strKakaoId);
+//										if(kakaoSlot != DONT)
+//										{
+//											xSaveKakaoApp.isDel[kakaoSlot] = TRUE;
+//											gameSave(SAVE_SLOT_KAKAOAPP);
+//										}
+//										
+//										playSnd(SND_MENU_OK);
+//										xFriendData[xFriend.dataSlotNumList[selectSlot]].isAdd = FALSE;
+//										/////////////////////////////////
+//										xEventQueueNet.friendNum[xEventQueueNet.totalNum] = xFriendData[xFriend.dataSlotNumList[selectSlot]].userNum;
+//										addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_DELFRIEND, FALSE);
+//										////////////////////////////////
+//										
+//										for(int s=selectSlot;s<xFriend.totalNumList;s++)
+//										{
+//											xFriend.dataSlotNumList[s] = xFriend.dataSlotNumList[s+1];
+//										}
+//										xFriend.totalNumList--;
+//									}
+//
+//								}
+//                                else if(isBookMark == true)
+//                                {
+//                                    /////////////////////////////////////////////////////////////
+//                                    if(xFriendData[xFriend.dataSlotNumList[selectSlot]].isBookMark == false)
+//                                    {
+//                                        xFriendData[xFriend.dataSlotNumList[selectSlot]].isBookMark = true;
+//                                        xEventQueueNet.action[xEventQueueNet.totalNum] = 1; //(0:해제,1추가)
+//                                    }
+//                                    else
+//                                    {
+//                                        xFriendData[xFriend.dataSlotNumList[selectSlot]].isBookMark = false;
+//                                        xEventQueueNet.action[xEventQueueNet.totalNum] = 0; //(0:해제,1추가)
+//                                    }
+//                                    xEventQueueNet.friendNum[xEventQueueNet.totalNum] = xFriendData[xFriend.dataSlotNumList[selectSlot]].userNum;
+//                                    addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_BOOKMARK, TRUE);
+//                                    ////////////////////////////////////////////////////////////
+//                                }
+//								else
+//								{
+//									
+//									//모델
+//									if(xFriend.dataSlotNumList[selectSlot] == DONT)
+//									{
+//										if(xTutoLimit.isLock[TUTOLIMIT_TYPE_FRIENDS_ADD] == TRUE)
+//										{
+//											
+//										}
+//										else
+//										{
+//											friendListAddFreeLoad(TRUE);
+//											xFriend.state = FRIEND_STATE_ADD;
+//											xFriend.addState = FRIENDADD_STATE_PLAY;
+//											xFriend.addFriendTab = 0;
+//											xFriend.totalNumListRanDom = 0;
+//											/////////////////////////////////////////////////////////////
+//											xEventQueueNet.action[xEventQueueNet.totalNum] = 0;	//0:추천검색1:직접검색
+//											sprintf(xEventQueueNet.strNickName[xEventQueueNet.totalNum], "%s","randomuser");
+//											addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GETFRIENDSEARCH, TRUE);
+//											////////////////////////////////////////////////////////////
+//										}
+//									}
+//									else if(xTutoLimit.isLock[TUTOLIMIT_TYPE_FRIENDS_FRIENDS_PM] == TRUE && xFriendData[xFriend.dataSlotNumList[selectSlot]].isPM == TRUE)
+//									{
+//										
+//									}
+//									else if(xTutoLimit.isLock[TUTOLIMIT_TYPE_FRIENDS_FRIENDS] == TRUE && xFriendData[xFriend.dataSlotNumList[selectSlot]].isPM == FALSE)
+//									{
+//										
+//									}
+//									else
+//									{
+//										xFriend.selectSlot = selectSlot;
+//										xFriendMap.selectDataSlotNum = xFriend.dataSlotNumList[xFriend.selectSlot];
+//										xWorldMap.isFriendMap = TRUE;
+//										xFriendMap.isPlay = TRUE;
+//										xFriendMap.state = FRIENDMAP_STATE_LOADING0_START;
+//										xFriendMap.type = 0;//0:리스트1:랜덤2:메일
+//										xFriendMap.anyCnt = 0;
+//									}
+//								}
+//							}
+//							break;
+//						case 1:
+//								
+//							for(int i=0;i<16;i++)
+//							{
+//								if(touchCheck(&xFriend.xTouchSelectSlot[i]) == TRUE)
+//								{
+//									isKeyEvent = TRUE;
+//									keyEventNum = i;
+//									break;
+//								}
+//							}
+//							selectSlot = keyEventNum+(xDragScrollFriendSlot.selectNum*2);
+//							
+//							if(selectSlot < 0|| selectSlot >= xDragScrollFriendSlot.totalNum)
+//								isKeyEvent = FALSE;
+//																	
+//							if(isKeyEvent == TRUE)
+//							{
+//								if(xFriendData[xFriend.dataSlotNumListFollow[selectSlot]].isAdd == FALSE)
+//								{
+//									playSnd(SND_MENU_OK);
+//									/////////////////////////////////
+//									xEventQueueNet.friendNum[xEventQueueNet.totalNum] = xFriendData[xFriend.dataSlotNumListFollow[selectSlot]].userNum;
+//									addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_ADDFRIEND, FALSE);
+//									////////////////////////////////
+//									xFriendData[xFriend.dataSlotNumListFollow[selectSlot]].isAdd = TRUE;
+//								}
+//							}
+//							break;
+//						}
+//					}
+//					xDragScrollFriendSlot.touchXpos = DONT;
+//					xDragScrollFriendSlot.touchYpos = DONT;
+//					xDragScrollFriendSlot.touchXposBefore = DONT;
+//					xDragScrollFriendSlot.touchYposBefore = DONT;
+//				}
+//				break;
+//			}
+//			break;
 		case WORLDMAP_STATE_CARORDERINFO:
 			if(type == MH_KEY_PRESSEVENT)
 			{
@@ -8558,43 +8749,95 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 				
 			}
 			break;
+            //프로필 사진 변경에서 이미지 해제 추가 KBY 2018.2.26
 		case WORLDMAP_STATE_PROFILE:
 			if(type == MH_KEY_PRESSEVENT)
 			{
 				if(touchCheck(&xProfile.xTouchPhotoSelect) == TRUE && touchType == USER_POINT_PRESS_EVENT)
 				{
 					playSnd(SND_MENU_OK);
-					xWorldMap.state = WORLDMAP_STATE_PROFILEPRC;
+                    isTouchPhotoSelect=true;
+//					xWorldMap.state = WORLDMAP_STATE_PROFILEPRC;
 				}
 				else if(touchCheck(&xProfile.xTouchPhotoDel) == TRUE && touchType == USER_POINT_PRESS_EVENT)
 				{
 					if(xProfile.isPhoto == TRUE)
 					{
 						playSnd(SND_MENU_OK);
-						xWorldMap.state = WORLDMAP_STATE_PLAY;
-						xProfile.isPhoto = FALSE;
-						netSend(CMD_DELPROFILEPHOTO, DONT);
-						
-						
-						//유저넘버 슬롯번호 찾기
-						int userNum = xNetData.userNum;
-						int slotNum = getFriendSlot(userNum);
-						
-						if(slotNum == DONT)
-						{
-							slotNum = addFriendData(userNum);
-						}
-						sprintf(xFriendData[slotNum].strUrl, "0");
+                        isTouchPhotoDel=true;
+//						xWorldMap.state = WORLDMAP_STATE_PLAY;
+//						xProfile.isPhoto = FALSE;
+//						netSend(CMD_DELPROFILEPHOTO, DONT);
+//						
+//						
+//						//유저넘버 슬롯번호 찾기
+//						int userNum = xNetData.userNum;
+//						int slotNum = getFriendSlot(userNum);
+//						
+//						if(slotNum == DONT)
+//						{
+//							slotNum = addFriendData(userNum);
+//						}
+//						sprintf(xFriendData[slotNum].strUrl, "0");
 					}
 				}
+                else if(touchCheck(&xTouchClr) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+                {
+                    playSnd(SND_MENU_OK);
+                    isTouchPhotoClr=true;
+                }
 				else
 				{
 					playSnd(SND_MENU_OK);
 					xWorldMap.state = WORLDMAP_STATE_PLAY;
 					xWorldMap.isKeyReturn = TRUE;
 					xInterior.buildModeTime64 = DONT;
+                    //추가된 내용 KBY 2018.2.26
+                    profilePhotoFreeLoad_FP(false);
 				}
 			}
+            else if(type == MH_KEY_RELEASEEVENT)
+            {
+                if(touchCheck(&xProfile.xTouchPhotoSelect) == TRUE && touchType == USER_POINT_RELEASE_EVENT)
+                {
+                    isTouchPhotoSelect=false;
+                    xWorldMap.state = WORLDMAP_STATE_PROFILEPRC;
+                    //추가된 내용 KBY 2018.2.26
+                    profilePhotoFreeLoad_FP(false);
+                }
+                else if(touchCheck(&xProfile.xTouchPhotoDel) == TRUE && touchType == USER_POINT_RELEASE_EVENT)
+                {
+                    if(xProfile.isPhoto == TRUE)
+                    {
+                        isTouchPhotoDel=false;
+                        xWorldMap.state = WORLDMAP_STATE_PLAY;
+                        xProfile.isPhoto = FALSE;
+                        netSend(CMD_DELPROFILEPHOTO, DONT);
+                        //추가된 내용 KBY 2018.2.26
+                        profilePhotoFreeLoad_FP(false);
+                        /////////////////////////////////////
+                        
+                        //유저넘버 슬롯번호 찾기
+                        int userNum = xNetData.userNum;
+                        int slotNum = getFriendSlot(userNum);
+                        
+                        if(slotNum == DONT)
+                        {
+                            slotNum = addFriendData(userNum);
+                        }
+                        sprintf(xFriendData[slotNum].strUrl, "0");
+                    }
+                }
+                else if(touchCheck(&xTouchClr) == TRUE && touchType == USER_POINT_RELEASE_EVENT)
+                {
+                    isTouchPhotoClr=false;
+                    //추가된 내용 KBY 2018.2.26
+                    profilePhotoFreeLoad_FP(false);
+                    /////////////////////////////////////
+                    xWorldMap.state = WORLDMAP_STATE_PLAY;
+                }
+
+            }
 			break;
 		case WORLDMAP_STATE_SEVERSELL:
 			if(touchCheck(&xTouchOk) == TRUE && touchType == USER_POINT_PRESS_EVENT)
@@ -9128,6 +9371,67 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
             break;
         case WORLDMAP_STATE_CANDYFORMER:
             keyCandyFormer(type, param1, param2);
+            break;
+        case WORLDMAP_STATE_FITTING_FP:
+            keyFitting_FP(type, param1, param2, touchId);
+            break;
+        case WORLDMAP_STATE_SHOP_FP:
+            switch(xShop_FP.state)
+            {
+                case SHOP_STATE_MAIN:
+                    keyShop_FP(type, param1, param2, touchId);
+                    break;
+                case SHOP_STATE_DRESSPOPUP:
+                    switch(xShop_FP.state2)
+                    {
+                        case SHOPPOPUP_STATE_MAIN:
+                            keyDressShopPopUp_FP(type, param1, param2);
+                            break;
+                        case SHOPPOPUP_STATE_POPUP:
+                            keyDressShopPreview_FP(type, param1, param2);
+                            break;
+                    }
+                    break;
+                case SHOP_STATE_POPUP:
+                    break;
+            }
+
+            
+            break;
+        case WORLDMAP_STATE_GREENHOUSE_FP:
+            switch (xGreenHouse_FP.state)
+            {
+                case GREENHOUSE_STATE_MAIN:
+                    keyGreenHouse_FP(type, param1, param2);
+                    break;
+                case GREENHOUSE_STATE_CANCLEPOPUP:
+                    keyGreenHouseSlotCanclePopup_FP(type, param1, param2);
+                    break;
+            }
+            break;
+        case WORLDMAP_STATE_SPINNINGWHEEL_FP:
+//            keySpinningWheel_FP(type, param1, param2);
+            switch (xSpinning_FP.state)
+            {
+                case SPINNINGWHEEL_STATE_MAIN:
+                    keySpinningWheel_FP(type, param1, param2);
+                    break;
+                case SPINNINGWHEEL_STATE_CANCLEPOPUP:
+                    keySpinningWheelSlotCanclePopup_FP(type, param1, param2);
+                    break;
+            }
+
+            break;
+        case WORLDMAP_STATE_FRIENDLIST:
+            switch(xFriend_FP.state)
+            {
+                case FRIEND_FP_STATE_PLAY:
+                    keyfriendList_FP(type, param1, param2);
+                    break;
+                case FRIEND_FP_STATE_SEARCH:
+                    keyfriendSearch_FP(type, param1, param2);
+                    break;
+            }
             break;
         case WORLDMAP_STATE_MILEAGESHOP:
             switch(xMileageShop.state)
@@ -11570,73 +11874,151 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 			}
 			break;
 		case WORLDMAP_STATE_PRODUCTIONMENU:
-			switch(xProductionMenu.state2)
+//			switch(xProductionMenu.state2)
+            switch(xProduction_FP.state)
 			{
 			case PRODUCTIONMENU_STATE_FASTCASHPOPUP:
-				if(touchCheck(&xProductionMenu.xTouchFast) == TRUE  && touchType == USER_POINT_PRESS_EVENT)
-				{
-					playSnd(SND_MENU_OK);
-					xWorldMap.isKeyReturn = TRUE;
-					
-					if(xTutoLimit.isLock[TUTOLIMIT_TYPE_PRODUCE_COMPLETE1] == TRUE)
-					{
-						
-					}
-					else
-					{
-                        int remainTime = xFashionData[xMap.type][xMap.listNum].makeTime.oriData - xProductionMenu.slotFlowTime[xProductionMenu.selectType][xProductionMenu.selectSlot];
-						if(xSaveTemp.cash.oriData < getFastTimeCash(remainTime))
-							setPopup(POPUP_CASHEMPTY, playState, playState, 0, DONT);
-						else
-						{
-                            
-                            setPopup(POPUP_PRODUCTIONFAST2, PLAY_PLAY, PLAY_PLAY, 0, DONT);
-						}
-					}
-				}
+//				if(touchCheck(&xProductionMenu.xTouchFast) == TRUE  && touchType == USER_POINT_PRESS_EVENT)
+//				{
+//					playSnd(SND_MENU_OK);
+//					xWorldMap.isKeyReturn = TRUE;
+//					
+//					if(xTutoLimit.isLock[TUTOLIMIT_TYPE_PRODUCE_COMPLETE1] == TRUE)
+//					{
+//						
+//					}
+//					else
+//					{
+//                        int remainTime = xFashionData[xMap.type][xMap.listNum].makeTime.oriData - xProductionMenu.slotFlowTime[xProductionMenu.selectType][xProductionMenu.selectSlot];
+//						if(xSaveTemp.cash.oriData < getFastTimeCash(remainTime))
+//							setPopup(POPUP_CASHEMPTY, playState, playState, 0, DONT);
+//						else
+//						{
+//                            
+//                            setPopup(POPUP_PRODUCTIONFAST2, PLAY_PLAY, PLAY_PLAY, 0, DONT);
+//						}
+//					}
+//				}
                 
-				else if(touchCheck(&xProductionMenu.xTouchDelBtn) == TRUE  && touchType == USER_POINT_PRESS_EVENT)
-				{
-					playSnd(SND_MENU_OK);
-					xWorldMap.isKeyReturn = TRUE;
-					
-					if(xTutoLimit.isLock[TUTOLIMIT_TYPE_PRODUCE_COMPLETE2] == TRUE)
-					{
-						
-					}
-					else
-					{
-						xProductionMenu.state2 = PRODUCTIONMENU_STATE_MAIN;
-						
-						xProductionMenu.slotCode[xProductionMenu.selectType][xProductionMenu.selectSlot] = DONT;
-						xProductionMenu.state[xProductionMenu.selectType][xProductionMenu.selectSlot] = PRODUCTIONMENUSLOT_STATE_WAIT;
-						xProductionMenu.pushState[xProductionMenu.selectType][xProductionMenu.selectSlot] = 1;	//0:주문1:취소
-						if(xSave.isPushOnOff[PUSHONOFF_PRODUCTION] == FALSE)
-							xProductionMenu.pushState[xProductionMenu.selectType][xProductionMenu.selectSlot] = 1;	//0:주문1:취소
-						xProductionMenu.pushTime[xProductionMenu.selectType][xProductionMenu.selectSlot] = 0;
-						xProductionMenu.isUpData[xProductionMenu.selectType][xProductionMenu.selectSlot] = TRUE;
-						playState = xPopup.yes;
-                        ////////////////////////////////////////////////////////////////////////////
-                        xEventQueueNet.SLOT[xEventQueueNet.totalNum] = (xProductionMenu.selectType*6)+xProductionMenu.selectSlot;
-                        addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_PRODUCTIONCANCLE, TRUE);
-                        ////////////////////////////////////////////////////////////////////////////
-					}
-				}
-				else if(touchCheck(&xTouchClr) == TRUE  && touchType == USER_POINT_PRESS_EVENT)
-				{
-					playSnd(SND_MENU_OK);
-					xWorldMap.isKeyReturn = TRUE;
-					xProductionMenu.state2 = PRODUCTIONMENU_STATE_MAIN;
-					
-					/////////////////////////////////////////
-					addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_AUTOPRODUCTSLOTUPDATE, TRUE);
-					/////////////////////////////////////////
-				}
+//				else if(touchCheck(&xProductionMenu.xTouchDelBtn) == TRUE  && touchType == USER_POINT_PRESS_EVENT)
+//				{
+//					playSnd(SND_MENU_OK);
+//					xWorldMap.isKeyReturn = TRUE;
+//					
+//					if(xTutoLimit.isLock[TUTOLIMIT_TYPE_PRODUCE_COMPLETE2] == TRUE)
+//					{
+//						
+//					}
+//					else
+//					{
+//						xProductionMenu.state2 = PRODUCTIONMENU_STATE_MAIN;
+//						
+//						xProductionMenu.slotCode[xProductionMenu.selectType][xProductionMenu.selectSlot] = DONT;
+//						xProductionMenu.state[xProductionMenu.selectType][xProductionMenu.selectSlot] = PRODUCTIONMENUSLOT_STATE_WAIT;
+//						xProductionMenu.pushState[xProductionMenu.selectType][xProductionMenu.selectSlot] = 1;	//0:주문1:취소
+//						if(xSave.isPushOnOff[PUSHONOFF_PRODUCTION] == FALSE)
+//							xProductionMenu.pushState[xProductionMenu.selectType][xProductionMenu.selectSlot] = 1;	//0:주문1:취소
+//						xProductionMenu.pushTime[xProductionMenu.selectType][xProductionMenu.selectSlot] = 0;
+//						xProductionMenu.isUpData[xProductionMenu.selectType][xProductionMenu.selectSlot] = TRUE;
+//						playState = xPopup.yes;
+//                        ////////////////////////////////////////////////////////////////////////////
+//                        xEventQueueNet.SLOT[xEventQueueNet.totalNum] = (xProductionMenu.selectType*6)+xProductionMenu.selectSlot;
+//                        addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_PRODUCTIONCANCLE, TRUE);
+//                        ////////////////////////////////////////////////////////////////////////////
+//					}
+//				}
+                if(type==MH_KEY_PRESSEVENT)
+                {
+                    if(touchCheck(&xTouchClr) == TRUE  && touchType == USER_POINT_PRESS_EVENT)
+                    {
+                        
+                        //					xProductionMenu.state2 = PRODUCTIONMENU_STATE_MAIN;
+                        xProduction_FP.isTouchPopupClr =true;
+                        /////////////////////////////////////////
+                        //					addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_AUTOPRODUCTSLOTUPDATE, TRUE);
+                        /////////////////////////////////////////
+                    }
+                    else if(touchCheck(&xProduction_FP.xTouchNo)==TRUE && touchType == USER_POINT_PRESS_EVENT)
+                    {
+//                        playSnd(SND_MENU_OK);
+//                        xWorldMap.isKeyReturn = TRUE;
+//                        xProduction_FP.state = PRODUCTIONMENU_STATE_MAIN;
+                        xProduction_FP.isTouchNo=true;
+                    }
+                    else if(touchCheck(&xProduction_FP.xTouchYes)==TRUE && touchType == USER_POINT_PRESS_EVENT)
+                    {
+//                        playSnd(SND_MENU_OK);
+//                        xWorldMap.isKeyReturn = TRUE;
+//                        xEventQueueNet.action[xEventQueueNet.totalNum] = 1;
+//                        xEventQueueNet.slotNum[xEventQueueNet.totalNum] = xProduction_FP.selectSlot;
+//                        xEventQueueNet.ITEM_INDEX[xEventQueueNet.totalNum] = -1;
+//                        xEventQueueNet.time[xEventQueueNet.totalNum] = 0;
+//                        addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_PRODUCTIONSLOTUPDATE, TRUE);
+//                        addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_PRODUCTIONSLOTINFOUPDATE, TRUE);
+//                        xProduction_FP.state = PRODUCTIONMENU_STATE_MAIN;
+                        xProduction_FP.isTouchYes=true;
+                    }
+                }
+                else if(type==MH_KEY_RELEASEEVENT)
+                {
+                    if(touchCheck(&xTouchClr) == TRUE  && touchType == USER_POINT_RELEASE_EVENT)
+                    {
+                        playSnd(SND_MENU_OK);
+                        xWorldMap.isKeyReturn = TRUE;
+                        //					xProductionMenu.state2 = PRODUCTIONMENU_STATE_MAIN;
+                        xProduction_FP.isTouchPopupClr=false;
+                        xProduction_FP.isTouchYes=false;
+                        xProduction_FP.isTouchNo=false;
+                        xProduction_FP.state = PRODUCTIONMENU_STATE_MAIN;
+                        /////////////////////////////////////////
+                        //					addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_AUTOPRODUCTSLOTUPDATE, TRUE);
+                        /////////////////////////////////////////
+                    }
+                    else if(touchCheck(&xProduction_FP.xTouchNo)==TRUE && touchType == USER_POINT_RELEASE_EVENT)
+                    {
+                        playSnd(SND_MENU_OK);
+                        xWorldMap.isKeyReturn = TRUE;
+                        xProduction_FP.isTouchYes=false;
+                        xProduction_FP.isTouchNo=false;
+                        xProduction_FP.state = PRODUCTIONMENU_STATE_MAIN;
+                    }
+                    else if(touchCheck(&xProduction_FP.xTouchYes)==TRUE && touchType == USER_POINT_RELEASE_EVENT)
+                    {
+                        playSnd(SND_MENU_OK);
+                        xWorldMap.isKeyReturn = TRUE;
+                        xProduction_FP.isTouchYes=false;
+                        xProduction_FP.isTouchNo=false;
+                        xEventQueueNet.action[xEventQueueNet.totalNum] = 1;
+                        xEventQueueNet.slotNum[xEventQueueNet.totalNum] = xProduction_FP.selectSlot;
+                        xEventQueueNet.ITEM_INDEX[xEventQueueNet.totalNum] = -1;
+                        xEventQueueNet.time[xEventQueueNet.totalNum] = 0;
+                        addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_PRODUCTIONSLOTUPDATE, TRUE);
+                        addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_PRODUCTIONSLOTINFOUPDATE, TRUE);
+                        xProduction_FP.state = PRODUCTIONMENU_STATE_MAIN;
+                    }
+                    
+                    else
+                    {
+                        xProduction_FP.isTouchYes=false;
+                        xProduction_FP.isTouchNo=false;
+                        xProduction_FP.isTouchPopupClr=false;
+                    }
+
+                }
 				break;
 			case PRODUCTIONMENU_STATE_MAIN:
-				if(touchType == USER_POINT_PRESS_EVENT)
+                if(touchType == USER_POINT_PRESS_EVENT)
 				{
-					xWorldMap.isKeyReturn = TRUE;
+                    for(int k=0;k<xCatalog_FP.totalSlot[0];k++)
+                    {
+                        if(touchCheck(&xProduction_FP.xTouchList[k])==TRUE && touchType == USER_POINT_PRESS_EVENT)
+                        {
+                            xProduction_FP.isTouchProduct = true;
+                            xProduction_FP.selectProduct = k;
+                            break;
+                        }
+                    }
+//					xWorldMap.isKeyReturn = TRUE;
 					isSelectCatalogS = FALSE;
 					selectCatalogSNum = 0;
 					for(int i=0;i<7+1;i++)
@@ -11777,40 +12159,14 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 								freeFashion();
                                 
                                 
-                                freeImg(&imgProductionLatest);
-                                freeImg(&imgProductionMenuExitIcon);
+//                                freeImg(&imgProductionLatest);
+//                                freeImg(&imgProductionMenuExitIcon);
+                                //////////////////////////////
+                                //제작기 Ver.KBY
+                                xProduction_FP.isTouchClr=true;
                                 
-								xWorldMap.state = WORLDMAP_STATE_PLAY;
-								
-								//0:보통 1:new보여주기 2:확인한상태 3:완료
-								M_Boolean isCheck = FALSE;
-								for(int i=0;i<7;i++)
-								{
-									for(int k=0;k<200;k++)
-									{
-										if(xSave.fashionNew[i][k] == 2)
-										{
-											xSave.fashionNew[i][k] = 3;
-											isCheck = TRUE;
-										}
-									}
-								}
-								if(isCheck ==  TRUE)
-									gameSave(SAVE_SLOT_GAME);
-															
-								if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-								{
-									switch(xQuestTuto.nowNum)
-									{
-									case TUTO_1_PRODUCTIONEXIT:
-									case TUTO_2_PRODUCTIONEXIT:
-										xQuestTuto.isTutoClean = TRUE;
-										break;
-									}
-								}
-								
 								/////////////////////////////////////////
-								addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_AUTOPRODUCTSLOTUPDATE, TRUE);
+//								addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_AUTOPRODUCTSLOTUPDATE, TRUE);
 								/////////////////////////////////////////
 								
 								//LJW 오토 판매 주석처리함.
@@ -12133,14 +12489,275 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 								else
 									xDragScrollCatalogS.speed = -320;
 							}
+                            /////////////////////
+                            //제작기 Ver.KBY
+                            else if(touchCheck(&xProduction_FP.xTouchLeftBtn) == TRUE && xProduction_FP.xDragScrollProductionS.selectNum > 0)
+                            {
+                                
+                                if(xTutoLimit.isLock[TUTOLIMIT_TYPE_PRODUCE_MOVE] == TRUE)
+                                {
+                                    
+                                }
+                                else
+                                {
+                                    xProduction_FP.isTouchLeftBtn=true;
+                                    xProduction_FP.isTouchRightBtn=false;
+                                }
+                            }
+                            else if(touchCheck(&xProduction_FP.xTouchRightBtn) == TRUE && xProduction_FP.xDragScrollProductionS.selectNum < xProduction_FP.xDragScrollProductionS.totalNum-1)
+                            {
+                                if(xTutoLimit.isLock[TUTOLIMIT_TYPE_PRODUCE_MOVE] == TRUE)
+                                {
+                                    
+                                }
+                                else
+                                {
+                                    xProduction_FP.isTouchLeftBtn=false;
+                                    xProduction_FP.isTouchRightBtn=true;
+                                }
+                            }
+                            else if(touchCheck(&xProduction_FP.xTouchLeftArrow) == TRUE && xProduction_FP.xDragScrollProductionB.selectNum > 0)
+                            {
+                                
+                                if(xTutoLimit.isLock[TUTOLIMIT_TYPE_PRODUCE_MOVE] == TRUE)
+                                {
+                                    
+                                }
+                                else
+                                {
+                                    xProduction_FP.isTouchLeftArrow=true;
+                                    xProduction_FP.isTouchRightArrow=false;
+                                }
+                            }
+                            else if(touchCheck(&xProduction_FP.xTouchRightArrow) == TRUE && xProduction_FP.xDragScrollProductionB.selectNum < xProduction_FP.xDragScrollProductionB.totalNum-1)
+                            {
+                                if(xTutoLimit.isLock[TUTOLIMIT_TYPE_PRODUCE_MOVE] == TRUE)
+                                {
+                                    
+                                }
+                                else
+                                {
+                                    xProduction_FP.isTouchLeftArrow=false;
+                                    xProduction_FP.isTouchRightArrow=true;
+                                }
+                            }
+                            else if(touchCheck(&xProduction_FP.xTouchOpen)==TRUE && touchType == USER_POINT_PRESS_EVENT)
+                            {
+                                xProduction_FP.isTouchOpen=true;
+                            }
+                            
+                            for(int k =0; k<xProduction_FP.xData[xProduction_FP.index].totalSlot;k++)
+                            {
+                                if(touchCheck(&xProduction_FP.xTouchSlot[k])==TRUE&&xProduction_FP.xData[xProduction_FP.index].xSlot[k].state ==2 &&touchType == USER_POINT_PRESS_EVENT)
+                                {
+                                
+                                    xProduction_FP.selectSlot = k;
+                                    xProduction_FP.isTouchYes=false;
+                                    xProduction_FP.isTouchNo=false;
+                                    xProduction_FP.isTouchPopupClr=false;
+                                    xWorldMap.isKeyReturn = TRUE;
+                                    xProduction_FP.state = PRODUCTIONMENU_STATE_FASTCASHPOPUP;
+                                    break;
+                                }
+                                
+                                else if(touchCheck(&xProduction_FP.xTouchSlot[k])==TRUE&&xProduction_FP.xData[xProduction_FP.index].xSlot[k].state ==3 &&touchType == USER_POINT_PRESS_EVENT)
+                                {
+                                    xProduction_FP.selectSlot = k;
+                                    xEventQueueNet.action[xEventQueueNet.totalNum] = 2;
+                                    xEventQueueNet.slotNum[xEventQueueNet.totalNum] = xProduction_FP.selectSlot;
+                                    xEventQueueNet.ITEM_INDEX[xEventQueueNet.totalNum] = -1;
+                                    xEventQueueNet.time[xEventQueueNet.totalNum] = 0;
+                                    addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_PRODUCTIONSLOTUPDATE, TRUE);
+                                    addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_PRODUCTIONSLOTINFOUPDATE, TRUE);
+                                    break;
+                                }
+
+                                else if(touchCheck(&xProduction_FP.xTouchFast[k])==TRUE&&xProduction_FP.xData[xProduction_FP.index].xSlot[k].state ==2 &&touchType == USER_POINT_PRESS_EVENT)
+                                {
+                                    xProduction_FP.selectSlot = k;
+                                    setPopup(POPUP_PRODUCTIONFASTOK, PLAY_PLAY, PLAY_PLAY, 0, DONT);
+                                   
+                                    break;
+                                }
+                                
+                            }
+                            ///////////////
 						}
 					}
 				}
-				break;
-			}
-			break;
+                /////////////////
+                //제작기 Ver.KBY
+                else if(touchType==USER_POINT_RELEASE_EVENT)
+                {
+                    bool isRelease = false;
+                    for(int k=0;k<12;k++)
+                    {
+                        if(touchCheck(&xProduction_FP.xTouchSlot[k])==TRUE&&xProduction_FP.isTouchProduct==true&& touchType == USER_POINT_RELEASE_EVENT)
+                        {
+                            if(xProduction_FP.xData[xProduction_FP.index].xSlot[k].state==1)
+                            {
+                                isRelease = true;
+                                xProduction_FP.selectSlot = k;
+                                break;
+                            }
+                        }
+                    }
+                    
+                    if(isRelease==true)
+                    {
+                        xProduction_FP.xData[xProduction_FP.index].xSlot[xProduction_FP.selectSlot].itemCode = xCatalog_FP.xSlot[0][xProduction_FP.selectProduct].code;
+                        xProduction_FP.xData[xProduction_FP.index].xSlot[xProduction_FP.selectSlot].endTime =xFashionData_FP[0][xProduction_FP.selectProduct].makeTime+xCalendar.nowTime;
+                        xEventQueueNet.action[xEventQueueNet.totalNum] = 0;
+                        xEventQueueNet.slotNum[xEventQueueNet.totalNum] = xProduction_FP.selectSlot;
+                        xEventQueueNet.ITEM_INDEX[xEventQueueNet.totalNum] = xProduction_FP.xData[xProduction_FP.index].xSlot[xProduction_FP.selectSlot].itemCode;
+                        
+                        xEventQueueNet.time[xEventQueueNet.totalNum] = xProduction_FP.xData[xProduction_FP.index].xSlot[xProduction_FP.selectSlot].endTime;
+                        addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_PRODUCTIONSLOTUPDATE, TRUE);
+                        addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_PRODUCTIONSLOTINFOUPDATE, TRUE);
+                        xProduction_FP.selectProduct=DONT;
+                        xProduction_FP.isTouchProduct=false;
+
+                        
+                    }
+                    else
+                    {
+                        xProduction_FP.isTouchProduct=false;
+                        xProduction_FP.selectProduct=DONT;
+                    }
+                    
+                    if(touchCheck(&xProduction_FP.xTouchLeftBtn) == TRUE && xProduction_FP.xDragScrollProductionS.selectNum > 0)
+                    {
+                        
+                        if(xTutoLimit.isLock[TUTOLIMIT_TYPE_PRODUCE_MOVE] == TRUE)
+                        {
+                            
+                        }
+                        else
+                        {
+                            xProduction_FP.xDragScrollProductionS.speed = 640;
+                            xProduction_FP.isTouchLeftBtn=false;
+                            xProduction_FP.isTouchRightBtn=false;
+                        }
+                    }
+                    else if(touchCheck(&xProduction_FP.xTouchRightBtn) == TRUE && xProduction_FP.xDragScrollProductionS.selectNum < xProduction_FP.xDragScrollProductionS.totalNum-1)
+                    {
+                        if(xTutoLimit.isLock[TUTOLIMIT_TYPE_PRODUCE_MOVE] == TRUE)
+                        {
+                            
+                        }
+                        else
+                        {
+                            xProduction_FP.xDragScrollProductionS.speed = -640;
+                            xProduction_FP.isTouchLeftBtn=false;
+                            xProduction_FP.isTouchRightBtn=false;
+                        }
+                    }
+                    else if(touchCheck(&xProduction_FP.xTouchLeftArrow) == TRUE && xProduction_FP.xDragScrollProductionB.selectNum > 0)
+                    {
+                        
+                        if(xTutoLimit.isLock[TUTOLIMIT_TYPE_PRODUCE_MOVE] == TRUE)
+                        {
+                            
+                        }
+                        else
+                        {
+                            xProduction_FP.xDragScrollProductionB.speed = 640;
+                            xProduction_FP.isTouchLeftArrow=false;
+                            xProduction_FP.isTouchRightArrow=false;
+                        }
+                    }
+                    else if(touchCheck(&xProduction_FP.xTouchRightArrow) == TRUE && xProduction_FP.xDragScrollProductionB.selectNum < xProduction_FP.xDragScrollProductionB.totalNum-1)
+                    {
+                        if(xTutoLimit.isLock[TUTOLIMIT_TYPE_PRODUCE_MOVE] == TRUE)
+                        {
+                            
+                        }
+                        else
+                        {
+                            xProduction_FP.xDragScrollProductionB.speed = -640;
+                            xProduction_FP.isTouchLeftArrow=false;
+                            xProduction_FP.isTouchRightArrow=false;
+                            
+                        }
+                    }
+                    
+                    else if(touchCheck(&xProduction_FP.xTouchOpen)==TRUE && touchType == USER_POINT_RELEASE_EVENT)
+                    {
+                        xProduction_FP.isTouchOpen=false;
+                        setPopup(POPUP_PRODUCTIONSLOTOPEN, playState, playState, 0, DONT);
+                    }
+                    
+                    else if(touchCheck(&xTouchClr)==TRUE && touchType == USER_POINT_RELEASE_EVENT)
+                    {
+                        ////////////////////////////////////////////////////////////////////
+                        //제작기 이미지 해제 KBY 2018.2.26
+                        productionFreeLoad_FP(false);
+                        ////////////////////////////////////////////////////////////////////
+                        
+//                        freeImg(&imgProductionBg);
+//                        freeImg(&imgProductionMenuExitIcon);
+//                        freeImg(&imgProductionTitle);
+//                        freeImg(&imgProduction[0]);
+//                        freeImg(&imgProduction[1]);
+//                        freeImg(&imgProduction[2]);
+//                        freeImg(&imgProduction[3]);
+//                        freeImg(&imgProduction[4]);
+//                        freeImg(&imgProduction[5]);
+//                        freeImg(&imgProduction[7]);
+//                        freeImg(&imgProduction[8]);
+//                        freeImg(&imgProduction[9]);
+//                        freeImg(&imgProduction[10]);
+//                        freeImg(&imgProduction[11]);
+//                        freeImg(&imgProduction[12]);
+//                        freeImg(&imgProduction[13]);
+//                        freeImg(&imgProduction[14]);
+//                        freeImg(&imgProduction[15]);
+//                        freeImg(&imgProduction[16]);
+//                        freeImg(&imgProduction[17]);
+//                        freeImg(&imgProduction[18]);
+//                        freeImg(&imgProduction[19]);
+//                        freeImg(&imgProduction[20]);
+//                        freeImg(&imgProduction[21]);
+//                        freeImg(&imgProduction[22]);
+//                        freeImg(&imgProduction[23]);
+                        xProduction_FP.isTouchClr=false;
+                        xWorldMap.state = WORLDMAP_STATE_PLAY;
+                        
+                        //////////////
+                        //0:보통 1:new보여주기 2:확인한상태 3:완료
+                        M_Boolean isCheck = FALSE;
+                        for(int i=0;i<7;i++)
+                        {
+                            for(int k=0;k<200;k++)
+                            {
+                                if(xSave.fashionNew[i][k] == 2)
+                                {
+                                    xSave.fashionNew[i][k] = 3;
+                                    isCheck = TRUE;
+                                }
+                            }
+                        }
+                        if(isCheck ==  TRUE)
+                            gameSave(SAVE_SLOT_GAME);
+                        
+                        if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+                        {
+                            switch(xQuestTuto.nowNum)
+                            {
+                                case TUTO_1_PRODUCTIONEXIT:
+                                case TUTO_2_PRODUCTIONEXIT:
+                                    xQuestTuto.isTutoClean = TRUE;
+                                    break;
+                            }
+                        }
+
+                    }
+                }
+                //////////////////
+                break;
+            }
+            break;
 		case WORLDMAP_STATE_INTERIOR:
-				
 			if(touchType == USER_POINT_PRESS_EVENT)
 			{
 				//월드맵UI검색
@@ -12169,6 +12786,8 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 					playSnd(SND_MENU_OK);
 					
 					xWorldMap.state = WORLDMAP_STATE_PLAY;
+                    //인테리어 편집 UI 이미지 해제 추가 KBY 2018.2.26
+                    interiorbuildFreeLoad_FP(false);
 					xWorldMap.isKeyReturn = TRUE;
 					xInterior.buildModeTime64 = DONT;
 					switch(xInterior.buildInType)
@@ -12243,7 +12862,7 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 						break;
 					}
 					initMenuOut();
-					makeShopAssistant();
+					//makeShopAssistant(); //LJW 샵직원 삭제 2018.02.12
 					makeModelShopNpc();
 					checkMapDataAstar(MAP_TYPE_OBJ,xMap.nowFloor);
 				}
@@ -12256,10 +12875,11 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 						return;
 					}
 					playSnd(SND_MENU_OK);
-					setBuildCheck();
-					
-					interiorShopFreeLoad(TRUE);
-					xWorldMap.state = WORLDMAP_STATE_INTERIORSHOP;
+                    //편집 모드에서 상점버튼 눌렀을 때 상점으로 이동 KBY 2018.2.27
+//					setBuildCheck();
+//					
+//					interiorShopFreeLoad(TRUE);
+//					xWorldMap.state = WORLDMAP_STATE_INTERIORSHOP;
 					xInterior.state = INTERIOR_STATE_PLAY;
 					xWorldMap.isKeyReturn = TRUE;
 					xInterior.buildModeTime64 = DONT;
@@ -12333,10 +12953,18 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 						}
 						break;
 					}
-					makeShopAssistant();
+					//makeShopAssistant(); //LJW 샵직원 삭제 2018.02.12
 					makeModelShopNpc();
 					checkMapDataAstar(MAP_TYPE_OBJ,xMap.nowFloor);
-					setInteriorTabChange();
+//					setInteriorTabChange();
+                    //추가 부분 KBY 2018.2.27
+                    initShop_FP();
+                    shopFreeload_FP(true);
+                    setShop_FP(1, 0);
+                    xWorldMap.state = WORLDMAP_STATE_SHOP_FP;
+                    //끝
+                    ////////////////////////////
+                    
 				}
 				else if(xInterior.buildInType == INTERIORBUILD_TYPE_GAME && xInterior.xBuildSlot.codeTeam[0] == 0)	//편집모드이고 선택된것이 없을때
 				{
@@ -12534,18 +13162,26 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 						}
 					}
 				}
+                //////////////////////////////////////////////////////////////////////////////////
+                //인테리어 편집시 키처리 KBY 2018.2.23
+                else if(xInterior.xBuildSlot.codeTeam[0] != 0 && touchCheck(&xTouchBuildIconOk) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+                {
+                    playSnd(SND_MENU_OK);
+                    isTouchBuildIconOk = true;
+                }
                 //체크시 인테리어 처리
-				else if(xInterior.xBuildSlot.codeTeam[0] != 0 && touchCheck(&xTouchBuildIconOk) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+				else if(xInterior.xBuildSlot.codeTeam[0] != 0 && touchCheck(&xTouchBuildIconOk) == TRUE && touchType == USER_POINT_RELEASE_EVENT)
 				{
 					
 					if(xTutoLimit.isLock[TUTOLIMIT_TYPE_EDIT_OK] == TRUE)
 					{
-						xWorldMap.isKeyReturn = TRUE;
+//						xWorldMap.isKeyReturn = TRUE;
 						return;
 					}
                     
-					xWorldMap.isKeyReturn = TRUE;
-					playSnd(SND_MENU_OK);
+//					xWorldMap.isKeyReturn = TRUE;
+					isTouchBuildIconOk = false;
+                    
 					setMapData(xInterior.xBuildSlot.codeTeam[0]);	//xMap.rever,xMap.type,xMap.listNum 구하기
                     int index = xMap.abxMapData%1000;
                     
@@ -12612,6 +13248,18 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
                                     xInterior.xBuildSlot.codeTeam[0] = 0;
                                 }
                             }
+                            else if(xMap.type==INTERIOR_TYPE_OBJ)
+                            {
+                                addEventQueue(xInterior.buildMapTileXpos, xInterior.buildMapTileYpos, EVENTQUEUE_TYPE_INTERIOR, xMap.nowFloor, DONT, DONT);
+                                if(xInterior.buildMapTileYpos+(xObj.xObjData[xMap.type][xMap.listNum].h[xMap.rever]*2) <= xMap.shopPointY+xMap.shopPointH)
+                                {
+                                    xInterior.buildMapTileYpos += xObj.xObjData[xMap.type][xMap.listNum].h[xMap.rever];
+                                    xInterior.buildMapMoveXpos += (getMapW()/2)*xObj.xObjData[xMap.type][xMap.listNum].h[xMap.rever];
+                                    xInterior.buildMapMoveYpos += (getMapH()/2)*xObj.xObjData[xMap.type][xMap.listNum].h[xMap.rever];
+                                }
+                                
+//                                addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_PRODUCTIONREGIST, TRUE);
+                            }
                             else
                             {
                                 if(xInterior.buildlimitNum[xMap.nowFloor][xMap.type] < xInterior.buildlimitMax[xMap.nowFloor][xMap.type])
@@ -12657,6 +13305,7 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
                                             }
                                             break;
                                     }
+                                    
                                 }
                                 else
                                 {
@@ -12774,6 +13423,7 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
                                         //////////////////////////////////////////////////////////////////////////////
                                         //이벤트큐에 등록
                                         addEventQueue(xInterior.buildMapTileXpos,xInterior.buildMapTileYpos,EVENTQUEUE_TYPE_OUTPUTINVEN,xMap.nowFloor,DONT,DONT);
+                                        
                                         
                                         if(itemCnt == 1)
                                         {
@@ -13001,19 +13651,24 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 						break;
 					}
 				}
-				else if(xInterior.xBuildSlot.codeTeam[0] != 0 && touchCheck(&xTouchBuildIconClr) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+                else if(xInterior.xBuildSlot.codeTeam[0] != 0 && touchCheck(&xTouchBuildIconClr) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+                {
+                    playSnd(SND_MENU_OK);
+                    isTouchBuildIconClr=true;
+                }
+				else if(xInterior.xBuildSlot.codeTeam[0] != 0 && touchCheck(&xTouchBuildIconClr) == TRUE && touchType == USER_POINT_RELEASE_EVENT)
 				{
 					
 					if(xTutoLimit.isLock[TUTOLIMIT_TYPE_EDIT_CANCEL] == TRUE)
 					{
-						xWorldMap.isKeyReturn = TRUE;
+//						xWorldMap.isKeyReturn = TRUE;
 						return;
 					}
-					
+					isTouchBuildIconClr=false;
 					setMapData(xInterior.xBuildSlot.codeTeam[0]);
 					
-					playSnd(SND_MENU_OK);
-					xWorldMap.isKeyReturn = TRUE;
+					
+//					xWorldMap.isKeyReturn = TRUE;
 					//설치모드에서 돌아갈때 위치파악용으로 월드맵UI를 통해 들어왔는지 인테리어메뉴를 통해 들어가는지 구분
 					switch(xInterior.buildInType)
 					{
@@ -13100,18 +13755,23 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 						break;
 					}					
 				}
-				else if(xInterior.xBuildSlot.codeTeam[0] != 0 && touchCheck(&xTouchBuildIconInven) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+                else if(xInterior.xBuildSlot.codeTeam[0] != 0 && touchCheck(&xTouchBuildIconInven) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+                {
+                    playSnd(SND_MENU_OK);
+                    isTouchBuildIconInven = true;
+                }
+				else if(xInterior.xBuildSlot.codeTeam[0] != 0 && touchCheck(&xTouchBuildIconInven) == TRUE && touchType == USER_POINT_RELEASE_EVENT)
 				{
 					if(xTutoLimit.isLock[TUTOLIMIT_TYPE_EDIT_SAVE] == TRUE)
 					{
-						xWorldMap.isKeyReturn = TRUE;
+//						xWorldMap.isKeyReturn = TRUE;
 						return;
 					}
-					
+					isTouchBuildIconInven = false;
 					setMapData(xInterior.xBuildSlot.codeTeam[0]);
 					
 					playSnd(SND_MENU_OK);
-					xWorldMap.isKeyReturn = TRUE;
+//					xWorldMap.isKeyReturn = TRUE;
 					
 					switch(xInterior.buildInType)
 					{
@@ -13215,10 +13875,15 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 						break;
 					}
 				}
-				else if(xInterior.xBuildSlot.codeTeam[0] != 0 && (xMap.type == INTERIOR_TYPE_FLOORTILE || xMap.type == INTERIOR_TYPE_WALLTILE) && touchCheck(&xTouchBuildIconRot) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+                else if(xInterior.xBuildSlot.codeTeam[0] != 0 && (xMap.type == INTERIOR_TYPE_FLOORTILE || xMap.type == INTERIOR_TYPE_WALLTILE) && touchCheck(&xTouchBuildIconRot) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+                {
+                    isTouchBuildIconRot=true;
+                    playSnd(SND_MENU_OK);
+                }
+				else if(xInterior.xBuildSlot.codeTeam[0] != 0 && (xMap.type == INTERIOR_TYPE_FLOORTILE || xMap.type == INTERIOR_TYPE_WALLTILE) && touchCheck(&xTouchBuildIconRot) == TRUE && touchType == USER_POINT_RELEASE_EVENT)
 				{
-					playSnd(SND_MENU_OK);
-					xWorldMap.isKeyReturn = TRUE;
+					isTouchBuildIconRot=false;
+//					xWorldMap.isKeyReturn = TRUE;
 					
 					if(xTutoLimit.isLock[TUTOLIMIT_TYPE_EDIT_ALL] == TRUE)
 					{
@@ -13227,10 +13892,16 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 					else
 						setPopup(POPUP_TEST_ALLTILE, playState, playState, 0, DONT);
 				}
-				else if(xMap.type != INTERIOR_TYPE_WALLITEM && xMap.type != INTERIOR_TYPE_SHOWWINDOW && xMap.type != INTERIOR_TYPE_DOOR && xInterior.xBuildSlot.codeTeam[0] != 0 && touchCheck(&xTouchBuildIconRot) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+                
+                else if(xMap.type != INTERIOR_TYPE_WALLITEM && xMap.type != INTERIOR_TYPE_SHOWWINDOW && xMap.type != INTERIOR_TYPE_DOOR && xInterior.xBuildSlot.codeTeam[0] != 0 && touchCheck(&xTouchBuildIconRot) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+                {
+                    isTouchBuildIconRot=true;
+                    playSnd(SND_MENU_OK);
+
+                }
+
+				else if(xMap.type != INTERIOR_TYPE_WALLITEM && xMap.type != INTERIOR_TYPE_SHOWWINDOW && xMap.type != INTERIOR_TYPE_DOOR && xInterior.xBuildSlot.codeTeam[0] != 0 && touchCheck(&xTouchBuildIconRot) == TRUE && touchType == USER_POINT_RELEASE_EVENT)
 				{
-					playSnd(SND_MENU_OK);
-					xWorldMap.isKeyReturn = TRUE;
 					
 					if(xTutoLimit.isLock[TUTOLIMIT_TYPE_EDIT_REVERSE] == TRUE)
 					{
@@ -13239,8 +13910,10 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 					else
 					{
 						if(xObj.xObjData[xMap.type][xMap.listNum].isRotLock == FALSE)
-							xInterior.xBuildSlot.codeTeam[0] = -xInterior.xBuildSlot.codeTeam[0];
-						
+                        {
+                            isTouchBuildIconRot=false;
+                            xInterior.xBuildSlot.codeTeam[0] = -xInterior.xBuildSlot.codeTeam[0];
+                        }
 						if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
 						{
 							switch(xQuestTuto.nowNum)
@@ -13252,12 +13925,12 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 						}
 					}
 				}
-				else if(touchType == USER_POINT_PRESS_EVENT)
+               				else if(touchType == USER_POINT_PRESS_EVENT)
 				{
 					if(xInterior.xBuildSlot.codeTeam[0] != 0 && (touchCheck(&xTouchBuildIconMove) == TRUE || touchCheck(&xTouchBuildIconMoveObj) == TRUE))
 					{
 						playSnd(SND_MENU_OK);
-						
+                        
 						if(xTutoLimit.isLock[TUTOLIMIT_TYPE_EDIT_MOVE] == TRUE)
 						{
 							xWorldMap.isKeyReturn = TRUE;
@@ -13282,8 +13955,12 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 						xInterior.buildMapMoveYpos = getWorldMapPos(mapYpos,cy);
 					}
 					else
+                    {
 						xInterior.buildType = INTERIORBUILD_MOVETYPE_WORLDMAP;
+                    }
 				}
+                //////////////////////////////////////////////////////////////////////////////////
+                //인테리어 편집시 키처리 끝 KBY 2018.2.23
 				
 				if(xInterior.buildType == INTERIORBUILD_MOVETYPE_OBJ && touchType == USER_POINT_MOVE_EVENT)	//이동모드일때
 				{
@@ -13295,7 +13972,8 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 															
 					
 				}
-				
+                
+                
 				if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
 				{
 					if(xInterior.buildType == INTERIORBUILD_MOVETYPE_OBJ && touchType == USER_POINT_RELEASE_EVENT)
@@ -14469,17 +15147,17 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 							}
                             
                             
-//							else if(xWorldMap.isExternal == FALSE && touchCheck(&xTouchWorldMapFriendIcon) == TRUE)
-//							{
-////LJW 월드맵 친구아이콘 막기
-////								playSnd(SND_MENU_OK);
-////								if(xTutoLimit.isLock[TUTOLIMIT_TYPE_WORLDMAP_FRIENDS] == TRUE || xTutoLimit.isLock[TUTOLIMIT_TYPE_FRIENDSHOP_FRIENDS] == TRUE)
-////								{
-////								
-////								}
-////								else
-////									setStateFriendList();
-//							}
+							else if(xWorldMap.isExternal == FALSE && touchCheck(&xTouchWorldMapFriendIcon) == TRUE)
+							{
+//LJW 월드맵 친구아이콘 막기
+								playSnd(SND_MENU_OK);
+								if(xTutoLimit.isLock[TUTOLIMIT_TYPE_WORLDMAP_FRIENDS] == TRUE || xTutoLimit.isLock[TUTOLIMIT_TYPE_FRIENDSHOP_FRIENDS] == TRUE)
+								{
+								
+								}
+								else
+									setStateFriendList();
+							}
                             
 							else if(xWorldMap.isExternal == FALSE && xFriendMap.type != 0 && touchCheck(&xTouchFriendMapRandom) == TRUE)
 							{
@@ -14731,6 +15409,9 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 					playSnd(SND_MENU_OK);
 					//[xIosUtil getPhoto];
                     setQuest(22, 1, DONT);
+                    //프로필 변경 UI 이미지 로드 KBY 2018.2.26
+                    profilePhotoFreeLoad_FP(true);
+                    //////////////////////////////////////
 					xWorldMap.state = WORLDMAP_STATE_PROFILE;
 					return;
 				}
@@ -14945,7 +15626,8 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
                     
                     
                     
-                    
+                    ///////////////////
+                    //재화 UI 터치시 처리 KBY 2018.2.23
 					else if(xWorldMap.isExternal == FALSE && touchCheck(&xTouchWorldMapCandyIcon) == TRUE)
 					{
 						playSnd(SND_MENU_OK);
@@ -14954,8 +15636,10 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 							
 						}
 						else
-							setShop(SHOPTAB_TYPE_PREMIUM);
+//							setShop(SHOPTAB_TYPE_PREMIUM);
+                            setShop_FP(4, 3);
 					}
+                    
 					else if(xWorldMap.isExternal == FALSE && touchCheck(&xTouchWorldMapCashIcon) == TRUE)
 					{
 						playSnd(SND_MENU_OK);
@@ -14964,8 +15648,21 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 							
 						}
 						else
-							setShop(SHOPTAB_TYPE_MONEY);
+//							setShop(SHOPTAB_TYPE_MONEY);
+                            setShop_FP(4, 1);
 					}
+                    
+                    else if(xWorldMap.isExternal == FALSE && touchCheck(&xTouchWorldMapMoneyIcon) == TRUE)
+                    {
+                        playSnd(SND_MENU_OK);
+                        if(xTutoLimit.isLock[TUTOLIMIT_TYPE_WORLDMAP_GOLDCASH] == TRUE)
+                        {
+                            
+                        }
+                        else
+                            //							setShop(SHOPTAB_TYPE_MONEY);
+                            setShop_FP(4, 2);
+                    }
 					else if(xWorldMap.isExternal == FALSE && xG9.isOpen == TRUE && xG9.isNet == TRUE && touchCheck(&xG9.xTouch) == TRUE)
 					{
 						playSnd(SND_MENU_OK);
@@ -15191,27 +15888,27 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 							}
 						}
 					}
-//					else if(xWorldMap.isExternal == FALSE && touchCheck(&xTouchWorldMapFriendIcon) == TRUE)
-//					{
-//						playSnd(SND_MENU_OK);
-//						if(xTutoLimit.isLock[TUTOLIMIT_TYPE_WORLDMAP_FRIENDS] == TRUE)
-//						{
-//							
-//						}
-////						else
-////							setStateFriendList();
-//					}
-//                    
+					else if(xWorldMap.isExternal == FALSE && touchCheck(&xTouchWorldMapFriendIcon) == TRUE)
+					{
+						playSnd(SND_MENU_OK);
+						if(xTutoLimit.isLock[TUTOLIMIT_TYPE_WORLDMAP_FRIENDS] == TRUE)
+						{
+							
+						}
+						else
+							setStateFriendList();
+					}
                     
-                    else if(xHotDeal.isOpen == true && xWorldMap.isFriendMap == false &&  xWorldMap.isExternal == FALSE && touchCheck(&xHotDeal.xTouchUi) == TRUE)
-                    {
-                        
-                         if(xHotDeal.isReset == true || xHotDeal.remainTime > 0)
-                         {
-                             playSnd(SND_MENU_OK);
-                             setHotDeal();
-                         }
-                    }
+                    
+//                    else if(xHotDeal.isOpen == true && xWorldMap.isFriendMap == false &&  xWorldMap.isExternal == FALSE && touchCheck(&xHotDeal.xTouchUi) == TRUE)
+//                    {
+//                        
+//                         if(xHotDeal.isReset == true || xHotDeal.remainTime > 0)
+//                         {
+//                             playSnd(SND_MENU_OK);
+//                             setHotDeal();
+//                         }
+//                    }
                     else if(xMileageShop.isOpen == true && xWorldMap.isFriendMap == false &&  xWorldMap.isExternal == FALSE && touchCheck(&xMileageUi.xTouchMenu) == TRUE)
                     {
                         playSnd(SND_MENU_OK);
@@ -15240,46 +15937,51 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 						LuluPangLobbyFreeLoad(true);
 						
 					}
+                    
+                    //온실
+                    else if(xWorldMap.isFriendMap ==false && xWorldMap.isExternal==FALSE && touchCheck(&xTouchGreenHouse)==TRUE)
+                    {
+                        playSnd(SND_MENU_OK);
+                        xWorldMap.state = WORLDMAP_STATE_GREENHOUSE_FP;
+                        initGreenHouse_FP();
+                        greenHouseFreeLoad_FP(true);
+                    }
+
+                    //물레
+                    else if(xWorldMap.isFriendMap ==false && xWorldMap.isExternal==FALSE && touchCheck(&xTouchSpinningWheel)==TRUE)
+                    {
+                        playSnd(SND_MENU_OK);
+                        xWorldMap.state = WORLDMAP_STATE_SPINNINGWHEEL_FP;
+                        initSpinningWheel_FP();
+                        spinningWheelFreeLoad_FP(true);
+                    }
+
+                    
                     else if(xAmulet.isNetLoad == true && xJewelQuest.isNetLoad == true && xWorldMap.isFriendMap == false &&  xWorldMap.isExternal == FALSE && touchCheck(&xJewelUi.xTouchUi) == TRUE)
                     {
                         playSnd(SND_MENU_OK);
                         initJewelQuest();
                     }
-					else if(xWorldMap.isFriendMap == false && touchCheckS(&xTouchRocket) == TRUE)
-					{
-						//LJW 로켓 터치 추가
-						xWorldMap.state	= WORLDMAP_STATE_SELL;
-						setSellSelectItemSlot();
-						
-						if(type == INTERIOR_TYPE_HANGER)
-						{
-							if(xQuestTuto.state == QUEST_TUTO_KEY)
-							{
-								switch(xQuestTuto.nowNum)
-								{
-									case TUTO_1_SELLTABLETOUCH:
-									case TUTO_2_SELLTABLETOUCH:
-										xQuestTuto.isTutoClean = TRUE;
-										break;
-								}
-							}
-						}
-					}
-					else if(xWorldMap.isExternal == FALSE && touchCheck(&xProfile.xTouchPhoto) == TRUE)
-					{
-						playSnd(SND_MENU_OK);
-						if(xTutoLimit.isLock[TUTOLIMIT_TYPE_WORLDMAP_PROFILE] == TRUE)
-						{
-							
-						}
-						else
+                    
+                    else if(xWorldMap.isExternal == FALSE && touchCheck(&xProfile.xTouchPhoto) == TRUE)
+                    {
+                        playSnd(SND_MENU_OK);
+                        if(xTutoLimit.isLock[TUTOLIMIT_TYPE_WORLDMAP_PROFILE] == TRUE)
                         {
-                            setQuest(22, 1, DONT);
-							xWorldMap.state = WORLDMAP_STATE_PROFILE;
                             
                         }
-					}
-					else if(xWorldMap.isExternal == FALSE && touchCheck(&xTouchPlayerInfoIcon) == TRUE)
+                        else
+                        {
+                            setQuest(22, 1, DONT);
+                            //프로필 변경 UI 이미지 로드 KBY 2018.2.26
+                            profilePhotoFreeLoad_FP(true);
+                            //////////////////////////////////////////////////
+                            xWorldMap.state = WORLDMAP_STATE_PROFILE;
+                        }
+                    }
+
+                    
+                    else if(xWorldMap.isExternal == FALSE && touchCheck(&xTouchPlayerInfoIcon) == TRUE)
 					{
 						playSnd(SND_MENU_OK);
 						
@@ -15362,6 +16064,28 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 							}
 						}
 					}
+                    
+                    else if(xWorldMap.isFriendMap == false && touchCheckS(&xTouchRocket) == TRUE)
+                    {
+                        //LJW 로켓 터치 추가
+                        xWorldMap.state	= WORLDMAP_STATE_SELL;
+                        setSellSelectItemSlot();
+                        
+                        if(type == INTERIOR_TYPE_HANGER)
+                        {
+                            if(xQuestTuto.state == QUEST_TUTO_KEY)
+                            {
+                                switch(xQuestTuto.nowNum)
+                                {
+                                    case TUTO_1_SELLTABLETOUCH:
+                                    case TUTO_2_SELLTABLETOUCH:
+                                        xQuestTuto.isTutoClean = TRUE;
+                                        break;
+                                }
+                            }
+                        }
+                    }
+
 					else if(xWorldMap.isExternal == FALSE && touchCheck(&xSwitchWorldMapUi.xTouch[0]) && (xSwitchWorldMapUi.state == SWITCH_STATE_ON ||xSwitchWorldMapUi.state == SWITCH_STATE_ONANY))
 					{
 						playSnd(SND_MENU_OK);
@@ -15372,24 +16096,30 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 						else
 							setStateOption();
 					}
+                    ///////////////////////////////////
+                    //메뉴 우편함부분 터치 처리 KBY 2018.2.23
 					else if(xWorldMap.isExternal == FALSE && touchCheck(&xSwitchWorldMapUi.xTouch[1]) && (xSwitchWorldMapUi.state == SWITCH_STATE_ON ||xSwitchWorldMapUi.state == SWITCH_STATE_ONANY))
 					{
-						playSnd(SND_MENU_OK);
-						if(xTutoLimit.isLock[TUTOLIMIT_TYPE_WORLDMAP_EDIT] == TRUE)
-						{
-							
-						}
-						else
-						{
-							xWorldMap.state = WORLDMAP_STATE_INTERIOR;
-							xInterior.buildInType = INTERIORBUILD_TYPE_GAME;
-							xInterior.xBuildSlot.codeTeam[0] = 0;
-							xInterior.buildMode = 0;
-							
-							//최종완료에서만 처리 여기서 넷처리안함
-							checkBuildMapData();
-						}
+                        playSnd(SND_MENU_OK);
+                        setStateMail();
+//						playSnd(SND_MENU_OK);
+//						if(xTutoLimit.isLock[TUTOLIMIT_TYPE_WORLDMAP_EDIT] == TRUE)
+//						{
+//							
+//						}
+//						else
+//						{
+//							xWorldMap.state = WORLDMAP_STATE_INTERIOR;
+//							xInterior.buildInType = INTERIORBUILD_TYPE_GAME;
+//							xInterior.xBuildSlot.codeTeam[0] = 0;
+//							xInterior.buildMode = 0;
+//							
+//							//최종완료에서만 처리 여기서 넷처리안함
+//							checkBuildMapData();
+//						}
 					}
+                    
+                    //상점 버튼 처리 KBY 2018.2.23
 					else if(xWorldMap.isExternal == FALSE && touchCheck(&xSwitchWorldMapUi.xTouch[2]) && (xSwitchWorldMapUi.state == SWITCH_STATE_ON ||xSwitchWorldMapUi.state == SWITCH_STATE_ONANY))
 					{
 						playSnd(SND_MENU_OK);
@@ -15399,122 +16129,155 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 						}
 						else
 						{
-							setBuildCheck();
-							setInteriorTabChange();
-							interiorShopFreeLoad(TRUE);
-							xWorldMap.state = WORLDMAP_STATE_INTERIORSHOP;
-							
-							if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-							{
-								switch(xQuestTuto.nowNum)
-								{
-									case TUTO_6_INTERIOR_MENUTOUCH0:
-									case TUTO_6_INTERIOR_TABTOUCH:
-									case TUTO_8_INTERIOR_TABTOUCH:
-									case TUTO_8_INTERIOR_OK:
-										if(xInterior.selectTabB == 1 && xInterior.selectTabS == 0)		//바닥오브젝트
-										{
-											int slotNum;
-											slotNum = linkInteriorShop(xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0]);
-											if(slotNum != DONT)
-												xDragScrollInteriorS.selectNum = slotNum/8;
-										}
-										break;
-									case TUTO_9_INTERIOR_TABTOUCH:
-										if(xInterior.selectTabB == 0 && xInterior.selectTabS == 0)	//옷걸이
-										{
-											int slotNum;
-											slotNum = linkInteriorShop(xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0]);
-											if(slotNum != DONT)
-												xDragScrollInteriorS.selectNum = slotNum/8;
-										}
-										break;
-									case TUTO_26_INTERIOR_MENUTOUCH0:
-									case TUTO_26_INTERIOR_TABTOUCH0:
-										if(xInterior.selectTabB == 1 && xInterior.selectTabS == 3)	//바닥지
-										{
-											int slotNum;
-											slotNum = linkInteriorShop(xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0]);
-											if(slotNum != DONT)
-												xDragScrollInteriorS.selectNum = slotNum/8;
-										}
-										break;
-									case TUTO_26_INTERIOR_MENUTOUCH1:
-									case TUTO_26_INTERIOR_TABTOUCH1:
-										if(xInterior.selectTabB == 1 && xInterior.selectTabS == 4)	//벽지
-										{
-											int slotNum;
-											slotNum = linkInteriorShop(xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[1]);
-											if(slotNum != DONT)
-												xDragScrollInteriorS.selectNum = slotNum/8;
-										}
-										break;
-									case TUTO_30_INTERIOR_TABTOUCH:
-										if(xInterior.selectTabB == 0 && xInterior.selectTabS == 3)	//쇼윈도
-										{
-											int slotNum;
-											slotNum = linkInteriorShop(xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0]);
-											if(slotNum != DONT)
-												xDragScrollInteriorS.selectNum = slotNum/8;
-										}
-										break;
-								}
-							}
+//							setBuildCheck();
+//							setInteriorTabChange();
+//							interiorShopFreeLoad(TRUE);
+//							xWorldMap.state = WORLDMAP_STATE_INTERIORSHOP;
+                           
+                            initShop_FP();
+                            shopFreeload_FP(true);
+                            xWorldMap.state = WORLDMAP_STATE_SHOP_FP;
+//							if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+//							{
+//								switch(xQuestTuto.nowNum)
+//								{
+//									case TUTO_6_INTERIOR_MENUTOUCH0:
+//									case TUTO_6_INTERIOR_TABTOUCH:
+//									case TUTO_8_INTERIOR_TABTOUCH:
+//									case TUTO_8_INTERIOR_OK:
+//										if(xInterior.selectTabB == 1 && xInterior.selectTabS == 0)		//바닥오브젝트
+//										{
+//											int slotNum;
+//											slotNum = linkInteriorShop(xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0]);
+//											if(slotNum != DONT)
+//												xDragScrollInteriorS.selectNum = slotNum/8;
+//										}
+//										break;
+//									case TUTO_9_INTERIOR_TABTOUCH:
+//										if(xInterior.selectTabB == 0 && xInterior.selectTabS == 0)	//옷걸이
+//										{
+//											int slotNum;
+//											slotNum = linkInteriorShop(xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0]);
+//											if(slotNum != DONT)
+//												xDragScrollInteriorS.selectNum = slotNum/8;
+//										}
+//										break;
+//									case TUTO_26_INTERIOR_MENUTOUCH0:
+//									case TUTO_26_INTERIOR_TABTOUCH0:
+//										if(xInterior.selectTabB == 1 && xInterior.selectTabS == 3)	//바닥지
+//										{
+//											int slotNum;
+//											slotNum = linkInteriorShop(xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0]);
+//											if(slotNum != DONT)
+//												xDragScrollInteriorS.selectNum = slotNum/8;
+//										}
+//										break;
+//									case TUTO_26_INTERIOR_MENUTOUCH1:
+//									case TUTO_26_INTERIOR_TABTOUCH1:
+//										if(xInterior.selectTabB == 1 && xInterior.selectTabS == 4)	//벽지
+//										{
+//											int slotNum;
+//											slotNum = linkInteriorShop(xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[1]);
+//											if(slotNum != DONT)
+//												xDragScrollInteriorS.selectNum = slotNum/8;
+//										}
+//										break;
+//									case TUTO_30_INTERIOR_TABTOUCH:
+//										if(xInterior.selectTabB == 0 && xInterior.selectTabS == 3)	//쇼윈도
+//										{
+//											int slotNum;
+//											slotNum = linkInteriorShop(xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0]);
+//											if(slotNum != DONT)
+//												xDragScrollInteriorS.selectNum = slotNum/8;
+//										}
+//										break;
+//								}
+//							}
 						}
 					}
+                    
+                    //편집 KBY 2018.2.23
 					else if(xWorldMap.isExternal == FALSE && touchCheck(&xSwitchWorldMapUi.xTouch[3]) && (xSwitchWorldMapUi.state == SWITCH_STATE_ON ||xSwitchWorldMapUi.state == SWITCH_STATE_ONANY))
 					{
-						playSnd(SND_MENU_OK);
-						if(xTutoLimit.isLock[TUTOLIMIT_TYPE_WORLDMAP_STAFF] == TRUE)
-						{
-						}
-						else
-						{
-							//스태프꾸미기
-							setStateStaff(0);
-							if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-							{
-								switch(xQuestTuto.nowNum)
-								{
-									case TUTO_14_STAFF_MENUTOUCH:
-										setStateStaff(STAFF_SLOT_SHOPASSISTANT1_1F);
-										break;
-								}
-							}
-						}						
+                        playSnd(SND_MENU_OK);
+                        if(xTutoLimit.isLock[TUTOLIMIT_TYPE_WORLDMAP_EDIT] == TRUE)
+                        {
+                            
+                        }
+                        else
+                        {
+                            //인테리어 편집 UI 이미지 로드 KBY 2018.2.26
+                            interiorbuildFreeLoad_FP(true);
+                            xWorldMap.state = WORLDMAP_STATE_INTERIOR;
+                            xInterior.buildInType = INTERIORBUILD_TYPE_GAME;
+                            xInterior.xBuildSlot.codeTeam[0] = 0;
+                            xInterior.buildMode = 0;
+                            
+                            //최종완료에서만 처리 여기서 넷처리안함
+                            checkBuildMapData();
+                        }
+
+//						playSnd(SND_MENU_OK);
+//						if(xTutoLimit.isLock[TUTOLIMIT_TYPE_WORLDMAP_STAFF] == TRUE)
+//						{
+//						}
+//						else
+//						{
+//							//스태프꾸미기
+//							setStateStaff(0);
+//							if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+//							{
+//								switch(xQuestTuto.nowNum)
+//								{
+//									case TUTO_14_STAFF_MENUTOUCH:
+//										setStateStaff(STAFF_SLOT_SHOPASSISTANT1_1F);
+//										break;
+//								}
+//							}
+//						}						
 					}
 					else if(xWorldMap.isExternal == FALSE && touchCheck(&xSwitchWorldMapUi.xTouch[4]) && (xSwitchWorldMapUi.state == SWITCH_STATE_ON ||xSwitchWorldMapUi.state == SWITCH_STATE_ONANY))
 					{
-						playSnd(SND_MENU_OK);
-						if(xTutoLimit.isLock[TUTOLIMIT_TYPE_WORLDMAP_MODELMENU] == TRUE)
-						{
-							
-						}
-						else
-						{
-							
-							if(xLock.isLock[LOCK_TYPE_MODEL] == TRUE)
-							{
-								setPopup(POPUP_LOCK_MAINQUEST, playState, playState, 0, xLock.mainQuestNum[LOCK_TYPE_MODEL]);
-							}
-							else
-							{
-								setStateModel();
-							}
-						}
+//						playSnd(SND_MENU_OK);
+//						if(xTutoLimit.isLock[TUTOLIMIT_TYPE_WORLDMAP_MODELMENU] == TRUE)
+//						{
+//							
+//						}
+//						else
+//						{
+//							
+//							if(xLock.isLock[LOCK_TYPE_MODEL] == TRUE)
+//							{
+//								setPopup(POPUP_LOCK_MAINQUEST, playState, playState, 0, xLock.mainQuestNum[LOCK_TYPE_MODEL]);
+//							}
+//							else
+//							{
+//								setStateModel();
+//							}
+//						}
 					}
+                    ////////////////////////////////////////////////////
+                    //옷장 버튼 처리 KBY
 					else if(xWorldMap.isExternal == FALSE && touchCheck(&xSwitchWorldMapUi.xTouch[5]) && (xSwitchWorldMapUi.state == SWITCH_STATE_ON ||xSwitchWorldMapUi.state == SWITCH_STATE_ONANY))
 					{
-						playSnd(SND_MENU_OK);
-						if(xTutoLimit.isLock[TUTOLIMIT_TYPE_WORLDMAP_COLLECTION] == TRUE)
-						{
-							
-						}
-						else
-						{
-							setStateCollection();
-						}
+//						playSnd(SND_MENU_OK);
+//						if(xTutoLimit.isLock[TUTOLIMIT_TYPE_WORLDMAP_COLLECTION] == TRUE)
+//						{
+//							
+//						}
+//						else
+//						{
+//							setStateCollection();
+//						}
+                        playSnd(SND_MENU_OK);
+                        xFitting_FP.isTouchLeftArrow=false;
+                        xFitting_FP.isTouchRightArrow=false;
+                        xFitting_FP.isTouchClr=false;
+                        xWorldMap.state = WORLDMAP_STATE_FITTING_FP;
+                        initFitting_FP();
+                        fittingFreeLoad_FP(true);
 					}
+                    ////////////////////////////////////////////////////
 					//LJW 월드맵 패션쇼 막기
 //					else if(touchCheckS(&xTouchWorldMapFashionShow) == TRUE)
 //					{
@@ -15803,21 +16566,30 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
 							}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 							//LJW 제작기 터치시 의상제작 상태 변경 기존 카운터는 제거
+							//LJW 전송기 터치시 의상전송 상태 변경
+							//제작기 터치시 UI출력 처리하는 곳
 							if(xSelectTileOne.state==SELECTTILE_STATE_DONT)
 							{
 								setSelectTileKeyEvent(MAP_TYPE_OBJ, xMap.nowFloor);
 								if(xSelectTileOne.state==SELECTTILE_STATE_PLAY)
 								{
 									setMapData(xMap.data[xMap.nowFloor][MAP_TYPE_OBJ][xSelectTileOne.tileNumX][xSelectTileOne.tileNumY]);
-									
 									switch (xMap.type)
 									{
 										case INTERIOR_TYPE_OBJ:
-											if(xMap.abxMapData == 6393)
+											if(xMap.abxMapData/1000 == 6)
 												setStateProductionMenu();
 											else
 												xSelectTileOne.state=SELECTTILE_STATE_DONT;
 											break;
+										case INTERIOR_TYPE_ACCESSORY:
+											startSendMachine_FP();
+//											if(xMap.abxMapData == 3032)
+//												startSendMachine_FP();
+//											else
+//												xSelectTileOne.state=SELECTTILE_STATE_DONT;
+											break;
+
 										default:
 											xSelectTileOne.state=SELECTTILE_STATE_DONT;
 											break;
@@ -15837,14 +16609,16 @@ void WorldMapCletEvent(int type, int param1, int param2,int touchId)
                                             xShopAssistant[xMap.nowFloor][0].state = SHOPASSISTANT_STATE_WAIT;
                                             xShopAssistant[xMap.nowFloor][0].makeX = xSelectTileOne.tileNumX-xMap.shopPointX;
                                             xShopAssistant[xMap.nowFloor][0].makeY = xSelectTileOne.tileNumY-xMap.shopPointY;
+											
+											xMyCharacter.makeX = xSelectTileOne.tileNumX-xMap.shopPointX;
+											xMyCharacter.makeY = xSelectTileOne.tileNumY-xMap.shopPointY;
                                             break;
                                         default:
                                             xSelectTileOne.state = SELECTTILE_STATE_DONT;
                                             break;
                                     }
-                                    
                                 }
-//                                log("KBY_POS (%d, %d)", xShopAssistant[xMap.nowFloor][0].makeX, xShopAssistant[xMap.nowFloor][0].makeY);
+                                log("KBY_POS (%d, %d)", xShopAssistant[xMap.nowFloor][0].makeX, xShopAssistant[xMap.nowFloor][0].makeY);
                             }
 //							if(xSelectTileOne.state == SELECTTILE_STATE_DONT)
 //							{
@@ -17501,8 +18275,8 @@ float getMapH()
 void prcWorldMap()
 {
 	//LJW 자동판매
-	prcProductTime();
-	prcSellTime();
+//	prcProductTime();
+//	prcSellTime();
 	
 	//바닥지 벽지 이중으로 들어갔을때 예외처리
 	if(xFloorWallTileErrQueue.isOneLoop == TRUE)
@@ -17709,7 +18483,7 @@ void prcWorldMap()
         
         
         
-        prcHotDeal();
+//        prcHotDeal();
         
         
         
@@ -18308,6 +19082,9 @@ void prcWorldMap()
 				xNetMap.cash = xEventQueueNet.layer[0][1];
 				netSend(CMD_SETMAP, DONT);
 				break;
+            case NETQUEUE_TYPE_PRODUCTIONDELETE:
+//                netSend(CMD_PRODUCTIONDELETE, xEventQueueNet.key[0]);
+                break;
 			case NETQUEUE_TYPE_SELLTABLE:
 				xNetSellTable.floor = xEventQueueNet.floor[0];
 				xNetSellTable.key = xEventQueueNet.key[0];
@@ -18616,8 +19393,114 @@ void prcWorldMap()
 					xNetAutoProduct.item_count[i] = xEventQueueNet.item_count[0][i];
 				}
 				xNetAutoProduct.totalNum = xEventQueueNet.item_total[0];
-				netSend(CMD_AUTOPRODUCT, DONT);
+//				netSend(CMD_AUTOPRODUCT, DONT);
 				break;
+            
+            case NETQUEUE_TYPE_PRODUCTIONINFOUPDATE:
+                netSend(CMD_PRODUCTIONINFOUPDATE, DONT);
+                break;
+            
+            case NETQUEUE_TYPE_PRODUCTIONSLOTINFOUPDATE:
+                netSend(CMD_PRODUCTIONSLOTINFOUPDATE, DONT);
+                break;
+                    
+            case NETQUEUE_TYPE_PRODUCTIONREGIST:
+//                netSend(CMD_PRODUCTIONREGIST, DONT);
+                break;
+            
+            case NETQUEUE_TYPE_PRODUCTIONSLOTOPEN:
+                netSend(CMD_PRODUCTIONSLOTOPEN,DONT);
+                break;
+                    
+            case NETQUEUE_TYPE_PRODUCTIONSLOTUPDATE:
+                xNetProductionSlot.type = xEventQueueNet.action[0];
+                xNetProductionSlot.slot = xEventQueueNet.slotNum[0];
+                xNetProductionSlot.itemcode = xEventQueueNet.ITEM_INDEX[0];
+                xNetProductionSlot.time = xEventQueueNet.time[0];
+                netSend(CMD_PRODUCTIONSLOTUPDATE, DONT);
+                break;
+                    
+            case NETQUEUE_TYPE_GREENHOUSEINFOUPDATE:
+                netSend(CMD_GREENHOUSEINFOUPDATE, DONT);
+                break;
+                    
+            case NETQUEUE_TYPE_GREENHOUSESLOTINFOUPDATE:
+                xNetGreenHouseSlot.type = xEventQueueNet.action[0];
+                xNetGreenHouseSlot.slot = xEventQueueNet.slotNum[0];
+                xNetGreenHouseSlot.ItemIndex = xEventQueueNet.ITEM_INDEX[0];
+                xNetGreenHouseSlot.ItemCnt = xEventQueueNet.ITEM_COUNT[0];
+                xNetGreenHouseSlot.time = xEventQueueNet.time[0];
+                netSend(CMD_GREENHOUSESLOTUPDATE,DONT);
+                break;
+                    
+            case NETQUEUE_TYPE_SPINNINGWHEELINFOUPDATE:
+                netSend(CMD_SPINNINGWHEELINFOUPDATE, DONT);
+                break;
+                    
+            case NETQUEUE_TYPE_SPINNINGWHEELSLOTINFOUPDATE:
+                xNetGreenHouseSlot.type = xEventQueueNet.action[0];
+                xNetGreenHouseSlot.slot = xEventQueueNet.slotNum[0];
+                xNetGreenHouseSlot.ItemIndex = xEventQueueNet.ITEM_INDEX[0];
+                xNetGreenHouseSlot.ItemCnt = xEventQueueNet.ITEM_COUNT[0];
+                xNetGreenHouseSlot.time = xEventQueueNet.time[0];
+                netSend(CMD_SPINNINGWHEELSLOTUPDATE,DONT);
+                break;
+                    
+            case NETQUEUE_TYPE_GETCARROT:
+                xNetCarrot.endTime = xEventQueueNet.end_time[0];
+                netSend(CMD_GETCARROT, DONT);
+                break;
+            
+            case NETQUEUE_TYPE_BUYDRESSCHAR:
+                xNetBuyDress.DressCode = xEventQueueNet.code[0];
+                netSend(CMD_BUYDRESSCHAR, DONT);
+                break;
+                    
+            case NETQUEUE_TYPE_GETDRESSROOMINFO:
+                xNetGetDressRoomInfo.type = xEventQueueNet.typeNum[0];
+                netSend(CMD_GETDRESSROOMINFO,DONT);
+                break;
+            case NETQUEUE_TYPE_UPDATEMYDRESS:
+                xNetUpdateMyDress.DRESS0 = xEventQueueNet.item_index[0][0];
+                xNetUpdateMyDress.DRESS1 = xEventQueueNet.item_index[0][1];
+                xNetUpdateMyDress.DRESS2 = xEventQueueNet.item_index[0][2];
+                xNetUpdateMyDress.DRESS3 = xEventQueueNet.item_index[0][3];
+                xNetUpdateMyDress.DRESS4 = xEventQueueNet.item_index[0][4];
+                xNetUpdateMyDress.DRESS5 = xEventQueueNet.item_index[0][5];
+                xNetUpdateMyDress.DRESS6 = xEventQueueNet.item_index[0][6];
+                xNetUpdateMyDress.DRESS7 = xEventQueueNet.item_index[0][7];
+                xNetUpdateMyDress.DRESS8 = xEventQueueNet.item_index[0][8];
+                xNetUpdateMyDress.DRESS9 = xEventQueueNet.item_index[0][9];
+                netSend(CMD_UPDATEMYDRESS,DONT);
+                break;
+///////////////////////////////////////////////////////////////////////////////////////////
+//전송기 NETQUEUE 추가 LJW 2018.01.22
+			case NETQUEUE_TYPE_SENDMACHINEINFO:
+				netSend(CMD_SENDMACHINEINFO,DONT);
+				break;
+			case NETQUEUE_TYPE_SENDMACHINESLOTINFO:
+				xNetSendMachineSlotInfo.bkey = xEventQueueNet.bkey[0];
+				netSend(CMD_SENDMACHINESLOTINFO,DONT);
+				break;
+			case NETQUEUE_TYPE_SENDMACHINESLOTOPEN:
+				xNetSendMachineSlotOpen.slot = xEventQueueNet.slotNum[0];
+				xNetSendMachineSlotOpen.bkey = xEventQueueNet.bkey[0];
+				netSend(CMD_SENDMACHINESLOTOPEN,DONT);
+				break;
+			case NETQUEUE_TYPE_SENDMACHINESLOTUPDATE:
+				xNetSendMachineSlotUpdate.type = xEventQueueNet.typeNum[0];
+				xNetSendMachineSlotUpdate.bkey = xEventQueueNet.bkey[0];
+				xNetSendMachineSlotUpdate.idx = xEventQueueNet.idx[0];
+				xNetSendMachineSlotUpdate.item_index = xEventQueueNet.ITEM_INDEX[0];
+				xNetSendMachineSlotUpdate.item_count = xEventQueueNet.ITEM_COUNT[0];
+				xNetSendMachineSlotUpdate.start_time = xEventQueueNet.start_time[0];
+				xNetSendMachineSlotUpdate.end_time = xEventQueueNet.end_time[0];
+				netSend(CMD_SENDMACHINESLOTUPDATE, DONT);
+				break;
+			case NETQUEUE_TYPE_GETDRESSINFO:
+				netSend(CMD_GETDRESSINFO,DONT);
+				break;
+///////////////////////////////////////////////////////////////////////////////////////////
 			}
 			++xEventQueueNet.anyCnt[0];
 		}
@@ -18707,7 +19590,7 @@ void prcWorldMap()
 			}
 			break;
 		case NETQUEUE_TYPE_AUTOPRODUCTSLOTUPDATE:
-			netSend(CMD_AUTOPRODUCTSLOTUPDATE, DONT);
+//			netSend(CMD_AUTOPRODUCTSLOTUPDATE, DONT);
 			break;
 		case NETQUEUE_TYPE_ALICESHOCK_PHOTO:
             /*
@@ -19356,6 +20239,10 @@ void prcWorldMap()
 					xEventQueueNet.code[xEventQueueNet.totalNum] = xEventQueue.xInteriorSlot[0].codeTeam[0];
 					xEventQueueNet.key[xEventQueueNet.totalNum] = xMap.dataKey[xEventQueue.floor[0]][MAP_TYPE_FLOORTILE1][xEventQueue.startX[0]][xEventQueue.startY[0]];
 					break;
+//                case INTERIOR_TYPE_OBJ:
+//                    xEventQueueNet.key[xEventQueueNet.totalNum] = xMap.dataKey[xEventQueue.floor[0]][MAP_TYPE_OBJ][xEventQueue.startX[0]][xEventQueue.startY[0]];
+//                    addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_PRODUCTIONDELETE, TRUE);
+//                    break;
 				default:
 					xEventQueueNet.code[xEventQueueNet.totalNum] = xEventQueue.xInteriorSlot[0].codeTeam[0];
 					xEventQueueNet.key[xEventQueueNet.totalNum] = xMap.dataKey[xEventQueue.floor[0]][MAP_TYPE_OBJ][xEventQueue.startX[0]][xEventQueue.startY[0]];
@@ -19366,6 +20253,7 @@ void prcWorldMap()
 				xEventQueueNet.mapY[xEventQueueNet.totalNum] = xEventQueue.startY[0];
 				xEventQueueNet.layer[xEventQueueNet.totalNum][0] = 0;	//골드
 				xEventQueueNet.layer[xEventQueueNet.totalNum][1] = 0;	//캐쉬
+                
                 
                 addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_MAP, FALSE);
                     
@@ -19681,7 +20569,7 @@ void prcWorldMap()
 				break;
 			}			
 			
-			makeShopAssistant();
+			//makeShopAssistant(); //LJW 샵직원 삭제 2018.02.12
 			makeModelShopNpc();
 			checkMapDataAstar(MAP_TYPE_OBJ,xEventQueue.floor[0]);
 			outPutEventQueue(0);
@@ -19773,6 +20661,8 @@ void prcWorldMap()
 					//오브젝트 찾음
 					if(xSelectTileOne.state == SELECTTILE_STATE_PLAY)
 					{
+                        //인테리어 편집 UI 이미지 로드 KBY 2018.2.26
+                        interiorbuildFreeLoad_FP(true);
 						xWorldMap.state = WORLDMAP_STATE_INTERIOR;
 						xInterior.buildInType = INTERIORBUILD_TYPE_GAME;
 						xInterior.buildMode = 0;
@@ -19809,6 +20699,8 @@ void prcWorldMap()
 						}
 						if(xSelectTileOne.state == SELECTTILE_STATE_PLAY)
 						{
+                            //인테리어 편집 UI 이미지 로드 KBY 2018.2.26
+                            interiorbuildFreeLoad_FP(true);
 							xWorldMap.state = WORLDMAP_STATE_INTERIOR;
 							xInterior.buildInType = INTERIORBUILD_TYPE_GAME;
 							xInterior.buildMode = 0;
@@ -19845,6 +20737,8 @@ void prcWorldMap()
 							//오브젝트 찾음
 							if(xSelectTileOne.state == SELECTTILE_STATE_PLAY)
 							{
+                                //인테리어 편집 UI 이미지 로드 KBY 2018.2.26
+                                interiorbuildFreeLoad_FP(true);
 								xWorldMap.state = WORLDMAP_STATE_INTERIOR;
 								xInterior.buildInType = INTERIORBUILD_TYPE_GAME;
 								xInterior.buildMode = 0;
@@ -20004,12 +20898,16 @@ void paintWorldMap()
 	}
 	
     prcNetEventPhotoUrl();
-	prcQuest();
-    prcRivalQuest();
-    prcJewelQuest();
+	//prcQuest();
+    //prcRivalQuest();
+    //prcJewelQuest();
 	prcExternalShake();
 	prcWorldMap();
     prcFormerTimer();
+    prcProductionSlotTimer();
+    prcGreenHouseSlotTimer();
+    prcSpinningWheelSlotTimer();
+    prcCarrot();
     //prcFormerCount();
     
 	setScaleRotLimit();
@@ -20225,16 +21123,37 @@ void paintWorldMap()
 	case WORLDMAP_STATE_INTERIORSHOP:
 		drawInteriorShop();
 		break;
+    case WORLDMAP_STATE_SHOP_FP:
+        drawShop_FP();
+        switch(xShop_FP.state)
+        {
+            case SHOP_STATE_DRESSPOPUP:
+                drawDressShop_PopUp_FP();
+                switch(xShop_FP.state2)
+                {
+                    case SHOPPOPUP_STATE_POPUP:
+                        drawDressShopPreview_FP();
+                        break;
+                }
+                break;
+            //의상 탭을 제외한 나머지 KBY 2018.2.27
+            case SHOP_STATE_POPUP:
+                
+                break;
+        }
+        break;
 	case WORLDMAP_STATE_INTERIOR:
 		drawInteriorBuild();		
 		break;
 	case WORLDMAP_STATE_PRODUCTIONMENU:
-		drawProductionMenu();
-			
-		switch(xProductionMenu.state2)
+//		drawProductionMenu();
+        drawProduction_FP();
+//		switch(xProductionMenu.state2)
+        switch(xProduction_FP.state)
 		{
 		case PRODUCTIONMENU_STATE_FASTCASHPOPUP:
-			drawProductionCashPopup();
+//			drawProductionCashPopup();
+            drawProductionCashPopup_FP();
 			break;
 		}
 			
@@ -20260,6 +21179,28 @@ void paintWorldMap()
 	case WORLDMAP_STATE_STAFF:
 		drawFitting_STAFF();
 		break;
+    case WORLDMAP_STATE_GREENHOUSE_FP:
+        drawGreenHouse_FP();
+        switch(xGreenHouse_FP.state)
+        {
+            case GREENHOUSE_STATE_CANCLEPOPUP:
+                drawGreenHouseSlotCanclePopup_FP();
+                break;
+        }
+        break;
+    case WORLDMAP_STATE_SPINNINGWHEEL_FP:
+        drawSpinningWheel_FP();
+        switch(xSpinning_FP.state)
+        {
+            case SPINNINGWHEEL_STATE_CANCLEPOPUP:
+                drawSpinningWheelSlotCanclePopup_FP();
+                break;
+        }
+        break;
+    case WORLDMAP_STATE_FITTING_FP:
+		xFitting_FP.isChange = isDressChange();
+        drawFitting_FP();
+        break;
 	case WORLDMAP_STATE_MINIGAME:
 		drawMiniGame();
 		
@@ -20291,16 +21232,23 @@ void paintWorldMap()
 		drawCarOrderInfo();
 		break;
 	case WORLDMAP_STATE_FRIENDLIST:
-		drawFriendList();
-		switch(xFriend.state)
-		{
-		case FRIEND_STATE_ADD:
-			drawFriendAdd();
-
-			if(xFriend.isInvite == TRUE)
-				drawFriendInvite();
-			break;
-		}
+//		drawFriendList();
+        drawfriendList_FP();
+        switch(xFriend_FP.state)
+        {
+            case FRIEND_FP_STATE_SEARCH:
+                drawfriendSearch_FP();
+                break;
+        }
+//		switch(xFriend.state)
+//		{
+//		case FRIEND_STATE_ADD:
+//			drawFriendAdd();
+//
+//			if(xFriend.isInvite == TRUE)
+//				drawFriendInvite();
+//			break;
+//		}
 		break;
 	case WORLDMAP_STATE_FRIENDORDER:
 		drawFriendOrder();
@@ -20308,8 +21256,11 @@ void paintWorldMap()
 	case WORLDMAP_STATE_FRIENDORDERITEM:
 		drawFriendOrderItem();
 		break;
+    ///////////////////////////////////////////////////
+    //우편함 수정 2018.2.23 KBY
 	case WORLDMAP_STATE_MAIL:
-		drawMail();
+//		drawMail();
+        drawMail_FP();
 		switch(xMail.state)
 		{
 		case MAIL_STATE_GIFT_RESULT:
@@ -20679,6 +21630,10 @@ void paintWorldMap()
     case WORLDMAP_STATE_CANDYFORMER:
         drawCandyFormer();
         break;
+	case WORLDMAP_STATE_SENDMACHINE_FP:
+		prcSendMachine_FP();
+		drawSendMachine_FP();
+		break;
 	}
     
 
@@ -20688,7 +21643,13 @@ void paintWorldMap()
 	drawFashionDrop();
 	
 	if(xWorldMap.isCashShop == TRUE)
-		drawShop();
+    {
+        drawShop();
+//        initShop_FP();
+//        shopFreeload_FP(true);
+//        xWorldMap.state = WORLDMAP_STATE_SHOP_FP;
+    }
+
 	
 	if(xWorldMap.isAliceShock == TRUE)
 		drawAliceShock();
@@ -20991,35 +21952,110 @@ void paintWorldMap()
 			////////////////////////////////////////////////////////////
 		}
 	}
+    
+//    drawImage(&imgTest[1], cx-200, cy, 0, 0, imgTest[1].w, imgTest[1].h, VH);
+//    
+//    xGame.isReSizeDraw=true;
+//    xGame.reSize=50;
+//    drawImage(&imgTest[3], cx+200, cy, 0, 0, imgTest[3].w, imgTest[3].h, VH);
+//    xGame.isReSizeDraw=false;
+//    
+//    drawImage(&imgTest[4], cx, cy, 0, 0, imgTest[4].w, imgTest[4].h, VH);
+    
+    
 }
-
+//////////////////////////////////////////////////
+//프로필 변경 UI 이미지 로드 및 해제 추가 KBY 2018.2.26
+void profilePhotoFreeLoad_FP(bool isLoad)
+{
+    if(isLoad==true)
+    {
+        loadImg("photo_main.png", &imgPhoto[0]);
+        loadImg("productionexiticon.png", &imgPhoto[1]);
+        loadImg("default_btn_yesno.png", &imgPhoto[2]);
+        loadImg("default_btn.png", &imgBtn);
+    }
+    else
+    {
+        freeImg(&imgPhoto[0]);
+        freeImg(&imgPhoto[1]);
+        freeImg(&imgPhoto[2]);
+        freeImg(&imgBtn);
+    }
+}
+///////////////////////////////////////////////////
+//프로필 변경 UI 관련해서 수정함.... KBY 2018.2.26
 void drawProfilePhoto()
 {
 	int px = cx;
 	int py = cy;
 	
 	drawBgFillRect();
-	drawPacker(imgProfile3, px, py, 0, 0, imgW(imgProfile3), imgH(imgProfile3), VH);
-	
-	subTemp[XPOS] = px;
-	subTemp[YPOS] = py-8;
-	drawPacker(imgPopupBtn0, subTemp[XPOS], subTemp[YPOS], 0, imgH(imgPopupBtn0)/2, imgW(imgPopupBtn0), imgH(imgPopupBtn0)/2, VH);
-
-	gDrawStringBold(subTemp[XPOS], subTemp[YPOS], "카메라롤", VH, ALPHA_MAX, ALPHA_MAX, ALPHA_MAX, 186, 70, 10);
-	xProfile.xTouchPhotoSelect.wPos = imgW(imgPopupBtn0);
-	xProfile.xTouchPhotoSelect.hPos = imgH(imgPopupBtn0)/2;
+//	drawPacker(imgProfile3, px, py, 0, 0, imgW(imgProfile3), imgH(imgProfile3), VH);
+    //여기1 KBY 2018.2.26
+    drawImage(&imgPhoto[0], px, py, 0, 0, imgPhoto[0].w, imgPhoto[0].h, VH);
+   
+    subTemp[XPOS] = px+108;
+    subTemp[YPOS] = py-88;
+    
+    //여기2 KBY 2018.2.26
+    if(isTouchPhotoClr==false)
+    {
+        drawImage(&imgPhoto[1], subTemp[XPOS], subTemp[YPOS], 0, 0, imgPhoto[1].w/2, imgPhoto[1].h, VH);
+    }
+    else
+    {
+        drawImage(&imgPhoto[1], subTemp[XPOS], subTemp[YPOS], imgPhoto[1].w/2, 0, imgPhoto[1].w/2, imgPhoto[1].h, VH);
+    }
+    
+    xTouchClr.wPos = imgPhoto[1].w/2;
+    xTouchClr.hPos = imgPhoto[1].h;
+    xTouchClr.xPos = subTemp[XPOS]-xTouchClr.wPos/2;
+    xTouchClr.yPos = subTemp[YPOS]-xTouchClr.hPos/2;
+    //여기2 끝
+	subTemp[XPOS] = px+10;
+	subTemp[YPOS] = py-18;
+//	drawPacker(imgPopupBtn0, subTemp[XPOS], subTemp[YPOS], 0, imgH(imgPopupBtn0)/2, imgW(imgPopupBtn0), imgH(imgPopupBtn0)/2, VH);
+    if(isTouchPhotoSelect==false)
+    {
+        drawImage(&imgBtn, subTemp[XPOS], subTemp[YPOS], 0, 0, imgBtn.w/2, imgBtn.h/2, VH);
+    }
+    else
+    {
+        drawImage(&imgBtn, subTemp[XPOS], subTemp[YPOS], imgBtn.w/2, 0, imgBtn.w/2, imgBtn.h/2, VH);
+    }
+    setFontSizeORI(20);
+//	gDrawStringBold(subTemp[XPOS], subTemp[YPOS], "카메라롤", VH, ALPHA_MAX, ALPHA_MAX, ALPHA_MAX, 186, 70, 10);
+    gSetColor(101, 48, 150);
+    gDrawString(subTemp[XPOS], subTemp[YPOS], "카메라롤", VH);
+	xProfile.xTouchPhotoSelect.wPos = imgBtn.w/2;
+	xProfile.xTouchPhotoSelect.hPos = imgBtn.h/2;
 	xProfile.xTouchPhotoSelect.xPos = subTemp[XPOS]-xProfile.xTouchPhotoSelect.wPos/2;
 	xProfile.xTouchPhotoSelect.yPos = subTemp[YPOS]-xProfile.xTouchPhotoSelect.hPos/2;
 	
-	subTemp[XPOS] = px;
-	subTemp[YPOS] = py+62;
-	drawPacker(imgPopupBtn2, subTemp[XPOS], subTemp[YPOS], 0, imgH(imgPopupBtn2)/2*(xProfile.isPhoto == FALSE ? 0:1), imgW(imgPopupBtn2), imgH(imgPopupBtn2)/2, VH);
-	gDrawStringBold(subTemp[XPOS], subTemp[YPOS], "삭제하기", VH, ALPHA_MAX, ALPHA_MAX, ALPHA_MAX, 77, 77, 77);
+	subTemp[XPOS] = px+10;
+	subTemp[YPOS] = py+52;
+//	drawPacker(imgPopupBtn2, subTemp[XPOS], subTemp[YPOS], 0, imgH(imgPopupBtn2)/2*(xProfile.isPhoto == FALSE ? 0:1), imgW(imgPopupBtn2), imgH(imgPopupBtn2)/2, VH);
+    //여기3 KBY 2018.2.26
+    if(isTouchPhotoDel==false)
+    {
+        drawImage(&imgPhoto[2], subTemp[XPOS], subTemp[YPOS], 0, 0, imgPhoto[2].w/2, imgPhoto[2].h/2, VH);
+    }
+    else
+    {
+        drawImage(&imgPhoto[2], subTemp[XPOS], subTemp[YPOS], imgPhoto[2].w/2, 0, imgPhoto[2].w/2, imgPhoto[2].h/2, VH);
+    }
+    
+    gSetColor(106, 21, 97);
+    gDrawString(subTemp[XPOS], subTemp[YPOS], "삭제하기", VH);
+//	gDrawStringBold(subTemp[XPOS], subTemp[YPOS], "삭제하기", VH, ALPHA_MAX, ALPHA_MAX, ALPHA_MAX, 77, 77, 77);
 			
-	xProfile.xTouchPhotoDel.wPos = imgW(imgPopupBtn2);
-	xProfile.xTouchPhotoDel.hPos = imgH(imgPopupBtn2)/2;
+    setFontSize(11);
+	xProfile.xTouchPhotoDel.wPos = imgPhoto[2].w/2;
+	xProfile.xTouchPhotoDel.hPos = imgPhoto[2].h/2;
 	xProfile.xTouchPhotoDel.xPos = subTemp[XPOS]-xProfile.xTouchPhotoDel.wPos/2;
 	xProfile.xTouchPhotoDel.yPos = subTemp[YPOS]-xProfile.xTouchPhotoDel.hPos/2;
+    //여기3 끝
 }
 
 void worldMapCarPrc()
@@ -25448,7 +26484,7 @@ void drawWorldMap()
 	case WORLDMAP_STATE_MODEL:				//모델
 	case WORLDMAP_STATE_MODEL_FRIEND:		//모델
 	case WORLDMAP_STATE_FASHIONSHOWNEW:		//런어웨이
-	case WORLDMAP_STATE_PRODUCTIONMENU:		//새로운 생산
+//	case WORLDMAP_STATE_PRODUCTIONMENU:		//새로운 생산
 
 		isRetrun = TRUE;
 		break;
@@ -27062,7 +28098,7 @@ void drawWorldMap()
 		for(i=0;i<xObjSort[0].totalNum;i++)
 			drawObjSort(i,floor,0);
 		
-		
+		drawMyCharacter();
 	
 		//확장 이벤트 그리기
 		if(xWorldMap.isExtensionEvent_Tile == TRUE)
@@ -30445,6 +31481,249 @@ void checkMapDataAstar(int type,int floor)
 }
 
 
+void drawMyCharacter()
+{
+	int mapXpos =  0;
+	int mapYpos =  0;
+	int pos = ACT_FRONT;
+	
+	int startX = xMyCharacter.x - xMap.shopPointX;
+	int startY = xMyCharacter.y - xMap.shopPointY;
+	int endX = xMyCharacter.makeX+xMap.shopPointX-1;
+	int endY = xMyCharacter.makeY+xMap.shopPointY-1;
+	
+	
+	if(setAstar(startX, startY, endX-xMap.shopPointX, endY-xMap.shopPointY, MAP_TYPE_OBJ,xMyCharacter.floor) == FALSE)
+	{
+		xMyCharacter.state = MYCHARACTER_STATE_WAIT;
+	}
+	else
+	{
+		xMyCharacter.state = MYCHARACTER_STATE_MOVE;
+		
+		xMyCharacter.bestTotalCnt = xAstar.totalCnt;
+		xMyCharacter.bestNowCnt = 0;
+		for(int totalI=0;totalI<xAstar.totalCnt;totalI++)
+		{
+			xMyCharacter.bestX[totalI] = xAstar.bestX[totalI]+xMap.shopPointX;
+			xMyCharacter.bestY[totalI] = xAstar.bestY[totalI]+xMap.shopPointY;
+		}
+		
+		
+		//다음이동
+		if(xMyCharacter.bestX[xMyCharacter.bestNowCnt] < xMyCharacter.bestX[xMyCharacter.bestNowCnt+1])
+			xMyCharacter.moveType = MOVETYPE_XPLUS;
+		else if(xMyCharacter.bestX[xMyCharacter.bestNowCnt] > xMyCharacter.bestX[xMyCharacter.bestNowCnt+1])
+			xMyCharacter.moveType = MOVETYPE_XMINUS;
+		else if(xMyCharacter.bestY[xMyCharacter.bestNowCnt] < xMyCharacter.bestY[xMyCharacter.bestNowCnt+1])
+			xMyCharacter.moveType = MOVETYPE_YPLUS;
+		else if(xMyCharacter.bestY[xMyCharacter.bestNowCnt] > xMyCharacter.bestY[xMyCharacter.bestNowCnt+1])
+			xMyCharacter.moveType = MOVETYPE_YMINUS;
+		
+		
+		switch(xMyCharacter.moveType)
+		{
+			case MOVETYPE_XPLUS:
+				xMyCharacter.drawX -= (float)(xMyCharacter.speed * 2);
+				xMyCharacter.drawY += (float)(xMyCharacter.speed * 1);
+				if(xMyCharacter.drawX  <= -(TILEW/4))
+				{
+					xMyCharacter.x++;
+					xMyCharacter.drawX = (TILEW/4);
+					xMyCharacter.drawY = -(TILEH/4);
+				}
+				break;
+			case MOVETYPE_XMINUS:
+				xMyCharacter.drawX += (float)(xMyCharacter.speed * 2);
+				xMyCharacter.drawY -= (float)(xMyCharacter.speed * 1);
+				if(xMyCharacter.drawX  >= (TILEW/4))
+				{
+					xMyCharacter.x--;
+					xMyCharacter.drawX = -(TILEW/4);
+					xMyCharacter.drawY = (TILEH/4);
+				}
+				break;
+			case MOVETYPE_YPLUS:
+				xMyCharacter.drawX += (float)(xMyCharacter.speed * 2);
+				xMyCharacter.drawY += (float)(xMyCharacter.speed * 1);
+				if(xMyCharacter.drawY  >= (TILEH/4))
+				{
+					xMyCharacter.y++;
+					xMyCharacter.drawX = -(TILEW/4);
+					xMyCharacter.drawY = -(TILEH/4);
+				}
+				break;
+			case MOVETYPE_YMINUS:
+				xMyCharacter.drawX -= (float)(xMyCharacter.speed * 2);
+				xMyCharacter.drawY -= (float)(xMyCharacter.speed * 1);
+				if(xMyCharacter.drawY  <= -(TILEH/4))
+				{
+					xMyCharacter.y--;
+					xMyCharacter.drawX = (TILEW/4);
+					xMyCharacter.drawY = (TILEH/4);
+				}
+				break;
+			default:
+				
+				break;
+		}
+	}
+	
+	
+	mapXpos = xMap.pointX + (((xMyCharacter.y-(xMyCharacter.floor*5)) - (xMyCharacter.x-(xMyCharacter.floor*5))) * (TILEW / 2));
+	
+	if ((xMyCharacter.y + xMyCharacter.x + 1) % 2 == 1)
+		mapYpos = xMap.pointY + ((((xMyCharacter.y-(xMyCharacter.floor*5)) + (xMyCharacter.x-(xMyCharacter.floor*5)) + 1) / 2) * TILEH) + (TILEH / 2);
+	else
+		mapYpos = xMap.pointY + ((((xMyCharacter.y-(xMyCharacter.floor*5)) + (xMyCharacter.x-(xMyCharacter.floor*5)) + 1) / 2) * TILEH);
+	
+	
+	
+	subTemp[XPOS] = mapXpos + xMyCharacter.drawX;
+	subTemp[YPOS] = mapYpos + xMyCharacter.drawY-30;
+	
+	xGame.fgameScale = 1.0f;
+	setFontSize(8);
+	gDrawStringBold(getWorldMapPos(subTemp[XPOS], cx), subTemp[YPOS], xMyCharacter.strName, VH, 255, 255, 255, 82, 49, 38);
+	setFontSize(11);
+	xGame.fgameScale = xWorldMap.fscale;
+	
+	switch(xMyCharacter.state)
+	{
+		case MYCHARACTER_STATE_WAIT:
+			xMyCharacter.actingType = NPC_ACT_STOP;
+			break;
+		case MYCHARACTER_STATE_MOVE:
+			xMyCharacter.actingType = NPC_ACT_WALKING;
+			break;
+		default:
+			
+			break;
+	}
+	
+	switch(xMyCharacter.moveType)
+	{
+		case MOVETYPE_XPLUS:
+		case MOVETYPE_YPLUS:
+			pos = ACT_FRONT;
+			break;
+		case MOVETYPE_XMINUS:
+		case MOVETYPE_YMINUS:
+			pos = ACT_BACK;
+			break;
+		default:
+			pos = ACT_FRONT;
+			break;
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//의상 레이어에 마네킹바디 넣기
+	setNpcBody_FP(&xSpritNpc[xMyCharacter.actingType][pos], pos);
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	//의상 레이어에 의상 넣기
+	setSpritF_FP(&xSpritNpc[xMyCharacter.actingType][pos],&xMyCharacter.xF,pos);
+	
+	//헤어셋팅
+	setNpcHair_FP(&xSpritNpc[xMyCharacter.actingType][pos], xMyCharacter.xFace.hairNum, pos);
+	
+	//얼굴셋팅
+	setNpcFace_FP(&xSpritNpc[xMyCharacter.actingType][pos], xMyCharacter.xFace.faceNum, pos);
+	
+	xSpritNpc[xMyCharacter.actingType][pos].nowDelay = xMyCharacter.nowDelay;
+	xSpritNpc[xMyCharacter.actingType][pos].nowFrame = xMyCharacter.nowFrame;
+	prcSprit(&xSpritNpc[xMyCharacter.actingType][pos], &xMyCharacter.nowDelay, &xMyCharacter.nowFrame);
+	
+	switch(xMyCharacter.moveType)
+	{
+		case MOVETYPE_YPLUS:
+		case MOVETYPE_YMINUS:
+			reverseSprit_FP(&xSpritNpc[xMyCharacter.actingType][pos],subTemp[XPOS],subTemp[YPOS],pos,&xMyCharacter.xFace);
+			break;
+		default:
+			drawSprit_FP(&xSpritNpc[xMyCharacter.actingType][pos],subTemp[XPOS],subTemp[YPOS],pos,&xMyCharacter.xFace);
+			break;
+	}
+	
+}
+
+void makeMyCharacter()
+{
+	xMyCharacter.x = xPayMentInfo[0].x-1;
+	xMyCharacter.y = xPayMentInfo[0].y;
+	xMyCharacter.moveType = MOVETYPE_XPLUS;
+	xMyCharacter.nowDelay=0;
+	xMyCharacter.nowFrame=0;
+	
+	
+	int floorTemp=0;
+	int whileCnt = 0;
+	M_Boolean isCheck = FALSE;
+	
+	int codeTeamTemp = xInterior.xBuildSlot.codeTeam[0];
+	
+	xMyCharacter.floor = 0;
+	xMyCharacter.floorTarget = 0;
+	xMyCharacter.nowDelay = 0;
+	xMyCharacter.nowFrame = 0;
+	xMyCharacter.state = MYCHARACTER_STATE_WAIT;
+	
+	floorTemp = xMyCharacter.floor;
+	xInterior.xBuildSlot.codeTeam[0] = INTERIOR_TYPE_OBJ*1000;
+	xMap.nowFloor = xMyCharacter.floor;
+	checkBuildMapData();
+	xMap.nowFloor = floorTemp;
+	
+	xMyCharacter.makeX = ranDom(0, xMap.shopPointW-2);
+	xMyCharacter.makeY = ranDom(0, xMap.shopPointH-2);
+	
+	whileCnt = 0;
+	isCheck = FALSE;
+	
+	while(TRUE)
+	{
+		xMyCharacter.makeX = ranDom(0, xMap.shopPointW-2);
+		xMyCharacter.makeY = ranDom(0, xMap.shopPointH-2);
+		
+		if(xMap.interiorData[xMyCharacter.floor][xMyCharacter.makeX][xMyCharacter.makeY] == FALSE)
+		{
+			isCheck = TRUE;
+			xMyCharacter.makeX += xMap.shopPointX;
+			xMyCharacter.makeY += xMap.shopPointY;
+			break;
+		}
+		
+		if(++whileCnt > 100)
+		{
+			break;
+		}
+	}
+	
+	if(isCheck == FALSE)
+	{
+		if(xPayMentInfo[xMyCharacter.floor].codeNum >= 0)
+		{
+			xMyCharacter.makeX = xPayMentInfo[xMyCharacter.floor].x-1;
+			xMyCharacter.makeY = xPayMentInfo[xMyCharacter.floor].y;
+		}
+		else
+		{
+			xMyCharacter.makeX = xPayMentInfo[xMyCharacter.floor].x;
+			xMyCharacter.makeY = xPayMentInfo[xMyCharacter.floor].y-1;
+		}
+	}
+	
+	xMyCharacter.actLook = MOVETYPE_YPLUS;
+	xMyCharacter.x = xMyCharacter.makeX;
+	xMyCharacter.y = xMyCharacter.makeY;
+	xMyCharacter.drawX = 0;
+	xMyCharacter.drawY = 0;
+	xMyCharacter.speed = xMap.speedTable[3];
+	
+	xInterior.xBuildSlot.codeTeam[0] = codeTeamTemp;
+}
+
+
 
 void makeShopAssistant()
 {
@@ -31545,7 +32824,19 @@ void drawWorldMapUi()
     
     if(xWorldMap.uiShowType == 2 && xWorldMap.isFriendMap == false)
     {
-        prcEventQuest();
+        if(xWorldMap.state == WORLDMAP_STATE_PLAY)
+        {
+            //루루팡 막기 KBY
+//            subTemp[XPOS] = 285-5-imgLuluPang.w/2;
+//            subTemp[YPOS] = lcdH-51;
+//            
+//            drawImage(&imgLuluPang, subTemp[XPOS], subTemp[YPOS], 0, 0, imgLuluPang.w/2, imgLuluPang.h, VH);
+//            
+//            xLuluPang.xTouchStart.wPos = imgLuluPang.w/2;
+//            xLuluPang.xTouchStart.hPos = imgLuluPang.h;
+//            xLuluPang.xTouchStart.xPos = subTemp[XPOS]-xLuluPang.xTouchStart.wPos/2;
+//            xLuluPang.xTouchStart.yPos = subTemp[YPOS]-xLuluPang.xTouchStart.hPos/2;
+        }
         
         //LJW 월드맵 CEO다이어리 막기
 //        drawEventQuestUi(107,178);
@@ -31562,153 +32853,153 @@ void drawWorldMapUi()
 //                drawClubUi(174,lcdH-51);
 //        }
 		
-		//LJW 월드맵 마일리지샵 아이콘
-        if(xMileageShop.isOpen == true && xWorldMap.state == WORLDMAP_STATE_PLAY)
-        {
-			//월드맵 루루팡 아이콘
-			subTemp[XPOS] = 285-5-imgLuluPang.w/2;
-			subTemp[YPOS] = lcdH-51;
-			
-			drawImage(&imgLuluPang, subTemp[XPOS], subTemp[YPOS], 0, 0, imgLuluPang.w/2, imgLuluPang.h, VH);
-			
-			xLuluPang.xTouchStart.wPos = imgLuluPang.w/2;
-			xLuluPang.xTouchStart.hPos = imgLuluPang.h;
-			xLuluPang.xTouchStart.xPos = subTemp[XPOS]-xLuluPang.xTouchStart.wPos/2;
-			xLuluPang.xTouchStart.yPos = subTemp[YPOS]-xLuluPang.xTouchStart.hPos/2;
-			
-
-            subTemp[XPOS] = 174;
-            subTemp[YPOS] = lcdH-58;
-			
-			subTemp[XPOS] = imgW(imgSwitchWorldMapUi2)/2;
-			subTemp[YPOS] = lcdH-imgH(imgSwitchWorldMapUi2)/2+5;
-            
-            int maxPrice = 10000*MILEAGEPRICEUNIT;
-            
-            if(xSaveTemp.mileage.oriData < 10000*MILEAGEPRICEUNIT)
-            {
-                xMileageShop.selectCategoryTab = MILEAGESHOP_CATEGORY_10000;
-                maxPrice = 10000*MILEAGEPRICEUNIT;
-            }
-            else if(xSaveTemp.mileage.oriData < 20000*MILEAGEPRICEUNIT)
-            {
-                xMileageShop.selectCategoryTab = MILEAGESHOP_CATEGORY_20000;
-                maxPrice = 20000*MILEAGEPRICEUNIT;
-            }
-            else
-            {
-                xMileageShop.selectCategoryTab = MILEAGESHOP_CATEGORY_30000;
-                maxPrice = 30000*MILEAGEPRICEUNIT;
-            }
-            
-            setMileageShopCategory();
-            xMileageUi.totalNum = xMileageShop.totalList;
-            for(int k=0;k<xMileageShop.totalList;k++)
-            {
-                xMileageUi.listCode[k] = xMileageShop.listCode[k];
-            }
-            
-            
-            int uiXX = 0;
-            
-            switch(xMileageUi.state)
-            {
-                case MILEAGEUI_STATE_WAIT:
-                    xMileageUi.flowTime += xGame.prcSec;
-                    if(xMileageUi.flowTime > 3)
-                    {
-                        xMileageUi.state = MILEAGEUI_STATE_NEXT;
-                        xMileageUi.anyCnt = 0;
-                    }
-                    break;
-                case MILEAGEUI_STATE_NEXT:
-                    switch(++xMileageUi.anyCnt)
-                {
-                    case 1:uiXX = 0;break;
-                    case 2:uiXX = -1;break;
-                    case 3:uiXX = -1;break;
-                    case 4:uiXX = -1;break;
-                    case 5:uiXX = -2;break;
-                    case 6:uiXX = -2;break;
-                    case 7:uiXX = -3;break;
-                    case 8:uiXX = -4;break;
-                    case 9:uiXX = -6;break;
-                    case 10:uiXX = -8;break;
-                    case 11:uiXX = -10;break;
-                    case 12:uiXX = -15;break;
-                    case 13:uiXX = -25;break;
-                    case 14:uiXX = -52;break;
-                    case 15:uiXX = -58;break;
-                    case 16:uiXX = -62;break;
-                    case 17:uiXX = -64;break;
-                    case 18:uiXX = -66;break;
-                    case 19:uiXX = -68;break;
-                    case 20:uiXX = -69;break;
-                    case 21:uiXX = -70;break;
-                    case 22:uiXX = -70;break;
-                    case 23:uiXX = -71;break;
-                    case 24:uiXX = -71;break;
-                    case 25:uiXX = -71;break;
-                    case 26:uiXX = -72;break;
-                    case 27:
-                        xMileageUi.state = MILEAGEUI_STATE_WAIT;
-                        xMileageUi.flowTime = 0;
-                        if(++xMileageUi.selectSlot >= xMileageShop.totalList)
-                            xMileageUi.selectSlot = 0;
-                        break;
-                }
-                    break;
-            }
-            
-            int nowCode = xMileageUi.listCode[xMileageUi.selectSlot];
-            int nextCode = 0;
-            
-            if(xMileageUi.selectSlot+1 >= xMileageShop.totalList)
-                nextCode = xMileageUi.listCode[0];
-            else
-                nextCode = xMileageUi.listCode[xMileageUi.selectSlot+1];
-            
-            
-            gSetClip(true, subTemp[XPOS]-5-36, subTemp[YPOS]-4-36, 72, 72);
-            sprintf(xDownLoader.strTempUrl, "%s/Product/thumbnail_%d.png",xNetData.strCdnUrl,nowCode);
-            drawProfilePhotoUrl(subTemp[XPOS]-6+uiXX, subTemp[YPOS]-5,xDownLoader.strTempUrl);
-			
-            sprintf(xDownLoader.strTempUrl, "%s/Product/thumbnail_%d.png",xNetData.strCdnUrl,nextCode);
-            drawProfilePhotoUrl(subTemp[XPOS]-6+72+uiXX, subTemp[YPOS]-5,xDownLoader.strTempUrl);
-            gSetClip(false, subTemp[XPOS]-5-36, subTemp[YPOS]-4-36, 72, 72);
-            drawImage(&imgMileageUi[0], subTemp[XPOS], subTemp[YPOS], 0, 0, imgMileageUi[0].w, imgMileageUi[0].h, VH);
-			
-            long long mileageTemp0 = xSaveTemp.mileage.oriData;
-            long long wTemp0 = imgMileageUi[1].w;
-            
-            subTemp[WPOS] = wTemp0*mileageTemp0/maxPrice;
-            
-            
-            if(subTemp[WPOS] > imgMileageUi[1].w)
-                subTemp[WPOS] = imgMileageUi[1].w;
-            
-            drawImage(&imgMileageUi[1], subTemp[XPOS]-32, subTemp[YPOS]+42, 0, 0, subTemp[WPOS], imgMileageUi[1].h, VL);
-            
-            gSetColor(255, 255, 255);
-            setCommaNum(strTempS, maxPrice/MILEAGEPRICEUNIT);
-			
-            setFontSize(12);
-            gDrawString(subTemp[XPOS]+48, subTemp[YPOS]+20, strTempS, VH);
-            setFontSize(11);
-            
-            xMileageUi.xTouchMenu.wPos = 80;
-            xMileageUi.xTouchMenu.hPos = 80;
-            xMileageUi.xTouchMenu.xPos = subTemp[XPOS]-xMileageUi.xTouchMenu.wPos/2;
-            xMileageUi.xTouchMenu.yPos = subTemp[YPOS]-xMileageUi.xTouchMenu.hPos/2;
-			
-            /*
-             gSetColor(255, 0, 0);
-             setAlpha(100);
-             fillRect(xMileageUi.xTouchMenu.xPos, xMileageUi.xTouchMenu.yPos, xMileageUi.xTouchMenu.wPos, xMileageUi.xTouchMenu.hPos);
-             setAlpha(ALPHA_MAX);
-             */
-        }
-        
+//		//LJW 월드맵 마일리지샵 아이콘
+//        if(xMileageShop.isOpen == true && xWorldMap.state == WORLDMAP_STATE_PLAY)
+//        {
+//			//월드맵 루루팡 아이콘
+//			subTemp[XPOS] = 285-5-imgLuluPang.w/2;
+//			subTemp[YPOS] = lcdH-51;
+//			
+//			drawImage(&imgLuluPang, subTemp[XPOS], subTemp[YPOS], 0, 0, imgLuluPang.w/2, imgLuluPang.h, VH);
+//			
+//			xLuluPang.xTouchStart.wPos = imgLuluPang.w/2;
+//			xLuluPang.xTouchStart.hPos = imgLuluPang.h;
+//			xLuluPang.xTouchStart.xPos = subTemp[XPOS]-xLuluPang.xTouchStart.wPos/2;
+//			xLuluPang.xTouchStart.yPos = subTemp[YPOS]-xLuluPang.xTouchStart.hPos/2;
+//			
+//
+//            subTemp[XPOS] = 174;
+//            subTemp[YPOS] = lcdH-58;
+//			
+//			subTemp[XPOS] = imgW(imgSwitchWorldMapUi2)/2;
+//			subTemp[YPOS] = lcdH-imgH(imgSwitchWorldMapUi2)/2+5;
+//            
+//            int maxPrice = 10000*MILEAGEPRICEUNIT;
+//            
+//            if(xSaveTemp.mileage.oriData < 10000*MILEAGEPRICEUNIT)
+//            {
+//                xMileageShop.selectCategoryTab = MILEAGESHOP_CATEGORY_10000;
+//                maxPrice = 10000*MILEAGEPRICEUNIT;
+//            }
+//            else if(xSaveTemp.mileage.oriData < 20000*MILEAGEPRICEUNIT)
+//            {
+//                xMileageShop.selectCategoryTab = MILEAGESHOP_CATEGORY_20000;
+//                maxPrice = 20000*MILEAGEPRICEUNIT;
+//            }
+//            else
+//            {
+//                xMileageShop.selectCategoryTab = MILEAGESHOP_CATEGORY_30000;
+//                maxPrice = 30000*MILEAGEPRICEUNIT;
+//            }
+//            
+//            setMileageShopCategory();
+//            xMileageUi.totalNum = xMileageShop.totalList;
+//            for(int k=0;k<xMileageShop.totalList;k++)
+//            {
+//                xMileageUi.listCode[k] = xMileageShop.listCode[k];
+//            }
+//            
+//            
+//            int uiXX = 0;
+//            
+//            switch(xMileageUi.state)
+//            {
+//                case MILEAGEUI_STATE_WAIT:
+//                    xMileageUi.flowTime += xGame.prcSec;
+//                    if(xMileageUi.flowTime > 3)
+//                    {
+//                        xMileageUi.state = MILEAGEUI_STATE_NEXT;
+//                        xMileageUi.anyCnt = 0;
+//                    }
+//                    break;
+//                case MILEAGEUI_STATE_NEXT:
+//                    switch(++xMileageUi.anyCnt)
+//                {
+//                    case 1:uiXX = 0;break;
+//                    case 2:uiXX = -1;break;
+//                    case 3:uiXX = -1;break;
+//                    case 4:uiXX = -1;break;
+//                    case 5:uiXX = -2;break;
+//                    case 6:uiXX = -2;break;
+//                    case 7:uiXX = -3;break;
+//                    case 8:uiXX = -4;break;
+//                    case 9:uiXX = -6;break;
+//                    case 10:uiXX = -8;break;
+//                    case 11:uiXX = -10;break;
+//                    case 12:uiXX = -15;break;
+//                    case 13:uiXX = -25;break;
+//                    case 14:uiXX = -52;break;
+//                    case 15:uiXX = -58;break;
+//                    case 16:uiXX = -62;break;
+//                    case 17:uiXX = -64;break;
+//                    case 18:uiXX = -66;break;
+//                    case 19:uiXX = -68;break;
+//                    case 20:uiXX = -69;break;
+//                    case 21:uiXX = -70;break;
+//                    case 22:uiXX = -70;break;
+//                    case 23:uiXX = -71;break;
+//                    case 24:uiXX = -71;break;
+//                    case 25:uiXX = -71;break;
+//                    case 26:uiXX = -72;break;
+//                    case 27:
+//                        xMileageUi.state = MILEAGEUI_STATE_WAIT;
+//                        xMileageUi.flowTime = 0;
+//                        if(++xMileageUi.selectSlot >= xMileageShop.totalList)
+//                            xMileageUi.selectSlot = 0;
+//                        break;
+//                }
+//                    break;
+//            }
+//            
+//            int nowCode = xMileageUi.listCode[xMileageUi.selectSlot];
+//            int nextCode = 0;
+//            
+//            if(xMileageUi.selectSlot+1 >= xMileageShop.totalList)
+//                nextCode = xMileageUi.listCode[0];
+//            else
+//                nextCode = xMileageUi.listCode[xMileageUi.selectSlot+1];
+//            
+//            
+//            gSetClip(true, subTemp[XPOS]-5-36, subTemp[YPOS]-4-36, 72, 72);
+//            sprintf(xDownLoader.strTempUrl, "%s/Product/thumbnail_%d.png",xNetData.strCdnUrl,nowCode);
+//            drawProfilePhotoUrl(subTemp[XPOS]-6+uiXX, subTemp[YPOS]-5,xDownLoader.strTempUrl);
+//			
+//            sprintf(xDownLoader.strTempUrl, "%s/Product/thumbnail_%d.png",xNetData.strCdnUrl,nextCode);
+//            drawProfilePhotoUrl(subTemp[XPOS]-6+72+uiXX, subTemp[YPOS]-5,xDownLoader.strTempUrl);
+//            gSetClip(false, subTemp[XPOS]-5-36, subTemp[YPOS]-4-36, 72, 72);
+//            drawImage(&imgMileageUi[0], subTemp[XPOS], subTemp[YPOS], 0, 0, imgMileageUi[0].w, imgMileageUi[0].h, VH);
+//			
+//            long long mileageTemp0 = xSaveTemp.mileage.oriData;
+//            long long wTemp0 = imgMileageUi[1].w;
+//            
+//            subTemp[WPOS] = wTemp0*mileageTemp0/maxPrice;
+//            
+//            
+//            if(subTemp[WPOS] > imgMileageUi[1].w)
+//                subTemp[WPOS] = imgMileageUi[1].w;
+//            
+//            drawImage(&imgMileageUi[1], subTemp[XPOS]-32, subTemp[YPOS]+42, 0, 0, subTemp[WPOS], imgMileageUi[1].h, VL);
+//            
+//            gSetColor(255, 255, 255);
+//            setCommaNum(strTempS, maxPrice/MILEAGEPRICEUNIT);
+//			
+//            setFontSize(12);
+//            gDrawString(subTemp[XPOS]+48, subTemp[YPOS]+20, strTempS, VH);
+//            setFontSize(11);
+//            
+//            xMileageUi.xTouchMenu.wPos = 80;
+//            xMileageUi.xTouchMenu.hPos = 80;
+//            xMileageUi.xTouchMenu.xPos = subTemp[XPOS]-xMileageUi.xTouchMenu.wPos/2;
+//            xMileageUi.xTouchMenu.yPos = subTemp[YPOS]-xMileageUi.xTouchMenu.hPos/2;
+//			
+//            /*
+//             gSetColor(255, 0, 0);
+//             setAlpha(100);
+//             fillRect(xMileageUi.xTouchMenu.xPos, xMileageUi.xTouchMenu.yPos, xMileageUi.xTouchMenu.wPos, xMileageUi.xTouchMenu.hPos);
+//             setAlpha(ALPHA_MAX);
+//             */
+//        }
+//        
         
         //LJW 월드맵 핫딜 아이콘 막기
 //        subTemp[XPOS] = 259;
@@ -31763,45 +33054,45 @@ void drawWorldMapUi()
 //    {
 //        drawAmuletUi(lcdW-268,86);
 //    }
-	
-	if(xWorldMapUi.isPlayerInfo == TRUE)
-	{
-		if(xWorldMapUi.playInfoTime+5 < xCalendar.nowTime)
-			xWorldMapUi.isPlayerInfo = FALSE;
-		
-		subTemp[XPOS] = -1;
-		subTemp[YPOS] = 92;
-		
-		drawPacker(imgProfile0, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgProfile0), imgH(imgProfile0), TL);
-				
-		xProfile.xTouchClr.xPos = subTemp[XPOS];
-		xProfile.xTouchClr.yPos = subTemp[YPOS];
-		xProfile.xTouchClr.wPos = imgW(imgProfile0);
-		xProfile.xTouchClr.hPos = imgH(imgProfile0);
-		
-		/*
-		 gSetColor(255, 0, 0);
-		 setAlpha(100);
-		 fillRect(xProfile.xTouchClr.xPos, xProfile.xTouchClr.yPos, xProfile.xTouchClr.wPos, xProfile.xTouchClr.hPos);
-		 setAlpha(ALPHA_MAX);
-		 */
-				
-		gDrawStringBold(subTemp[XPOS]+98, subTemp[YPOS]+79, "경험치", VH, 255, 182, 54, 44, 27, 26);		
-		sprintf(strTempS, "%d/%d",xSaveTemp.exp.oriData,xBalanceData.expMax[xSaveTemp.lv.oriData].oriData);
-		gDrawStringBold(subTemp[XPOS]+98, subTemp[YPOS]+106, strTempS, VH, ALPHA_MAX, ALPHA_MAX, ALPHA_MAX, 87, 66, 56);
-		
-		gDrawStringBold(subTemp[XPOS]+255, subTemp[YPOS]+79, "명성도", VH, 255, 111, 199, 44, 27, 26);
-		sprintf(strTempS, "%d/%d",xSaveTemp.fame.oriData,xBalanceData.fameMax[xSaveTemp.lv.oriData]);
-		gDrawStringBold(subTemp[XPOS]+255, subTemp[YPOS]+106, strTempS, VH, ALPHA_MAX, ALPHA_MAX, ALPHA_MAX, 87, 66, 56);
-		
-		
-		/*
-		 gSetColor(255, 0, 0);
-		 setAlpha(100);
-		 fillRect(xProfile.xTouchTrend.xPos, xProfile.xTouchTrend.yPos, xProfile.xTouchTrend.wPos, xProfile.xTouchTrend.hPos);
-		 setAlpha(ALPHA_MAX);
-		 */
-	}
+	//명성도와 경험치 표시 삭제 KBY
+//	if(xWorldMapUi.isPlayerInfo == TRUE)
+//	{
+//		if(xWorldMapUi.playInfoTime+5 < xCalendar.nowTime)
+//			xWorldMapUi.isPlayerInfo = FALSE;
+//		
+//		subTemp[XPOS] = -1;
+//		subTemp[YPOS] = 92;
+//		
+//		drawPacker(imgProfile0, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgProfile0), imgH(imgProfile0), TL);
+//				
+//		xProfile.xTouchClr.xPos = subTemp[XPOS];
+//		xProfile.xTouchClr.yPos = subTemp[YPOS];
+//		xProfile.xTouchClr.wPos = imgW(imgProfile0);
+//		xProfile.xTouchClr.hPos = imgH(imgProfile0);
+//		
+//		
+////		 gSetColor(255, 0, 0);
+////		 setAlpha(100);
+////		 fillRect(xProfile.xTouchClr.xPos, xProfile.xTouchClr.yPos, xProfile.xTouchClr.wPos, xProfile.xTouchClr.hPos);
+////		 setAlpha(ALPHA_MAX);
+//		 
+//				
+//		gDrawStringBold(subTemp[XPOS]+98, subTemp[YPOS]+79, "경험치", VH, 255, 182, 54, 44, 27, 26);		
+//		sprintf(strTempS, "%d/%d",xSaveTemp.exp.oriData,xBalanceData.expMax[xSaveTemp.lv.oriData].oriData);
+//		gDrawStringBold(subTemp[XPOS]+98, subTemp[YPOS]+106, strTempS, VH, ALPHA_MAX, ALPHA_MAX, ALPHA_MAX, 87, 66, 56);
+//		
+//		gDrawStringBold(subTemp[XPOS]+255, subTemp[YPOS]+79, "명성도", VH, 255, 111, 199, 44, 27, 26);
+//		sprintf(strTempS, "%d/%d",xSaveTemp.fame.oriData,xBalanceData.fameMax[xSaveTemp.lv.oriData]);
+//		gDrawStringBold(subTemp[XPOS]+255, subTemp[YPOS]+106, strTempS, VH, ALPHA_MAX, ALPHA_MAX, ALPHA_MAX, 87, 66, 56);
+//		
+//		
+//		/*
+//		 gSetColor(255, 0, 0);
+//		 setAlpha(100);
+//		 fillRect(xProfile.xTouchTrend.xPos, xProfile.xTouchTrend.yPos, xProfile.xTouchTrend.wPos, xProfile.xTouchTrend.hPos);
+//		 setAlpha(ALPHA_MAX);
+//		 */
+//	}
 	
 		
 	if(xWorldMap.isFriendMap == TRUE)
@@ -32145,13 +33436,8 @@ void drawWorldMapUi()
         
         if(xWorldMap.uiShowType == 2)
         {
-        
-        
-            
-            
-            
-            subTemp[XPOS] = 60;
-            subTemp[YPOS] = 60;
+            subTemp[XPOS] = 65;
+            subTemp[YPOS] = 70;
             drawFriendProfile(subTemp[XPOS], subTemp[YPOS], xNetData.userNum, 100);
             
             
@@ -32183,20 +33469,28 @@ void drawWorldMapUi()
             
             subTemp[XPOS] = -1;
             subTemp[YPOS] = 0;
-            drawPacker(imgWorldMapLv0, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgWorldMapLv0), imgH(imgWorldMapLv0), TL);
-            
+            //drawPacker(imgWorldMapLv0, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgWorldMapLv0), imgH(imgWorldMapLv0), TL);
+            drawImage(&imgProfile, subTemp[XPOS], subTemp[YPOS], 0, 0, imgProfile.w, imgProfile.h, TL);
             xTouchPlayerInfoIcon.wPos = imgW(imgWorldMapLv0);
             xTouchPlayerInfoIcon.hPos = imgH(imgWorldMapLv0);
             xTouchPlayerInfoIcon.xPos = subTemp[XPOS];
             xTouchPlayerInfoIcon.yPos = subTemp[YPOS];
             
+//            subTemp[XPOS] = 132;
+//            subTemp[YPOS] = 32;
+//            gSetColor(133, 80, 56);
+//            sprintf(strTempS,"%s", xSaveTemp.strNickName);
+//            setFontSize(14);
+//            gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VL);
+//            setFontSize(11);
             subTemp[XPOS] = 132;
             subTemp[YPOS] = 32;
-            gSetColor(133, 80, 56);
+            gSetColor(101, 48, 150);
             sprintf(strTempS,"%s", xSaveTemp.strNickName);
-            setFontSize(14);
+            setFontSize(16);
             gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VL);
             setFontSize(11);
+
             if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
             {
                 switch(xQuestTuto.nowNum)
@@ -32209,14 +33503,23 @@ void drawWorldMapUi()
                 }
             }
             
-            subTemp[XPOS] = 228;
-            subTemp[YPOS] = 73;
+            subTemp[XPOS] = 208;
+            subTemp[YPOS] = 60;
             if(xBalanceData.expMax[xSaveTemp.lv.oriData].oriData == 0)
                 initSecurity(&xBalanceData.expMax[xSaveTemp.lv.oriData], 999999);
 
-            subTemp[WPOS] = imgW(imgWorldMapLv1) * xWorldMap.uiShowExp / xBalanceData.expMax[xSaveTemp.lv.oriData].oriData;
-            drawPacker(imgWorldMapLv1, subTemp[XPOS]-imgW(imgWorldMapLv1)/2, subTemp[YPOS], 0, 0, subTemp[WPOS], imgH(imgWorldMapLv1)/2, VL);
+//            subTemp[WPOS] = imgW(imgWorldMapLv1) * xWorldMap.uiShowExp / xBalanceData.expMax[xSaveTemp.lv.oriData].oriData;
+            subTemp[WPOS] = imgBarExp.w * xWorldMap.uiShowExp / xBalanceData.expMax[xSaveTemp.lv.oriData].oriData;
+            drawImage(&imgBarEmpty, subTemp[XPOS]-imgBarEmpty.w/2, subTemp[YPOS], 0, 0, imgBarEmpty.w, imgBarEmpty.h, VL);
+            drawImage(&imgBarExp, subTemp[XPOS]-imgBarExp.w/2, subTemp[YPOS], 0, 0, subTemp[WPOS], imgBarExp.h, VL);
             
+//            drawImage(&imgBarExp, subTemp[XPOS]-imgBarExp.w/2, subTemp[YPOS], 0, 0, imgBarExp.w, imgBarExp.h, VL);
+//            drawPacker(imgWorldMapLv1, subTemp[XPOS]-imgW(imgWorldMapLv1)/2, subTemp[YPOS], 0, 0, subTemp[WPOS], imgH(imgWorldMapLv1)/2, VL);
+        
+            subTemp[XPOS] = 158;
+            subTemp[YPOS] = 60;
+            
+            drawImage(&imgMainExpWarmth, subTemp[XPOS], subTemp[YPOS], 0, 0, imgMainExpWarmth.w/2, imgMainExpWarmth.h, VH);
             
             
             if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
@@ -32230,17 +33533,34 @@ void drawWorldMapUi()
                     break;
                 }
             }
-            drawPacker(imgWorldMapNum2, subTemp[XPOS]+32, subTemp[YPOS], 0, 0, imgW(imgWorldMapNum2), imgH(imgWorldMapNum2), VH);
-            drawNumPacker(imgWorldMapNum0, subTemp[XPOS]+65, subTemp[YPOS], xSaveTemp.lv.oriData, -3, VR);
-                                    
+//            drawPacker(imgWorldMapNum2, subTemp[XPOS]+32, subTemp[YPOS], 0, 0, imgW(imgWorldMapNum2), imgH(imgWorldMapNum2), VH);
+//            drawNumPacker(imgWorldMapNum0, subTemp[XPOS]+65, subTemp[YPOS], xSaveTemp.lv.oriData, -3, VR);
+            
+            subTemp[XPOS] = 122;
+            subTemp[YPOS] = 68;
+            
+            sprintf(strTempS, "%d", xSaveTemp.lv.oriData);
+            setFontSizeORI(18);
+            gSetColor(255, 255, 255);
+            gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VH);
+            setFontSize(11);
+            
                 
-            subTemp[XPOS] = 228;
-            subTemp[YPOS] = 73+26;
+            subTemp[XPOS] = 208;
+            subTemp[YPOS] = 82;
             
             subTemp[WPOS] = imgW(imgWorldMapLv1) * xWorldMap.uiShowFame / xBalanceData.fameMax[xSaveTemp.lv.oriData];
             
-            drawPacker(imgWorldMapLv1, subTemp[XPOS]-imgW(imgWorldMapLv1)/2, subTemp[YPOS], 0, imgH(imgWorldMapLv1)/2, subTemp[WPOS], imgH(imgWorldMapLv1)/2, VL);
+//            drawPacker(imgWorldMapLv1, subTemp[XPOS]-imgW(imgWorldMapLv1)/2, subTemp[YPOS], 0, imgH(imgWorldMapLv1)/2, subTemp[WPOS], imgH(imgWorldMapLv1)/2, VL);
             
+            drawImage(&imgBarEmpty, subTemp[XPOS]-imgBarEmpty.w/2, subTemp[YPOS], 0, 0, imgBarEmpty.w, imgBarEmpty.h, VL);
+            drawImage(&imgBarWarmth, subTemp[XPOS]-imgBarWarmth.w/2, subTemp[YPOS], 0, 0, subTemp[WPOS], imgBarWarmth.h, VL);
+            //            drawPacker(imgWorldMapLv1, subTemp[XPOS]-imgW(imgWorldMapLv1)/2, subTemp[YPOS], 0, 0, subTemp[WPOS], imgH(imgWorldMapLv1)/2, VL);
+            
+            subTemp[XPOS] = 158;
+            subTemp[YPOS] = 82;
+            
+            drawImage(&imgMainExpWarmth, subTemp[XPOS], subTemp[YPOS], imgMainExpWarmth.w/2, 0, imgMainExpWarmth.w/2, imgMainExpWarmth.h, VH);
             if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
             {
                 switch(xQuestTuto.nowNum)
@@ -32254,7 +33574,7 @@ void drawWorldMapUi()
                 }
             }
             
-            drawNumCommaPacker(imgWorldMapNum0, subTemp[XPOS]+65, subTemp[YPOS], xWorldMap.uiShowFame, -3, VR,imgWorldMapNum4,-1);
+//            drawNumCommaPacker(imgWorldMapNum0, subTemp[XPOS]+65, subTemp[YPOS], xWorldMap.uiShowFame, -3, VR,imgWorldMapNum4,-1);
             if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
             {
                 switch(xQuestTuto.nowNum)
@@ -32931,14 +34251,16 @@ void drawWorldMapUi()
 		}
 		
 //LJW 월드맵 친구아이콘 드로우 막기
-//		subTemp[XPOS] = imgW(imgSwitchWorldMapUi2)/2;
-//		subTemp[YPOS] = lcdH-imgH(imgSwitchWorldMapUi2)/2+5;
+		subTemp[XPOS] = imgW(imgSwitchWorldMapUi2)/2;
+		subTemp[YPOS] = lcdH-imgH(imgSwitchWorldMapUi2)/2+5;
 //		drawPacker(imgSwitchWorldMapUi2, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgSwitchWorldMapUi2), imgH(imgSwitchWorldMapUi2), VH);
-//	
-//		//setFontSize(14);
-//		//gDrawStringBold(subTemp[XPOS], subTemp[YPOS]+42, "친구", VH, ALPHA_MAX, ALPHA_MAX, ALPHA_MAX, 44, 27, 26);
-//		//setFontSize(11);
-//					
+            
+        drawImage(&imgMenuIcon1, subTemp[XPOS], subTemp[YPOS], 0, 0, imgMenuIcon1.w, imgMenuIcon1.h, VH);
+	
+		//setFontSize(14);
+		//gDrawStringBold(subTemp[XPOS], subTemp[YPOS]+42, "친구", VH, ALPHA_MAX, ALPHA_MAX, ALPHA_MAX, 44, 27, 26);
+		//setFontSize(11);
+					
 //		if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
 //		{
 //			if(xWorldMap.isFriendMap == FALSE)
@@ -32965,13 +34287,13 @@ void drawWorldMapUi()
 //				}
 //			}
 //		}
-//	
-//		
-//			
-//		xTouchWorldMapFriendIcon.wPos = imgW(imgSwitchWorldMapUi2);
-//		xTouchWorldMapFriendIcon.hPos = imgH(imgSwitchWorldMapUi2);
-//		xTouchWorldMapFriendIcon.xPos = subTemp[XPOS] - xTouchWorldMapFriendIcon.wPos/2;
-//		xTouchWorldMapFriendIcon.yPos = subTemp[YPOS] - xTouchWorldMapFriendIcon.hPos/2;
+	
+		
+			
+		xTouchWorldMapFriendIcon.wPos = imgW(imgSwitchWorldMapUi2);
+		xTouchWorldMapFriendIcon.hPos = imgH(imgSwitchWorldMapUi2);
+		xTouchWorldMapFriendIcon.xPos = subTemp[XPOS] - xTouchWorldMapFriendIcon.wPos/2;
+		xTouchWorldMapFriendIcon.yPos = subTemp[YPOS] - xTouchWorldMapFriendIcon.hPos/2;
 		/*
 		 gSetColor(255, 0, 0);
 		 setAlpha(100);
@@ -33009,11 +34331,16 @@ void drawWorldMapUi()
 		else
 		{
 			if(xSwitchWorldMapUi.state != SWITCH_STATE_OFF)
-				drawSwitch(subTemp[XPOS]-10,subTemp[YPOS]+10,	&xSwitchWorldMapUi,imgSwitchWorldMapUi0,xWorldMapUi.totalNum,97);
+            {
+//				drawSwitch(subTemp[XPOS]-10,subTemp[YPOS]+10,	&xSwitchWorldMapUi,imgSwitchWorldMapUi0,xWorldMapUi.totalNum,97);
+                //변동 사항 KBY
+                drawSwitchImg(subTemp[XPOS]-10, subTemp[YPOS]+10, &xSwitchWorldMapUi, imgMenuIcon2, xWorldMapUi.totalNum, 97);
+            }
 			if(xSwitchWorldMapUi_Up.state != SWITCH_STATE_OFF)
 				drawSwitchUp(subTemp[XPOS]+9,subTemp[YPOS]-17,	&xSwitchWorldMapUi_Up,imgSwitchWorldMapUi1,4,90);
-						
-			drawPacker(imgSwitchWorldMapUi3, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgSwitchWorldMapUi3), imgH(imgSwitchWorldMapUi3), VH);
+            //변동 사항 KBY
+            drawImage(&imgMenu, subTemp[XPOS], subTemp[YPOS], 0, 0, imgMenu.w, imgMenu.h, VH);
+//			drawPacker(imgSwitchWorldMapUi3, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgSwitchWorldMapUi3), imgH(imgSwitchWorldMapUi3), VH);
 			//gDrawStringBold(subTemp[XPOS], subTemp[YPOS]+42, "메뉴", VH, ALPHA_MAX, ALPHA_MAX, ALPHA_MAX, 44, 27, 26);
 			
 			if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
@@ -33076,17 +34403,19 @@ void drawWorldMapUi()
 		}
 		setFontSize(11);
 			
-		xTouchWorldMapMainMenuIcon.wPos = imgW(imgSwitchWorldMapUi2);
-		xTouchWorldMapMainMenuIcon.hPos = imgH(imgSwitchWorldMapUi2);
+//		xTouchWorldMapMainMenuIcon.wPos = imgW(imgSwitchWorldMapUi2);
+//		xTouchWorldMapMainMenuIcon.hPos = imgH(imgSwitchWorldMapUi2);
+        xTouchWorldMapMainMenuIcon.wPos = imgMenu.w;
+        xTouchWorldMapMainMenuIcon.hPos = imgMenu.h;
 		xTouchWorldMapMainMenuIcon.xPos = subTemp[XPOS] - xTouchWorldMapMainMenuIcon.wPos/2;
 		xTouchWorldMapMainMenuIcon.yPos = subTemp[YPOS] - xTouchWorldMapMainMenuIcon.hPos/2;
         
-		/*
-		 gSetColor(255, 0, 0);
-		 setAlpha(100);
-		 fil    lRect(xTouchWorldMapMainMenuIcon.xPos, xTouchWorldMapMainMenuIcon.yPos, xTouchWorldMapMainMenuIcon.wPos, xTouchWorldMapMainMenuIcon.hPos);
-		 setAlpha();
-		 */
+		
+//        gSetColor(255, 0, 0);
+//        setAlpha(100);
+//        fillRect(xTouchWorldMapMainMenuIcon.xPos, xTouchWorldMapMainMenuIcon.yPos, xTouchWorldMapMainMenuIcon.wPos,xTouchWorldMapMainMenuIcon.hPos);
+//        setAlpha(ALPHA_MAX);
+		 
 									
 		if(xWorldMap.isFriendMap == TRUE)
 		{
@@ -33193,7 +34522,53 @@ void drawWorldMapUi()
 		}
 		break;
 	}
-		
+    
+    
+    subTemp[XPOS] =121;
+    subTemp[YPOS] =410;
+    
+    xTouchGreenHouse.wPos = 100;
+    xTouchGreenHouse.hPos = 100;
+    xTouchGreenHouse.xPos = subTemp[XPOS];
+    xTouchGreenHouse.yPos = subTemp[YPOS];
+    
+    setAlpha(100);
+    gSetColor(255, 0, 0);
+    fillRect(xTouchGreenHouse.xPos, xTouchGreenHouse.yPos, xTouchGreenHouse.wPos, xTouchGreenHouse.hPos);
+    setAlpha(ALPHA_MAX);
+    
+    gSetColor(0, 0, 0);
+    setFontSizeORI(18);
+    sprintf(strTempS, "온실");
+    gDrawString(subTemp[XPOS]+50, subTemp[YPOS]+50, strTempS, VH);
+    setFontSize(11);
+
+    subTemp[XPOS] = 11;
+    subTemp[YPOS] = 410;
+    
+    xTouchSpinningWheel.wPos = 100;
+    xTouchSpinningWheel.hPos = 100;
+    xTouchSpinningWheel.xPos = subTemp[XPOS];
+    xTouchSpinningWheel.yPos = subTemp[YPOS];
+    
+    setAlpha(100);
+    gSetColor(255, 0, 0);
+    fillRect(xTouchSpinningWheel.xPos, xTouchSpinningWheel.yPos, xTouchSpinningWheel.wPos, xTouchSpinningWheel.hPos);
+    setAlpha(ALPHA_MAX);
+    
+    gSetColor(0, 0, 0);
+    setFontSizeORI(18);
+    sprintf(strTempS, "물레");
+    gDrawString(subTemp[XPOS]+50, subTemp[YPOS]+50, strTempS, VH);
+    setFontSize(11);
+    
+//    gSetColor(0, 0, 0);
+//    setFontSizeORI(18);
+//    sprintf(strTempS, "%s", xGreenHouse_MaterialData_FP.xSlot[0].strName);
+//    gDrawString(subTemp[XPOS]+150, subTemp[YPOS]+50, strTempS, VH);
+//    setFontSize(11);
+
+    
 	getUiHide();
 	//LJW 월드맵 내샵 헬프정보 UI막기
 //	drawHelpInfo();
@@ -33404,8 +34779,217 @@ void drawSwitch(int x,int y,XSWITCH * xSwitch,int XIMG,int totalNum, int gab)
 
 
 }
+//////////////////////////////////////////////////////////////////////////////
+//메뉴 버튼 연출 KBY
 
-
+void drawSwitchImg(int x,int y,XSWITCH * xSwitch,XIMG xImg,int totalNum, int gab)
+{
+    int hPos = 0;
+    int wPos = 0;
+    
+    if(xWorldMap.isTuto == TRUE)
+        xSwitch->closeCnt = 0;
+    
+    switch(xSwitch->state)
+    {
+        case SWITCH_STATE_OFF:
+            xSwitch->anyCnt = 0;
+            break;
+        case SWITCH_STATE_ON:
+            if(++xSwitch->closeCnt > 90)
+            {
+                if(xWorldMap.isTuto == FALSE)
+                    xSwitch->state = SWITCH_STATE_OFFANY;
+            }
+            
+            break;
+        case SWITCH_STATE_OFFANY:
+            if(--xSwitch->anyCnt < 0)
+            {
+                xSwitch->anyCnt = 0;
+                xSwitch->state = SWITCH_STATE_OFF;
+            }
+            break;
+        case SWITCH_STATE_ONANY:
+            if(++xSwitch->anyCnt-((totalNum-1)*2) > 4)
+            {
+                xSwitch->anyCnt = 4+((totalNum-1)*2);
+                xSwitch->state = SWITCH_STATE_ON;
+                xSwitch->closeCnt = 0;
+            }
+            break;
+    }
+    
+    
+    for(int k=totalNum-1;k>=0;k--)
+    {
+        wPos = 0;
+        
+        //LJW 월드맵 메뉴 > 스타일북/ 모델/ 직원 메뉴 막기
+//        if(k >= 3)
+//            continue;
+        //여기까지
+        
+        switch(xSwitch->anyCnt-((totalNum-1-k)*2))
+        {
+            case 4:  wPos = 0;  break;
+            case 3:  wPos = 32;  break;
+            case 2:  wPos = 64;  break;
+            case 1:  wPos = 128;  break;
+            case 0:  wPos = 256;  break;
+            default:
+                if(xSwitch->anyCnt-((totalNum-1-k)*2) < 0)
+                    wPos = 999;
+                else
+                    wPos = 0;
+                break;
+        }
+        
+        
+        switch(--xSwitch->clickAnyCnt[k])
+        {
+            case 3:
+                //xGame.isBlend = TRUE;
+                xGame.blendType = BLEND_WHITE;
+                xGame.blendNum = ALPHA_MAX;
+                break;
+            case 2:
+            case 1:
+                wPos += ranDom(-(xSwitch->clickAnyCnt[k]),(xSwitch->clickAnyCnt[k]));
+                hPos += ranDom(-(xSwitch->clickAnyCnt[k]),(xSwitch->clickAnyCnt[k]));
+                break;
+            default:
+                xSwitch->clickAnyCnt[k] = -1;
+                break;
+        }
+        
+        
+//        drawPacker(x, x+wPos-((k+1)*gab)+wPos, y, (imgW(XIMG)/(totalNum))*((totalNum-1)-k),0 , (imgW(XIMG)/(totalNum)), imgH(XIMG), VH);
+        
+        drawImage(&xImg, x+wPos-((k+1)*gab)+wPos, y, (xImg.w/totalNum)*((totalNum-1)-k), 0, (xImg.w/totalNum), xImg.h, VH);
+        xGame.isBlend = FALSE;
+        xSwitch->xTouch[k].wPos = (xImg.w/totalNum)-20;
+        xSwitch->xTouch[k].hPos = xImg.h-20;
+        
+        xSwitch->xTouch[k].xPos = x-((k+1)*gab)+wPos-xSwitch->xTouch[k].wPos/2;
+        xSwitch->xTouch[k].yPos = y-xSwitch->xTouch[k].hPos/2;
+        
+        
+        
+        
+        switch(k)
+        {
+            case 0:	sprintf(strTempS, "설정");
+                break;
+            case 1:	sprintf(strTempS, "편집");
+                if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+                {
+                    switch(xSwitch->state)
+                    {
+                        case SWITCH_STATE_ON:
+                        case SWITCH_STATE_ONANY:
+                            switch(xQuestTuto.nowNum)
+                        {
+                            case TUTO_6_INTERIOR_EDITMENUTOUCH:
+                                xTutoInfo.x[xTutoInfo.totalNum] = xSwitch->xTouch[k].xPos+xSwitch->xTouch[k].wPos/2;
+                                xTutoInfo.y[xTutoInfo.totalNum] = xSwitch->xTouch[k].yPos+xSwitch->xTouch[k].hPos/2;
+                                xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
+                                break;
+                        }
+                            break;
+                    }
+                }
+                break;
+            case 2:
+                sprintf(strTempS, "상점");
+                if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+                {
+                    switch(xSwitch->state)
+                    {
+                        case SWITCH_STATE_ON:
+                        case SWITCH_STATE_ONANY:
+                            switch(xQuestTuto.nowNum)
+                        {
+                            case TUTO_6_INTERIOR_MENUTOUCH0:
+                            case TUTO_8_INTERIOR_TABTOUCH:
+                            case TUTO_8_INTERIOR_OK:
+                            case TUTO_9_INTERIOR_TABTOUCH:
+                            case TUTO_10_INTERIOR_TABTOUCH:
+                            case TUTO_26_INTERIOR_MENUTOUCH0:
+                            case TUTO_26_INTERIOR_MENUTOUCH1:
+                            case TUTO_30_INTERIOR_TABTOUCH:
+                                if(xWorldMap.isExtensionEvent == FALSE)
+                                {
+                                    xTutoInfo.x[xTutoInfo.totalNum] = xSwitch->xTouch[k].xPos+xSwitch->xTouch[k].wPos/2;
+                                    xTutoInfo.y[xTutoInfo.totalNum] = xSwitch->xTouch[k].yPos+xSwitch->xTouch[k].hPos/2;
+                                    xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
+                                }
+                                break;
+                        }
+                            break;
+                    }
+                }
+                break;
+            case 3:	sprintf(strTempS, "직원");
+                if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+                {
+                    switch(xSwitch->state)
+                    {
+                        case SWITCH_STATE_ON:
+                        case SWITCH_STATE_ONANY:
+                            switch(xQuestTuto.nowNum)
+                        {
+                            case TUTO_13_STAFF_MENUTOUCH:
+                            case TUTO_14_STAFF_MENUTOUCH:
+                                xTutoInfo.x[xTutoInfo.totalNum] = xSwitch->xTouch[k].xPos+xSwitch->xTouch[k].wPos/2;
+                                xTutoInfo.y[xTutoInfo.totalNum] = xSwitch->xTouch[k].yPos+xSwitch->xTouch[k].hPos/2;
+                                xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
+                                break;
+                        }
+                            break;
+                    }
+                }
+                break;
+            case 4:	sprintf(strTempS, "모델");
+                if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+                {
+                    switch(xSwitch->state)
+                    {
+                        case SWITCH_STATE_ON:
+                        case SWITCH_STATE_ONANY:
+                            switch(xQuestTuto.nowNum)
+                        {
+                            case TUTO_22_MODELCASTING:
+                                xTutoInfo.x[xTutoInfo.totalNum] = xSwitch->xTouch[k].xPos+xSwitch->xTouch[k].wPos/2;
+                                xTutoInfo.y[xTutoInfo.totalNum] = xSwitch->xTouch[k].yPos+xSwitch->xTouch[k].hPos/2;
+                                xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
+                                break;
+                        }
+                            break;
+                    }
+                }
+                break;
+            case 5:	sprintf(strTempS, "스타일북");		break;
+        }
+        //gDrawStringBold(x+wPos-((k+1)*gab)+wPos, y+hPos+34, strTempS, VH, ALPHA_MAX, ALPHA_MAX, ALPHA_MAX, 44, 27, 26);
+    }
+    
+    
+    xGame.isBlend = FALSE;
+    
+    /*
+     for(int i=0;i<totalNum;i++)
+     {
+     gSetColor(255, 0, 0);
+     setAlpha(100);
+     fillRect(xSwitch->xTouch[i].xPos, xSwitch->xTouch[i].yPos, xSwitch->xTouch[i].wPos, xSwitch->xTouch[i].hPos);
+     setAlpha(ALPHA_MAX);
+     }
+     */
+    
+    
+}
+/////////////////////////////////////////////////////////////////////////////////
 void drawSwitchUp(int x,int y,XSWITCH * xSwitch,int XIMG,int totalNum, int gab)
 {
 	int hPos = 0;
@@ -36687,6 +38271,8 @@ void setInteriorBuildMode(int slotNum,int teamNum)
 		
 	//인테리어 설치 모드로 전환
 	interiorShopFreeLoad(FALSE);
+    //인테리어 편집 UI 이미지 로드 KBY 2018.2.26
+    interiorbuildFreeLoad_FP(true);
 	xWorldMap.state = WORLDMAP_STATE_INTERIOR;
 	
 				
@@ -36957,6 +38543,39 @@ int getWorldMapPos(int pos,int posCxy)
 	return pos;
 }
 
+void interiorbuildFreeLoad_FP(bool isLoad)
+{
+    if(isLoad==true)
+    {
+        loadImg("interior_frame_circle.png", &imgInteriorBuild[0]);
+        loadImg("interior_btn_input.png", &imgInteriorBuild[1]);
+        loadImg("interior_btn_move.png", &imgInteriorBuild[2]);
+        loadImg("interior_btn_ok.png", &imgInteriorBuild[3]);
+        loadImg("interior_btn_reverse.png", &imgInteriorBuild[4]);
+        loadImg("productionexiticon.png", &imgInteriorBuild[5]);
+        loadImg("interior_btn_all.png", &imgInteriorBuild[6]);
+        loadImg("interior_btn_furniture.png", &imgInteriorBuild[7]);
+        loadImg("interior_btn_tile.png", &imgInteriorBuild[8]);
+        loadImg("interior_btn_exit.png", &imgInteriorBuild[9]);
+        loadImg("interior_edit_base.png", &imgInteriorBuild[10]);
+    }
+    
+    else
+    {
+        freeImg(&imgInteriorBuild[0]);
+        freeImg(&imgInteriorBuild[1]);
+        freeImg(&imgInteriorBuild[2]);
+        freeImg(&imgInteriorBuild[3]);
+        freeImg(&imgInteriorBuild[4]);
+        freeImg(&imgInteriorBuild[5]);
+        freeImg(&imgInteriorBuild[6]);
+        freeImg(&imgInteriorBuild[7]);
+        freeImg(&imgInteriorBuild[8]);
+        freeImg(&imgInteriorBuild[9]);
+        freeImg(&imgInteriorBuild[10]);
+    }
+}
+
 void drawInteriorBuild()
 {
 	int px;
@@ -37012,17 +38631,31 @@ void drawInteriorBuild()
 
 		if(xInterior.buildType != INTERIORBUILD_MOVETYPE_OBJ)
 		{
-			drawPacker(imgBuildFrame0, px, py, 0, 0, imgW(imgBuildFrame0), imgH(imgBuildFrame0), VH);
-			subTemp[XPOS] = px;
-			subTemp[YPOS] = py+110;
+//			drawPacker(imgBuildFrame0, px, py, 0, 0, imgW(imgBuildFrame0), imgH(imgBuildFrame0), VH);
+            drawImage(&imgInteriorBuild[0], px, py, 0, 0, imgInteriorBuild[0].w, imgInteriorBuild[0].h, VH);
+			subTemp[XPOS] = px-70;
+			subTemp[YPOS] = py+90;
 			
-			xTouchBuildIconMove.wPos = imgW(imgBuildIconMove)/2;
-			xTouchBuildIconMove.hPos = imgH(imgBuildIconMove);
-			xTouchBuildIconMove.xPos = subTemp[XPOS]-xTouchBuildIconMove.wPos/2;
-			xTouchBuildIconMove.yPos = subTemp[YPOS]-xTouchBuildIconMove.hPos/2;
-			
-			drawPacker(imgBuildIconMove, subTemp[XPOS], subTemp[YPOS], imgW(imgBuildIconMove)/2, 0, imgW(imgBuildIconMove)/2, imgH(imgBuildIconMove), VH);
-									
+//			xTouchBuildIconMove.wPos = imgW(imgBuildIconMove)/2;
+//			xTouchBuildIconMove.hPos = imgH(imgBuildIconMove);
+//			xTouchBuildIconMove.xPos = subTemp[XPOS]-xTouchBuildIconMove.wPos/2;
+//			xTouchBuildIconMove.yPos = subTemp[YPOS]-xTouchBuildIconMove.hPos/2;
+//			
+//			drawPacker(imgBuildIconMove, subTemp[XPOS], subTemp[YPOS], imgW(imgBuildIconMove)/2, 0, imgW(imgBuildIconMove)/2, imgH(imgBuildIconMove), VH);
+            
+            xTouchBuildIconMove.wPos = imgInteriorBuild[2].w/2;
+            xTouchBuildIconMove.hPos = imgInteriorBuild[2].h;
+            xTouchBuildIconMove.xPos = subTemp[XPOS]-xTouchBuildIconMove.wPos/2;
+            xTouchBuildIconMove.yPos = subTemp[YPOS]-xTouchBuildIconMove.hPos/2;
+            
+            if(isTouchBuildIconMove==false)
+            {
+                drawImage(&imgInteriorBuild[2], subTemp[XPOS], subTemp[YPOS], 0, 0, imgInteriorBuild[2].w/2, imgInteriorBuild[2].h, VH);
+            }
+            else
+            {
+                drawImage(&imgInteriorBuild[2], subTemp[XPOS], subTemp[YPOS], imgInteriorBuild[2].w/2, 0, imgInteriorBuild[2].w/2, imgInteriorBuild[2].h, VH);
+            }
 			if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
 			{
 				switch(xQuestTuto.nowNum)
@@ -37035,10 +38668,13 @@ void drawInteriorBuild()
 				}
 			}
 			
-			subTemp[XPOS] = px+110;
-			subTemp[YPOS] = py+40;
-			xTouchBuildIconOk.wPos = imgW(imgBuildIconOk)/2;
-			xTouchBuildIconOk.hPos = imgH(imgBuildIconOk);
+//			subTemp[XPOS] = px+110;
+//			subTemp[YPOS] = py+40;
+            subTemp[XPOS]=px+105;
+            subTemp[YPOS]=py-20;
+
+			xTouchBuildIconOk.wPos = imgInteriorBuild[3].w/3;
+			xTouchBuildIconOk.hPos = imgInteriorBuild[3].h;
 			xTouchBuildIconOk.xPos = subTemp[XPOS]-xTouchBuildIconOk.wPos/2;
 			xTouchBuildIconOk.yPos = subTemp[YPOS]-xTouchBuildIconOk.hPos/2;
 			
@@ -37093,17 +38729,28 @@ void drawInteriorBuild()
 			
             
 			if(isSubTemp[0] == TRUE)
-				drawPacker(imgBuildIconOk, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgBuildIconOk)/2, imgH(imgBuildIconOk), VH);
+//				drawPacker(imgBuildIconOk, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgBuildIconOk)/2, imgH(imgBuildIconOk), VH);
+                drawImage(&imgInteriorBuild[3], subTemp[XPOS], subTemp[YPOS], imgInteriorBuild[3].w/3*2, 0, imgInteriorBuild[3].w/3, imgInteriorBuild[3].h, VH);
 			else
-				drawPacker(imgBuildIconOk, subTemp[XPOS], subTemp[YPOS], imgW(imgBuildIconOk)/2, 0, imgW(imgBuildIconOk)/2, imgH(imgBuildIconOk), VH);
-			
+            {
+//				drawPacker(imgBuildIconOk, subTemp[XPOS], subTemp[YPOS], imgW(imgBuildIconOk)/2, 0, imgW(imgBuildIconOk)/2, imgH(imgBuildIconOk), VH);
+                
+                if(isTouchBuildIconOk==false)
+                {
+                    drawImage(&imgInteriorBuild[3], subTemp[XPOS], subTemp[YPOS], 0, 0, imgInteriorBuild[3].w/3, imgInteriorBuild[3].h, VH);
+                }
+                else
+                {
+                    drawImage(&imgInteriorBuild[3], subTemp[XPOS], subTemp[YPOS], imgInteriorBuild[3].w/3, 0, imgInteriorBuild[3].w/3, imgInteriorBuild[3].h, VH);
+                }
+            }
 						
-			subTemp[XPOS] = px-105;
-			subTemp[YPOS] = py+40;
-			xTouchBuildIconClr.wPos = imgW(imgBuildIconClr)/2;
-			xTouchBuildIconClr.hPos = imgH(imgBuildIconClr);
-			xTouchBuildIconClr.xPos = subTemp[XPOS]-xTouchBuildIconClr.wPos/2;
-			xTouchBuildIconClr.yPos = subTemp[YPOS]-xTouchBuildIconClr.hPos/2;
+//			subTemp[XPOS] = px-105;
+//			subTemp[YPOS] = py+40;
+//			xTouchBuildIconClr.wPos = imgW(imgBuildIconClr)/2;
+//			xTouchBuildIconClr.hPos = imgH(imgBuildIconClr);
+//			xTouchBuildIconClr.xPos = subTemp[XPOS]-xTouchBuildIconClr.wPos/2;
+//			xTouchBuildIconClr.yPos = subTemp[YPOS]-xTouchBuildIconClr.hPos/2;
 			
 						
 			if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
@@ -37118,18 +38765,39 @@ void drawInteriorBuild()
 				}
 			}
 			
-			drawPacker(imgBuildIconClr, subTemp[XPOS], subTemp[YPOS], imgW(imgBuildIconClr)/2, 0, imgW(imgBuildIconClr)/2, imgH(imgBuildIconClr), VH);
+//			drawPacker(imgBuildIconClr, subTemp[XPOS], subTemp[YPOS], imgW(imgBuildIconClr)/2, 0, imgW(imgBuildIconClr)/2, imgH(imgBuildIconClr), VH);
+            
+            subTemp[XPOS]=px+70;
+            subTemp[YPOS]=py+90;
+            
+            xTouchBuildIconClr.wPos = imgInteriorBuild[5].w/2;
+            xTouchBuildIconClr.hPos = imgInteriorBuild[5].h;
+            xTouchBuildIconClr.xPos = subTemp[XPOS]-xTouchBuildIconClr.wPos/2;
+            xTouchBuildIconClr.yPos = subTemp[YPOS]-xTouchBuildIconClr.hPos/2;
 
+            if(isTouchBuildIconClr==false)
+            {
+                drawImage(&imgInteriorBuild[5], subTemp[XPOS], subTemp[YPOS], 0, 0, imgInteriorBuild[5].w/2, imgInteriorBuild[5].h, VH);
+            }
+            else
+            {
+                drawImage(&imgInteriorBuild[5], subTemp[XPOS], subTemp[YPOS], imgInteriorBuild[5].w/2, 0, imgInteriorBuild[5].w/2, imgInteriorBuild[5].h, VH);
+            }
+            subTemp[XPOS] = px-105;
+            subTemp[YPOS] = py-20;
+			
+            xTouchBuildIconInven.wPos = imgInteriorBuild[1].w/2;
+            xTouchBuildIconInven.hPos = imgInteriorBuild[1].h;
+            xTouchBuildIconInven.xPos = subTemp[XPOS]-xTouchBuildIconInven.wPos/2;
+            xTouchBuildIconInven.yPos = subTemp[YPOS]-xTouchBuildIconInven.hPos/2;
 
+//			subTemp[XPOS] = px-80;
+//			subTemp[YPOS] = py-80;
 			
-			
-			subTemp[XPOS] = px-80;
-			subTemp[YPOS] = py-80;
-			
-			xTouchBuildIconInven.wPos = imgW(imgBuildIconInven)/2;
-			xTouchBuildIconInven.hPos = imgH(imgBuildIconInven);
-			xTouchBuildIconInven.xPos = subTemp[XPOS]-xTouchBuildIconInven.wPos/2;
-			xTouchBuildIconInven.yPos = subTemp[YPOS]-xTouchBuildIconInven.hPos/2;
+//			xTouchBuildIconInven.wPos = imgW(imgBuildIconInven)/2;
+//			xTouchBuildIconInven.hPos = imgH(imgBuildIconInven);
+//			xTouchBuildIconInven.xPos = subTemp[XPOS]-xTouchBuildIconInven.wPos/2;
+//			xTouchBuildIconInven.yPos = subTemp[YPOS]-xTouchBuildIconInven.hPos/2;
 			
 			if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
 			{
@@ -37152,34 +38820,47 @@ void drawInteriorBuild()
 				case INTERIOR_TYPE_WALLTILE:
 					break;
 				default:
-					drawPacker(imgBuildIconInven, subTemp[XPOS], subTemp[YPOS], imgW(imgBuildIconInven)/2, 0, imgW(imgBuildIconInven)/2, imgH(imgBuildIconInven), VH);
+//					drawPacker(imgBuildIconInven, subTemp[XPOS], subTemp[YPOS], imgW(imgBuildIconInven)/2, 0, imgW(imgBuildIconInven)/2, imgH(imgBuildIconInven), VH);
+                    if(isTouchBuildIconInven==false)
+                    {
+                        drawImage(&imgInteriorBuild[1], subTemp[XPOS], subTemp[YPOS], 0, 0, imgInteriorBuild[1].w/2, imgInteriorBuild[1].h, VH);
+                    }
+                    else
+                    {
+                        drawImage(&imgInteriorBuild[1], subTemp[XPOS], subTemp[YPOS], imgInteriorBuild[1].w/2, 0, imgInteriorBuild[1].w/2, imgInteriorBuild[1].h, VH);
+                    }
 					break;
 				}
 			}
+            
 			
 			subTemp[XPOS] = px;
 			subTemp[YPOS] = py-110;
-			if(xInterior.buildInType == INTERIORBUILD_TYPE_GAME)
-			{
-				switch(xMap.type)
-				{
-				case INTERIOR_TYPE_DOOR:
-				case INTERIOR_TYPE_FLOORTILE:
-				case INTERIOR_TYPE_WALLTILE:
-					break;
-				default:
-					subTemp[XPOS] = px+85;
-					subTemp[YPOS] = py-80;
-					break;
-				}
-			}
+//			if(xInterior.buildInType == INTERIORBUILD_TYPE_GAME)
+//			{
+//				switch(xMap.type)
+//				{
+//				case INTERIOR_TYPE_DOOR:
+//				case INTERIOR_TYPE_FLOORTILE:
+//				case INTERIOR_TYPE_WALLTILE:
+//					break;
+//				default:
+//					subTemp[XPOS] = px+85;
+//					subTemp[YPOS] = py-80;
+//					break;
+//				}
+//			}
 			
-			xTouchBuildIconRot.wPos = imgW(imgBuildIconRot)/2;
-			xTouchBuildIconRot.hPos = imgH(imgBuildIconRot);
-			xTouchBuildIconRot.xPos = subTemp[XPOS]-xTouchBuildIconRot.wPos/2;
-			xTouchBuildIconRot.yPos = subTemp[YPOS]-xTouchBuildIconRot.hPos/2;
+//			xTouchBuildIconRot.wPos = imgW(imgBuildIconRot)/2;
+//			xTouchBuildIconRot.hPos = imgH(imgBuildIconRot);
+//			xTouchBuildIconRot.xPos = subTemp[XPOS]-xTouchBuildIconRot.wPos/2;
+//			xTouchBuildIconRot.yPos = subTemp[YPOS]-xTouchBuildIconRot.hPos/2;
 			
-			
+            xTouchBuildIconRot.wPos = imgInteriorBuild[4].w/3;
+            xTouchBuildIconRot.hPos = imgInteriorBuild[4].h;
+            xTouchBuildIconRot.xPos = subTemp[XPOS]-xTouchBuildIconRot.wPos/2;
+            xTouchBuildIconRot.yPos = subTemp[YPOS]-xTouchBuildIconRot.hPos/2;
+
 			if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
 			{
 				switch(xQuestTuto.nowNum)
@@ -37197,8 +38878,15 @@ void drawInteriorBuild()
 			
 			if(xMap.type == INTERIOR_TYPE_FLOORTILE || xMap.type == INTERIOR_TYPE_WALLTILE)
 			{
-				drawPacker(imgBuildIconAll, subTemp[XPOS], subTemp[YPOS], imgW(imgBuildIconAll)/2, 0, imgW(imgBuildIconAll)/2, imgH(imgBuildIconAll), VH);
-				
+//				drawPacker(imgBuildIconAll, subTemp[XPOS], subTemp[YPOS], imgW(imgBuildIconAll)/2, 0, imgW(imgBuildIconAll)/2, imgH(imgBuildIconAll), VH);
+                if(isTouchBuildIconRot==false)
+                {
+                    drawImage(&imgInteriorBuild[6], subTemp[XPOS], subTemp[YPOS], 0, 0, imgInteriorBuild[6].w/2, imgInteriorBuild[6].h, VH);
+                }
+                else
+                {
+                    drawImage(&imgInteriorBuild[6], subTemp[XPOS], subTemp[YPOS], imgInteriorBuild[6].w/2, 0, imgInteriorBuild[6].w/2, imgInteriorBuild[6].h, VH);
+                }
 				if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
 				{
 					switch(xQuestTuto.nowNum)
@@ -37220,12 +38908,26 @@ void drawInteriorBuild()
 			else if(xMap.type == INTERIOR_TYPE_WALLITEM || xMap.type == INTERIOR_TYPE_SHOWWINDOW || xMap.type == INTERIOR_TYPE_DOOR)
 			{
 				if(xObj.xObjData[xMap.type][xMap.listNum].isRotLock == FALSE)
-					drawPacker(imgBuildIconRot, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgBuildIconRot)/2, imgH(imgBuildIconRot), VH);
+//					drawPacker(imgBuildIconRot, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgBuildIconRot)/2, imgH(imgBuildIconRot), VH);
+                    drawImage(&imgInteriorBuild[4], subTemp[XPOS], subTemp[YPOS], imgInteriorBuild[4].w/3*2, 0, imgInteriorBuild[4].w/3, imgInteriorBuild[4].h, VH);
 			}
 			else
 			{
 				if(xObj.xObjData[xMap.type][xMap.listNum].isRotLock == FALSE)
-					drawPacker(imgBuildIconRot, subTemp[XPOS], subTemp[YPOS], imgW(imgBuildIconRot)/2, 0, imgW(imgBuildIconRot)/2, imgH(imgBuildIconRot), VH);
+                {
+//                    drawPacker(imgBuildIconRot, subTemp[XPOS], subTemp[YPOS], imgW(imgBuildIconRot)/2, 0, imgW(imgBuildIconRot)/2, imgH(imgBuildIconRot), VH);
+//                    
+//                    subTemp[XPOS] = px;
+//                    subTemp[YPOS] = py-110;
+                    if(isTouchBuildIconRot==false)
+                    {
+                        drawImage(&imgInteriorBuild[4], subTemp[XPOS], subTemp[YPOS], 0, 0, imgInteriorBuild[4].w/3, imgInteriorBuild[4].h, VH);
+                    }
+                    else
+                    {
+                        drawImage(&imgInteriorBuild[4], subTemp[XPOS], subTemp[YPOS], imgInteriorBuild[4].w/3, 0, imgInteriorBuild[4].w/3, imgInteriorBuild[4].h, VH);
+                    }
+                }
 			}
 								
 			switch(xMap.type)
@@ -37260,10 +38962,10 @@ void drawInteriorBuild()
 		switch(xInterior.buildMode)
 		{
 		case 0:
-			sprintf(strTempS, "편집모드(가구모드)");
+			sprintf(strTempS, "편집 가구모드");
 			break;
 		case 1:
-			sprintf(strTempS, "편집모드(타일모드)");
+			sprintf(strTempS, "편집 타일모드");
 			break;
 		}
 		break;
@@ -37295,18 +38997,25 @@ void drawInteriorBuild()
 	}
 	
 	
-		
+    //편집모드 하단 바 수정 2018.2.26
 	setAlpha(200);
-	drawPacker(imgQuestBar, subTemp[XPOS],subTemp[YPOS]+3, 0, 0, imgW(imgQuestBar), imgH(imgQuestBar), VH);
+//	drawPacker(imgQuestBar, subTemp[XPOS],subTemp[YPOS]+3, 0, 0, imgW(imgQuestBar), imgH(imgQuestBar), VH);
+    drawImage(&imgInteriorBuild[10], subTemp[XPOS], subTemp[YPOS]+3, 0, 0, imgInteriorBuild[10].w, imgInteriorBuild[10].h, VH);
 	setAlpha(ALPHA_MAX);
-	drawNpcIcon(subTemp[XPOS]-230, subTemp[YPOS],0);
-	setFontSize(14);
-	gDrawStringBold(subTemp[XPOS], subTemp[YPOS], strTempS, VH, ALPHA_MAX, ALPHA_MAX, ALPHA_MAX, 82, 49, 38);
-	setFontSize(11);
+	//drawNpcIcon(subTemp[XPOS]-230, subTemp[YPOS],0);
+//	setFontSize(14);
+//	gDrawStringBold(subTemp[XPOS], subTemp[YPOS], strTempS, VH, ALPHA_MAX, ALPHA_MAX, ALPHA_MAX, 82, 49, 38);
+//	setFontSize(11);
+    setFontSizeORI(18);
+    gSetColor(101, 48, 150);
+    gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VH);
+    setFontSize(11);
 	
 	subTemp[XPOS] = lcdW-50;
-	subTemp[YPOS] = cy+80;
+	subTemp[YPOS] = cy+100;
 	
+    /////////////////////////////////////////////////////
+    //모드 버튼 수정 KBY 2018.2.26
 	if(xInterior.buildInType == INTERIORBUILD_TYPE_GAME)
 	{
 		for(int i=0;i<2;i++)
@@ -37314,10 +39023,12 @@ void drawInteriorBuild()
 			switch(i)
 			{
 			case 0:
-				drawPacker(imgBuildMode0, subTemp[XPOS], subTemp[YPOS]+(i*75), imgW(imgBuildMode0)/2*(i == xInterior.buildMode?1:0), 0, imgW(imgBuildMode0)/2, imgH(imgBuildMode0), VH);
+//				drawPacker(imgBuildMode0, subTemp[XPOS], subTemp[YPOS]+(i*75), imgW(imgBuildMode0)/2*(i == xInterior.buildMode?1:0), 0, imgW(imgBuildMode0)/2, imgH(imgBuildMode0), VH);
+                    drawImage(&imgInteriorBuild[7], subTemp[XPOS], subTemp[YPOS]+(i*50), imgInteriorBuild[7].w/2*(i==xInterior.buildMode?0:1), 0, imgInteriorBuild[7].w/2, imgInteriorBuild[7].h, VH);
 				break;
 			case 1:
-				drawPacker(imgBuildMode1, subTemp[XPOS], subTemp[YPOS]+(i*75), imgW(imgBuildMode1)/2*(i == xInterior.buildMode?1:0), 0, imgW(imgBuildMode1)/2, imgH(imgBuildMode1), VH);
+//				drawPacker(imgBuildMode1, subTemp[XPOS], subTemp[YPOS]+(i*75), imgW(imgBuildMode1)/2*(i == xInterior.buildMode?1:0), 0, imgW(imgBuildMode1)/2, imgH(imgBuildMode1), VH);
+                drawImage(&imgInteriorBuild[8], subTemp[XPOS], subTemp[YPOS]+(i*50), imgInteriorBuild[8].w/2*(i==xInterior.buildMode?0:1), 0, imgInteriorBuild[8].w/2, imgInteriorBuild[8].h, VH);
 				break;
 			}
 			
@@ -37330,21 +39041,39 @@ void drawInteriorBuild()
 									
 			gDrawStringBold(subTemp[XPOS], subTemp[YPOS]+(i*75)+30, strTempS, VH,255,255,255,44,26,27);
 			 */
-						
-			xInterior.xBuildMode[i].wPos = imgW(imgBuildMode0)/2;
-			xInterior.xBuildMode[i].hPos = imgH(imgBuildMode0);
-			xInterior.xBuildMode[i].xPos = subTemp[XPOS]-xInterior.xBuildMode[i].wPos/2;
-			xInterior.xBuildMode[i].yPos = subTemp[YPOS]+(i*75)-xInterior.xBuildMode[i].hPos/2;
+            
+            xInterior.xBuildMode[i].wPos = imgInteriorBuild[7].w/2;
+            xInterior.xBuildMode[i].hPos = imgInteriorBuild[7].h;
+            xInterior.xBuildMode[i].xPos = subTemp[XPOS]-xInterior.xBuildMode[i].wPos/2;
+            xInterior.xBuildMode[i].yPos = subTemp[YPOS]+(i*50)-xInterior.xBuildMode[i].hPos/2;
+            
+//            gSetColor(255, 0, 0);
+//            setAlpha(100);
+//            fillRect(xInterior.xBuildMode[i].xPos, xInterior.xBuildMode[i].yPos, xInterior.xBuildMode[i].wPos, xInterior.xBuildMode[i].hPos);
+//            setAlpha(ALPHA_MAX);
+
+//			xInterior.xBuildMode[i].wPos = imgW(imgBuildMode0)/2;
+//			xInterior.xBuildMode[i].hPos = imgH(imgBuildMode0);
+//			xInterior.xBuildMode[i].xPos = subTemp[XPOS]-xInterior.xBuildMode[i].wPos/2;
+//			xInterior.xBuildMode[i].yPos = subTemp[YPOS]+(i*75)-xInterior.xBuildMode[i].hPos/2;
 		}
 	}
 	
+    //나가기 버튼 교체 KBY 2018.2.27
 	subTemp[XPOS] = 60;
 	subTemp[YPOS] = lcdH-60;
-	drawPacker(imgBuildIconExit, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgBuildIconExit), imgH(imgBuildIconExit), VH);
-	xTouchBuildIconExit.wPos = imgW(imgBuildIconExit);
-	xTouchBuildIconExit.hPos = imgH(imgBuildIconExit);
-	xTouchBuildIconExit.xPos = subTemp[XPOS]-xTouchBuildIconExit.wPos/2;
-	xTouchBuildIconExit.yPos = subTemp[YPOS]-xTouchBuildIconExit.hPos/2;
+    
+//	drawPacker(imgBuildIconExit, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgBuildIconExit), imgH(imgBuildIconExit), VH);
+    drawImage(&imgInteriorBuild[9], subTemp[XPOS], subTemp[YPOS], 0, 0, imgInteriorBuild[9].w, imgInteriorBuild[9].h, VH);
+//	xTouchBuildIconExit.wPos = imgW(imgBuildIconExit);
+//	xTouchBuildIconExit.hPos = imgH(imgBuildIconExit);
+//	xTouchBuildIconExit.xPos = subTemp[XPOS]-xTouchBuildIconExit.wPos/2;
+//	xTouchBuildIconExit.yPos = subTemp[YPOS]-xTouchBuildIconExit.hPos/2;
+    
+    xTouchBuildIconExit.wPos = imgInteriorBuild[9].w;
+    xTouchBuildIconExit.hPos = imgInteriorBuild[9].h;
+    xTouchBuildIconExit.xPos = subTemp[XPOS]-xTouchBuildIconExit.wPos/2;
+    xTouchBuildIconExit.yPos = subTemp[YPOS]-xTouchBuildIconExit.hPos/2;
 	
 	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
 	{
@@ -37365,9 +39094,10 @@ void drawInteriorBuild()
 			
 	
 	
+    //상점 버튼 교체 KBY 2018.2.27
 	subTemp[XPOS] = lcdW-60;
-	drawPacker(imgBuildIconShop, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgBuildIconShop), imgH(imgBuildIconShop), VH);
-	
+//	drawPacker(imgBuildIconShop, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgBuildIconShop), imgH(imgBuildIconShop), VH);
+    drawImage(&imgMenuIcon2, subTemp[XPOS], subTemp[YPOS], (imgMenuIcon2.w/7)*4, 0, imgMenuIcon2.w/7, imgMenuIcon2.h, VH);
 	
 	
 	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
@@ -37383,19 +39113,19 @@ void drawInteriorBuild()
 		}
 	}		
 	
-	xTouchBuildIconShop.wPos = imgW(imgBuildIconShop);
-	xTouchBuildIconShop.hPos = imgH(imgBuildIconShop);
+	xTouchBuildIconShop.wPos = (imgMenuIcon2.w/7);
+	xTouchBuildIconShop.hPos = imgMenuIcon2.h;
 	xTouchBuildIconShop.xPos = subTemp[XPOS]-xTouchBuildIconShop.wPos/2;
 	xTouchBuildIconShop.yPos = subTemp[YPOS]-xTouchBuildIconShop.hPos/2;
 	
 		
-	/*
-	gSetColor(255, 0, 0);
-	setAlpha(100);
-	fillRect(xTouchBuildIconExit.xPos, xTouchBuildIconExit.yPos, xTouchBuildIconExit.wPos, xTouchBuildIconExit.hPos);
-	fillRect(xTouchBuildIconShop.xPos, xTouchBuildIconShop.yPos, xTouchBuildIconShop.wPos, xTouchBuildIconShop.hPos);
-	setAlpha(ALPHA_MAX);
-	 */
+	
+//	gSetColor(255, 0, 0);
+//	setAlpha(100);
+//	fillRect(xTouchBuildIconExit.xPos, xTouchBuildIconExit.yPos, xTouchBuildIconExit.wPos, xTouchBuildIconExit.hPos);
+//	fillRect(xTouchBuildIconShop.xPos, xTouchBuildIconShop.yPos, xTouchBuildIconShop.wPos, xTouchBuildIconShop.hPos);
+//	setAlpha(ALPHA_MAX);
+	 
 }
 
 void checkBuildMapData()
@@ -37846,6 +39576,10 @@ void outPutEventQueueNet(int eventNum)
         
         xEventQueueNet.result[i]=xEventQueueNet.result[i+1];
         xEventQueueNet.formerType[i]=xEventQueueNet.formerType[i+1];
+        
+        xEventQueueNet.end_time[i] = xEventQueueNet.end_time[i+1];
+		
+		xEventQueueNet.typeNum[i] = xEventQueueNet.typeNum[i+1];
 		
 		for(j = 0; j < 12; j++)
 		{
@@ -39548,8 +41282,15 @@ void drawTimeSprintf(char * strTemp,int time,int type)
 		}
 		break;
 	case 1:
-		sprintf(strTempS,"%d%d:%d%d:%d%d", hh/10,hh%10,mm/10,mm%10,ss/10,ss%10);
-		break;
+        if(hh>0)
+        {
+            sprintf(strTempS,"%d%d:%d%d:%d%d", hh/10,hh%10,mm/10,mm%10,ss/10,ss%10);
+        }
+        else
+        {
+            sprintf(strTempS,"%d%d:%d%d", mm/10,mm%10,ss/10,ss%10);
+        }
+        break;
 	case 2:
 		//d h m s
 		if(mm == 0 && hh == 0)
@@ -44925,6 +46666,7 @@ void setShop(int type)
 	setShopTab(type);
 	shopImgFreeLoad(TRUE);
 }
+
 void shopImgFreeLoad(M_Boolean isLoad)
 {
 	if(isLoad == TRUE)
@@ -45352,8 +47094,6 @@ void drawShopMoneyIcon(int x,int y,int index)
 	
 	if(imgShopMoneyIcon[index].texture == NULL)
 	{
-		
-		
 		loadImg(strTempS, &imgShopMoneyIcon[index]);
 	}	
 	drawImage(&imgShopMoneyIcon[index], x, y, 0, 0, imgShopMoneyIcon[index].w, imgShopMoneyIcon[index].h, VH);
@@ -46575,10 +48315,13 @@ void drawFriendProfile(int x,int y,int userNum,int reSize)
 	
 	if(slotNum == DONT || xFriendData[slotNum].strUrl[0] == 0 || xFriendData[slotNum].strUrl[0] == '0')
 	{
-		if(xFriendData[slotNum].sex == 0)
-			drawPacker(imgUserPhoto0, x, y, 0, 0, imgW(imgUserPhoto0), imgH(imgUserPhoto0), VH);
-		else
-			drawPacker(imgUserPhoto1, x, y, 0, 0, imgW(imgUserPhoto1), imgH(imgUserPhoto1), VH);
+//		if(xFriendData[slotNum].sex == 0)
+//			drawPacker(imgUserPhoto0, x, y, 0, 0, imgW(imgUserPhoto0), imgH(imgUserPhoto0), VH);
+//		else
+//			drawPacker(imgUserPhoto1, x, y, 0, 0, imgW(imgUserPhoto1), imgH(imgUserPhoto1), VH);
+        
+        drawImage(&imgNonProfile, x, y, 0, 0, imgNonProfile.w, imgNonProfile.h, VH);
+        
 		//printf("여기들어오면 에러 유저등록 다시 확인하자");
 	}
 	else
@@ -46590,10 +48333,12 @@ void drawFriendProfile(int x,int y,int userNum,int reSize)
 		}
 		else
 		{
-			if(xFriendData[slotNum].sex == 0)
-				drawPacker(imgUserPhoto0, x, y, 0, 0, imgW(imgUserPhoto0), imgH(imgUserPhoto0), VH);
-			else
-				drawPacker(imgUserPhoto1, x, y, 0, 0, imgW(imgUserPhoto1), imgH(imgUserPhoto1), VH);
+//			if(xFriendData[slotNum].sex == 0)
+//				drawPacker(imgUserPhoto0, x, y, 0, 0, imgW(imgUserPhoto0), imgH(imgUserPhoto0), VH);
+//			else
+//				drawPacker(imgUserPhoto1, x, y, 0, 0, imgW(imgUserPhoto1), imgH(imgUserPhoto1), VH);
+            
+            drawImage(&imgNonProfile, x, y, 0, 0, imgNonProfile.w, imgNonProfile.h, VH);
 			
 			//이미지다운상태확인(등록,다운중,다운완료)
 			switch(xFriendData[slotNum].downLoadImgState)
@@ -52342,7 +54087,10 @@ int questShortCut(int questType,M_Boolean isState,int questCode)
 		if(isState == TRUE)
 		{
             setQuest(22, 1, DONT);
+            //프로필 변경 UI 이미지 로드 KBY 2018.2.26
+            profilePhotoFreeLoad_FP(true);
 			xWorldMap.state = WORLDMAP_STATE_PROFILE;
+            //////////////////////////////////////////////////
 			xWorldMap.isKeyReturn = TRUE;
 		}
 		else
@@ -61378,11 +63126,13 @@ void mailFreeLoad(M_Boolean isLoad)
 		freeImg(&imgGiftTrendAccessoryIcon);
 	}
 }
-
+/////////////////////////////////////////
+//////우편함 수정 2018. 2. 23 KBY
 void setStateMail()
 {
-	mailFreeLoad(TRUE);
+//	mailFreeLoad(TRUE);
 	
+    mailFreeLoad_FP(true);
 	
 	xWorldMap.state = WORLDMAP_STATE_MAIL;
 	xMail.state = MAIL_STATE_MAIN;
@@ -61393,6 +63143,7 @@ void setStateMail()
 	xMail.totalMailSlot = 0;
 	xMail.rowNum = 0;
 	xMail.pageNum = 0;
+
     
     addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_PANGCOUNTCHECK, TRUE);
     
@@ -61472,17 +63223,32 @@ void setStateFriendList()
 {
 	
 	friendListFreeLoad(TRUE);
-	
+    friendListFreeLoad_FP(TRUE);
 	
 	xWorldMap.state = WORLDMAP_STATE_FRIENDLIST;
 	xFriend.state = FRIEND_STATE_PLAY;
-	
+    xFriend_FP.state = FRIEND_FP_STATE_PLAY;
+    xFriend_FP.SearchState=FRIENDSEARCH_FP_STATE_PLAY;
+    
 	xFriend.totalNumList = 0;
 	xFriend.nowRowNumList = 0;
 	xFriend.nowPageNumList = 0;
 	xFriend.totalNumListFollow = 0;
 	xFriend.nowRowNumListFollow = 0;
 	xFriend.nowPageNumListFollow = 0;
+    xFriend_FP.isTouchLeftArrow=false;
+    xFriend_FP.isTouchRightArrow=false;
+    xFriend_FP.isTouchRecommend=false;
+    xFriend_FP.isTouchEdit=false;
+    xFriend_FP.isTouchSearch=false;
+    xFriend_FP.isTouchClr=false;
+    
+    for(int k=0;k<FRIENDSLOTMAX;k++)
+    {
+        xFriend_FP.isTouchVisit[k]=false;
+        xFriend_FP.isTouchJoin[k]=false;
+        xFriend_FP.isTouchDel[k]=false;
+    }
 }
 
 void makeBlinkEff(int x,int y)
@@ -62131,36 +63897,779 @@ void drawExtensionTile(int anyCnt)
 	//	setFlashEff(ranDom(rectX, rectX+rectW), ranDom(rectY, rectY+rectH), ranDom(30, 200), TRUE);
 }
 
+int getProductionIndex(int key)
+{
+    for(int k=0;k<xProduction_FP.totalData;k++)
+    {
+        if(xProduction_FP.xData[k].key == key)
+            return k;
+    }
+    return DONT;
+}
+
+void productionFreeLoad_FP(bool isLoad)
+{
+    if(isLoad==true)
+    {
+        loadImg("productionbase.png",&imgProductionBg);
+        loadImg("productionexiticon.png", &imgProductionMenuExitIcon);
+        loadImg("productiontitle.png",&imgProductionTitle);
+        loadImg("production_left.png",&imgProduction[0]);
+        loadImg("production_main.png",&imgProduction[1]);
+        loadImg("production_right.png",&imgProduction[2]);
+        loadImg("production_arrow.png",&imgProduction[3]);
+        loadImg("production_slot_arrow.png", &imgProduction[4]);
+        loadImg("production_btn_upgrade.png", &imgProduction[5]);
+        
+        loadImg("production_name.png", &imgProduction[7]);
+        loadImg("production_slot.png", &imgProduction[8]);
+        loadImg("production_shadow.png", &imgProduction[9]);
+        loadImg("production_text.png", &imgProduction[10]);
+        loadImg("production_slot_inert.png", &imgProduction[11]);
+        loadImg("production_slot_open.png", &imgProduction[12]);
+        loadImg("production_close.png", &imgProduction[13]);
+        loadImg("production_slot_complete.png", &imgProduction[14]);
+        loadImg("production_text_complete.png", &imgProduction[15]);
+        loadImg("production_btn_fast.png", &imgProduction[16]);
+        loadImg("production_btn_fastdia.png", &imgProduction[17]);
+        loadImg("popup_base.png", &imgProduction[18]);
+        loadImg("default_btn_yesno.png", &imgProduction[19]);
+        loadImg("carrot_icon.png", &imgProduction[20]);
+        loadImg("flower_icon.png", &imgProduction[21]);
+        loadImg("production_popup_info.png", &imgProduction[22]);
+        loadImg("wealth_icon.png", &imgProduction[23]);
+    }
+    else
+    {
+        freeImg(&imgProductionBg);
+        freeImg(&imgProductionMenuExitIcon);
+        freeImg(&imgProductionTitle);
+        freeImg(&imgProduction[0]);
+        freeImg(&imgProduction[1]);
+        freeImg(&imgProduction[2]);
+        freeImg(&imgProduction[3]);
+        freeImg(&imgProduction[4]);
+        freeImg(&imgProduction[5]);
+        freeImg(&imgProduction[7]);
+        freeImg(&imgProduction[8]);
+        freeImg(&imgProduction[9]);
+        freeImg(&imgProduction[10]);
+        freeImg(&imgProduction[11]);
+        freeImg(&imgProduction[12]);
+        freeImg(&imgProduction[13]);
+        freeImg(&imgProduction[14]);
+        freeImg(&imgProduction[15]);
+        freeImg(&imgProduction[16]);
+        freeImg(&imgProduction[17]);
+        freeImg(&imgProduction[18]);
+        freeImg(&imgProduction[19]);
+        freeImg(&imgProduction[20]);
+        freeImg(&imgProduction[21]);
+        freeImg(&imgProduction[22]);
+        freeImg(&imgProduction[23]);
+    }
+}
+
+void drawProduction_FP()
+{
+    int px = cx;
+    int py = cy;
+    
+    int pos;
+    drawBgFillRect();
+    
+    subTemp[XPOS] = lcdW-40;
+    subTemp[YPOS] = py-267;
+    
+   
+    
+    drawImage(&imgProductionBg, px, py+50, 0, 0, imgProductionBg.w,imgProductionBg.h,VH);
+    
+    
+    subTemp[XPOS] = lcdW-40;
+    subTemp[YPOS] = py-180;
+    
+    if(xProduction_FP.isTouchClr==false)
+    {
+        drawImage(&imgProductionMenuExitIcon, subTemp[XPOS], subTemp[YPOS], 0, 0, imgProductionMenuExitIcon.w/2, imgProductionMenuExitIcon.h, VH);
+    }
+    else
+    {
+        drawImage(&imgProductionMenuExitIcon, subTemp[XPOS], subTemp[YPOS], imgProductionMenuExitIcon.w/2, 0, imgProductionMenuExitIcon.w/2, imgProductionMenuExitIcon.h, VH);
+    }
+    xTouchClr.wPos = imgProductionMenuExitIcon.w;
+    xTouchClr.hPos = imgProductionMenuExitIcon.h;
+    xTouchClr.xPos = subTemp[XPOS]-xTouchClr.wPos/2;
+    xTouchClr.yPos = subTemp[YPOS]-xTouchClr.hPos/2;
+
+    subTemp[XPOS] = px-447;
+    subTemp[YPOS] = py-180;
+    
+    drawImage(&imgProductionTitle, subTemp[XPOS], subTemp[YPOS], 0, 0, imgProductionTitle.w, imgProductionTitle.h, VH);
+    
+    subTemp[XPOS] = px-457;
+    subTemp[YPOS] = py-180+50;
+    sprintf(strTempS, "상의 제작기");
+    setFontSizeORI(18);
+    gSetColor(101, 48, 150);
+    gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VH);
+    setFontSize(11);
+    
+    subTemp[XPOS] = px-447+60;
+    subTemp[YPOS] = py-180+50;
+    sprintf(strTempS, "Lv.9");
+    setFontSizeORI(18);
+    gSetColor(101, 48, 150);
+    gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VH);
+    setFontSize(11);
+
+    
+    subTemp[XPOS] = px+2;
+    subTemp[YPOS] = py-30;
+    
+    drawImage(&imgProduction[1], subTemp[XPOS], subTemp[YPOS], 0, 0, imgProduction[1].w, imgProduction[1].h, VH);
+    
+    
+    
+    subTemp[XPOS] = px+410;
+    subTemp[YPOS] = py-165;
+    
+    drawImage(&imgProduction[5], subTemp[XPOS], subTemp[YPOS], 0, 0, imgProduction[5].w/2, imgProduction[5].h, VH);
+    
+    subTemp[XPOS] = px;
+    subTemp[YPOS] = py-90;
+    
+    drawImage(&imgProduction[7], subTemp[XPOS], subTemp[YPOS], 0, 0, imgProduction[7].w, imgProduction[7].h, VH);
+    int totalnum = xCatalog_FP.totalSlot[0];
+    int slotCode;
+    int slotNum;
+    int temp;
+    xCatalog_FP.totalSlotS = 0;
+    for(int k=0;k<totalnum;k++)
+    {
+        temp=xCatalog_FP.xSlot[0][k].code;
+        setMapData(temp);
+        if(xFashionData_FP[xMap.type][xMap.listNum].lv<=xSaveTemp.lv.oriData)
+        {
+            xCatalog_FP.xSlotS[xCatalog_FP.totalSlotS].code = temp;
+            xCatalog_FP.totalSlotS++;
+        }
+    }
+//    xProduction_FP.xDragScrollProductionS.totalNum = 1+(totalnum-1)/8;
+    xProduction_FP.xDragScrollProductionS.totalNum = 1+(xCatalog_FP.totalSlotS-1)/8;
+    xProduction_FP.xDragScrollProductionS.posGab = 1280;
+    
+    dragScrollPrc(&xProduction_FP.xDragScrollProductionS, 0, FALSE);
+    
+    gSetClip(true, px-430, 0, 860, lcdH);
+//    gSetColor(0,255,0);
+//    setAlpha(100);
+//    fillRect(px-430, 0, 860, lcdH);
+//    setAlpha(ALPHA_MAX);
+    for(int page =-1;page<=1;page++)
+    {
+        if(xProduction_FP.xDragScrollProductionS.selectNum+page>=0 && xProduction_FP.xDragScrollProductionS.selectNum+page<xProduction_FP.xDragScrollProductionS.totalNum)
+        {
+            for(int i=0;i<8;i++)
+//            for(int i=0;i<totalnum;i++)
+            {
+                if(((xProduction_FP.xDragScrollProductionS.selectNum+page)*8)+i>=totalnum)
+                    break;
+                
+                pos = xProduction_FP.xDragScrollProductionS.pos+(xProduction_FP.xDragScrollProductionS.posGab*page);
+                subTemp[XPOS] = px-420+pos+((i%8)*105);
+                subTemp[YPOS] = py-80;
+                
+                drawImage(&imgProduction[9], subTemp[XPOS]+45, subTemp[YPOS]+80, 0, 0, imgProduction[9].w, imgProduction[9].h, VH);
+                
+               
+                
+                slotNum = ((xProduction_FP.xDragScrollProductionS.selectNum+page)*8)+i;
+//                slotCode = xCatalog_FP.xSlot[0][slotNum].code;
+                slotCode = xCatalog_FP.xSlotS[slotNum].code;
+                
+                xProduction_FP.xTouchList[slotNum].wPos = 90;
+                xProduction_FP.xTouchList[slotNum].hPos = 100;
+                xProduction_FP.xTouchList[slotNum].xPos = subTemp[XPOS];
+                xProduction_FP.xTouchList[slotNum].yPos = subTemp[YPOS];
+                
+//                gSetColor(255, 0, 0);
+//                setAlpha(100);
+//                fillRect(xProduction_FP.xTouchSlot[slotNum].xPos, xProduction_FP.xTouchSlot[slotNum].yPos, xProduction_FP.xTouchSlot[slotNum].wPos, xProduction_FP.xTouchSlot[slotNum].hPos);
+//                setAlpha(ALPHA_MAX);
+
+                setMapData(slotCode);
+                loadFashionFImg_FP(xMap.type, xMap.listNum);
+                
+                xGame.fgameScale = 0.6f;
+                xGame.fgameScaleCx = subTemp[XPOS]+110;
+                xGame.fgameScaleCy = subTemp[YPOS];
+                
+             
+                
+                drawImage(&imgFittingF_FP[xMap.type][xMap.listNum], subTemp[XPOS], subTemp[YPOS]-20, 0, 0, imgFittingF_FP[xMap.type][xMap.listNum].w, imgFittingF_FP[xMap.type][xMap.listNum].h, VH);
+                
+             
+//                gSetColor(255, 0, 0);
+//                setAlpha(100);
+//                fillRect(subTemp[XPOS], subTemp[YPOS], 90, 100);
+//                setAlpha(ALPHA_MAX);
+                
+                xGame.fgameScaleCx=cx;
+                xGame.fgameScaleCy=cy;
+                xGame.fgameScale = 1.0f;
+                
+//                gSetColor(0, 0, 0);
+//                sprintf(strTempS,"%d",i);
+//                gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VH);
+                
+                
+            }
+        }
+    }
+    gSetClip(false, 0, 0, lcdW, lcdH);
+    
+    subTemp[XPOS] = px;
+    subTemp[YPOS] = py+150;
+    
+    int maxSlot = 12;
+    xProduction_FP.xDragScrollProductionB.totalNum = 1+(maxSlot-1)/6;
+    xProduction_FP.xDragScrollProductionB.posGab = 1280;
+    
+    dragScrollPrc(&xProduction_FP.xDragScrollProductionB, 0, FALSE);
+    
+    gSetClip(true, px-440, py, 880, lcdH);
+//    gSetColor(0,255,0);
+//    setAlpha(100);
+//    fillRect(px-440, py, 880, lcdH);
+//    setAlpha(ALPHA_MAX);
+    for(int page=-1;page<=1;page++)
+    {
+        if(xProduction_FP.xDragScrollProductionB.selectNum+page>=0 && xProduction_FP.xDragScrollProductionB.selectNum+page<xProduction_FP.xDragScrollProductionB.totalNum)
+        {
+            for(int i=0;i<6;i++)
+            {
+                if(((xProduction_FP.xDragScrollProductionB.selectNum+page)*6)+i>=maxSlot)
+                    break;
+                
+                pos = xProduction_FP.xDragScrollProductionB.pos+(xProduction_FP.xDragScrollProductionB.posGab*page);
+                
+                subTemp[XPOS] = px-370+pos+((i%6)*147);
+                subTemp[YPOS] = py+145;
+                slotNum = ((xProduction_FP.xDragScrollProductionB.selectNum+page)*6)+i;
+                slotCode = xProduction_FP.xData[xProduction_FP.index].xSlot[slotNum].itemCode;
+                setMapData(slotCode);
+                loadFashionFImg_FP(xMap.type, xMap.listNum);
+                switch(xProduction_FP.xData[xProduction_FP.index].xSlot[slotNum].state)
+                {
+                    case -1:
+                        drawImage(&imgProduction[11], subTemp[XPOS], subTemp[YPOS], 0, 0, imgProduction[11].w, imgProduction[11].h, VH);
+                        drawImage(&imgProduction[13], subTemp[XPOS], subTemp[YPOS], imgProduction[13].w/2, 0, imgProduction[13].w/2, imgProduction[13].h, VH);
+                        break;
+                    case 0:
+                        drawImage(&imgProduction[11], subTemp[XPOS], subTemp[YPOS], 0, 0, imgProduction[11].w, imgProduction[11].h, VH);
+                        if(xProduction_FP.isTouchOpen==false)
+                        {
+                            drawImage(&imgProduction[12], subTemp[XPOS], subTemp[YPOS], 0, 0, imgProduction[12].w/2, imgProduction[12].h, VH);
+                        }
+                        else
+                        {
+                            drawImage(&imgProduction[12], subTemp[XPOS], subTemp[YPOS], imgProduction[12].w/2, 0, imgProduction[12].w/2, imgProduction[12].h, VH);
+                        }
+                        xProduction_FP.xTouchOpen.wPos = imgProduction[12].w/2+10;
+                        xProduction_FP.xTouchOpen.hPos = imgProduction[12].h+10;
+                        xProduction_FP.xTouchOpen.xPos = subTemp[XPOS]-xProduction_FP.xTouchOpen.wPos/2;
+                        xProduction_FP.xTouchOpen.yPos = subTemp[YPOS]-xProduction_FP.xTouchOpen.hPos/2;
+                        break;
+                    case 1:
+                        drawImage(&imgProduction[8], subTemp[XPOS], subTemp[YPOS], 0, 0, imgProduction[8].w, imgProduction[8].h, VH);
+                        break;
+                    case 2:
+                        drawImage(&imgProduction[8], subTemp[XPOS], subTemp[YPOS], 0, 0, imgProduction[8].w, imgProduction[8].h, VH);
+                        drawImage(&imgProduction[9], subTemp[XPOS], subTemp[YPOS]+15, 0, 0, imgProduction[9].w, imgProduction[9].h, VH);
+                        
+                        xGame.isReSizeDraw = true;
+                        switch(gameCnt%61)
+                        {
+                            case 0:xGame.reSize =70;break;
+                            case 1:xGame.reSize =70;break;
+                            case 2:xGame.reSize =70;break;
+                            case 3:xGame.reSize =70;break;
+                            case 4:xGame.reSize =70;break;
+                            case 5:xGame.reSize =70;break;
+                            case 6:xGame.reSize =69;break;
+                            case 7:xGame.reSize =69;break;
+                            case 8:xGame.reSize =69;break;
+                            case 9:xGame.reSize =69;break;
+                            case 10:xGame.reSize =69;break;
+                            case 11:xGame.reSize =68;break;
+                            case 12:xGame.reSize =68;break;
+                            case 13:xGame.reSize =68;break;
+                            case 14:xGame.reSize =68;break;
+                            case 15:xGame.reSize =68;break;
+                            case 16:xGame.reSize =67;break;
+                            case 17:xGame.reSize =67;break;
+                            case 18:xGame.reSize =67;break;
+                            case 19:xGame.reSize =67;break;
+                            case 20:xGame.reSize =66;break;
+                            case 21:xGame.reSize =66;break;
+                            case 22:xGame.reSize =66;break;
+                            case 23:xGame.reSize =66;break;
+                            case 24:xGame.reSize =66;break;
+                            case 25:xGame.reSize =65;break;
+                            case 26:xGame.reSize =65;break;
+                            case 27:xGame.reSize =65;break;
+                            case 28:xGame.reSize =65;break;
+                            case 29:xGame.reSize =65;break;
+                            case 30:xGame.reSize =65;break;
+                            case 31:xGame.reSize =65;break;
+                            case 32:xGame.reSize =65;break;
+                            case 33:xGame.reSize =65;break;
+                            case 34:xGame.reSize =65;break;
+                            case 35:xGame.reSize =65;break;
+                            case 36:xGame.reSize =66;break;
+                            case 37:xGame.reSize =66;break;
+                            case 38:xGame.reSize =66;break;
+                            case 39:xGame.reSize =66;break;
+                            case 40:xGame.reSize =66;break;
+                            case 41:xGame.reSize =67;break;
+                            case 42:xGame.reSize =67;break;
+                            case 43:xGame.reSize =67;break;
+                            case 44:xGame.reSize =67;break;
+                            case 45:xGame.reSize =68;break;
+                            case 46:xGame.reSize =68;break;
+                            case 47:xGame.reSize =68;break;
+                            case 48:xGame.reSize =68;break;
+                            case 49:xGame.reSize =68;break;
+                            case 50:xGame.reSize =69;break;
+                            case 51:xGame.reSize =69;break;
+                            case 52:xGame.reSize =69;break;
+                            case 53:xGame.reSize =69;break;
+                            case 54:xGame.reSize =69;break;
+                            case 55:xGame.reSize =70;break;
+                            case 56:xGame.reSize =70;break;
+                            case 57:xGame.reSize =70;break;
+                            case 58:xGame.reSize =70;break;
+                            case 59:xGame.reSize =70;break;
+                            case 60:xGame.reSize =70;break;
+                                
+                        }
+                        drawImage(&imgFittingF_FP[xMap.type][xMap.listNum], subTemp[XPOS], subTemp[YPOS]-15, 0, 0, imgFittingF_FP[xMap.type][xMap.listNum].w, imgFittingF_FP[xMap.type][xMap.listNum].h, VH);
+                        
+                        xGame.isReSizeDraw=false;
+                        
+                        drawImage(&imgProduction[10], subTemp[XPOS], subTemp[YPOS]-70, 0, imgProduction[10].h/4*(gameCnt%4), imgProduction[10].w, imgProduction[10].h/4, VH);
+                        
+                        drawTimeSprintf(strTempS, xProduction_FP.EndTimer[xProduction_FP.index][slotNum], 1);
+                        gSetColor(101, 48, 150);
+                        setFontSizeORI(16);
+                        gDrawString(subTemp[XPOS], subTemp[YPOS]+35, strTempS, VH);
+                        setFontSize(11);
+                        drawImage(&imgProduction[16], subTemp[XPOS], subTemp[YPOS]+100, 0, 0, imgProduction[16].w, imgProduction[16].h, VH);
+                        drawImage(&imgProduction[17], subTemp[XPOS]-10, subTemp[YPOS]+95, 0, 0, imgProduction[17].w, imgProduction[17].h, VH);
+                        xProduction_FP.xTouchFast[slotNum].wPos = imgProduction[16].w;
+                        xProduction_FP.xTouchFast[slotNum].hPos = imgProduction[16].h;
+                        xProduction_FP.xTouchFast[slotNum].xPos = subTemp[XPOS] - xProduction_FP.xTouchFast[slotNum].wPos/2;
+                        xProduction_FP.xTouchFast[slotNum].yPos = subTemp[YPOS]+100 - xProduction_FP.xTouchFast[slotNum].hPos/2;
+                        break;
+                    case 3:
+                        drawImage(&imgProduction[8], subTemp[XPOS], subTemp[YPOS], 0, 0, imgProduction[8].w, imgProduction[8].h, VH);
+                        drawImage(&imgProduction[9], subTemp[XPOS], subTemp[YPOS]+15, 0, 0, imgProduction[9].w, imgProduction[9].h, VH);
+                        drawImage(&imgProduction[14], subTemp[XPOS]-1, subTemp[YPOS]-7, 0, 0, imgProduction[14].w, imgProduction[14].h, VH);
+                        drawImage(&imgProduction[15], subTemp[XPOS]-2, subTemp[YPOS]-70, 0, 0, imgProduction[15].w, imgProduction[15].h, VH);
+                        xGame.isReSizeDraw = true;
+                        xGame.reSize = 70;
+                        drawImage(&imgFittingF_FP[xMap.type][xMap.listNum], subTemp[XPOS], subTemp[YPOS]-15, 0, 0, imgFittingF_FP[xMap.type][xMap.listNum].w, imgFittingF_FP[xMap.type][xMap.listNum].h, VH);
+                        
+                        xGame.isReSizeDraw=false;
+
+                        break;
+                    default:
+                        break;
+                }
+                
+//                if(xProduction_FP.xData[xProduction_FP.index].xSlot[slotNum].state==1)
+//                {
+//                    drawImage(&imgProduction[8], subTemp[XPOS], subTemp[YPOS], 0, 0, imgProduction[8].w, imgProduction[8].h, VH);
+//                }
+//                else
+//                {
+//                    drawImage(&imgProduction[11], subTemp[XPOS], subTemp[YPOS], 0, 0, imgProduction[11].w, imgProduction[11].h, VH);
+//                    if(slotNum == xProduction_FP.xData[xProduction_FP.index].totalSlot&&slotNum<PRODUCTMENUSLOTMAX)
+//                    {
+//                        drawImage(&imgProduction[12], subTemp[XPOS], subTemp[YPOS], 0, 0, imgProduction[12].w/2, imgProduction[12].h, VH);
+//                        xProduction_FP.xTouchOpen.wPos = imgProduction[12].w/2+10;
+//                        xProduction_FP.xTouchOpen.hPos = imgProduction[12].h+10;
+//                        xProduction_FP.xTouchOpen.xPos = subTemp[XPOS]-xProduction_FP.xTouchOpen.wPos/2;
+//                        xProduction_FP.xTouchOpen.yPos = subTemp[YPOS]-xProduction_FP.xTouchOpen.hPos/2;
+//                        
+////                        gSetColor(255, 0, 0);
+////                        setAlpha(100);
+////                        fillRect(xProduction_FP.xTouchOpen.xPos, xProduction_FP.xTouchOpen.yPos, xProduction_FP.xTouchOpen.wPos, xProduction_FP.xTouchOpen.hPos);
+////                        setAlpha(ALPHA_MAX);
+//                    }
+//                    else
+//                    {
+//                        drawImage(&imgProduction[13], subTemp[XPOS], subTemp[YPOS], imgProduction[13].w/2, 0, imgProduction[13].w/2, imgProduction[13].h, VH);
+//                    }
+//                }
+                
+
+                xProduction_FP.xTouchSlot[slotNum].wPos = imgProduction[8].w + 10;
+                xProduction_FP.xTouchSlot[slotNum].hPos = imgProduction[8].h + 10;
+                xProduction_FP.xTouchSlot[slotNum].xPos = subTemp[XPOS]-xProduction_FP.xTouchSlot[slotNum].wPos/2;
+                xProduction_FP.xTouchSlot[slotNum].yPos = subTemp[YPOS]-xProduction_FP.xTouchSlot[slotNum].hPos/2;
+//
+//                
+//                gSetColor(255, 0, 0);
+//                setAlpha(100);
+//                fillRect(xProduction_FP.xTouchSlot[slotNum].xPos, xProduction_FP.xTouchSlot[slotNum].yPos, xProduction_FP.xTouchSlot[slotNum].wPos, xProduction_FP.xTouchSlot[slotNum].hPos);
+//                setAlpha(ALPHA_MAX);
+
+                
+//                gSetColor(0, 0, 0);
+//                sprintf(strTempS,"%d",slotNum);
+//                gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VH);
+                
+            }
+        }
+    }
+    gSetClip(false, 0, 0, lcdW, lcdH);
+    
+//    for(int i = 0; i < 12; i++)
+//    {
+//        gSetColor(255, 0, 0);
+//        setAlpha(100);
+//        fillRect(xProduction_FP.xTouchSlot[i].xPos, xProduction_FP.xTouchSlot[i].yPos, xProduction_FP.xTouchSlot[i].wPos, xProduction_FP.xTouchSlot[i].hPos);
+//        setAlpha(ALPHA_MAX);
+        
+//        gSetColor(255, 0, 0);
+//        setAlpha(100);
+//        fillRect(xProduction_FP.xTouchFast[i].xPos, xProduction_FP.xTouchFast[i].yPos, xProduction_FP.xTouchFast[i].wPos, xProduction_FP.xTouchFast[i].hPos);
+//        setAlpha(ALPHA_MAX);
+//    }
+    
+    subTemp[XPOS] = px-448;
+    subTemp[YPOS] = py-30;
+    
+    
+    drawImage(&imgProduction[0], subTemp[XPOS], subTemp[YPOS], 0, 0, imgProduction[0].w, imgProduction[0].h, VH);
+    
+    xProduction_FP.xTouchLeftBtn.wPos = imgProduction[0].w+20;
+    xProduction_FP.xTouchLeftBtn.hPos = imgProduction[0].h;
+    xProduction_FP.xTouchLeftBtn.xPos = subTemp[XPOS]-xProduction_FP.xTouchLeftBtn.wPos/2-20;
+    xProduction_FP.xTouchLeftBtn.yPos = subTemp[YPOS]-xProduction_FP.xTouchLeftBtn.hPos/2;
+    
+    //    setAlpha(100);
+    //    gSetColor(0, 0, 255);
+    //    fillRect(xProduction_FP.xTouchLeftBtn.xPos, xProduction_FP.xTouchLeftBtn.yPos, xProduction_FP.xTouchLeftBtn.wPos, xProduction_FP.xTouchLeftBtn.hPos);
+    //    setAlpha(ALPHA_MAX);
+    if(xProduction_FP.xDragScrollProductionS.selectNum<=0)
+    {
+        drawImage(&imgProduction[3], subTemp[XPOS], subTemp[YPOS], imgProduction[3].w/6*2, 0, imgProduction[3].w/6, imgProduction[3].h,VH);
+    }
+    else
+    {
+        if(xProduction_FP.isTouchLeftBtn==false)
+        {
+            drawImage(&imgProduction[3], subTemp[XPOS], subTemp[YPOS], 0, 0, imgProduction[3].w/6, imgProduction[3].h,VH);
+        }
+        else
+        {
+            drawImage(&imgProduction[3], subTemp[XPOS], subTemp[YPOS], imgProduction[3].w/6*4, 0, imgProduction[3].w/6, imgProduction[3].h,VH);
+        }
+    }
+    subTemp[XPOS] = px+450;
+    subTemp[YPOS] = py-30;
+    
+    drawImage(&imgProduction[2], subTemp[XPOS], subTemp[YPOS], 0, 0, imgProduction[2].w, imgProduction[2].h, VH);
+    
+    xProduction_FP.xTouchRightBtn.wPos = imgProduction[2].w+20;
+    xProduction_FP.xTouchRightBtn.hPos = imgProduction[2].h;
+    xProduction_FP.xTouchRightBtn.xPos = subTemp[XPOS]-xProduction_FP.xTouchRightBtn.wPos/2+10;
+    xProduction_FP.xTouchRightBtn.yPos = subTemp[YPOS]-xProduction_FP.xTouchRightBtn.hPos/2;
+    
+    //    setAlpha(100);
+    //    gSetColor(0, 0, 255);
+    //    fillRect(xProduction_FP.xTouchRightBtn.xPos, xProduction_FP.xTouchRightBtn.yPos, xProduction_FP.xTouchRightBtn.wPos, xProduction_FP.xTouchRightBtn.hPos);
+    //    setAlpha(ALPHA_MAX);
+    
+    if(xProduction_FP.xDragScrollProductionS.selectNum>=xProduction_FP.xDragScrollProductionS.totalNum-1)
+    {
+        drawImage(&imgProduction[3], subTemp[XPOS], subTemp[YPOS], imgProduction[3].w/6*3, 0, imgProduction[3].w/6, imgProduction[3].h,VH);
+    }
+    
+    else
+    {
+        if(xProduction_FP.isTouchRightBtn==false)
+        {
+            drawImage(&imgProduction[3], subTemp[XPOS], subTemp[YPOS], imgProduction[3].w/6, 0, imgProduction[3].w/6, imgProduction[3].h,VH);
+        }
+        else
+        {
+            drawImage(&imgProduction[3], subTemp[XPOS], subTemp[YPOS], imgProduction[3].w/6*5, 0, imgProduction[3].w/6, imgProduction[3].h,VH);
+        }
+    }
+    
+    subTemp[XPOS] = px-458;
+    subTemp[YPOS] = py+135;
+    if(xProduction_FP.xDragScrollProductionB.selectNum<=0)
+    {
+        drawImage(&imgProduction[4], subTemp[XPOS], subTemp[YPOS], imgProduction[4].w/6*2, 0, imgProduction[4].w/6, imgProduction[4].h, VH);
+    }
+    else
+    {
+        if(xProduction_FP.isTouchLeftArrow==true)
+        {
+            drawImage(&imgProduction[4], subTemp[XPOS], subTemp[YPOS], imgProduction[4].w/6*4, 0, imgProduction[4].w/6, imgProduction[4].h, VH);
+        }
+        else
+        {
+            drawImage(&imgProduction[4], subTemp[XPOS], subTemp[YPOS], 0, 0, imgProduction[4].w/6, imgProduction[4].h, VH);
+        }
+    }
+    
+    xProduction_FP.xTouchLeftArrow.wPos = 80;
+    xProduction_FP.xTouchLeftArrow.hPos = 230;
+    xProduction_FP.xTouchLeftArrow.xPos = subTemp[XPOS] - xProduction_FP.xTouchLeftArrow.wPos/2;
+    xProduction_FP.xTouchLeftArrow.yPos = subTemp[YPOS] - xProduction_FP.xTouchLeftArrow.hPos/2;
+    
+    //    setAlpha(100);
+    //    gSetColor(0, 0, 255);
+    //    fillRect(xProduction_FP.xTouchLeftArrow.xPos, xProduction_FP.xTouchLeftArrow.yPos, xProduction_FP.xTouchLeftArrow.wPos, xProduction_FP.xTouchLeftArrow.hPos);
+    //    setAlpha(ALPHA_MAX);
+    
+    
+    subTemp[XPOS] = px+460;
+    subTemp[YPOS] = py+135;
+    if(xProduction_FP.xDragScrollProductionB.selectNum>=xProduction_FP.xDragScrollProductionB.totalNum-1)
+    {
+        drawImage(&imgProduction[4], subTemp[XPOS], subTemp[YPOS], imgProduction[4].w/6*3, 0, imgProduction[4].w/6, imgProduction[4].h, VH);
+    }
+    else
+    {
+        if(xProduction_FP.isTouchRightArrow==false)
+        {
+            drawImage(&imgProduction[4], subTemp[XPOS], subTemp[YPOS], imgProduction[4].w/6, 0, imgProduction[4].w/6, imgProduction[4].h, VH);
+        }
+        else
+        {
+            drawImage(&imgProduction[4], subTemp[XPOS], subTemp[YPOS], imgProduction[4].w/6*5, 0, imgProduction[4].w/6, imgProduction[4].h, VH);
+        }
+    }
+    xProduction_FP.xTouchRightArrow.wPos = 80;
+    xProduction_FP.xTouchRightArrow.hPos = 230;
+    xProduction_FP.xTouchRightArrow.xPos = subTemp[XPOS] - xProduction_FP.xTouchRightArrow.wPos/2;
+    xProduction_FP.xTouchRightArrow.yPos = subTemp[YPOS] - xProduction_FP.xTouchRightArrow.hPos/2;
+    
+    //    setAlpha(100);
+    //    gSetColor(0, 0, 255);
+    //    fillRect(xProduction_FP.xTouchRightArrow.xPos, xProduction_FP.xTouchRightArrow.yPos, xProduction_FP.xTouchRightArrow.wPos, xProduction_FP.xTouchRightArrow.hPos);
+    //    setAlpha(ALPHA_MAX);
+
+    M_Char Temp1[512];
+    M_Char Temp2[512];
+    
+    if(xProduction_FP.isTouchProduct == true)
+    {
+        slotCode = xCatalog_FP.xSlot[0][xProduction_FP.selectProduct].code;
+        setMapData(slotCode);
+        loadFashionFImg_FP(xMap.type, xMap.listNum);
+        xGame.isReSizeDraw = true;
+        xGame.reSize = 60;
+        
+        subTemp[XPOS] = xTouch.xPos;
+        subTemp[YPOS] = xTouch.yPos;
+        drawImage(&imgFittingF_FP[xMap.type][xMap.listNum], subTemp[XPOS], subTemp[YPOS], 0, 0, imgFittingF_FP[xMap.type][xMap.listNum].w, imgFittingF_FP[xMap.type][xMap.listNum].h, VH);
+        
+        xGame.isReSizeDraw = false;
+        //제작의상 팝업
+        if(xTouch.xPos+imgProduction[22].w/2+40>=885)
+        {
+            subTemp[XPOS] = xTouch.xPos-imgProduction[22].w/2-40;
+            subTemp[YPOS] = xTouch.yPos;
+        }
+        else
+        {
+            subTemp[XPOS] = xTouch.xPos+imgProduction[22].w/2+40;
+            subTemp[YPOS] = xTouch.yPos;
+        }
+        
+        drawImage(&imgProduction[22], subTemp[XPOS], subTemp[YPOS], 0, 0, imgProduction[22].w, imgProduction[22].h, VH);
+        
+        //제작의상 이름
+        if(xTouch.xPos+imgProduction[22].w/2+40>=885)
+        {
+            subTemp[XPOS] = xTouch.xPos-imgProduction[22].w/2-40;
+            subTemp[YPOS] = xTouch.yPos-imgProduction[22].h/2+25;
+        }
+        else
+        {
+            subTemp[XPOS] = xTouch.xPos+imgProduction[22].w/2+40;
+            subTemp[YPOS] = xTouch.yPos-imgProduction[22].h/2+25;
+        }
+
+        setFontSizeORI(16);
+        sprintf(strTempS, "%s", xFashionData_FP[xMap.type][xMap.listNum].strName);
+        gDrawStringBold(subTemp[XPOS], subTemp[YPOS], strTempS, VH, 255, 255, 255, 101, 48, 150);
+        setFontSize(11);
+       
+        //[0][2] 문자
+        if(xTouch.xPos+imgProduction[22].w/2+40>=885)
+        {
+            subTemp[XPOS] = xTouch.xPos-imgProduction[22].w+10+15;
+            subTemp[YPOS] = xTouch.yPos-10;
+        }
+        else
+        {
+            subTemp[XPOS] = xTouch.xPos+imgProduction[22].w/4+40;
+            subTemp[YPOS] = xTouch.yPos-10;
+        }
+
+        setFontSizeORI(15);
+        gSetColor(101, 48, 150);
+//        drawTimeSprintf(strTempS, xFashionData_FP[xMap.type][xMap.listNum].makeTime, 1);
+        drawTimeSprintf(strTempS, 359999, 1);
+//        drawTimeSprintf(strTempS, 3599, 1);
+        gDrawString(subTemp[XPOS], subTemp[YPOS]+60, strTempS, VL);
+        setFontSize(11);
+        
+        //[0][1] 문자
+        setCommaNum(Temp1, 888);
+        setCommaNum(Temp2, 888);
+        setFontSizeORI(15);
+        gSetColor(101, 48, 150);
+        sprintf(strTempS, "%s/%s", Temp1, Temp2);
+        gDrawString(subTemp[XPOS], subTemp[YPOS]+30, strTempS, VL);
+        setFontSize(11);
+        
+        //[0][0] 문자
+        setCommaNum(Temp1, 888);
+        setCommaNum(Temp2, 888);
+        setFontSizeORI(15);
+        gSetColor(101, 48, 150);
+        sprintf(strTempS, "%s/%s", Temp1, Temp2);
+        gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VL);
+        setFontSize(11);
+
+        //[0][2] 아이콘
+        if(xTouch.xPos+imgProduction[22].w/2+40>=885)
+        {
+            subTemp[XPOS] = xTouch.xPos-imgProduction[22].w-10+15;
+            subTemp[YPOS] = xTouch.yPos-10;
+        }
+        else
+        {
+            subTemp[XPOS] = xTouch.xPos+imgProduction[22].w/4+20;
+            subTemp[YPOS] = xTouch.yPos-10;
+        }
+
+        drawImage(&imgProduction[21], subTemp[XPOS], subTemp[YPOS]+60, 0, 0, imgProduction[21].w/8, imgProduction[21].h, VH);
+        
+        //[0][1] 아이콘
+        
+        drawImage(&imgProduction[21], subTemp[XPOS], subTemp[YPOS]+30, imgProduction[21].w/8*3, 0, imgProduction[21].w/8, imgProduction[21].h, VH);
+        
+        //[0][0] 아이콘
+        
+        drawImage(&imgProduction[21], subTemp[XPOS], subTemp[YPOS], imgProduction[21].w/8*4, 0, imgProduction[21].w/8, imgProduction[21].h, VH);
+        
+        
+        //[1][2] 문자
+        if(xTouch.xPos+imgProduction[22].w/2+40>=885)
+        {
+            subTemp[XPOS] = xTouch.xPos-imgProduction[22].w/4*3+52+12;
+            subTemp[YPOS] = xTouch.yPos-10;
+        }
+        else
+        {
+            subTemp[XPOS] = xTouch.xPos+imgProduction[22].w/4*3+15;
+            subTemp[YPOS] = xTouch.yPos-10;
+        }
+        
+        setFontSizeORI(15);
+        setCommaNum(strTempS, 999999);
+        gSetColor(101, 48, 150);
+        gDrawString(subTemp[XPOS], subTemp[YPOS]+60, strTempS, VL);
+        setFontSize(11);
+        
+        //[1][1] 문자
+        
+        
+        setCommaNum(Temp1, 888);
+        setCommaNum(Temp2, 888);
+        sprintf(strTempS, "%s/%s", Temp1, Temp2);
+        setFontSizeORI(15);
+        gSetColor(101, 48, 150);
+        gDrawString(subTemp[XPOS], subTemp[YPOS]+30, strTempS, VL);
+        setFontSize(11);
+        
+        //[1][0] 문자
+
+        setCommaNum(Temp1, 888);
+        setCommaNum(Temp2, 888);
+        sprintf(strTempS, "%s/%s", Temp1, Temp2);
+        setFontSizeORI(15);
+        gSetColor(101, 48, 150);
+        gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VL);
+        setFontSize(11);
+
+        
+        //[1][2] 아이콘
+        if(xTouch.xPos+imgProduction[22].w/2+40>=885)
+        {
+            subTemp[XPOS] = xTouch.xPos-imgProduction[22].w/2-35+15;
+            subTemp[YPOS] = xTouch.yPos-10;
+        }
+        else
+        {
+            subTemp[XPOS] = xTouch.xPos+imgProduction[22].w/2+60;
+            subTemp[YPOS] = xTouch.yPos-10;
+        }
+        
+        drawImage(&imgProduction[21], subTemp[XPOS], subTemp[YPOS]+60, imgProduction[21].w/8, 0, imgProduction[21].w/8, imgProduction[21].h, VH);
+        
+        //[1][1] 아이콘
+        drawImage(&imgProduction[21], subTemp[XPOS], subTemp[YPOS]+30, imgProduction[21].w/8*2, 0, imgProduction[21].w/8, imgProduction[21].h, VH);
+        
+        //[1][0] 아이콘
+        drawImage(&imgProduction[21], subTemp[XPOS], subTemp[YPOS], imgProduction[21].w/8*6, 0, imgProduction[21].w/8, imgProduction[21].h, VH);
+    }
+    
+   
+}
+
+// 제작기 UI 그리는 곳
 void drawProductionMenu()
 {
 	int type = 0;
 	int code = 0;
 	
-	if(xQuestTuto.state == QUEST_TUTO_KEY)
-	{
-		switch(xQuestTuto.nowNum)
-		{
-		case TUTO_1_PRODUCTIONTOUCH:
-		case TUTO_2_PRODUCTIONTOUCH:
-		case TUTO_25_FASHIONOPEN_PRODUCTIONTOUCH:
-			xQuestTuto.isTutoClean = TRUE;
-			break;
-		}
-	}
-	
-	if(xQuestTuto.state == QUEST_TUTO_KEY)
-	{
-		switch(xQuestTuto.nowNum)
-		{
-		case TUTO_25_FASHIONOPEN_PRODUCTIONTOUCH:
-		case TUTO_25_FASHIONOPEN_TAB:
-		case TUTO_25_FASHIONOPEN_ITEM:
-		case TUTO_25_FASHIONOPEN_BUY:
-			if(xInventoryFashion.isOpen[xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0]/1000][xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0]%1000] == TRUE)
-				xQuestTuto.isTutoClean = TRUE;
-			break;
-		}
-	}
+//	if(xQuestTuto.state == QUEST_TUTO_KEY)
+//	{
+//		switch(xQuestTuto.nowNum)
+//		{
+//		case TUTO_1_PRODUCTIONTOUCH:
+//		case TUTO_2_PRODUCTIONTOUCH:
+//		case TUTO_25_FASHIONOPEN_PRODUCTIONTOUCH:
+//			xQuestTuto.isTutoClean = TRUE;
+//			break;
+//		}
+//	}
+//	
+//	if(xQuestTuto.state == QUEST_TUTO_KEY)
+//	{
+//		switch(xQuestTuto.nowNum)
+//		{
+//		case TUTO_25_FASHIONOPEN_PRODUCTIONTOUCH:
+//		case TUTO_25_FASHIONOPEN_TAB:
+//		case TUTO_25_FASHIONOPEN_ITEM:
+//		case TUTO_25_FASHIONOPEN_BUY:
+//			if(xInventoryFashion.isOpen[xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0]/1000][xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0]%1000] == TRUE)
+//				xQuestTuto.isTutoClean = TRUE;
+//			break;
+//		}
+//	}
 		
 	int px = cx-87;
 	int py = cy;
@@ -62201,21 +64710,21 @@ void drawProductionMenu()
 			}
 			gDrawStringBold(subTemp[XPOS]+(i*76), subTemp[YPOS]+30, strTempS, VH, 255, 255, 255, 82, 49, 38);
 			
-			if(xQuestTuto.state == QUEST_TUTO_KEY)
-			{
-				switch(xQuestTuto.nowNum)
-				{
-				case TUTO_1_PRODUCTIONTOPTABTOUCH:
-				case TUTO_25_FASHIONOPEN_TAB:
-					if(i == 1)
-						xQuestTuto.isTutoClean = TRUE;
-					break;
-				case TUTO_25_FASHIONOPEN_BUYTAB:
-					if(i == 7)
-						xQuestTuto.isTutoClean = TRUE;
-					break;
-				}
-			}
+//			if(xQuestTuto.state == QUEST_TUTO_KEY)
+//			{
+//				switch(xQuestTuto.nowNum)
+//				{
+//				case TUTO_1_PRODUCTIONTOPTABTOUCH:
+//				case TUTO_25_FASHIONOPEN_TAB:
+//					if(i == 1)
+//						xQuestTuto.isTutoClean = TRUE;
+//					break;
+//				case TUTO_25_FASHIONOPEN_BUYTAB:
+//					if(i == 7)
+//						xQuestTuto.isTutoClean = TRUE;
+//					break;
+//				}
+//			}
 			
 		}
 		else
@@ -62508,23 +65017,23 @@ void drawProductionMenu()
 			gSetColor(255,255,255);
 			setFontSize(11);
 			
-			if(xQuestTuto.state == QUEST_TUTO_SHOW)
-			{
-				switch(xQuestTuto.nowNum)
-				{
-					case TUTO_1_PRODUCTIONTOPFASHIONWAITSHOW:
-						if(xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0] == xProductionMenu.slotCode[xProductionMenu.selectType][i])
-						{
-							xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
-							xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
-							xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_SHOW;
-						}
-						break;
-				}
-			}
-			
-		}
-		else if(xProductionMenu.state[xProductionMenu.selectType][i] == PRODUCTIONMENUSLOT_STATE_RECV)
+//			if(xQuestTuto.state == QUEST_TUTO_SHOW)
+//			{
+//				switch(xQuestTuto.nowNum)
+//				{
+//					case TUTO_1_PRODUCTIONTOPFASHIONWAITSHOW:
+//						if(xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0] == xProductionMenu.slotCode[xProductionMenu.selectType][i])
+//						{
+//							xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
+//							xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
+//							xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_SHOW;
+//						}
+//						break;
+//				}
+//			}
+//			
+//		}
+		/*else*/ if(xProductionMenu.state[xProductionMenu.selectType][i] == PRODUCTIONMENUSLOT_STATE_RECV)
 		{
 //LJW 의상제작 완료 주석처리
 //			drawPacker(imgProductionMenuSlot5, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgProductionMenuSlot5), imgH(imgProductionMenuSlot5), VH);
@@ -62576,34 +65085,34 @@ void drawProductionMenu()
 		else if(xProductionMenu.state[xProductionMenu.selectType][i] == PRODUCTIONMENUSLOT_STATE_PLAY && xProductionMenu.slotCode[xProductionMenu.selectType][i] != DONT)
 		{
 			
-			if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-			{
-				switch(xQuestTuto.nowNum)
-				{
-					case TUTO_1_PRODUCTIONINGSHOW:
-						if(xProductionMenu.state2 != PRODUCTIONMENU_STATE_FASTCASHPOPUP)
-						{
-							if(xProductionMenu.slotCode[xProductionMenu.selectType][i] == xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0])
-							{
-								xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
-								xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
-								xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_SHOW;
-							}
-						}
-						break;
-					case TUTO_1_PRODUCTIONFASTCASH0:
-					case TUTO_2_PRODUCTIONFASTCASH:
-						if(xProductionMenu.state2 != PRODUCTIONMENU_STATE_FASTCASHPOPUP)
-						{
-							if(xProductionMenu.slotCode[xProductionMenu.selectType][i] == xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0])
-							{
-								xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
-								xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
-								xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
-							}
-						}
-						break;
-				}
+//			if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+//			{
+//				switch(xQuestTuto.nowNum)
+//				{
+//					case TUTO_1_PRODUCTIONINGSHOW:
+//						if(xProductionMenu.state2 != PRODUCTIONMENU_STATE_FASTCASHPOPUP)
+//						{
+//							if(xProductionMenu.slotCode[xProductionMenu.selectType][i] == xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0])
+//							{
+//								xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
+//								xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
+//								xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_SHOW;
+//							}
+//						}
+//						break;
+//					case TUTO_1_PRODUCTIONFASTCASH0:
+//					case TUTO_2_PRODUCTIONFASTCASH:
+//						if(xProductionMenu.state2 != PRODUCTIONMENU_STATE_FASTCASHPOPUP)
+//						{
+//							if(xProductionMenu.slotCode[xProductionMenu.selectType][i] == xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0])
+//							{
+//								xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
+//								xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
+//								xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
+//							}
+//						}
+//						break;
+//				}
 			}
 			
 			
@@ -62670,26 +65179,26 @@ void drawProductionMenu()
 	
 	
 	
-	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-	{
-		switch(xQuestTuto.nowNum)
-		{
-			case TUTO_1_PRODUCTIONTOPFASHIONTOUCH:
-			case TUTO_2_PRODUCTIONTOPFASHIONTOUCH:
-				if(getProductionMenu(xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0]) > 0)
-					xQuestTuto.isTutoClean = TRUE;
-				break;
-			case TUTO_1_PRODUCTIONMAKE:
-			case TUTO_2_PRODUCTIONMAKE:
-				if(getProductionMenu(xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0]) > 0)
-				{
-					xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
-					xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
-					xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
-				}
-				break;
-		}
-	}
+//	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+//	{
+//		switch(xQuestTuto.nowNum)
+//		{
+//			case TUTO_1_PRODUCTIONTOPFASHIONTOUCH:
+//			case TUTO_2_PRODUCTIONTOPFASHIONTOUCH:
+//				if(getProductionMenu(xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0]) > 0)
+//					xQuestTuto.isTutoClean = TRUE;
+//				break;
+//			case TUTO_1_PRODUCTIONMAKE:
+//			case TUTO_2_PRODUCTIONMAKE:
+//				if(getProductionMenu(xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0]) > 0)
+//				{
+//					xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
+//					xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
+//					xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
+//				}
+//				break;
+//		}
+//	}
 	
 	
 	
@@ -62711,19 +65220,19 @@ void drawProductionMenu()
 	
 	
 	
-	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-	{
-		switch(xQuestTuto.nowNum)
-		{
-			case TUTO_1_PRODUCTIONEXIT:
-			case TUTO_2_PRODUCTIONEXIT:
-			case TUTO_25_RESULT:
-				xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
-				xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
-				xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
-				break;
-		}
-	}
+//	if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+//	{
+//		switch(xQuestTuto.nowNum)
+//		{
+//			case TUTO_1_PRODUCTIONEXIT:
+//			case TUTO_2_PRODUCTIONEXIT:
+//			case TUTO_25_RESULT:
+//				xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
+//				xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
+//				xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
+//				break;
+//		}
+//	}
 		
 
 	int totalCnt;
@@ -62806,7 +65315,6 @@ void drawProductionMenu()
 				
 				if(xQuestInfo.isCC == TRUE)
 				{
-					
 					drawQuestArrow(subTemp[XPOS], subTemp[YPOS]-50);
 				}
 				
@@ -62830,25 +65338,25 @@ void drawProductionMenu()
 			
 				if(page == 0)
 				{
-					if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
-					{
-						switch(xQuestTuto.nowNum)
-						{
-						case TUTO_1_PRODUCTIONTOPFASHIONTOUCH:
-						case TUTO_2_PRODUCTIONTOPFASHIONTOUCH:
-						case TUTO_25_FASHIONOPEN_ITEM:
-							if(xCatalog.xSlotS[slotNum].code == xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0])
-							{
-								if(getProductionMenuIng(xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0]) == 0)
-								{
-									xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
-									xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
-									xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
-								}
-							}
-							break;
-						}
-					}
+//					if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
+//					{
+//						switch(xQuestTuto.nowNum)
+//						{
+//						case TUTO_1_PRODUCTIONTOPFASHIONTOUCH:
+//						case TUTO_2_PRODUCTIONTOPFASHIONTOUCH:
+//						case TUTO_25_FASHIONOPEN_ITEM:
+//							if(xCatalog.xSlotS[slotNum].code == xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0])
+//							{
+//								if(getProductionMenuIng(xQuestDataMain[xQuestInfo.xSlot[0].questNum].checkCode[0]) == 0)
+//								{
+//									xTutoInfo.x[xTutoInfo.totalNum] = subTemp[XPOS];
+//									xTutoInfo.y[xTutoInfo.totalNum] = subTemp[YPOS];
+//									xTutoInfo.type[xTutoInfo.totalNum++] = TUTOINFO_TYPE_ARROW;
+//								}
+//							}
+//							break;
+//						}
+//					}
 				}
 				
 				
@@ -62955,11 +65463,6 @@ void drawProductionMenu()
 				///////////오픈후
 				else
 				{
-					
-                    
-                    
-                    
-                    
 					//주문시간
 					drawPacker(imgInfoBar3, subTemp[XPOS], subTemp[YPOS]+108, 0, 0, imgW(imgInfoBar3), imgH(imgInfoBar3), VH);
 					drawTimeSprintf(strTempS,xFashionData[xMap.type][xMap.listNum].makeTime.oriData,2);
@@ -63065,6 +65568,8 @@ void drawProductionMenu()
 					setAlpha(ALPHA_MAX);
 					*/
 				}
+                sprintf(strTempS,"%d",i);
+                gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VH);
 			}
 		}
 	}
@@ -63426,7 +65931,7 @@ void makeProductionMain()
     setProductionMenuLatest();
 	
 	/////////////////////////////////////////
-	addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_AUTOPRODUCTSLOTUPDATE, TRUE);
+//	addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_AUTOPRODUCTSLOTUPDATE, TRUE);
 	/////////////////////////////////////////
     
     //LJW 오토판매 주석처리
@@ -63518,20 +66023,67 @@ void setStateProductionMenu()
 	else
 	{
         
-        loadImg("productionlatest.png", &imgProductionLatest);
-        loadImg("productionmenuexiticon.png", &imgProductionMenuExitIcon);
+//        loadImg("productionlatest.png", &imgProductionLatest);
+//        loadImg("productionmenuexiticon.png", &imgProductionMenuExitIcon);
         
+        ////////////////////////////////////////////////////////////////////
+        //제작기 이미지 로드 KBY 2018.2.26
+        productionFreeLoad_FP(true);
+        ////////////////////////////////////////////////////////////////////
+        
+//        loadImg("productionbase.png",&imgProductionBg);
+//        loadImg("productionexiticon.png", &imgProductionMenuExitIcon);
+//        loadImg("productiontitle.png",&imgProductionTitle);
+//        loadImg("production_left.png",&imgProduction[0]);
+//        loadImg("production_main.png",&imgProduction[1]);
+//        loadImg("production_right.png",&imgProduction[2]);
+//        loadImg("production_arrow.png",&imgProduction[3]);
+//        loadImg("production_slot_arrow.png", &imgProduction[4]);
+//        loadImg("production_btn_upgrade.png", &imgProduction[5]);
+//        
+//        loadImg("production_name.png", &imgProduction[7]);
+//        loadImg("production_slot.png", &imgProduction[8]);
+//        loadImg("production_shadow.png", &imgProduction[9]);
+//        loadImg("production_text.png", &imgProduction[10]);
+//        loadImg("production_slot_inert.png", &imgProduction[11]);
+//        loadImg("production_slot_open.png", &imgProduction[12]);
+//        loadImg("production_close.png", &imgProduction[13]);
+//        loadImg("production_slot_complete.png", &imgProduction[14]);
+//        loadImg("production_text_complete.png", &imgProduction[15]);
+//        loadImg("production_btn_fast.png", &imgProduction[16]);
+//        loadImg("production_btn_fastdia.png", &imgProduction[17]);
+//        loadImg("popup_base.png", &imgProduction[18]);
+//        loadImg("default_btn_yesno.png", &imgProduction[19]);
+//        loadImg("carrot_icon.png", &imgProduction[20]);
+//        loadImg("flower_icon.png", &imgProduction[21]);
+//        loadImg("production_popup_info.png", &imgProduction[22]);
+//        loadImg("wealth_icon.png", &imgProduction[23]);
+        
+        addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_PRODUCTIONINFOUPDATE, TRUE);
         
 		xCatalog.selectSlot = DONT;
 		xWorldMap.state = WORLDMAP_STATE_PRODUCTIONMENU;
-		xProductionMenu.state2 = PRODUCTIONMENU_STATE_MAIN;
-		xProductionMenu.selectSlot = DONT;
+        xProduction_FP.state = PRODUCTIONMENU_STATE_MAIN;
+//		xProductionMenu.state2 = PRODUCTIONMENU_STATE_MAIN;
+//		xProductionMenu.selectSlot = DONT;
+        xProduction_FP.index = getProductionIndex(xMap.dataKey[xMap.nowFloor][MAP_TYPE_OBJ][xSelectTileOne.tileNumX][xSelectTileOne.tileNumY]);
+        xProduction_FP.selectSlot=-1;
+        xProduction_FP.isTouchLeftBtn=false;
+        xProduction_FP.isTouchRightBtn=false;
+        xProduction_FP.isTouchLeftArrow=false;
+        xProduction_FP.isTouchRightArrow=false;
+        xProduction_FP.isTouchClr=false;
+        xProduction_FP.isTouchOpen=false;
+        xProduction_FP.isTouchYes=false;
+        xProduction_FP.isTouchNo=false;
+        xProduction_FP.isTouchPopupClr=false;
 		if(xSave.totalProductionRecord != 0)
 			xCatalog.selectTabS = 7;
 		setCatalogTabChange(xCatalog.selectTabS);
         
         setProductionMenuLatest();
         
+        addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_PRODUCTIONSLOTINFOUPDATE, TRUE);
 	}
 	
 	
@@ -64247,39 +66799,31 @@ void drawCashUi(M_Boolean isAfter)
 	if(xWorldMap.isFriendMap == TRUE)
 		return;
 		
-    
-    
-    
-
 	getUiShowType();
-    
-    
-	
-	
-	
 	
 	if(isAfter == FALSE)
 	{
 		switch(xWorldMap.uiShowType)
 		{
-		case 2:	//오리지날
+        case 2:
+		case 5:	//오리지날
 			break;
 		default:
 			return;
 			break;
 		}
 	}
-	else
-	{
-		switch(xWorldMap.uiShowType)
-		{
-		case 2:	//오리지날
-			return;
-			break;
-		default:
-			break;
-		}
-	}
+//	else
+//	{
+//		switch(xWorldMap.uiShowType)
+//		{
+//		case 2:	//오리지날
+//			return;
+//			break;
+//		default:
+//			break;
+//		}
+//	}
 	
 	
 	switch(xWorldMap.uiShowType)
@@ -64289,8 +66833,6 @@ void drawCashUi(M_Boolean isAfter)
 		case 1:	//축소버전
 		case 3:	//축소버전(좌표변화)
         case 4: //축소버전(좌표변화)
-        
-			
 			switch(xWorldMap.uiShowType)
 			{
 			case 1:
@@ -64327,39 +66869,53 @@ void drawCashUi(M_Boolean isAfter)
 			gDrawString(subTemp[XPOS]+56, subTemp[YPOS], strTempS, VR);
 			break;
 		case 2:	//오리지날
+        case 5:
 			setUiHide();
-			subTemp[XPOS] = lcdW;
-			subTemp[YPOS] = 4;
-			drawPacker(imgWorldMapCash0, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgWorldMapCash0), imgH(imgWorldMapCash0), TR);
-			
-			xTouchWorldMapCashIcon.wPos = imgW(imgWorldMapCash0);
-			xTouchWorldMapCashIcon.hPos = imgH(imgWorldMapCash0);
-			xTouchWorldMapCashIcon.xPos = subTemp[XPOS]-xTouchWorldMapCashIcon.wPos;
-			xTouchWorldMapCashIcon.yPos = subTemp[YPOS];
+			subTemp[XPOS] = lcdW-80+70;
+			subTemp[YPOS] = -1;
+//			drawPacker(imgWorldMapCash0, subTemp[XPOS], subTemp[YPOS], 0, 0, imgW(imgWorldMapCash0), imgH(imgWorldMapCash0), TR);
+            drawImage(&imgWealth, subTemp[XPOS], subTemp[YPOS], 0, 0, imgWealth.w, imgWealth.h, TR);
 			
 			
-			
-			xTouchWorldMapCandyIcon.xPos = subTemp[XPOS]-450;
-			xTouchWorldMapCandyIcon.yPos = subTemp[YPOS];
-			xTouchWorldMapCandyIcon.wPos = 150;
-			xTouchWorldMapCandyIcon.hPos = imgH(imgWorldMapCash0);
-			
+//			setAlpha(100);
+//			gSetColor(255, 0, 0);
+//			fillRect(xTouchWorldMapCashIcon.xPos, xTouchWorldMapCashIcon.yPos, xTouchWorldMapCashIcon.wPos, xTouchWorldMapCashIcon.hPos);
+//
+//			gSetColor(255, 0, 0);
+//			fillRect(xTouchWorldMapCandyIcon.xPos, xTouchWorldMapCandyIcon.yPos, xTouchWorldMapCandyIcon.wPos, xTouchWorldMapCandyIcon.hPos);
+//			setAlpha(ALPHA_MAX);
+			 
+			subTemp[XPOS] = lcdW/2+52+70;
+			subTemp[YPOS] = 30+4;
 
-			/*
-			setAlpha(100);
-			gSetColor(255, 0, 0);
-			fillRect(xTouchWorldMapCashIcon.xPos, xTouchWorldMapCashIcon.yPos, xTouchWorldMapCashIcon.wPos, xTouchWorldMapCashIcon.hPos);
+            setFontSizeORI(18);
+            gSetColor(255, 255, 255);
+            sprintf(strTempS, "%d/%d",xSaveTemp.carrot.oriData, xChs.carrotMax);
+            gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VR);
+            setFontSize(11);
 
-			gSetColor(255, 0, 0);
-			fillRect(xTouchWorldMapCandyIcon.xPos, xTouchWorldMapCandyIcon.yPos, xTouchWorldMapCandyIcon.wPos, xTouchWorldMapCandyIcon.hPos);
-			setAlpha(ALPHA_MAX);
-			 */
+            xTouchWorldMapCandyIcon.wPos = 150;
+            xTouchWorldMapCandyIcon.hPos = imgH(imgWorldMapCash0);
+            xTouchWorldMapCandyIcon.xPos = subTemp[XPOS]-120;
+            xTouchWorldMapCandyIcon.yPos = subTemp[YPOS]-xTouchWorldMapCandyIcon.hPos/2;
+           
+            
+            subTemp[XPOS] = lcdW/2+45+70;
+            subTemp[YPOS] = 70+3;
+            if(xSaveTemp.carrot.oriData<xChs.carrotMax)
+            {
+                setFontSizeORI(15);
+                gSetColor(255, 255, 255);
+                drawTimeSprintf(strTempS, xCalcCarrot.TimeTemp, 1);
+                gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VR);
+                setFontSize(11);
+            }
 
-						
-			
-			subTemp[XPOS] = lcdW-345;
-			subTemp[YPOS] = 33;
-			drawNumPacker(imgWorldMapNum0, subTemp[XPOS], subTemp[YPOS]-6, xSaveTemp.tired.oriData, -3, VR);
+//            setAlpha(100);
+//            gSetColor(255, 0, 0);
+//            fillRect(xTouchWorldMapCandyIcon.xPos, xTouchWorldMapCandyIcon.yPos, xTouchWorldMapCandyIcon.wPos, xTouchWorldMapCandyIcon.hPos);
+//            setAlpha(ALPHA_MAX);
+//            drawNumPacker(imgWorldMapNum0, subTemp[XPOS], subTemp[YPOS]-6, xSaveTemp.tired.oriData, -3, VR);
 			
 			
 			if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
@@ -64375,8 +66931,8 @@ void drawCashUi(M_Boolean isAfter)
 			}
 			
 						
-			subTemp[XPOS] = lcdW-37;
-			subTemp[YPOS] = 33;
+			subTemp[XPOS] = lcdW/2+245+70;
+			subTemp[YPOS] = 30+4;
 		
 			/*
 			if(1000000 <= xWorldMap.uiShowMoney)
@@ -64388,7 +66944,23 @@ void drawCashUi(M_Boolean isAfter)
 			 */
 			
 			
-			drawNumCommaPacker(imgWorldMapNum0, subTemp[XPOS], subTemp[YPOS]-6, xWorldMap.uiShowMoney, -3, VR,imgWorldMapNum4,-1);
+//			drawNumCommaPacker(imgWorldMapNum0, subTemp[XPOS], subTemp[YPOS]-6, xWorldMap.uiShowMoney, -3, VR,imgWorldMapNum4,-1);
+            
+            setFontSizeORI(18);
+            gSetColor(255, 255, 255);
+            setCommaNum(strTempS, xSaveTemp.cash.oriData);
+            gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VR);
+            setFontSize(11);
+            //추가된 부분 KBY 2018.2.23
+            xTouchWorldMapCashIcon.wPos = 150;
+            xTouchWorldMapCashIcon.hPos = imgH(imgWorldMapCash0);
+            xTouchWorldMapCashIcon.xPos = subTemp[XPOS]-120;
+            xTouchWorldMapCashIcon.yPos = subTemp[YPOS]-xTouchWorldMapCashIcon.hPos/2;
+            
+//            setAlpha(100);
+//            gSetColor(255, 0, 0);
+//            fillRect(xTouchWorldMapCashIcon.xPos, xTouchWorldMapCashIcon.yPos, xTouchWorldMapCashIcon.wPos, xTouchWorldMapCashIcon.hPos);
+//            setAlpha(ALPHA_MAX);
 			
 			if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
 			{
@@ -64402,9 +66974,9 @@ void drawCashUi(M_Boolean isAfter)
 				}
 			}
 			
-			
-			subTemp[XPOS] = lcdW-31-181;
-			subTemp[YPOS] = 33;
+            
+			subTemp[XPOS] = lcdW/2+450+70;
+			subTemp[YPOS] = 30+4;
 			
 			/*
 			if(1000000 <= xSaveTemp.cash.oriData)
@@ -64415,7 +66987,22 @@ void drawCashUi(M_Boolean isAfter)
 				sprintf(strTempS, "%d",xSaveTemp.cash.oriData);
 			*/
 			
-			drawNumCommaPacker(imgWorldMapNum0, subTemp[XPOS], subTemp[YPOS]-6, xSaveTemp.cash.oriData, -3, VR,imgWorldMapNum4,-1);
+            setFontSizeORI(18);
+            gSetColor(255, 255, 255);
+            setCommaNum(strTempS, xSaveTemp.money.oriData);
+            gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VR);
+            setFontSize(11);
+            //추가된 부분 KBY 2018.2.23
+            xTouchWorldMapMoneyIcon.wPos = 150;
+            xTouchWorldMapMoneyIcon.hPos = imgH(imgWorldMapCash0);
+            xTouchWorldMapMoneyIcon.xPos = subTemp[XPOS]-120;
+            xTouchWorldMapMoneyIcon.yPos = subTemp[YPOS]-xTouchWorldMapMoneyIcon.hPos/2;
+            
+//            setAlpha(100);
+//            gSetColor(255, 0, 0);
+//            fillRect(xTouchWorldMapMoneyIcon.xPos, xTouchWorldMapMoneyIcon.yPos, xTouchWorldMapMoneyIcon.wPos, xTouchWorldMapMoneyIcon.hPos);
+//            setAlpha(ALPHA_MAX);
+//			drawNumCommaPacker(imgWorldMapNum0, subTemp[XPOS], subTemp[YPOS]-6, xSaveTemp.cash.oriData, -3, VR,imgWorldMapNum4,-1);
 			
 			if(xWorldMap.isTuto == TRUE&&(xQuestTuto.state == QUEST_TUTO_SHOW || xQuestTuto.state == QUEST_TUTO_KEY))
 			{
@@ -64428,7 +67015,7 @@ void drawCashUi(M_Boolean isAfter)
 						break;
 				}
 			}
-						
+            
 			getUiHide();
 			break;
 	}
@@ -67701,6 +70288,343 @@ void loadFashionFImgWorldMap(int type, int listNum)
 	}
 }
 
+void setNpcHair_FP(XSPRIT *xSprit, int hairNum, int pos)
+{
+	//헤어셋팅
+	int type, code, layer;
+	int num1 = 0;
+	int num2 = 0;
+	type = hairNum/1000;
+	code = hairNum%1000;
+	layer = xHairMakeUp.xData[type][code].layerNum;
+	
+	if(isImgHair_FP[code] == FALSE)
+	{
+		isImgHair_FP[code] = TRUE;
+		for(int k=0; k < 15; k++)
+		{
+			if(xLayer.xData[layer].xData[0][k] != -1)
+			{
+				sprintf(strTempS, "hair_%d_%d_w.png", code, xLayer.xData[layer].xData[0][k]);
+				loadImgDocuments(strTempS, &imgHair_FP[code][ACT_FRONT][num1]);
+				num1++;
+			}
+			
+			if(xLayer.xData[layer].xData[1][k] != -1)
+			{
+				sprintf(strTempS, "b_hair_%d_%d_w.png", code, xLayer.xData[layer].xData[1][k]);
+				loadImgDocuments(strTempS, &imgHair_FP[code][ACT_BACK][num2]);
+				num2++;
+			}
+		}
+	}
+	
+	if(pos == ACT_FRONT)
+	{
+		xSprit->imgLayer[xLayer.xData[layer].xData[pos][0]][pos] = &imgHair_FP[code][pos][0];
+		xSprit->imgLayer[xLayer.xData[layer].xData[pos][1]][pos] = &imgHair_FP[code][pos][1];
+	}
+	else
+	{
+		xSprit->imgLayer[xLayer.xData[layer].xData[pos][0]][pos] = &imgHair_FP[code][pos][0];
+	}
+}
+
+
+void setNpcFace_FP(XSPRIT *xSprit, int faceNum, int pos)
+{
+	//얼굴셋팅
+	int type, code, layer;
+	type = faceNum/1000;
+	code = faceNum%1000;
+	layer = xHairMakeUp.xData[type][code].layerNum;
+	
+	if(pos == ACT_BACK)
+		return;
+	
+	if(isImgFace_FP[code] == FALSE)
+	{
+		isImgFace_FP[code] = TRUE;
+		sprintf(strTempS, "face_%d_11_w.png", code);
+		loadImgDocuments(strTempS, &imgFace_FP[code]);
+	}
+	xSprit->imgLayer[xLayer.xData[layer].xData[pos][0]][pos] = &imgFace_FP[code];
+}
+//회원 가입시 머리 이미지 세팅
+
+void setNpcHairBig_FP(XSPRIT *xSprit, int hairNum, int pos)
+{
+    //헤어셋팅
+    int type, code, layer;
+    int num1 = 0;
+    int num2 = 0;
+    
+    type = hairNum/1000;
+    code = hairNum%1000;
+    layer = xHairMakeUp.xData[type][code].layerNum;
+    
+    if(isImgHairBig_FP[code] == FALSE)
+    {
+        isImgHairBig_FP[code] = TRUE;
+        for(int k=0; k < 15; k++)
+        {
+            if(xLayer.xData[layer].xData[0][k] != -1)
+            {
+                sprintf(strTempS, "hair_%d_%d.png", code, xLayer.xData[layer].xData[0][k]);
+                loadImgDocuments(strTempS, &imgHairBig_FP[code][ACT_FRONT][num1]);
+                num1++;
+            }
+            
+            if(xLayer.xData[layer].xData[1][k] != -1)
+            {
+                sprintf(strTempS, "b_hair_%d_%d.png", code, xLayer.xData[layer].xData[1][k]);
+                loadImgDocuments(strTempS, &imgHairBig_FP[code][ACT_BACK][num2]);
+                num2++;
+            }
+        }
+    }
+    
+    if(pos == ACT_FRONT)
+    {
+        xSprit->imgLayer[xLayer.xData[layer].xData[pos][0]][pos] = &imgHairBig_FP[code][pos][0];
+        xSprit->imgLayer[xLayer.xData[layer].xData[pos][1]][pos] = &imgHairBig_FP[code][pos][1];
+    }
+    else
+    {
+        xSprit->imgLayer[xLayer.xData[layer].xData[pos][0]][pos] = &imgHairBig_FP[code][pos][0];
+    }
+}
+
+//회원가입시 얼굴 세팅
+void setNpcFaceBig_FP(XSPRIT *xSprit, int faceNum, int pos)
+{
+    //얼굴셋팅
+    int type, code, layer;
+    type = faceNum/1000;
+    code = faceNum%1000;
+    layer = xHairMakeUp.xData[type][code].layerNum;
+    
+    if(pos == ACT_BACK)
+        return;
+    
+    if(isImgFaceBig_FP[code] == FALSE)
+    {
+        isImgFaceBig_FP[code] = TRUE;
+        sprintf(strTempS, "face_%d_11.png", code);
+        loadImgDocuments(strTempS, &imgFaceBig_FP[code]);
+    }
+    xSprit->imgLayer[xLayer.xData[layer].xData[pos][0]][pos] = &imgFaceBig_FP[code];
+}
+
+void setNpcBody_FP(XSPRIT *xSprit, int pos)
+{
+	//의상 레이어에 마네킹 넣기
+	if(pos == ACT_FRONT)
+	{
+		xSprit->imgLayer[30][ACT_FRONT] = &imgActBody[0][ACT_FRONT];
+		xSprit->imgLayer[29][ACT_FRONT] = &imgActBody[1][ACT_FRONT];
+		xSprit->imgLayer[26][ACT_FRONT] = &imgActBody[2][ACT_FRONT];
+		xSprit->imgLayer[25][ACT_FRONT] = &imgActBody[3][ACT_FRONT];
+		xSprit->imgLayer[24][ACT_FRONT] = &imgActBody[4][ACT_FRONT];
+		xSprit->imgLayer[23][ACT_FRONT] = &imgActBody[5][ACT_FRONT];
+		xSprit->imgLayer[16][ACT_FRONT] = &imgActBody[6][ACT_FRONT];
+		xSprit->imgLayer[15][ACT_FRONT] = &imgActBody[7][ACT_FRONT];
+		xSprit->imgLayer[12][ACT_FRONT] = &imgActBody[8][ACT_FRONT];
+		xSprit->imgLayer[8][ACT_FRONT] = &imgActBody[9][ACT_FRONT];
+		xSprit->imgLayer[7][ACT_FRONT] = &imgActBody[10][ACT_FRONT];
+	}
+	else
+	{
+		xSprit->imgLayer[32][ACT_BACK] = &imgActBody[0][ACT_BACK];
+		xSprit->imgLayer[31][ACT_BACK] = &imgActBody[1][ACT_BACK];
+		xSprit->imgLayer[28][ACT_BACK] = &imgActBody[3][ACT_BACK];
+		xSprit->imgLayer[27][ACT_BACK] = &imgActBody[2][ACT_BACK];
+		xSprit->imgLayer[26][ACT_BACK] = &imgActBody[5][ACT_BACK];
+		xSprit->imgLayer[25][ACT_BACK] = &imgActBody[4][ACT_BACK];
+		xSprit->imgLayer[18][ACT_BACK] = &imgActBody[7][ACT_BACK];
+		xSprit->imgLayer[17][ACT_BACK] = &imgActBody[8][ACT_BACK];
+		xSprit->imgLayer[14][ACT_BACK] = &imgActBody[6][ACT_BACK];
+		xSprit->imgLayer[11][ACT_BACK] = &imgActBody[9][ACT_BACK];
+		xSprit->imgLayer[10][ACT_BACK] = &imgActBody[10][ACT_BACK];
+	}
+}
+
+void setNpcBodyBig_FP(XSPRIT *xSprit, int pos)
+{
+	//의상 레이어에 마네킹 넣기
+	if(pos == ACT_FRONT)
+	{
+		xSprit->imgLayer[30][ACT_FRONT] = &imgActBodySub[0][ACT_FRONT];
+		xSprit->imgLayer[29][ACT_FRONT] = &imgActBodySub[1][ACT_FRONT];
+		xSprit->imgLayer[26][ACT_FRONT] = &imgActBodySub[2][ACT_FRONT];
+		xSprit->imgLayer[25][ACT_FRONT] = &imgActBodySub[3][ACT_FRONT];
+		xSprit->imgLayer[24][ACT_FRONT] = &imgActBodySub[4][ACT_FRONT];
+		xSprit->imgLayer[23][ACT_FRONT] = &imgActBodySub[5][ACT_FRONT];
+		xSprit->imgLayer[16][ACT_FRONT] = &imgActBodySub[6][ACT_FRONT];
+		xSprit->imgLayer[15][ACT_FRONT] = &imgActBodySub[7][ACT_FRONT];
+		xSprit->imgLayer[12][ACT_FRONT] = &imgActBodySub[8][ACT_FRONT];
+		xSprit->imgLayer[8][ACT_FRONT] = &imgActBodySub[9][ACT_FRONT];
+		xSprit->imgLayer[7][ACT_FRONT] = &imgActBodySub[10][ACT_FRONT];
+	}
+	else
+	{
+		xSprit->imgLayer[32][ACT_BACK] = &imgActBodySub[0][ACT_BACK];
+		xSprit->imgLayer[31][ACT_BACK] = &imgActBodySub[1][ACT_BACK];
+		xSprit->imgLayer[28][ACT_BACK] = &imgActBodySub[3][ACT_BACK];
+		xSprit->imgLayer[27][ACT_BACK] = &imgActBodySub[2][ACT_BACK];
+		xSprit->imgLayer[26][ACT_BACK] = &imgActBodySub[5][ACT_BACK];
+		xSprit->imgLayer[25][ACT_BACK] = &imgActBodySub[4][ACT_BACK];
+		xSprit->imgLayer[18][ACT_BACK] = &imgActBodySub[7][ACT_BACK];
+		xSprit->imgLayer[17][ACT_BACK] = &imgActBodySub[8][ACT_BACK];
+		xSprit->imgLayer[14][ACT_BACK] = &imgActBodySub[6][ACT_BACK];
+		xSprit->imgLayer[11][ACT_BACK] = &imgActBodySub[9][ACT_BACK];
+		xSprit->imgLayer[10][ACT_BACK] = &imgActBodySub[10][ACT_BACK];
+	}
+}
+
+void setSpritF_FP(XSPRIT *xSprit,XFITTINGLAYER *xF,int pos)
+{
+	int type;
+	int listNum;
+	
+	for(int fc=0;fc<SPRIT_IMGLAYERMAX;fc++)
+	{
+		if(xF->code[fc] == DONT)
+		{
+			
+		}
+		else
+		{
+			type = xF->code[fc]/1000;
+			listNum = xF->code[fc]%1000;
+			
+			//의상이미지 로딩
+			loadFashionFImgWorldMap_FP(xSprit, xF->code[fc], pos);
+		}
+	}
+}
+
+void setSpritFBig_FP(XSPRIT *xSprit,XFITTINGLAYER *xF,int pos)
+{
+	int type;
+	int listNum;
+	
+	for(int fc=0;fc<SPRIT_IMGLAYERMAX;fc++)
+	{
+		if(xF->code[fc] == DONT)
+		{
+			
+		}
+		else
+		{
+			type = xF->code[fc]/1000;
+			listNum = xF->code[fc]%1000;
+			
+			//의상이미지 로딩
+			loadFashionFImgWorldMapBig_FP(xSprit, xF->code[fc], pos);
+		}
+	}
+}
+
+void loadFashionFImgWorldMap_FP(XSPRIT *xSprit, int code, int pos)
+{
+	M_Boolean isCheck;
+	int type = code/1000;
+	int listNum = code%1000;
+	int layer = xFashionList_FP.xSlot[type][listNum].layer;
+	//이미지로딩여부파악
+	//이미지가 존재하지 않는다면
+	//로딩하지 않았다면 로딩과정을 거친다
+	if(isImgFLayer_FP[type][listNum] == FALSE)
+	{
+		isImgFLayer_FP[type][listNum] = TRUE;
+		//카테고리_아이템코드_레이어 번호
+		//b_<<<뒷모습
+		for(int f=0;f<LAYERDATAMAX;f++)
+		{
+			if(xLayer.xData[layer].xData[pos][f] != -1)
+			{
+				sprintf(strTempS, "%d_%d_w.png",code,xLayer.xData[layer].xData[ACT_FRONT][f]);
+				loadImgDocuments(strTempS, &ImgFLayer_FP[type][listNum][f][ACT_FRONT]);
+				
+				sprintf(strTempS, "b_%d_%d_w.png",code,xLayer.xData[layer].xData[ACT_BACK][f]);
+				loadImgDocuments(strTempS, &ImgFLayer_FP[type][listNum][f][ACT_BACK]);
+			}
+		}
+	}
+	
+	for(int f=0;f<LAYERDATAMAX;f++)
+	{
+		if(ImgFLayer_FP[type][listNum][f][pos].image != NULL)
+		{
+			xSprit->imgLayer[xLayer.xData[layer].xData[pos][f]][pos] = &ImgFLayer_FP[type][listNum][f][pos];
+		}
+	}
+}
+
+void loadFashionFImgWorldMapBig_FP(XSPRIT *xSprit, int code, int pos)
+{
+	M_Boolean isCheck;
+	int type = code/1000;
+	int listNum = code%1000;
+	int layer = xFashionList_FP.xSlot[type][listNum].layer;
+	//이미지로딩여부파악
+	//이미지가 존재하지 않는다면
+	//로딩하지 않았다면 로딩과정을 거친다
+	if(isImgFLayerBig_FP[type][listNum] == FALSE)
+	{
+		isImgFLayerBig_FP[type][listNum] = TRUE;
+		//카테고리_아이템코드_레이어 번호
+		//b_<<<뒷모습
+		for(int f=0;f<LAYERDATAMAX;f++)
+		{
+			if(xLayer.xData[layer].xData[pos][f] != -1)
+			{
+				sprintf(strTempS, "%d_%d.png",code,xLayer.xData[layer].xData[ACT_FRONT][f]);
+				loadImgDocuments(strTempS, &ImgFLayerBig_FP[type][listNum][f][ACT_FRONT]);
+				
+				sprintf(strTempS, "b_%d_%d.png",code,xLayer.xData[layer].xData[ACT_BACK][f]);
+				loadImgDocuments(strTempS, &ImgFLayerBig_FP[type][listNum][f][ACT_BACK]);
+			}
+		}
+	}
+	
+	for(int f=0;f<LAYERDATAMAX;f++)
+	{
+		if(ImgFLayerBig_FP[type][listNum][f][pos].image != NULL)
+		{
+			xSprit->imgLayer[xLayer.xData[layer].xData[pos][f]][pos] = &ImgFLayerBig_FP[type][listNum][f][pos];
+		}
+	}
+}
+
+void freeFashionFLayerBig_FP()
+{
+	for(int imgType=0;imgType<FASHIONDATATYPEMAX;imgType++)
+	{
+		for(int imgList=0;imgList<FASHIONDATAMAX;imgList++)
+		{
+			if(isImgFLayer[imgType][imgList] == TRUE)
+			{
+				isImgFLayer[imgType][imgList] = FALSE;
+				for(int f=0;f<FASHIONDATALAYERMAX;f++)
+				{
+					//앞
+					freeImg(&imgFLayer[imgType][imgList][f][ACT_FRONT]);
+					freeImg(&imgFLayerSub[imgType][imgList][f][ACT_FRONT]);
+					//뒤
+					freeImg(&imgFLayer[imgType][imgList][f][ACT_BACK]);
+				}
+			}
+		}
+	}
+}
+
+void loadFashionFImg_FP(int imgType,int imgList)
+{
+    sprintf(strTempS, "pdress%d_%d.png", imgType, imgList);
+    loadImgDocuments(strTempS, &imgFittingF_FP[imgType][imgList]);
+}
 
 void loadFashionFImg(int imgType,int imgList)
 {
@@ -68877,11 +71801,135 @@ void drawSellTableCashPopup()
 	xTouchClr.wPos = imgW(imgPopupBtn0);
 	xTouchClr.hPos = imgH(imgPopupBtn0)/2;
 	xTouchClr.xPos = px- xTouchClr.wPos/2;
-	xTouchClr.yPos = py+158 - xTouchClr.hPos/2;;
+	xTouchClr.yPos = py+158 - xTouchClr.hPos/2;
 	
 
 }
+void drawProductionCashPopup_FP()
+{
+    int px=cx;
+    int py=cy;
+    
+    drawBgFillRect();
+    
+    
+    int slotCode = xProduction_FP.xData[xProduction_FP.index].xSlot[xProduction_FP.selectSlot].itemCode;
+    setMapData(slotCode);
+    loadFashionFImg_FP(xMap.type, xMap.listNum);
+    
+    subTemp[XPOS] = px;
+    subTemp[YPOS] = py;
+    
+    drawImage(&imgProduction[18], subTemp[XPOS], subTemp[YPOS], 0, 0, imgProduction[18].w, imgProduction[18].h, VH);
+    
+    if(xProduction_FP.isTouchPopupClr==false)
+    {
+        drawImage(&imgProductionMenuExitIcon, subTemp[XPOS]+243, subTemp[YPOS]-140, 0, 0, imgProductionMenuExitIcon.w/2, imgProductionMenuExitIcon.h, VH);
+    }
+    else
+    {
+        drawImage(&imgProductionMenuExitIcon, subTemp[XPOS]+243, subTemp[YPOS]-140, imgProductionMenuExitIcon.w/2, 0, imgProductionMenuExitIcon.w/2, imgProductionMenuExitIcon.h, VH);
 
+    }
+    xTouchClr.wPos = imgProductionMenuExitIcon.w/2;
+    xTouchClr.hPos = imgProductionMenuExitIcon.h;
+    xTouchClr.xPos = subTemp[XPOS]+243-xTouchClr.wPos/2;
+    xTouchClr.yPos = subTemp[YPOS]-140-xTouchClr.hPos/2;
+    
+//    setAlpha(100);
+//    gSetColor(255, 0, 0);
+//    fillRect(xTouchClr.xPos, xTouchClr.yPos, xTouchClr.wPos, xTouchClr.hPos);
+//    setAlpha(ALPHA_MAX);
+    
+    drawImage(&imgProduction[8], subTemp[XPOS]-160, subTemp[YPOS]-30, 0, 0, imgProduction[8].w, imgProduction[8].h, VH);
+    drawImage(&imgProduction[9], subTemp[XPOS]-160, subTemp[YPOS]-10, 0, 0, imgProduction[9].w, imgProduction[9].h, VH);
+    
+    xGame.isReSizeDraw = true;
+    
+    xGame.reSize = 70;
+    
+    drawImage(&imgFittingF_FP[xMap.type][xMap.listNum], subTemp[XPOS]-160, subTemp[YPOS]-40, 0, 0, imgFittingF_FP[xMap.type][xMap.listNum].w, imgFittingF_FP[xMap.type][xMap.listNum].h, VH);
+    
+    xGame.isReSizeDraw = false;
+    
+    drawImage(&imgProduction[10], subTemp[XPOS]-160, subTemp[YPOS]-100, 0, imgProduction[10].h/4*(gameCnt%4), imgProduction[10].w, imgProduction[10].h/4, VH);
+    
+    drawTimeSprintf(strTempS, xProduction_FP.EndTimer[xProduction_FP.index][xProduction_FP.selectSlot], 1);
+    gSetColor(101, 48, 150);
+    setFontSizeORI(16);
+    gDrawString(subTemp[XPOS]-160, subTemp[YPOS]+5, strTempS, VH);
+    setFontSize(11);
+    
+    sprintf(strTempS, "%s", xFashionData_FP[xMap.type][xMap.listNum].strName);
+    gSetColor(101, 48, 150);
+    setFontSizeORI(20);
+    gDrawString(subTemp[XPOS]+50, subTemp[YPOS]-80, strTempS, VH);
+    setFontSize(11);
+
+    sprintf(strTempS, "제작을 취소하시겠습니까?");
+    gSetColor(101, 48, 150);
+    setFontSizeORI(16);
+    gDrawString(subTemp[XPOS]+70, subTemp[YPOS]-10, strTempS, VH);
+    setFontSize(11);
+
+    sprintf(strTempS, "제작을 취소하면 사용된 재료는 사라져요!");
+    gSetColor(101, 48, 150);
+    setFontSizeORI(14);
+    gDrawString(subTemp[XPOS]+70, subTemp[YPOS]+10, strTempS, VH);
+    setFontSize(11);
+    if (xProduction_FP.isTouchYes==false)
+    {
+        drawImage(&imgProduction[19], subTemp[XPOS]-85, subTemp[YPOS]+100, 0, imgProduction[19].h/2, imgProduction[19].w/2, imgProduction[19].h/2, VH);
+    }
+    else
+    {
+        drawImage(&imgProduction[19], subTemp[XPOS]-85, subTemp[YPOS]+100, imgProduction[19].w/2, imgProduction[19].h/2, imgProduction[19].w/2, imgProduction[19].h/2, VH);
+    }
+    
+    sprintf(strTempS, "네");
+    gSetColor(36, 50, 128);
+    setFontSizeORI(20);
+    gDrawString(subTemp[XPOS]-85, subTemp[YPOS]+100, strTempS, VH);
+    setFontSize(11);
+    xProduction_FP.xTouchYes.wPos = imgProduction[19].w/2;
+    xProduction_FP.xTouchYes.hPos = imgProduction[19].h/2;
+    xProduction_FP.xTouchYes.xPos = subTemp[XPOS]-85-xProduction_FP.xTouchYes.wPos/2;
+    xProduction_FP.xTouchYes.yPos = subTemp[YPOS]+100-xProduction_FP.xTouchYes.hPos/2;
+    
+//    setAlpha(100);
+//    gSetColor(255, 0, 0);
+//    fillRect(xProduction_FP.xTouchYes.xPos, xProduction_FP.xTouchYes.yPos, xProduction_FP.xTouchYes.wPos, xProduction_FP.xTouchYes.hPos);
+//    setAlpha(ALPHA_MAX);
+
+    
+    
+    
+    
+    if(xProduction_FP.isTouchNo==false)
+    {
+        drawImage(&imgProduction[19], subTemp[XPOS]+85, subTemp[YPOS]+100, 0, 0, imgProduction[19].w/2, imgProduction[19].h/2, VH);
+    }
+    else
+    {
+        drawImage(&imgProduction[19], subTemp[XPOS]+85, subTemp[YPOS]+100, imgProduction[19].w/2, 0, imgProduction[19].w/2, imgProduction[19].h/2, VH);
+    }
+    sprintf(strTempS, "아니오");
+    gSetColor(106, 21, 97);
+    setFontSizeORI(20);
+    gDrawString(subTemp[XPOS]+85, subTemp[YPOS]+100, strTempS, VH);
+    setFontSize(11);
+    
+    xProduction_FP.xTouchNo.wPos = imgProduction[19].w/2;
+    xProduction_FP.xTouchNo.hPos = imgProduction[19].h/2;
+    xProduction_FP.xTouchNo.xPos = subTemp[XPOS]+85-xProduction_FP.xTouchNo.wPos/2;
+    xProduction_FP.xTouchNo.yPos = subTemp[YPOS]+100-xProduction_FP.xTouchNo.hPos/2;
+    
+//    setAlpha(100);
+//    gSetColor(255, 0, 0);
+//    fillRect(xProduction_FP.xTouchNo.xPos, xProduction_FP.xTouchNo.yPos, xProduction_FP.xTouchNo.wPos, xProduction_FP.xTouchNo.hPos);
+//    setAlpha(ALPHA_MAX);
+
+}
 
 void drawProductionCashPopup()
 {
@@ -75454,15 +78502,22 @@ void getUiShowType()
     switch(xWorldMap.state)
     {
     case WORLDMAP_STATE_PRODUCTIONMENU:
-        xWorldMap.uiShowType = 3;
+    case WORLDMAP_STATE_FRIENDLIST:
+    case WORLDMAP_STATE_FITTING_FP:
+    case WORLDMAP_STATE_GREENHOUSE_FP:
+    case WORLDMAP_STATE_SPINNINGWHEEL_FP:
+    case WORLDMAP_STATE_SHOP_FP:
+    //추가된 부분 KBY 2018.2.23
+    case WORLDMAP_STATE_MAIL:
+        xWorldMap.uiShowType = 5;
         break;
     case WORLDMAP_STATE_INTERIORSHOP:
     case WORLDMAP_STATE_STAFF:
     case WORLDMAP_STATE_FITTING:
         xWorldMap.uiShowType = 4;
         break;
-    case WORLDMAP_STATE_FRIENDLIST:
-    case WORLDMAP_STATE_MAIL:
+    
+//    case WORLDMAP_STATE_MAIL:
     case WORLDMAP_STATE_SELL:
     case WORLDMAP_STATE_FASHIONSHOWNEW:
     case WORLDMAP_STATE_FRIENDORDER:
@@ -75471,6 +78526,7 @@ void getUiShowType()
     case WORLDMAP_STATE_NOTICEPOPUP:
     case WORLDMAP_STATE_SEVERSELL:
     case WORLDMAP_STATE_COLLECTION:
+    case WORLDMAP_STATE_LULUPANG:
         xWorldMap.uiShowType = 0;
         break;
     case WORLDMAP_STATE_MODEL:
@@ -76095,6 +79151,7 @@ void drawProfilePhotoUrl(int x,int y,char* strUrl)
 
 void prcNetEventPhotoUrl()
 {
+   
     if(xNetEventPhotoUrl.totalNum > 0)
     {
         switch(xProfilePhotoUrl.downLoadImgState[xNetEventPhotoUrl.xSlot[0].slotNum])
@@ -78528,7 +81585,7 @@ void setHotDeal()
     xHotDeal.state = HOTDEAL_MAINSTATE_NET;
     hotDealFreeLoad(TRUE);
     
-    addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_HOTDEALMAINLIST, TRUE);
+//    addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_HOTDEALMAINLIST, TRUE);
     
     for(int i=0;i<HOTDEALSLOTMAX;i++)
     {
@@ -82191,6 +85248,24 @@ bool keyFastScroll(int type, int param1, int param2,int touchId,int touchCount)
             int nowXpos = (xTouch.xPos+xTouch.wPos/2) - xFastScroll.xTouchBar.xPos;
             int targetXpos = nowXpos * (-xFastScroll.xDragScroll->endPos)/xFastScroll.w;
             xFastScroll.xDragScroll->pos = -targetXpos;
+            return true;
+        }
+        else
+            return false;
+    }
+    else
+        return false;
+}
+
+bool keyFastScroll_FP(int type, int param1, int param2,int touchId,int touchCount)
+{
+    if(touchTypeTemp == MH_KEY_PRESSEVENT)
+    {
+        if(touchCheck(&xFastScroll.xTouchBar)==true)
+        {
+            int nowYpos = (xTouch.yPos+xTouch.hPos/2)-xFastScroll.xTouchBar.yPos;
+            int targetYpos = nowYpos * (-xFastScroll.xDragScroll->endPos)/xFastScroll.h;
+            xFastScroll.xDragScroll->pos = - targetYpos;
             return true;
         }
         else
@@ -91519,7 +94594,6 @@ void keyClubShopGift(int type, int param1, int param2)
         xClubShopGift.xDragScroll.touchYpos = DONT;
         xClubShopGift.xDragScroll.touchXposBefore = DONT;
         xClubShopGift.xDragScroll.touchYposBefore = DONT;
-        
     }
 }
 
@@ -91789,6 +94863,99 @@ void prcFormerTimer()
         {
             xFormer.EndTimer[i]=0;
         }
+    }
+}
+
+void prcProductionSlotTimer()
+{
+    for(int k=0;k<xProduction_FP.totalData;k++)
+    {
+        for(int i=0;i<xProduction_FP.xData[k].totalSlot;i++)
+        {
+            if(xProduction_FP.xData[k].xSlot[i].state==2)
+            {
+                xProduction_FP.EndTimer[k][i] = xProduction_FP.xData[k].xSlot[i].endTime;
+                xProduction_FP.EndTimer[k][i] -= xCalendar.nowTime;
+                if(xProduction_FP.EndTimer[k][i]<=0)
+                {
+                    xProduction_FP.EndTimer[k][i]=0;
+                    xProduction_FP.xData[k].xSlot[i].state=3;
+                }
+                else if(xProduction_FP.xData[k].xSlot[i].state==1||xProduction_FP.xData[k].xSlot[i].state==3)
+                {
+                    xProduction_FP.EndTimer[k][i]=0;
+                }
+            }
+        }
+    }
+}
+
+void prcGreenHouseSlotTimer()
+{
+    for(int k=0;k<xGreenHouse_FP.totalSlot;k++)
+    {
+        if(xGreenHouse_FP.xSlot[k].state==2)
+        {
+            xGreenHouse_FP.EndTimer[k] = xGreenHouse_FP.xSlot[k].endTime;
+            xGreenHouse_FP.EndTimer[k] -= xCalendar.nowTime;
+            
+            if(xGreenHouse_FP.EndTimer[k]<=0)
+            {
+                xGreenHouse_FP.EndTimer[k]=0;
+                xGreenHouse_FP.xSlot[k].state = 3;
+            }
+            else if(xGreenHouse_FP.xSlot[k].state==1||xGreenHouse_FP.xSlot[k].state==3)
+            {
+                xGreenHouse_FP.EndTimer[k]=0;
+            }
+        }
+    }
+}
+
+void prcSpinningWheelSlotTimer()
+{
+    for(int k=0;k<xSpinning_FP.totalSlot;k++)
+    {
+        if(xSpinning_FP.xSlot[k].state==2)
+        {
+            xSpinning_FP.EndTimer[k] = xSpinning_FP.xSlot[k].endTime;
+            xSpinning_FP.EndTimer[k] -= xCalendar.nowTime;
+            if(xSpinning_FP.EndTimer[k]<=0)
+            {
+                xSpinning_FP.EndTimer[k]=0;
+                xSpinning_FP.xSlot[k].state = 3;
+            }
+            else if(xSpinning_FP.xSlot[k].state==1||xSpinning_FP.xSlot[k].state==3)
+            {
+                xSpinning_FP.EndTimer[k]=0;
+            }
+        }
+    }
+}
+///////////////////////////////////////////
+//당근 획득 KBY
+void prcCarrot()
+{
+    if(xSaveTemp.carrot.oriData<xChs.carrotMax)
+    {
+        if(xCalendar.nowTime - xCalcCarrot.time > -1)
+        {
+            xCalcCarrot.time = xCalendar.nowTime;
+            xCalcCarrot.TimeTemp = xCalcCarrot.carrotComplete-xCalendar.nowTime;
+//            log("KBY_TIME : %d", xCalcCarrot.TimeTemp);
+            //1초씩 시간차감
+            if(xCalendar.nowTime >= xCalcCarrot.carrotComplete && xCalcCarrot.isAdd == false)
+            {
+                xEventQueueNet.end_time[xEventQueueNet.totalNum]=xCalendar.nowTime;
+                addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GETCARROT, TRUE);
+                xCalcCarrot.isAdd = true;
+                xCalcCarrot.carrotComplete = xCalendar.nowTime+xChs.carrotTime;
+            }
+        }
+    }
+    else
+    {
+        
     }
 }
 
@@ -93540,6 +96707,7495 @@ void keyLuluPangSettingFitting(int type, int param1, int param2)
 	}
 	
 }
+
+bool isDressChange()
+{
+	bool isChange = false;
+	
+	for(int i = 0; i < SPRIT_IMGLAYERMAX; i++)
+	{
+		if(xMyCharacter.xF.code[i] != xFitting_FP.xModel.xF.code[i])
+		{
+			isChange = true;
+			break;
+		}
+	}
+	
+	return isChange;
+}
+
+
+void setFittingSlot_FP(int tab)
+{
+	//	int index = 0;
+	
+	for(int i = 0; i < FASHIONDATATYPEMAX; i++)
+	{
+		xFashionList_FP.xSlotS[i].code = DONT;
+		xFashionList_FP.xSlotS[i].layer = DONT;
+		memset(xFashionList_FP.xSlotS[i].strName,0x00,sizeof(xFashionList_FP.xSlotS[i].strName));
+	}
+	
+	////////////////////////////////////////////////////
+	xEventQueueNet.typeNum[xEventQueueNet.totalNum] = tab;
+	addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GETDRESSROOMINFO, TRUE);
+	///////////////////////////////////////////////////
+	
+	xFitting_FP.totalNum = 0;
+}
+
+void initFitting_FP()
+{
+	int index = 0;
+	
+	for(int i = 0; i < FASHIONDATATYPEMAX; i++)
+	{
+		xFashionList_FP.xSlotS[i].code = DONT;
+		xFashionList_FP.xSlotS[i].layer = DONT;
+		memset(xFashionList_FP.xSlotS[i].strName,0x00,sizeof(xFashionList_FP.xSlotS[i].strName));
+	}
+	
+	xFitting_FP.totalNum = 0;
+	
+	xFitting_FP.hairNum = xMyCharacter.xFace.hairNum;
+	xFitting_FP.faceNum = xMyCharacter.xFace.faceNum;
+	xFitting_FP.pos = 0;
+	
+	for(int i = 0; i < SPRIT_IMGLAYERMAX; i++)
+		xFitting_FP.xModel.xF.code[i] = DONT;
+	
+	for(int i = 0; i < SPRIT_IMGLAYERMAX; i++)
+		xFitting_FP.xModel.xF.code[i] = xMyCharacter.xF.code[i];
+	
+	////////////////////////////////////////////////////
+	xEventQueueNet.typeNum[xEventQueueNet.totalNum] = -1;
+	addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GETDRESSROOMINFO, TRUE);
+	///////////////////////////////////////////////////
+}
+void loadFittingImg_FP(int imgType, int imgListNum)
+{
+	sprintf(strTempS, "dr%d.png", xFashionList_FP.xSlot[imgType][imgListNum].code);
+	loadImgDocuments(strTempS, &imgFittingItem_FP[imgType][imgListNum]);
+}
+void fittingFreeLoad_FP(bool isLoad)
+{
+	int type = 0;
+	int code = 0;
+	int layer = 0;
+	int num = 0;
+	
+	if(isLoad==true)
+	{
+		loadImg("fitting_base.png", &imgFitting[0]);
+		loadImg("fitting_title.png", &imgFitting[1]);
+		loadImg("fittinglist_base.png", &imgFitting[2]);
+		loadImg("fittinglist_name.png", &imgFitting[3]);
+		loadImg("fittinglist_slot.png", &imgFitting[4]);
+		loadImg("fittinglist_tap.png", &imgFitting[5]);
+		loadImg("fitting_slot_select.png", &imgFitting[6]);
+		loadImg("fitting_btn_info.png", &imgFitting[7]);
+		loadImg("fitting_eff_light.png", &imgFitting[8]);
+		loadImg("fitting_eff_shadow.png", &imgFitting[9]);
+		loadImg("fitting_btn_arrow.png", &imgFitting[10]);
+		loadImg("fitting_btn_shop.png", &imgFitting[11]);
+		loadImg("fitting_frame_buff.png", &imgFitting[12]);
+		loadImg("fitting_place.png", &imgFitting[13]);
+		loadImg("fitting_scroll.png", &imgFitting[14]);
+		loadImg("fitting_info_base.png", &imgFitting[15]);
+		loadImg("productionexiticon.png", &imgFitting[16]);
+		loadImg("fitting_char_base.png", &imgFitting[17]);
+		loadImg("fitting_btn_rollback.png", &imgFitting[18]);
+		loadImg("fitting_btn_save.png", &imgFitting[19]);
+		for(int k=0;k<FASHIONDATATYPEMAX;k++)
+		{
+			for(int i=0;i<xFashionList_FP.totalSlotNum[k];i++)
+			{
+				loadFittingImg_FP(k, i);
+			}
+		}
+		
+		type = xFitting_FP.faceNum%1000;
+		sprintf(strTempS, "face_%d_11.png", type);
+		loadImgDocuments(strTempS, &xFitting_FP.imgFace);
+		
+		
+		
+		type = xFitting_FP.hairNum/1000;
+		code = xFitting_FP.hairNum%1000;
+		layer = xHairMakeUp.xData[type][code].layerNum;
+		for(int k=0; k < 15; k++)
+		{
+			if(xLayer.xData[layer].xData[0][k] != -1)
+			{
+				sprintf(strTempS, "hair_%d_%d.png", xFitting_FP.hairNum, xLayer.xData[layer].xData[0][k]);
+				loadImgDocuments(strTempS, &xFitting_FP.imgHair[ACT_FRONT][k]);
+			}
+			
+			if(xLayer.xData[layer].xData[1][k] != -1)
+			{
+				sprintf(strTempS, "b_hair_%d_%d.png", xFitting_FP.hairNum, xLayer.xData[layer].xData[1][k]);
+				loadImgDocuments(strTempS, &xFitting_FP.imgHair[ACT_BACK][k]);
+			}
+		}
+	}
+	else
+	{
+		freeImg(&imgFitting[0]);
+		freeImg(&imgFitting[1]);
+		freeImg(&imgFitting[2]);
+		freeImg(&imgFitting[3]);
+		freeImg(&imgFitting[4]);
+		freeImg(&imgFitting[5]);
+		freeImg(&imgFitting[6]);
+		freeImg(&imgFitting[7]);
+		freeImg(&imgFitting[8]);
+		freeImg(&imgFitting[9]);
+		freeImg(&imgFitting[10]);
+		freeImg(&imgFitting[11]);
+		freeImg(&imgFitting[12]);
+		freeImg(&imgFitting[13]);
+		freeImg(&imgFitting[14]);
+		freeImg(&imgFitting[15]);
+		freeImg(&imgFitting[16]);
+		freeImg(&imgFitting[17]);
+		freeImg(&imgFitting[18]);
+		freeImg(&imgFitting[19]);
+		for(int k=0;k<FASHIONDATATYPEMAX;k++)
+		{
+			for(int i=0;i<xFashionList_FP.totalSlotNum[k];i++)
+			{
+				freeImg(&imgFittingItem_FP[k][i]);
+			}
+		}
+		
+		type = xFitting_FP.hairNum/1000;
+		code = xFitting_FP.hairNum%1000;
+		
+		layer = xHairMakeUp.xData[type][code].layerNum;
+		
+		for(int k=0; k < 15; k++)
+		{
+			if(xLayer.xData[layer].xData[0][k] != -1)
+			{
+				freeImg(&xFitting_FP.imgHair[0][k]);
+			}
+			
+			if(xLayer.xData[layer].xData[1][k] != -1)
+			{
+				freeImg(&xFitting_FP.imgHair[1][k]);
+			}
+		}
+		freeImg(&xFitting_FP.imgFace);
+	}
+}
+
+void drawFitting_FP()
+{
+	int px = cx;
+	int py = cy;
+	int pos = ACT_FRONT;
+	int type = 0;
+	int code = 0;
+	int layer = 0;
+	drawBgFillRect();
+	
+	subTemp[XPOS] = px;
+	subTemp[YPOS] = py+50;
+	
+	drawImage(&imgFitting[0], subTemp[XPOS], subTemp[YPOS], 0, 0, imgFitting[0].w, imgFitting[0].h, VH);
+	
+	subTemp[XPOS] = lcdW-40;
+	subTemp[YPOS] = py-180;
+	
+	drawImage(&imgFitting[16], subTemp[XPOS], subTemp[YPOS], 0, 0, imgFitting[16].w/2, imgFitting[16].h, VH);
+	
+	xTouchClr.wPos = imgFitting[16].w/2;
+	xTouchClr.hPos = imgFitting[16].h;
+	xTouchClr.xPos = subTemp[XPOS]-xTouchClr.wPos/2;
+	xTouchClr.yPos = subTemp[YPOS]-xTouchClr.hPos/2;
+	
+	//    setAlpha(100);
+	//    gSetColor(255, 0, 0);
+	//    fillRect(xTouchClr.xPos, xTouchClr.yPos, xTouchClr.wPos, xTouchClr.hPos);
+	//    setAlpha(255);
+	
+	subTemp[XPOS] = px-454;
+	subTemp[YPOS] = py-220;
+	
+	drawImage(&imgFitting[1], subTemp[XPOS], subTemp[YPOS], 0, 0, imgFitting[1].w, imgFitting[1].h, VH);
+	
+	subTemp[XPOS] = px+350;
+	subTemp[YPOS] = py+85;
+	drawImage(&imgFitting[17], subTemp[XPOS], subTemp[YPOS], 0, 0, imgFitting[17].w, imgFitting[17].h, VH);
+	
+	//롤백버튼
+	subTemp[XPOS] = px+350 - imgFitting[17].w/2 + 10;
+	subTemp[YPOS] = py+85 - imgFitting[17].h/2 + 10;
+	if(xFitting_FP.isChange == false)
+		drawImage(&imgFitting[18], subTemp[XPOS], subTemp[YPOS], imgFitting[18].w*2/3, 0, imgFitting[18].w/3, imgFitting[18].h, TL);
+	else if(xFitting_FP.isRollBack == false)
+		drawImage(&imgFitting[18], subTemp[XPOS], subTemp[YPOS], 0, 0, imgFitting[18].w/3, imgFitting[18].h, TL);
+	else if(xFitting_FP.isRollBack == true)
+		drawImage(&imgFitting[18], subTemp[XPOS], subTemp[YPOS], imgFitting[18].w/3, 0, imgFitting[18].w/3, imgFitting[18].h, TL);
+	xFitting_FP.xTouchRollBack.hPos = imgFitting[18].h;
+	xFitting_FP.xTouchRollBack.wPos = imgFitting[18].w/3;
+	xFitting_FP.xTouchRollBack.xPos = subTemp[XPOS];
+	xFitting_FP.xTouchRollBack.yPos = subTemp[YPOS];
+	
+	//저장버튼
+	subTemp[XPOS] = px+350 + imgFitting[17].w/2 -10 - imgFitting[19].w/3;
+	subTemp[YPOS] = py+85 - imgFitting[17].h/2 + 10;
+	if(xFitting_FP.isChange == false)
+		drawImage(&imgFitting[19], subTemp[XPOS], subTemp[YPOS], imgFitting[19].w*2/3, 0, imgFitting[19].w/3, imgFitting[19].h, TL);
+	else if(xFitting_FP.isSave == false)
+		drawImage(&imgFitting[19], subTemp[XPOS], subTemp[YPOS], 0, 0, imgFitting[19].w/3, imgFitting[19].h, TL);
+	else if(xFitting_FP.isSave == true)
+		drawImage(&imgFitting[19], subTemp[XPOS], subTemp[YPOS], imgFitting[19].w*1/3, 0, imgFitting[19].w/3, imgFitting[19].h, TL);
+	xFitting_FP.xTouchSave.hPos = imgFitting[19].h;
+	xFitting_FP.xTouchSave.wPos = imgFitting[19].w/3;
+	xFitting_FP.xTouchSave.xPos = subTemp[XPOS];
+	xFitting_FP.xTouchSave.yPos = subTemp[YPOS];
+	
+	
+	
+	
+	subTemp[XPOS] = px+350;
+	subTemp[YPOS] = py+30;
+	
+	drawImage(&imgFitting[8], subTemp[XPOS], subTemp[YPOS], 0, 0, imgFitting[8].w, imgFitting[8].h, VH);
+	
+	//버프정보창
+	subTemp[XPOS] = px+353;
+	subTemp[YPOS] = py+230;
+	
+	drawImage(&imgFitting[12], subTemp[XPOS], subTemp[YPOS], 0, 0, imgFitting[12].w, imgFitting[12].h, VH);
+	
+	subTemp[XPOS] = px+353;
+	subTemp[YPOS] = py+195;
+	
+	setFontSizeORI(16);
+	sprintf(strTempS,"버프 정보");
+	gDrawStringBold(subTemp[XPOS], subTemp[YPOS], strTempS, VH, 255, 255, 255, 101, 48, 150);
+	setFontSize(11);
+	
+	subTemp[XPOS] = px+260;
+	subTemp[YPOS] = py+223;
+	
+	setFontSizeORI(15);
+	sprintf(strTempS, "제작 시간 단축");
+	gSetColor(101, 48, 150);
+	gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VL);
+	setFontSize(11);
+	
+	subTemp[XPOS] = px+260;
+	subTemp[YPOS] = py+240;
+	
+	setFontSizeORI(15);
+	sprintf(strTempS, "획득 골드 증가");
+	gSetColor(101, 48, 150);
+	gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VL);
+	setFontSize(11);
+	
+	subTemp[XPOS] = px+260;
+	subTemp[YPOS] = py+258;
+	
+	setFontSizeORI(15);
+	sprintf(strTempS, "획득 경험치 증가");
+	gSetColor(101, 48, 150);
+	gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VL);
+	setFontSize(11);
+	
+	subTemp[XPOS] = px+380;
+	subTemp[YPOS] = py+223;
+	
+	setFontSizeORI(15);
+	sprintf(strTempS, "100.0%%");
+	gSetColor(252, 106, 177);
+	gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VL);
+	setFontSize(11);
+	
+	subTemp[XPOS] = px+380;
+	subTemp[YPOS] = py+240;
+	
+	setFontSizeORI(15);
+	sprintf(strTempS, "100.0%%");
+	gSetColor(252, 106, 177);
+	gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VL);
+	setFontSize(11);
+	
+	subTemp[XPOS] = px+380;
+	subTemp[YPOS] = py+258;
+	
+	setFontSizeORI(15);
+	sprintf(strTempS, "100.0%%");
+	gSetColor(252, 106, 177);
+	gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VL);
+	setFontSize(11);
+	
+	subTemp[XPOS] = px-170;
+	subTemp[YPOS] = py+85;
+	drawImage(&imgFitting[2], subTemp[XPOS], subTemp[YPOS], 0, 0, imgFitting[2].w, imgFitting[2].h, VH);
+	
+	subTemp[XPOS] = px+125;
+	subTemp[YPOS] = py-150;
+	if(xFitting_FP.isinfo==false)
+	{
+		drawImage(&imgFitting[7], subTemp[XPOS], subTemp[YPOS], 0, 0, imgFitting[7].w/2, imgFitting[7].h, VH);
+	}
+	else
+	{
+		drawImage(&imgFitting[7], subTemp[XPOS], subTemp[YPOS], imgFitting[7].w/2, 0, imgFitting[7].w/2, imgFitting[7].h, VH);
+	}
+	xFitting_FP.xTouchInfo.wPos = imgFitting[7].w/2;
+	xFitting_FP.xTouchInfo.hPos = imgFitting[7].h;
+	xFitting_FP.xTouchInfo.xPos = subTemp[XPOS]-xFitting_FP.xTouchInfo.wPos/2;
+	xFitting_FP.xTouchInfo.yPos = subTemp[YPOS]-xFitting_FP.xTouchInfo.hPos/2;
+	
+	//    setAlpha(100);
+	//    gSetColor(255, 0, 0);
+	//    fillRect(xFitting_FP.xTouchInfo.xPos, xFitting_FP.xTouchInfo.yPos, xFitting_FP.xTouchInfo.wPos, xFitting_FP.xTouchInfo.hPos);
+	//    setAlpha(255);
+	
+	
+	subTemp[XPOS] = px+280;
+	subTemp[YPOS] = py-155;
+	
+	drawImage(&imgFitting[13],subTemp[XPOS], subTemp[YPOS], 0, 0, imgFitting[13].w, imgFitting[13].h, VH);
+	
+	xFitting_FP.maxPlace = FITTING_FP_PLACEMAX;
+	xFitting_FP.nowPlace = xFitting_FP.maxPlace;
+	
+	sprintf(strTempS, "%d/%d", xFitting_FP.nowPlace, xFitting_FP.maxPlace);
+	setFontSizeORI(15);
+	gSetColor(255, 255, 255);
+	gDrawString(subTemp[XPOS]-6, subTemp[YPOS]+2, strTempS, VH);
+	setFontSize(11);
+	
+	subTemp[XPOS] = px+410;
+	subTemp[YPOS] = py-155;
+	
+	drawImage(&imgFitting[11],subTemp[XPOS], subTemp[YPOS],0 ,0, imgFitting[11].w/2, imgFitting[11].h, VH);
+	
+	xFitting_FP.xTouchShop.wPos = imgFitting[11].w/2;
+	xFitting_FP.xTouchShop.hPos = imgFitting[11].h;
+	xFitting_FP.xTouchShop.xPos = subTemp[XPOS]-xFitting_FP.xTouchShop.wPos/2;
+	xFitting_FP.xTouchShop.yPos = subTemp[YPOS]-xFitting_FP.xTouchShop.hPos/2;
+	
+	//    setAlpha(100);
+	//    gSetColor(255, 0, 0);
+	//    fillRect(xFitting_FP.xTouchShop.xPos, xFitting_FP.xTouchShop.yPos, xFitting_FP.xTouchShop.wPos, xFitting_FP.xTouchShop.hPos);
+	//    setAlpha(255);
+	
+	subTemp[XPOS] = px+241;
+	subTemp[YPOS] = py+60;
+	if(xFitting_FP.isTouchLeftArrow==false)
+	{
+		drawImage(&imgFitting[10], subTemp[XPOS], subTemp[YPOS], 0, 0, imgFitting[10].w/4, imgFitting[10].h, VH);
+	}
+	else
+	{
+		drawImage(&imgFitting[10], subTemp[XPOS], subTemp[YPOS], (imgFitting[10].w/4), 0, imgFitting[10].w/4, imgFitting[10].h, VH);
+	}
+	xFitting_FP.xTouchLeftArrow.wPos = imgFitting[10].w/4;
+	xFitting_FP.xTouchLeftArrow.hPos = imgFitting[10].h;
+	xFitting_FP.xTouchLeftArrow.xPos = subTemp[XPOS] - xFitting_FP.xTouchLeftArrow.wPos/2;
+	xFitting_FP.xTouchLeftArrow.yPos = subTemp[YPOS] - xFitting_FP.xTouchLeftArrow.hPos/2;
+	
+	//    setAlpha(100);
+	//    gSetColor(255, 0, 0);
+	//    fillRect(xFitting_FP.xTouchLeftArrow.xPos, xFitting_FP.xTouchLeftArrow.yPos, xFitting_FP.xTouchLeftArrow.wPos, xFitting_FP.xTouchLeftArrow.hPos);
+	//    setAlpha(ALPHA_MAX);
+	
+	subTemp[XPOS] = px+458;
+	subTemp[YPOS] = py+60;
+	xGame.isReverse = true;
+	if(xFitting_FP.isTouchRightArrow==false)
+	{
+		drawImage(&imgFitting[10], subTemp[XPOS], subTemp[YPOS], 0, 0, imgFitting[10].w/4, imgFitting[10].h, VH);
+		//        drawImage(&imgFitting[10], subTemp[XPOS], subTemp[YPOS], (imgFitting[10].w/4)*2, 0, imgFitting[10].w/4, imgFitting[10].h, VH);
+		
+	}
+	else
+	{
+		//        drawImage(&imgFitting[10], subTemp[XPOS], subTemp[YPOS], (imgFitting[10].w/4)*3, 0, imgFitting[10].w/4, imgFitting[10].h, VH);
+		drawImage(&imgFitting[10], subTemp[XPOS], subTemp[YPOS], (imgFitting[10].w/4), 0, imgFitting[10].w/4, imgFitting[10].h, VH);
+	}
+	xFitting_FP.xTouchRightArrow.wPos = imgFitting[10].w/4;
+	xFitting_FP.xTouchRightArrow.hPos = imgFitting[10].h;
+	xFitting_FP.xTouchRightArrow.xPos = subTemp[XPOS] - xFitting_FP.xTouchRightArrow.wPos/2;
+	xFitting_FP.xTouchRightArrow.yPos = subTemp[YPOS] - xFitting_FP.xTouchRightArrow.hPos/2;
+	xGame.isReverse=false;
+	//    setAlpha(100);
+	//    gSetColor(255, 0, 0);
+	//    fillRect(xFitting_FP.xTouchRightArrow.xPos, xFitting_FP.xTouchRightArrow.yPos, xFitting_FP.xTouchRightArrow.wPos, xFitting_FP.xTouchRightArrow.hPos);
+	//    setAlpha(ALPHA_MAX);
+	
+	int iMaxTabS = FITTING_FP_TAPMAX;
+	
+	subTemp[XPOS] = px-445;
+	subTemp[YPOS] = py-140;
+	
+	for(int i=-1;i<iMaxTabS-1;i++)
+	{
+		switch (i)
+		{
+			case 0:
+				sprintf(strTempS, "의상");
+				break;
+			case 1:
+				sprintf(strTempS,"모자");
+				break;
+			case 2:
+				sprintf(strTempS,"신발");
+				break;
+			case 3:
+				sprintf(strTempS,"가방");
+				break;
+			case 4:
+				sprintf(strTempS,"악세서리");
+				break;
+			case -1:
+				sprintf(strTempS,"전체");
+				break;
+			default:
+				break;
+		}
+		
+		
+		if(i==xFitting_FP.selectTabB)
+		{
+			drawImage(&imgFitting[5],subTemp[XPOS]+((i+1)*(imgFitting[5].w/2)) , subTemp[YPOS], 0, 0, imgFitting[5].w/2, imgFitting[5].h, VH);
+			setFontSizeORI(18);
+			gDrawStringBold(subTemp[XPOS]+((i+1)*(imgFitting[5].w/2)), subTemp[YPOS]+5, strTempS, VH, 255, 157, 212, 101, 48, 150);
+			setFontSize(11);
+			
+		}
+		else
+		{
+			drawImage(&imgFitting[5],subTemp[XPOS]+((i+1)*(imgFitting[5].w/2)) , subTemp[YPOS], imgFitting[5].w/2, 0, imgFitting[5].w/2, imgFitting[5].h, VH);
+			gSetColor(101, 48, 150);
+			setFontSizeORI(16);
+			gDrawString(subTemp[XPOS]+((i+1)*(imgFitting[5].w/2)), subTemp[YPOS]+5, strTempS, VH);
+			setFontSize(11);
+		}
+		xFitting_FP.xTouchSelectTap[i+1].wPos = imgFitting[5].w/2;
+		xFitting_FP.xTouchSelectTap[i+1].hPos = imgFitting[5].h;
+		xFitting_FP.xTouchSelectTap[i+1].xPos = subTemp[XPOS]+((i+1)*(imgFitting[5].w/2))-xFitting_FP.xTouchSelectTap[i].wPos/2;
+		xFitting_FP.xTouchSelectTap[i+1].yPos = subTemp[YPOS]-xFitting_FP.xTouchSelectTap[i].hPos/2;
+		
+		//슬롯개수 넣기
+		//        xFitting_FP.totalNum = xFashionList_FP.totalSlotNum[xFitting_FP.selectTabB];
+		//        setAlpha(100);
+		//        gSetColor(0,255, 0);
+		//        fillRect(xFitting_FP.xTouchSelectTap[i].xPos , xFitting_FP.xTouchSelectTap[i].yPos , xFitting_FP.xTouchSelectTap[i].wPos, xFitting_FP.xTouchSelectTap[i].hPos);
+		//        setAlpha(ALPHA_MAX);
+		
+	}
+	
+	
+	xFitting_FP.xDragScrollFittingList.totalNum = 1+(xFitting_FP.totalNum-1)/4;
+	//    xFitting_FP.totalSlot[0] = 7;
+	//    xFitting_FP.xDragScrollFittingList.totalNum = 1+(xFitting_FP.totalSlot[0]-1)/4;
+	xFitting_FP.xDragScrollFittingList.posGab = 170;
+	xFitting_FP.xDragScrollFittingList.endPos = -(((xFitting_FP.xDragScrollFittingList.totalNum-2)*xFitting_FP.xDragScrollFittingList.posGab));
+	
+	if(xFitting_FP.xDragScrollFittingList.totalNum<=2)
+		xFitting_FP.xDragScrollFittingList.endPos = 0;
+	
+	else
+		xFitting_FP.xDragScrollFittingList.endPos+=40;
+	
+	int iMax=xFitting_FP.totalNum;
+	
+	//    int iMax=xFitting_FP.totalSlot[0];
+	int slotCode = 0;
+	
+	dragScrollPrc(&xFitting_FP.xDragScrollFittingList, 1, FALSE);
+	gSetClip(true, px-507, py-120, imgFitting[2].w, imgFitting[2].h);
+	//    setAlpha(100);
+	//    gSetColor(0,255, 0);
+	//    fillRect(px-507, py-120, imgFitting[2].w, imgFitting[2].h);
+	//    setAlpha(ALPHA_MAX);
+	for(int k=0;k<iMax;k++)
+	{
+		subTemp[XPOS] = px-410+((k%4)*160);
+		subTemp[YPOS] = py-30+((k/4)*xFitting_FP.xDragScrollFittingList.posGab)+xFitting_FP.xDragScrollFittingList.pos;
+		if(subTemp[YPOS]>50&&subTemp[YPOS]<lcdH+50)
+		{
+			drawImage(&imgFitting[4], subTemp[XPOS], subTemp[YPOS], 0, 0, imgFitting[4].w, imgFitting[4].h, VH);
+			
+			slotCode = xFashionList_FP.xSlotS[k].code;
+			setMapData(slotCode);
+			drawImage(&imgFittingItem_FP[xMap.type][xMap.listNum], subTemp[XPOS], subTemp[YPOS], 0, 0, imgFittingItem_FP[xMap.type][xMap.listNum].w, imgFittingItem_FP[xMap.type][xMap.listNum].h, VH);
+			if(xFitting_FP.isinfo==true)
+			{
+				drawImage(&imgFitting[15], subTemp[XPOS]-1, subTemp[YPOS]-2, 0, 0, imgFitting[15].w, imgFitting[15].h, VH);
+				
+				sprintf(strTempS, "제작시간 단축");
+				setFontSizeORI(15);
+				gDrawStringBold(subTemp[XPOS], subTemp[YPOS], strTempS, VH, 101, 48, 150, 255, 255, 255);
+				setFontSize(11);
+				
+				sprintf(strTempS,"100.0%%");
+				setFontSizeORI(15);
+				gDrawStringBold(subTemp[XPOS], subTemp[YPOS]+20, strTempS, VH, 252, 106, 177, 255, 255, 255);
+				setFontSize(11);
+			}
+			
+			for(int i = 0; i < SPRIT_IMGLAYERMAX; i++)
+			{
+				if(xFitting_FP.xModel.xF.code[i] == xFashionList_FP.xSlotS[k].code)
+				{
+					drawImage(&imgFitting[6], subTemp[XPOS], subTemp[YPOS], 0, 0, imgFitting[6].w, imgFitting[6].h, VH);
+					break;
+				}
+			}
+			
+			drawImage(&imgFitting[3], subTemp[XPOS], subTemp[YPOS]+70, 0, 0, imgFitting[3].w, imgFitting[3].h, VH);
+			sprintf(strTempS, "%s", xFashionList_FP.xSlotS[k].strName);
+			
+			int sizeStr=strlen(strTempS);
+			
+			
+			if(sizeStr>27)
+			{
+				setFontSizeORI(12);
+			}
+			else
+			{
+				setFontSizeORI(14);
+			}
+			gSetColor(101, 48, 150);
+			gDrawString(subTemp[XPOS], subTemp[YPOS]+70, strTempS, VH);
+			setFontSize(11);
+			
+		}
+	}
+	gSetClip(false, px-507, py-120, imgFitting[2].w, imgFitting[2].h);
+	
+	
+	
+	xFitting_FP.xDragScrollFittingList.selectNum = (-xFitting_FP.xDragScrollFittingList.pos/xFitting_FP.xDragScrollFittingList.posGab);
+	
+	if(xFitting_FP.xDragScrollFittingList.selectNum<0)
+		xFitting_FP.xDragScrollFittingList.selectNum=0;
+	for(int k=0;k<xFitting_FP.totalNum;k++)
+	{
+		subTemp[XPOS] = px-410+((k%4)*160);
+		subTemp[YPOS] = py-30+((k/4)*xFitting_FP.xDragScrollFittingList.posGab)+xFitting_FP.xDragScrollFittingList.pos;
+		//        if(subTemp[YPOS]>50&&subTemp[YPOS]<lcdH+50)
+		//        {
+		//            xFitting_FP.xTouchSlot[k].wPos = imgFitting[4].w;
+		//            xFitting_FP.xTouchSlot[k].hPos = imgFitting[4].h;
+		//            xFitting_FP.xTouchSlot[k].xPos = subTemp[XPOS] - xFitting_FP.xTouchSlot[k].wPos/2;
+		//            xFitting_FP.xTouchSlot[k].yPos = subTemp[YPOS] - xFitting_FP.xTouchSlot[k].hPos/2;
+		//        }
+		xFitting_FP.xTouchSlot[k].wPos = imgFitting[4].w;
+		xFitting_FP.xTouchSlot[k].hPos = imgFitting[4].h;
+		xFitting_FP.xTouchSlot[k].xPos = subTemp[XPOS] - xFitting_FP.xTouchSlot[k].wPos/2;
+		xFitting_FP.xTouchSlot[k].yPos = subTemp[YPOS] - xFitting_FP.xTouchSlot[k].hPos/2;
+	}
+	
+	subTemp[XPOS] = px+155;
+	subTemp[YPOS] = py-102;
+	
+	setFastScroll(subTemp[XPOS], subTemp[YPOS], imgFitting[14].w, imgFitting[14].h, &xFitting_FP.xDragScrollFittingList);
+	
+	int xx = xFastScroll.x+xFastScroll.w/2;
+	int yy = xFastScroll.y;
+	
+	int nowPos = -xFastScroll.xDragScroll->pos;
+	int endPos = -xFastScroll.xDragScroll->endPos;
+	
+	
+	if(endPos != 0)
+		yy+=nowPos * xFastScroll.h/endPos;
+	
+	xFastScroll.xTouchBar.xPos = xFastScroll.x;
+	xFastScroll.xTouchBar.yPos = xFastScroll.y;
+	xFastScroll.xTouchBar.wPos = xFastScroll.w;
+	xFastScroll.xTouchBar.hPos = xFastScroll.h;
+	
+	//    gSetColor(255, 0, 0);
+	//    setAlpha(100);
+	//    fillRect(xFastScroll.xTouchBar.xPos, xFastScroll.xTouchBar.yPos, xFastScroll.xTouchBar.wPos,xFastScroll.xTouchBar.hPos);
+	//    setAlpha(ALPHA_MAX);
+	int reSize = xFitting_FP.xDragScrollFittingList.totalNum-1;
+	if(reSize<=0)
+		reSize = 1;
+	//    int temp = (imgFitting[14].h/xFitting_FP.xDragScrollFittingList.totalNum)/2;
+	int temp = (imgFitting[14].h/reSize)/2;
+	if(yy<=xFastScroll.y)
+		yy=xFastScroll.y+temp;
+	else if(yy>=xFastScroll.y+xFastScroll.h)
+		yy=xFastScroll.y+xFastScroll.h-temp;
+	
+	xGame.isReSizeDrawXY=true;
+	xGame.reSizeX = 100;
+	xGame.reSizeY = 100/reSize;
+	drawImage(&imgFitting[14], xx, yy, 0, 0, imgFitting[14].w, imgFitting[14].h, VH);
+	xGame.isReSizeDrawXY=false;
+	
+	switch(xFitting_FP.pos)
+	{
+		case 0:
+		case 1:
+			pos = ACT_FRONT;
+			break;
+		case 2:
+		case 3:
+			pos = ACT_BACK;
+			break;
+		default:
+			pos = ACT_FRONT;
+			break;
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//의상 레이어에 마네킹바디 넣기
+	setNpcBodyBig_FP(&xSpritNpc[NPC_ACT_FITTINGROOM][pos], pos);
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	//의상 레이어에 의상 넣기
+	setSpritFBig_FP(&xSpritNpc[NPC_ACT_FITTINGROOM][pos],&xFitting_FP.xModel.xF,pos);
+	
+	//헤어셋팅
+	for(int k=0; k < 15; k++)
+	{
+		if(xLayer.xData[xHairMakeUp.xData[xFitting_FP.hairNum/1000][xFitting_FP.hairNum%1000].layerNum].xData[ACT_FRONT][k] != -1)
+		{
+			type = xFitting_FP.hairNum/1000;
+			code = xFitting_FP.hairNum%1000;
+			layer = xHairMakeUp.xData[type][code].layerNum;
+			
+			if(xLayer.xData[layer].xData[ACT_FRONT][k] != -1)
+			{
+				xSpritNpc[NPC_ACT_FITTINGROOM][ACT_FRONT].imgLayer[xLayer.xData[layer].xData[ACT_FRONT][k]][ACT_FRONT] = &xFitting_FP.imgHair[ACT_FRONT][k];
+			}
+			
+			if(xLayer.xData[layer].xData[ACT_BACK][k] != -1)
+			{
+				xSpritNpc[NPC_ACT_FITTINGROOM][ACT_BACK].imgLayer[xLayer.xData[layer].xData[ACT_BACK][k]][ACT_BACK] = &xFitting_FP.imgHair[ACT_BACK][k];
+			}
+		}
+	}
+	
+	//얼굴셋팅
+	for(int k=0; k < 15; k++)
+	{
+		if(xLayer.xData[xHairMakeUp.xData[xFitting_FP.faceNum/1000][xFitting_FP.faceNum%1000].layerNum].xData[ACT_FRONT][k] != -1)
+		{
+			type = xFitting_FP.faceNum/1000;
+			code = xFitting_FP.faceNum%1000;
+			layer = xHairMakeUp.xData[type][code].layerNum;
+			
+			if(xLayer.xData[layer].xData[ACT_FRONT][k] != -1)
+			{
+				xSpritNpc[NPC_ACT_FITTINGROOM][ACT_FRONT].imgLayer[xLayer.xData[layer].xData[ACT_FRONT][k]][ACT_FRONT] = &xFitting_FP.imgFace;
+			}
+			
+			if(xLayer.xData[layer].xData[ACT_BACK][k] != -1)
+			{
+				xSpritNpc[NPC_ACT_FITTINGROOM][ACT_BACK].imgLayer[xLayer.xData[layer].xData[ACT_BACK][k]][ACT_BACK] = &xFitting_FP.imgFace;
+			}
+		}
+	}
+	
+	xSpritNpc[NPC_ACT_FITTINGROOM][pos].nowDelay = xFitting_FP.xModel.nowDelay;
+	xSpritNpc[NPC_ACT_FITTINGROOM][pos].nowFrame = xFitting_FP.xModel.nowFrame;
+	prcSprit(&xSpritNpc[NPC_ACT_FITTINGROOM][pos], &xFitting_FP.xModel.nowDelay, &xFitting_FP.xModel.nowFrame);
+	subTemp[XPOS] = px+355;
+	subTemp[YPOS] = py;
+	switch(xFitting_FP.pos)
+	{
+		case 1:
+		case 3:
+			reverseSpritBig_FP(&xSpritNpc[NPC_ACT_FITTINGROOM][pos],subTemp[XPOS],subTemp[YPOS],pos,&xFitting_FP.xModel.xFace);
+			break;
+		default:
+			drawSpritBig_FP(&xSpritNpc[NPC_ACT_FITTINGROOM][pos],subTemp[XPOS],subTemp[YPOS],pos,&xFitting_FP.xModel.xFace);
+			break;
+	}
+	
+	
+}
+
+void keyFitting_FP(int type, int param1, int param2, int touchId)
+{
+	bool isKeyEvent;
+	int keyEventNum;
+	if(type == MH_KEY_PRESSEVENT)
+	{
+		isKeyEvent = FALSE;
+		
+		for(int k=0;k<FITTING_FP_TAPMAX;k++)
+		{
+			if(touchCheck(&xFitting_FP.xTouchSelectTap[k])==TRUE && touchType == USER_POINT_PRESS_EVENT)
+			{
+				isKeyEvent = TRUE;
+				keyEventNum = k-1;
+			}
+		}
+		if(isKeyEvent == TRUE)
+		{
+			playSnd(SND_MENU_OK);
+			//xWorldMap.isKeyReturn = TRUE;
+			
+			if(xFitting_FP.selectTabB != keyEventNum)
+			{
+				xFitting_FP.selectTabB = keyEventNum;
+				
+				setFittingSlot_FP(xFitting_FP.selectTabB);
+				
+				xFitting_FP.xDragScrollFittingList.touchXpos = DONT;
+				xFitting_FP.xDragScrollFittingList.touchYpos = DONT;
+				xFitting_FP.xDragScrollFittingList.touchXposBefore = DONT;
+				xFitting_FP.xDragScrollFittingList.touchYposBefore = DONT;
+				xFitting_FP.xDragScrollFittingList.selectNum = 0;
+				xFitting_FP.xDragScrollFittingList.pos = 0;
+				xFitting_FP.xDragScrollFittingList.speed = 0;
+			}
+		}
+		else if(touchCheck(&xTouchClr)==TRUE && touchType == USER_POINT_PRESS_EVENT)
+		{
+			playSnd(SND_MENU_OK);
+			xWorldMap.isKeyReturn = TRUE;
+			fittingFreeLoad_FP(false);
+			xWorldMap.state = WORLDMAP_STATE_PLAY;
+		}
+		
+		else if(touchCheck(&xFitting_FP.xTouchInfo)==TRUE && touchType == USER_POINT_PRESS_EVENT)
+		{
+			playSnd(SND_MENU_OK);
+			if(xFitting_FP.isinfo==false)
+			{
+				xFitting_FP.isinfo=true;
+			}
+			else
+			{
+				xFitting_FP.isinfo=false;
+			}
+		}
+		
+		else if(touchCheck(&xFitting_FP.xTouchLeftArrow)==TRUE && touchType == USER_POINT_PRESS_EVENT)
+		{
+			xFitting_FP.isTouchLeftArrow=true;
+		}
+		
+		else if(touchCheck(&xFitting_FP.xTouchRightArrow)==TRUE && touchType == USER_POINT_PRESS_EVENT)
+		{
+			xFitting_FP.isTouchRightArrow=true;
+		}
+		else if(touchCheck(&xFitting_FP.xTouchRollBack)==TRUE && xFitting_FP.isChange == true && touchType == USER_POINT_PRESS_EVENT)
+		{
+			xFitting_FP.isRollBack=true;
+		}
+		else if(touchCheck(&xFitting_FP.xTouchSave)==TRUE && xFitting_FP.isChange == true && touchType == USER_POINT_PRESS_EVENT)
+		{
+			xFitting_FP.isSave=true;
+		}
+		else if(keyFastScroll_FP(type, param1, param2, touchId, 0)==true || xTouch.xPos>cx+155)
+		{
+			
+		}
+		else
+		{
+			dragScrollKeyPrc(&xFitting_FP.xDragScrollFittingList, 2);
+		}
+	}
+	else if(type == MH_KEY_RELEASEEVENT)
+	{
+		if(xFitting_FP.xDragScrollFittingList.touchYposBefore != DONT)
+		{
+			dragScrollKeyPrc(&xFitting_FP.xDragScrollFittingList, 3);
+		}
+		
+		else if(touchCheck(&xFitting_FP.xTouchLeftArrow)==TRUE && xFitting_FP.isTouchLeftArrow == true && touchType == USER_POINT_RELEASE_EVENT)
+		{
+			xFitting_FP.pos--;
+			if(xFitting_FP.pos < 0)
+				xFitting_FP.pos = 3;
+		}
+		
+		else if(touchCheck(&xFitting_FP.xTouchRightArrow)==TRUE && xFitting_FP.isTouchRightArrow == true && touchType == USER_POINT_RELEASE_EVENT)
+		{
+			xFitting_FP.pos++;
+			if(xFitting_FP.pos > 3)
+				xFitting_FP.pos = 0;
+		}
+		
+		else if(touchCheck(&xFitting_FP.xTouchRollBack)==TRUE && xFitting_FP.isRollBack == true && touchType == USER_POINT_RELEASE_EVENT)
+		{
+			for(int i = 0; i < SPRIT_IMGLAYERMAX; i++)
+			{
+				xFitting_FP.xModel.xF.code[i] = xMyCharacter.xF.code[i];
+			}
+		}
+		
+		else if(touchCheck(&xFitting_FP.xTouchSave)==TRUE && xFitting_FP.isSave == true && touchType == USER_POINT_RELEASE_EVENT)
+		{
+			for(int i = 0; i < SPRIT_IMGLAYERMAX; i++)
+			{
+				xEventQueueNet.item_index[xEventQueueNet.totalNum][i] = xFitting_FP.xModel.xF.code[i];
+			}
+			addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_UPDATEMYDRESS, TRUE);
+		}
+		
+		else
+		{
+			for(int k=0;k<xFitting_FP.totalNum;k++)
+			{
+				if(touchCheck(&xFitting_FP.xTouchSlot[k])==TRUE)
+				{
+					xFitting_FP.selectSlot = k;
+					//지정된 부위에 선택한 의상넣기
+					
+					if(xFitting_FP.xModel.xF.code[xFashionList_FP.xSlotS[xFitting_FP.selectSlot].code/1000] == xFashionList_FP.xSlotS[xFitting_FP.selectSlot].code)
+						xFitting_FP.xModel.xF.code[xFashionList_FP.xSlotS[xFitting_FP.selectSlot].code/1000] = DONT;
+					else
+						xFitting_FP.xModel.xF.code[xFashionList_FP.xSlotS[xFitting_FP.selectSlot].code/1000] = xFashionList_FP.xSlotS[xFitting_FP.selectSlot].code;
+					break;
+				}
+			}
+		}
+		xFitting_FP.xDragScrollFittingList.touchXpos = DONT;
+		xFitting_FP.xDragScrollFittingList.touchYpos = DONT;
+		xFitting_FP.xDragScrollFittingList.touchXposBefore = DONT;
+		xFitting_FP.xDragScrollFittingList.touchYposBefore = DONT;
+		xFitting_FP.isTouchLeftArrow = false;
+		xFitting_FP.isTouchRightArrow = false;
+		xFitting_FP.isRollBack = false;
+		xFitting_FP.isSave = false;
+	}
+}
+
+void friendListFreeLoad_FP(bool isLoad)
+{
+    if(isLoad==true)
+    {
+        loadImg("fashionplanet_frame_base.png", &imgfriendList[0]);
+        loadImg("friendList_title.png", &imgfriendList[1]);
+        loadImg("productionexiticon.png", &imgfriendList[2]);
+        loadImg("friendList_btn_tab.png", &imgfriendList[3]);
+        loadImg("friendList_bar_search.png", &imgfriendList[4]);
+        loadImg("friendList_btn_search.png", &imgfriendList[5]);
+        loadImg("production_slot_arrow.png", &imgfriendList[6]);
+        loadImg("friendList_slot_base.png", &imgfriendList[7]);
+        loadImg("friendList_Num.png", &imgfriendList[8]);
+        loadImg("friendList_btn_recommend.png", &imgfriendList[9]);
+        loadImg("friendList_btn_favorite.png", &imgfriendList[10]);
+        loadImg("friendList_btn_delete.png", &imgfriendList[11]);
+        loadImg("friendList_slot_follower.png", &imgfriendList[12]);
+        loadImg("friendList_btn_plus.png", &imgfriendList[13]);
+        loadImg("friendList_btn_edit.png", &imgfriendList[14]);
+        loadImg("friendList_btn_visit.png", &imgfriendList[15]);
+        loadImg("friendList_slot_Help.png", &imgfriendList[16]);
+        loadImg("friendSearch_base.png", &imgfriendList[17]);
+        loadImg("friendSearch_nouser.png", &imgfriendList[18]);
+    }
+	
+    else
+    {
+        freeImg(&imgfriendList[0]);
+        freeImg(&imgfriendList[1]);
+        freeImg(&imgfriendList[2]);
+        freeImg(&imgfriendList[3]);
+        freeImg(&imgfriendList[4]);
+        freeImg(&imgfriendList[5]);
+        freeImg(&imgfriendList[6]);
+        freeImg(&imgfriendList[7]);
+        freeImg(&imgfriendList[8]);
+        freeImg(&imgfriendList[9]);
+        freeImg(&imgfriendList[10]);
+        freeImg(&imgfriendList[11]);
+        freeImg(&imgfriendList[12]);
+        freeImg(&imgfriendList[13]);
+        freeImg(&imgfriendList[14]);
+        freeImg(&imgfriendList[15]);
+        freeImg(&imgfriendList[16]);
+        freeImg(&imgfriendList[17]);
+        freeImg(&imgfriendList[18]);
+		
+    }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////친구행성 Draw KBY
+void drawfriendList_FP()
+{
+    int px = cx;
+    int py = cy+47;
+	
+    drawBgFillRect();
+
+    drawImage(&imgfriendList[0], px, py, 0, 0, imgfriendList[0].w, imgfriendList[0].h, VH);
+	
+    subTemp[XPOS] = px-446;
+    subTemp[YPOS] = py-265;
+    
+    drawImage(&imgfriendList[1], subTemp[XPOS], subTemp[YPOS], 0, 0, imgfriendList[1].w, imgfriendList[1].h, VH);
+    
+    subTemp[XPOS] = lcdW-40;
+    subTemp[YPOS] = py-180-47;
+    if(xFriend_FP.isTouchClr==false)
+    {
+        drawImage(&imgfriendList[2], subTemp[XPOS], subTemp[YPOS], 0, 0, imgfriendList[2].w/2, imgfriendList[2].h, VH);
+    }
+    
+    else
+    {
+        drawImage(&imgfriendList[2], subTemp[XPOS], subTemp[YPOS], imgfriendList[2].w/2, 0, imgfriendList[2].w/2, imgfriendList[2].h, VH);
+    }
+    xTouchClr.wPos = imgfriendList[2].w/2;
+    xTouchClr.hPos = imgfriendList[2].h;
+    xTouchClr.xPos = subTemp[XPOS]-xTouchClr.wPos/2;
+    xTouchClr.yPos = subTemp[YPOS]-xTouchClr.hPos/2;
+    
+    subTemp[XPOS] = px-255;
+    subTemp[YPOS] = py-293;
+    if(xFriend_FP.selectTabB==0)
+    {
+        drawImage(&imgfriendList[3], subTemp[XPOS], subTemp[YPOS], 0, 0, imgfriendList[3].w/4, imgfriendList[3].h, VH);
+    
+        drawImage(&imgfriendList[3], subTemp[XPOS]+110, subTemp[YPOS], imgfriendList[3].w/4, 0, imgfriendList[3].w/4, imgfriendList[3].h, VH);
+    }
+    else
+    {
+        drawImage(&imgfriendList[3], subTemp[XPOS], subTemp[YPOS], imgfriendList[3].w/2, 0, imgfriendList[3].w/4, imgfriendList[3].h, VH);
+        
+        drawImage(&imgfriendList[3], subTemp[XPOS]+110, subTemp[YPOS], imgfriendList[3].w/4*3, 0, imgfriendList[3].w/4, imgfriendList[3].h, VH);
+    }
+    xFriend_FP.xTouchTab[0].wPos = imgfriendList[3].w/4;
+    xFriend_FP.xTouchTab[0].hPos = imgfriendList[3].h;
+    xFriend_FP.xTouchTab[0].xPos = subTemp[XPOS] - xFriend_FP.xTouchTab[0].wPos/2;
+    xFriend_FP.xTouchTab[0].yPos = subTemp[YPOS] - xFriend_FP.xTouchTab[0].hPos/2;
+    
+    xFriend_FP.xTouchTab[1].wPos = imgfriendList[3].w/4;
+    xFriend_FP.xTouchTab[1].hPos = imgfriendList[3].h;
+    xFriend_FP.xTouchTab[1].xPos = subTemp[XPOS]+110 - xFriend_FP.xTouchTab[1].wPos/2;
+    xFriend_FP.xTouchTab[1].yPos = subTemp[YPOS] - xFriend_FP.xTouchTab[1].hPos/2;
+    
+//    setAlpha(100);
+//    gSetColor(0, 0, 255);
+//    fillRect(xFriend_FP.xTouchTab[0].xPos, xFriend_FP.xTouchTab[0].yPos, xFriend_FP.xTouchTab[0].wPos, xFriend_FP.xTouchTab[0].hPos);
+//    setAlpha(ALPHA_MAX);
+//
+//
+//    setAlpha(100);
+//    gSetColor(0, 255, 0);
+//    fillRect(xFriend_FP.xTouchTab[1].xPos, xFriend_FP.xTouchTab[1].yPos, xFriend_FP.xTouchTab[1].wPos, xFriend_FP.xTouchTab[1].hPos);
+//    setAlpha(ALPHA_MAX);
+    
+//    subTemp[XPOS] = px+205;
+//    subTemp[YPOS] = py-155-47;
+//    
+//    drawImage(&imgfriendList[4], subTemp[XPOS], subTemp[YPOS], 0, 0, imgfriendList[4].w, imgfriendList[4].h, VH);
+    
+    if(xFriend_FP.selectTabB==0)
+    {
+        subTemp[XPOS] = px+235;
+        subTemp[YPOS] = py-155-47;
+        if(xFriend_FP.isTouchSearch==false)
+        {
+            drawImage(&imgfriendList[5], subTemp[XPOS], subTemp[YPOS], 0, 0, imgfriendList[5].w/2, imgfriendList[5].h, VH);
+        }
+        else
+        {
+            drawImage(&imgfriendList[5], subTemp[XPOS], subTemp[YPOS], imgfriendList[5].w/2, 0, imgfriendList[5].w/2, imgfriendList[5].h, VH);
+        }
+        xFriend_FP.xTouchSearch.wPos = imgfriendList[5].w/2+20;
+        xFriend_FP.xTouchSearch.hPos = imgfriendList[5].h+20;
+        xFriend_FP.xTouchSearch.xPos = subTemp[XPOS] - xFriend_FP.xTouchSearch.wPos/2;
+        xFriend_FP.xTouchSearch.yPos = subTemp[YPOS] - xFriend_FP.xTouchSearch.hPos/2;
+        
+//        setAlpha(100);
+//        gSetColor(0, 0, 255);
+//        fillRect(xFriend_FP.xTouchSearch.xPos, xFriend_FP.xTouchSearch.yPos, xFriend_FP.xTouchSearch.wPos, xFriend_FP.xTouchSearch.hPos);
+//        setAlpha(ALPHA_MAX);
+        
+        subTemp[XPOS] = px+310;
+        subTemp[YPOS] = py-155-47;
+        if(xFriend_FP.isTouchEdit==false)
+        {
+            drawImage(&imgfriendList[14], subTemp[XPOS], subTemp[YPOS], 0, 0, imgfriendList[14].w/2, imgfriendList[14].h, VH);
+        }
+        else
+        {
+            drawImage(&imgfriendList[14], subTemp[XPOS], subTemp[YPOS], imgfriendList[14].w/2, 0, imgfriendList[14].w/2, imgfriendList[14].h, VH);
+        }
+        xFriend_FP.xTouchEdit.wPos = imgfriendList[14].w/2;
+        xFriend_FP.xTouchEdit.hPos = imgfriendList[14].h;
+        xFriend_FP.xTouchEdit.xPos = subTemp[XPOS] - xFriend_FP.xTouchEdit.wPos/2;
+        xFriend_FP.xTouchEdit.yPos = subTemp[YPOS] - xFriend_FP.xTouchEdit.hPos/2;
+        
+        subTemp[XPOS] = px+415;
+        subTemp[YPOS] = py-162-47;
+        
+        if(xFriend_FP.isTouchRecommend==false)
+        {
+            drawImage(&imgfriendList[9], subTemp[XPOS], subTemp[YPOS], 0, 0, imgfriendList[9].w/2, imgfriendList[9].h, VH);
+        }
+        else
+        {
+            drawImage(&imgfriendList[9], subTemp[XPOS], subTemp[YPOS], imgfriendList[9].w/2, 0, imgfriendList[9].w/2, imgfriendList[9].h, VH);
+        }
+        
+        xFriend_FP.xTouchRecommend.wPos = imgfriendList[9].w/2+20;
+        xFriend_FP.xTouchRecommend.hPos = imgfriendList[9].h+20;
+        xFriend_FP.xTouchRecommend.xPos = subTemp[XPOS]-xFriend_FP.xTouchRecommend.wPos/2;
+        xFriend_FP.xTouchRecommend.yPos = subTemp[YPOS]-xFriend_FP.xTouchRecommend.hPos/2;
+    }
+    
+  
+    int iMax =0;
+    switch(xFriend_FP.selectTabB)
+    {
+        case 0:
+            xDragScrollFriendSlot.totalNum = 1+(xFriend.totalNumList-1)/10;
+            iMax = xFriend.totalNumList;
+            break;
+        case 1:
+            xDragScrollFriendSlot.totalNum = 1+(xFriend.totalNumListFollow-1)/10;
+            iMax = xFriend.totalNumListFollow;
+            break;
+    }
+    if(xFriend_FP.isTouchRecommend==true)
+    {
+        xDragScrollFriendSlot.totalNum = 1+(xFriend.totalNumListRanDom-1)/10;
+        iMax = xFriend.totalNumListRanDom;
+    }
+    xDragScrollFriendSlot.posGab = 1280;
+    
+    
+    dragScrollPrc(&xDragScrollFriendSlot, 0, FALSE);
+    if(xFriend_FP.isTouchRecommend==false)
+    {
+        if(iMax==0)
+        {
+            isSubTemp[13]=FALSE;
+            for(int ee=0;ee<xEventQueueNet.totalNum;ee++)
+            {
+                if (xEventQueueNet.type[ee]==NETQUEUE_TYPE_GETFRIENDLIST)
+                {
+                    isSubTemp[13] = TRUE;
+                    break;
+                }
+            }
+            if(isSubTemp[13]==FALSE)
+            {
+                switch(xFriend_FP.selectTabB)
+                {
+                    case 0:
+                        if(0 == xFriend.nowPageNumList)
+                        {
+                            xEventQueueNet.code[xEventQueueNet.totalNum] = xFriend.nowRowNumList;
+                            xEventQueueNet.slotNum[xEventQueueNet.totalNum] = xFriend.nowPageNumList;
+                            xEventQueueNet.action[xEventQueueNet.totalNum] = 0;		//0:친구리스트1:팔로잉
+                            ++xFriend.nowPageNumList;
+                            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GETFRIENDLIST, TRUE);
+                        }
+                        break;
+                    case 1:
+                        if(0 == xFriend.nowPageNumListFollow)
+                        {
+                            xEventQueueNet.code[xEventQueueNet.totalNum] = xFriend.nowRowNumListFollow;
+                            xEventQueueNet.slotNum[xEventQueueNet.totalNum] = xFriend.nowPageNumListFollow;
+                            xEventQueueNet.action[xEventQueueNet.totalNum] = 1;		//0:친구리스트1:팔로잉
+                            ++xFriend.nowPageNumListFollow;
+                            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GETFRIENDLIST, TRUE);
+                        }
+                        break;
+                }
+                
+            }
+        }
+    }
+    int pos;
+    int slotNum;
+    gSetClip(true, px-480, py-120-47, 960, lcdH);
+    for(int page =-1;page<=1;page++)
+    {
+        if(xDragScrollFriendSlot.selectNum+page>=0&&xDragScrollFriendSlot.selectNum+page<xDragScrollFriendSlot.totalNum)
+        {
+            for(int i=0;i<10;i++)
+            {
+                if(xFriend_FP.selectTabB==0)
+                {
+                    if(xFriend_FP.isTouchRecommend==true)
+                    {
+                        if(((xDragScrollFriendSlot.selectNum+page)*10)+i>=xFriend.totalNumListRanDom)
+                            break;
+                        
+                        pos = xDragScrollFriendSlot.pos+((xDragScrollFriendSlot.posGab)*page);
+                        subTemp[XPOS] = px-392+pos+(((i/2)%5)*190);
+                        subTemp[YPOS] = py-65+((i%2)*200);
+
+                        slotNum = ((xDragScrollFriendSlot.selectNum+page)*10)+i;
+                        
+                        drawFriendProfile(subTemp[XPOS], subTemp[YPOS], xFriendData[xFriend.dataSlotNumListRanDom[slotNum]].userNum, 130);
+                        
+                        drawImage(&imgfriendList[7], subTemp[XPOS], subTemp[YPOS]-5, 0, 0, imgfriendList[7].w, imgfriendList[7].h, VH);
+                        
+                        sprintf(strTempS, "%s", xFriendData[xFriend.dataSlotNumListRanDom[slotNum]].strNickName);
+                        setFontSizeORI(18);
+                        gSetColor(101, 48, 150);
+                        gDrawString(subTemp[XPOS], subTemp[YPOS]-85, strTempS, VH);
+                        setFontSize(11);
+                        
+                        drawNum(&imgfriendList[8], subTemp[XPOS], subTemp[YPOS]+57, xFriendData[xFriend.dataSlotNumListRanDom[slotNum]].lv, 0, VH);
+
+                        if(xFriendData[xFriend.dataSlotNumListRanDom[slotNum]].isPM==false)
+                        {
+                            if(xFriend_FP.isTouchJoin[slotNum]==false)
+                            {
+                                drawImage(&imgfriendList[13], subTemp[XPOS]-60, subTemp[YPOS]+62, 0, 0, imgfriendList[13].w/2, imgfriendList[13].h, VH);
+                            }
+                            else
+                            {
+                                drawImage(&imgfriendList[13], subTemp[XPOS]-60, subTemp[YPOS]+62, imgfriendList[13].w/2, 0, imgfriendList[13].w/2, imgfriendList[13].h, VH);
+                            }
+                            
+                            xFriend_FP.xTouchJoin[slotNum].wPos = imgfriendList[13].w/2+20;
+                            xFriend_FP.xTouchJoin[slotNum].hPos = imgfriendList[13].h+20;
+                            xFriend_FP.xTouchJoin[slotNum].xPos = subTemp[XPOS]-60-xFriend_FP.xTouchJoin[slotNum].wPos/2;
+                            xFriend_FP.xTouchJoin[slotNum].yPos = subTemp[YPOS]+62-xFriend_FP.xTouchJoin[slotNum].hPos/2;
+                            
+                            
+                            //                        setAlpha(100);
+                            //                        gSetColor(255, 0, 0);
+                            //                        fillRect(xFriend_FP.xTouchJoin[slotNum].xPos, xFriend_FP.xTouchJoin[slotNum].yPos, xFriend_FP.xTouchJoin[slotNum].wPos, xFriend_FP.xTouchJoin[slotNum].hPos);
+                            //                        setAlpha(ALPHA_MAX);
+                            
+                            
+                            
+                            drawImage(&imgfriendList[10], subTemp[XPOS]-57, subTemp[YPOS]-45, imgfriendList[10].w/3*2, 0, imgfriendList[10].w/3, imgfriendList[10].h, VH);
+                            
+                            
+                            //                setAlpha(100);
+                            //                gSetColor(255, 0, 0);
+                            //                fillRect(xFriend_FP.xTouchFavorite.xPos, xFriend_FP.xTouchFavorite.yPos, xFriend_FP.xTouchFavorite.wPos, xFriend_FP.xTouchFavorite.hPos);
+                            //                setAlpha(ALPHA_MAX);
+                            
+                        }
+                        
+                        if(xFriend_FP.isTouchVisit[slotNum]==false)
+                        {
+                            drawImage(&imgfriendList[15], subTemp[XPOS]+60, subTemp[YPOS]+62, 0, 0, imgfriendList[15].w/2, imgfriendList[15].h, VH);
+                        }
+                        else
+                        {
+                            drawImage(&imgfriendList[15], subTemp[XPOS]+60, subTemp[YPOS]+62, imgfriendList[15].w/2, 0, imgfriendList[15].w/2, imgfriendList[15].h, VH);
+                        }
+                    }
+                    else
+                    {
+                        if(((xDragScrollFriendSlot.selectNum+page)*10)+i>=xFriend.totalNumList)
+                            break;
+                        
+                        pos = xDragScrollFriendSlot.pos+((xDragScrollFriendSlot.posGab)*page);
+                        subTemp[XPOS] = px-392+pos+(((i/2)%5)*190);
+                        subTemp[YPOS] = py-65+((i%2)*200);
+                        
+                        //                if(subTemp[XPOS]<-xDragScrollFriendSlot.posGab||subTemp[XPOS]>lcdW+xDragScrollFriendSlot.posGab)
+                        //                    continue;
+                        
+                        
+                        
+                        slotNum = ((xDragScrollFriendSlot.selectNum+page)*10)+i;
+                        
+                        drawFriendProfile(subTemp[XPOS], subTemp[YPOS], xFriendData[xFriend.dataSlotNumList[slotNum]].userNum, 130);
+                        
+                        drawImage(&imgfriendList[7], subTemp[XPOS], subTemp[YPOS]-5, 0, 0, imgfriendList[7].w, imgfriendList[7].h, VH);
+                        
+                        sprintf(strTempS, "%s", xFriendData[xFriend.dataSlotNumList[slotNum]].strNickName);
+                        setFontSizeORI(18);
+                        gSetColor(101, 48, 150);
+                        gDrawString(subTemp[XPOS], subTemp[YPOS]-85, strTempS, VH);
+                        setFontSize(11);
+                        
+                        
+                        
+                        drawNum(&imgfriendList[8], subTemp[XPOS], subTemp[YPOS]+57, xFriendData[xFriend.dataSlotNumList[slotNum]].lv, 0, VH);
+                        
+                        if(xFriendData[xFriend.dataSlotNumList[slotNum]].socialCount>0)
+                        {
+                            drawImage(&imgfriendList[16], subTemp[XPOS]+53, subTemp[YPOS]-45, 0, 0, imgfriendList[16].w, imgfriendList[16].h, VH);
+                        }
+                        
+                        if(xFriendData[xFriend.dataSlotNumList[slotNum]].isPM==false)
+                        {
+                            if(xFriendData[xFriend.dataSlotNumList[slotNum]].isBookMark==true)
+                            {
+                                drawImage(&imgfriendList[10], subTemp[XPOS]-57, subTemp[YPOS]-45, 0, 0, imgfriendList[10].w/3, imgfriendList[10].h, VH);
+                            }
+                            
+                            else if(xFriendData[xFriend.dataSlotNumList[slotNum]].isBookMark==false)
+                            {
+                                drawImage(&imgfriendList[10], subTemp[XPOS]-57, subTemp[YPOS]-45, imgfriendList[10].w/3, 0, imgfriendList[10].w/3, imgfriendList[10].h, VH);
+                            }
+                            
+                            xFriend_FP.xTouchFavorite[slotNum].wPos = imgfriendList[10].w/3;
+                            xFriend_FP.xTouchFavorite[slotNum].hPos = imgfriendList[10].h;
+                            xFriend_FP.xTouchFavorite[slotNum].xPos = subTemp[XPOS]-55-xFriend_FP.xTouchFavorite[slotNum].wPos/2;
+                            xFriend_FP.xTouchFavorite[slotNum].yPos = subTemp[YPOS]-45-xFriend_FP.xTouchFavorite[slotNum].hPos/2;
+                            
+                            //                setAlpha(100);
+                            //                gSetColor(255, 0, 0);
+                            //                fillRect(xFriend_FP.xTouchFavorite.xPos, xFriend_FP.xTouchFavorite.yPos, xFriend_FP.xTouchFavorite.wPos, xFriend_FP.xTouchFavorite.hPos);
+                            //                setAlpha(ALPHA_MAX);
+                            if(xFriendData[xFriend.dataSlotNumList[slotNum]].friendState==1)
+                            {
+                                drawImage(&imgfriendList[12], subTemp[XPOS]-57, subTemp[YPOS]+62, 0, 0, imgfriendList[12].w, imgfriendList[12].h, VH);
+                            }
+                            
+                            if(xFriend_FP.isTouchEdit==false)
+                            {
+                                if(xFriend_FP.isTouchVisit[slotNum]==false)
+                                {
+                                    drawImage(&imgfriendList[15], subTemp[XPOS]+60, subTemp[YPOS]+62, 0, 0, imgfriendList[15].w/2, imgfriendList[15].h, VH);
+                                }
+                                else
+                                {
+                                    drawImage(&imgfriendList[15], subTemp[XPOS]+60, subTemp[YPOS]+62, imgfriendList[15].w/2, 0, imgfriendList[15].w/2, imgfriendList[15].h, VH);
+                                }
+                                xFriend_FP.xTouchVisit[slotNum].wPos = imgfriendList[15].w/2+20;
+                                xFriend_FP.xTouchVisit[slotNum].hPos = imgfriendList[15].h;
+                                xFriend_FP.xTouchVisit[slotNum].xPos = subTemp[XPOS]+60 - xFriend_FP.xTouchVisit[slotNum].wPos/2;
+                                xFriend_FP.xTouchVisit[slotNum].yPos = subTemp[YPOS]+62 - xFriend_FP.xTouchVisit[slotNum].hPos/2;
+                                
+                                //                            setAlpha(100);
+                                //                            gSetColor(255, 0, 0);
+                                //                            fillRect(xFriend_FP.xTouchVisit[slotNum].xPos, xFriend_FP.xTouchVisit[slotNum].yPos, xFriend_FP.xTouchVisit[slotNum].wPos, xFriend_FP.xTouchVisit[slotNum].hPos);
+                                //                            setAlpha(ALPHA_MAX);
+                                
+                            }
+                            else
+                            {
+                                drawImage(&imgfriendList[11], subTemp[XPOS]+60, subTemp[YPOS]+62, 0, 0, imgfriendList[11].w/2, imgfriendList[11].h, VH);
+                                
+                                xFriend_FP.xTouchDel[slotNum].wPos = imgfriendList[11].w/2+20;
+                                xFriend_FP.xTouchDel[slotNum].hPos = imgfriendList[11].h+20;
+                                xFriend_FP.xTouchDel[slotNum].xPos = subTemp[XPOS]+60-xFriend_FP.xTouchDel[slotNum].wPos/2;
+                                xFriend_FP.xTouchDel[slotNum].yPos = subTemp[YPOS]+62-xFriend_FP.xTouchDel[slotNum].hPos/2;
+                                
+                                //                            setAlpha(100);
+                                //                            gSetColor(255, 0, 0);
+                                //                            fillRect(xFriend_FP.xTouchDel[slotNum].xPos, xFriend_FP.xTouchDel[slotNum].yPos, xFriend_FP.xTouchDel[slotNum].wPos, xFriend_FP.xTouchDel[slotNum].hPos);
+                                //                            setAlpha(ALPHA_MAX);
+                            }
+                        }
+                        else
+                        {
+                            if(xFriend_FP.isTouchVisit[slotNum]==false)
+                            {
+                                drawImage(&imgfriendList[15], subTemp[XPOS]+60, subTemp[YPOS]+62, 0, 0, imgfriendList[15].w/2, imgfriendList[15].h, VH);
+                            }
+                            else
+                            {
+                                drawImage(&imgfriendList[15], subTemp[XPOS]+60, subTemp[YPOS]+62, imgfriendList[15].w/2, 0, imgfriendList[15].w/2, imgfriendList[15].h, VH);
+                            }
+                            xFriend_FP.xTouchVisit[slotNum].wPos = imgfriendList[15].w/2+20;
+                            xFriend_FP.xTouchVisit[slotNum].hPos = imgfriendList[15].h;
+                            xFriend_FP.xTouchVisit[slotNum].xPos = subTemp[XPOS]+60 - xFriend_FP.xTouchVisit[slotNum].wPos/2;
+                            xFriend_FP.xTouchVisit[slotNum].yPos = subTemp[YPOS]+62 - xFriend_FP.xTouchVisit[slotNum].hPos/2;
+                            
+                            //                        setAlpha(100);
+                            //                        gSetColor(255, 0, 0);
+                            //                        fillRect(xFriend_FP.xTouchVisit[slotNum].xPos, xFriend_FP.xTouchVisit[slotNum].yPos, xFriend_FP.xTouchVisit[slotNum].wPos, xFriend_FP.xTouchVisit[slotNum].hPos);
+                            //                        setAlpha(ALPHA_MAX);
+                            
+                        }
+                        
+                        if((i+1)/10 >= xFriend.nowPageNumList)
+                        {
+                            isSubTemp[13] = FALSE;
+                            for(int ee=0;ee<xEventQueueNet.totalNum;ee++)
+                            {
+                                if(xEventQueueNet.type[ee] == NETQUEUE_TYPE_GETFRIENDLIST)
+                                {
+                                    isSubTemp[13] = TRUE;
+                                    break;
+                                }
+                            }
+                            if(isSubTemp[13] == FALSE)
+                            {
+                                //////////////////////////////////////////////////////////////////////////////////////////
+                                xEventQueueNet.code[xEventQueueNet.totalNum] = xFriend.nowRowNumList;
+                                xEventQueueNet.slotNum[xEventQueueNet.totalNum] = xFriend.nowPageNumList;
+                                xEventQueueNet.action[xEventQueueNet.totalNum] = 0;		//0:친구리스트1:팔로잉
+                                ++xFriend.nowPageNumList;
+                                addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GETFRIENDLIST, TRUE);
+                                //////////////////////////////////////////////////////////////////////////////////////////
+                            }
+                        }
+                    }
+                }
+                
+                
+                else
+                {
+                    if(((xDragScrollFriendSlot.selectNum+page)*10)+i>=xFriend.totalNumListFollow)
+                        break;
+                    
+                    pos = xDragScrollFriendSlot.pos+((xDragScrollFriendSlot.posGab)*page);
+                    subTemp[XPOS] = px-392+pos+(((i/2)%5)*190);
+                    subTemp[YPOS] = py-65+((i%2)*200);
+                    
+                    //                if(subTemp[XPOS]<-xDragScrollFriendSlot.posGab||subTemp[XPOS]>lcdW+xDragScrollFriendSlot.posGab)
+                    //                    continue;
+                    
+                    slotNum = ((xDragScrollFriendSlot.selectNum+page)*10)+i;
+                    
+                    drawFriendProfile(subTemp[XPOS], subTemp[YPOS], xFriendData[xFriend.dataSlotNumListFollow[slotNum]].userNum, 130);
+                    
+                    drawImage(&imgfriendList[7], subTemp[XPOS], subTemp[YPOS]-5, 0, 0, imgfriendList[7].w, imgfriendList[7].h, VH);
+                    
+                    sprintf(strTempS, "%s", xFriendData[xFriend.dataSlotNumListFollow[slotNum]].strNickName);
+                    setFontSizeORI(18);
+                    gSetColor(101, 48, 150);
+                    gDrawString(subTemp[XPOS], subTemp[YPOS]-85, strTempS, VH);
+                    setFontSize(11);
+                    
+                    drawNum(&imgfriendList[8], subTemp[XPOS], subTemp[YPOS]+57, xFriendData[xFriend.dataSlotNumListFollow[slotNum]].lv, 0, VH);
+                    
+                    if(xFriendData[xFriend.dataSlotNumListFollow[slotNum]].isPM==false)
+                    {
+                        if(xFriend_FP.isTouchJoin[slotNum]==false)
+                        {
+                            drawImage(&imgfriendList[13], subTemp[XPOS]-60, subTemp[YPOS]+62, 0, 0, imgfriendList[13].w/2, imgfriendList[13].h, VH);
+                        }
+                        else
+                        {
+                            drawImage(&imgfriendList[13], subTemp[XPOS]-60, subTemp[YPOS]+62, imgfriendList[13].w/2, 0, imgfriendList[13].w/2, imgfriendList[13].h, VH);
+                        }
+                        
+                        xFriend_FP.xTouchJoin[slotNum].wPos = imgfriendList[13].w/2+20;
+                        xFriend_FP.xTouchJoin[slotNum].hPos = imgfriendList[13].h+20;
+                        xFriend_FP.xTouchJoin[slotNum].xPos = subTemp[XPOS]-60-xFriend_FP.xTouchJoin[slotNum].wPos/2;
+                        xFriend_FP.xTouchJoin[slotNum].yPos = subTemp[YPOS]+62-xFriend_FP.xTouchJoin[slotNum].hPos/2;
+                        
+                        
+//                        setAlpha(100);
+//                        gSetColor(255, 0, 0);
+//                        fillRect(xFriend_FP.xTouchJoin[slotNum].xPos, xFriend_FP.xTouchJoin[slotNum].yPos, xFriend_FP.xTouchJoin[slotNum].wPos, xFriend_FP.xTouchJoin[slotNum].hPos);
+//                        setAlpha(ALPHA_MAX);
+                        
+                        
+                        
+                        drawImage(&imgfriendList[10], subTemp[XPOS]-57, subTemp[YPOS]-45, imgfriendList[10].w/3*2, 0, imgfriendList[10].w/3, imgfriendList[10].h, VH);
+                        
+                        
+                        //                setAlpha(100);
+                        //                gSetColor(255, 0, 0);
+                        //                fillRect(xFriend_FP.xTouchFavorite.xPos, xFriend_FP.xTouchFavorite.yPos, xFriend_FP.xTouchFavorite.wPos, xFriend_FP.xTouchFavorite.hPos);
+                        //                setAlpha(ALPHA_MAX);
+                        
+                    }
+                    
+                    if(xFriend_FP.isTouchVisit[slotNum]==false)
+                    {
+                        drawImage(&imgfriendList[15], subTemp[XPOS]+60, subTemp[YPOS]+62, 0, 0, imgfriendList[15].w/2, imgfriendList[15].h, VH);
+                    }
+                    else
+                    {
+                        drawImage(&imgfriendList[15], subTemp[XPOS]+60, subTemp[YPOS]+62, imgfriendList[15].w/2, 0, imgfriendList[15].w/2, imgfriendList[15].h, VH);
+                    }
+                    
+                    if((i+1)/10 >= xFriend.nowPageNumListFollow)
+                    {
+                        isSubTemp[13] = FALSE;
+                        for(int ee=0;ee<xEventQueueNet.totalNum;ee++)
+                        {
+                            if(xEventQueueNet.type[ee] == NETQUEUE_TYPE_GETFRIENDLIST)
+                            {
+                                isSubTemp[13] = TRUE;
+                                break;
+                            }
+                        }
+                        if(isSubTemp[13] == FALSE)
+                        {
+                            //////////////////////////////////////////////////////////////////////////////////////////
+                            xEventQueueNet.code[xEventQueueNet.totalNum] = xFriend.nowRowNumListFollow;
+                            xEventQueueNet.slotNum[xEventQueueNet.totalNum] = xFriend.nowPageNumListFollow;
+                            xEventQueueNet.action[xEventQueueNet.totalNum] = 1;		//0:친구리스트1:팔로잉
+                            ++xFriend.nowPageNumListFollow;
+                            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GETFRIENDLIST, TRUE);
+                            //////////////////////////////////////////////////////////////////////////////////////////
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    gSetClip(false, 0, 0, false, false);
+    
+//    gSetColor(0,255,0);
+//    setAlpha(100);
+//    fillRect(px-480, py-120-47, 960, lcdH);
+//    setAlpha(ALPHA_MAX);
+    
+    subTemp[XPOS] = px-520;
+    subTemp[YPOS] = py+80-47;
+    if(xDragScrollFriendSlot.selectNum<=0)
+    {
+        drawImage(&imgfriendList[6], subTemp[XPOS], subTemp[YPOS], imgfriendList[6].w/6*2, 0, imgfriendList[6].w/6, imgfriendList[6].h, VH);
+    }
+    else
+    {
+        if(xFriend_FP.isTouchLeftArrow==true)
+        {
+            drawImage(&imgfriendList[6], subTemp[XPOS], subTemp[YPOS], imgfriendList[6].w/6*4, 0, imgfriendList[6].w/6, imgfriendList[6].h, VH);
+        }
+        else
+        {
+            drawImage(&imgfriendList[6], subTemp[XPOS], subTemp[YPOS], 0, 0, imgfriendList[6].w/6, imgfriendList[6].h, VH);
+        }
+    }
+    
+    xFriend_FP.xTouchLeftArrow.wPos = 80;
+    xFriend_FP.xTouchLeftArrow.hPos = 230;
+    xFriend_FP.xTouchLeftArrow.xPos = subTemp[XPOS] - xFriend_FP.xTouchLeftArrow.wPos/2;
+    xFriend_FP.xTouchLeftArrow.yPos = subTemp[YPOS] - xFriend_FP.xTouchLeftArrow.hPos/2;
+    
+    //    setAlpha(100);
+    //    gSetColor(0, 0, 255);
+    //    fillRect(xFriend_FP.xTouchLeftArrow.xPos, xFriend_FP.xTouchLeftArrow.yPos, xFriend_FP.xTouchLeftArrow.wPos, xFriend_FP.xTouchLeftArrow.hPos);
+    //    setAlpha(ALPHA_MAX);
+    
+    subTemp[XPOS] = px+525;
+    subTemp[YPOS] = py+80-47;
+    
+    if(xDragScrollFriendSlot.selectNum>=xDragScrollFriendSlot.totalNum-1)
+    {
+        drawImage(&imgfriendList[6], subTemp[XPOS], subTemp[YPOS], imgfriendList[6].w/6*3, 0, imgfriendList[6].w/6, imgfriendList[6].h, VH);
+    }
+    else
+    {
+        if(xFriend_FP.isTouchRightArrow==false)
+        {
+            drawImage(&imgfriendList[6], subTemp[XPOS], subTemp[YPOS], imgfriendList[6].w/6, 0, imgfriendList[6].w/6, imgfriendList[6].h, VH);
+        }
+        else
+        {
+            drawImage(&imgfriendList[6], subTemp[XPOS], subTemp[YPOS], imgfriendList[6].w/6*5, 0, imgfriendList[6].w/6, imgfriendList[6].h, VH);
+        }
+    }
+    
+    xFriend_FP.xTouchRightArrow.wPos = 80;
+    xFriend_FP.xTouchRightArrow.hPos = 230;
+    xFriend_FP.xTouchRightArrow.xPos = subTemp[XPOS] - xFriend_FP.xTouchRightArrow.wPos/2;
+    xFriend_FP.xTouchRightArrow.yPos = subTemp[YPOS] - xFriend_FP.xTouchRightArrow.hPos/2;
+    
+    //    setAlpha(100);
+    //    gSetColor(0, 0, 255);
+    //    fillRect(xFriend_FP.xTouchRightArrow.xPos, xFriend_FP.xTouchRightArrow.yPos, xFriend_FP.xTouchRightArrow.wPos, xFriend_FP.xTouchRightArrow.hPos);
+    //    setAlpha(ALPHA_MAX);
+
+
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////친구행성 입력 이벤트 처리 KBY
+void keyfriendList_FP(int type, int param1, int param2)
+{
+    bool isBookMark = false;
+    int selectSlot = -1;
+    if(touchType == USER_POINT_PRESS_EVENT)
+    {
+        for(int k=0;k<FRIENDSLOTMAX;k++)
+        {
+            if(touchCheck(&xFriend_FP.xTouchFavorite[k])==TRUE)
+            {
+                isBookMark=true;
+                selectSlot = k;
+                break;
+            }
+            
+            else if(touchCheck(&xFriend_FP.xTouchJoin[k])==TRUE)
+            {
+                if(xFriend_FP.selectTabB==1)
+                {
+                    if(k<xFriend.totalNumListFollow)
+                    {
+                        xFriend_FP.isTouchJoin[k]=true;
+                        break;
+                    }
+                }
+                
+            }
+            
+            else if(touchCheck(&xFriend_FP.xTouchVisit[k])==TRUE&&xFriend_FP.isTouchEdit==false)
+            {
+                if(xFriend_FP.selectTabB==0)
+                {
+                    if(k<xFriend.totalNumList)
+                    {
+                        xFriend_FP.isTouchVisit[k]=true;
+                        break;
+                    }
+                }
+                else
+                {
+                    if(k<xFriend.totalNumListFollow)
+                    {
+                        xFriend_FP.isTouchVisit[k]=true;
+                        break;
+                    }
+                }
+            }
+            else if(touchCheck(&xFriend_FP.xTouchDel[k])==TRUE)
+            {
+                if(xFriend_FP.selectTabB==0&&xFriend_FP.isTouchEdit==true)
+                {
+                    if(k<xFriend.totalNumList)
+                    {
+                        xFriendData[xFriend.dataSlotNumList[k]].isAdd = FALSE;
+                        xEventQueueNet.friendNum[xEventQueueNet.totalNum] = xFriendData[xFriend.dataSlotNumList[k]].userNum;
+                        addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_DELFRIEND, FALSE);
+                        
+                        for(int s=k;s<xFriend.totalNumList;s++)
+                        {
+                            xFriend.dataSlotNumList[s]=xFriend.dataSlotNumList[s+1];
+                        }
+                        xFriend.totalNumList--;
+                        break;
+
+                    }
+                }
+            }
+        }
+        for(int k=0;k<2;k++)
+        {
+            if(touchCheck(&xFriend_FP.xTouchTab[k])==TRUE)
+            {
+                xFriend_FP.selectTabB=k;
+                break;
+            }
+        }
+        if(touchCheck(&xTouchClr)==TRUE && touchType == USER_POINT_PRESS_EVENT)
+        {
+            xFriend_FP.isTouchClr=true;
+        }
+        
+        else if(touchCheck(&xFriend_FP.xTouchLeftArrow)==TRUE && xDragScrollFriendSlot.selectNum>0)
+        {
+            xFriend_FP.isTouchLeftArrow=true;
+            xFriend_FP.isTouchRightArrow = false;
+        }
+        
+        else if(touchCheck(&xFriend_FP.xTouchRightArrow)==TRUE && xDragScrollFriendSlot.selectNum<xDragScrollFriendSlot.totalNum-1)
+        {
+            xFriend_FP.isTouchLeftArrow=false;
+            xFriend_FP.isTouchRightArrow=true;
+        }
+        
+        else if(touchCheck(&xFriend_FP.xTouchEdit)==TRUE)
+        {
+            if(xFriend_FP.isTouchEdit==true)
+            {
+                xFriend_FP.isTouchEdit=false;
+            }
+            else if(xFriend_FP.isTouchEdit==false)
+            {
+                xFriend_FP.isTouchEdit=true;
+            }
+        }
+        else if(touchCheck(&xFriend_FP.xTouchRecommend)==TRUE)
+        {
+            if(xFriend_FP.isTouchRecommend==true)
+            {
+                xFriend_FP.isTouchRecommend=false;
+            }
+            else if(xFriend_FP.isTouchRecommend==false)
+            {
+                xFriend_FP.isTouchRecommend=true;
+                xEventQueueNet.action[xEventQueueNet.totalNum] = 0;	//0:추천검색1:직접검색
+                sprintf(xEventQueueNet.strNickName[xEventQueueNet.totalNum], "%s","randomuser");
+                addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GETFRIENDSEARCH, TRUE);
+            }
+        }
+        
+        else if(touchCheck(&xFriend_FP.xTouchSearch)==TRUE)
+        {
+            xFriend_FP.isTouchSearch=true;
+        }
+        
+        if(isBookMark==true)
+        {
+            if(xFriend_FP.selectTabB==0)
+            {
+                if(xFriendData[xFriend.dataSlotNumList[selectSlot]].isBookMark==false)
+                {
+                    xFriendData[xFriend.dataSlotNumList[selectSlot]].isBookMark=true;
+                    xEventQueueNet.action[xEventQueueNet.totalNum] = 1;
+                }
+                else
+                {
+                    xFriendData[xFriend.dataSlotNumList[selectSlot]].isBookMark=false;
+                    xEventQueueNet.action[xEventQueueNet.totalNum] = 0;
+                }
+                xEventQueueNet.friendNum[xEventQueueNet.totalNum]=xFriendData[xFriend.dataSlotNumList[selectSlot]].userNum;
+                addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_BOOKMARK, TRUE);
+            }
+            else
+            {
+                if(xFriendData[xFriend.dataSlotNumListFollow[selectSlot]].friendState==1)
+                {
+                    if(xFriendData[xFriend.dataSlotNumListFollow[selectSlot]].isBookMark==false)
+                    {
+                        xFriendData[xFriend.dataSlotNumListFollow[selectSlot]].isBookMark=true;
+                        xEventQueueNet.action[xEventQueueNet.totalNum]=1;
+                    }
+                    else
+                    {
+                        xFriendData[xFriend.dataSlotNumListFollow[selectSlot]].isBookMark=false;
+                        xEventQueueNet.action[xEventQueueNet.totalNum]=0;
+                    }
+                    xEventQueueNet.friendNum[xEventQueueNet.totalNum]=xFriendData[xFriend.dataSlotNumListFollow[selectSlot]].userNum;
+                    addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_BOOKMARK, TRUE);
+                }
+            }
+        }
+    }
+    else if(touchType == USER_POINT_RELEASE_EVENT)
+    {
+        for(int k=0;k<FRIENDSLOTMAX;k++)
+        {
+            if(touchCheck(&xFriend_FP.xTouchVisit[k])==TRUE&&xFriend_FP.isTouchEdit==false)
+            {
+                if(xFriend_FP.selectTabB==0)
+                {
+                    if(k<xFriend.totalNumList)
+                    {
+                        xFriend_FP.isTouchVisit[k]=false;
+                        xFriend.selectSlot = k;
+                        xFriendMap.selectDataSlotNum = xFriend.dataSlotNumList[xFriend.selectSlot];
+                        xWorldMap.isFriendMap=TRUE;
+                        xFriendMap.isPlay=TRUE;
+                        xFriendMap.state = FRIENDMAP_STATE_LOADING0_START;
+                        xFriendMap.type = 0;
+                        xFriendMap.anyCnt=0;
+                        break;
+                    }
+                }
+                else
+                {
+                    if(k<xFriend.totalNumListFollow)
+                    {
+                        xFriend_FP.isTouchVisit[k]=false;
+                        xFriend.selectSlot = k;
+                        xFriendMap.selectDataSlotNum = xFriend.dataSlotNumListFollow[xFriend.selectSlot];
+                        xWorldMap.isFriendMap=TRUE;
+                        xFriendMap.isPlay=TRUE;
+                        xFriendMap.state = FRIENDMAP_STATE_LOADING0_START;
+                        xFriendMap.type = 0;
+                        xFriendMap.anyCnt=0;
+                        
+                        break;
+                    }
+                }
+            }
+            
+            else if(touchCheck(&xFriend_FP.xTouchJoin[k])==TRUE)
+            {
+                xFriend_FP.isTouchJoin[k]=false;
+                xEventQueueNet.friendNum[xEventQueueNet.totalNum]=xFriendData[xFriend.dataSlotNumListFollow[k]].userNum;
+                addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_ADDFRIEND, FALSE);
+                xFriendData[xFriend.dataSlotNumListFollow[k]].isAdd=TRUE;
+            }
+
+        }
+        if(touchCheck(&xTouchClr)==TRUE && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            xFriend_FP.isTouchClr=false;
+            playSnd(SND_MENU_OK);
+            xWorldMap.isKeyReturn = TRUE;
+            friendListFreeLoad_FP(false);
+            xWorldMap.state=WORLDMAP_STATE_PLAY;
+        }
+        else if(touchCheck(&xFriend_FP.xTouchSearch)==TRUE&&touchType==USER_POINT_RELEASE_EVENT)
+        {
+            xFriend_FP.isTouchSearch=false;
+            xFriend_FP.isTouchSearchClr=false;
+            xFriend_FP.isTouchSearchLeftArrow=false;
+            xFriend_FP.isTouchSearchRightArrow=false;
+            xFriend_FP.isTouchPopUpSearch = false;
+            for(int k=0;k<FRIENDSLOTMAX;k++)
+            {
+                xFriend_FP.isTouchVisit[k]=false;
+                xFriend_FP.isTouchJoin[k]=false;
+                xFriend_FP.isTouchDel[k]=false;
+            }
+            
+            xFriend_FP.SearchState = FRIENDSEARCH_FP_STATE_PLAY;
+            xFriend_FP.state = FRIEND_FP_STATE_SEARCH;
+            
+        }
+        
+        else if(touchCheck(&xFriend_FP.xTouchLeftArrow)==TRUE && xDragScrollFriendSlot.selectNum>0)
+        {
+            xDragScrollFriendSlot.speed=640;
+            xFriend_FP.isTouchLeftArrow=false;
+            xFriend_FP.isTouchRightArrow = false;
+        }
+        
+        else if(touchCheck(&xFriend_FP.xTouchRightArrow)==TRUE && xDragScrollFriendSlot.selectNum<xDragScrollFriendSlot.totalNum-1)
+        {
+            xDragScrollFriendSlot.speed = -640;
+            xFriend_FP.isTouchLeftArrow=false;
+            xFriend_FP.isTouchRightArrow=false;
+        }
+        
+        xDragScrollFriendSlot.touchXpos=DONT;
+        xDragScrollFriendSlot.touchXposBefore=DONT;
+        xDragScrollFriendSlot.touchYpos=DONT;
+        xDragScrollFriendSlot.touchYposBefore=DONT;
+        xFriend_FP.isTouchSearch=false;
+        xFriend_FP.isTouchSearchClr=false;
+        xFriend_FP.isTouchSearchLeftArrow=false;
+        xFriend_FP.isTouchSearchRightArrow=false;
+        xFriend_FP.isTouchPopUpSearch = false;
+        xFriend_FP.isTouchClr=false;
+        xFriend_FP.isTouchLeftArrow=false;
+        xFriend_FP.isTouchRightArrow=false;
+        for(int k=0;k<FRIENDSLOTMAX;k++)
+        {
+            xFriend_FP.isTouchVisit[k]=false;
+            xFriend_FP.isTouchJoin[k]=false;
+            xFriend_FP.isTouchDel[k]=false;
+        }
+    }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////친구검색 Draw KBY
+void drawfriendSearch_FP()
+{
+    int px = cx;
+    int py = cy;
+    
+    drawBgFillRect();
+    
+    subTemp[XPOS] = px;
+    subTemp[YPOS] = py;
+    
+    drawImage(&imgfriendList[17], subTemp[XPOS], subTemp[YPOS], 0, 0, imgfriendList[17].w, imgfriendList[17].h, VH);
+    
+    subTemp[XPOS] = lcdW-178;
+    subTemp[YPOS] = py-130;
+    
+    if(xFriend_FP.isTouchSearchClr==false)
+    {
+        drawImage(&imgfriendList[2], subTemp[XPOS], subTemp[YPOS], 0, 0, imgfriendList[2].w/2, imgfriendList[2].h, VH);
+    }
+    else
+    {
+        drawImage(&imgfriendList[2], subTemp[XPOS], subTemp[YPOS], imgfriendList[2].w/2, 0, imgfriendList[2].w/2, imgfriendList[2].h, VH);
+    }
+    xTouchClr.wPos = imgfriendList[2].w/2;
+    xTouchClr.hPos = imgfriendList[2].h;
+    xTouchClr.xPos = subTemp[XPOS]-xTouchClr.wPos/2;
+    xTouchClr.yPos = subTemp[YPOS]-xTouchClr.hPos/2;
+    
+    subTemp[XPOS] = px+310;
+    subTemp[YPOS] = py-105;
+
+    if(xFriend_FP.isTouchPopUpSearch==false)
+    {
+        drawImage(&imgfriendList[5], subTemp[XPOS], subTemp[YPOS], 0, 0, imgfriendList[5].w/2, imgfriendList[5].h, VH);
+    }
+    
+    else
+    {
+        drawImage(&imgfriendList[5], subTemp[XPOS], subTemp[YPOS], imgfriendList[5].w/2, 0, imgfriendList[5].w/2, imgfriendList[5].h, VH);
+    }
+    
+    xFriend_FP.xTouchSearch.wPos = imgfriendList[5].w/2+20;
+    xFriend_FP.xTouchSearch.hPos = imgfriendList[5].h+20;
+    xFriend_FP.xTouchSearch.xPos = subTemp[XPOS]-xFriend_FP.xTouchSearch.wPos/2;
+    xFriend_FP.xTouchSearch.yPos = subTemp[YPOS]-xFriend_FP.xTouchSearch.hPos/2;
+    
+//    setAlpha(100);
+//    gSetColor(0, 255, 0);
+////    fillRect(xFriend_FP.xTouchSearch.xPos, xFriend_FP.xTouchSearch.yPos, xFriend_FP.xTouchSearch.wPos, xFriend_FP.xTouchSearch.hPos);
+//    fillRect(xFriend_FP.xTouchSearch.xPos, xFriend_FP.xTouchSearch.yPos, 83, 68);
+//    setAlpha(ALPHA_MAX);
+    
+
+    if(xFriend_FP.SearchState==FRIENDSEARCH_FP_STATE_PLAY)
+    {
+        subTemp[XPOS] = px;
+        subTemp[YPOS] = py+30;
+        
+        drawImage(&imgfriendList[18], subTemp[XPOS], subTemp[YPOS], 0, 0, imgfriendList[18].w, imgfriendList[18].h, VH);
+        
+        subTemp[XPOS] = px;
+        subTemp[YPOS] = py+80;
+
+        gSetColor(101, 48, 150);
+        setFontSizeORI(18);
+        sprintf(strTempS, "검색어를 입력해주세요.");
+        gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VH);
+        setFontSize(11);
+    }
+    
+    else if(xFriend_FP.SearchState==FRIENDSEARCH_FP_STATE_NOTUSER)
+    {
+        subTemp[XPOS] = px;
+        subTemp[YPOS] = py+30;
+        
+        drawImage(&imgfriendList[18], subTemp[XPOS], subTemp[YPOS], 0, 0, imgfriendList[18].w, imgfriendList[18].h, VH);
+        
+        subTemp[XPOS] = px;
+        subTemp[YPOS] = py+80;
+        
+        gSetColor(101, 48, 150);
+        setFontSizeORI(18);
+        sprintf(strTempS, "검색 결과가 없습니다.");
+        gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VH);
+        setFontSize(11);
+
+    }
+    else if(xFriend_FP.SearchState==FRIENDSEARCH_FP_STATE_RESULT)
+    {
+        xFriend_FP.xDragScrollFriendResult.totalNum = 1+(xFriend.totalNumListRanDom-1)/4;
+        
+        xFriend_FP.xDragScrollFriendResult.posGab = 1280;
+        int iMax = xFriend_FP.xDragScrollFriendResult.totalNum;
+        
+        dragScrollPrc(&xFriend_FP.xDragScrollFriendResult, 0, FALSE);
+        
+        int pos;
+        int slotNum;
+        gSetClip(true, px-330, py-75, 670, 220);
+        for(int page =-1;page<=1;page++)
+        {
+            if(xFriend_FP.xDragScrollFriendResult.selectNum+page>=0&&xFriend_FP.xDragScrollFriendResult.selectNum+page<xFriend_FP.xDragScrollFriendResult.totalNum)
+            {
+                for(int i=0;i<4;i++)
+                {
+                    if(((xFriend_FP.xDragScrollFriendResult.selectNum+page)*4)+i>=xFriend.totalNumListRanDom)
+                    {
+                        break;
+                    }
+                    
+                    pos = xFriend_FP.xDragScrollFriendResult.pos+((xFriend_FP.xDragScrollFriendResult.posGab)*page);
+                    subTemp[XPOS] = px-230+pos+((i%4)*190);
+                    subTemp[YPOS] = py+50;
+                    
+                    slotNum = ((xFriend_FP.xDragScrollFriendResult.selectNum+page)*4)+i;
+                    
+                    drawFriendProfile(subTemp[XPOS], subTemp[YPOS]-5, xFriendData[xFriend.dataSlotNumListRanDom[slotNum]].userNum, 130);
+                    
+                    drawImage(&imgfriendList[7], subTemp[XPOS], subTemp[YPOS]-5, 0, 0, imgfriendList[7].w, imgfriendList[7].h, VH);
+                    
+                    sprintf(strTempS, "%s", xFriendData[xFriend.dataSlotNumListRanDom[slotNum]].strNickName);
+
+                    setFontSizeORI(18);
+                    gSetColor(101, 48, 150);
+                    gDrawString(subTemp[XPOS], subTemp[YPOS]-85, strTempS, VH);
+                    setFontSize(11);
+                    
+                    drawNum(&imgfriendList[8], subTemp[XPOS], subTemp[YPOS]+57, xFriendData[xFriend.dataSlotNumListRanDom[slotNum]].lv, 0, VH);
+                    
+                    if(xFriendData[xFriend.dataSlotNumListRanDom[slotNum]].isAdd==true)
+                    {
+                        if(xFriendData[xFriend.dataSlotNumListRanDom[slotNum]].isPM==false)
+                        {
+                            if(xFriendData[xFriend.dataSlotNumListRanDom[slotNum]].friendState==1)
+                            {
+                                drawImage(&imgfriendList[12], subTemp[XPOS]-57, subTemp[YPOS]+62, 0, 0, imgfriendList[12].w, imgfriendList[12].h, VH);
+                            }
+                            
+                            if(xFriendData[xFriend.dataSlotNumListRanDom[slotNum]].isBookMark==true)
+                            {
+                                drawImage(&imgfriendList[10], subTemp[XPOS]-57, subTemp[YPOS]-45, 0, 0, imgfriendList[10].w/3, imgfriendList[10].h, VH);
+                            }
+                            
+                            else if(xFriendData[xFriend.dataSlotNumListRanDom[slotNum]].isBookMark==false)
+                            {
+                                drawImage(&imgfriendList[10], subTemp[XPOS]-57, subTemp[YPOS]-45, imgfriendList[10].w/3, 0, imgfriendList[10].w/3, imgfriendList[10].h, VH);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if(xFriendData[xFriend.dataSlotNumListRanDom[slotNum]].isPM==false)
+                        {
+                            if(xFriend_FP.isTouchSearchJoin[slotNum]==false)
+                            {
+                                drawImage(&imgfriendList[13], subTemp[XPOS]-60, subTemp[YPOS]+62, 0, 0, imgfriendList[13].w/2, imgfriendList[13].h, VH);
+                            }
+                            else
+                            {
+                                drawImage(&imgfriendList[13], subTemp[XPOS]-60, subTemp[YPOS]+62, imgfriendList[13].w/2, 0, imgfriendList[13].w/2, imgfriendList[13].h, VH);
+                            }
+                            xFriend_FP.xTouchJoin[slotNum].wPos = imgfriendList[13].w/2+20;
+                            xFriend_FP.xTouchJoin[slotNum].hPos = imgfriendList[13].h+20;
+                            xFriend_FP.xTouchJoin[slotNum].xPos = subTemp[XPOS]-60-xFriend_FP.xTouchJoin[slotNum].wPos/2;
+                            xFriend_FP.xTouchJoin[slotNum].yPos = subTemp[YPOS]+62-xFriend_FP.xTouchJoin[slotNum].hPos/2;
+                            
+                            
+//                            setAlpha(100);
+//                            gSetColor(255, 0, 0);
+//                            fillRect(xFriend_FP.xTouchJoin[slotNum].xPos, xFriend_FP.xTouchJoin[slotNum].yPos, xFriend_FP.xTouchJoin[slotNum].wPos, xFriend_FP.xTouchJoin[slotNum].hPos);
+//                            setAlpha(ALPHA_MAX);
+                            
+                            
+                            
+                            drawImage(&imgfriendList[10], subTemp[XPOS]-57, subTemp[YPOS]-45, imgfriendList[10].w/3*2, 0, imgfriendList[10].w/3, imgfriendList[10].h, VH);
+                        }
+                    }
+                    if(xFriend_FP.isTouchSearchVisit[slotNum]==false)
+                    {
+                        drawImage(&imgfriendList[15], subTemp[XPOS]+60, subTemp[YPOS]+62, 0, 0, imgfriendList[15].w/2, imgfriendList[15].h, VH);
+                    }
+                    
+                    else
+                    {
+                        drawImage(&imgfriendList[15], subTemp[XPOS]+60, subTemp[YPOS]+62, imgfriendList[15].w/2, 0, imgfriendList[15].w/2, imgfriendList[15].h, VH);
+                    }
+                    xFriend_FP.xTouchVisit[slotNum].wPos = imgfriendList[15].w/2+20;
+                    xFriend_FP.xTouchVisit[slotNum].hPos = imgfriendList[15].h;
+                    xFriend_FP.xTouchVisit[slotNum].xPos = subTemp[XPOS]+60 - xFriend_FP.xTouchVisit[slotNum].wPos/2;
+                    xFriend_FP.xTouchVisit[slotNum].yPos = subTemp[YPOS]+62 - xFriend_FP.xTouchVisit[slotNum].hPos/2;
+                    
+//                    setAlpha(100);
+//                    gSetColor(255, 0, 0);
+//                    fillRect(xFriend_FP.xTouchVisit[slotNum].xPos, xFriend_FP.xTouchVisit[slotNum].yPos, xFriend_FP.xTouchVisit[slotNum].wPos, xFriend_FP.xTouchVisit[slotNum].hPos);
+//                    setAlpha(ALPHA_MAX);
+
+                }
+            }
+        }
+        gSetClip(false, 0, 0, false, false);
+        
+        subTemp[XPOS] = px-350;
+        subTemp[YPOS] = py+40;
+        if(xFriend_FP.xDragScrollFriendResult.selectNum<=0)
+        {
+            drawImage(&imgfriendList[6], subTemp[XPOS], subTemp[YPOS], imgfriendList[6].w/6*2, 0, imgfriendList[6].w/6, imgfriendList[6].h, VH);
+        }
+        else
+        {
+            if(xFriend_FP.isTouchSearchLeftArrow==true)
+            {
+                drawImage(&imgfriendList[6], subTemp[XPOS], subTemp[YPOS], imgfriendList[6].w/6*4, 0, imgfriendList[6].w/6, imgfriendList[6].h, VH);
+            }
+            else
+            {
+                drawImage(&imgfriendList[6], subTemp[XPOS], subTemp[YPOS], 0, 0, imgfriendList[6].w/6, imgfriendList[6].h, VH);
+            }
+        }
+        
+        xFriend_FP.xTouchLeftArrow.wPos = 80;
+        xFriend_FP.xTouchLeftArrow.hPos = 230;
+        xFriend_FP.xTouchLeftArrow.xPos = subTemp[XPOS] - xFriend_FP.xTouchLeftArrow.wPos/2;
+        xFriend_FP.xTouchLeftArrow.yPos = subTemp[YPOS] - xFriend_FP.xTouchLeftArrow.hPos/2;
+        
+//        setAlpha(100);
+//        gSetColor(0, 0, 255);
+//        fillRect(xFriend_FP.xTouchLeftArrow.xPos, xFriend_FP.xTouchLeftArrow.yPos, xFriend_FP.xTouchLeftArrow.wPos, xFriend_FP.xTouchLeftArrow.hPos);
+//        setAlpha(ALPHA_MAX);
+        
+        subTemp[XPOS] = px+375;
+        subTemp[YPOS] = py+40;
+        
+        if(xFriend_FP.xDragScrollFriendResult.selectNum>=xFriend_FP.xDragScrollFriendResult.totalNum-1)
+        {
+            drawImage(&imgfriendList[6], subTemp[XPOS], subTemp[YPOS], imgfriendList[6].w/6*3, 0, imgfriendList[6].w/6, imgfriendList[6].h, VH);
+        }
+        else
+        {
+            if(xFriend_FP.isTouchSearchRightArrow==false)
+            {
+                drawImage(&imgfriendList[6], subTemp[XPOS], subTemp[YPOS], imgfriendList[6].w/6, 0, imgfriendList[6].w/6, imgfriendList[6].h, VH);
+            }
+            else
+            {
+                drawImage(&imgfriendList[6], subTemp[XPOS], subTemp[YPOS], imgfriendList[6].w/6*5, 0, imgfriendList[6].w/6, imgfriendList[6].h, VH);
+            }
+        }
+        
+        xFriend_FP.xTouchRightArrow.wPos = 80;
+        xFriend_FP.xTouchRightArrow.hPos = 230;
+        xFriend_FP.xTouchRightArrow.xPos = subTemp[XPOS] - xFriend_FP.xTouchRightArrow.wPos/2;
+        xFriend_FP.xTouchRightArrow.yPos = subTemp[YPOS] - xFriend_FP.xTouchRightArrow.hPos/2;
+        
+//        setAlpha(100);
+//        gSetColor(0, 0, 255);
+//        fillRect(xFriend_FP.xTouchRightArrow.xPos, xFriend_FP.xTouchRightArrow.yPos, xFriend_FP.xTouchRightArrow.wPos, xFriend_FP.xTouchRightArrow.hPos);
+//        setAlpha(ALPHA_MAX);
+
+
+    }
+    
+//    setAlpha(100);
+//    gSetColor(255, 0, 0);
+//    fillRect(px-330, py-75,  685,  220);
+//    setAlpha(ALPHA_MAX);
+    
+    int strByte=getStringByte(xFriend_FP.strName);
+    int kor=strByte/1000;
+    int eng=strByte%1000;
+    int korEng=kor+eng;
+    
+    subTemp[XPOS]=px-65;
+    subTemp[YPOS]=py-125;
+    
+    xFriend_FP.xTouchSearchBar.wPos = 340;
+    xFriend_FP.xTouchSearchBar.hPos = 40;
+    xFriend_FP.xTouchSearchBar.xPos = subTemp[XPOS];
+    xFriend_FP.xTouchSearchBar.yPos = subTemp[YPOS];
+    
+//    setAlpha(100);
+//    gSetColor(255, 0, 0);
+//    fillRect( xFriend_FP.xTouchSearchBar.xPos,  xFriend_FP.xTouchSearchBar.yPos,  xFriend_FP.xTouchSearchBar.wPos,  xFriend_FP.xTouchSearchBar.hPos);
+//    setAlpha(ALPHA_MAX);
+    
+    if(korEng==0)
+    {
+        xFriend_FP.SearchState=FRIENDSEARCH_FP_STATE_PLAY;
+    }
+    switch (xFriend_FP.SearchState)
+    {
+        case FRIENDSEARCH_FP_STATE_PLAY:
+        case FRIENDSEARCH_FP_STATE_NOTUSER:
+            sprintf(xFriend_FP.strName, "검색할 닉네임을 입력해주세요");
+            break;
+        default:
+            break;
+    }
+    gSetColor(204, 169, 219);
+    setFontSizeORI(18);
+    gDrawString(subTemp[XPOS]+5, subTemp[YPOS]+20, xFriend_FP.strName, VL);
+    setFontSize(11);
+    
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////친구검색 입력 이벤트 처리 KBY
+void keyfriendSearch_FP(int type, int param1, int param2)
+{
+    if(type == MH_KEY_PRESSEVENT)
+    {
+        for(int k=0;k<xFriend.totalNumListRanDom;k++)
+        {
+            if(touchCheck(&xFriend_FP.xTouchJoin[k])==TRUE&&touchType==USER_POINT_PRESS_EVENT&&touchCheck(&xFriend_FP.xTouchRightArrow)==FALSE&&touchCheck(&xFriend_FP.xTouchLeftArrow)==FALSE)
+            {
+                if(k<xFriend.totalNumListRanDom)
+                {
+                    xFriend_FP.isTouchSearchJoin[k]=true;
+                    break;
+                }
+            }
+            else if(touchCheck(&xFriend_FP.xTouchVisit[k])==TRUE&&touchType==USER_POINT_PRESS_EVENT&&touchCheck(&xFriend_FP.xTouchRightArrow)==FALSE&&touchCheck(&xFriend_FP.xTouchLeftArrow)==FALSE)
+            {
+                if(k<xFriend.totalNumListRanDom)
+                {
+                    xFriend_FP.isTouchSearchVisit[k]=true;
+                    break;
+                }
+            }
+            
+        }
+        if(touchCheck(&xTouchClr)==TRUE && xTextField.state!=TEXTFIELD_STATE_PLAY && touchType == USER_POINT_PRESS_EVENT)
+        {
+            xFriend_FP.isTouchSearchClr=true;
+        }
+        else if(touchCheck(&xFriend_FP.xTouchSearchBar)==TRUE&&touchType == USER_POINT_PRESS_EVENT)
+        {
+            xFriend_FP.SearchState=FRIENDSEARCH_FP_STATE_OK;
+            setTextField(TEXTBOX_TYPE_FRIENDID_FP, xFriend_FP.xTouchSearchBar.xPos, xFriend_FP.xTouchSearchBar.yPos, xFriend_FP.xTouchSearchBar.wPos, xFriend_FP.xTouchSearchBar.hPos);
+        }
+        
+        else if(touchCheck(&xFriend_FP.xTouchSearch)==TRUE&&touchType==USER_POINT_PRESS_EVENT)
+        {
+            xFriend_FP.isTouchPopUpSearch=true;
+        }
+        
+        else if(touchCheck(&xFriend_FP.xTouchLeftArrow)==TRUE && xFriend_FP.xDragScrollFriendResult.selectNum>0)
+        {
+            xFriend_FP.isTouchSearchLeftArrow=true;
+            xFriend_FP.isTouchSearchRightArrow = false;
+        }
+        
+        else if(touchCheck(&xFriend_FP.xTouchRightArrow)==TRUE && xFriend_FP.xDragScrollFriendResult.selectNum<xFriend_FP.xDragScrollFriendResult.totalNum-1)
+        {
+            xFriend_FP.isTouchSearchLeftArrow=false;
+            xFriend_FP.isTouchSearchRightArrow=true;
+        }
+
+    }
+    else if(type==MH_KEY_RELEASEEVENT)
+    {
+        for(int k=0;k<xFriend.totalNumListRanDom;k++)
+        {
+            if(touchCheck(&xFriend_FP.xTouchJoin[k])==TRUE  && xTextField.state!=TEXTFIELD_STATE_PLAY && touchType==USER_POINT_RELEASE_EVENT&&touchCheck(&xFriend_FP.xTouchRightArrow)==FALSE&&touchCheck(&xFriend_FP.xTouchLeftArrow)==FALSE)
+            {
+                if(k<xFriend.totalNumListRanDom)
+                {
+                    xFriend_FP.isTouchSearchJoin[k]=false;
+                    xEventQueueNet.friendNum[xEventQueueNet.totalNum]=xFriendData[xFriend.dataSlotNumListRanDom[k]].userNum;
+                    addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_ADDFRIEND, FALSE);
+                    xFriendData[xFriend.dataSlotNumListFollow[k]].isAdd=TRUE;
+                    break;
+                }
+            }
+            else if(touchCheck(&xFriend_FP.xTouchVisit[k])==TRUE  && xTextField.state!=TEXTFIELD_STATE_PLAY && touchType==USER_POINT_RELEASE_EVENT&&touchCheck(&xFriend_FP.xTouchRightArrow)==FALSE&&touchCheck(&xFriend_FP.xTouchLeftArrow)==FALSE)
+            {
+                if(k<xFriend.totalNumListRanDom)
+                {
+                    xFriend_FP.isTouchSearchVisit[k]=false;
+                    xFriend.selectSlot = k;
+                    xFriendMap.selectDataSlotNum = xFriend.dataSlotNumListRanDom[xFriend.selectSlot];
+                    xWorldMap.isFriendMap=TRUE;
+                    xFriendMap.isPlay=TRUE;
+                    xFriendMap.state = FRIENDMAP_STATE_LOADING0_START;
+                    xFriendMap.type = 0;
+                    xFriendMap.anyCnt=0;
+                    break;
+                }
+            }
+            
+        }
+
+        if(touchCheck(&xTouchClr)==TRUE && xTextField.state!=TEXTFIELD_STATE_PLAY && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            xFriend_FP.isTouchSearchClr=false;
+            playSnd(SND_MENU_OK);
+            xWorldMap.isKeyReturn = TRUE;
+            xFriend_FP.state = FRIEND_FP_STATE_PLAY;
+            xFriend.totalNumList=0;
+            xFriend.nowPageNumList=0;
+            xEventQueueNet.code[xEventQueueNet.totalNum] = xFriend.nowRowNumList;
+            xEventQueueNet.slotNum[xEventQueueNet.totalNum] = xFriend.nowPageNumList;
+            xEventQueueNet.action[xEventQueueNet.totalNum] = 0;		//0:친구리스트1:팔로잉
+            ++xFriend.nowPageNumList;
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GETFRIENDLIST, TRUE);
+        }
+        else if(touchCheck(&xFriend_FP.xTouchSearch)==TRUE&&touchType==USER_POINT_RELEASE_EVENT)
+        {
+            xFriend_FP.isTouchPopUpSearch=false;
+            xEventQueueNet.action[xEventQueueNet.totalNum] = 1;
+            sprintf(xEventQueueNet.strNickName[xEventQueueNet.totalNum], "%s",xFriend_FP.strName);
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GETFRIENDSEARCH, TRUE);
+        }
+        
+        else if(touchCheck(&xFriend_FP.xTouchLeftArrow)==TRUE && xFriend_FP.xDragScrollFriendResult.selectNum>0)
+        {
+            xFriend_FP.xDragScrollFriendResult.speed=640;
+            xFriend_FP.isTouchSearchLeftArrow=false;
+            xFriend_FP.isTouchSearchRightArrow = false;
+        }
+        
+        else if(touchCheck(&xFriend_FP.xTouchRightArrow)==TRUE && xFriend_FP.xDragScrollFriendResult.selectNum<xFriend_FP.xDragScrollFriendResult.totalNum-1)
+        {
+            xFriend_FP.xDragScrollFriendResult.speed = -640;
+            xFriend_FP.isTouchSearchLeftArrow=false;
+            xFriend_FP.isTouchSearchRightArrow=false;
+        }
+        xFriend_FP.xDragScrollFriendResult.touchXpos=DONT;
+        xFriend_FP.xDragScrollFriendResult.touchXposBefore=DONT;
+        xFriend_FP.xDragScrollFriendResult.touchYpos=DONT;
+        xFriend_FP.xDragScrollFriendResult.touchYposBefore=DONT;
+        xFriend_FP.isTouchSearchBar=false;
+        xFriend_FP.isTouchSearch=false;
+        xFriend_FP.isTouchSearchClr=false;
+        xFriend_FP.isTouchSearchLeftArrow=false;
+        xFriend_FP.isTouchSearchRightArrow=false;
+        xFriend_FP.isTouchPopUpSearch = false;
+        for(int k=0;k<FRIENDSLOTMAX;k++)
+        {
+            xFriend_FP.isTouchVisit[k]=false;
+            xFriend_FP.isTouchJoin[k]=false;
+            xFriend_FP.isTouchDel[k]=false;
+        }
+
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////온실 KBY
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////온실 이미지 로드 및 메모리 해제 KBY
+void greenHouseFreeLoad_FP(bool isLoad)
+{
+    if(isLoad==true)
+    {
+        loadImg("productionbase.png", &imgGreenHouse[0]);
+        loadImg("productionexiticon.png", &imgGreenHouse[1]);
+        loadImg("greenhouse_title.png", &imgGreenHouse[2]);
+        loadImg("production_left.png",&imgGreenHouse[3]);
+        loadImg("production_main.png",&imgGreenHouse[4]);
+        loadImg("production_right.png",&imgGreenHouse[5]);
+        loadImg("production_arrow.png",&imgGreenHouse[6]);
+        loadImg("production_slot_arrow.png", &imgGreenHouse[7]);
+        loadImg("production_slot_open.png", &imgGreenHouse[8]);
+        loadImg("production_close.png", &imgGreenHouse[9]);
+        loadImg("production_text_complete.png", &imgGreenHouse[10]);
+        loadImg("greenhouse_name.png", &imgGreenHouse[11]);
+        loadImg("greenhouse_flower.png", &imgGreenHouse[12]);
+        loadImg("production_shadow.png", &imgGreenHouse[13]);
+        loadImg("production_text_complete.png", &imgGreenHouse[14]);
+        loadImg("greenhouse_slot.png", &imgGreenHouse[15]);
+        loadImg("production_close.png", &imgGreenHouse[16]);
+        loadImg("production_slot_open.png", &imgGreenHouse[17]);
+        loadImg("production_text.png", &imgGreenHouse[18]);
+        loadImg("greenhouse_slot_ground.png", &imgGreenHouse[19]);
+        loadImg("greenhouse_btn_fast.png", &imgGreenHouse[20]);
+        loadImg("greenhouse_btn_upgrade.png", &imgGreenHouse[21]);
+        loadImg("greenhouse_popup_base.png", & imgGreenHouse[22]);
+        loadImg("popup_base.png", &imgGreenHouse[23]);
+        loadImg("default_btn_yesno.png", &imgGreenHouse[24]);
+        for(int k=0;k<xGreenHouse_MaterialData_FP.totalNum;k++)
+        {
+            for(int i=0;i<4;i++)
+            {
+                if(i==0)
+                {
+                    sprintf(strTempS, "flower5_0.png");
+                }
+                else
+                {
+                    sprintf(strTempS, "flower%d_%d.png", k, i);
+                }
+                loadImg(strTempS, &imgFlower[k][i]);
+            }
+        }
+        for(int k=0;k<GREENHOUSESLOT_LV_MAX;k++)
+        {
+            sprintf(strTempS, "greenhouse_slot_lv%d.png",k);
+            loadImg(strTempS, &imgSlotLv[k]);
+        }
+    }
+    else
+    {
+        freeImg(&imgGreenHouse[0]);
+        freeImg(&imgGreenHouse[1]);
+        freeImg(&imgGreenHouse[2]);
+        freeImg(&imgGreenHouse[3]);
+        freeImg(&imgGreenHouse[4]);
+        freeImg(&imgGreenHouse[5]);
+        freeImg(&imgGreenHouse[6]);
+        freeImg(&imgGreenHouse[7]);
+        freeImg(&imgGreenHouse[8]);
+        freeImg(&imgGreenHouse[9]);
+        freeImg(&imgGreenHouse[10]);
+        freeImg(&imgGreenHouse[11]);
+        freeImg(&imgGreenHouse[12]);
+        freeImg(&imgGreenHouse[13]);
+        freeImg(&imgGreenHouse[14]);
+        freeImg(&imgGreenHouse[15]);
+        freeImg(&imgGreenHouse[16]);
+        freeImg(&imgGreenHouse[17]);
+        freeImg(&imgGreenHouse[18]);
+        freeImg(&imgGreenHouse[19]);
+        freeImg(&imgGreenHouse[20]);
+        freeImg(&imgGreenHouse[21]);
+        freeImg(&imgGreenHouse[22]);
+        freeImg(&imgGreenHouse[23]);
+        freeImg(&imgGreenHouse[24]);
+        for(int k=0;k<xGreenHouse_MaterialData_FP.totalNum;k++)
+        {
+            for(int i=0;i<4;i++)
+            {
+                freeImg(&imgFlower[k][i]);
+            }
+        }
+        
+        for(int k=0;k<GREENHOUSESLOT_LV_MAX;k++)
+        {
+            freeImg(&imgSlotLv[k]);
+        }
+
+    }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////온실 init KBY
+void initGreenHouse_FP()
+{
+    addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GREENHOUSEINFOUPDATE, TRUE);
+    
+    xGreenHouse_FP.state = GREENHOUSE_STATE_MAIN;
+    xGreenHouse_FP.selectSlot = -1;
+    xGreenHouse_FP.selectProduct = -1;
+    
+    
+    xGreenHouse_FP.isTouchClr=false;
+    xGreenHouse_FP.isTouchLeftBtn=false;
+    xGreenHouse_FP.isTouchRightBtn=false;
+    xGreenHouse_FP.isTouchLeftArrow=false;
+    xGreenHouse_FP.isTouchRightArrow=false;
+    xGreenHouse_FP.isTouchMaterial=false;
+    xGreenHouse_FP.isTouchProduct=false;
+    xGreenHouse_FP.isTouchPopupClr=false;
+    xGreenHouse_FP.isTouchYes=false;
+    xGreenHouse_FP.isTouchNo=false;
+    xGreenHouse_FP.isTouchOpen=false;
+    for(int k=0;k<MATERIALSLOTMAX;k++)
+    {
+        xGreenHouse_FP.isTouchUpgrade[k] = false;
+        xGreenHouse_FP.isTouchFast[k] = false;
+        xGreenHouse_FP.AnyCnt[k]=0;
+        xGreenHouse_FP.imgNum[k] = 0;
+    }
+    
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////온실 Draw KBY
+void drawGreenHouse_FP()
+{
+    int px = cx;
+    int py = cy;
+    int pos;
+    
+    drawBgFillRect();
+    
+    drawImage(&imgGreenHouse[0], px, py+50, 0, 0, imgGreenHouse[0].w, imgGreenHouse[0].h, VH);
+    
+    subTemp[XPOS] = lcdW-40;
+    subTemp[YPOS] = py-180;
+    
+    if(xGreenHouse_FP.isTouchClr==false)
+    {
+        drawImage(&imgGreenHouse[1], subTemp[XPOS], subTemp[YPOS], 0, 0, imgGreenHouse[1].w/2, imgGreenHouse[1].h, VH);
+    }
+    else
+    {
+        drawImage(&imgGreenHouse[1], subTemp[XPOS], subTemp[YPOS], imgGreenHouse[1].w/2, 0, imgGreenHouse[1].w/2, imgGreenHouse[1].h, VH);
+    }
+    xTouchClr.wPos = imgGreenHouse[1].w;
+    xTouchClr.hPos = imgGreenHouse[1].h;
+    xTouchClr.xPos = subTemp[XPOS]-xTouchClr.wPos/2;
+    xTouchClr.yPos = subTemp[YPOS]-xTouchClr.hPos/2;
+
+    subTemp[XPOS] = px-456;
+    subTemp[YPOS] = py-220;
+    
+    drawImage(&imgGreenHouse[2], subTemp[XPOS], subTemp[YPOS], 0, 0, imgGreenHouse[2].w, imgGreenHouse[2].h, VH);
+    
+    subTemp[XPOS] = px+2;
+    subTemp[YPOS] = py-30;
+    
+    drawImage(&imgGreenHouse[4], subTemp[XPOS], subTemp[YPOS], 0, 0, imgGreenHouse[4].w, imgGreenHouse[4].h, VH);
+    
+    subTemp[XPOS] = px;
+    subTemp[YPOS] = py-90;
+    
+    drawImage(&imgGreenHouse[11], subTemp[XPOS], subTemp[YPOS], 0, 0, imgGreenHouse[11].w, imgGreenHouse[11].h, VH);
+    
+    int slotCode;
+    int slotNum;
+    int totalNum = xGreenHouse_MaterialData_FP.totalNum;
+//    int totalNum = 18;
+    xGreenHouse_FP.xDragScrollGreenHouseS.totalNum = 1+(xGreenHouse_MaterialData_FP.totalNum-1)/8;
+//    xGreenHouse_FP.xDragScrollGreenHouseS.totalNum = 1+(18-1)/8;
+    xGreenHouse_FP.xDragScrollGreenHouseS.posGab = 1280;
+    
+    dragScrollPrc(&xGreenHouse_FP.xDragScrollGreenHouseS, 0, FALSE);
+    
+    gSetClip(true, px-430, 0, 860, lcdH);
+    
+    for(int page=-1;page<=1;page++)
+    {
+        if(xGreenHouse_FP.xDragScrollGreenHouseS.selectNum+page>=0&&xGreenHouse_FP.xDragScrollGreenHouseS.selectNum+page<xGreenHouse_FP.xDragScrollGreenHouseS.totalNum)
+        {
+            for(int i=0;i<8;i++)
+            {
+                if(((xGreenHouse_FP.xDragScrollGreenHouseS.selectNum+page)*8)+i>=totalNum)
+                    break;
+                
+                pos = xGreenHouse_FP.xDragScrollGreenHouseS.pos+(xGreenHouse_FP.xDragScrollGreenHouseS.posGab*page);
+                
+                subTemp[XPOS] = px-415+pos+((i%8)*105)+45;
+                subTemp[YPOS] = py-28;
+                
+                drawImage(&imgGreenHouse[13], subTemp[XPOS]-5, subTemp[YPOS]+35, 0, 0, imgGreenHouse[13].w, imgGreenHouse[13].h, VH);
+                
+                slotNum = ((xGreenHouse_FP.xDragScrollGreenHouseS.selectNum+page)*8)+i;
+                slotCode = xGreenHouse_MaterialData_FP.xSlot[slotNum].code;
+                
+                xGreenHouse_FP.xTouchList[slotNum].wPos = 90;
+                xGreenHouse_FP.xTouchList[slotNum].hPos = 100;
+                xGreenHouse_FP.xTouchList[slotNum].xPos = subTemp[XPOS]-xGreenHouse_FP.xTouchList[slotNum].wPos/2;
+                xGreenHouse_FP.xTouchList[slotNum].yPos = subTemp[YPOS]-xGreenHouse_FP.xTouchList[slotNum].hPos/2;
+                
+//                gSetColor(255, 0, 0);
+//                setAlpha(100);
+//                fillRect(xGreenHouse_FP.xTouchList[slotNum].xPos, xGreenHouse_FP.xTouchList[slotNum].yPos, xGreenHouse_FP.xTouchList[slotNum].wPos, xGreenHouse_FP.xTouchList[slotNum].hPos);
+//                setAlpha(ALPHA_MAX);
+
+                
+                drawImage(&imgGreenHouse[12], subTemp[XPOS], subTemp[YPOS], ((imgGreenHouse[12].w/8)*slotCode), 0, imgGreenHouse[12].w/8, imgGreenHouse[12].h, VH);
+            }
+        }
+    }
+    gSetClip(false, 0, 0, lcdW, lcdH);
+    
+    subTemp[XPOS] = px;
+    subTemp[YPOS] = py+150;
+    
+    int maxSlot = 12;
+    
+    int Temp;
+    int Temp2;
+    int Temp3;
+    
+    xGreenHouse_FP.xDragScrollGreenHouseB.totalNum = 1+(maxSlot-1)/6;
+    xGreenHouse_FP.xDragScrollGreenHouseB.posGab = 1280;
+    
+    dragScrollPrc(&xGreenHouse_FP.xDragScrollGreenHouseB, 0, FALSE);
+    
+    gSetClip(true, px-440, py, 880, lcdH);
+    for(int page=-1;page<=1;page++)
+    {
+        if(xGreenHouse_FP.xDragScrollGreenHouseB.selectNum+page>=0&&xGreenHouse_FP.xDragScrollGreenHouseB.selectNum+page<xGreenHouse_FP.xDragScrollGreenHouseB.totalNum)
+        {
+            for(int i=0;i<6;i++)
+            {
+                if(((xGreenHouse_FP.xDragScrollGreenHouseB.selectNum+page)*6)+i>=maxSlot)
+                    break;
+                
+                pos = xGreenHouse_FP.xDragScrollGreenHouseB.pos+(xGreenHouse_FP.xDragScrollGreenHouseB.posGab*page);
+                
+                subTemp[XPOS] = px-370+pos+((i%6)*147);
+                subTemp[YPOS] = py+135;
+                
+                slotNum = ((xGreenHouse_FP.xDragScrollGreenHouseB.selectNum+page)*6)+i;
+                slotCode = xGreenHouse_MaterialData_FP.xSlot[slotNum].code;
+                
+                switch (xGreenHouse_FP.xSlot[slotNum].state)
+                {
+                    case -1:
+                        drawImage(&imgGreenHouse[15], subTemp[XPOS], subTemp[YPOS], imgGreenHouse[15].w/3, 0, imgGreenHouse[15].w/3, imgGreenHouse[15].h, VH);
+                        drawImage(&imgGreenHouse[16], subTemp[XPOS], subTemp[YPOS], imgGreenHouse[16].w/2, 0, imgGreenHouse[16].w/2, imgGreenHouse[16].h, VH);
+                        break;
+                    case 0:
+                        drawImage(&imgGreenHouse[15], subTemp[XPOS], subTemp[YPOS], imgGreenHouse[15].w/3, 0, imgGreenHouse[15].w/3, imgGreenHouse[15].h, VH);
+                        if(xGreenHouse_FP.isTouchOpen==false)
+                        {
+                            drawImage(&imgGreenHouse[17], subTemp[XPOS], subTemp[YPOS], 0, 0, imgGreenHouse[17].w/2, imgGreenHouse[17].h, VH);
+                        }
+                        else
+                        {
+                            drawImage(&imgGreenHouse[17], subTemp[XPOS], subTemp[YPOS], imgGreenHouse[17].w/2, 0, imgGreenHouse[17].w/2, imgGreenHouse[17].h, VH);
+                        }
+                        
+                        xGreenHouse_FP.xTouchOpen.wPos = imgGreenHouse[17].w/2+10;
+                        xGreenHouse_FP.xTouchOpen.hPos = imgGreenHouse[17].h+10;
+                        xGreenHouse_FP.xTouchOpen.xPos = subTemp[XPOS]-xGreenHouse_FP.xTouchOpen.wPos/2;
+                        xGreenHouse_FP.xTouchOpen.yPos = subTemp[YPOS]-xGreenHouse_FP.xTouchOpen.hPos/2;
+                        break;
+                        //1부터 업그레이드 버튼 / 즉시 완료 버튼
+                    case 1:
+                        drawImage(&imgGreenHouse[15], subTemp[XPOS], subTemp[YPOS], 0, 0, imgGreenHouse[15].w/3, imgGreenHouse[15].h, VH);
+                        drawImage(&imgGreenHouse[19], subTemp[XPOS], subTemp[YPOS]-8, 0, 0, imgGreenHouse[19].w, imgGreenHouse[19].h, VH);
+                        drawImage(&imgSlotLv[xGreenHouse_FP.xSlot[slotNum].Upgrade], subTemp[XPOS]+10, subTemp[YPOS]-15, 0, 0, imgSlotLv[xGreenHouse_FP.xSlot[slotNum].Upgrade].w, imgSlotLv[xGreenHouse_FP.xSlot[slotNum].Upgrade].h, VH);
+                        if(xGreenHouse_FP.isTouchUpgrade[slotNum]==false)
+                        {
+                            drawImage(&imgGreenHouse[21], subTemp[XPOS]+30, subTemp[YPOS]+110, 0, 0, imgGreenHouse[21].w/2, imgGreenHouse[21].h, VH);
+                        }
+                        else
+                        {
+                            drawImage(&imgGreenHouse[21], subTemp[XPOS]+30, subTemp[YPOS]+110, imgGreenHouse[21].w/2, 0, imgGreenHouse[21].w/2, imgGreenHouse[21].h, VH);
+                        }
+                        
+                        xGreenHouse_FP.xTouchUpgrade[slotNum].wPos = imgGreenHouse[21].w/2+10;
+                        xGreenHouse_FP.xTouchUpgrade[slotNum].hPos = imgGreenHouse[21].h+20;
+                        xGreenHouse_FP.xTouchUpgrade[slotNum].xPos = subTemp[XPOS]+30-xGreenHouse_FP.xTouchUpgrade[slotNum].wPos/2;
+                        xGreenHouse_FP.xTouchUpgrade[slotNum].yPos = subTemp[YPOS]+110-xGreenHouse_FP.xTouchUpgrade[slotNum].hPos/2;
+                        
+//                        setAlpha(100);
+//                        gSetColor(255, 0, 0);
+//                        fillRect(xGreenHouse_FP.xTouchUpgrade[slotNum].xPos, xGreenHouse_FP.xTouchUpgrade[slotNum].yPos, xGreenHouse_FP.xTouchUpgrade[slotNum].wPos, xGreenHouse_FP.xTouchUpgrade[slotNum].hPos);
+//                        setAlpha(ALPHA_MAX);
+                        
+                        if(xGreenHouse_FP.isTouchFast[slotNum]==false)
+                        {
+                            drawImage(&imgGreenHouse[20], subTemp[XPOS]-35, subTemp[YPOS]+110, 0, 0, imgGreenHouse[20].w/2, imgGreenHouse[20].h, VH);
+                        }
+                        else
+                        {
+                            drawImage(&imgGreenHouse[20], subTemp[XPOS]-35, subTemp[YPOS]+110, imgGreenHouse[20].w/2, 0, imgGreenHouse[20].w/2, imgGreenHouse[20].h, VH);
+                        }
+                        
+                        xGreenHouse_FP.xTouchFast[slotNum].wPos = imgGreenHouse[20].w/2+10;
+                        xGreenHouse_FP.xTouchFast[slotNum].hPos = imgGreenHouse[20].h+20;
+                        xGreenHouse_FP.xTouchFast[slotNum].xPos = subTemp[XPOS]-40-xGreenHouse_FP.xTouchUpgrade[slotNum].wPos/2;
+                        xGreenHouse_FP.xTouchFast[slotNum].yPos = subTemp[YPOS]+110-xGreenHouse_FP.xTouchUpgrade[slotNum].hPos/2;
+                        
+//                        setAlpha(100);
+//                        gSetColor(255, 0, 0);
+//                        fillRect(xGreenHouse_FP.xTouchFast[slotNum].xPos, xGreenHouse_FP.xTouchFast[slotNum].yPos, xGreenHouse_FP.xTouchFast[slotNum].wPos, xGreenHouse_FP.xTouchFast[slotNum].hPos);
+//                        setAlpha(ALPHA_MAX);
+                        break;
+                    case 2:
+                        drawImage(&imgGreenHouse[15], subTemp[XPOS], subTemp[YPOS], 0, 0, imgGreenHouse[15].w/3, imgGreenHouse[15].h, VH);
+                        drawImage(&imgGreenHouse[19], subTemp[XPOS], subTemp[YPOS]-8, 0, 0, imgGreenHouse[19].w, imgGreenHouse[19].h, VH);
+                        
+//                        drawImage(&imgFlower[xGreenHouse_FP.xSlot[slotCode].MaterialCode][xGreenHouse_FP.imgNum[slotNum]], subTemp[XPOS], subTemp[YPOS]-20, 0, 0, imgFlower[xGreenHouse_FP.xSlot[slotCode].MaterialCode][xGreenHouse_FP.imgNum[slotNum]].w, imgFlower[xGreenHouse_FP.xSlot[slotCode].MaterialCode][xGreenHouse_FP.imgNum[slotNum]].h, VH);
+                        
+                        Temp = xGreenHouse_FP.xSlot[slotNum].endTime-xGreenHouse_MaterialData_FP.xSlot[slotNum].makeTime;
+                        Temp2 = -(Temp-xCalendar.nowTime);
+                        Temp3 = (Temp2*100)/xGreenHouse_MaterialData_FP.xSlot[slotNum].makeTime;
+                        if(Temp3>0 && Temp3<33)
+                        {
+                            xGreenHouse_FP.imgNum[slotNum]=0;
+                        }
+                        else if(Temp3>32 && Temp3<66)
+                        {
+                            xGreenHouse_FP.imgNum[slotNum]=1;
+                        }
+                        else if(Temp3>65)
+                        {
+                            xGreenHouse_FP.imgNum[slotNum]=2;
+                        }
+                        log("KBY_NUM : %d", Temp3);
+                        
+                        drawImage(&imgFlower[xGreenHouse_FP.xSlot[slotCode].MaterialCode][xGreenHouse_FP.imgNum[slotNum]], subTemp[XPOS], subTemp[YPOS]-20, 0, 0, imgFlower[xGreenHouse_FP.xSlot[slotCode].MaterialCode][xGreenHouse_FP.imgNum[slotNum]].w, imgFlower[xGreenHouse_FP.xSlot[slotCode].MaterialCode][xGreenHouse_FP.imgNum[slotNum]].h, VH);
+                        
+                        drawImage(&imgSlotLv[xGreenHouse_FP.xSlot[slotNum].Upgrade], subTemp[XPOS]+10, subTemp[YPOS]-15, 0, 0, imgSlotLv[xGreenHouse_FP.xSlot[slotNum].Upgrade].w, imgSlotLv[xGreenHouse_FP.xSlot[slotNum].Upgrade].h, VH);
+                        
+//                        for(int prcI=0;prcI<xGame.prcCnt;prcI++)
+//                        {
+//                            if(xGreenHouse_FP.AnyCnt[slotNum]++ > 15)
+//                            {
+//                                xGreenHouse_FP.AnyCnt[slotNum]=0;
+//                                xGreenHouse_FP.imgNum[slotNum]++;
+//                                if(xGreenHouse_FP.imgNum[slotNum]>3)
+//                                {
+//                                    xGreenHouse_FP.imgNum[slotNum]=0;
+//                                }
+//                            }
+//                        }
+                        
+                                               
+                        drawTimeSprintf(strTempS, xGreenHouse_FP.EndTimer[slotNum], 1);
+                        setFontSizeORI(16);
+                        gDrawStringBold(subTemp[XPOS], subTemp[YPOS]-60, strTempS, VH, 101, 48, 150, 255, 255, 255);
+                        setFontSize(11);
+                        
+                        if(xGreenHouse_FP.isTouchUpgrade[slotNum]==false)
+                        {
+                            drawImage(&imgGreenHouse[21], subTemp[XPOS]+30, subTemp[YPOS]+110, 0, 0, imgGreenHouse[21].w/2, imgGreenHouse[21].h, VH);
+                        }
+                        else
+                        {
+                            drawImage(&imgGreenHouse[21], subTemp[XPOS]+30, subTemp[YPOS]+110, imgGreenHouse[21].w/2, 0, imgGreenHouse[21].w/2, imgGreenHouse[21].h, VH);
+                        }
+                        
+                        xGreenHouse_FP.xTouchUpgrade[slotNum].wPos = imgGreenHouse[21].w/2+10;
+                        xGreenHouse_FP.xTouchUpgrade[slotNum].hPos = imgGreenHouse[21].h+20;
+                        xGreenHouse_FP.xTouchUpgrade[slotNum].xPos = subTemp[XPOS]+30-xGreenHouse_FP.xTouchUpgrade[slotNum].wPos/2;
+                        xGreenHouse_FP.xTouchUpgrade[slotNum].yPos = subTemp[YPOS]+110-xGreenHouse_FP.xTouchUpgrade[slotNum].hPos/2;
+                        
+//                        setAlpha(100);
+//                        gSetColor(255, 0, 0);
+//                        fillRect(xGreenHouse_FP.xTouchUpgrade[slotNum].xPos, xGreenHouse_FP.xTouchUpgrade[slotNum].yPos, xGreenHouse_FP.xTouchUpgrade[slotNum].wPos, xGreenHouse_FP.xTouchUpgrade[slotNum].hPos);
+//                        setAlpha(ALPHA_MAX);
+                        
+                        if(xGreenHouse_FP.isTouchFast[slotNum]==false)
+                        {
+                            drawImage(&imgGreenHouse[20], subTemp[XPOS]-35, subTemp[YPOS]+110, 0, 0, imgGreenHouse[20].w/2, imgGreenHouse[20].h, VH);
+                        }
+                        else
+                        {
+                            drawImage(&imgGreenHouse[20], subTemp[XPOS]-35, subTemp[YPOS]+110, imgGreenHouse[20].w/2, 0, imgGreenHouse[20].w/2, imgGreenHouse[20].h, VH);
+                        }
+                        
+                        xGreenHouse_FP.xTouchFast[slotNum].wPos = imgGreenHouse[20].w/2+10;
+                        xGreenHouse_FP.xTouchFast[slotNum].hPos = imgGreenHouse[20].h+20;
+                        xGreenHouse_FP.xTouchFast[slotNum].xPos = subTemp[XPOS]-40-xGreenHouse_FP.xTouchUpgrade[slotNum].wPos/2;
+                        xGreenHouse_FP.xTouchFast[slotNum].yPos = subTemp[YPOS]+110-xGreenHouse_FP.xTouchUpgrade[slotNum].hPos/2;
+                        
+//                        setAlpha(100);
+//                        gSetColor(255, 0, 0);
+//                        fillRect(xGreenHouse_FP.xTouchFast[slotNum].xPos, xGreenHouse_FP.xTouchFast[slotNum].yPos, xGreenHouse_FP.xTouchFast[slotNum].wPos, xGreenHouse_FP.xTouchFast[slotNum].hPos);
+//                        setAlpha(ALPHA_MAX);
+                        
+                        break;
+                    case 3:
+                        drawImage(&imgGreenHouse[15], subTemp[XPOS], subTemp[YPOS], 0, 0, imgGreenHouse[15].w/3, imgGreenHouse[15].h, VH);
+                        drawImage(&imgGreenHouse[15], subTemp[XPOS], subTemp[YPOS], imgGreenHouse[15].w/3*2, 0, imgGreenHouse[15].w/3, imgGreenHouse[15].h, VH);
+                        
+                        drawImage(&imgGreenHouse[19], subTemp[XPOS], subTemp[YPOS]-8, 0, 0, imgGreenHouse[19].w, imgGreenHouse[19].h, VH);
+                        
+                        drawImage(&imgFlower[xGreenHouse_FP.xSlot[slotNum].MaterialCode][3], subTemp[XPOS], subTemp[YPOS]-20, 0, 0, imgFlower[xGreenHouse_FP.xSlot[slotNum].MaterialCode][3].w, imgFlower[xGreenHouse_FP.xSlot[slotNum].MaterialCode][3].h, VH);
+                        
+                        drawImage(&imgSlotLv[xGreenHouse_FP.xSlot[slotNum].Upgrade], subTemp[XPOS]+10, subTemp[YPOS]-15, 0, 0, imgSlotLv[xGreenHouse_FP.xSlot[slotNum].Upgrade].w, imgSlotLv[xGreenHouse_FP.xSlot[slotNum].Upgrade].h, VH);
+                        
+                        drawImage(&imgGreenHouse[14], subTemp[XPOS]+3, subTemp[YPOS]+50, 0, 0, imgGreenHouse[14].w, imgGreenHouse[14].h, VH);
+                        if(xGreenHouse_FP.isTouchUpgrade[slotNum]==false)
+                        {
+                            drawImage(&imgGreenHouse[21], subTemp[XPOS]+30, subTemp[YPOS]+110, 0, 0, imgGreenHouse[21].w/2, imgGreenHouse[21].h, VH);
+                        }
+                        else
+                        {
+                            drawImage(&imgGreenHouse[21], subTemp[XPOS]+30, subTemp[YPOS]+110, imgGreenHouse[21].w/2, 0, imgGreenHouse[21].w/2, imgGreenHouse[21].h, VH);
+                        }
+                        
+                        xGreenHouse_FP.xTouchUpgrade[slotNum].wPos = imgGreenHouse[21].w/2+10;
+                        xGreenHouse_FP.xTouchUpgrade[slotNum].hPos = imgGreenHouse[21].h+20;
+                        xGreenHouse_FP.xTouchUpgrade[slotNum].xPos = subTemp[XPOS]+30-xGreenHouse_FP.xTouchUpgrade[slotNum].wPos/2;
+                        xGreenHouse_FP.xTouchUpgrade[slotNum].yPos = subTemp[YPOS]+110-xGreenHouse_FP.xTouchUpgrade[slotNum].hPos/2;
+                        
+//                        setAlpha(100);
+//                        gSetColor(255, 0, 0);
+//                        fillRect(xGreenHouse_FP.xTouchUpgrade[slotNum].xPos, xGreenHouse_FP.xTouchUpgrade[slotNum].yPos, xGreenHouse_FP.xTouchUpgrade[slotNum].wPos, xGreenHouse_FP.xTouchUpgrade[slotNum].hPos);
+//                        setAlpha(ALPHA_MAX);
+                        
+                        if(xGreenHouse_FP.isTouchFast[slotNum]==false)
+                        {
+                            drawImage(&imgGreenHouse[20], subTemp[XPOS]-35, subTemp[YPOS]+110, 0, 0, imgGreenHouse[20].w/2, imgGreenHouse[20].h, VH);
+                        }
+                        else
+                        {
+                            drawImage(&imgGreenHouse[20], subTemp[XPOS]-35, subTemp[YPOS]+110, imgGreenHouse[20].w/2, 0, imgGreenHouse[20].w/2, imgGreenHouse[20].h, VH);
+                        }
+                        
+                        xGreenHouse_FP.xTouchFast[slotNum].wPos = imgGreenHouse[20].w/2+10;
+                        xGreenHouse_FP.xTouchFast[slotNum].hPos = imgGreenHouse[20].h+20;
+                        xGreenHouse_FP.xTouchFast[slotNum].xPos = subTemp[XPOS]-40-xGreenHouse_FP.xTouchUpgrade[slotNum].wPos/2;
+                        xGreenHouse_FP.xTouchFast[slotNum].yPos = subTemp[YPOS]+110-xGreenHouse_FP.xTouchUpgrade[slotNum].hPos/2;
+                        
+//                        setAlpha(100);
+//                        gSetColor(255, 0, 0);
+//                        fillRect(xGreenHouse_FP.xTouchFast[slotNum].xPos, xGreenHouse_FP.xTouchFast[slotNum].yPos, xGreenHouse_FP.xTouchFast[slotNum].wPos, xGreenHouse_FP.xTouchFast[slotNum].hPos);
+//                        setAlpha(ALPHA_MAX);
+                        break;
+                    default:
+                        break;
+                }
+                
+                xGreenHouse_FP.xTouchSlot[slotNum].wPos = imgGreenHouse[15].w/3+10;
+                xGreenHouse_FP.xTouchSlot[slotNum].hPos = imgGreenHouse[15].h+10;
+                xGreenHouse_FP.xTouchSlot[slotNum].xPos = subTemp[XPOS] - xGreenHouse_FP.xTouchSlot[slotNum].wPos/2;
+                xGreenHouse_FP.xTouchSlot[slotNum].yPos = subTemp[YPOS] - xGreenHouse_FP.xTouchSlot[slotNum].hPos/2;
+                
+                
+                
+//                gSetColor(255, 0, 0);
+//                setAlpha(100);
+//                fillRect(xGreenHouse_FP.xTouchSlot[slotNum].xPos, xGreenHouse_FP.xTouchSlot[slotNum].yPos, xGreenHouse_FP.xTouchSlot[slotNum].wPos, xGreenHouse_FP.xTouchSlot[slotNum].hPos);
+//                setAlpha(ALPHA_MAX);
+            }
+        }
+    }
+    gSetClip(false, 0, 0, lcdW, lcdH);
+
+    //꽃부분 화살표
+    subTemp[XPOS] = px-448;
+    subTemp[YPOS] = py-30;
+    
+    drawImage(&imgGreenHouse[3], subTemp[XPOS], subTemp[YPOS], 0, 0, imgGreenHouse[3].w, imgGreenHouse[3].h, VH);
+    
+    if(xGreenHouse_FP.xDragScrollGreenHouseS.selectNum<=0)
+    {
+        drawImage(&imgGreenHouse[6], subTemp[XPOS], subTemp[YPOS], imgGreenHouse[6].w/6*2, 0, imgGreenHouse[6].w/6, imgGreenHouse[6].h, VH);
+    }
+    else
+    {
+        if(xGreenHouse_FP.isTouchLeftBtn==false)
+        {
+            drawImage(&imgGreenHouse[6], subTemp[XPOS], subTemp[YPOS], 0, 0, imgGreenHouse[6].w/6, imgGreenHouse[6].h, VH);
+        }
+        
+        else
+        {
+            drawImage(&imgGreenHouse[6], subTemp[XPOS], subTemp[YPOS], imgGreenHouse[6].w/6*4, 0, imgGreenHouse[6].w/6, imgGreenHouse[6].h, VH);
+        }
+    }
+    xGreenHouse_FP.xTouchLeftBtn.wPos = imgGreenHouse[3].w+20;
+    xGreenHouse_FP.xTouchLeftBtn.hPos = imgGreenHouse[3].h;
+    xGreenHouse_FP.xTouchLeftBtn.xPos = subTemp[XPOS] - xGreenHouse_FP.xTouchLeftBtn.wPos/2;
+    xGreenHouse_FP.xTouchLeftBtn.yPos = subTemp[YPOS] - xGreenHouse_FP.xTouchLeftBtn.hPos/2;
+    
+    subTemp[XPOS] = px+450;
+    subTemp[YPOS] = py-30;
+    
+    drawImage(&imgGreenHouse[5], subTemp[XPOS], subTemp[YPOS], 0, 0, imgGreenHouse[5].w, imgGreenHouse[5].h, VH);
+    
+    if(xGreenHouse_FP.xDragScrollGreenHouseS.selectNum>=xGreenHouse_FP.xDragScrollGreenHouseS.totalNum-1)
+    {
+        drawImage(&imgGreenHouse[6], subTemp[XPOS], subTemp[YPOS], imgGreenHouse[6].w/6*3, 0, imgGreenHouse[6].w/6, imgGreenHouse[6].h, VH);
+    }
+    else
+    {
+        if(xGreenHouse_FP.isTouchRightBtn==false)
+        {
+            drawImage(&imgGreenHouse[6], subTemp[XPOS], subTemp[YPOS], imgGreenHouse[6].w/6, 0, imgGreenHouse[6].w/6, imgGreenHouse[6].h, VH);
+        }
+        else
+        {
+            drawImage(&imgGreenHouse[6], subTemp[XPOS], subTemp[YPOS], imgGreenHouse[6].w/6*5, 0, imgGreenHouse[6].w/6, imgGreenHouse[6].h, VH);
+        }
+    }
+    
+    xGreenHouse_FP.xTouchRightBtn.wPos = imgGreenHouse[5].w+20;
+    xGreenHouse_FP.xTouchRightBtn.hPos = imgGreenHouse[5].h;
+    xGreenHouse_FP.xTouchRightBtn.xPos = subTemp[XPOS] - xGreenHouse_FP.xTouchRightBtn.wPos/2;
+    xGreenHouse_FP.xTouchRightBtn.yPos = subTemp[YPOS] - xGreenHouse_FP.xTouchRightBtn.hPos/2;
+    
+    //슬롯 화살표
+    subTemp[XPOS] = px-458;
+    subTemp[YPOS] = py+135;
+    
+    if(xGreenHouse_FP.xDragScrollGreenHouseB.selectNum<=0)
+    {
+        drawImage(&imgGreenHouse[7], subTemp[XPOS], subTemp[YPOS], imgGreenHouse[7].w/6*2, 0, imgGreenHouse[7].w/6, imgGreenHouse[7].h, VH);
+    }
+    else
+    {
+        if(xGreenHouse_FP.isTouchLeftArrow==true)
+        {
+            drawImage(&imgGreenHouse[7], subTemp[XPOS], subTemp[YPOS], imgGreenHouse[7].w/6*4, 0, imgGreenHouse[7].w/6, imgGreenHouse[7].h, VH);
+        }
+        else
+        {
+            drawImage(&imgGreenHouse[7], subTemp[XPOS], subTemp[YPOS], 0, 0, imgGreenHouse[7].w/6, imgGreenHouse[7].h, VH);
+        }
+    }
+    
+    xGreenHouse_FP.xTouchLeftArrow.wPos = 80;
+    xGreenHouse_FP.xTouchLeftArrow.hPos = 230;
+    xGreenHouse_FP.xTouchLeftArrow.xPos = subTemp[XPOS] - xProduction_FP.xTouchLeftArrow.wPos/2;
+    xGreenHouse_FP.xTouchLeftArrow.yPos = subTemp[YPOS] - xProduction_FP.xTouchLeftArrow.hPos/2;
+    
+    subTemp[XPOS] = px+460;
+    subTemp[YPOS] = py+135;
+    
+    if(xGreenHouse_FP.xDragScrollGreenHouseB.selectNum>=xGreenHouse_FP.xDragScrollGreenHouseB.totalNum-1)
+    {
+        drawImage(&imgGreenHouse[7], subTemp[XPOS], subTemp[YPOS], imgGreenHouse[7].w/6*3, 0, imgGreenHouse[7].w/6, imgGreenHouse[7].h, VH);
+    }
+    else
+    {
+        if(xGreenHouse_FP.isTouchRightArrow==false)
+        {
+            drawImage(&imgGreenHouse[7], subTemp[XPOS], subTemp[YPOS], imgGreenHouse[7].w/6, 0, imgGreenHouse[7].w/6, imgGreenHouse[7].h, VH);
+        }
+        else
+        {
+            drawImage(&imgGreenHouse[7], subTemp[XPOS], subTemp[YPOS], imgGreenHouse[7].w/6*5, 0, imgGreenHouse[7].w/6, imgGreenHouse[7].h, VH);
+        }
+    }
+
+    xGreenHouse_FP.xTouchRightArrow.wPos = 80;
+    xGreenHouse_FP.xTouchRightArrow.hPos = 230;
+    xGreenHouse_FP.xTouchRightArrow.xPos = subTemp[XPOS] - xProduction_FP.xTouchRightArrow.wPos/2;
+    xGreenHouse_FP.xTouchRightArrow.yPos = subTemp[YPOS] - xProduction_FP.xTouchRightArrow.hPos/2;
+    
+    if(xGreenHouse_FP.isTouchProduct==true)
+    {
+        slotCode = xGreenHouse_MaterialData_FP.xSlot[xGreenHouse_FP.selectProduct].code;
+        
+        subTemp[XPOS] = xTouch.xPos;
+        subTemp[YPOS] = xTouch.yPos;
+        
+        drawImage(&imgGreenHouse[12], subTemp[XPOS], subTemp[YPOS], ((imgGreenHouse[12].w/8)*slotCode), 0, imgGreenHouse[12].w/8, imgGreenHouse[12].h, VH);
+
+        
+        if(xTouch.xPos+imgGreenHouse[22].w/2+40>=885)
+        {
+            subTemp[XPOS] = xTouch.xPos-imgGreenHouse[22].w/2-40;
+            subTemp[YPOS] = xTouch.yPos;
+        }
+        else
+        {
+            subTemp[XPOS] = xTouch.xPos+imgGreenHouse[22].w/2+40;
+            subTemp[YPOS] = xTouch.yPos;
+        }
+        
+        drawImage(&imgGreenHouse[22], subTemp[XPOS], subTemp[YPOS], 0, 0, imgGreenHouse[22].w, imgGreenHouse[22].h, VH);
+        
+    }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////온실 입력 이벤트 처리 KBY
+void keyGreenHouse_FP(int type, int param1, int param2)
+{
+    if(type == MH_KEY_PRESSEVENT)
+    {
+        for (int k=0; k<xGreenHouse_FP.totalSlot; k++)
+        {
+            if(touchCheck(&xGreenHouse_FP.xTouchUpgrade[k])==TRUE && xGreenHouse_FP.isTouchProduct==false && touchType == USER_POINT_PRESS_EVENT)
+            {
+                xGreenHouse_FP.isTouchUpgrade[k] = true;
+                break;
+            }
+            
+            else if(touchCheck(&xGreenHouse_FP.xTouchFast[k])==TRUE && xGreenHouse_FP.isTouchProduct==false && xGreenHouse_FP.xSlot[k].state==2 && touchType == USER_POINT_PRESS_EVENT)
+            {
+                xGreenHouse_FP.isTouchFast[k] = true;
+                break;
+            }
+            
+            else if(touchCheck(&xGreenHouse_FP.xTouchSlot[k])==TRUE && xGreenHouse_FP.isTouchProduct==false && xGreenHouse_FP.xSlot[k].state==2 && touchType == USER_POINT_PRESS_EVENT)
+            {
+                xGreenHouse_FP.selectSlot = k;
+                xWorldMap.isKeyReturn = TRUE;
+                xGreenHouse_FP.isTouchYes = false;
+                xGreenHouse_FP.isTouchNo = false;
+                xGreenHouse_FP.state = GREENHOUSE_STATE_CANCLEPOPUP;
+                break;
+            }
+            
+            else if(touchCheck(&xGreenHouse_FP.xTouchSlot[k])==TRUE && xGreenHouse_FP.isTouchProduct==false && xGreenHouse_FP.xSlot[k].state==3 && touchType == USER_POINT_PRESS_EVENT)
+            {
+                xGreenHouse_FP.selectSlot=k;
+                xEventQueueNet.action[xEventQueueNet.totalNum]=3;
+                xEventQueueNet.slotNum[xEventQueueNet.totalNum]=xGreenHouse_FP.selectSlot;
+                xEventQueueNet.ITEM_INDEX[xEventQueueNet.totalNum]=-1;
+                xEventQueueNet.ITEM_COUNT[xEventQueueNet.totalNum]=0;
+                xEventQueueNet.time[xEventQueueNet.totalNum]=0;
+                addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GREENHOUSESLOTINFOUPDATE, TRUE);
+                addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GREENHOUSEINFOUPDATE, TRUE);
+                break;
+            }
+        }
+        
+        for(int k=0;k<xGreenHouse_MaterialData_FP.totalNum;k++)
+        {
+            if(touchCheck(&xGreenHouse_FP.xTouchList[k])==TRUE && touchType == USER_POINT_PRESS_EVENT)
+            {
+                xGreenHouse_FP.isTouchProduct = true;
+                xGreenHouse_FP.selectProduct = k;
+                break;
+            }
+        }
+        if(touchCheck(&xTouchClr)==TRUE && xGreenHouse_FP.isTouchProduct==false && touchType == USER_POINT_PRESS_EVENT)
+        {
+            xGreenHouse_FP.isTouchClr=true;
+        }
+        else if(touchCheck(&xGreenHouse_FP.xTouchOpen)==TRUE && xGreenHouse_FP.isTouchProduct==false && touchType == USER_POINT_PRESS_EVENT)
+        {
+            xGreenHouse_FP.isTouchOpen=true;
+        }
+        
+        else if(touchCheck(&xGreenHouse_FP.xTouchLeftBtn)==TRUE && xGreenHouse_FP.isTouchProduct==false && xGreenHouse_FP.xDragScrollGreenHouseS.selectNum>0)
+        {
+            xGreenHouse_FP.isTouchLeftBtn=true;
+            xGreenHouse_FP.isTouchRightBtn=false;
+        }
+        
+        else if(touchCheck(&xGreenHouse_FP.xTouchRightBtn)== TRUE && xGreenHouse_FP.isTouchProduct==false && xGreenHouse_FP.xDragScrollGreenHouseS.selectNum<xGreenHouse_FP.xDragScrollGreenHouseS.totalNum-1)
+        {
+            xGreenHouse_FP.isTouchLeftBtn=false;
+            xGreenHouse_FP.isTouchRightBtn=true;
+        }
+        
+        else if(touchCheck(&xGreenHouse_FP.xTouchLeftArrow)==TRUE && xGreenHouse_FP.isTouchProduct==false && xGreenHouse_FP.xDragScrollGreenHouseB.selectNum>0)
+        {
+            xGreenHouse_FP.isTouchLeftArrow=true;
+            xGreenHouse_FP.isTouchRightArrow=false;
+        }
+        
+        else if(touchCheck(&xGreenHouse_FP.xTouchRightArrow)==TRUE && xGreenHouse_FP.isTouchProduct==false && xGreenHouse_FP.xDragScrollGreenHouseB.selectNum<xGreenHouse_FP.xDragScrollGreenHouseB.totalNum-1)
+        {
+            xGreenHouse_FP.isTouchLeftArrow=false;
+            xGreenHouse_FP.isTouchRightArrow=true;
+        }
+    }
+    
+    else if(type == MH_KEY_RELEASEEVENT)
+    {
+        bool isRelease = false;
+        
+        for (int k=0; k<xGreenHouse_FP.totalSlot; k++)
+        {
+            if(touchCheck(&xGreenHouse_FP.xTouchUpgrade[k])==TRUE && xGreenHouse_FP.isTouchProduct==false && touchType == USER_POINT_RELEASE_EVENT)
+            {
+                xGreenHouse_FP.isTouchUpgrade[k] = false;
+                xGreenHouse_FP.selectSlot = k;
+                setPopup(POPUP_GREENHOUSESLOTUPGRADE, playState, playState, 0, DONT);
+                break;
+            }
+            
+            else if(touchCheck(&xGreenHouse_FP.xTouchFast[k])==TRUE && xGreenHouse_FP.isTouchProduct==false && xGreenHouse_FP.xSlot[k].state==2 && touchType == USER_POINT_RELEASE_EVENT)
+            {
+                xGreenHouse_FP.isTouchFast[k] = false;
+                xGreenHouse_FP.selectSlot = k;
+                setPopup(POPUP_GREENHOUSESLOTFASTOK, playState, playState, 0, DONT);
+                break;
+            }
+
+        }
+        
+        for(int k=0;k<12;k++)
+        {
+            if(touchCheck(&xGreenHouse_FP.xTouchSlot[k])==TRUE && xGreenHouse_FP.isTouchProduct==true && touchType==USER_POINT_RELEASE_EVENT)
+            {
+                if(xGreenHouse_FP.xSlot[k].state==1)
+                {
+                    isRelease = true;
+                    xGreenHouse_FP.selectSlot = k;
+                    break;
+                }
+            }
+        }
+        
+        if(isRelease==true)
+        {
+            xGreenHouse_FP.xSlot[xGreenHouse_FP.selectSlot].MaterialCode = xGreenHouse_MaterialData_FP.xSlot[xGreenHouse_FP.selectProduct].code;
+            xGreenHouse_FP.xSlot[xGreenHouse_FP.selectSlot].endTime = xGreenHouse_MaterialData_FP.xSlot[xGreenHouse_FP.selectProduct].makeTime+xCalendar.nowTime;
+            xGreenHouse_FP.xSlot[xGreenHouse_FP.selectSlot].itemCnt = xGreenHouse_MaterialData_FP.xSlot[xGreenHouse_FP.selectProduct].cnt;
+            
+            xEventQueueNet.action[xEventQueueNet.totalNum]=0;
+            xEventQueueNet.slotNum[xEventQueueNet.totalNum]= xGreenHouse_FP.selectSlot;
+            xEventQueueNet.ITEM_INDEX[xEventQueueNet.totalNum]= xGreenHouse_FP.xSlot[xGreenHouse_FP.selectSlot].MaterialCode;
+            xEventQueueNet.ITEM_COUNT[xEventQueueNet.totalNum]= xGreenHouse_FP.xSlot[xGreenHouse_FP.selectSlot].itemCnt;
+            xEventQueueNet.time[xEventQueueNet.totalNum]=xGreenHouse_FP.xSlot[xGreenHouse_FP.selectSlot].endTime;
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GREENHOUSESLOTINFOUPDATE, TRUE);
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GREENHOUSEINFOUPDATE, TRUE);
+            xGreenHouse_FP.imgNum[xGreenHouse_FP.selectSlot]=-1;
+            xGreenHouse_FP.selectProduct=DONT;
+            xGreenHouse_FP.isTouchProduct=false;
+            
+        }
+        
+        
+        else if(touchCheck(&xTouchClr)==TRUE && xGreenHouse_FP.isTouchProduct==false && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            xGreenHouse_FP.isTouchClr=false;
+            playSnd(SND_MENU_OK);
+            xWorldMap.isKeyReturn = TRUE;
+            greenHouseFreeLoad_FP(false);
+            xWorldMap.state=WORLDMAP_STATE_PLAY;
+        }
+        
+        else if(touchCheck(&xGreenHouse_FP.xTouchOpen)==TRUE && xGreenHouse_FP.isTouchProduct==false && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            xGreenHouse_FP.isTouchOpen=false;
+            setPopup(POPUP_GREENHOUSESLOTOPEN, playState, playState, 0, DONT);
+        }
+        
+        else if(touchCheck(&xGreenHouse_FP.xTouchLeftBtn)==TRUE && xGreenHouse_FP.isTouchProduct==false && xGreenHouse_FP.xDragScrollGreenHouseS.selectNum>0 && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            xGreenHouse_FP.xDragScrollGreenHouseS.speed = 640;
+            xGreenHouse_FP.isTouchLeftBtn=false;
+            xGreenHouse_FP.isTouchRightBtn=false;
+        }
+        
+        else if(touchCheck(&xGreenHouse_FP.xTouchRightBtn)==TRUE && xGreenHouse_FP.isTouchProduct==false && xGreenHouse_FP.xDragScrollGreenHouseS.selectNum<xGreenHouse_FP.xDragScrollGreenHouseS.totalNum-1 && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            xGreenHouse_FP.xDragScrollGreenHouseS.speed = -640;
+            xGreenHouse_FP.isTouchLeftBtn=false;
+            xGreenHouse_FP.isTouchRightBtn=false;
+        }
+        
+        else if(touchCheck(&xGreenHouse_FP.xTouchLeftArrow)==TRUE && xGreenHouse_FP.isTouchProduct==false && xGreenHouse_FP.xDragScrollGreenHouseB.selectNum>0 && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            xGreenHouse_FP.xDragScrollGreenHouseB.speed=640;
+            xGreenHouse_FP.isTouchLeftArrow=false;
+            xGreenHouse_FP.isTouchRightArrow=false;
+        }
+        
+        else if(touchCheck(&xGreenHouse_FP.xTouchRightArrow)==TRUE && xGreenHouse_FP.isTouchProduct==false && xGreenHouse_FP.xDragScrollGreenHouseB.selectNum<xGreenHouse_FP.xDragScrollGreenHouseB.totalNum-1 && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            xGreenHouse_FP.xDragScrollGreenHouseB.speed=-640;
+            xGreenHouse_FP.isTouchLeftArrow=false;
+            xGreenHouse_FP.isTouchRightArrow=false;
+        }
+        
+        else
+        {
+            xGreenHouse_FP.selectProduct=DONT;
+            xGreenHouse_FP.isTouchProduct=false;
+        }
+
+
+    }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////온실 제작 취소 팝업창 Draw KBY
+void drawGreenHouseSlotCanclePopup_FP()
+{
+    int px = cx;
+    int py = cy;
+    
+    drawBgFillRect();
+    
+    int slotCode = xGreenHouse_FP.xSlot[xGreenHouse_FP.selectSlot].MaterialCode;
+    
+    subTemp[XPOS] = px;
+    subTemp[YPOS] = py;
+    
+    drawImage(&imgGreenHouse[23], subTemp[XPOS], subTemp[YPOS], 0, 0, imgGreenHouse[23].w, imgGreenHouse[23].h, VH);
+    
+    if(xGreenHouse_FP.isTouchPopupClr==false)
+    {
+        drawImage(&imgGreenHouse[1], subTemp[XPOS]+243, subTemp[YPOS]-140, 0, 0, imgGreenHouse[1].w/2, imgGreenHouse[1].h, VH);
+    }
+    else
+    {
+        drawImage(&imgGreenHouse[1], subTemp[XPOS]+243, subTemp[YPOS]-140, imgGreenHouse[1].w/2, 0, imgGreenHouse[1].w/2, imgGreenHouse[1].h, VH);
+    }
+
+    xTouchClr.wPos = imgGreenHouse[1].w/2;
+    xTouchClr.hPos = imgGreenHouse[1].h;
+    xTouchClr.xPos = subTemp[XPOS]+243-xTouchClr.wPos/2;
+    xTouchClr.yPos = subTemp[YPOS]-140-xTouchClr.hPos/2;
+    
+    drawImage(&imgGreenHouse[15], subTemp[XPOS]-160, subTemp[YPOS]-30, 0, 0, imgGreenHouse[15].w/3, imgGreenHouse[15].h, VH);
+    drawImage(&imgGreenHouse[19], subTemp[XPOS]-160, subTemp[YPOS]-38, 0, 0, imgGreenHouse[19].w, imgGreenHouse[19].h, VH);
+    drawImage(&imgSlotLv[xGreenHouse_FP.xSlot[xGreenHouse_FP.selectSlot].Upgrade], subTemp[XPOS]-150, subTemp[YPOS]-45, 0, 0, imgSlotLv[xGreenHouse_FP.xSlot[xGreenHouse_FP.selectSlot].Upgrade].w, imgSlotLv[xGreenHouse_FP.xSlot[xGreenHouse_FP.selectSlot].Upgrade].h, VH);
+    
+    drawImage(&imgFlower[xGreenHouse_FP.xSlot[xGreenHouse_FP.selectSlot].MaterialCode][xGreenHouse_FP.imgNum[xGreenHouse_FP.selectSlot]], subTemp[XPOS]-160, subTemp[YPOS]-50, 0, 0, imgFlower[xGreenHouse_FP.xSlot[xGreenHouse_FP.selectSlot].MaterialCode][xGreenHouse_FP.imgNum[xGreenHouse_FP.selectSlot]].w, imgFlower[xGreenHouse_FP.xSlot[xGreenHouse_FP.selectSlot].MaterialCode][xGreenHouse_FP.imgNum[xGreenHouse_FP.selectSlot]].h, VH);
+    
+    
+    drawTimeSprintf(strTempS, xGreenHouse_FP.EndTimer[xGreenHouse_FP.selectSlot], 1);
+    setFontSizeORI(16);
+    gDrawStringBold(subTemp[XPOS]-160, subTemp[YPOS]-90, strTempS, VH, 101, 48, 150, 255, 255, 255);
+    setFontSize(11);
+    
+    sprintf(strTempS, "%s", xGreenHouse_MaterialData_FP.xSlot[xGreenHouse_FP.xSlot[xGreenHouse_FP.selectSlot].MaterialCode].strName);
+    gSetColor(101, 48, 150);
+    setFontSizeORI(20);
+    gDrawString(subTemp[XPOS]+50, subTemp[YPOS]-80, strTempS, VH);
+    setFontSize(11);
+
+    sprintf(strTempS, "제작을 취소하시겠습니까?");
+    gSetColor(101, 48, 150);
+    setFontSizeORI(16);
+    gDrawString(subTemp[XPOS]+70, subTemp[YPOS]-10, strTempS, VH);
+    setFontSize(11);
+    
+    sprintf(strTempS, "제작을 취소하면 사용된 재료는 사라져요!");
+    gSetColor(101, 48, 150);
+    setFontSizeORI(14);
+    gDrawString(subTemp[XPOS]+70, subTemp[YPOS]+10, strTempS, VH);
+    setFontSize(11);
+
+    if(xGreenHouse_FP.isTouchYes==false)
+    {
+        drawImage(&imgGreenHouse[24], subTemp[XPOS]-85, subTemp[YPOS]+100, 0, imgGreenHouse[24].h/2, imgGreenHouse[24].w/2, imgGreenHouse[24].h/2, VH);
+    }
+    else
+    {
+        drawImage(&imgGreenHouse[24], subTemp[XPOS]-85, subTemp[YPOS]+100, imgGreenHouse[24].w/2, imgGreenHouse[24].h/2, imgGreenHouse[24].w/2, imgGreenHouse[24].h/2, VH);
+    }
+    sprintf(strTempS, "네");
+    gSetColor(36, 50, 128);
+    setFontSizeORI(20);
+    gDrawString(subTemp[XPOS]-85, subTemp[YPOS]+100, strTempS, VH);
+    setFontSize(11);
+    
+    xGreenHouse_FP.xTouchYes.wPos = imgGreenHouse[24].w/2;
+    xGreenHouse_FP.xTouchYes.hPos = imgGreenHouse[24].h/2;
+    xGreenHouse_FP.xTouchYes.xPos = subTemp[XPOS]-85-xGreenHouse_FP.xTouchYes.wPos/2;
+    xGreenHouse_FP.xTouchYes.yPos = subTemp[YPOS]+100-xGreenHouse_FP.xTouchYes.hPos/2;
+    
+//    setAlpha(100);
+//    gSetColor(255, 0, 0);
+//    fillRect(xGreenHouse_FP.xTouchYes.xPos, xGreenHouse_FP.xTouchYes.yPos, xGreenHouse_FP.xTouchYes.wPos, xGreenHouse_FP.xTouchYes.hPos);
+//    setAlpha(ALPHA_MAX);
+    
+    
+    
+    
+    if(xGreenHouse_FP.isTouchNo==false)
+    {
+        drawImage(&imgGreenHouse[24], subTemp[XPOS]+85, subTemp[YPOS]+100, 0, 0, imgGreenHouse[24].w/2, imgGreenHouse[24].h/2, VH);
+    }
+    else
+    {
+        drawImage(&imgGreenHouse[24], subTemp[XPOS]+85, subTemp[YPOS]+100, imgGreenHouse[24].w/2, 0, imgGreenHouse[24].w/2, imgGreenHouse[24].h/2, VH);
+    }
+    sprintf(strTempS, "아니오");
+    gSetColor(106, 21, 97);
+    setFontSizeORI(20);
+    gDrawString(subTemp[XPOS]+85, subTemp[YPOS]+100, strTempS, VH);
+    setFontSize(11);
+    
+    xGreenHouse_FP.xTouchNo.wPos = imgGreenHouse[24].w/2;
+    xGreenHouse_FP.xTouchNo.hPos = imgGreenHouse[24].h/2;
+    xGreenHouse_FP.xTouchNo.xPos = subTemp[XPOS]+85-xGreenHouse_FP.xTouchNo.wPos/2;
+    xGreenHouse_FP.xTouchNo.yPos = subTemp[YPOS]+100-xGreenHouse_FP.xTouchNo.hPos/2;
+    
+//    setAlpha(100);
+//    gSetColor(255, 0, 0);
+//    fillRect(xGreenHouse_FP.xTouchNo.xPos, xGreenHouse_FP.xTouchNo.yPos, xGreenHouse_FP.xTouchNo.wPos, xGreenHouse_FP.xTouchNo.hPos);
+//    setAlpha(ALPHA_MAX);
+
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////온실 제작취소 팝업창 입력 이벤트 처리 KBY
+
+void keyGreenHouseSlotCanclePopup_FP(int type, int param1, int param2)
+{
+    if(type == MH_KEY_PRESSEVENT)
+    {
+        if(touchCheck(&xTouchClr)==TRUE && touchType == USER_POINT_PRESS_EVENT)
+        {
+            xGreenHouse_FP.isTouchPopupClr = true;
+        }
+        else if(touchCheck(&xGreenHouse_FP.xTouchNo)==TRUE && touchType == USER_POINT_PRESS_EVENT)
+        {
+            xGreenHouse_FP.isTouchNo=true;
+            xGreenHouse_FP.isTouchYes=false;
+        }
+        else if(touchCheck(&xGreenHouse_FP.xTouchYes)==TRUE && touchType == USER_POINT_PRESS_EVENT)
+        {
+            xGreenHouse_FP.isTouchNo=false;
+            xGreenHouse_FP.isTouchYes=true;
+        }
+    }
+    else if(type == MH_KEY_RELEASEEVENT)
+    {
+        if(touchCheck(&xTouchClr)==TRUE && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            xGreenHouse_FP.isTouchPopupClr = false;
+            playSnd(SND_MENU_OK);
+            xWorldMap.isKeyReturn = TRUE;
+            xGreenHouse_FP.state = GREENHOUSE_STATE_MAIN;
+        }
+        else if(touchCheck(&xGreenHouse_FP.xTouchNo)==TRUE && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            xGreenHouse_FP.isTouchNo=false;
+            xGreenHouse_FP.isTouchYes=false;
+            playSnd(SND_MENU_OK);
+            xWorldMap.isKeyReturn = TRUE;
+            xGreenHouse_FP.state = GREENHOUSE_STATE_MAIN;
+        }
+        else if(touchCheck(&xGreenHouse_FP.xTouchYes)==TRUE && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            xGreenHouse_FP.isTouchNo=false;
+            xGreenHouse_FP.isTouchYes=false;
+            playSnd(SND_MENU_OK);
+            xWorldMap.isKeyReturn = TRUE;
+            xEventQueueNet.action[xEventQueueNet.totalNum]=1;
+            xEventQueueNet.slotNum[xEventQueueNet.totalNum]=xGreenHouse_FP.selectSlot;
+            xEventQueueNet.ITEM_INDEX[xEventQueueNet.totalNum]=-1;
+            xEventQueueNet.ITEM_COUNT[xEventQueueNet.totalNum]=0;
+            xEventQueueNet.time[xEventQueueNet.totalNum]=0;
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GREENHOUSESLOTINFOUPDATE, TRUE);
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GREENHOUSEINFOUPDATE, TRUE);
+            xGreenHouse_FP.state=GREENHOUSE_STATE_MAIN;
+        }
+        else
+        {
+            xGreenHouse_FP.isTouchPopupClr = false;
+            xGreenHouse_FP.isTouchNo=false;
+            xGreenHouse_FP.isTouchYes=false;
+        }
+
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////물레 KBY
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////물레 이미지 로드 및 메모리 해제 KBY
+void spinningWheelFreeLoad_FP(bool isLoad)
+{
+    if(isLoad==true)
+    {
+        loadImg("productionbase.png", &imgSpinningWheel[0]);
+        loadImg("productionexiticon.png", &imgSpinningWheel[1]);
+        loadImg("wheel_title.png", &imgSpinningWheel[2]);
+        loadImg("production_left.png",&imgSpinningWheel[3]);
+        loadImg("production_main.png",&imgSpinningWheel[4]);
+        loadImg("production_right.png",&imgSpinningWheel[5]);
+        loadImg("production_arrow.png",&imgSpinningWheel[6]);
+        loadImg("production_slot_arrow.png", &imgSpinningWheel[7]);
+        loadImg("production_slot_open.png", &imgSpinningWheel[8]);
+        loadImg("production_close.png", &imgSpinningWheel[9]);
+        loadImg("production_text_complete.png", &imgSpinningWheel[10]);
+        loadImg("wheel_name.png", &imgSpinningWheel[11]);
+        loadImg("wheel_slot.png", &imgSpinningWheel[12]);
+        loadImg("production_shadow.png", &imgSpinningWheel[13]);
+        loadImg("production_text_complete.png", &imgSpinningWheel[14]);
+        loadImg("wheel_string.png", &imgSpinningWheel[15]);
+        loadImg("wheel_slot_string_0.png", &imgSpinningWheel[16]);
+        loadImg("wheel_slot_string_1.png", &imgSpinningWheel[17]);
+        loadImg("wheel_slot_string_2.png", &imgSpinningWheel[18]);
+        loadImg("greenhouse_btn_fast.png", &imgSpinningWheel[19]);
+        loadImg("greenhouse_btn_upgrade.png", &imgSpinningWheel[20]);
+        loadImg("greenhouse_popup_base.png", & imgSpinningWheel[21]);
+        loadImg("popup_base.png", &imgSpinningWheel[22]);
+        loadImg("default_btn_yesno.png", &imgSpinningWheel[23]);
+        loadImg("wheel_complete.png", &imgSpinningWheel[24]);
+        loadImg("wheel_star.png", &imgSpinningWheel[25]);
+    }
+    else
+    {
+        freeImg(&imgSpinningWheel[0]);
+        freeImg(&imgSpinningWheel[1]);
+        freeImg(&imgSpinningWheel[2]);
+        freeImg(&imgSpinningWheel[3]);
+        freeImg(&imgSpinningWheel[4]);
+        freeImg(&imgSpinningWheel[5]);
+        freeImg(&imgSpinningWheel[6]);
+        freeImg(&imgSpinningWheel[7]);
+        freeImg(&imgSpinningWheel[8]);
+        freeImg(&imgSpinningWheel[9]);
+        freeImg(&imgSpinningWheel[10]);
+        freeImg(&imgSpinningWheel[11]);
+        freeImg(&imgSpinningWheel[12]);
+        freeImg(&imgSpinningWheel[13]);
+        freeImg(&imgSpinningWheel[14]);
+        freeImg(&imgSpinningWheel[15]);
+        freeImg(&imgSpinningWheel[16]);
+        freeImg(&imgSpinningWheel[17]);
+        freeImg(&imgSpinningWheel[18]);
+        freeImg(&imgSpinningWheel[19]);
+        freeImg(&imgSpinningWheel[20]);
+        freeImg(&imgSpinningWheel[21]);
+        freeImg(&imgSpinningWheel[22]);
+        freeImg(&imgSpinningWheel[23]);
+        freeImg(&imgSpinningWheel[24]);
+        freeImg(&imgSpinningWheel[25]);
+    }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////물레 init KBY
+void initSpinningWheel_FP()
+{
+    addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SPINNINGWHEELINFOUPDATE, TRUE);
+    xSpinning_FP.state = SPINNINGWHEEL_STATE_MAIN;
+    xSpinning_FP.selectSlot = -1;
+    xSpinning_FP.selectProduct = -1;
+   
+    
+    xSpinning_FP.isTouchClr=false;
+    xSpinning_FP.isTouchLeftBtn=false;
+    xSpinning_FP.isTouchRightBtn=false;
+    xSpinning_FP.isTouchLeftArrow=false;
+    xSpinning_FP.isTouchRightArrow=false;
+    xSpinning_FP.isTouchMaterial=false;
+    xSpinning_FP.isTouchProduct=false;
+    xSpinning_FP.isTouchPopupClr=false;
+    xSpinning_FP.isTouchYes=false;
+    xSpinning_FP.isTouchNo=false;
+    xSpinning_FP.isTouchOpen=false;
+    for(int k=0;k<MATERIALSLOTMAX;k++)
+    {
+        xSpinning_FP.isTouchUpgrade[k] = false;
+        xSpinning_FP.isTouchFast[k] = false;
+        xSpinning_FP.AnyCnt[k] = 0;
+        xSpinning_FP.imgNum[k] = 16;
+        xSpinning_FP.StarAnyCnt[k] = 0;
+    }
+
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////물레 draw KBY
+void drawSpinningWheel_FP()
+{
+    int px = cx;
+    int py = cy;
+    
+    int pos;
+    
+    drawBgFillRect();
+    
+    drawImage(&imgSpinningWheel[0], px, py+50, 0, 0, imgSpinningWheel[0].w, imgSpinningWheel[0].h, VH);
+    
+    subTemp[XPOS] = lcdW-40;
+    subTemp[YPOS] = py-180;
+    
+    if(xSpinning_FP.isTouchClr==false)
+    {
+        drawImage(&imgSpinningWheel[1], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSpinningWheel[1].w/2, imgSpinningWheel[1].h, VH);
+    }
+    else
+    {
+        drawImage(&imgSpinningWheel[1], subTemp[XPOS], subTemp[YPOS], imgSpinningWheel[1].w/2, 0, imgSpinningWheel[1].w/2, imgSpinningWheel[1].h, VH);
+    }
+    xTouchClr.wPos = imgSpinningWheel[1].w;
+    xTouchClr.hPos = imgSpinningWheel[1].h;
+    xTouchClr.xPos = subTemp[XPOS]-xTouchClr.wPos/2;
+    xTouchClr.yPos = subTemp[YPOS]-xTouchClr.hPos/2;
+    
+    subTemp[XPOS] = px-456;
+    subTemp[YPOS] = py-220;
+    
+    drawImage(&imgSpinningWheel[2], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSpinningWheel[2].w, imgSpinningWheel[2].h, VH);
+    
+    subTemp[XPOS] = px+2;
+    subTemp[YPOS] = py-30;
+    
+    drawImage(&imgSpinningWheel[4], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSpinningWheel[4].w, imgSpinningWheel[4].h, VH);
+    
+    subTemp[XPOS] = px;
+    subTemp[YPOS] = py-90;
+    
+    drawImage(&imgSpinningWheel[11], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSpinningWheel[11].w, imgSpinningWheel[11].h, VH);
+    
+    
+    int slotCode;
+    int slotNum;
+    //데이터 없어서 임시....
+    int totalNum = xGreenHouse_MaterialData_FP.totalNum;
+    
+    xSpinning_FP.xDragScrollSpinningS.totalNum = 1+(xGreenHouse_MaterialData_FP.totalNum-1)/8;
+    xSpinning_FP.xDragScrollSpinningS.posGab = 1280;
+    
+    dragScrollPrc(&xSpinning_FP.xDragScrollSpinningS, 0, FALSE);
+    
+    gSetClip(true, px-430, 0, 860, lcdH);
+    
+    for(int page=-1;page<=1;page++)
+    {
+        if(xSpinning_FP.xDragScrollSpinningS.selectNum+page>=0&&xSpinning_FP.xDragScrollSpinningS.selectNum+page<xSpinning_FP.xDragScrollSpinningS.selectNum+page<xSpinning_FP.xDragScrollSpinningS.totalNum)
+        {
+            for(int i=0;i<8;i++)
+            {
+                if(((xSpinning_FP.xDragScrollSpinningS.selectNum+page)*8)+i>=totalNum)
+                    break;
+                
+                pos = xSpinning_FP.xDragScrollSpinningS.pos+(xSpinning_FP.xDragScrollSpinningS.posGab*page);
+                
+                subTemp[XPOS] = px-420+pos+((i%8)*105)+45;
+                subTemp[YPOS] = py-20;
+                
+                drawImage(&imgSpinningWheel[13], subTemp[XPOS], subTemp[YPOS]+25, 0, 0, imgSpinningWheel[13].w, imgSpinningWheel[13].h, VH);
+                
+                slotNum = ((xSpinning_FP.xDragScrollSpinningS.selectNum+page)*8)+i;
+                //임시
+                slotCode = xGreenHouse_MaterialData_FP.xSlot[slotNum].code;
+                
+                xSpinning_FP.xTouchList[slotNum].wPos = 90;
+                xSpinning_FP.xTouchList[slotNum].hPos = 100;
+                xSpinning_FP.xTouchList[slotNum].xPos = subTemp[XPOS]-xSpinning_FP.xTouchList[slotNum].wPos/2;
+                xSpinning_FP.xTouchList[slotNum].yPos = subTemp[YPOS]-xSpinning_FP.xTouchList[slotNum].hPos/2;
+                
+                drawImage(&imgSpinningWheel[15], subTemp[XPOS], subTemp[YPOS], ((imgSpinningWheel[15].w/10)*slotCode), 0, imgSpinningWheel[15].w/10, imgSpinningWheel[15].h, VH);
+            }
+        }
+    }
+    gSetClip(false, 0, 0, lcdW, lcdH);
+    
+    int maxSlot = 12;
+    
+    xSpinning_FP.xDragScrollSpinningB.totalNum = 1+(maxSlot-1)/6;
+    xSpinning_FP.xDragScrollSpinningB.posGab = 1280;
+    
+    dragScrollPrc(&xSpinning_FP.xDragScrollSpinningB, 0, FALSE);
+    
+    gSetClip(true, px-440, py, 880, lcdH);
+    for(int page=-1;page<=1;page++)
+    {
+        if(xSpinning_FP.xDragScrollSpinningB.selectNum+page>=0&&xSpinning_FP.xDragScrollSpinningB.selectNum+page<xSpinning_FP.xDragScrollSpinningB.totalNum)
+        {
+            for(int i=0;i<6;i++)
+            {
+                if(((xSpinning_FP.xDragScrollSpinningB.selectNum+page)*6)+i>=maxSlot)
+                    break;
+                
+                pos = xSpinning_FP.xDragScrollSpinningB.pos+(xSpinning_FP.xDragScrollSpinningB.posGab*page);
+                subTemp[XPOS] = px-370+pos+((i%6)*147);
+                subTemp[YPOS] = py+135;
+                
+                slotNum = ((xSpinning_FP.xDragScrollSpinningB.selectNum+page)*6)+i;
+                //임시
+                slotCode = xGreenHouse_MaterialData_FP.xSlot[xSpinning_FP.xSlot[slotNum].MaterialCode].code;
+                
+                switch(xSpinning_FP.xSlot[slotNum].state)
+                {
+                    case -1:
+                        drawImage(&imgSpinningWheel[12], subTemp[XPOS], subTemp[YPOS], imgSpinningWheel[12].w/2, 0, imgSpinningWheel[12].w/2, imgSpinningWheel[12].h, VH);
+                        drawImage(&imgSpinningWheel[9], subTemp[XPOS]+20, subTemp[YPOS]-20, imgSpinningWheel[9].w/2, 0, imgSpinningWheel[9].w/2, imgSpinningWheel[9].h, VH);
+                        break;
+                    case 0:
+                        drawImage(&imgSpinningWheel[12], subTemp[XPOS], subTemp[YPOS], imgSpinningWheel[12].w/2, 0, imgSpinningWheel[12].w/2, imgSpinningWheel[12].h, VH);
+                        if(xSpinning_FP.isTouchOpen==false)
+                        {
+                            drawImage(&imgSpinningWheel[8], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSpinningWheel[8].w/2, imgSpinningWheel[8].h, VH);
+                        }
+                        else
+                        {
+                            drawImage(&imgSpinningWheel[8], subTemp[XPOS], subTemp[YPOS], imgSpinningWheel[8].w/2, 0, imgSpinningWheel[8].w/2, imgSpinningWheel[8].h, VH);
+                        }
+                        
+                        xSpinning_FP.xTouchOpen.wPos = imgSpinningWheel[8].w/2+10;
+                        xSpinning_FP.xTouchOpen.hPos = imgSpinningWheel[8].h+10;
+                        xSpinning_FP.xTouchOpen.xPos = subTemp[XPOS]-xSpinning_FP.xTouchOpen.wPos/2;
+                        xSpinning_FP.xTouchOpen.yPos = subTemp[YPOS]-xSpinning_FP.xTouchOpen.hPos/2;
+                        break;
+                    case 1:
+                        drawImage(&imgSpinningWheel[12], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSpinningWheel[12].w/2, imgSpinningWheel[12].h, VH);
+                        
+                        sprintf(strTempS, "Lv.%d", xSpinning_FP.xSlot[slotNum].Upgrade);
+                        gSetColor(101, 48, 150);
+                        setFontSizeORI(16);
+                        gDrawString(subTemp[XPOS]-5, subTemp[YPOS]+75, strTempS, VH);
+                        setFontSize(11);
+
+                        
+                        if(xSpinning_FP.isTouchUpgrade[slotNum]==false)
+                        {
+                            drawImage(&imgSpinningWheel[20], subTemp[XPOS]+30, subTemp[YPOS]+120, 0, 0, imgSpinningWheel[20].w/2, imgSpinningWheel[20].h, VH);
+                        }
+                        else
+                        {
+                            drawImage(&imgSpinningWheel[20], subTemp[XPOS]+30, subTemp[YPOS]+120, imgSpinningWheel[20].w/2, 0, imgSpinningWheel[20].w/2, imgSpinningWheel[20].h, VH);
+                        }
+                        
+                        xSpinning_FP.xTouchUpgrade[slotNum].wPos = imgSpinningWheel[20].w/2+10;
+                        xSpinning_FP.xTouchUpgrade[slotNum].hPos = imgSpinningWheel[20].h+20;
+                        xSpinning_FP.xTouchUpgrade[slotNum].xPos = subTemp[XPOS]+30-xSpinning_FP.xTouchUpgrade[slotNum].wPos/2;
+                        xSpinning_FP.xTouchUpgrade[slotNum].yPos = subTemp[YPOS]+120-xSpinning_FP.xTouchUpgrade[slotNum].hPos/2;
+                        
+//                        setAlpha(100);
+//                        gSetColor(255, 0, 0);
+//                        fillRect(xGreenHouse_FP.xTouchUpgrade[slotNum].xPos, xGreenHouse_FP.xTouchUpgrade[slotNum].yPos, xGreenHouse_FP.xTouchUpgrade[slotNum].wPos, xGreenHouse_FP.xTouchUpgrade[slotNum].hPos);
+//                        setAlpha(ALPHA_MAX);
+                        
+                        if(xSpinning_FP.isTouchFast[slotNum]==false)
+                        {
+                            drawImage(&imgSpinningWheel[19], subTemp[XPOS]-35, subTemp[YPOS]+120, 0, 0, imgSpinningWheel[19].w/2, imgSpinningWheel[19].h, VH);
+                        }
+                        else
+                        {
+                            drawImage(&imgSpinningWheel[19], subTemp[XPOS]-35, subTemp[YPOS]+120, imgSpinningWheel[19].w/2, 0, imgSpinningWheel[19].w/2, imgSpinningWheel[19].h, VH);
+                        }
+                        
+                        xSpinning_FP.xTouchFast[slotNum].wPos = imgSpinningWheel[19].w/2+10;
+                        xSpinning_FP.xTouchFast[slotNum].hPos = imgSpinningWheel[19].h+20;
+                        xSpinning_FP.xTouchFast[slotNum].xPos = subTemp[XPOS]-40-xSpinning_FP.xTouchUpgrade[slotNum].wPos/2;
+                        xSpinning_FP.xTouchFast[slotNum].yPos = subTemp[YPOS]+120-xSpinning_FP.xTouchUpgrade[slotNum].hPos/2;
+                        
+//                        setAlpha(100);
+//                        gSetColor(255, 0, 0);
+//                        fillRect(xGreenHouse_FP.xTouchFast[slotNum].xPos, xGreenHouse_FP.xTouchFast[slotNum].yPos, xGreenHouse_FP.xTouchFast[slotNum].wPos, xGreenHouse_FP.xTouchFast[slotNum].hPos);
+//                        setAlpha(ALPHA_MAX);
+
+                        break;
+                    case 2:
+                        drawImage(&imgSpinningWheel[12], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSpinningWheel[12].w/2, imgSpinningWheel[12].h, VH);
+                        
+                        drawImage(&imgSpinningWheel[xSpinning_FP.imgNum[slotNum]], subTemp[XPOS]+20, subTemp[YPOS]-20, ((imgSpinningWheel[xSpinning_FP.imgNum[slotNum]].w/10)*slotCode), 0, imgSpinningWheel[xSpinning_FP.imgNum[slotNum]].w/10, imgSpinningWheel[xSpinning_FP.imgNum[slotNum]].h, VH);
+                        
+                        for(int prcI=0;prcI<xGame.prcCnt;prcI++)
+                        {
+                            if(xSpinning_FP.AnyCnt[slotNum]++ > 15)
+                            {
+                                xSpinning_FP.AnyCnt[slotNum]=0;
+                                xSpinning_FP.imgNum[slotNum]++;
+                                if(xSpinning_FP.imgNum[slotNum]>18)
+                                {
+                                    xSpinning_FP.imgNum[slotNum]=16;
+                                }
+                            }
+                            
+//                            if(xSpinning_FP.StarAnyCnt[slotNum]++ > 7)
+//                            {
+//                                xSpinning_FP.StarAnyCnt[slotNum]=0;
+//                            }
+                        }
+                        
+                        if(xSpinning_FP.StarAnyCnt[slotNum]%2==0)
+                        {
+                            drawImage(&imgSpinningWheel[25], subTemp[XPOS]-3, subTemp[YPOS]-80, 0, 0, imgSpinningWheel[25].w/4, imgSpinningWheel[25].h, VH);
+                            
+                            drawImage(&imgSpinningWheel[25], subTemp[XPOS]+58, subTemp[YPOS]+40, (imgSpinningWheel[25].w/4)*3, 0, imgSpinningWheel[25].w/4, imgSpinningWheel[25].h, VH);
+                        }
+                        else
+                        {
+                            drawImage(&imgSpinningWheel[25], subTemp[XPOS]-3, subTemp[YPOS]-80, imgSpinningWheel[25].w/4, 0, imgSpinningWheel[25].w/4, imgSpinningWheel[25].h, VH);
+                            
+                            drawImage(&imgSpinningWheel[25], subTemp[XPOS]+58, subTemp[YPOS]+40, (imgSpinningWheel[25].w/4)*2, 0, imgSpinningWheel[25].w/4, imgSpinningWheel[25].h, VH);
+                        }
+                        
+                        
+                        drawTimeSprintf(strTempS, xSpinning_FP.EndTimer[slotNum], 1);
+                        gSetColor(101, 48, 150);
+                        setFontSizeORI(16);
+                        gDrawString(subTemp[XPOS]+15, subTemp[YPOS]+10, strTempS, VH);
+                        setFontSize(11);
+                        
+                        sprintf(strTempS, "Lv.%d", xSpinning_FP.xSlot[slotNum].Upgrade);
+                        gSetColor(101, 48, 150);
+                        setFontSizeORI(16);
+                        gDrawString(subTemp[XPOS]-5, subTemp[YPOS]+75, strTempS, VH);
+                        setFontSize(11);
+                        
+                        if(xSpinning_FP.isTouchUpgrade[slotNum]==false)
+                        {
+                            drawImage(&imgSpinningWheel[20], subTemp[XPOS]+30, subTemp[YPOS]+120, 0, 0, imgSpinningWheel[20].w/2, imgSpinningWheel[20].h, VH);
+                        }
+                        else
+                        {
+                            drawImage(&imgSpinningWheel[20], subTemp[XPOS]+30, subTemp[YPOS]+120, imgSpinningWheel[20].w/2, 0, imgSpinningWheel[20].w/2, imgSpinningWheel[20].h, VH);
+                        }
+                        
+                        xSpinning_FP.xTouchUpgrade[slotNum].wPos = imgSpinningWheel[20].w/2+10;
+                        xSpinning_FP.xTouchUpgrade[slotNum].hPos = imgSpinningWheel[20].h+20;
+                        xSpinning_FP.xTouchUpgrade[slotNum].xPos = subTemp[XPOS]+30-xSpinning_FP.xTouchUpgrade[slotNum].wPos/2;
+                        xSpinning_FP.xTouchUpgrade[slotNum].yPos = subTemp[YPOS]+120-xSpinning_FP.xTouchUpgrade[slotNum].hPos/2;
+                        
+                        //                        setAlpha(100);
+                        //                        gSetColor(255, 0, 0);
+                        //                        fillRect(xGreenHouse_FP.xTouchUpgrade[slotNum].xPos, xGreenHouse_FP.xTouchUpgrade[slotNum].yPos, xGreenHouse_FP.xTouchUpgrade[slotNum].wPos, xGreenHouse_FP.xTouchUpgrade[slotNum].hPos);
+                        //                        setAlpha(ALPHA_MAX);
+                        
+                        if(xSpinning_FP.isTouchFast[slotNum]==false)
+                        {
+                            drawImage(&imgSpinningWheel[19], subTemp[XPOS]-35, subTemp[YPOS]+120, 0, 0, imgSpinningWheel[19].w/2, imgSpinningWheel[19].h, VH);
+                        }
+                        else
+                        {
+                            drawImage(&imgSpinningWheel[19], subTemp[XPOS]-35, subTemp[YPOS]+120, imgSpinningWheel[19].w/2, 0, imgSpinningWheel[19].w/2, imgSpinningWheel[19].h, VH);
+                        }
+                        
+                        xSpinning_FP.xTouchFast[slotNum].wPos = imgSpinningWheel[19].w/2+10;
+                        xSpinning_FP.xTouchFast[slotNum].hPos = imgSpinningWheel[19].h+20;
+                        xSpinning_FP.xTouchFast[slotNum].xPos = subTemp[XPOS]-40-xSpinning_FP.xTouchUpgrade[slotNum].wPos/2;
+                        xSpinning_FP.xTouchFast[slotNum].yPos = subTemp[YPOS]+120-xSpinning_FP.xTouchUpgrade[slotNum].hPos/2;
+                        break;
+                    case 3:
+                        drawImage(&imgSpinningWheel[12], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSpinningWheel[12].w/2, imgSpinningWheel[12].h, VH);
+                        drawImage(&imgSpinningWheel[18], subTemp[XPOS]+20, subTemp[YPOS]-20, ((imgSpinningWheel[18].w/10)*slotCode), 0, imgSpinningWheel[18].w/10, imgSpinningWheel[18].h, VH);
+                        
+                        drawImage(&imgSpinningWheel[24], subTemp[XPOS]+20, subTemp[YPOS]-20, 0, 0, imgSpinningWheel[24].w, imgSpinningWheel[24].h, VH);
+                        
+                        drawImage(&imgSpinningWheel[14], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSpinningWheel[14].w, imgSpinningWheel[14].h, VH);
+                        
+                        drawImage(&imgSpinningWheel[25], subTemp[XPOS]-3, subTemp[YPOS]-80, 0, 0, imgSpinningWheel[25].w/4, imgSpinningWheel[25].h, VH);
+                        
+                        drawImage(&imgSpinningWheel[25], subTemp[XPOS]+58, subTemp[YPOS]+40, (imgSpinningWheel[25].w/4)*2, 0, imgSpinningWheel[25].w/4, imgSpinningWheel[25].h, VH);
+                        sprintf(strTempS, "Lv.%d", xSpinning_FP.xSlot[slotNum].Upgrade);
+                        gSetColor(101, 48, 150);
+                        setFontSizeORI(16);
+                        gDrawString(subTemp[XPOS]-5, subTemp[YPOS]+75, strTempS, VH);
+                        setFontSize(11);
+
+                        if(xSpinning_FP.isTouchUpgrade[slotNum]==false)
+                        {
+                            drawImage(&imgSpinningWheel[20], subTemp[XPOS]+30, subTemp[YPOS]+120, 0, 0, imgSpinningWheel[20].w/2, imgSpinningWheel[20].h, VH);
+                        }
+                        else
+                        {
+                            drawImage(&imgSpinningWheel[20], subTemp[XPOS]+30, subTemp[YPOS]+120, imgSpinningWheel[20].w/2, 0, imgSpinningWheel[20].w/2, imgSpinningWheel[20].h, VH);
+                        }
+                        
+                        xSpinning_FP.xTouchUpgrade[slotNum].wPos = imgSpinningWheel[20].w/2+10;
+                        xSpinning_FP.xTouchUpgrade[slotNum].hPos = imgSpinningWheel[20].h+20;
+                        xSpinning_FP.xTouchUpgrade[slotNum].xPos = subTemp[XPOS]+30-xSpinning_FP.xTouchUpgrade[slotNum].wPos/2;
+                        xSpinning_FP.xTouchUpgrade[slotNum].yPos = subTemp[YPOS]+120-xSpinning_FP.xTouchUpgrade[slotNum].hPos/2;
+                        
+                        //                        setAlpha(100);
+                        //                        gSetColor(255, 0, 0);
+                        //                        fillRect(xGreenHouse_FP.xTouchUpgrade[slotNum].xPos, xGreenHouse_FP.xTouchUpgrade[slotNum].yPos, xGreenHouse_FP.xTouchUpgrade[slotNum].wPos, xGreenHouse_FP.xTouchUpgrade[slotNum].hPos);
+                        //                        setAlpha(ALPHA_MAX);
+                        
+                        if(xSpinning_FP.isTouchFast[slotNum]==false)
+                        {
+                            drawImage(&imgSpinningWheel[19], subTemp[XPOS]-35, subTemp[YPOS]+120, 0, 0, imgSpinningWheel[19].w/2, imgSpinningWheel[19].h, VH);
+                        }
+                        else
+                        {
+                            drawImage(&imgSpinningWheel[19], subTemp[XPOS]-35, subTemp[YPOS]+120, imgSpinningWheel[19].w/2, 0, imgSpinningWheel[19].w/2, imgSpinningWheel[19].h, VH);
+                        }
+                        
+                        xSpinning_FP.xTouchFast[slotNum].wPos = imgSpinningWheel[19].w/2+10;
+                        xSpinning_FP.xTouchFast[slotNum].hPos = imgSpinningWheel[19].h+20;
+                        xSpinning_FP.xTouchFast[slotNum].xPos = subTemp[XPOS]-40-xSpinning_FP.xTouchUpgrade[slotNum].wPos/2;
+                        xSpinning_FP.xTouchFast[slotNum].yPos = subTemp[YPOS]+120-xSpinning_FP.xTouchUpgrade[slotNum].hPos/2;
+                        break;
+                        
+                }
+                
+                xSpinning_FP.xTouchSlot[slotNum].wPos=imgSpinningWheel[12].w/2;
+                xSpinning_FP.xTouchSlot[slotNum].hPos=imgSpinningWheel[12].h;
+                xSpinning_FP.xTouchSlot[slotNum].xPos=subTemp[XPOS] - xSpinning_FP.xTouchSlot[slotNum].wPos/2;
+                xSpinning_FP.xTouchSlot[slotNum].yPos=subTemp[YPOS] - xSpinning_FP.xTouchSlot[slotNum].hPos/2;
+                
+//                gSetColor(255, 0, 0);
+//                setAlpha(100);
+//                fillRect(xSpinning_FP.xTouchSlot[slotNum].xPos, xSpinning_FP.xTouchSlot[slotNum].yPos, xSpinning_FP.xTouchSlot[slotNum].wPos, xSpinning_FP.xTouchSlot[slotNum].hPos);
+//                setAlpha(ALPHA_MAX);
+
+            }
+        }
+    }
+    gSetClip(false, 0, 0, lcdW, lcdH);
+    
+    //꽃부분 화살표
+    subTemp[XPOS] = px-448;
+    subTemp[YPOS] = py-30;
+    
+    drawImage(&imgSpinningWheel[3], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSpinningWheel[3].w, imgSpinningWheel[3].h, VH);
+    
+    if(xSpinning_FP.xDragScrollSpinningS.selectNum<=0)
+    {
+        drawImage(&imgSpinningWheel[6], subTemp[XPOS], subTemp[YPOS], imgSpinningWheel[6].w/6*2, 0, imgSpinningWheel[6].w/6, imgSpinningWheel[6].h, VH);
+    }
+    else
+    {
+        if(xSpinning_FP.isTouchLeftBtn==false)
+        {
+            drawImage(&imgSpinningWheel[6], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSpinningWheel[6].w/6, imgSpinningWheel[6].h, VH);
+        }
+        
+        else
+        {
+            drawImage(&imgSpinningWheel[6], subTemp[XPOS], subTemp[YPOS], imgSpinningWheel[6].w/6*4, 0, imgSpinningWheel[6].w/6, imgGreenHouse[6].h, VH);
+        }
+    }
+    xSpinning_FP.xTouchLeftBtn.wPos = imgSpinningWheel[3].w+20;
+    xSpinning_FP.xTouchLeftBtn.hPos = imgSpinningWheel[3].h;
+    xSpinning_FP.xTouchLeftBtn.xPos = subTemp[XPOS] - xSpinning_FP.xTouchLeftBtn.wPos/2;
+    xSpinning_FP.xTouchLeftBtn.yPos = subTemp[YPOS] - xSpinning_FP.xTouchLeftBtn.hPos/2;
+
+    
+    subTemp[XPOS] = px+450;
+    subTemp[YPOS] = py-30;
+    
+    drawImage(&imgSpinningWheel[5], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSpinningWheel[5].w, imgSpinningWheel[5].h, VH);
+    
+    if(xSpinning_FP.xDragScrollSpinningS.selectNum>=xSpinning_FP.xDragScrollSpinningS.totalNum-1)
+    {
+        drawImage(&imgSpinningWheel[6], subTemp[XPOS], subTemp[YPOS], imgSpinningWheel[6].w/6*3, 0, imgSpinningWheel[6].w/6, imgSpinningWheel[6].h, VH);
+    }
+    else
+    {
+        if(xSpinning_FP.isTouchRightBtn==false)
+        {
+            drawImage(&imgSpinningWheel[6], subTemp[XPOS], subTemp[YPOS], imgSpinningWheel[6].w/6, 0, imgSpinningWheel[6].w/6, imgSpinningWheel[6].h, VH);
+        }
+        else
+        {
+            drawImage(&imgSpinningWheel[6], subTemp[XPOS], subTemp[YPOS], imgSpinningWheel[6].w/6*5, 0, imgSpinningWheel[6].w/6, imgSpinningWheel[6].h, VH);
+        }
+    }
+    
+    xSpinning_FP.xTouchRightBtn.wPos = imgSpinningWheel[5].w+20;
+    xSpinning_FP.xTouchRightBtn.hPos = imgSpinningWheel[5].h;
+    xSpinning_FP.xTouchRightBtn.xPos = subTemp[XPOS] - xSpinning_FP.xTouchRightBtn.wPos/2;
+    xSpinning_FP.xTouchRightBtn.yPos = subTemp[YPOS] - xSpinning_FP.xTouchRightBtn.hPos/2;
+   
+    //슬롯 화살표
+    subTemp[XPOS] = px-458;
+    subTemp[YPOS] = py+135;
+    
+    if(xSpinning_FP.xDragScrollSpinningB.selectNum<=0)
+    {
+        drawImage(&imgSpinningWheel[7], subTemp[XPOS], subTemp[YPOS], imgSpinningWheel[7].w/6*2, 0, imgSpinningWheel[7].w/6, imgSpinningWheel[7].h, VH);
+    }
+    else
+    {
+        if(xSpinning_FP.isTouchLeftArrow==true)
+        {
+            drawImage(&imgSpinningWheel[7], subTemp[XPOS], subTemp[YPOS], imgSpinningWheel[7].w/6*4, 0, imgSpinningWheel[7].w/6, imgSpinningWheel[7].h, VH);
+        }
+        else
+        {
+            drawImage(&imgSpinningWheel[7], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSpinningWheel[7].w/6, imgSpinningWheel[7].h, VH);
+        }
+    }
+    
+    xSpinning_FP.xTouchLeftArrow.wPos = 80;
+    xSpinning_FP.xTouchLeftArrow.hPos = 230;
+    xSpinning_FP.xTouchLeftArrow.xPos = subTemp[XPOS] - xSpinning_FP.xTouchLeftArrow.wPos/2;
+    xSpinning_FP.xTouchLeftArrow.yPos = subTemp[YPOS] - xSpinning_FP.xTouchLeftArrow.hPos/2;
+    
+    subTemp[XPOS] = px+460;
+    subTemp[YPOS] = py+135;
+    
+    if(xSpinning_FP.xDragScrollSpinningB.selectNum>=xSpinning_FP.xDragScrollSpinningB.totalNum-1)
+    {
+        drawImage(&imgSpinningWheel[7], subTemp[XPOS], subTemp[YPOS], imgSpinningWheel[7].w/6*3, 0, imgSpinningWheel[7].w/6, imgSpinningWheel[7].h, VH);
+    }
+    else
+    {
+        if(xSpinning_FP.isTouchRightArrow==false)
+        {
+            drawImage(&imgSpinningWheel[7], subTemp[XPOS], subTemp[YPOS], imgSpinningWheel[7].w/6, 0, imgSpinningWheel[7].w/6, imgSpinningWheel[7].h, VH);
+        }
+        else
+        {
+            drawImage(&imgSpinningWheel[7], subTemp[XPOS], subTemp[YPOS], imgSpinningWheel[7].w/6*5, 0, imgSpinningWheel[7].w/6, imgSpinningWheel[7].h, VH);
+        }
+    }
+    
+    xSpinning_FP.xTouchRightArrow.wPos = 80;
+    xSpinning_FP.xTouchRightArrow.hPos = 230;
+    xSpinning_FP.xTouchRightArrow.xPos = subTemp[XPOS] - xSpinning_FP.xTouchRightArrow.wPos/2;
+    xSpinning_FP.xTouchRightArrow.yPos = subTemp[YPOS] - xSpinning_FP.xTouchRightArrow.hPos/2;
+    
+    if(xSpinning_FP.isTouchProduct==true)
+    {
+        slotCode = xGreenHouse_MaterialData_FP.xSlot[xSpinning_FP.selectProduct].code;
+        
+        subTemp[XPOS] = xTouch.xPos;
+        subTemp[YPOS] = xTouch.yPos;
+        
+        drawImage(&imgSpinningWheel[15], subTemp[XPOS], subTemp[YPOS], ((imgSpinningWheel[15].w/10)*slotCode), 0, imgSpinningWheel[15].w/10, imgSpinningWheel[15].h, VH);
+        
+        
+        if(xTouch.xPos+imgSpinningWheel[21].w/2+40>=885)
+        {
+            subTemp[XPOS] = xTouch.xPos-imgSpinningWheel[21].w/2-40;
+            subTemp[YPOS] = xTouch.yPos;
+        }
+        else
+        {
+            subTemp[XPOS] = xTouch.xPos+imgSpinningWheel[21].w/2+40;
+            subTemp[YPOS] = xTouch.yPos;
+        }
+        
+        drawImage(&imgSpinningWheel[21], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSpinningWheel[21].w, imgSpinningWheel[21].h, VH);
+
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////물레 입력 이벤트 처리 KBY
+void keySpinningWheel_FP(int type, int param1, int param2)
+{
+    if(type == MH_KEY_PRESSEVENT)
+    {
+        for(int k=0;k<xSpinning_FP.totalSlot;k++)
+        {
+            if(touchCheck(&xSpinning_FP.xTouchUpgrade[k])==TRUE && xSpinning_FP.isTouchProduct==false && touchType == USER_POINT_PRESS_EVENT)
+            {
+                xSpinning_FP.isTouchUpgrade[k]=true;
+                break;
+            }
+            else if(touchCheck(&xSpinning_FP.xTouchFast[k])==TRUE && xSpinning_FP.isTouchProduct==false && xSpinning_FP.xSlot[k].state ==2 && touchType == USER_POINT_PRESS_EVENT)
+            {
+                xSpinning_FP.isTouchFast[k]=true;
+                break;
+            }
+            else if(touchCheck(&xSpinning_FP.xTouchSlot[k])==TRUE && xSpinning_FP.isTouchProduct==false && xSpinning_FP.xSlot[k].state ==2 && touchType == USER_POINT_PRESS_EVENT)
+            {
+                xSpinning_FP.selectSlot = k;
+                xSpinning_FP.isTouchYes=false;
+                xSpinning_FP.isTouchNo=false;
+                xWorldMap.isKeyReturn = TRUE;
+                xSpinning_FP.state = SPINNINGWHEEL_STATE_CANCLEPOPUP;
+                break;
+            }
+            else if(touchCheck(&xSpinning_FP.xTouchSlot[k])==TRUE && xSpinning_FP.isTouchProduct==false && xSpinning_FP.xSlot[k].state ==3 && touchType == USER_POINT_PRESS_EVENT)
+            {
+                xSpinning_FP.selectSlot=k;
+                xEventQueueNet.action[xEventQueueNet.totalNum]=3;
+                xEventQueueNet.slotNum[xEventQueueNet.totalNum]=xSpinning_FP.selectSlot;
+                xEventQueueNet.ITEM_INDEX[xEventQueueNet.totalNum]=-1;
+                xEventQueueNet.ITEM_COUNT[xEventQueueNet.totalNum]=0;
+                xEventQueueNet.time[xEventQueueNet.totalNum]=0;
+                addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SPINNINGWHEELSLOTINFOUPDATE, TRUE);
+                addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SPINNINGWHEELINFOUPDATE, TRUE);
+            }
+        }
+        //임시
+        for(int k=0;k<xGreenHouse_MaterialData_FP.totalNum;k++)
+        {
+            if(touchCheck(&xSpinning_FP.xTouchList[k])==TRUE &&touchType == USER_POINT_PRESS_EVENT)
+            {
+                xSpinning_FP.isTouchProduct = true;
+                xSpinning_FP.selectProduct = k;
+                break;
+            }
+        }
+        
+        if(touchCheck(&xTouchClr)==TRUE && xSpinning_FP.isTouchProduct==false && touchType == USER_POINT_PRESS_EVENT)
+        {
+            xSpinning_FP.isTouchClr=true;
+        }
+        else if(touchCheck(&xSpinning_FP.xTouchOpen)==TRUE && xSpinning_FP.isTouchProduct==false && touchType == USER_POINT_PRESS_EVENT)
+        {
+            xSpinning_FP.isTouchOpen=true;
+        }
+        
+        else if(touchCheck(&xSpinning_FP.xTouchLeftBtn)==TRUE && xSpinning_FP.isTouchProduct==false && xSpinning_FP.xDragScrollSpinningS.selectNum>0)
+        {
+            xSpinning_FP.isTouchLeftBtn=true;
+            xSpinning_FP.isTouchRightBtn=false;
+        }
+        
+        else if(touchCheck(&xSpinning_FP.xTouchRightBtn)== TRUE && xSpinning_FP.isTouchProduct==false && xSpinning_FP.xDragScrollSpinningS.selectNum<xSpinning_FP.xDragScrollSpinningS.totalNum-1)
+        {
+            xSpinning_FP.isTouchLeftBtn=false;
+            xSpinning_FP.isTouchRightBtn=true;
+        }
+        
+        else if(touchCheck(&xSpinning_FP.xTouchLeftArrow)==TRUE && xSpinning_FP.isTouchProduct==false && xSpinning_FP.xDragScrollSpinningB.selectNum>0)
+        {
+            xSpinning_FP.isTouchLeftArrow=true;
+            xSpinning_FP.isTouchRightArrow=false;
+        }
+        
+        else if(touchCheck(&xSpinning_FP.xTouchRightArrow)==TRUE && xSpinning_FP.isTouchProduct==false && xSpinning_FP.xDragScrollSpinningB.selectNum<xSpinning_FP.xDragScrollSpinningB.totalNum-1)
+        {
+            xSpinning_FP.isTouchLeftArrow=false;
+            xSpinning_FP.isTouchRightArrow=true;
+        }
+
+    }
+    else if(type == MH_KEY_RELEASEEVENT)
+    {
+        bool isRelease = false;
+        
+        for (int k=0; k<xSpinning_FP.totalSlot; k++)
+        {
+            if(touchCheck(&xSpinning_FP.xTouchUpgrade[k])==TRUE && xSpinning_FP.isTouchProduct==false && touchType == USER_POINT_RELEASE_EVENT)
+            {
+                xSpinning_FP.isTouchUpgrade[k] = false;
+                xSpinning_FP.selectSlot = k;
+                setPopup(POPUP_SPINNINGWHEELSLOTUPGRADE, playState, playState, 0, DONT);
+                break;
+            }
+            
+            else if(touchCheck(&xSpinning_FP.xTouchFast[k])==TRUE && xSpinning_FP.isTouchProduct==false && xSpinning_FP.xSlot[k].state==2 && touchType == USER_POINT_RELEASE_EVENT)
+            {
+                xSpinning_FP.isTouchFast[k] = false;
+                xSpinning_FP.selectSlot = k;
+                setPopup(POPUP_SPINNINGWHEELSLOTFASTOK, playState, playState, 0, DONT);
+                break;
+            }
+            
+        }
+        
+        for(int k=0;k<12;k++)
+        {
+            if(touchCheck(&xSpinning_FP.xTouchSlot[k])==TRUE && xSpinning_FP.isTouchProduct==true && touchType==USER_POINT_RELEASE_EVENT)
+            {
+                if(xSpinning_FP.xSlot[k].state==1)
+                {
+                    isRelease = true;
+                    xSpinning_FP.selectSlot = k;
+                    break;
+                }
+            }
+        }
+        
+        if(isRelease==true)
+        {
+            xSpinning_FP.xSlot[xSpinning_FP.selectSlot].MaterialCode = xGreenHouse_MaterialData_FP.xSlot[xSpinning_FP.selectProduct].code;
+            xSpinning_FP.xSlot[xSpinning_FP.selectSlot].endTime = xGreenHouse_MaterialData_FP.xSlot[xSpinning_FP.selectProduct].makeTime+xCalendar.nowTime;
+            xSpinning_FP.xSlot[xSpinning_FP.selectSlot].itemCnt = xGreenHouse_MaterialData_FP.xSlot[xSpinning_FP.selectProduct].cnt;
+            
+            xEventQueueNet.action[xEventQueueNet.totalNum]=0;
+            xEventQueueNet.slotNum[xEventQueueNet.totalNum]= xSpinning_FP.selectSlot;
+            xEventQueueNet.ITEM_INDEX[xEventQueueNet.totalNum]= xSpinning_FP.xSlot[xSpinning_FP.selectSlot].MaterialCode;
+            xEventQueueNet.ITEM_COUNT[xEventQueueNet.totalNum]= xSpinning_FP.xSlot[xSpinning_FP.selectSlot].itemCnt;
+            xEventQueueNet.time[xEventQueueNet.totalNum]=xSpinning_FP.xSlot[xSpinning_FP.selectSlot].endTime;
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SPINNINGWHEELSLOTINFOUPDATE, TRUE);
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SPINNINGWHEELINFOUPDATE, TRUE);
+            
+            xSpinning_FP.selectProduct=DONT;
+            xSpinning_FP.isTouchProduct=false;
+            
+        }
+        
+        else if(touchCheck(&xTouchClr)==TRUE && xSpinning_FP.isTouchProduct==false && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            xSpinning_FP.isTouchClr=false;
+            playSnd(SND_MENU_OK);
+            xWorldMap.isKeyReturn = TRUE;
+            spinningWheelFreeLoad_FP(false);
+            xWorldMap.state=WORLDMAP_STATE_PLAY;
+        }
+        
+        else if(touchCheck(&xSpinning_FP.xTouchOpen)==TRUE && xSpinning_FP.isTouchProduct==false && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            xSpinning_FP.isTouchOpen=false;
+            setPopup(POPUP_SPINNINGWHEELSLOTOPEN, playState, playState, 0, DONT);
+        }
+        
+        else if(touchCheck(&xSpinning_FP.xTouchLeftBtn)==TRUE && xSpinning_FP.isTouchProduct==false && xSpinning_FP.xDragScrollSpinningS.selectNum>0 && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            xSpinning_FP.xDragScrollSpinningS.speed = 640;
+            xSpinning_FP.isTouchLeftBtn=false;
+            xSpinning_FP.isTouchRightBtn=false;
+        }
+        
+        else if(touchCheck(&xSpinning_FP.xTouchRightBtn)==TRUE && xSpinning_FP.isTouchProduct==false && xSpinning_FP.xDragScrollSpinningS.selectNum<xSpinning_FP.xDragScrollSpinningS.totalNum-1 && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            xSpinning_FP.xDragScrollSpinningS.speed = -640;
+            xSpinning_FP.isTouchLeftBtn=false;
+            xSpinning_FP.isTouchRightBtn=false;
+        }
+        
+        else if(touchCheck(&xSpinning_FP.xTouchLeftArrow)==TRUE && xSpinning_FP.isTouchProduct==false && xSpinning_FP.xDragScrollSpinningB.selectNum>0 && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            xSpinning_FP.xDragScrollSpinningB.speed=640;
+            xSpinning_FP.isTouchLeftArrow=false;
+            xSpinning_FP.isTouchRightArrow=false;
+        }
+        
+        else if(touchCheck(&xSpinning_FP.xTouchRightArrow)==TRUE && xSpinning_FP.isTouchProduct==false && xSpinning_FP.xDragScrollSpinningB.selectNum<xSpinning_FP.xDragScrollSpinningB.totalNum-1 && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            xSpinning_FP.xDragScrollSpinningB.speed=-640;
+            xSpinning_FP.isTouchLeftArrow=false;
+            xSpinning_FP.isTouchRightArrow=false;
+        }
+
+        else
+        {
+            xSpinning_FP.selectProduct=DONT;
+            xSpinning_FP.isTouchProduct=false;
+        }
+        
+
+    }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////물레 제작취소 팝업창 draw KBY
+void drawSpinningWheelSlotCanclePopup_FP()
+{
+    int px = cx;
+    int py = cy;
+    
+    drawBgFillRect();
+    
+    int slotCode = xSpinning_FP.xSlot[xSpinning_FP.selectSlot].MaterialCode;
+    
+    subTemp[XPOS] = px;
+    subTemp[YPOS] = py;
+    
+    drawImage(&imgSpinningWheel[22], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSpinningWheel[22].w, imgSpinningWheel[22].h, VH);
+    
+    if(xSpinning_FP.isTouchPopupClr==false)
+    {
+        drawImage(&imgSpinningWheel[1], subTemp[XPOS]+243, subTemp[YPOS]-140, 0, 0, imgSpinningWheel[1].w/2, imgSpinningWheel[1].h, VH);
+    }
+    else
+    {
+        drawImage(&imgSpinningWheel[1], subTemp[XPOS]+243, subTemp[YPOS]-140, imgSpinningWheel[1].w/2, 0, imgSpinningWheel[1].w/2, imgSpinningWheel[1].h, VH);
+    }
+    
+    xTouchClr.wPos = imgSpinningWheel[1].w/2;
+    xTouchClr.hPos = imgSpinningWheel[1].h;
+    xTouchClr.xPos = subTemp[XPOS]+243-xTouchClr.wPos/2;
+    xTouchClr.yPos = subTemp[YPOS]-140-xTouchClr.hPos/2;
+    
+    
+    drawImage(&imgSpinningWheel[12], subTemp[XPOS]-160, subTemp[YPOS]-30, 0, 0, imgSpinningWheel[12].w/2, imgSpinningWheel[12].h, VH);
+    
+    drawImage(&imgSpinningWheel[xSpinning_FP.imgNum[xSpinning_FP.selectSlot]], subTemp[XPOS]-140, subTemp[YPOS]-50, ((imgSpinningWheel[xSpinning_FP.imgNum[xSpinning_FP.selectSlot]].w/10)*slotCode), 0, imgSpinningWheel[xSpinning_FP.imgNum[xSpinning_FP.selectSlot]].w/10, imgSpinningWheel[xSpinning_FP.imgNum[xSpinning_FP.selectSlot]].h, VH);
+    
+    if(xSpinning_FP.StarAnyCnt[xSpinning_FP.selectSlot]%2==0)
+    {
+        drawImage(&imgSpinningWheel[25], subTemp[XPOS]-163, subTemp[YPOS]-110, 0, 0, imgSpinningWheel[25].w/4, imgSpinningWheel[25].h, VH);
+        
+        drawImage(&imgSpinningWheel[25], subTemp[XPOS]-102, subTemp[YPOS]+10, (imgSpinningWheel[25].w/4)*3, 0, imgSpinningWheel[25].w/4, imgSpinningWheel[25].h, VH);
+    }
+    else
+    {
+        drawImage(&imgSpinningWheel[25], subTemp[XPOS]-163, subTemp[YPOS]-110, imgSpinningWheel[25].w/4, 0, imgSpinningWheel[25].w/4, imgSpinningWheel[25].h, VH);
+        
+        drawImage(&imgSpinningWheel[25], subTemp[XPOS]-102, subTemp[YPOS]+10, (imgSpinningWheel[25].w/4)*2, 0, imgSpinningWheel[25].w/4, imgSpinningWheel[25].h, VH);
+    }
+
+   
+    drawTimeSprintf(strTempS, xSpinning_FP.EndTimer[xSpinning_FP.selectSlot], 1);
+    setFontSizeORI(16);
+    gSetColor(101, 48, 150);
+    gDrawString(subTemp[XPOS]-140, subTemp[YPOS]-30, strTempS, VH);
+    setFontSize(11);
+    
+    sprintf(strTempS, "%s", xGreenHouse_MaterialData_FP.xSlot[xSpinning_FP.xSlot[xSpinning_FP.selectSlot].MaterialCode].strName);
+    gSetColor(101, 48, 150);
+    setFontSizeORI(20);
+    gDrawString(subTemp[XPOS]+50, subTemp[YPOS]-80, strTempS, VH);
+    setFontSize(11);
+    
+    sprintf(strTempS, "제작을 취소하시겠습니까?");
+    gSetColor(101, 48, 150);
+    setFontSizeORI(16);
+    gDrawString(subTemp[XPOS]+70, subTemp[YPOS]-10, strTempS, VH);
+    setFontSize(11);
+    
+    sprintf(strTempS, "제작을 취소하면 사용된 재료는 사라져요!");
+    gSetColor(101, 48, 150);
+    setFontSizeORI(14);
+    gDrawString(subTemp[XPOS]+70, subTemp[YPOS]+10, strTempS, VH);
+    setFontSize(11);
+    
+    if(xSpinning_FP.isTouchYes==false)
+    {
+        drawImage(&imgSpinningWheel[23], subTemp[XPOS]-85, subTemp[YPOS]+100, 0, imgSpinningWheel[23].h/2, imgSpinningWheel[23].w/2, imgSpinningWheel[23].h/2, VH);
+    }
+    else
+    {
+        drawImage(&imgSpinningWheel[23], subTemp[XPOS]-85, subTemp[YPOS]+100, imgSpinningWheel[23].w/2, imgSpinningWheel[23].h/2, imgSpinningWheel[23].w/2, imgSpinningWheel[23].h/2, VH);
+    }
+    sprintf(strTempS, "네");
+    gSetColor(36, 50, 128);
+    setFontSizeORI(20);
+    gDrawString(subTemp[XPOS]-85, subTemp[YPOS]+100, strTempS, VH);
+    setFontSize(11);
+    
+    xSpinning_FP.xTouchYes.wPos = imgSpinningWheel[23].w/2;
+    xSpinning_FP.xTouchYes.hPos = imgSpinningWheel[23].h/2;
+    xSpinning_FP.xTouchYes.xPos = subTemp[XPOS]-85-xSpinning_FP.xTouchYes.wPos/2;
+    xSpinning_FP.xTouchYes.yPos = subTemp[YPOS]+100-xSpinning_FP.xTouchYes.hPos/2;
+    
+    //    setAlpha(100);
+    //    gSetColor(255, 0, 0);
+    //    fillRect(xGreenHouse_FP.xTouchYes.xPos, xGreenHouse_FP.xTouchYes.yPos, xGreenHouse_FP.xTouchYes.wPos, xGreenHouse_FP.xTouchYes.hPos);
+    //    setAlpha(ALPHA_MAX);
+    
+    
+    
+    
+    if(xSpinning_FP.isTouchNo==false)
+    {
+        drawImage(&imgSpinningWheel[23], subTemp[XPOS]+85, subTemp[YPOS]+100, 0, 0, imgSpinningWheel[23].w/2, imgSpinningWheel[23].h/2, VH);
+    }
+    else
+    {
+        drawImage(&imgSpinningWheel[23], subTemp[XPOS]+85, subTemp[YPOS]+100, imgSpinningWheel[23].w/2, 0, imgSpinningWheel[23].w/2, imgSpinningWheel[23].h/2, VH);
+    }
+    sprintf(strTempS, "아니오");
+    gSetColor(106, 21, 97);
+    setFontSizeORI(20);
+    gDrawString(subTemp[XPOS]+85, subTemp[YPOS]+100, strTempS, VH);
+    setFontSize(11);
+    
+    xSpinning_FP.xTouchNo.wPos = imgSpinningWheel[23].w/2;
+    xSpinning_FP.xTouchNo.hPos = imgSpinningWheel[23].h/2;
+    xSpinning_FP.xTouchNo.xPos = subTemp[XPOS]+85-xSpinning_FP.xTouchNo.wPos/2;
+    xSpinning_FP.xTouchNo.yPos = subTemp[YPOS]+100-xSpinning_FP.xTouchNo.hPos/2;
+    
+    //    setAlpha(100);
+    //    gSetColor(255, 0, 0);
+    //    fillRect(xGreenHouse_FP.xTouchNo.xPos, xGreenHouse_FP.xTouchNo.yPos, xGreenHouse_FP.xTouchNo.wPos, xGreenHouse_FP.xTouchNo.hPos);
+    //    setAlpha(ALPHA_MAX);
+    
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////물레 제작취소 팝업창 입력 이벤트 처리 KBY
+void keySpinningWheelSlotCanclePopup_FP(int type, int param1, int param2)
+{
+    if(type == MH_KEY_PRESSEVENT)
+    {
+        if(touchCheck(&xTouchClr)==TRUE && touchType == USER_POINT_PRESS_EVENT)
+        {
+            xSpinning_FP.isTouchPopupClr = true;
+        }
+        else if(touchCheck(&xSpinning_FP.xTouchNo)==TRUE && touchType == USER_POINT_PRESS_EVENT)
+        {
+            xSpinning_FP.isTouchNo=true;
+            xSpinning_FP.isTouchYes=false;
+        }
+        else if(touchCheck(&xSpinning_FP.xTouchYes)==TRUE && touchType == USER_POINT_PRESS_EVENT)
+        {
+            xSpinning_FP.isTouchNo=false;
+            xSpinning_FP.isTouchYes=true;
+        }
+    }
+    else if(type == MH_KEY_RELEASEEVENT)
+    {
+        if(touchCheck(&xTouchClr)==TRUE && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            xSpinning_FP.isTouchPopupClr = false;
+            playSnd(SND_MENU_OK);
+            xWorldMap.isKeyReturn = TRUE;
+            xSpinning_FP.state = SPINNINGWHEEL_STATE_MAIN;
+        }
+        else if(touchCheck(&xSpinning_FP.xTouchNo)==TRUE && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            xSpinning_FP.isTouchNo=false;
+            xSpinning_FP.isTouchYes=false;
+            playSnd(SND_MENU_OK);
+            xWorldMap.isKeyReturn = TRUE;
+            xSpinning_FP.state = SPINNINGWHEEL_STATE_MAIN;
+        }
+        else if(touchCheck(&xSpinning_FP.xTouchYes)==TRUE && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            xSpinning_FP.isTouchNo=false;
+            xSpinning_FP.isTouchYes=false;
+            playSnd(SND_MENU_OK);
+            xWorldMap.isKeyReturn = TRUE;
+            xEventQueueNet.action[xEventQueueNet.totalNum]=1;
+            xEventQueueNet.slotNum[xEventQueueNet.totalNum]=xSpinning_FP.selectSlot;
+            xEventQueueNet.ITEM_INDEX[xEventQueueNet.totalNum]=-1;
+            xEventQueueNet.ITEM_COUNT[xEventQueueNet.totalNum]=0;
+            xEventQueueNet.time[xEventQueueNet.totalNum]=0;
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SPINNINGWHEELSLOTINFOUPDATE, TRUE);
+            addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SPINNINGWHEELINFOUPDATE, TRUE);
+            xSpinning_FP.state=SPINNINGWHEEL_STATE_MAIN;
+        }
+        
+        else
+        {
+            xSpinning_FP.isTouchNo=false;
+            xSpinning_FP.isTouchYes=false;
+            xSpinning_FP.isTouchPopupClr = false;
+        }
+        
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////상점 KBY 2018.2.23
+
+void setShop_FP(int selectTabB, int selectTabS)
+{
+    xShop_FP.selectTabB = selectTabB;
+    xShop_FP.selectTabS = selectTabS;
+    shopFreeload_FP(true);
+    initShop_FP();
+    xWorldMap.state = WORLDMAP_STATE_SHOP_FP;
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////상점 이미지 로드 및 메모리 해제 KBY
+void shopFreeload_FP(bool isLoad)
+{
+    
+    int type = 0;
+    int code = 0;
+    int layer = 0;
+    int num = 0;
+    
+    if(isLoad==true)
+    {
+        loadImg("fitting_base.png", &imgShop[0]);
+        loadImg("productionexiticon.png", &imgShop[1]);
+        loadImg("shop_title.png", &imgShop[2]);
+        loadImg("shop_base.png", &imgShop[3]);
+        loadImg("shop_tab_sideoff.png", &imgShop[4]);
+        loadImg("shop_tab_sideon.png", &imgShop[5]);
+        loadImg("shop_tab_dressoff.png", &imgShop[6]);
+        loadImg("shop_tab_dresson.png", &imgShop[7]);
+        loadImg("shop_slot.png", &imgShop[8]);
+        loadImg("shop_new.png", &imgShop[9]);
+        loadImg("shop_icon_wealth.png", &imgShop[10]);
+        loadImg("shop_scroll.png", &imgShop[11]);
+        loadImg("fitting_info_base.png", &imgShop[12]);
+        loadImg("fitting_btn_info.png", &imgShop[13]);
+        loadImg("fitting_info_base.png", &imgShop[14]);
+        loadImg("shop_tab_interioroff.png", &imgShop[15]);
+        loadImg("shop_tab_interioron.png", &imgShop[16]);
+        loadImg("shop_tab_cashoff.png", &imgShop[17]);
+        loadImg("shop_tab_cashon.png", &imgShop[18]);
+        loadImg("popup_base.png", &imgShop[19]);
+        loadImg("default_btn_yesno.png", &imgShop[20]);
+        loadImg("shop_btn_preview.png", &imgShop[21]);
+        loadImg("shop_preview_base.png", &imgShop[22]);
+        loadImg("fitting_btn_arrow.png", &imgShop[23]);
+        loadImg("fitting_eff_shadow.png", &imgShop[24]);
+        loadImg("fitting_eff_light.png", &imgShop[25]);
+        loadImg("production_close.png", &imgShop[26]);
+        loadImg("hotdeal6.png", &imgShop[27]);
+        for(int k=0;k<FASHIONDATATYPEMAX;k++)
+        {
+            for(int i=0;i<xFashionList_FP.totalSlotNum[k];i++)
+            {
+                loadFittingImg_FP(k, i);
+            }
+        }
+
+        type = xFitting_FP.faceNum%1000;
+        sprintf(strTempS, "face_%d_11.png", type);
+        loadImgDocuments(strTempS, &xFitting_FP.imgFace);
+        
+        
+        
+        type = xFitting_FP.hairNum/1000;
+        code = xFitting_FP.hairNum%1000;
+        layer = xHairMakeUp.xData[type][code].layerNum;
+        for(int k=0; k < 15; k++)
+        {
+            if(xLayer.xData[layer].xData[0][k] != -1)
+            {
+                sprintf(strTempS, "hair_%d_%d.png", xFitting_FP.hairNum, xLayer.xData[layer].xData[0][k]);
+                loadImgDocuments(strTempS, &xFitting_FP.imgHair[ACT_FRONT][k]);
+            }
+            
+            if(xLayer.xData[layer].xData[1][k] != -1)
+            {
+                sprintf(strTempS, "b_hair_%d_%d.png", xFitting_FP.hairNum, xLayer.xData[layer].xData[1][k]);
+                loadImgDocuments(strTempS, &xFitting_FP.imgHair[ACT_BACK][k]);
+            }
+        }
+
+    }
+    
+    else
+    {
+        freeImg(&imgShop[0]);
+        freeImg(&imgShop[1]);
+        freeImg(&imgShop[2]);
+        freeImg(&imgShop[3]);
+        freeImg(&imgShop[4]);
+        freeImg(&imgShop[5]);
+        freeImg(&imgShop[6]);
+        freeImg(&imgShop[7]);
+        freeImg(&imgShop[8]);
+        freeImg(&imgShop[9]);
+        freeImg(&imgShop[10]);
+        freeImg(&imgShop[11]);
+        freeImg(&imgShop[12]);
+        freeImg(&imgShop[13]);
+        freeImg(&imgShop[14]);
+        freeImg(&imgShop[15]);
+        freeImg(&imgShop[16]);
+        freeImg(&imgShop[17]);
+        freeImg(&imgShop[18]);
+        freeImg(&imgShop[19]);
+        freeImg(&imgShop[20]);
+        freeImg(&imgShop[21]);
+        freeImg(&imgShop[22]);
+//        freeImg(&imgShop[23]);
+        freeImg(&imgShop[24]);
+        freeImg(&imgShop[25]);
+        freeImg(&imgShop[26]);
+        freeImg(&imgShop[27]);
+        
+        for(int k=0;k<FASHIONDATATYPEMAX;k++)
+        {
+            for(int i=0;i<xFashionList_FP.totalSlotNum[k];i++)
+            {
+                freeImg(&imgFittingItem_FP[k][i]);
+            }
+        }
+        
+        type = xFitting_FP.hairNum/1000;
+        code = xFitting_FP.hairNum%1000;
+        
+        layer = xHairMakeUp.xData[type][code].layerNum;
+        
+        for(int k=0; k < 15; k++)
+        {
+            if(xLayer.xData[layer].xData[0][k] != -1)
+            {
+                freeImg(&xFitting_FP.imgHair[0][k]);
+            }
+            
+            if(xLayer.xData[layer].xData[1][k] != -1)
+            {
+                freeImg(&xFitting_FP.imgHair[1][k]);
+            }
+        }
+        freeImg(&xFitting_FP.imgFace);
+
+        
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////상점 init KBY
+
+void initShop_FP()
+{
+    xShop_FP.isTouchInfo=false;
+    xShop_FP.isTouchClr=false;
+    xShop_FP.isTouchPopUpClr=false;
+    xShop_FP.isTouchYes=false;
+    xShop_FP.isTouchNo=false;
+    xShop_FP.isTouchPreviewClr=false;
+    xShop_FP.isTouchLeftArrow=false;
+    xShop_FP.isTouchRightArrow=false;
+//    xShop_FP.selectTabB=0;
+//    xShop_FP.selectTabS=0;
+    xShop_FP.state = SHOP_STATE_MAIN;
+    xShop_FP.state2 = SHOPPOPUP_STATE_MAIN;
+    xShop_FP.xDragScrollShopList.touchXpos = DONT;
+    xShop_FP.xDragScrollShopList.touchYpos = DONT;
+    xShop_FP.xDragScrollShopList.touchXposBefore = DONT;
+    xShop_FP.xDragScrollShopList.touchYposBefore = DONT;
+    xShop_FP.xDragScrollShopList.selectNum = 0;
+    xShop_FP.xDragScrollShopList.pos = 0;
+    xShop_FP.xDragScrollShopList.speed = 0;
+    xFashionList_FP.parsingTotalNum=0;
+    for(int i=0;i<FASHIONDATATYPEMAX;i++)
+    {
+        xFashionList_FP.parsingSlotTotalNum[i] = 0;
+    }
+    int index = 0;
+    
+    
+    
+    xFitting_FP.hairNum = xMyCharacter.xFace.hairNum;
+    xFitting_FP.faceNum = xMyCharacter.xFace.faceNum;
+    xFitting_FP.pos = 0;
+    
+    for(int i = 0; i < SPRIT_IMGLAYERMAX; i++)
+        xFitting_FP.xModel.xF.code[i] = DONT;
+    
+    for(int i = 0; i < SPRIT_IMGLAYERMAX; i++)
+        xFitting_FP.xModel.xF.code[i] = xMyCharacter.xF.code[i];
+    
+    
+    for(int k=0;k<FASHIONDATATYPEMAX;k++)
+    {
+        for(int i=0;i<xFashionList_FP.totalSlotNum[k];i++)
+        {
+//            xFashionList_FP.xSlotS[index].code = xFashionList_FP.xSlot[k][i].code;
+//            sprintf(xFashionList_FP.xSlotS[index].strName, "%s", xFashionList_FP.xSlot[k][i].strName);
+            if(xFashionList_FP.xSlot[k][i].SellOnOff==0 && xFashionList_FP.xSlot[k][i].isOpen==false)
+            {
+                memcpy(&xFashionList_FP.xSlotS[index], &xFashionList_FP.xSlot[k][i], sizeof(xFashionList_FP.xSlot[k][i]));
+                memcpy(&xFashionList_FP.xSlotTemp[k][i], &xFashionList_FP.xSlot[k][i], sizeof(xFashionList_FP.xSlot[k][i]));
+                xFashionList_FP.parsingTotalNum++;//나중에 바뀔꺼임....fitting에서 가지고 있는 총 수량 체크하는거 생기면 바뀜...
+                xFashionList_FP.parsingSlotTotalNum[k]++;
+            }
+            index++;
+        }
+    }
+    
+    
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////상점 draw KBY
+void drawShop_FP()
+{
+    int px = cx;
+    int py = cy;
+    
+    drawBgFillRect();
+    
+    drawImage(&imgShop[0], px, py+50, 0, 0, imgShop[0].w, imgShop[0].h, VH);
+    
+    subTemp[XPOS] = lcdW-40;
+    subTemp[YPOS] = py-180;
+    
+    if(xShop_FP.isTouchClr==false)
+    {
+        drawImage(&imgShop[1], subTemp[XPOS], subTemp[YPOS], 0, 0, imgShop[1].w/2, imgShop[1].h, VH);
+    }
+    else
+    {
+        drawImage(&imgShop[1], subTemp[XPOS], subTemp[YPOS], imgShop[1].w/2, 0, imgShop[1].w/2, imgShop[1].h, VH);
+    }
+    xTouchClr.wPos = imgShop[1].w;
+    xTouchClr.hPos = imgShop[1].h;
+    xTouchClr.xPos = subTemp[XPOS]-xTouchClr.wPos/2;
+    xTouchClr.yPos = subTemp[YPOS]-xTouchClr.hPos/2;
+    
+//    setAlpha(100);
+//    gSetColor(255, 0, 0);
+//    fillRect(xTouchClr.xPos, xTouchClr.yPos, xTouchClr.wPos, xTouchClr.hPos);
+//    setAlpha(255);
+
+    subTemp[XPOS] = px-456;
+    subTemp[YPOS] = py-220;
+    
+    drawImage(&imgShop[2], subTemp[XPOS], subTemp[YPOS], 0, 0, imgShop[2].w, imgShop[2].h, VH);
+    
+    subTemp[XPOS] = px+40;
+    subTemp[YPOS] = py+85;
+    drawImage(&imgShop[3], subTemp[XPOS], subTemp[YPOS], 0, 0, imgShop[3].w, imgShop[3].h, VH);
+
+    subTemp[XPOS] = px+440;
+    subTemp[YPOS] = py-150;
+    if(xShop_FP.selectTabB==0||xShop_FP.selectTabB==1)
+    {
+        if(xShop_FP.isTouchInfo==false)
+        {
+            drawImage(&imgShop[13], subTemp[XPOS], subTemp[YPOS], 0, 0, imgShop[13].w/2, imgShop[13].h, VH);
+        }
+        else
+        {
+            drawImage(&imgShop[13], subTemp[XPOS], subTemp[YPOS], imgShop[13].w/2, 0, imgShop[13].w/2, imgShop[13].h, VH);
+        }
+        xShop_FP.xTouchInfo.wPos = imgShop[13].w/2;
+        xShop_FP.xTouchInfo.hPos = imgShop[13].h;
+        xShop_FP.xTouchInfo.xPos = subTemp[XPOS]-xShop_FP.xTouchInfo.wPos/2;
+        xShop_FP.xTouchInfo.yPos = subTemp[YPOS]-xShop_FP.xTouchInfo.hPos/2;
+    }
+//    setAlpha(100);
+//    gSetColor(255, 0, 0);
+//    fillRect(xShop_FP.xTouchInfo.xPos, xShop_FP.xTouchInfo.yPos, xShop_FP.xTouchInfo.wPos, xShop_FP.xTouchInfo.hPos);
+//    setAlpha(255);
+    
+    int iMaxTabB = SHOPSELECTTABBMAX;
+    
+//    subTemp[XPOS] = px-495;
+//    subTemp[YPOS] = py+46;
+//    
+//    drawImage(&imgShop[4], subTemp[XPOS], subTemp[YPOS], 0, 0, imgShop[4].w, imgShop[4].h, VH);
+    
+    subTemp[XPOS] = px-495;
+    subTemp[YPOS] = py-73;
+    
+    
+    
+    for(int i=0;i<iMaxTabB;i++)
+    {
+        if(i==xShop_FP.selectTabB)
+        {
+            drawImage(&imgShop[5], subTemp[XPOS], subTemp[YPOS]+i*(imgShop[5].h/5), 0, i*imgShop[5].h/5, imgShop[5].w, imgShop[5].h/5, VH);
+        }
+        else
+        {
+            drawImage(&imgShop[4], subTemp[XPOS], subTemp[YPOS]+i*(imgShop[4].h/5), 0, i*imgShop[4].h/5, imgShop[4].w, imgShop[4].h/5, VH);
+        }
+        xShop_FP.xTouchTabB[i].wPos = imgShop[5].w;
+        xShop_FP.xTouchTabB[i].hPos = imgShop[5].h/5;
+        xShop_FP.xTouchTabB[i].xPos = subTemp[XPOS]-xShop_FP.xTouchTabB[i].wPos/2;
+        xShop_FP.xTouchTabB[i].yPos = subTemp[YPOS]+(i*(imgShop[5].h/5))-xShop_FP.xTouchTabB[i].hPos/2;
+        
+//        setAlpha(100);
+//        gSetColor(0,255, 0);
+//        fillRect(xShop_FP.xTouchTabB[i].xPos , xShop_FP.xTouchTabB[i].yPos , xShop_FP.xTouchTabB[i].wPos, xShop_FP.xTouchTabB[i].hPos);
+//        setAlpha(ALPHA_MAX);
+
+    }
+//    setAlpha(100);
+//    gSetColor(255, 0, 0);
+//    fillRect(subTemp[XPOS], subTemp[YPOS], imgShop[4].w, imgShop[4].h/SHOPSELECTTABBMAX);
+//    setAlpha(ALPHA_MAX);
+    
+//    subTemp[XPOS] = px-144;
+//    subTemp[YPOS] = py-142;
+//    
+//    drawImage(&imgShop[6], subTemp[XPOS], subTemp[YPOS], 0, 0, imgShop[6].w, imgShop[6].h, VH);
+    switch(xShop_FP.selectTabB)
+    {
+        case 0:
+            xShop_FP.totalTabS = 6;
+            break;
+        case 1:
+            xShop_FP.totalTabS = 7;
+            break;
+        case 4:
+            xShop_FP.totalTabS = 4;
+            break;
+        default:
+            break;
+    }
+
+    int iMaxTabS = xShop_FP.totalTabS;
+    subTemp[XPOS] = px-144-285+48;
+    subTemp[YPOS] = py-142;
+    
+    for(int i=0;i<iMaxTabS;i++)
+    {
+        switch (xShop_FP.selectTabB)
+        {
+            case 0:
+                if(i==xShop_FP.selectTabS)
+                {
+                    drawImage(&imgShop[7], subTemp[XPOS]+i*(imgShop[7].w/xShop_FP.totalTabS), subTemp[YPOS], i*(imgShop[6].w/xShop_FP.totalTabS), 0, imgShop[7].w/xShop_FP.totalTabS, imgShop[7].h, VH);
+                }
+                else
+                {
+                    drawImage(&imgShop[6], subTemp[XPOS]+i*(imgShop[6].w/xShop_FP.totalTabS), subTemp[YPOS], i*(imgShop[6].w/xShop_FP.totalTabS), 0, imgShop[6].w/xShop_FP.totalTabS, imgShop[6].h, VH);
+                }
+                break;
+            case 1:
+                if(i==xShop_FP.selectTabS)
+                {
+                    drawImage(&imgShop[16], subTemp[XPOS]+i*(imgShop[16].w/xShop_FP.totalTabS), subTemp[YPOS], i*(imgShop[16].w/xShop_FP.totalTabS), 0, imgShop[16].w/xShop_FP.totalTabS, imgShop[16].h, VH);
+                }
+                else
+                {
+                    drawImage(&imgShop[15], subTemp[XPOS]+i*(imgShop[15].w/xShop_FP.totalTabS), subTemp[YPOS], i*(imgShop[15].w/xShop_FP.totalTabS), 0, imgShop[15].w/xShop_FP.totalTabS, imgShop[15].h, VH);
+                }
+                break;
+            case 4:
+                if(i==xShop_FP.selectTabS)
+                {
+                    drawImage(&imgShop[18], subTemp[XPOS]+i*(imgShop[18].w/xShop_FP.totalTabS), subTemp[YPOS], i*(imgShop[18].w/xShop_FP.totalTabS), 0, imgShop[18].w/xShop_FP.totalTabS, imgShop[18].h, VH);
+                }
+                else
+                {
+                    drawImage(&imgShop[17], subTemp[XPOS]+i*(imgShop[17].w/xShop_FP.totalTabS), subTemp[YPOS], i*(imgShop[17].w/xShop_FP.totalTabS), 0, imgShop[17].w/xShop_FP.totalTabS, imgShop[17].h, VH);
+                }
+                break;
+
+            default:
+                break;
+        }
+        
+        xShop_FP.xTouchTabS[i].wPos = imgShop[7].w/6;
+        xShop_FP.xTouchTabS[i].hPos = imgShop[7].h;
+        xShop_FP.xTouchTabS[i].xPos = subTemp[XPOS]+(i*(imgShop[7].w/6))-xShop_FP.xTouchTabS[i].wPos/2;
+        xShop_FP.xTouchTabS[i].yPos = subTemp[YPOS]-xShop_FP.xTouchTabS[i].hPos/2;
+        
+//        setAlpha(100);
+//        gSetColor(0,0, 255);
+//        fillRect(xShop_FP.xTouchTabS[i].xPos , xShop_FP.xTouchTabS[i].yPos , xShop_FP.xTouchTabS[i].wPos, xShop_FP.xTouchTabS[i].hPos);
+//        setAlpha(ALPHA_MAX);
+    }
+//
+//    setAlpha(100);
+//    gSetColor(255, 0, 0);
+//    fillRect(subTemp[XPOS], subTemp[YPOS], imgShop[6].w/SHOPSELECTTABSMAX, imgShop[6].h);
+//    setAlpha(ALPHA_MAX);
+
+    switch (xShop_FP.selectTabB)
+    {
+        //의상
+        case 0:
+            {
+                if(xShop_FP.selectTabS ==0)
+                {
+                    xShop_FP.totalNum = xFashionList_FP.parsingTotalNum;
+                }
+                else
+                {
+                    xShop_FP.totalNum = xFashionList_FP.parsingSlotTotalNum[xShop_FP.selectTabS-1];
+                }
+            }
+            break;
+        //인테리어
+        case 1:
+            {
+                if(xShop_FP.selectTabS == 0)
+                {
+                    //전체 개수
+                    xShop_FP.totalNum = xInterior.totalNum;
+                }
+                else
+                {
+                    //각탭별 총합
+//                    xShop_FP.totalNum = ;
+                }
+            }
+            break;
+        //캐쉬샵
+        case 4:
+            {
+                if(xShop_FP.selectTabS==0)
+                {
+                    //전체 개수
+//                    xShop_FP.totalNum = ;
+                }
+                else
+                {
+                    //각탭별 총합
+//                    xShop_FP.totalNum = ;
+                }
+            }
+            break;
+        default:
+            break;
+    }
+    xShop_FP.xDragScrollShopList.totalNum = xShop_FP.totalNum;
+    
+    xShop_FP.xDragScrollShopList.posGab = 160;
+    xShop_FP.xDragScrollShopList.endPos = -(((((xShop_FP.totalNum+1)/2)-6)*xShop_FP.xDragScrollShopList.posGab));
+    
+    if(((xShop_FP.xDragScrollShopList.totalNum+1)/2)<6)
+    {
+        xShop_FP.xDragScrollShopList.endPos=0;
+    }
+    int iMax=xShop_FP.totalNum;
+    int pos = 0;
+    int slotCode = 0;
+    
+    dragScrollPrc(&xShop_FP.xDragScrollShopList, 1, FALSE);
+    
+    subTemp[XPOS] = px-452;
+    subTemp[YPOS] = py-121;
+
+//    gSetColor(255, 0, 0);
+//    setAlpha(100);
+//    fillRect(subTemp[XPOS], subTemp[YPOS], imgShop[3].w, imgShop[3].h);
+//    setAlpha(ALPHA_MAX);
+    
+    gSetClip(true, subTemp[XPOS], subTemp[YPOS], imgShop[3].w, imgShop[3].h);
+    
+    for(int i=0;i<iMax;i++)
+    {
+        pos = xShop_FP.xDragScrollShopList.pos+(xShop_FP.xDragScrollShopList.posGab*(i/2));
+        subTemp[XPOS] = px-350+pos;
+        subTemp[YPOS] = py-16+((i%2)*195);
+        //케이스문으로 2번 묶을것...1번은 selectTabB, 나머지 1번은 selectTabS
+        switch (xShop_FP.selectTabB)
+        {
+            //의상
+            case 0:
+                switch (xShop_FP.selectTabS)
+                {
+                    //전체
+                    case 0:
+                        {
+                            slotCode = xFashionList_FP.xSlotS[i].code;
+                            setMapData(slotCode);
+                            drawImage(&imgShop[8], subTemp[XPOS], subTemp[YPOS], 0, 0, imgShop[8].w, imgShop[8].h, VH);
+                            drawImage(&imgFittingItem_FP[xMap.type][xMap.listNum], subTemp[XPOS], subTemp[YPOS]-20, 0, 0, imgFittingItem_FP[xMap.type][xMap.listNum].w, imgFittingItem_FP[xMap.type][xMap.listNum].h, VH);
+                            sprintf(strTempS, "%s", xFashionList_FP.xSlotS[i].strName);
+                            
+                            int sizeStr = strlen(strTempS);
+                            
+                            if(sizeStr>27)
+                            {
+                                setFontSizeORI(12);
+                            }
+                            else
+                            {
+                                setFontSizeORI(14);
+                            }
+                            gSetColor(101, 48, 150);
+                            gDrawString(subTemp[XPOS], subTemp[YPOS]-80, strTempS, VH);
+                            setFontSize(11);
+                            
+
+                            if(xSaveTemp.lv.oriData<xFashionList_FP.xSlotS[i].lv)
+                            {
+                                drawImage(&imgShop[12], subTemp[XPOS]-1, subTemp[YPOS]-30, 0, 0, imgShop[12].w, imgShop[12].h, VH);
+                                
+                                sprintf(strTempS, "레벨 %d이상\n구매가능",xFashionList_FP.xSlotS[i].lv);
+                                setFontSizeORI(16);
+                                gDrawStringBold(subTemp[XPOS], subTemp[YPOS]-30, strTempS, VH, 101, 48, 150, 255, 255, 255);
+                                setFontSize(11);
+                                
+                                drawImage(&imgShop[26], subTemp[XPOS]-55, subTemp[YPOS]-83, 0, 0, imgShop[26].w/2, imgShop[26].h, VH);
+                            }
+                            else
+                            {
+
+                                if(xShop_FP.isTouchInfo==true)
+                                {
+                                    drawImage(&imgShop[12], subTemp[XPOS]-1, subTemp[YPOS]-30, 0, 0, imgShop[12].w, imgShop[12].h, VH);
+                                }
+                                
+                                if(xFashionList_FP.xSlotS[i].isNew==1)
+                                {
+                                    drawImage(&imgShop[9], subTemp[XPOS]-52, subTemp[YPOS]-90, 0, 0, imgShop[9].w, imgShop[9].h, VH);
+                                }
+
+                            }
+
+                            
+                            drawImage(&imgShop[10], subTemp[XPOS]-40, subTemp[YPOS]+60, (imgShop[10].w/3)*xFashionList_FP.xSlotS[i].priceType, 0, imgShop[10].w/3, imgShop[10].h, VH);
+                            if(xFashionList_FP.xSlotS[i].sale>0)
+                            {
+                                int saleprice = xFashionList_FP.xSlotS[i].price*(100-xFashionList_FP.xSlotS[i].sale)/100;
+                                
+                                if(saleprice<=0)
+                                {
+                                    saleprice=1;
+                                }
+                                sprintf(strTempS, "%d%% 할인중", xFashionList_FP.xSlotS[i].sale);
+                                setFontSizeORI(18);
+                                gDrawStringBold(subTemp[XPOS], subTemp[YPOS]+20, strTempS, VH, 255, 13, 0, 255, 255, 255);
+                                setFontSize(11);
+
+                                setCommaNum(strTempS, xFashionList_FP.xSlotS[i].price);
+                                setFontSizeORI(18);
+                                gSetColor(163, 137, 141);
+                                gDrawString(subTemp[XPOS]+45, subTemp[YPOS]+60, strTempS, VR);
+                                setFontSize(11);
+                                
+                                drawImage(&imgShop[27], subTemp[XPOS]+20, subTemp[YPOS]+60, 0, 0, imgShop[27].w, imgShop[27].h, VH);
+                                
+                                setCommaNum(strTempS, saleprice);
+                                setFontSizeORI(18);
+                                gDrawStringBold(subTemp[XPOS]+45, subTemp[YPOS]+40, strTempS, VR, 101, 48, 150, 255, 255, 255);
+                                setFontSize(11);
+
+                            }
+                            else
+                            {
+                                setCommaNum(strTempS, xFashionList_FP.xSlotS[i].price);
+                                setFontSizeORI(18);
+                                gSetColor(101, 48, 150);
+                                gDrawString(subTemp[XPOS]+45, subTemp[YPOS]+60, strTempS, VR);
+                                setFontSize(11);
+                            }
+                        }
+                        break;
+                        //나머지
+                    default:
+                        {
+                            slotCode = xFashionList_FP.xSlotTemp[xShop_FP.selectTabS-1][i].code;
+                            setMapData(slotCode);
+                            drawImage(&imgShop[8], subTemp[XPOS], subTemp[YPOS], 0, 0, imgShop[8].w, imgShop[8].h, VH);
+                            drawImage(&imgFittingItem_FP[xMap.type][xMap.listNum], subTemp[XPOS], subTemp[YPOS]-20, 0, 0, imgFittingItem_FP[xMap.type][xMap.listNum].w, imgFittingItem_FP[xMap.type][xMap.listNum].h, VH);
+                            
+                            
+                            
+                            sprintf(strTempS, "%s", xFashionList_FP.xSlotTemp[xShop_FP.selectTabS-1][i].strName);
+                            
+                            int sizeStr = strlen(strTempS);
+                            
+                            if(sizeStr>27)
+                            {
+                                setFontSizeORI(12);
+                            }
+                            else
+                            {
+                                setFontSizeORI(14);
+                            }
+                            gSetColor(101, 48, 150);
+                            gDrawString(subTemp[XPOS], subTemp[YPOS]-80, strTempS, VH);
+                            setFontSize(11);
+                            
+                            if(xSaveTemp.lv.oriData<xFashionList_FP.xSlotTemp[xShop_FP.selectTabS-1][i].lv)
+                            {
+                                drawImage(&imgShop[12], subTemp[XPOS]-1, subTemp[YPOS]-30, 0, 0, imgShop[12].w, imgShop[12].h, VH);
+                                
+                                sprintf(strTempS, "레벨 %d이상\n구매가능",xFashionList_FP.xSlotTemp[xShop_FP.selectTabS-1][i].lv);
+                                setFontSizeORI(16);
+                                gDrawStringBold(subTemp[XPOS], subTemp[YPOS]-30, strTempS, VH, 101, 48, 150, 255, 255, 255);
+                                setFontSize(11);
+                                
+                                drawImage(&imgShop[26], subTemp[XPOS]-55, subTemp[YPOS]-83, 0, 0, imgShop[26].w/2, imgShop[26].h, VH);
+                            }
+                            else
+                            {
+                                
+                                if(xShop_FP.isTouchInfo==true)
+                                {
+                                    drawImage(&imgShop[12], subTemp[XPOS]-1, subTemp[YPOS]-30, 0, 0, imgShop[12].w, imgShop[12].h, VH);
+                                }
+                                
+                                if(xFashionList_FP.xSlotTemp[xShop_FP.selectTabS-1][i].isNew==1)
+                                {
+                                    drawImage(&imgShop[9], subTemp[XPOS]-52, subTemp[YPOS]-90, 0, 0, imgShop[9].w, imgShop[9].h, VH);
+                                }
+                                
+                            }
+                            
+                            drawImage(&imgShop[10], subTemp[XPOS]-40, subTemp[YPOS]+60, (imgShop[10].w/3)*xFashionList_FP.xSlotTemp[xShop_FP.selectTabS-1][i].priceType, 0, imgShop[10].w/3, imgShop[10].h, VH);
+                            
+                            if(xFashionList_FP.xSlotTemp[xShop_FP.selectTabS-1][i].sale>0)
+                            {
+                                int saleprice = xFashionList_FP.xSlotTemp[xShop_FP.selectTabS-1][i].price*(100-xFashionList_FP.xSlotTemp[xShop_FP.selectTabS-1][i].sale)/100;
+                                
+                                if(saleprice<=0)
+                                {
+                                    saleprice=1;
+                                }
+                                sprintf(strTempS, "%d%% 할인중", xFashionList_FP.xSlotTemp[xShop_FP.selectTabS-1][i].sale);
+                                setFontSizeORI(18);
+                                gDrawStringBold(subTemp[XPOS], subTemp[YPOS]+20, strTempS, VH, 255, 13, 0, 255, 255, 255);
+                                setFontSize(11);
+                                
+                                setCommaNum(strTempS, xFashionList_FP.xSlotTemp[xShop_FP.selectTabS-1][i].price);
+                                setFontSizeORI(18);
+                                gSetColor(163, 137, 141);
+                                gDrawString(subTemp[XPOS]+45, subTemp[YPOS]+60, strTempS, VR);
+                                setFontSize(11);
+                                
+                                drawImage(&imgShop[27], subTemp[XPOS]+20, subTemp[YPOS]+60, 0, 0, imgShop[27].w, imgShop[27].h, VH);
+                                
+                                setCommaNum(strTempS, saleprice);
+                                setFontSizeORI(18);
+                                gDrawStringBold(subTemp[XPOS]+45, subTemp[YPOS]+40, strTempS, VR, 101, 48, 150, 255, 255, 255);
+                                setFontSize(11);
+                                
+                            }
+                            else
+                            {
+                                setCommaNum(strTempS, xFashionList_FP.xSlotTemp[xShop_FP.selectTabS-1][i].price);
+                                setFontSizeORI(18);
+                                gSetColor(101, 48, 150);
+                                gDrawString(subTemp[XPOS]+45, subTemp[YPOS]+60, strTempS, VR);
+                                setFontSize(11);
+                            }
+                        }
+                        break;
+                }
+                break;
+            //인테리어
+            case 1:
+                {
+                    switch (xShop_FP.selectTabS)
+                    {
+                        //전체
+                        case 0:
+                            {
+                                drawImage(&imgShop[8], subTemp[XPOS], subTemp[YPOS], 0, 0, imgShop[8].w, imgShop[8].h, VH);
+                                
+                                if(xShop_FP.isTouchInfo)
+                                {
+                                    drawImage(&imgShop[12], subTemp[XPOS]-1, subTemp[YPOS]-30, 0, 0, imgShop[12].w, imgShop[12].h, VH);
+                                }
+                            }
+                            break;
+                        //각 탭
+                        default:
+                            {
+                                drawImage(&imgShop[8], subTemp[XPOS], subTemp[YPOS], 0, 0, imgShop[8].w, imgShop[8].h, VH);
+                                
+                                if(xShop_FP.isTouchInfo)
+                                {
+                                    drawImage(&imgShop[12], subTemp[XPOS]-1, subTemp[YPOS]-30, 0, 0, imgShop[12].w, imgShop[12].h, VH);
+                                }
+
+                            }
+                            break;
+                    }
+                }
+                break;
+            //캐쉬샵
+            case 4:
+                {
+                    switch(xShop_FP.selectTabS)
+                    {
+                        //전체
+                        case 0:
+                            {
+                                drawImage(&imgShop[8], subTemp[XPOS], subTemp[YPOS], 0, 0, imgShop[8].w, imgShop[8].h, VH);
+                                
+                                if(xShop_FP.isTouchInfo)
+                                {
+                                    drawImage(&imgShop[12], subTemp[XPOS]-1, subTemp[YPOS]-30, 0, 0, imgShop[12].w, imgShop[12].h, VH);
+                                }
+
+                            }
+                            break;
+                        //나ㅓ지
+                        default:
+                            {
+                                drawImage(&imgShop[8], subTemp[XPOS], subTemp[YPOS], 0, 0, imgShop[8].w, imgShop[8].h, VH);
+                                
+                                if(xShop_FP.isTouchInfo)
+                                {
+                                    drawImage(&imgShop[12], subTemp[XPOS]-1, subTemp[YPOS]-30, 0, 0, imgShop[12].w, imgShop[12].h, VH);
+                                }
+                            }
+                            break;
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    
+    gSetClip(false, subTemp[XPOS], subTemp[YPOS], imgShop[3].w, imgShop[3].h);
+    
+    for(int i=0;i<xShop_FP.totalNum;i++)
+    {
+        pos = xShop_FP.xDragScrollShopList.pos+(xShop_FP.xDragScrollShopList.posGab*(i/2));
+        //        subTemp[XPOS] = px-360+((i%6)*160);
+        subTemp[XPOS] = px-350+pos;
+        //        subTemp[YPOS] = py+10+((i/6)*xShop_FP.xDragScrollShopList.posGab)+xShop_FP.xDragScrollShopList.pos;
+        subTemp[YPOS] = py-16+((i%2)*195);
+        
+        xShop_FP.xTouchSlot[i].wPos = imgShop[8].w;
+        xShop_FP.xTouchSlot[i].hPos = imgShop[8].h-30;
+        xShop_FP.xTouchSlot[i].xPos = subTemp[XPOS] - xShop_FP.xTouchSlot[i].wPos/2;
+        xShop_FP.xTouchSlot[i].yPos = subTemp[YPOS] - xShop_FP.xTouchSlot[i].hPos/2;
+        
+//        setAlpha(100);
+//        gSetColor(255, 0, 0);
+//        fillRect(xShop_FP.xTouchSlot[i].xPos, xShop_FP.xTouchSlot[i].yPos, xShop_FP.xTouchSlot[i].wPos, xShop_FP.xTouchSlot[i].hPos);
+//        setAlpha(ALPHA_MAX);
+    }
+    
+    setFastScroll(cx-420, lcdH-50, imgShop[11].w, imgShop[11].h+10, &xShop_FP.xDragScrollShopList);
+    
+    int xx = xFastScroll.x;
+    int yy = xFastScroll.y+xFastScroll.h/2;
+    
+    int nowPos = -xFastScroll.xDragScroll->pos;
+    int endPos = -xFastScroll.xDragScroll->endPos;
+    
+    
+    if(endPos != 0)
+        xx+=nowPos * xFastScroll.w/endPos;
+    
+    xFastScroll.xTouchBar.xPos = xFastScroll.x;
+    xFastScroll.xTouchBar.yPos = xFastScroll.y;
+    xFastScroll.xTouchBar.wPos = xFastScroll.w;
+    xFastScroll.xTouchBar.hPos = xFastScroll.h;
+    
+    int reSize = ((xShop_FP.xDragScrollShopList.totalNum-1)/6)+1;
+    
+    if(reSize<=0)
+    {
+        reSize=1;
+    }
+    
+    int temp = (imgShop[11].w/reSize)/2;
+    
+    if(xx<=xFastScroll.x+temp)
+    {
+        xx=xFastScroll.x+temp;
+    }
+    
+    else if(xx>=xFastScroll.x+xFastScroll.w-temp)
+    {
+        xx=xFastScroll.x+xFastScroll.w-temp;
+    }
+    
+    gSetColor(0, 255, 0);
+    setAlpha(100);
+    fillRect(xFastScroll.x, xFastScroll.y, xFastScroll.w, xFastScroll.h);
+    setAlpha(ALPHA_MAX);
+    
+    xGame.isReSizeDrawXY = true;
+    xGame.reSizeX = 100/reSize;
+    xGame.reSizeY = 100;
+    
+    drawImage(&imgShop[11], xx, yy, 0, 0, imgShop[11].w, imgShop[11].h, VH);
+
+    xGame.isReSizeDrawXY = false;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////상점 입력 이벤트 처리 KBY
+void keyShop_FP(int type, int param1, int param2, int touchId)
+{
+    bool isKeyEvent1;
+    bool isKeyEvent2;
+    int keyEventNum1;
+    int keyEventNum2;
+    
+    
+    if(type == MH_KEY_PRESSEVENT)
+    {
+        isKeyEvent1=FALSE;
+        isKeyEvent2=FALSE;
+        keyEventNum1=-1;
+        keyEventNum2=-1;
+        for(int j=0;j<SHOPSELECTTABBMAX;j++)
+        {
+            if(touchCheck(&xShop_FP.xTouchTabB[j])==TRUE && touchType == USER_POINT_PRESS_EVENT)
+            {
+                isKeyEvent1=TRUE;
+                keyEventNum1 = j;
+                break;
+            }
+        }
+        
+        for(int i=0;i<SHOPSELECTTABSMAX;i++)
+        {
+            if(touchCheck(&xShop_FP.xTouchTabS[i])==TRUE && touchType == USER_POINT_PRESS_EVENT)
+            {
+                isKeyEvent2 = TRUE;
+                keyEventNum2 = i;
+                break;
+            }
+        }
+        
+        
+        if(isKeyEvent1==TRUE)
+        {
+            playSnd(SND_MENU_OK);
+            xShop_FP.selectTabS = 0;
+            if(xShop_FP.selectTabB != keyEventNum1)
+            {
+                xShop_FP.selectTabB = keyEventNum1;
+                
+
+                //스크롤 초기화
+                xShop_FP.xDragScrollShopList.touchXpos = DONT;
+                xShop_FP.xDragScrollShopList.touchYpos = DONT;
+                xShop_FP.xDragScrollShopList.touchXposBefore = DONT;
+                xShop_FP.xDragScrollShopList.touchYposBefore = DONT;
+                xShop_FP.xDragScrollShopList.selectNum = 0;
+                xShop_FP.xDragScrollShopList.pos = 0;
+                xShop_FP.xDragScrollShopList.speed = 0;
+            }
+        }
+        
+        if(isKeyEvent2==TRUE)
+        {
+            playSnd(SND_MENU_OK);
+            if(xShop_FP.selectTabS != keyEventNum2)
+            {
+                xShop_FP.selectTabS = keyEventNum2;
+                //스크롤 초기화
+                
+                xShop_FP.xDragScrollShopList.touchXpos = DONT;
+                xShop_FP.xDragScrollShopList.touchYpos = DONT;
+                xShop_FP.xDragScrollShopList.touchXposBefore = DONT;
+                xShop_FP.xDragScrollShopList.touchYposBefore = DONT;
+                xShop_FP.xDragScrollShopList.selectNum = 0;
+                xShop_FP.xDragScrollShopList.pos = 0;
+                xShop_FP.xDragScrollShopList.speed = 0;
+
+            }
+
+        }
+        
+        
+        if(touchCheck(&xTouchClr)==TRUE && touchType == USER_POINT_PRESS_EVENT)
+        {
+            xShop_FP.isTouchClr=true;
+        }
+        
+        else if(touchCheck(&xShop_FP.xTouchInfo)==TRUE  && touchType == USER_POINT_PRESS_EVENT)
+        {
+            if(xShop_FP.selectTabB==0||xShop_FP.selectTabB==1)
+            {
+                playSnd(SND_MENU_OK);
+                if(xShop_FP.isTouchInfo==false)
+                {
+                    xShop_FP.isTouchInfo=true;
+                }
+                else
+                {
+                    xShop_FP.isTouchInfo=false;
+                }
+            }
+
+        }
+        
+        else if(keyFastScroll(type, param1, param2, touchId, 0)==true||xTouch.yPos > lcdH-40)
+        {
+            
+        }
+        
+        else
+        {
+            dragScrollKeyPrc(&xShop_FP.xDragScrollShopList, 0);
+        }
+    }
+    else if(type == MH_KEY_RELEASEEVENT)
+    {
+        if(xShop_FP.xDragScrollShopList.touchXposBefore!=DONT)
+        {
+            dragScrollKeyPrc(&xShop_FP.xDragScrollShopList, 1);
+        }
+        
+        else if(touchCheck(&xTouchClr)==TRUE && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            xShop_FP.isTouchClr=false;
+            playSnd(SND_MENU_OK);
+//            xWorldMap.isKeyReturn=TRUE;
+            shopFreeload_FP(false);
+            xWorldMap.state = WORLDMAP_STATE_PLAY;
+        }
+        
+        else
+        {
+            //수정사항 있음 KBY 2018.2.27
+            for(int i=0;i<xShop_FP.totalNum;i++)
+            {
+                if(touchCheck(&xShop_FP.xTouchSlot[i])==TRUE)
+                {
+                    switch (xShop_FP.selectTabB)
+                    {
+                        //의상
+                        case 0:
+                            switch (xShop_FP.selectTabS)
+                            {
+                                //전체
+                                case 0:
+                                    if (xSaveTemp.lv.oriData>=xFashionList_FP.xSlotS[i].lv)
+                                    {
+                                        xShop_FP.selectSlot = i;
+                                        xShop_FP.isTouchNo=false;
+                                        xShop_FP.isTouchYes=false;
+                                        xShop_FP.isTouchPopUpClr=false;
+                                        xShop_FP.state = SHOP_STATE_DRESSPOPUP;
+                                        xShop_FP.state2 = SHOPPOPUP_STATE_MAIN;
+                                    }
+                                    else
+                                    {
+                                        setPopup(POPUP_SHOPLACKLV, playState, playState, 0, DONT);
+                                    }
+                                    break;
+                                //나머지 탭
+                                default:
+                                    {
+                                        if(xSaveTemp.lv.oriData>=xFashionList_FP.xSlotTemp[xShop_FP.selectTabS-1][i].lv)
+                                        {
+                                            xShop_FP.selectSlot = i;
+                                            xShop_FP.isTouchNo=false;
+                                            xShop_FP.isTouchYes=false;
+                                            xShop_FP.isTouchPopUpClr=false;
+                                            xShop_FP.state = SHOP_STATE_DRESSPOPUP;
+                                            xShop_FP.state2 = SHOPPOPUP_STATE_MAIN;
+                                        }
+                                        else
+                                        {
+                                            setPopup(POPUP_SHOPLACKLV, playState, playState, 0, DONT);
+                                        }
+                                    }
+                                    break;
+                            }
+                            break;
+                        //인테리어
+                        case 1:
+                            {
+                                switch (xShop_FP.selectTabS)
+                                {
+                                    //전체
+                                    case 0:
+                                        //조건 달고....
+                                        {
+                                            xShop_FP.selectSlot = i;
+                                            xShop_FP.isTouchNo=false;
+                                            xShop_FP.isTouchYes=false;
+                                            xShop_FP.isTouchPopUpClr=false;
+                                            xShop_FP.state = SHOP_STATE_POPUP;
+                                            xShop_FP.state2 = SHOPPOPUP_STATE_MAIN;
+                                        }
+                                        break;
+                                    //나머지 탭
+                                    default:
+                                        //조건 달고....
+                                        {
+                                            xShop_FP.selectSlot = i;
+                                            xShop_FP.isTouchNo=false;
+                                            xShop_FP.isTouchYes=false;
+                                            xShop_FP.isTouchPopUpClr=false;
+                                            //DRESSPOPUP과 POPUP의 차이는 프리뷰 기능이 있고 없고의 차이....KBY 2017.2.27
+                                            xShop_FP.state = SHOP_STATE_POPUP;
+                                            xShop_FP.state2 = SHOPPOPUP_STATE_MAIN;
+                                        }
+                                        break;
+                                }
+                            }
+                        default:
+                            break;
+                    }
+                    break;
+                }
+            }
+        }
+        
+        
+        xShop_FP.xDragScrollShopList.touchXpos = DONT;
+        xShop_FP.xDragScrollShopList.touchYpos = DONT;
+        xShop_FP.xDragScrollShopList.touchXposBefore = DONT;
+        xShop_FP.xDragScrollShopList.touchYposBefore = DONT;
+        xShop_FP.isTouchClr = false;
+        
+    }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////의상 구매 팝업 Draw KBY
+void drawDressShop_PopUp_FP()
+{
+    int px = cx;
+    int py = cy;
+    
+    drawBgFillRect();
+    
+    int slotCode;
+    
+    if(xShop_FP.selectTabS==0)
+    {
+        slotCode = xFashionList_FP.xSlotS[xShop_FP.selectSlot].code;
+    }
+    else
+    {
+        slotCode = xFashionList_FP.xSlotTemp[xShop_FP.selectTabS-1][xShop_FP.selectSlot].code;
+    }
+    
+    subTemp[XPOS] = px+12;
+    subTemp[YPOS] = py+35;
+    
+    drawImage(&imgShop[19], subTemp[XPOS], subTemp[YPOS], 0, 0, imgShop[19].w, imgShop[19].h, VH);
+    if(xShop_FP.isTouchPopUpClr==false)
+    {
+        drawImage(&imgShop[1], subTemp[XPOS]+243, subTemp[YPOS]-140, 0, 0, imgShop[1].w/2, imgShop[1].h, VH);
+    }
+    else
+    {
+        drawImage(&imgShop[1], subTemp[XPOS]+243, subTemp[YPOS]-140, imgShop[1].w/2, 0, imgShop[1].w/2, imgShop[1].h, VH);
+    }
+    
+    xTouchClr.wPos = imgShop[1].w/2;
+    xTouchClr.hPos = imgShop[1].h;
+    xTouchClr.xPos = subTemp[XPOS]+243-xTouchClr.wPos/2;
+    xTouchClr.yPos = subTemp[YPOS]-140-xTouchClr.hPos/2;
+    
+    drawImage(&imgShop[21], subTemp[XPOS]-130, subTemp[YPOS]-30, 0, 0, imgShop[21].w, imgShop[21].h, VH);
+    
+    xShop_FP.xTouchPreview.wPos = imgShop[21].w;
+    xShop_FP.xTouchPreview.hPos = imgShop[21].h;
+    xShop_FP.xTouchPreview.xPos = subTemp[XPOS]-130-xShop_FP.xTouchPreview.wPos/2;
+    xShop_FP.xTouchPreview.yPos = subTemp[YPOS]-30-xShop_FP.xTouchPreview.hPos/2;
+    
+//    setAlpha(100);
+//    gSetColor(255, 0, 0);
+//    fillRect(xShop_FP.xTouchPreview.xPos, xShop_FP.xTouchPreview.yPos, xShop_FP.xTouchPreview.wPos, xShop_FP.xTouchPreview.hPos);
+//    setAlpha(ALPHA_MAX);
+    
+    setMapData(slotCode);
+    
+    drawImage(&imgFittingItem_FP[xMap.type][xMap.listNum], subTemp[XPOS]-130, subTemp[YPOS]-30, 0, 0, imgFittingItem_FP[xMap.type][xMap.listNum].w, imgFittingItem_FP[xMap.type][xMap.listNum].h, VH);
+    
+    sprintf(strTempS, "%s", xFashionList_FP.xSlotTemp[xMap.type][xMap.listNum].strName);
+    setFontSizeORI(20);
+    gSetColor(101, 48, 150);
+    gDrawString(subTemp[XPOS]+50, subTemp[YPOS]-80, strTempS, VH);
+    setFontSize(11);
+    
+    drawImage(&imgShop[10], subTemp[XPOS]+10, subTemp[YPOS]-50, (imgShop[10].w/3)*xFashionList_FP.xSlotTemp[xMap.type][xMap.listNum].priceType, 0, imgShop[10].w/3, imgShop[10].h, VH);
+    if(xFashionList_FP.xSlotTemp[xMap.type][xMap.listNum].sale>0)
+    {
+        int salePrice = xFashionList_FP.xSlotTemp[xMap.type][xMap.listNum].price*(100-xFashionList_FP.xSlotTemp[xMap.type][xMap.listNum].sale)/100;
+        
+        if(salePrice<=0)
+        {
+            salePrice=1;
+        }
+        
+        sprintf(strTempS, "%d%% 할인중", xFashionList_FP.xSlotTemp[xMap.type][xMap.listNum].sale);
+        setFontSizeORI(18);
+        gDrawStringBold(subTemp[XPOS]-135, subTemp[YPOS]+15, strTempS, VH, 255, 13, 0, 255, 255, 255);
+        setFontSize(11);
+        
+        setCommaNum(strTempS, xFashionList_FP.xSlotTemp[xMap.type][xMap.listNum].price);
+        setFontSizeORI(18);
+        gSetColor(163, 137, 141);
+        gDrawString(subTemp[XPOS]+100, subTemp[YPOS]-30, strTempS, VR);
+        setFontSize(11);
+        
+        drawImage(&imgShop[27], subTemp[XPOS]+80, subTemp[YPOS]-30, 0, 0, imgShop[27].w, imgShop[27].h, VH);
+        
+        setCommaNum(strTempS, salePrice);
+//        setCommaNum(strTempS, 30000);
+        setFontSizeORI(18);
+        gDrawStringBold(subTemp[XPOS]+100, subTemp[YPOS]-50, strTempS, VR, 101, 48, 150, 255, 255, 255);
+        setFontSize(11);
+
+    }
+    else
+    {
+        setCommaNum(strTempS, xFashionList_FP.xSlotTemp[xMap.type][xMap.listNum].price);
+//        setCommaNum(strTempS, 30000);
+        setFontSizeORI(18);
+        gSetColor(101, 48, 150);
+        gDrawString(subTemp[XPOS]+80, subTemp[YPOS]-50, strTempS, VH);
+        setFontSize(11);
+    }
+    
+    sprintf(strTempS, "구매하시겠습니까?");
+    setFontSizeORI(16);
+    gSetColor(101, 48, 150);
+    gDrawString(subTemp[XPOS]+60, subTemp[YPOS], strTempS, VH);
+    setFontSize(11);
+    
+    if(xShop_FP.isTouchYes==false)
+    {
+        drawImage(&imgShop[20], subTemp[XPOS]+85, subTemp[YPOS]+100, 0, imgShop[20].h/2, imgShop[20].w/2, imgShop[20].h/2, VH);
+    }
+    else
+    {
+        drawImage(&imgShop[20], subTemp[XPOS]+85, subTemp[YPOS]+100, imgShop[20].w/2, imgShop[20].h/2, imgShop[20].w/2, imgShop[20].h/2, VH);
+    }
+    sprintf(strTempS, "구매하기");
+    gSetColor(36, 50, 128);
+    setFontSizeORI(20);
+    gDrawString(subTemp[XPOS]+85, subTemp[YPOS]+100, strTempS, VH);
+    setFontSize(11);
+    
+    xShop_FP.xTouchYes.wPos = imgShop[20].w/2;
+    xShop_FP.xTouchYes.hPos = imgShop[20].h/2;
+    xShop_FP.xTouchYes.xPos = subTemp[XPOS]+85-xShop_FP.xTouchYes.wPos/2;
+    xShop_FP.xTouchYes.yPos = subTemp[YPOS]+100-xShop_FP.xTouchYes.hPos/2;
+    
+//    setAlpha(100);
+//    gSetColor(255, 0, 0);
+//    fillRect(xShop_FP.xTouchYes.xPos, xShop_FP.xTouchYes.yPos, xShop_FP.xTouchYes.wPos, xShop_FP.xTouchYes.hPos);
+//    setAlpha(ALPHA_MAX);
+    
+    
+    
+    
+    if(xShop_FP.isTouchNo==false)
+    {
+        drawImage(&imgShop[20], subTemp[XPOS]-85, subTemp[YPOS]+100, 0, 0, imgShop[20].w/2, imgShop[20].h/2, VH);
+    }
+    else
+    {
+        drawImage(&imgShop[20], subTemp[XPOS]-85, subTemp[YPOS]+100, imgShop[20].w/2, 0, imgShop[20].w/2, imgShop[20].h/2, VH);
+    }
+    sprintf(strTempS, "취소");
+    gSetColor(106, 21, 97);
+    setFontSizeORI(20);
+    gDrawString(subTemp[XPOS]-85, subTemp[YPOS]+100, strTempS, VH);
+    setFontSize(11);
+    
+    xShop_FP.xTouchNo.wPos = imgShop[20].w/2;
+    xShop_FP.xTouchNo.hPos = imgShop[20].h/2;
+    xShop_FP.xTouchNo.xPos = subTemp[XPOS]-85-xShop_FP.xTouchNo.wPos/2;
+    xShop_FP.xTouchNo.yPos = subTemp[YPOS]+100-xShop_FP.xTouchNo.hPos/2;
+    
+//    setAlpha(100);
+//    gSetColor(255, 0, 0);
+//    fillRect(xShop_FP.xTouchNo.xPos, xShop_FP.xTouchNo.yPos, xShop_FP.xTouchNo.wPos, xShop_FP.xTouchNo.hPos);
+//    setAlpha(ALPHA_MAX);
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////의상 구매 팝업 입력 이벤트 처리 KBY
+void keyDressShopPopUp_FP(int type, int param1, int param2)
+{
+    int slotCode;
+    bool BuyEvent=FALSE;
+    if(type == MH_KEY_PRESSEVENT)
+    {
+        if(touchCheck(&xTouchClr)==TRUE && touchType == USER_POINT_PRESS_EVENT)
+        {
+            xShop_FP.isTouchPopUpClr=true;
+        }
+        else if(touchCheck(&xShop_FP.xTouchYes)==TRUE && USER_POINT_PRESS_EVENT)
+        {
+            xShop_FP.isTouchYes=true;
+        }
+        else if(touchCheck(&xShop_FP.xTouchNo)==TRUE && USER_POINT_PRESS_EVENT)
+        {
+            xShop_FP.isTouchNo=true;
+        }
+        else if(touchCheck(&xShop_FP.xTouchPreview)==TRUE && USER_POINT_PRESS_EVENT)
+        {
+            xShop_FP.isTouchPopUpClr=false;
+            xShop_FP.isTouchYes=false;
+            xShop_FP.isTouchNo=false;
+            xShop_FP.state2 = SHOPPOPUP_STATE_POPUP;
+        }
+    }
+    else if(type == MH_KEY_RELEASEEVENT)
+    {
+        if(touchCheck(&xTouchClr)==TRUE && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            xShop_FP.isTouchPopUpClr=false;
+            xShop_FP.isTouchYes=false;
+            xShop_FP.isTouchNo=false;
+            xShop_FP.state=SHOP_STATE_MAIN;
+        }
+        else if(touchCheck(&xShop_FP.xTouchNo)==TRUE && touchType==USER_POINT_RELEASE_EVENT)
+        {
+            xShop_FP.isTouchPopUpClr=false;
+            xShop_FP.isTouchYes=false;
+            xShop_FP.isTouchNo=false;
+            xShop_FP.state=SHOP_STATE_MAIN;
+        }
+        else if(touchCheck(&xShop_FP.xTouchYes)==TRUE && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            //구매 프로토콜 쏘고 그 이후 처리는 상점 메인으로....
+            if(xShop_FP.selectTabS==0)
+            {
+                slotCode = xFashionList_FP.xSlotS[xShop_FP.selectSlot].code;
+            }
+            else
+            {
+                slotCode = xFashionList_FP.xSlotTemp[xShop_FP.selectTabS-1][xShop_FP.selectSlot].code;
+                
+            }
+            setMapData(slotCode);
+            switch (xFashionList_FP.xSlotTemp[xMap.type][xMap.listNum].priceType)
+            {
+                case 0:
+                    if(xSaveTemp.money.oriData<xFashionList_FP.xSlotTemp[xMap.type][xMap.listNum].price)
+                    {
+                        setPopup(POPUP_MONEYEMPTY, playState, playState, 0, DONT);
+                    }
+                    else
+                    {
+                        BuyEvent=TRUE;
+                    }
+                    break;
+                case 1:
+                    if(xSaveTemp.cash.oriData<xFashionList_FP.xSlotTemp[xMap.type][xMap.listNum].price)
+                    {
+                        setPopup(POPUP_CASHEMPTY, playState, playState, 0, DONT);
+                    }
+                    else
+                    {
+                        BuyEvent=TRUE;
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+            if(BuyEvent==TRUE)
+            {
+                xEventQueueNet.code[xEventQueueNet.totalNum] = slotCode;
+                addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_BUYDRESSCHAR, TRUE);
+                xShop_FP.isTouchPopUpClr=false;
+                xShop_FP.isTouchYes=false;
+                xShop_FP.isTouchNo=false;
+                xShop_FP.state=SHOP_STATE_MAIN;
+            }
+        }
+    }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////의상 구매 프리뷰 Draw KBY
+void drawDressShopPreview_FP()
+{
+    int px = cx;
+    int py = cy;
+    int pos = ACT_FRONT;
+    int type = 0;
+    int code = 0;
+    int layer = 0;
+    
+    drawBgFillRect();
+    
+    subTemp[XPOS] = px+20;
+    subTemp[YPOS] = py+35;
+    
+    drawImage(&imgShop[22], subTemp[XPOS], subTemp[YPOS], 0, 0, imgShop[22].w, imgShop[22].h, VH);
+    
+    drawImage(&imgShop[25], subTemp[XPOS], subTemp[YPOS]-25, 0, 0, imgShop[25].w, imgShop[25].h, VH);
+    
+    drawImage(&imgShop[24], subTemp[XPOS], subTemp[YPOS]+80, 0, 0, imgShop[24].w, imgShop[24].h, VH);
+    if(xShop_FP.isTouchPreviewClr==false)
+    {
+        drawImage(&imgShop[1], subTemp[XPOS]+110, subTemp[YPOS]-140, 0, 0, imgShop[1].w/2, imgShop[1].h, VH);
+    }
+    else
+    {
+        drawImage(&imgShop[1], subTemp[XPOS]+110, subTemp[YPOS]-140, imgShop[1].w/2, 0, imgShop[1].w/2, imgShop[1].h, VH);
+    }
+    
+    xTouchClr.wPos = imgShop[1].w/2;
+    xTouchClr.hPos = imgShop[1].h;
+    xTouchClr.xPos = subTemp[XPOS]+110-xTouchClr.wPos/2;
+    xTouchClr.yPos = subTemp[YPOS]-140-xTouchClr.hPos/2;
+    
+//    setAlpha(100);
+//    gSetColor(255, 0, 0);
+//    fillRect(xTouchClr.xPos, xTouchClr.yPos, xTouchClr.wPos, xTouchClr.hPos);
+//    setAlpha(255);
+    
+    subTemp[XPOS] = px-90;
+    subTemp[YPOS] = py+30;
+    if(xShop_FP.isTouchLeftArrow==false)
+    {
+        drawImage(&imgShop[23], subTemp[XPOS], subTemp[YPOS], 0, 0, imgShop[23].w/4, imgShop[23].h, VH);
+    }
+    else
+    {
+        drawImage(&imgShop[23], subTemp[XPOS], subTemp[YPOS], (imgShop[23].w/4), 0, imgShop[23].w/4, imgShop[23].h, VH);
+    }
+    xShop_FP.xTouchLeftArrow.wPos = imgShop[23].w/4;
+    xShop_FP.xTouchLeftArrow.hPos = imgShop[23].h;
+    xShop_FP.xTouchLeftArrow.xPos = subTemp[XPOS] - xShop_FP.xTouchLeftArrow.wPos/2;
+    xShop_FP.xTouchLeftArrow.yPos = subTemp[YPOS] - xShop_FP.xTouchLeftArrow.hPos/2;
+    
+//    setAlpha(100);
+//    gSetColor(255, 0, 0);
+//    fillRect(xShop_FP.xTouchLeftArrow.xPos, xShop_FP.xTouchLeftArrow.yPos, xShop_FP.xTouchLeftArrow.wPos, xShop_FP.xTouchLeftArrow.hPos);
+//    setAlpha(ALPHA_MAX);
+    
+    subTemp[XPOS] = px+130;
+    subTemp[YPOS] = py+30;
+    xGame.isReverse = true;
+    if(xShop_FP.isTouchRightArrow==false)
+    {
+        drawImage(&imgShop[23], subTemp[XPOS], subTemp[YPOS], 0, 0, imgShop[23].w/4, imgShop[23].h, VH);
+        //        drawImage(&imgFitting[10], subTemp[XPOS], subTemp[YPOS], (imgFitting[10].w/4)*2, 0, imgFitting[10].w/4, imgFitting[10].h, VH);
+        
+    }
+    else
+    {
+        //        drawImage(&imgFitting[10], subTemp[XPOS], subTemp[YPOS], (imgFitting[10].w/4)*3, 0, imgFitting[10].w/4, imgFitting[10].h, VH);
+        drawImage(&imgShop[23], subTemp[XPOS], subTemp[YPOS], (imgShop[23].w/4), 0, imgShop[23].w/4, imgShop[23].h, VH);
+    }
+    xShop_FP.xTouchRightArrow.wPos = imgShop[23].w/4;
+    xShop_FP.xTouchRightArrow.hPos = imgShop[23].h;
+    xShop_FP.xTouchRightArrow.xPos = subTemp[XPOS] - xShop_FP.xTouchRightArrow.wPos/2;
+    xShop_FP.xTouchRightArrow.yPos = subTemp[YPOS] - xShop_FP.xTouchRightArrow.hPos/2;
+    xGame.isReverse=false;
+
+    subTemp[XPOS]=px+20;
+    subTemp[YPOS]=py+170;
+    sprintf(strTempS, "%s", xFashionList_FP.xSlotTemp[xMap.type][xMap.listNum].strName);
+    setFontSizeORI(20);
+    gSetColor(101, 48, 150);
+    gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VH);
+    setFontSize(11);
+    
+    switch(xShop_FP.pos)
+    {
+        case 0:
+        case 1:
+            pos = ACT_FRONT;
+            break;
+        case 2:
+        case 3:
+            pos = ACT_BACK;
+            break;
+        default:
+            pos= ACT_FRONT;
+            break;
+    }
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //의상 레이어에 마네킹바디 넣기
+    setNpcBodyBig_FP(&xSpritNpc[NPC_ACT_FITTINGROOM][pos], pos);
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    xFitting_FP.xModel.xF.code[xMap.type] = xFashionList_FP.xSlotTemp[xMap.type][xMap.listNum].code;
+    //의상 레이어에 의상 넣기
+    setSpritFBig_FP(&xSpritNpc[NPC_ACT_FITTINGROOM][pos],&xFitting_FP.xModel.xF,pos);
+    
+    //헤어셋팅
+    for(int k=0; k < 15; k++)
+    {
+        if(xLayer.xData[xHairMakeUp.xData[xFitting_FP.hairNum/1000][xFitting_FP.hairNum%1000].layerNum].xData[ACT_FRONT][k] != -1)
+        {
+            type = xFitting_FP.hairNum/1000;
+            code = xFitting_FP.hairNum%1000;
+            layer = xHairMakeUp.xData[type][code].layerNum;
+            
+            if(xLayer.xData[layer].xData[ACT_FRONT][k] != -1)
+            {
+                xSpritNpc[NPC_ACT_FITTINGROOM][ACT_FRONT].imgLayer[xLayer.xData[layer].xData[ACT_FRONT][k]][ACT_FRONT] = &xFitting_FP.imgHair[ACT_FRONT][k];
+            }
+            
+            if(xLayer.xData[layer].xData[ACT_BACK][k] != -1)
+            {
+                xSpritNpc[NPC_ACT_FITTINGROOM][ACT_BACK].imgLayer[xLayer.xData[layer].xData[ACT_BACK][k]][ACT_BACK] = &xFitting_FP.imgHair[ACT_BACK][k];
+            }
+        }
+    }
+    
+    //얼굴셋팅
+    for(int k=0; k < 15; k++)
+    {
+        if(xLayer.xData[xHairMakeUp.xData[xFitting_FP.faceNum/1000][xFitting_FP.faceNum%1000].layerNum].xData[ACT_FRONT][k] != -1)
+        {
+            type = xFitting_FP.faceNum/1000;
+            code = xFitting_FP.faceNum%1000;
+            layer = xHairMakeUp.xData[type][code].layerNum;
+            
+            if(xLayer.xData[layer].xData[ACT_FRONT][k] != -1)
+            {
+                xSpritNpc[NPC_ACT_FITTINGROOM][ACT_FRONT].imgLayer[xLayer.xData[layer].xData[ACT_FRONT][k]][ACT_FRONT] = &xFitting_FP.imgFace;
+            }
+            
+            if(xLayer.xData[layer].xData[ACT_BACK][k] != -1)
+            {
+                xSpritNpc[NPC_ACT_FITTINGROOM][ACT_BACK].imgLayer[xLayer.xData[layer].xData[ACT_BACK][k]][ACT_BACK] = &xFitting_FP.imgFace;
+            }
+        }
+    }
+    
+    xSpritNpc[NPC_ACT_FITTINGROOM][pos].nowDelay = xFitting_FP.xModel.nowDelay;
+    xSpritNpc[NPC_ACT_FITTINGROOM][pos].nowFrame = xFitting_FP.xModel.nowFrame;
+    prcSprit(&xSpritNpc[NPC_ACT_FITTINGROOM][pos], &xFitting_FP.xModel.nowDelay, &xFitting_FP.xModel.nowFrame);
+    subTemp[XPOS] = px+20;
+    subTemp[YPOS] = py-20;
+    switch(xShop_FP.pos)
+    {
+        case 1:
+        case 3:
+            reverseSpritBig_FP(&xSpritNpc[NPC_ACT_FITTINGROOM][pos],subTemp[XPOS],subTemp[YPOS],pos,&xFitting_FP.xModel.xFace);
+            break;
+        default:
+            drawSpritBig_FP(&xSpritNpc[NPC_ACT_FITTINGROOM][pos],subTemp[XPOS],subTemp[YPOS],pos,&xFitting_FP.xModel.xFace);
+            break;
+    }
+    
+
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////의상 구매 프리뷰 입력 이벤트 처리 KBY
+
+void keyDressShopPreview_FP(int type, int param1, int param2)
+{
+    if(type==MH_KEY_PRESSEVENT)
+    {
+        if(touchCheck(&xTouchClr)==TRUE && touchType == USER_POINT_PRESS_EVENT)
+        {
+            xShop_FP.isTouchPreviewClr=true;
+        }
+        
+        else if(touchCheck(&xShop_FP.xTouchLeftArrow)==TRUE && touchType == USER_POINT_PRESS_EVENT)
+        {
+            xShop_FP.isTouchLeftArrow = true;
+        }
+        else if(touchCheck(&xShop_FP.xTouchRightArrow)==TRUE && touchType == USER_POINT_PRESS_EVENT)
+        {
+            xShop_FP.isTouchRightArrow = true;
+        }
+    }
+    else if(type==MH_KEY_RELEASEEVENT)
+    {
+        if(touchCheck(&xTouchClr)==TRUE && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            xShop_FP.isTouchPreviewClr=false;
+            xShop_FP.isTouchLeftArrow=false;
+            xShop_FP.isTouchRightArrow=false;
+            
+            for(int i = 0; i < SPRIT_IMGLAYERMAX; i++)
+            {
+                xFitting_FP.xModel.xF.code[i] = xMyCharacter.xF.code[i];
+            }
+
+            xShop_FP.state2 = SHOPPOPUP_STATE_MAIN;
+        }
+        
+        else if(touchCheck(&xShop_FP.xTouchLeftArrow)==TRUE && touchType == USER_POINT_RELEASE_EVENT)
+        {
+            xShop_FP.isTouchLeftArrow=false;
+            xShop_FP.pos--;
+            if (xShop_FP.pos<0)
+            {
+                xShop_FP.pos=3;
+            }
+        }
+        
+        else if(touchCheck(&xShop_FP.xTouchRightArrow)==TRUE && touchType==USER_POINT_RELEASE_EVENT)
+        {
+            xShop_FP.isTouchRightArrow=false;
+            xShop_FP.pos++;
+            if (xShop_FP.pos>3)
+            {
+                xShop_FP.pos=0;
+            }
+        }
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////우편함 이미지 로드 KBY
+
+void mailFreeLoad_FP(bool isLoad)
+{
+    if(isLoad==true)
+    {
+        loadImg("productionexiticon.png", &imgMail[0]);
+        loadImg("fitting_base.png", &imgMail[1]);
+        loadImg("mail_title.png", &imgMail[2]);
+        loadImg("mail_frame_base.png", &imgMail[3]);
+        loadImg("mail_tab_on.png", &imgMail[4]);
+        loadImg("mail_tab_off.png", &imgMail[5]);
+        loadImg("mail_box_text.png", &imgMail[6]);
+        loadImg("mail_icon_alert.png", &imgMail[7]);
+        loadImg("mail_slot.png", &imgMail[8]);
+        loadImg("selectcheck.png", &imgMail[9]);
+        loadImg("checkbox.png", &imgMail[10]);
+        loadImg("friendList_btn_delete.png", &imgMail[11]);
+        loadImg("production_close.png", &imgMail[12]);
+        ////////////////////////////////////////////////////////////////////////////////////
+        //이미지 로드 수정 사항 KBY 2018.2.26
+        loadImg("default_btn.png", &imgBtn);
+    }
+    else
+    {
+        freeImg(&imgMail[0]);
+        freeImg(&imgMail[1]);
+        freeImg(&imgMail[2]);
+        freeImg(&imgMail[3]);
+        freeImg(&imgMail[4]);
+        freeImg(&imgMail[5]);
+        freeImg(&imgMail[6]);
+        freeImg(&imgMail[7]);
+        freeImg(&imgMail[8]);
+        freeImg(&imgMail[9]);
+        freeImg(&imgMail[10]);
+        freeImg(&imgMail[11]);
+        freeImg(&imgMail[12]);
+        freeImg(&imgBtn);
+    }
+}
+
+void drawMail_FP()
+{
+    int px = cx;
+    int py = cy;
+    
+    drawBgFillRect();
+    
+    drawImage(&imgMail[1], px, py+50, 0, 0, imgMail[1].w, imgMail[1].h, VH);
+    
+    subTemp[XPOS] = lcdW-40;
+    subTemp[YPOS] = py-180;
+    
+    drawImage(&imgMail[0], subTemp[XPOS], subTemp[YPOS], 0, 0, imgMail[0].w/2, imgMail[0].h, VH);
+    
+    xTouchClr.wPos = imgMail[0].w;
+    xTouchClr.hPos = imgMail[0].h;
+    xTouchClr.xPos = subTemp[XPOS]-xTouchClr.wPos/2;
+    xTouchClr.yPos = subTemp[YPOS]-xTouchClr.hPos/2;
+    
+    subTemp[XPOS] = px-448;
+    subTemp[YPOS] = py-220;
+    
+    drawImage(&imgMail[2], subTemp[XPOS], subTemp[YPOS], 0, 0, imgMail[2].w, imgMail[2].h, VH);
+    
+    subTemp[XPOS] = px+30;
+    subTemp[YPOS] = py+80;
+    
+    drawImage(&imgMail[3], subTemp[XPOS], subTemp[YPOS], 0, 0, imgMail[3].w, imgMail[3].h, VH);
+    
+    
+    subTemp[XPOS] = px-465;
+    subTemp[YPOS] = py-80;
+    
+//    xWorldMap.isFriendMap = TRUE;
+    if(xWorldMap.isFriendMap == FALSE)
+    {
+        for(int i=0;i<3;i++)
+        {
+            if(i==xMail.selectTab)
+            {
+                drawImage(&imgMail[4], subTemp[XPOS], subTemp[YPOS]+i*(imgMail[4].h/3), 0, i*(imgMail[4].h/3), imgMail[4].w, imgMail[4].h/3, VH);
+            }
+            else
+            {
+                drawImage(&imgMail[5], subTemp[XPOS], subTemp[YPOS]+i*(imgMail[5].h/3), 0, i*(imgMail[5].h/3), imgMail[5].w, imgMail[5].h/3, VH);
+            }
+            
+            xMail.xTouchTab[i].wPos = imgMail[4].w;
+            xMail.xTouchTab[i].hPos = imgMail[4].h/3;
+            xMail.xTouchTab[i].xPos = subTemp[XPOS]-xMail.xTouchTab[i].wPos/2;
+            xMail.xTouchTab[i].yPos = subTemp[YPOS]+(i*(imgMail[4].h/3))-xMail.xTouchTab[i].hPos/2;
+            
+            //        setAlpha(100);
+            //        gSetColor(0,255, 0);
+            //        fillRect(xMail_FP.xTouchTab[i].xPos , xMail_FP.xTouchTab[i].yPos , xMail_FP.xTouchTab[i].wPos, xMail_FP.xTouchTab[i].hPos);
+            //        setAlpha(ALPHA_MAX);
+            
+        }
+    }
+    else
+    {
+        drawImage(&imgMail[5], subTemp[XPOS], subTemp[YPOS], 0, 0, imgMail[5].w, imgMail[5].h/3, VH);
+    }
+    
+    if(xWorldMap.isFriendMap==FALSE)
+    {
+        switch (xMail.selectTab)
+        {
+            case 0:
+            case 1:
+                subTemp[XPOS] = px-330;
+                subTemp[YPOS] = py-158;
+                
+                setFontSizeORI(16);
+                gSetColor(101, 48, 150);
+                gDrawString(subTemp[XPOS], subTemp[YPOS], "비밀글", VH);
+                setFontSize(11);
+                
+                subTemp[XPOS] = px-375;
+                subTemp[YPOS] = py-160;
+                
+                drawImage(&imgMail[10], subTemp[XPOS], subTemp[YPOS], 0, 0, imgMail[10].w, imgMail[10].h, VH);
+                
+                xMail.xTouchSecret.wPos = imgMail[10].w+10;
+                xMail.xTouchSecret.hPos = imgMail[10].h+10;
+                xMail.xTouchSecret.xPos = subTemp[XPOS]-xMail.xTouchSecret.wPos/2;
+                xMail.xTouchSecret.yPos = subTemp[YPOS]-xMail.xTouchSecret.hPos/2;
+                
+                //            xMail_FP.isSecret=true;
+                if(xMail.isSecret==true)
+                {
+                    drawImage(&imgMail[9], subTemp[XPOS]+7, subTemp[YPOS]-10, 0, 0, imgMail[9].w, imgMail[9].h, VH);
+                }
+                
+                //            setAlpha(100);
+                //            gSetColor(255, 0, 0);
+                //            fillRect(xMail_FP.xTouchSecret.xPos , xMail_FP.xTouchSecret.yPos , xMail_FP.xTouchSecret.wPos, xMail_FP.xTouchSecret.hPos);
+                //            setAlpha(ALPHA_MAX);
+                
+                subTemp[XPOS] = px+55;
+                subTemp[YPOS] = py-160;
+                drawImage(&imgMail[6], subTemp[XPOS], subTemp[YPOS], 0, 0, imgMail[6].w, imgMail[6].h, VH);
+                
+                xMail.xTouchTextBox.wPos = imgMail[6].w;
+                xMail.xTouchTextBox.hPos = imgMail[6].h;
+                xMail.xTouchTextBox.xPos = subTemp[XPOS]-xMail.xTouchTextBox.wPos/2;
+                xMail.xTouchTextBox.yPos = subTemp[YPOS]-xMail.xTouchTextBox.hPos/2;
+                
+                //            setAlpha(100);
+                //            gSetColor(255, 0, 0);
+                //            fillRect(xMail_FP.xTouchTextBox.xPos , xMail_FP.xTouchTextBox.yPos , xMail_FP.xTouchTextBox.wPos, xMail_FP.xTouchTextBox.hPos);
+                //            setAlpha(ALPHA_MAX);
+                
+                subTemp[XPOS] = px-280;
+                subTemp[YPOS] = py-160;
+                setFontSizeORI(18);
+                gSetColor(204, 169, 219);
+                //빌드 에러로 인한 수정 KBY 2018.2.26
+                if(strlen(xMail.strTextBox)>0)
+                {
+                    gDrawString(subTemp[XPOS], subTemp[YPOS], xMail.strTextBox, VL);
+                }
+                else
+                {
+                    sprintf(strTempS, "내용을 입력해주세요.");
+                    gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VL);
+                }
+                
+                
+                
+                subTemp[XPOS] = lcdW-165;
+                subTemp[YPOS] = py-160;
+                
+                drawImage(&imgBtn, subTemp[XPOS], subTemp[YPOS], 0, 0, imgBtn.w/2, imgBtn.h/2, VH);
+                
+                xMail.xTouchSendBtn.wPos = imgBtn.w/2;
+                xMail.xTouchSendBtn.hPos = imgBtn.h/2;
+                xMail.xTouchSendBtn.xPos = subTemp[XPOS]-xMail.xTouchSendBtn.wPos/2;
+                xMail.xTouchSendBtn.yPos = subTemp[YPOS]-xMail.xTouchSendBtn.hPos/2;
+                
+                //            setAlpha(100);
+                //            gSetColor(255, 0, 0);
+                //            fillRect(xMail_FP.xTouchSendBtn.xPos , xMail_FP.xTouchSendBtn.yPos , xMail_FP.xTouchSendBtn.wPos, xMail_FP.xTouchSendBtn.hPos);
+                //            setAlpha(ALPHA_MAX);
+                
+                setFontSizeORI(20);
+                gSetColor(101, 48, 150);
+                gDrawString(subTemp[XPOS], subTemp[YPOS], "전송", VH);
+                setFontSize(11);
+                break;
+            case 2:
+                subTemp[XPOS] = px+340;
+                subTemp[YPOS] = py-160;
+                
+                gSetColor(101, 48, 150);
+                setFontSizeORI(16);
+                sprintf(strTempS, "*선물함이 가득 차면 가장 오래된 선물부터 삭제됩니다.");
+                gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VR);
+            default:
+                break;
+        }
+    }
+    else
+    {
+        subTemp[XPOS] = px-330;
+        subTemp[YPOS] = py-158;
+        
+        setFontSizeORI(16);
+        gSetColor(101, 48, 150);
+        gDrawString(subTemp[XPOS], subTemp[YPOS], "비밀글", VH);
+        setFontSize(11);
+        
+        subTemp[XPOS] = px-375;
+        subTemp[YPOS] = py-160;
+        
+        drawImage(&imgMail[10], subTemp[XPOS], subTemp[YPOS], 0, 0, imgMail[10].w, imgMail[10].h, VH);
+        
+        xMail.xTouchSecret.wPos = imgMail[10].w+10;
+        xMail.xTouchSecret.hPos = imgMail[10].h+10;
+        xMail.xTouchSecret.xPos = subTemp[XPOS]-xMail.xTouchSecret.wPos/2;
+        xMail.xTouchSecret.yPos = subTemp[YPOS]-xMail.xTouchSecret.hPos/2;
+        
+        //            xMail_FP.isSecret=true;
+        if(xMail.isSecret==true)
+        {
+            drawImage(&imgMail[9], subTemp[XPOS]+7, subTemp[YPOS]-10, 0, 0, imgMail[9].w, imgMail[9].h, VH);
+        }
+        
+        //            setAlpha(100);
+        //            gSetColor(255, 0, 0);
+        //            fillRect(xMail_FP.xTouchSecret.xPos , xMail_FP.xTouchSecret.yPos , xMail_FP.xTouchSecret.wPos, xMail_FP.xTouchSecret.hPos);
+        //            setAlpha(ALPHA_MAX);
+        
+        subTemp[XPOS] = px+55;
+        subTemp[YPOS] = py-160;
+        drawImage(&imgMail[6], subTemp[XPOS], subTemp[YPOS], 0, 0, imgMail[6].w, imgMail[6].h, VH);
+        
+        xMail.xTouchTextBox.wPos = imgMail[6].w;
+        xMail.xTouchTextBox.hPos = imgMail[6].h;
+        xMail.xTouchTextBox.xPos = subTemp[XPOS]-xMail.xTouchTextBox.wPos/2;
+        xMail.xTouchTextBox.yPos = subTemp[YPOS]-xMail.xTouchTextBox.hPos/2;
+        
+        //            setAlpha(100);
+        //            gSetColor(255, 0, 0);
+        //            fillRect(xMail_FP.xTouchTextBox.xPos , xMail_FP.xTouchTextBox.yPos , xMail_FP.xTouchTextBox.wPos, xMail_FP.xTouchTextBox.hPos);
+        //            setAlpha(ALPHA_MAX);
+        
+        subTemp[XPOS] = px-280;
+        subTemp[YPOS] = py-160;
+        setFontSizeORI(18);
+        gSetColor(204, 169, 219);
+        //빌드 에러로 인한 수정 KBY 2018.2.26
+        if(strlen(xMail.strTextBox)>0)
+        {
+            gDrawString(subTemp[XPOS], subTemp[YPOS],  xMail.strTextBox, VL);
+        }
+        else
+        {
+            sprintf(strTempS, "내용을 입력해주세요.");
+            gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VL);
+        }
+        
+        
+        
+        subTemp[XPOS] = lcdW-165;
+        subTemp[YPOS] = py-160;
+        
+        drawImage(&imgBtn, subTemp[XPOS], subTemp[YPOS], 0, 0, imgBtn.w/2, imgBtn.h/2, VH);
+        
+        xMail.xTouchSendBtn.wPos = imgBtn.w/2;
+        xMail.xTouchSendBtn.hPos = imgBtn.h/2;
+        xMail.xTouchSendBtn.xPos = subTemp[XPOS]-xMail.xTouchSendBtn.wPos/2;
+        xMail.xTouchSendBtn.yPos = subTemp[YPOS]-xMail.xTouchSendBtn.hPos/2;
+        
+        //            setAlpha(100);
+        //            gSetColor(255, 0, 0);
+        //            fillRect(xMail_FP.xTouchSendBtn.xPos , xMail_FP.xTouchSendBtn.yPos , xMail_FP.xTouchSendBtn.wPos, xMail_FP.xTouchSendBtn.hPos);
+        //            setAlpha(ALPHA_MAX);
+        
+        setFontSizeORI(20);
+        gSetColor(101, 48, 150);
+        gDrawString(subTemp[XPOS], subTemp[YPOS], "전송", VH);
+        setFontSize(11);
+    }
+    
+//    setAlpha(100);
+//    gSetColor(255, 0, 0);
+//    fillRect(px-423 , py-128, imgMail[3].w, imgMail[3].h);
+//    setAlpha(ALPHA_MAX);
+    xMail.xDragScrollSlot.totalNum = xMail.totalMailSlot;
+    xMail.xDragScrollSlot.posGab = 130;
+    
+    if(0>=xMail.pageNum)
+    {
+        isSubTemp[13]=FALSE;
+        for(int ee=0;ee<xEventQueueNet.totalNum;ee++)
+        {
+            if(xEventQueueNet.type[ee] == NETQUEUE_TYPE_MAILLIST || xEventQueueNet.type[ee] == NETQUEUE_TYPE_GIFTLIST)
+            {
+                isSubTemp[13] = TRUE;
+                break;
+            }
+        }
+        
+        if(isSubTemp[13] == FALSE)
+        {
+            //////////////////////////////////////////////////////////////////////////////////////////
+            switch(xMail.selectTab)
+            {
+                case 0:
+                case 2:
+                    if(xWorldMap.isFriendMap == FALSE)
+                        xEventQueueNet.friendNum[xEventQueueNet.totalNum] = xNetData.userNum;
+                    else
+                        xEventQueueNet.friendNum[xEventQueueNet.totalNum] = xFriendData[xFriendMap.selectDataSlotNum].userNum;
+                    break;
+                case 1:
+                    xEventQueueNet.friendNum[xEventQueueNet.totalNum] = xMail.pmUserId;
+                    break;
+            }
+            
+            xEventQueueNet.code[xEventQueueNet.totalNum] = xMail.rowNum;
+            xEventQueueNet.slotNum[xEventQueueNet.totalNum] = xMail.pageNum;
+            xMail.pageNum++;
+            switch(xMail.selectTab)
+            {
+                case 0:
+                    addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_MAILLIST, TRUE);
+                    break;
+                case 1:
+                    addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_MAILLIST, TRUE);
+                    break;
+                case 2:
+                    addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GIFTLIST, TRUE);
+                    break;
+            }
+            //////////////////////////////////////////////////////////////////////////////////////////
+        }
+
+    }
+    
+    xMail.xDragScrollSlot.endPos=-(((xMail.xDragScrollSlot.totalNum-3)*xMail.xDragScrollSlot.posGab));
+    if(xMail.xDragScrollSlot.totalNum<=3)
+        xMail.xDragScrollSlot.endPos=0;
+    else
+        xMail.xDragScrollSlot.endPos +=110;
+    
+    int iMax = xMail.xDragScrollSlot.totalNum;
+    int pos = 0;
+    dragScrollPrc(&xMail.xDragScrollSlot, 1, FALSE);
+    gSetClip(true, px-423, py-128, imgMail[3].w, imgMail[3].h);
+    subTemp[XPOS] = px+40;
+    subTemp[YPOS] = py-40;
+    for(int i=0;i<iMax;i++)
+    {
+        pos = xMail.xDragScrollSlot.pos+(xMail.xDragScrollSlot.posGab*i);
+        if(subTemp[YPOS]+pos < -xMail.xDragScrollSlot.posGab||subTemp[YPOS]+pos>lcdW+xMail.xDragScrollSlot.posGab)
+            continue;
+        
+        switch (xMail.selectTab)
+        {
+            case 0:
+            case 1:
+                if(xFriendData[xMail.xMailSlot[i].friendDataSlotNum].userNum == xNetData.userNum)
+                {
+                    drawImage(&imgMail[8], subTemp[XPOS], subTemp[YPOS]+pos, 0, 0, imgMail[8].w, imgMail[8].h, VH);
+                    drawFriendProfile(subTemp[XPOS]-345, subTemp[YPOS]+pos, xFriendData[xMail.xMailSlot[i].friendDataSlotNum].userNum, 100);
+//                    drawPacker(imgMailSlotBg1, subTemp[XPOS], subTemp[YPOS]+pos, 0, 0, imgW(imgMailSlotBg1), imgH(imgMailSlotBg1), VH);
+                   
+                    
+                    gSetColor(101, 48, 150);
+                    setFontSizeORI(18);
+                    sprintf(strTempS, "%s(Lv.%d)",xFriendData[xMail.xMailSlot[i].friendDataSlotNum].strNickName,xFriendData[xMail.xMailSlot[i].friendDataSlotNum].lv);
+                    if(xMail.xMailSlot[i].isSecret == TRUE)
+//                        drawPacker(imgSecret1, subTemp[XPOS]-205-106-13, subTemp[YPOS]+pos-48, 0, 0, imgW(imgSecret1), imgH(imgSecret1), VH);
+                        drawImage(&imgMail[12], subTemp[XPOS]+380, subTemp[YPOS]+pos-45, 0, 0, imgMail[12].w/2, imgMail[12].h, VH);
+                    gDrawString(subTemp[XPOS]-165-106, subTemp[YPOS]+pos-38, strTempS, VL);
+                    
+                    gSetColor(101, 48, 150);
+                    setLabelWidth(510);
+                    gDrawString(subTemp[XPOS]-170-100, subTemp[YPOS]+pos-18, xMail.xMailSlot[i].strText, TL);
+                    setLabelWidth(0);
+                    setFontSize(11);
+                    
+                    setFontSizeORI(14);
+                    gDrawString(subTemp[XPOS]-170-100, subTemp[YPOS]+pos+48, xMail.xMailSlot[i].strTime, VL);
+                    
+                    setFontSize(11);
+                    
+//                    drawPacker(imgFriendDelBtn, subTemp[XPOS]+330, subTemp[YPOS]+pos-56, 0, 0, imgW(imgFriendDelBtn), imgH(imgFriendDelBtn), VH);
+                    drawImage(&imgMail[11], subTemp[XPOS]+380, subTemp[YPOS]+pos+33, 0, 0, imgMail[11].w/2, imgMail[11].h, VH);
+                }
+                else
+                {
+                    drawImage(&imgMail[8], subTemp[XPOS], subTemp[YPOS]+pos, 0, 0, imgMail[8].w, imgMail[8].h, VH);
+                    drawFriendProfile(subTemp[XPOS]-345, subTemp[YPOS]+pos, xFriendData[xMail.xMailSlot[i].friendDataSlotNum].userNum, 100);
+//                    drawPacker(imgMailSlotBg0, subTemp[XPOS], subTemp[YPOS]+pos, 0, 0, imgW(imgMailSlotBg0), imgH(imgMailSlotBg0), VH);
+                    
+                    gSetColor(101, 48, 150);
+                    setFontSizeORI(18);
+                    sprintf(strTempS, "%s(Lv.%d)",xFriendData[xMail.xMailSlot[i].friendDataSlotNum].strNickName,xFriendData[xMail.xMailSlot[i].friendDataSlotNum].lv);
+                    if(xMail.xMailSlot[i].isSecret == TRUE)
+//                        drawPacker(imgSecret1, subTemp[XPOS]-205-13, subTemp[YPOS]+pos-48, 0, 0, imgW(imgSecret1), imgH(imgSecret1), VH);
+                        drawImage(&imgMail[12], subTemp[XPOS]+380, subTemp[YPOS]+pos-45, 0, 0, imgMail[12].w/2, imgMail[12].h, VH);
+                    
+                    gDrawString(subTemp[XPOS]-165-106, subTemp[YPOS]+pos-38, strTempS, VL);
+                   
+                    
+                    gSetColor(101, 48, 150);
+                    setLabelWidth(510);
+                    gDrawString(subTemp[XPOS]-170-100, subTemp[YPOS]+pos-18, xMail.xMailSlot[i].strText, TL);
+                    setLabelWidth(0);
+                    setFontSize(11);
+                    
+                    
+                    setFontSizeORI(14);
+                    gDrawString(subTemp[XPOS]-170-100, subTemp[YPOS]+pos+48, xMail.xMailSlot[i].strTime, VL);
+                    
+                    setFontSize(11);
+                    
+                    if((xWorldMap.isFriendMap == FALSE && xMail.selectTab == 0) || xFriendData[xMail.xMailSlot[i].friendDataSlotNum].userNum == xNetData.userNum)
+//                        drawPacker(imgFriendDelBtn, subTemp[XPOS]+330, subTemp[YPOS]+pos-56, 0, 0, imgW(imgFriendDelBtn), imgH(imgFriendDelBtn), VH);
+                        drawImage(&imgMail[11], subTemp[XPOS]+380, subTemp[YPOS]+pos+33, 0, 0, imgMail[11].w/2, imgMail[11].h, VH);
+                }
+                break;
+            case 2:
+                drawImage(&imgMail[8], subTemp[XPOS], subTemp[YPOS]+pos, 0, 0, imgMail[8].w, imgMail[8].h, VH);
+                drawFriendProfile(subTemp[XPOS]-345, subTemp[YPOS]+pos, xFriendData[xMail.xMailSlot[i].friendDataSlotNum].userNum, 100);
+//                drawPacker(imgMailSlotBg0, subTemp[XPOS], subTemp[YPOS]+pos, 0, 0, imgW(imgMailSlotBg0), imgH(imgMailSlotBg0), VH);
+                
+                gSetColor(101, 48, 150);
+                setFontSizeORI(18);
+                sprintf(strTempS, "%s(Lv.%d)",xFriendData[xMail.xMailSlot[i].friendDataSlotNum].strNickName,xFriendData[xMail.xMailSlot[i].friendDataSlotNum].lv);
+                gDrawString(subTemp[XPOS]-224, subTemp[YPOS]+pos-48, strTempS, VL);
+                gDrawString(subTemp[XPOS]+310, subTemp[YPOS]+pos-48, xMail.xMailSlot[i].strTime, VR);
+                setFontSize(11);
+                
+                
+                if(xMail.xMailSlot[i].type == 0)
+                {
+                    gSetColor(101, 48, 150);
+                    setFontSizeORI(18);
+                    setLabelWidth(560);
+                    sprintf(strTempS, "%s님이 보낸 선물입니다.",xFriendData[xMail.xMailSlot[i].friendDataSlotNum].strNickName);
+                    gDrawString(subTemp[XPOS]-210, subTemp[YPOS]+pos-10, strTempS, VL);
+                    setLabelWidth(0);
+                    setFontSize(11);
+                }
+                else
+                {
+                    gSetColor(101, 48, 150);
+                    setFontSizeORI(18);
+                    setLabelWidth(560);
+                    gDrawString(subTemp[XPOS]-210, subTemp[YPOS]+pos-10, xMail.xMailSlot[i].strText, VL);
+                    setLabelWidth(0);
+                    setFontSize(11);
+                }
+                
+                
+                
+                switch(xMail.xMailSlot[i].giftType)
+                {
+                case 0:	//의상 아이템
+                    setMapData(xMail.xMailSlot[i].giftValue.oriData);
+                    sprintf(strTempS, "첨부선물 : %s(의상)",xFashionData[xMap.type][xMap.listNum].strName);
+                    break;
+                case 1:	//헤어
+                    setMapData(xMail.xMailSlot[i].giftValue.oriData);
+                    sprintf(strTempS, "첨부선물 : %s(헤어)",xObj.xObjData[xMap.type][xMap.listNum].strName);
+                    break;
+                case 2:	//표정
+                    setCommaNum(strTempB, xMail.xMailSlot[i].giftValue.oriData);
+                    sprintf(strTempS, "첨부선물 : %s(표정)",strTempB);
+                    break;
+                case 3:	//인테리어
+                    sprintf(strTempS, "첨부선물 : %s",xMail.xMailSlot[i].giftValue.oriData);
+                    break;
+                case 4:	//골드(추가)
+                    setCommaNum(strTempB, xMail.xMailSlot[i].giftValue.oriData);
+                    sprintf(strTempS, "첨부선물 : %s골드", strTempB);
+                    break;
+                case 5:	//캐시
+                    setCommaNum(strTempB, xMail.xMailSlot[i].giftValue.oriData);
+                    sprintf(strTempS, "첨부선물 : %s 크리스탈", strTempB);
+                    break;
+                case 6:	//당근
+                    setCommaNum(strTempB, xMail.xMailSlot[i].giftValue.oriData);
+                    sprintf(strTempS, "첨부선물 : 당근 %s개", strTempB);
+                    break;
+                case 7:	//경험치
+                    setCommaNum(strTempB, xMail.xMailSlot[i].giftValue.oriData);
+                    sprintf(strTempS, "첨부선물 : 경험치 %s", strTempB);
+                    break;
+                case 8:	//판매용 의상
+                    setMapData(xMail.xMailSlot[i].giftValue.oriData);
+//                    sprintf(strTempS, "첨부선물 : %s(판매용)", xCatalog_FP.xSlot[xMap.type][xMap.listNum].strName);
+                    break;
+                case 9:	//재료(온실/물레)
+                    setMapData(xMail.xMailSlot[i].giftValue.oriData);
+//                    sprintf(strTempS, "첨부선물 : %s(재료)", );
+                    break;
+                default:
+                    break;
+                }
+                
+                gDrawString(subTemp[XPOS]-210, subTemp[YPOS]+pos-31+60, strTempS, VL);
+                
+                if(xMail.xMailSlot[i].isRecvOk == FALSE)
+                {
+                    
+                    if(xWorldMap.isFriendMap == FALSE)
+                    {
+                        if(i == 0)
+                        {
+                            if(xSave.giftLastKey != xMail.giftLastKey)
+                            {
+                                xSave.giftLastKey = xMail.giftLastKey;
+                                gameSave(SAVE_SLOT_GAME);
+                            }
+                        }
+                    }
+                    drawPacker(imgMailGiftBtn, subTemp[XPOS]+273, subTemp[YPOS]+pos+6, 0, 0, imgW(imgMailGiftBtn), imgH(imgMailGiftBtn), VH);
+                }
+                else
+                {
+                    if(xWorldMap.isFriendMap == FALSE)
+                    {
+                        if(i == 0)
+                        {
+                            if(xSave.giftLastKey != 0 || xMail.giftLastKey != 0)
+                            {
+                                xMail.giftLastKey = 0;
+                                xSave.giftLastKey = 0;
+                                gameSave(SAVE_SLOT_GAME);
+                            }
+                        }
+                    }
+                }
+                
+                
+                break;
+            default:
+                break;
+        }
+    }
+    gSetClip(false, 0, 0, lcdW, lcdH);
+}
+void startSendMachine_FP()
+{
+	FreeLoadSendMachine_FP(true);
+	xWorldMap.state = WORLDMAP_STATE_SENDMACHINE_FP;
+	xSendMachine_FP.state = SENDMACHINE_STATE_WAIT;
+	xSendMachine_FP.stateSub = SENDMACHINE_SUBSTATE_INFO;
+	xSendMachine_FP.btnType = SENDMACHINE_BTNTYPE_NONE;
+	
+	xSendMachine_FP.xData[0].state = SENDMACHINE_STATE_WAIT;
+	
+	xSendMachine_FP.xData[0].bkey = getProductionIndex(xMap.dataKey[xMap.nowFloor][MAP_TYPE_OBJ][xSelectTileOne.tileNumX][xSelectTileOne.tileNumY]);
+	
+	
+	xSendMachine_FP.xDragScrollS.touchXpos=DONT;
+	xSendMachine_FP.xDragScrollS.touchYpos=DONT;
+	xSendMachine_FP.xDragScrollS.touchXposBefore=DONT;
+	xSendMachine_FP.xDragScrollS.touchYposBefore=DONT;
+	xSendMachine_FP.xDragScrollS.selectNum=0;
+	xSendMachine_FP.xDragScrollS.pos=0;
+	xSendMachine_FP.xDragScrollS.speed=0;
+	
+	xSendMachine_FP.xDragScrollB.touchXpos=DONT;
+	xSendMachine_FP.xDragScrollB.touchYpos=DONT;
+	xSendMachine_FP.xDragScrollB.touchXposBefore=DONT;
+	xSendMachine_FP.xDragScrollB.touchYposBefore=DONT;
+	xSendMachine_FP.xDragScrollB.selectNum=0;
+	xSendMachine_FP.xDragScrollB.pos=0;
+	xSendMachine_FP.xDragScrollB.speed=0;
+	
+	xSendMachine_FP.selectNum = DONT;
+	
+	xSendMachine_FP.anyCnt = 0;
+	xSendMachine_FP.gameCnt = 0;
+	xSendMachine_FP.endCnt = 0;
+	
+	for(int i = 0; i < 16; i++)
+	{
+		xSendMachine_FP.xSlot[i].itemNum = DONT;
+		xSendMachine_FP.xSlot[i].itemCnt = 0;
+		xSendMachine_FP.xSlot[i].startTime = 0;
+		xSendMachine_FP.xSlot[i].endTime = 0;
+		xSendMachine_FP.xSlot[i].key = 0;
+	}
+	
+	xSendMachine_FP.xSendSlot.itemNum = DONT;
+	xSendMachine_FP.xSendSlot.itemCnt = 0;
+	xSendMachine_FP.xSendSlot.startTime = 0;
+	xSendMachine_FP.xSendSlot.endTime = 0;
+	xSendMachine_FP.xSendSlot.key = 0;
+	
+	xSendMachine_FP.isSendEnd = false;
+	
+	//전송기 정보
+	addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SENDMACHINEINFO, TRUE);
+	
+	//전송기 슬롯정보
+	addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SENDMACHINESLOTINFO, TRUE);
+	
+	//현재 보유중인 의상번호 및 의상개수
+	addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_GETDRESSINFO, TRUE);
+	
+	
+}
+
+void endSendMachine_FP()
+{
+	FreeLoadSendMachine_FP(false);
+	xWorldMap.state = WORLDMAP_STATE_PLAY;
+}
+
+void keySendMachine_FP(M_Int32 type,M_Int32 param1,M_Int32 param2)
+{
+	if(type == MH_KEY_PRESSEVENT)
+	{
+		for(int k=0;k<xSendMachine_FP.dressSlotTotal;k++)
+		{
+			if(touchCheck(&xSendMachine_FP.xTouchStorage[k])==TRUE && touchType == USER_POINT_PRESS_EVENT)
+			{
+				xSendMachine_FP.selectNum = k;
+				break;
+			}
+		}
+		
+		if(touchCheck(&xSendMachine_FP.xTouchExit) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+		{
+			//나가기
+			setSendMachineBtnType_FP(SENDMACHINE_BTNTYPE_EXIT);
+		}
+		else if(touchCheck(&xSendMachine_FP.xTouchUpgrade) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+		{
+			//업그레이드 버튼
+			setSendMachineBtnType_FP(SENDMACHINE_BTNTYPE_UPGRADE);
+		}
+		else if(touchCheck(&xSendMachine_FP.xTouchArrow[0][SENDMACHINE_BTNDIR_LEFT]) == TRUE && xSendMachine_FP.xDragScrollS.selectNum > 0 && touchType == USER_POINT_PRESS_EVENT)
+		{
+			//보유의상 리스트 왼쪽 화살표 버튼
+			setSendMachineBtnType_FP(SENDMACHINE_BTNTYPE_STORAGEL);
+		}
+		else if(touchCheck(&xSendMachine_FP.xTouchArrow[0][SENDMACHINE_BTNDIR_RIGHT]) == TRUE && xSendMachine_FP.xDragScrollS.selectNum < xSendMachine_FP.xDragScrollS.totalNum-1
+				&& touchType == USER_POINT_PRESS_EVENT)
+		{
+			//보유의상 리스트 오른쪽 화살표 버튼
+			setSendMachineBtnType_FP(SENDMACHINE_BTNTYPE_STORAGER);
+		}
+		else if(touchCheck(&xSendMachine_FP.xTouchArrow[1][SENDMACHINE_BTNDIR_LEFT]) == TRUE && xSendMachine_FP.xDragScrollB.selectNum > 0 && touchType == USER_POINT_PRESS_EVENT)
+		{
+			//대기슬롯 리스트 왼쪽 화살표 버튼
+			setSendMachineBtnType_FP(SENDMACHINE_BTNTYPE_SLOTL);
+		}
+		else if(touchCheck(&xSendMachine_FP.xTouchArrow[1][SENDMACHINE_BTNDIR_RIGHT]) == TRUE && xSendMachine_FP.xDragScrollB.selectNum < xSendMachine_FP.xDragScrollB.totalNum-1
+				&& touchType == USER_POINT_PRESS_EVENT)
+		{
+			//대기슬롯 리스트 오른쪽 화살표 버튼
+			setSendMachineBtnType_FP(SENDMACHINE_BTNTYPE_SLOTR);
+		}
+		else if(touchCheck(&xSendMachine_FP.xTouchOpenSlot) == TRUE && touchType == USER_POINT_PRESS_EVENT)
+		{
+			//대기슬롯 오픈 버튼
+			setSendMachineBtnType_FP(SENDMACHINE_BTNTYPE_LOCK);
+		}
+		else
+			dragScrollKeyPrc(&xSaleShop.xDragScroll,0);
+		
+	}
+	else if(type == MH_KEY_RELEASEEVENT)
+	{
+		if(touchCheck(&xSendMachine_FP.xTouchExit) == TRUE && touchType == USER_POINT_RELEASE_EVENT)
+		{
+			//나가기
+			playSnd(SND_MENU_OK);
+			endSendMachine_FP();
+			xWorldMap.isKeyReturn = TRUE;
+		}
+		else if(touchCheck(&xSendMachine_FP.xTouchUpgrade) == TRUE && touchType == USER_POINT_RELEASE_EVENT)
+		{
+			//업그레이드 팝업호출
+			playSnd(SND_MENU_OK);
+		}
+		else if(touchCheck(&xSendMachine_FP.xTouchArrow[0][SENDMACHINE_BTNDIR_LEFT]) == TRUE && xSendMachine_FP.xDragScrollS.selectNum > 0 && touchType == USER_POINT_RELEASE_EVENT)
+		{
+			//보유의상 리스트 왼쪽 화살표 버튼
+			playSnd(SND_MENU_OK);
+			xSendMachine_FP.xDragScrollS.speed = 640;
+		}
+		else if(touchCheck(&xSendMachine_FP.xTouchArrow[0][SENDMACHINE_BTNDIR_RIGHT]) == TRUE &&
+				xSendMachine_FP.xDragScrollS.selectNum < xSendMachine_FP.xDragScrollS.totalNum-1 && touchType == USER_POINT_RELEASE_EVENT)
+		{
+			//보유의상 리스트 오른쪽 화살표 버튼
+			playSnd(SND_MENU_OK);
+			xSendMachine_FP.xDragScrollS.speed = -640;
+		}
+		else if(touchCheck(&xSendMachine_FP.xTouchArrow[1][SENDMACHINE_BTNDIR_LEFT]) == TRUE && xSendMachine_FP.xDragScrollB.selectNum > 0 && touchType == USER_POINT_RELEASE_EVENT)
+		{
+			//대기슬롯 리스트 왼쪽 화살표 버튼
+			playSnd(SND_MENU_OK);
+			xSendMachine_FP.xDragScrollB.speed = 640;
+		}
+		else if(touchCheck(&xSendMachine_FP.xTouchArrow[1][SENDMACHINE_BTNDIR_RIGHT]) == TRUE &&
+				xSendMachine_FP.xDragScrollB.selectNum < xSendMachine_FP.xDragScrollB.totalNum-1 && touchType == USER_POINT_RELEASE_EVENT)
+		{
+			//대기슬롯 리스트 오른쪽 화살표 버튼
+			playSnd(SND_MENU_OK);
+			xSendMachine_FP.xDragScrollB.speed = -640;
+		}
+		else if(touchCheck(&xSendMachine_FP.xTouchOpenSlot) == TRUE && touchType == USER_POINT_RELEASE_EVENT)
+		{
+			//대기슬롯추가 팝업호출
+			playSnd(SND_MENU_OK);
+			
+			if(xSendMachine_FP.xData[0].totalSlot >= SENDMACHINE_SLOTMAX)
+			{
+				
+				setPopup(POPUP_USERTEXT, playState, playState, 0, DONT);
+				sprintf(xPopup.strText, "전송기\n슬롯을 더이상 확장할 수 없습니다.");
+				xWorldMap.isKeyReturn = FALSE;
+			}
+			else
+			{
+				setPopup(POPUP_SENDMACHINESLOTOPEN, PLAY_PLAY, PLAY_PLAY, 0, DONT);
+			}
+		}
+		else if(touchCheck(&xSendMachine_FP.xTouchSlot) == TRUE && touchType == USER_POINT_RELEASE_EVENT)
+		{
+			//대기슬롯에 판매의상 넣기
+			setSlotDress(xSendMachine_FP.selectNum, 1+xSendMachine_FP.xData[0].lv);
+		}
+		xSendMachine_FP.selectNum = DONT;
+		setSendMachineBtnType_FP(SENDMACHINE_BTNTYPE_NONE);
+	}
+}
+
+void prcSendMachine_FP()
+{
+	xSendMachine_FP.anyCnt++;
+	if(xSendMachine_FP.anyCnt > 10000 || isPlaySendMachine() == false)
+		xSendMachine_FP.anyCnt = 0;
+	
+	switch(xSendMachine_FP.state)
+	{
+		case SENDMACHINE_STATE_WAIT:
+			xSendMachine_FP.gameCnt = 0;
+			break;
+		case SENDMACHINE_STATE_START:
+			xSendMachine_FP.gameCnt++;
+			if(xSendMachine_FP.gameCnt >= 40)
+				xSendMachine_FP.state = SENDMACHINE_STATE_LOOP;
+			break;
+		case SENDMACHINE_STATE_LOOP:
+			xSendMachine_FP.gameCnt++;
+			if(xSendMachine_FP.gameCnt > 114)
+				xSendMachine_FP.gameCnt = 40;
+			break;
+	}
+	
+	if(xSendMachine_FP.isSendEnd == true)
+	{
+		xSendMachine_FP.endCnt++;
+		if(xSendMachine_FP.endCnt > 20)
+		{
+			xSendMachine_FP.endCnt = 0;
+			xSendMachine_FP.isSendEnd = false;
+		}
+	}
+	
+	
+	//	if(isPlaySendMachine() == false && xSendMachine_FP.xSendSlot.itemNum == DONT)
+	//		xSendMachine_FP.gameCnt = 0;
+	//	else
+	//	{
+	//		xSendMachine_FP.gameCnt++;
+	//		if(xSendMachine_FP.gameCnt > 114)
+	//			xSendMachine_FP.gameCnt = 40;
+	//	}
+	
+	//	if(xSendMachine_FP.xSendSlot.itemNum != DONT && xSendMachine_FP.gameCnt == 29)
+	//	{
+	//		//0번대기슬롯 의상이 전송슬롯에 도착했을때
+	//		for(int i = 0; i < xSendMachine_FP.xData[0].totalSlot-1; i++)
+	//		{
+	//			xSendMachine_FP.xSlot[i].key = xSendMachine_FP.xSlot[i+1].key;
+	//			xSendMachine_FP.xSlot[i].itemNum = xSendMachine_FP.xSlot[i+1].itemNum;
+	//			xSendMachine_FP.xSlot[i].itemCnt = xSendMachine_FP.xSlot[i+1].itemCnt;
+	//			xSendMachine_FP.xSlot[i].startTime = xSendMachine_FP.xSlot[i+1].startTime;
+	//			xSendMachine_FP.xSlot[i].endTime = xSendMachine_FP.xSlot[i+1].endTime;
+	//
+	//			xSendMachine_FP.xSlot[i+1].key = 0;
+	//			xSendMachine_FP.xSlot[i+1].itemNum = DONT;
+	//			xSendMachine_FP.xSlot[i+1].itemCnt = 0;
+	//			xSendMachine_FP.xSlot[i+1].startTime = 0;
+	//			xSendMachine_FP.xSlot[i+1].endTime = 0;
+	//
+	//		}
+	//	}
+	
+	//전송완료
+	if(xSendMachine_FP.xSendSlot.itemNum != DONT && xCalendar.nowTime >= xSendMachine_FP.xSendSlot.endTime && xSendMachine_FP.xSendSlot.key != 0)
+	{
+		//전송기 전송완료 요청
+		xEventQueueNet.typeNum[xEventQueueNet.totalNum] = 1;
+		xEventQueueNet.bkey[xEventQueueNet.totalNum] = xSendMachine_FP.xData[0].bkey;
+		xEventQueueNet.idx[xEventQueueNet.totalNum] = xSendMachine_FP.xSendSlot.key;
+		xEventQueueNet.ITEM_INDEX[xEventQueueNet.totalNum] = xSendMachine_FP.xSendSlot.itemNum;
+		xEventQueueNet.ITEM_COUNT[xEventQueueNet.totalNum] = xSendMachine_FP.xSendSlot.itemCnt;
+		xEventQueueNet.start_time[xEventQueueNet.totalNum] = xSendMachine_FP.xSendSlot.startTime;
+		xEventQueueNet.end_time[xEventQueueNet.totalNum] = xSendMachine_FP.xSendSlot.endTime;
+		addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SENDMACHINESLOTUPDATE, TRUE);
+		
+		//전송기 슬롯정보
+		xEventQueueNet.bkey[xEventQueueNet.totalNum] = xSendMachine_FP.xData[0].bkey;
+		addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SENDMACHINESLOTINFO, TRUE);
+		
+		xSendMachine_FP.xSendSlot.itemNum = DONT;
+		
+		xSendMachine_FP.stateSub = SENDMACHINE_SUBSTATE_END;
+	}
+}
+
+void drawSendMachine_FP()
+{
+	int px = cx;
+	int py = cy;
+	
+	int pos;
+	int slotCode;
+	int slotNum;
+	int temp;
+	int totalnum;
+	int SendMachineIndex = 0;
+	int x = 0;
+	int y = 0;
+	int alpha = 0;
+	int rotate = 0;
+	int scale = 0;
+	
+	drawBgFillRect();
+	
+	//BG
+	subTemp[XPOS] = 0;
+	subTemp[YPOS] = lcdH - imgSendMachine_BG.h;
+	drawImage(&imgSendMachine_BG, subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_BG.w, imgSendMachine_BG.h, TL);
+	
+	//타이틀
+	subTemp[XPOS] = 0;
+	subTemp[YPOS] = lcdH - imgSendMachine_BG.h - imgSendMachine_Title.h/4 - 10;
+	
+	drawImage(&imgSendMachine_Title, subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_Title.w, imgSendMachine_Title.h, TL);
+	sprintf(strTempS,"전송기 LV.%d",xSendMachine_FP.xData[0].lv+1);
+	gDrawString(subTemp[XPOS]+imgSendMachine_Title.w/2, subTemp[YPOS]+imgSendMachine_Title.h-32, strTempS, VH);
+	
+	
+	//Exit버튼
+	subTemp[XPOS] = lcdW-40;
+	subTemp[YPOS] = py-180;
+	
+	if(xSendMachine_FP.btnType == SENDMACHINE_BTNTYPE_EXIT)
+		drawImage(&imgSendMachine_BtnExit, subTemp[XPOS], subTemp[YPOS], imgSendMachine_BtnExit.w/2, 0, imgSendMachine_BtnExit.w/2, imgSendMachine_BtnExit.h, VH);
+	else
+		drawImage(&imgSendMachine_BtnExit, subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_BtnExit.w/2, imgSendMachine_BtnExit.h, VH);
+	
+	xSendMachine_FP.xTouchExit.wPos = imgSendMachine_BtnExit.w;
+	xSendMachine_FP.xTouchExit.hPos = imgSendMachine_BtnExit.h;
+	xSendMachine_FP.xTouchExit.xPos = subTemp[XPOS]-xSendMachine_FP.xTouchExit.wPos/2;
+	xSendMachine_FP.xTouchExit.yPos = subTemp[YPOS]-xSendMachine_FP.xTouchExit.hPos/2;
+	
+	//업그레이드버튼
+	subTemp[XPOS] = imgSendMachine_BG.w - 230;
+	subTemp[YPOS] = lcdH - imgSendMachine_BG.h + 23 + (65 - imgSendMachine_BtnUpgrade.h)/2;
+	
+	if(xSendMachine_FP.btnType == SENDMACHINE_BTNTYPE_UPGRADE)
+		drawImage(&imgSendMachine_BtnUpgrade, subTemp[XPOS], subTemp[YPOS], imgSendMachine_BtnUpgrade.w/2, 0, imgSendMachine_BtnUpgrade.w/2, imgSendMachine_BtnUpgrade.h, TL);
+	else
+		drawImage(&imgSendMachine_BtnUpgrade, subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_BtnUpgrade.w/2, imgSendMachine_BtnUpgrade.h, TL);
+	
+	xSendMachine_FP.xTouchUpgrade.wPos = imgSendMachine_BtnUpgrade.w/2;
+	xSendMachine_FP.xTouchUpgrade.hPos = imgSendMachine_BtnUpgrade.h;
+	xSendMachine_FP.xTouchUpgrade.xPos = subTemp[XPOS];
+	xSendMachine_FP.xTouchUpgrade.yPos = subTemp[YPOS];
+	
+	
+	//보유의상리스트
+	subTemp[XPOS] = px-448-imgSendMachine_Storage[0].w/2;
+	subTemp[YPOS] = py-30-imgSendMachine_Storage[0].h/2;
+	drawImage(&imgSendMachine_Storage[0], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_Storage[0].w, imgSendMachine_Storage[0].h, TL);
+	
+	subTemp[XPOS] = px+2-imgSendMachine_Storage[1].w/2;
+	subTemp[YPOS] = py-30-imgSendMachine_Storage[1].h/2;
+	drawImage(&imgSendMachine_Storage[1], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_Storage[1].w, imgSendMachine_Storage[1].h, TL);
+	
+	subTemp[XPOS] = px+450-imgSendMachine_Storage[2].w/2;
+	subTemp[YPOS] = py-30-imgSendMachine_Storage[2].h/2;
+	drawImage(&imgSendMachine_Storage[2], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_Storage[2].w, imgSendMachine_Storage[2].h, TL);
+	
+	subTemp[XPOS] = px-imgSendMachine_StorageTitle.w/2;
+	subTemp[YPOS] = py-90-imgSendMachine_StorageTitle.h/2;
+	drawImage(&imgSendMachine_StorageTitle, subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_StorageTitle.w, imgSendMachine_StorageTitle.h, TL);
+	
+	
+	
+	subTemp[XPOS] = px-448;
+	subTemp[YPOS] = py-30;
+	if(xSendMachine_FP.xDragScrollS.selectNum == 0)
+		drawImage(&imgSendMachine_BtnArrow[0], subTemp[XPOS], subTemp[YPOS], imgSendMachine_BtnArrow[0].w*2/6, 0, imgSendMachine_BtnArrow[0].w/6, imgSendMachine_BtnArrow[0].h, VH);
+	else if(xSendMachine_FP.btnType == SENDMACHINE_BTNTYPE_STORAGEL)
+		drawImage(&imgSendMachine_BtnArrow[0], subTemp[XPOS], subTemp[YPOS], imgSendMachine_BtnArrow[0].w*4/6, 0, imgSendMachine_BtnArrow[0].w/6, imgSendMachine_BtnArrow[0].h, VH);
+	else
+		drawImage(&imgSendMachine_BtnArrow[0], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_BtnArrow[0].w/6, imgSendMachine_BtnArrow[0].h, VH);
+	xSendMachine_FP.xTouchArrow[0][SENDMACHINE_BTNDIR_LEFT].wPos = imgSendMachine_Storage[0].w+40;
+	xSendMachine_FP.xTouchArrow[0][SENDMACHINE_BTNDIR_LEFT].hPos = imgSendMachine_Storage[0].h;
+	xSendMachine_FP.xTouchArrow[0][SENDMACHINE_BTNDIR_LEFT].xPos = px-448-imgSendMachine_Storage[0].w/2-20;
+	xSendMachine_FP.xTouchArrow[0][SENDMACHINE_BTNDIR_LEFT].yPos = py-30-imgSendMachine_Storage[0].h/2;
+	
+	subTemp[XPOS] = px+450;
+	subTemp[YPOS] = py-30;
+	if(xSendMachine_FP.xDragScrollS.selectNum == xSendMachine_FP.xDragScrollS.totalNum-1)
+		drawImage(&imgSendMachine_BtnArrow[0], subTemp[XPOS], subTemp[YPOS], imgSendMachine_BtnArrow[0].w*3/6, 0, imgSendMachine_BtnArrow[0].w/6, imgSendMachine_BtnArrow[0].h, VH);
+	else if(xSendMachine_FP.btnType == SENDMACHINE_BTNTYPE_STORAGER)
+		drawImage(&imgSendMachine_BtnArrow[0], subTemp[XPOS], subTemp[YPOS], imgSendMachine_BtnArrow[0].w*5/6, 0, imgSendMachine_BtnArrow[0].w/6, imgSendMachine_BtnArrow[0].h, VH);
+	else
+		drawImage(&imgSendMachine_BtnArrow[0], subTemp[XPOS], subTemp[YPOS], imgSendMachine_BtnArrow[0].w/6, 0, imgSendMachine_BtnArrow[0].w/6, imgSendMachine_BtnArrow[0].h, VH);
+	xSendMachine_FP.xTouchArrow[0][SENDMACHINE_BTNDIR_RIGHT].wPos = imgSendMachine_Storage[2].w+40;
+	xSendMachine_FP.xTouchArrow[0][SENDMACHINE_BTNDIR_RIGHT].hPos = imgSendMachine_Storage[2].h;
+	xSendMachine_FP.xTouchArrow[0][SENDMACHINE_BTNDIR_RIGHT].xPos = px+450-imgSendMachine_Storage[2].w/2-20;
+	xSendMachine_FP.xTouchArrow[0][SENDMACHINE_BTNDIR_RIGHT].yPos = py-30-imgSendMachine_Storage[2].h/2;
+	
+	//    setAlpha(100);
+	//    gSetColor(0, 0, 255);
+	//    fillRect(xProduction_FP.xTouchLeftBtn.xPos, xProduction_FP.xTouchLeftBtn.yPos, xProduction_FP.xTouchLeftBtn.wPos, xProduction_FP.xTouchLeftBtn.hPos);
+	//    setAlpha(ALPHA_MAX);
+	
+	totalnum = xSendMachine_FP.dressSlotTotal;
+	xSendMachine_FP.xDragScrollS.totalNum = 1+(xSendMachine_FP.dressSlotTotal-1)/8;
+	xSendMachine_FP.xDragScrollS.posGab = 1280;
+	dragScrollPrc(&xSendMachine_FP.xDragScrollS, 0, FALSE);
+	
+	gSetClip(true, px-430, 0, 860, lcdH);
+	//    gSetColor(0,255,0);
+	//    setAlpha(100);
+	//    fillRect(px-430, 0, 860, lcdH);
+	//    setAlpha(ALPHA_MAX);
+	for(int page =-1;page<=xSendMachine_FP.xDragScrollS.totalNum;page++)
+	{
+		if(xSendMachine_FP.xDragScrollS.selectNum+page>=0 && xSendMachine_FP.xDragScrollS.selectNum+page<xSendMachine_FP.xDragScrollS.totalNum)
+		{
+			for(int i=0;i<8;i++)
+			{
+				if(((xSendMachine_FP.xDragScrollS.selectNum+page)*8)+i>=totalnum)
+					break;
+				
+				pos = xSendMachine_FP.xDragScrollS.pos+(xSendMachine_FP.xDragScrollS.posGab*page);
+				subTemp[XPOS] = px-420+pos+((i%8)*105);
+				subTemp[YPOS] = py-80;
+				
+				//그림자
+				drawImage(&imgSendMachine_Storage[3], subTemp[XPOS]+45, subTemp[YPOS]+80, 0, 0, imgSendMachine_Storage[3].w, imgSendMachine_Storage[3].h, VH);
+				
+				
+				
+				slotNum = ((xSendMachine_FP.xDragScrollS.selectNum+page)*8)+i;
+				//                slotCode = xCatalog_FP.xSlot[0][slotNum].code;
+				slotCode = xSendMachine_FP.xDress[slotNum].itemNum;
+				
+				xSendMachine_FP.xTouchStorage[slotNum].wPos = 90;
+				xSendMachine_FP.xTouchStorage[slotNum].hPos = 100;
+				xSendMachine_FP.xTouchStorage[slotNum].xPos = subTemp[XPOS];
+				xSendMachine_FP.xTouchStorage[slotNum].yPos = subTemp[YPOS];
+				/*
+				 gSetColor(255, 0, 0);
+				 setAlpha(100);
+				 fillRect(xSendMachine_FP.xTouchStorage[slotNum].xPos, xSendMachine_FP.xTouchStorage[slotNum].yPos, xSendMachine_FP.xTouchStorage[slotNum].wPos, xSendMachine_FP.xTouchStorage[slotNum].hPos);
+				 setAlpha(ALPHA_MAX);
+				 */
+				setMapData(slotCode);
+				loadFashionFImg_FP(xMap.type, xMap.listNum);
+				
+				//보유의상
+				xGame.fgameScale = 0.6f;
+				xGame.fgameScaleCx = subTemp[XPOS]+110;
+				xGame.fgameScaleCy = subTemp[YPOS];
+				drawImage(&imgFittingF_FP[xMap.type][xMap.listNum], subTemp[XPOS], subTemp[YPOS]-20, 0, 0, imgFittingF_FP[xMap.type][xMap.listNum].w, imgFittingF_FP[xMap.type][xMap.listNum].h, VH);
+				
+				xGame.fgameScaleCx=cx;
+				xGame.fgameScaleCy=cy;
+				xGame.fgameScale = 1.0f;
+				
+				//보유의사개수
+				subTemp[XPOS]+=50;
+				subTemp[YPOS]+=70;
+				drawNum(&imgSendMachine_Num, subTemp[XPOS], subTemp[YPOS], xSendMachine_FP.xDress[slotNum].itemCnt,0,VL);
+				
+				//                gSetColor(255, 0, 0);
+				//                setAlpha(100);
+				//                fillRect(subTemp[XPOS], subTemp[YPOS], 90, 100);
+				//                setAlpha(ALPHA_MAX);
+				
+				
+				
+				//                gSetColor(0, 0, 0);
+				//                sprintf(strTempS,"%d",i);
+				//                gDrawString(subTemp[XPOS], subTemp[YPOS], strTempS, VH);
+				
+				
+			}
+		}
+	}
+	gSetClip(false, 0, 0, lcdW, lcdH);
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//전송슬롯
+	if(xSendMachine_FP.gameCnt <= 39)
+	{
+		switch(xSendMachine_FP.gameCnt)
+		{
+			case 30:xGame.reSize=100;break;
+			case 31:xGame.reSize=103;break;
+			case 32:xGame.reSize=105;break;
+			case 33:xGame.reSize=105;break;
+			case 34:xGame.reSize=105;break;
+			case 35:xGame.reSize=104;break;
+			case 36:xGame.reSize=103;break;
+			case 37:xGame.reSize=103;break;
+			case 38:xGame.reSize=102;break;
+			case 39:xGame.reSize=102;break;
+			default:xGame.reSize=100;break;
+		}
+	}
+	else
+	{
+		switch(xSendMachine_FP.gameCnt)
+		{
+			case 0: xGame.reSize=101; break;
+			case 12: xGame.reSize=102; break;
+			case 13: xGame.reSize=103; break;
+			case 14: xGame.reSize=103; break;
+			case 15: xGame.reSize=102; break;
+			case 16: xGame.reSize=102; break;
+			case 17: xGame.reSize=101; break;
+			case 23: xGame.reSize=102; break;
+			case 24: xGame.reSize=103; break;
+			case 25: xGame.reSize=103; break;
+			case 26: xGame.reSize=102; break;
+			case 27: xGame.reSize=102; break;
+			case 28: xGame.reSize=101; break;
+			case 36: xGame.reSize=102; break;
+			case 37: xGame.reSize=103; break;
+			case 38: xGame.reSize=103; break;
+			case 39: xGame.reSize=102; break;
+			case 40: xGame.reSize=102; break;
+			case 41: xGame.reSize=101; break;
+			case 47: xGame.reSize=102; break;
+			case 48: xGame.reSize=103; break;
+			case 49: xGame.reSize=103; break;
+			case 50: xGame.reSize=102; break;
+			case 51: xGame.reSize=102; break;
+			case 52: xGame.reSize=101; break;
+			case 63: xGame.reSize=102; break;
+			case 64: xGame.reSize=103; break;
+			case 65: xGame.reSize=103; break;
+			case 66: xGame.reSize=102; break;
+			case 67: xGame.reSize=102; break;
+			case 68: xGame.reSize=101; break;
+			default:xGame.reSize=100; break;
+		}
+	}
+	xGame.isReSizeDraw = true;
+	subTemp[XPOS] = px-440+imgSendMachine_Display.w/2;
+	subTemp[YPOS] = py+215-imgSendMachine_Slot[0].h/2-15;
+	drawImage(&imgSendMachine_Slot[0], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_Slot[0].w, imgSendMachine_Slot[0].h, VH);
+	xGame.reSize=100;
+	xGame.isReSizeDraw = false;
+	
+	//전송디스플레이
+	subTemp[XPOS] = px-440;
+	subTemp[YPOS] = py+215;
+	drawImage(&imgSendMachine_Display, subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_Display.w, imgSendMachine_Display.h, TL);
+	
+	//전송디스플레이화살표
+	subTemp[YPOS] = py+215+21;
+	switch(xSendMachine_FP.anyCnt%29)
+	{
+		case 0:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w+0; setAlpha(0*ALPHA_MAX/100);	break;
+		case 1:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-3; setAlpha(100*ALPHA_MAX/100);	break;
+		case 2:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-7; setAlpha(100*ALPHA_MAX/100);	break;
+		case 3:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-10; setAlpha(100*ALPHA_MAX/100);	break;
+		case 4:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-13; setAlpha(100*ALPHA_MAX/100);	break;
+		case 5:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-16; setAlpha(100*ALPHA_MAX/100);	break;
+		case 6:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-20; setAlpha(50*ALPHA_MAX/100);	break;
+		case 7:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-23; setAlpha(0*ALPHA_MAX/100);	break;
+		case 8:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-26; setAlpha(100*ALPHA_MAX/100);	break;
+		case 9:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-29; setAlpha(100*ALPHA_MAX/100);	break;
+		case 10:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-33; setAlpha(100*ALPHA_MAX/100);	break;
+		case 11:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-36; setAlpha(100*ALPHA_MAX/100);	break;
+		case 12:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-39; setAlpha(100*ALPHA_MAX/100);	break;
+		case 13:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-42; setAlpha(50*ALPHA_MAX/100);	break;
+		case 14:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-46; setAlpha(0*ALPHA_MAX/100);	break;
+		case 15:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-49; setAlpha(100*ALPHA_MAX/100);	break;
+		case 16:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-52; setAlpha(100*ALPHA_MAX/100);	break;
+		case 17:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-56; setAlpha(100*ALPHA_MAX/100);	break;
+		case 18:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-59; setAlpha(100*ALPHA_MAX/100);	break;
+		case 19:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-62; setAlpha(100*ALPHA_MAX/100);	break;
+		case 20:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-65; setAlpha(50*ALPHA_MAX/100);	break;
+		case 21:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-69; setAlpha(0*ALPHA_MAX/100);	break;
+		case 22:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-72; setAlpha(100*ALPHA_MAX/100);	break;
+		case 23:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-75; setAlpha(100*ALPHA_MAX/100);	break;
+		case 24:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-78; setAlpha(100*ALPHA_MAX/100);	break;
+		case 25:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-82; setAlpha(100*ALPHA_MAX/100);	break;
+		case 26:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-85; setAlpha(100*ALPHA_MAX/100);	break;
+		case 27:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-88; setAlpha(50*ALPHA_MAX/100);	break;
+		case 28:	subTemp[XPOS] = px-440+96+140-imgSendMachine_DisplayArrow.w-92; setAlpha(0*ALPHA_MAX/100);	break;
+	}
+	drawImage(&imgSendMachine_DisplayArrow, subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_DisplayArrow.w, imgSendMachine_DisplayArrow.h, VL);
+	setAlpha(ALPHA_MAX);
+	
+	//전송컨트롤러
+	subTemp[XPOS] = px-440+48;
+	subTemp[YPOS] = py+215;
+	switch(xSendMachine_FP.anyCnt%22)
+	{
+		case 1:subTemp[YPOS]+=1;break;
+		case 2:subTemp[YPOS]+=2;break;
+		case 3:subTemp[YPOS]+=-2;break;
+		case 4:subTemp[YPOS]+=-4;break;
+		case 5:subTemp[YPOS]+=-5;break;
+		case 6:subTemp[YPOS]+=-4;break;
+		case 7:subTemp[YPOS]+=-4;break;
+		case 8:subTemp[YPOS]+=-4;break;
+		case 9:subTemp[YPOS]+=-4;break;
+		case 10:subTemp[YPOS]+=-3;break;
+		case 11:subTemp[YPOS]+=-3;break;
+		case 12:subTemp[YPOS]+=-2;break;
+		case 14:subTemp[YPOS]+= 2;break;
+		case 15:subTemp[YPOS]+= 2;break;
+		case 16:subTemp[YPOS]+= 1;break;
+		case 17:subTemp[YPOS]+= -1;break;
+		case 19:subTemp[YPOS]+= 1;break;
+		case 20:subTemp[YPOS]+= 1;break;
+	}
+	drawImage(&imgSendMachine_Controler, subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_Controler.w, imgSendMachine_Controler.h, VH);
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//대기슬롯
+	totalnum = xSendMachine_FP.xData[SendMachineIndex].totalSlot;
+	xSendMachine_FP.xDragScrollB.totalNum = 1+(totalnum-1)/3;
+	xSendMachine_FP.xDragScrollB.posGab = 1280;
+	dragScrollPrc(&xSendMachine_FP.xDragScrollB, 0, FALSE);
+	
+	xSendMachine_FP.xTouchOpenSlot.wPos = DONT;
+	xSendMachine_FP.xTouchOpenSlot.hPos = DONT;
+	xSendMachine_FP.xTouchOpenSlot.xPos = DONT;
+	xSendMachine_FP.xTouchOpenSlot.yPos = DONT;
+	
+	gSetClip(true, px-94, 0, 505, lcdH);
+	//    gSetColor(0,255,0);
+	//    setAlpha(100);
+	//    fillRect(px-430, 0, 860, lcdH);
+	//    setAlpha(ALPHA_MAX);
+	xSendMachine_FP.xTouchSlot.wPos = 505;
+	xSendMachine_FP.xTouchSlot.hPos = 195;
+	xSendMachine_FP.xTouchSlot.xPos = 475;
+	xSendMachine_FP.xTouchSlot.yPos = 342;
+	//    gSetColor(2550,0,0);
+	//    setAlpha(100);
+	//    fillRect(xSendMachine_FP.xTouchSlot.xPos, xSendMachine_FP.xTouchSlot.yPos, xSendMachine_FP.xTouchSlot.wPos, xSendMachine_FP.xTouchSlot.hPos);
+	//    setAlpha(ALPHA_MAX);
+	
+	for(int page =-1;page<=xSendMachine_FP.xDragScrollB.totalNum;page++)
+	{
+		if(xSendMachine_FP.xDragScrollB.selectNum+page>=0 && xSendMachine_FP.xDragScrollB.selectNum+page<xSendMachine_FP.xDragScrollB.totalNum)
+		{
+			for(int i=0;i<3;i++)
+			{
+				if(((xSendMachine_FP.xDragScrollB.selectNum+page)*3)+i>=totalnum)
+					break;
+				
+				pos = xSendMachine_FP.xDragScrollB.pos+(xSendMachine_FP.xDragScrollB.posGab*page);
+				subTemp[XPOS] = px-94+pos+((i%3)*180);
+				subTemp[YPOS] = py+56;
+				
+				slotNum = ((xSendMachine_FP.xDragScrollB.selectNum+page)*3)+i;
+				//                slotCode = xCatalog_FP.xSlot[0][slotNum].code;
+				slotCode = xSendMachine_FP.xSlot[slotNum].itemNum;
+				
+				//슬롯
+				if(slotNum == totalnum-1 && xSendMachine_FP.xData[0].totalSlot < SENDMACHINE_SLOTMAX)
+				{
+					drawImage(&imgSendMachine_Slot[2], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_Slot[2].w, imgSendMachine_Slot[2].h, TL);
+					if(xSendMachine_FP.btnType == SENDMACHINE_BTNTYPE_LOCK)
+						drawImage(&imgSendMachine_Lock, subTemp[XPOS]+imgSendMachine_Slot[2].w/2, subTemp[YPOS]+imgSendMachine_Slot[2].h/2, 0, 0, imgSendMachine_Lock.w/2, imgSendMachine_Lock.h, VH);
+					else
+						drawImage(&imgSendMachine_Lock, subTemp[XPOS]+imgSendMachine_Slot[2].w/2, subTemp[YPOS]+imgSendMachine_Slot[2].h/2, imgSendMachine_Lock.w/2, 0, imgSendMachine_Lock.w/2, imgSendMachine_Lock.h, VH);
+					
+					xSendMachine_FP.xTouchOpenSlot.wPos = imgSendMachine_Slot[1].w;
+					xSendMachine_FP.xTouchOpenSlot.hPos = imgSendMachine_Slot[1].h;
+					xSendMachine_FP.xTouchOpenSlot.xPos = subTemp[XPOS];
+					xSendMachine_FP.xTouchOpenSlot.yPos = subTemp[YPOS];
+				}
+				else
+				{
+					drawImage(&imgSendMachine_Slot[0], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_Slot[0].w, imgSendMachine_Slot[0].h, TL);
+					//의상
+					if(slotCode != DONT)
+					{
+						setMapData(slotCode);
+						loadFashionFImg_FP(xMap.type, xMap.listNum);
+						//						xGame.fgameScale = 0.9f;
+						//						xGame.fgameScaleCx = subTemp[XPOS]+88;
+						//						xGame.fgameScaleCy = subTemp[YPOS]-70;
+						drawImage(&imgFittingF_FP[xMap.type][xMap.listNum], subTemp[XPOS]+imgSendMachine_Slot[0].w/2, subTemp[YPOS]+imgSendMachine_Slot[0].h/2, 0, 0, imgFittingF_FP[xMap.type][xMap.listNum].w, imgFittingF_FP[xMap.type][xMap.listNum].h, VH);
+						//						xGame.fgameScaleCx=cx;
+						//						xGame.fgameScaleCy=cy;
+						//						xGame.fgameScale = 1.0f;
+						
+						//의상개수
+						drawNum(&imgSendMachine_Num, subTemp[XPOS]+imgSendMachine_Slot[0].w*3/4, subTemp[YPOS]+imgSendMachine_Slot[0].h*3/4, xSendMachine_FP.xSlot[slotNum].itemCnt,0,VL);
+						
+						drawImage(&imgSendMachine_Slot[1], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_Slot[1].w, imgSendMachine_Slot[1].h, TL);
+					}
+				}
+				
+				//				 gSetColor(255, 0, 0);
+				//				 setAlpha(100);
+				//				 fillRect(xSendMachine_FP.xTouchStorage[slotNum].xPos, xSendMachine_FP.xTouchStorage[slotNum].yPos, xSendMachine_FP.xTouchStorage[slotNum].wPos, xSendMachine_FP.xTouchStorage[slotNum].hPos);
+				//				 setAlpha(ALPHA_MAX);
+			}
+		}
+	}
+	gSetClip(false, 0, 0, lcdW, lcdH);
+	
+	//대기슬롯 왼쪽 화살표
+	subTemp[XPOS] = px-117;
+	subTemp[YPOS] = py+56+imgSendMachine_Slot[0].h/2;
+	if(xSendMachine_FP.xDragScrollB.selectNum == 0)
+		drawImage(&imgSendMachine_BtnArrow[1], subTemp[XPOS], subTemp[YPOS], imgSendMachine_BtnArrow[1].w*2/6, 0, imgSendMachine_BtnArrow[1].w/6, imgSendMachine_BtnArrow[1].h, VH);
+	else if(xSendMachine_FP.btnType == SENDMACHINE_BTNTYPE_SLOTL)
+		drawImage(&imgSendMachine_BtnArrow[1], subTemp[XPOS], subTemp[YPOS], imgSendMachine_BtnArrow[1].w*4/6, 0, imgSendMachine_BtnArrow[1].w/6, imgSendMachine_BtnArrow[1].h, VH);
+	else
+		drawImage(&imgSendMachine_BtnArrow[1], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_BtnArrow[1].w/6, imgSendMachine_BtnArrow[1].h, VH);
+	
+	subTemp[XPOS] = px-130;
+	subTemp[YPOS] = py+56+imgSendMachine_Slot[0].h/2;
+	xSendMachine_FP.xTouchArrow[1][SENDMACHINE_BTNDIR_LEFT].wPos = imgSendMachine_BtnArrow[1].w/6+40;
+	xSendMachine_FP.xTouchArrow[1][SENDMACHINE_BTNDIR_LEFT].hPos = imgSendMachine_BtnArrow[1].h+40;
+	xSendMachine_FP.xTouchArrow[1][SENDMACHINE_BTNDIR_LEFT].xPos = subTemp[XPOS]-imgSendMachine_BtnArrow[1].w/6/2-20;
+	xSendMachine_FP.xTouchArrow[1][SENDMACHINE_BTNDIR_LEFT].yPos = subTemp[YPOS]-imgSendMachine_BtnArrow[1].h/2-20;
+	//	gSetColor(255, 0, 0);
+	//	setAlpha(100);
+	//	fillRect(xSendMachine_FP.xTouchArrow[1][SENDMACHINE_BTNDIR_LEFT].xPos, xSendMachine_FP.xTouchArrow[1][SENDMACHINE_BTNDIR_LEFT].yPos, xSendMachine_FP.xTouchArrow[1][SENDMACHINE_BTNDIR_LEFT].wPos, xSendMachine_FP.xTouchArrow[1][SENDMACHINE_BTNDIR_LEFT].hPos);
+	//	setAlpha(ALPHA_MAX);
+	
+	//대기슬롯 오른쪽 화살표
+	subTemp[XPOS] = px+430;//445
+	subTemp[YPOS] = py+56+imgSendMachine_Slot[0].h/2;
+	if(xSendMachine_FP.xDragScrollB.selectNum == xSendMachine_FP.xDragScrollB.totalNum-1)
+		drawImage(&imgSendMachine_BtnArrow[1], subTemp[XPOS], subTemp[YPOS], imgSendMachine_BtnArrow[1].w*3/6, 0, imgSendMachine_BtnArrow[1].w/6, imgSendMachine_BtnArrow[1].h, VH);
+	else if(xSendMachine_FP.btnType == SENDMACHINE_BTNTYPE_SLOTR)
+		drawImage(&imgSendMachine_BtnArrow[1], subTemp[XPOS], subTemp[YPOS], imgSendMachine_BtnArrow[1].w*5/6, 0, imgSendMachine_BtnArrow[1].w/6, imgSendMachine_BtnArrow[1].h, VH);
+	else
+		drawImage(&imgSendMachine_BtnArrow[1], subTemp[XPOS], subTemp[YPOS], imgSendMachine_BtnArrow[1].w/6, 0, imgSendMachine_BtnArrow[1].w/6, imgSendMachine_BtnArrow[1].h, VH);
+	subTemp[XPOS] = px+445;
+	subTemp[YPOS] = py+56+imgSendMachine_Slot[0].h/2;
+	xSendMachine_FP.xTouchArrow[1][SENDMACHINE_BTNDIR_RIGHT].wPos = imgSendMachine_BtnArrow[1].w/6+40;
+	xSendMachine_FP.xTouchArrow[1][SENDMACHINE_BTNDIR_RIGHT].hPos = imgSendMachine_BtnArrow[1].h+40;
+	xSendMachine_FP.xTouchArrow[1][SENDMACHINE_BTNDIR_RIGHT].xPos = subTemp[XPOS]-imgSendMachine_BtnArrow[1].w/6/2-20;
+	xSendMachine_FP.xTouchArrow[1][SENDMACHINE_BTNDIR_RIGHT].yPos = subTemp[YPOS]-imgSendMachine_BtnArrow[1].h/2-20;
+	
+	//	gSetColor(255, 0, 0);
+	//	setAlpha(100);
+	//	fillRect(xSendMachine_FP.xTouchArrow[1][SENDMACHINE_BTNDIR_RIGHT].xPos, xSendMachine_FP.xTouchArrow[1][SENDMACHINE_BTNDIR_RIGHT].yPos, xSendMachine_FP.xTouchArrow[1][SENDMACHINE_BTNDIR_RIGHT].wPos, xSendMachine_FP.xTouchArrow[1][SENDMACHINE_BTNDIR_RIGHT].hPos);
+	//	setAlpha(ALPHA_MAX);
+	
+	//레일
+	subTemp[XPOS] = px-125;
+	subTemp[YPOS] = py+215;
+	drawImage(&imgSendMachine_Rail, subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_Rail.w, imgSendMachine_Rail.h, TL);
+	
+	//레일토끼
+	for(int i = 0; i < 6; i++)
+	{
+		xGame.isRotate = true;
+		switch(xSendMachine_FP.anyCnt%24)
+		{
+			case 0:x=0;y=0;rotate=0;break;
+			case 1:x=0;y=0;rotate=1;break;
+			case 2:x=-1;y=0;rotate=4;break;
+			case 3:x=-1;y=0;rotate=8;break;
+			case 4:x=-2;y=-1;rotate=12;break;
+			case 5:x=-2;y=-1;rotate=16;break;
+			case 6:x=-3;y=-1;rotate=19;break;
+			case 7:x=-3;y=-1;rotate=20;break;
+			case 8:x=-2;y=-1;rotate=18;break;
+			case 9:x=-2;y=-1;rotate=12;break;
+			case 10:x=-1;y=-1;rotate=3;break;
+			case 11:x=1;y=0;rotate=-7;break;
+			case 12:x=2;y=-1;rotate=-17;break;
+			case 13:x=3;y=-1;rotate=-25;break;
+			case 14:x=4;y=-1;rotate=-32;break;
+			case 15:x=4;y=-1;rotate=-34;break;
+			case 16:x=4;y=-1;rotate=-32;break;
+			case 17:x=4;y=-1;rotate=-29;break;
+			case 18:x=3;y=-1;rotate=-23;break;
+			case 19:x=2;y=0;rotate=-17;break;
+			case 20:x=1;y=0;rotate=-11;break;
+			case 21:x=1;y=0;rotate=-5;break;
+			case 22:x=0;y=0;rotate=-1;break;
+			case 23:x=0;y=0;rotate=0;break;
+		}
+		xGame.rotateNum = 360 + rotate;
+		subTemp[XPOS] = px-125+41+(90*i)+x;
+		subTemp[YPOS] = py+215-22+y;
+		drawImage(&imgSendMachine_RailRabbit, subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_RailRabbit.w, imgSendMachine_RailRabbit.h, TL);
+		xGame.isRotate = false;
+	}
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	//전송슬롯에 의상넣기
+	slotCode = xSendMachine_FP.xSendSlot.itemNum;
+	if(slotCode != DONT)
+	{
+		switch(xSendMachine_FP.gameCnt)
+		{
+			case 0:x=283;y=0;break;
+			case 1:x=272;y=-9;break;
+			case 2:x=253;y=-22;break;
+			case 3:x=231;y=-33;break;
+			case 4:x=208;y=-40;break;
+			case 5:x=187;y=-45;break;
+			case 6:x=167;y=-47;break;
+			case 7:x=148;y=-49;break;
+			case 8:x=131;y=-49;break;
+			case 9:x=115;y=-48;break;
+			case 10:x=101;y=-47;break;
+			case 11:x=87;y=-45;break;
+			case 12:x=75;y=-42;break;
+			case 13:x=65;y=-40;break;
+			case 14:x=55;y=-37;break;
+			case 15:x=46;y=-34;break;
+			case 16:x=38;y=-31;break;
+			case 17:x=31;y=-27;break;
+			case 18:x=25;y=-24;break;
+			case 19:x=20;y=-21;break;
+			case 20:x=16;y=-18;break;
+			case 21:x=12;y=-14;break;
+			case 22:x=9;y=-12;break;
+			case 23:x=6;y=-9;break;
+			case 24:x=5;y=-7;break;
+			case 25:x=3;y=-5;break;
+			case 26:x=2;y=-3;break;
+			case 27:x=1;y=-2;break;
+			case 28:x=0;y=-1;break;
+			default:x=0;y=0;break;
+		}
+		setMapData(slotCode);
+		loadFashionFImg_FP(xMap.type, xMap.listNum);
+		subTemp[XPOS] = px-440+imgSendMachine_Display.w/2+x;
+		subTemp[YPOS] = py+215-imgSendMachine_Slot[0].h/2-15+y;
+		drawImage(&imgFittingF_FP[xMap.type][xMap.listNum], subTemp[XPOS], subTemp[YPOS], 0, 0, imgFittingF_FP[xMap.type][xMap.listNum].w, imgFittingF_FP[xMap.type][xMap.listNum].h, VH);
+	}
+	
+	//전송슬롯 하이라이트
+	if(xSendMachine_FP.gameCnt <= 39)
+	{
+		switch(xSendMachine_FP.gameCnt)
+		{
+			case 30:xGame.reSize=100;break;
+			case 31:xGame.reSize=103;break;
+			case 32:xGame.reSize=105;break;
+			case 33:xGame.reSize=105;break;
+			case 34:xGame.reSize=105;break;
+			case 35:xGame.reSize=104;break;
+			case 36:xGame.reSize=103;break;
+			case 37:xGame.reSize=103;break;
+			case 38:xGame.reSize=102;break;
+			case 39:xGame.reSize=102;break;
+			default:xGame.reSize=100;break;
+		}
+	}
+	else
+	{
+		switch(xSendMachine_FP.gameCnt)
+		{
+			case 0: xGame.reSize=101; break;
+			case 12: xGame.reSize=102; break;
+			case 13: xGame.reSize=103; break;
+			case 14: xGame.reSize=103; break;
+			case 15: xGame.reSize=102; break;
+			case 16: xGame.reSize=102; break;
+			case 17: xGame.reSize=101; break;
+			case 23: xGame.reSize=102; break;
+			case 24: xGame.reSize=103; break;
+			case 25: xGame.reSize=103; break;
+			case 26: xGame.reSize=102; break;
+			case 27: xGame.reSize=102; break;
+			case 28: xGame.reSize=101; break;
+			case 36: xGame.reSize=102; break;
+			case 37: xGame.reSize=103; break;
+			case 38: xGame.reSize=103; break;
+			case 39: xGame.reSize=102; break;
+			case 40: xGame.reSize=102; break;
+			case 41: xGame.reSize=101; break;
+			case 47: xGame.reSize=102; break;
+			case 48: xGame.reSize=103; break;
+			case 49: xGame.reSize=103; break;
+			case 50: xGame.reSize=102; break;
+			case 51: xGame.reSize=102; break;
+			case 52: xGame.reSize=101; break;
+			case 63: xGame.reSize=102; break;
+			case 64: xGame.reSize=103; break;
+			case 65: xGame.reSize=103; break;
+			case 66: xGame.reSize=102; break;
+			case 67: xGame.reSize=102; break;
+			case 68: xGame.reSize=101; break;
+			default:xGame.reSize=100; break;
+		}
+	}
+	xGame.isReSizeDraw = true;
+	subTemp[XPOS] = px-440+imgSendMachine_Display.w/2;
+	subTemp[YPOS] = py+215-imgSendMachine_Slot[0].h/2-15;
+	drawImage(&imgSendMachine_Slot[1], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_Slot[1].w, imgSendMachine_Slot[1].h, VH);
+	xGame.reSize=100;
+	xGame.isReSizeDraw = false;
+	
+	//지퍼
+	switch(xSendMachine_FP.gameCnt)
+	{
+		case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:
+		case 10:case 11:case 12:case 13:case 14:case 15:case 16:case 17:case 18:case 19:
+		case 20:case 21:case 22:case 23:case 24:case 25:case 26:case 27:case 28:case 29:setAlpha(0);break;
+		case 30:setAlpha(10*ALPHA_MAX/100);break;
+		case 31:setAlpha(20*ALPHA_MAX/100);break;
+		case 32:setAlpha(30*ALPHA_MAX/100);break;
+		case 33:setAlpha(40*ALPHA_MAX/100);break;
+		case 34:setAlpha(50*ALPHA_MAX/100);break;
+		case 35:setAlpha(60*ALPHA_MAX/100);break;
+		case 36:setAlpha(70*ALPHA_MAX/100);break;
+		case 37:setAlpha(80*ALPHA_MAX/100);break;
+		case 38:setAlpha(90*ALPHA_MAX/100);break;
+		default:setAlpha(ALPHA_MAX);break;
+	}
+	subTemp[XPOS] = px-440+imgSendMachine_Display.w/2;
+	subTemp[YPOS] = py+215-imgSendMachine_Slot[0].h;
+	drawImage(&imgSendMachine_Sticker[0], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_Sticker[0].w, imgSendMachine_Sticker[0].h, VH);
+	setAlpha(ALPHA_MAX);
+	
+	//운송장
+	if(xSendMachine_FP.gameCnt >= 43)
+	{
+		switch((xSendMachine_FP.gameCnt-43))
+		{
+			case 0:alpha=0;y=-63;break;
+			case 1:alpha=3;y=-63;break;
+			case 2:alpha=10;y=-62;break;
+			case 3:alpha=22;y=-61;break;
+			case 4:alpha=35;y=-59;break;
+			case 5:alpha=50;y=-56;break;
+			case 6:alpha=65;y=-52;break;
+			case 7:alpha=78;y=-47;break;
+			case 8:alpha=90;y=-39;break;
+			case 9:alpha=97;y=-28;break;
+			case 10:alpha=100;y=0;break;
+			case 11:alpha=100;y=-1;break;
+			case 12:alpha=100;y=-2;break;
+			case 13:alpha=100;y=-1;break;
+			case 14:alpha=100;y=0;break;
+			default:alpha=100;y=0;break;
+		}
+		subTemp[XPOS] = px-440+imgSendMachine_Display.w/2+17;
+		subTemp[YPOS] = py+215-imgSendMachine_Slot[0].h/2+10+y;
+		setAlpha(alpha*ALPHA_MAX/100);
+		drawImage(&imgSendMachine_Sticker[1], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_Sticker[1].w, imgSendMachine_Sticker[1].h, VH);
+		setAlpha(ALPHA_MAX);
+	}
+	
+	//세탁표
+	if(xSendMachine_FP.gameCnt >= 59)
+	{
+		switch(xSendMachine_FP.gameCnt-59)
+		{
+			case 0:alpha=0;scale=166;break;
+			case 1:alpha=26;scale=162;break;
+			case 2:alpha=74;scale=142;break;
+			case 3:alpha=100;scale=90;break;
+			case 4:alpha=100;scale=98;break;
+			case 5:alpha=100;scale=105;break;
+			case 6:alpha=100;scale=103;break;
+			case 7:alpha=100;scale=100;break;
+			default:alpha=100;scale=100;break;
+		}
+		subTemp[XPOS] = px-440+imgSendMachine_Display.w/2-45;
+		subTemp[YPOS] = py+215-imgSendMachine_Slot[0].h/2+20;
+		setAlpha(alpha*ALPHA_MAX/100);
+		xGame.isReSizeDraw = true;
+		xGame.reSize = scale;
+		drawImage(&imgSendMachine_Sticker[2], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_Sticker[2].w, imgSendMachine_Sticker[2].h, VH);
+		xGame.reSize = 100;
+		xGame.isReSizeDraw = false;
+		setAlpha(ALPHA_MAX);
+	}
+	
+	//네모스티커
+	if(xSendMachine_FP.gameCnt >= 70)
+	{
+		switch(xSendMachine_FP.gameCnt-70)
+		{
+			case 0:alpha=0;scale=113;x=31;y=30;rotate=214;break;
+			case 1:alpha=10;scale=112;x=30;y=29;rotate=192;break;
+			case 2:alpha=35;scale=108;x=27;y=26;rotate=139;break;
+			case 3:alpha=65;scale=105;x=23;y=22;rotate=75;break;
+			case 4:alpha=90;scale=101;x=15;y=14;rotate=22;break;
+			case 5:alpha=100;scale=100;x=0;y=0;rotate=0;break;
+			case 6:alpha=100;scale=103;x=0;y=0;rotate=0;break;
+			case 7:alpha=100;scale=105;x=0;y=0;rotate=0;break;
+			case 8:alpha=100;scale=102;x=0;y=0;rotate=0;break;
+			case 9:alpha=100;scale=98;x=0;y=0;rotate=0;break;
+			case 10:alpha=100;scale=99;x=0;y=0;rotate=0;break;
+			case 11:alpha=100;scale=100;x=0;y=0;rotate=0;break;
+			default:alpha=100;scale=100;x=0;y=0;rotate=0;break;
+				
+		}
+		subTemp[XPOS] = px-440+imgSendMachine_Display.w/2+15+imgSendMachine_Sticker[3].w/2+x;
+		subTemp[YPOS] = py+215-imgSendMachine_Slot[0].h/2-35+y;
+		setAlpha(alpha*ALPHA_MAX/100);
+		xGame.isReSizeDraw = true;
+		xGame.isRotate = true;
+		xGame.rotateNum = rotate;
+		xGame.reSize = scale;
+		drawImage(&imgSendMachine_Sticker[3], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_Sticker[3].w, imgSendMachine_Sticker[3].h, VH);
+		xGame.reSize = 100;
+		xGame.rotateNum = 0;
+		xGame.isRotate = false;
+		xGame.isReSizeDraw = false;
+		setAlpha(ALPHA_MAX);
+	}
+	
+	//원형스티커
+	if(xSendMachine_FP.gameCnt >= 83)
+	{
+		switch(xSendMachine_FP.gameCnt-83)
+		{
+			case 0:alpha=0;scale=300;break;
+			case 1:alpha=22;scale=248;break;
+			case 2:alpha=64;scale=152;break;
+			case 3:alpha=100;scale=100;break;
+			case 4:alpha=100;scale=101;break;
+			case 5:alpha=100;scale=104;break;
+			case 6:alpha=100;scale=105;break;
+			case 7:alpha=100;scale=104;break;
+			case 8:alpha=100;scale=101;break;
+			case 9:alpha=100;scale=100;break;
+			default:alpha=100;scale=100;break;
+		}
+		subTemp[XPOS] = px-440+imgSendMachine_Display.w/2-40;
+		subTemp[YPOS] = py+215-imgSendMachine_Slot[0].h/2-30;
+		setAlpha(alpha*ALPHA_MAX/100);
+		xGame.isReSizeDraw = true;
+		xGame.reSize = scale;
+		drawImage(&imgSendMachine_Sticker[4], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_Sticker[4].w, imgSendMachine_Sticker[4].h, VH);
+		xGame.reSize = 100;
+		xGame.isReSizeDraw = false;
+		setAlpha(ALPHA_MAX);
+	}
+	
+	//별스티커
+	if(xSendMachine_FP.gameCnt >= 86)
+	{
+		switch(xSendMachine_FP.gameCnt-86)
+		{
+			case 0:alpha=0;x=-19;rotate=301;break;
+			case 1:alpha=4;x=-18;rotate=185;break;
+			case 2:alpha=12;x=-18;rotate=131;break;
+			case 3:alpha=21;x=-17;rotate=95;break;
+			case 4:alpha=30;x=-13;rotate=68;break;
+			case 5:alpha=40;x=-9;rotate=49;break;
+			case 6:alpha=50;x=-5;rotate=33;break;
+			case 7:alpha=60;x=-3;rotate=22;break;
+			case 8:alpha=70;x=-1;rotate=13;break;
+			case 9:alpha=79;x=0;rotate=7;break;
+			case 10:alpha=88;x=0;rotate=3;break;
+			case 11:alpha=96;x=0;rotate=1;break;
+			case 12:alpha=100;x=0;rotate=0;break;
+			default:alpha=100;x=0;rotate=0;break;
+				
+		}
+		subTemp[XPOS] = px-440+imgSendMachine_Display.w/2-40+18+x;
+		subTemp[YPOS] = py+215-imgSendMachine_Slot[0].h/2-30-13;
+		setAlpha(alpha*ALPHA_MAX/100);
+		
+		xGame.isRotate = true;
+		xGame.rotateNum = rotate;
+		drawImage(&imgSendMachine_Sticker[5], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_Sticker[5].w, imgSendMachine_Sticker[5].h, VH);
+		xGame.rotateNum = 0;
+		xGame.isRotate = false;
+		setAlpha(ALPHA_MAX);
+	}
+	
+	//태그
+	if(xSendMachine_FP.gameCnt >= 98)
+	{
+		switch(xSendMachine_FP.gameCnt-98)
+		{
+			case 0:alpha=0;x=1;y=0;rotate=0;break;
+			case 1:alpha=13;x=2;y=2;rotate=3;break;
+			case 2:alpha=42;x=5;y=6;rotate=10;break;
+			case 3:alpha=75;x=8;y=11;rotate=17;break;
+			case 4:alpha=100;x=8;y=13;rotate=20;break;
+			case 5:alpha=100;x=8;y=11;rotate=15;break;
+			case 6:alpha=100;x=5;y=4;rotate=5;break;
+			case 7:alpha=100;x=-1;y=-1;rotate=-5;break;
+			case 8:alpha=100;x=-4;y=-4;rotate=-10;break;
+			case 9:alpha=100;x=-3;y=-4;rotate=-8;break;
+			case 10:alpha=100;x=0;y=-1;rotate=-3;break;
+			case 11:alpha=100;x=2;y=2;rotate=3;break;
+			case 12:alpha=100;x=3;y=3;rotate=5;break;
+			case 13:alpha=100;x=3;y=3;rotate=4;break;
+			case 14:alpha=100;x=2;y=2;rotate=3;break;
+			case 15:alpha=100;x=1;y=0;rotate=1;break;
+			case 16:alpha=100;x=0;y=0;rotate=0;break;
+			default:alpha=100;x=0;y=0;rotate=0;break;
+		}
+		
+		subTemp[XPOS] = px-440+imgSendMachine_Display.w/2+58+imgSendMachine_Sticker[6].w/2+x;
+		subTemp[YPOS] = py+215+2-imgSendMachine_Sticker[6].h+y;
+		setAlpha(alpha*ALPHA_MAX/100);
+		
+		xGame.isRotate = true;
+		xGame.rotateNum = rotate;
+		drawImage(&imgSendMachine_Sticker[6], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_Sticker[6].w, imgSendMachine_Sticker[6].h, VH);
+		xGame.rotateNum = 0;
+		xGame.isRotate = false;
+		setAlpha(ALPHA_MAX);
+	}
+	
+	if(xSendMachine_FP.isSendEnd == true)
+	{
+		//흰색판때기
+		switch(xSendMachine_FP.endCnt)
+		{
+			case 0:alpha=97;scale=100;break;
+			case 1:alpha=87;scale=121;break;
+			case 2:alpha=78;scale=131;break;
+			case 3:alpha=68;scale=137;break;
+			case 4:alpha=58;scale=141;break;
+			case 5:alpha=49;scale=144;break;
+			case 6:alpha=39;scale=147;break;
+			case 7:alpha=29;scale=148;break;
+			case 8:alpha=19;scale=149;break;
+			case 9:alpha=10;scale=150;break;
+			case 10:alpha=0;scale=150;break;
+		}
+		
+		subTemp[XPOS] = px-440+imgSendMachine_Display.w/2;
+		subTemp[YPOS] = py+215-imgSendMachine_Slot[0].h/2-15;
+		setAlpha(alpha*ALPHA_MAX/100);
+		xGame.isReSizeDraw = true;
+		xGame.reSize = scale;
+		drawImage(&imgSendMachine_Slot[3], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_Slot[3].w, imgSendMachine_Slot[3].h, VH);
+		xGame.reSize = 100;
+		xGame.isReSizeDraw = false;
+		setAlpha(ALPHA_MAX);
+		
+		//경험치 동전
+		switch(xSendMachine_FP.endCnt)
+		{
+			case 0:alpha=100;y=0;break;
+			case 1:alpha=100;y=-15;break;
+			case 2:alpha=100;y=-21;break;
+			case 3:alpha=100;y=-26;break;
+			case 4:alpha=100;y=-30;break;
+			case 5:alpha=100;y=-33;break;
+			case 6:alpha=93;y=-35;break;
+			case 7:alpha=87;y=-37;break;
+			case 8:alpha=80;y=-39;break;
+			case 9:alpha=73;y=-41;break;
+			case 10:alpha=67;y=-42;break;
+			case 11:alpha=60;y=-43;break;
+			case 12:alpha=53;y=-44;break;
+			case 13:alpha=47;y=-45;break;
+			case 14:alpha=40;y=-46;break;
+			case 15:alpha=33;y=-47;break;
+			case 16:alpha=27;y=-47;break;
+			case 17:alpha=20;y=-47;break;
+			case 18:alpha=13;y=-47;break;
+			case 19:alpha=7;y=-47;break;
+			case 20:alpha=0;y=-47;break;
+		}
+		
+		subTemp[XPOS] = px-440+imgSendMachine_Display.w/2;
+		subTemp[YPOS] = py+215-imgSendMachine_Slot[0].h/2-15+y;
+		setAlpha(alpha*ALPHA_MAX/100);
+		drawImage(&imgSendMachine_Slot[4], subTemp[XPOS], subTemp[YPOS], 0, 0, imgSendMachine_Slot[4].w, imgSendMachine_Slot[4].h, VH);
+		setAlpha(ALPHA_MAX);
+	}
+	
+	
+	
+	//선택한 의상
+	if(xSendMachine_FP.selectNum != DONT)
+	{
+		slotCode = xSendMachine_FP.xDress[xSendMachine_FP.selectNum].itemNum;
+		setMapData(slotCode);
+		loadFashionFImg_FP(xMap.type, xMap.listNum);
+		xGame.isReSizeDraw = true;
+		xGame.reSize = 60;
+		
+		drawImage(&imgFittingF_FP[xMap.type][xMap.listNum], xTouch.xPos, xTouch.yPos, 0, 0, imgFittingF_FP[xMap.type][xMap.listNum].w, imgFittingF_FP[xMap.type][xMap.listNum].h, VH);
+		
+		xGame.isReSizeDraw = false;
+	}
+}
+
+void FreeLoadSendMachine_FP(bool isLoad)
+{
+	if(isLoad == true)
+	{
+		loadImg("production_close.png", &imgSendMachine_Lock);
+		
+		loadImg("sendmachine_sticker0.png", &imgSendMachine_Sticker[0]);
+		loadImg("sendmachine_sticker1.png", &imgSendMachine_Sticker[1]);
+		loadImg("sendmachine_sticker2.png", &imgSendMachine_Sticker[2]);
+		loadImg("sendmachine_sticker3.png", &imgSendMachine_Sticker[3]);
+		loadImg("sendmachine_sticker4.png", &imgSendMachine_Sticker[4]);
+		loadImg("sendmachine_sticker5.png", &imgSendMachine_Sticker[5]);
+		loadImg("sendmachine_sticker6.png", &imgSendMachine_Sticker[6]);
+		
+		loadImg("sendmachine_num.png", &imgSendMachine_Num);
+		
+		loadImg("sendmachine_slot1.png", &imgSendMachine_Slot[0]);
+		loadImg("sendmachine_slot3.png", &imgSendMachine_Slot[1]);
+		loadImg("sendmachine_slot2.png", &imgSendMachine_Slot[2]);
+		loadImg("sendmachine_slot4.png", &imgSendMachine_Slot[3]);
+		loadImg("sendmachine_slot5.png", &imgSendMachine_Slot[4]);
+		
+		
+		loadImg("sendmachine_rail.png", &imgSendMachine_Rail);
+		loadImg("sendmachine_railrabbit.png", &imgSendMachine_RailRabbit);
+		loadImg("production_btn_upgrade.png", &imgSendMachine_BtnUpgrade);
+		
+		
+		loadImg("sendmachine_controler.png", &imgSendMachine_Controler);
+		loadImg("sendmachine_display.png", &imgSendMachine_Display);
+		loadImg("sendmachine_arrow.png", &imgSendMachine_DisplayArrow);
+		
+		loadImg("sendmachine_storagetitle.png", &imgSendMachine_StorageTitle);
+		loadImg("sendmachine_title.png", &imgSendMachine_Title);
+		
+		loadImg("productionbase.png", &imgSendMachine_BG);
+		loadImg("productionexiticon.png", &imgSendMachine_BtnExit);
+		
+		loadImg("production_left.png", &imgSendMachine_Storage[0]);
+		loadImg("production_main.png", &imgSendMachine_Storage[1]);
+		loadImg("production_right.png", &imgSendMachine_Storage[2]);
+		loadImg("production_shadow.png", &imgSendMachine_Storage[3]);
+		
+		loadImg("production_arrow.png", &imgSendMachine_BtnArrow[0]);
+		loadImg("production_slot_arrow.png", &imgSendMachine_BtnArrow[1]);
+	}
+	else
+	{
+		freeImg(&imgSendMachine_Lock);
+		
+		freeImg(&imgSendMachine_Sticker[0]);
+		freeImg(&imgSendMachine_Sticker[1]);
+		freeImg(&imgSendMachine_Sticker[2]);
+		freeImg(&imgSendMachine_Sticker[3]);
+		freeImg(&imgSendMachine_Sticker[4]);
+		freeImg(&imgSendMachine_Sticker[5]);
+		freeImg(&imgSendMachine_Sticker[6]);
+		
+		freeImg(&imgSendMachine_Num);
+		
+		freeImg(&imgSendMachine_Slot[0]);
+		freeImg(&imgSendMachine_Slot[1]);
+		freeImg(&imgSendMachine_Slot[2]);
+		freeImg(&imgSendMachine_Slot[3]);
+		freeImg(&imgSendMachine_Slot[4]);
+		freeImg(&imgSendMachine_Slot[5]);
+		
+		
+		freeImg(&imgSendMachine_Rail);
+		freeImg(&imgSendMachine_RailRabbit);
+		freeImg(&imgSendMachine_BtnUpgrade);
+		
+		
+		freeImg(&imgSendMachine_Controler);
+		freeImg(&imgSendMachine_Display);
+		freeImg(&imgSendMachine_DisplayArrow);
+		
+		freeImg(&imgSendMachine_StorageTitle);
+		freeImg(&imgSendMachine_Title);
+		
+		freeImg(&imgSendMachine_BG);
+		freeImg(&imgSendMachine_BtnExit);
+		
+		freeImg(&imgSendMachine_Storage[0]);
+		freeImg(&imgSendMachine_Storage[1]);
+		freeImg(&imgSendMachine_Storage[2]);
+		
+		freeImg(&imgSendMachine_BtnArrow[0]);
+		freeImg(&imgSendMachine_BtnArrow[1]);
+	}
+	
+}
+
+void setSendMachineBtnType_FP(int btnType)
+{
+	xSendMachine_FP.btnType = btnType;
+}
+
+void setSlotDress(int dressNum, int dressCnt)
+{
+	for(int i = 0; i < xSendMachine_FP.xData[0].totalSlot; i++)
+	{
+		if(xSendMachine_FP.xSlot[i].itemNum == DONT)
+		{
+			xSendMachine_FP.xSlot[i].itemNum = dressNum;
+			xSendMachine_FP.xSlot[i].itemCnt = dressCnt;
+			//슬롯업데이트 패킷 보내기
+			xSendMachine_FP.xSlot[i].startTime = xCalendar.nowTime;
+			xSendMachine_FP.xSlot[i].endTime = xCalendar.nowTime + 10;
+			
+			//			if(i == 0)
+			//			{
+			//				//전송슬롯에 넣기
+			//				xSendMachine_FP.xSendSlot.itemNum = xSendMachine_FP.xSlot[i].itemNum;
+			//				xSendMachine_FP.xSendSlot.itemCnt = xSendMachine_FP.xSlot[i].itemCnt;
+			//				xSendMachine_FP.xSendSlot.key = xSendMachine_FP.xSlot[i].key;
+			//				xSendMachine_FP.xSendSlot.startTime = xSendMachine_FP.xSlot[i].startTime;
+			//				xSendMachine_FP.xSendSlot.endTime = xSendMachine_FP.xSlot[i].endTime;
+			//			}
+			
+			//전송기 슬롯 등록 요청
+			xEventQueueNet.typeNum[xEventQueueNet.totalNum] = 0;
+			xEventQueueNet.bkey[xEventQueueNet.totalNum] = xSendMachine_FP.xData[0].bkey;
+			xEventQueueNet.idx[xEventQueueNet.totalNum] = xSendMachine_FP.xSlot[i].key;
+			xEventQueueNet.ITEM_INDEX[xEventQueueNet.totalNum] = xSendMachine_FP.xSlot[i].itemNum;
+			xEventQueueNet.ITEM_COUNT[xEventQueueNet.totalNum] = xSendMachine_FP.xSlot[i].itemCnt;
+			xEventQueueNet.start_time[xEventQueueNet.totalNum] = xSendMachine_FP.xSlot[i].startTime;
+			xEventQueueNet.end_time[xEventQueueNet.totalNum] = xSendMachine_FP.xSlot[i].endTime;
+			addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SENDMACHINESLOTUPDATE, TRUE);
+			
+			//전송기 슬롯정보
+			xEventQueueNet.bkey[xEventQueueNet.totalNum] = xSendMachine_FP.xData[0].bkey;
+			addEventQueueNet(xTouch.xPos, xTouch.yPos, NETQUEUE_TYPE_SENDMACHINESLOTINFO, TRUE);
+			
+			xSendMachine_FP.stateSub = SENDMACHINE_SUBSTATE_ADD;
+			break;
+		}
+	}
+}
+
+bool isPlaySendMachine()
+{
+	bool isPlay = false;
+	if(xSendMachine_FP.xSendSlot.itemNum != DONT)
+		isPlay = true;
+	return isPlay;
+}
+
+void setSendMachineGameCnt(int cnt)
+{
+	xSendMachine_FP.gameCnt = cnt;
+}
+
+
 
 //타일 넘버를 알았을때 그려지는 좌표 알아내는법
 //int mapXpos,mapYpos;

@@ -118,6 +118,10 @@ extern XETCDOWNLOAD xEtcDownLoad;
 
 #define IDMAKE_STATE_STAMP			4
 
+////////////////////////////////////////////
+//닉네임 입력중 추가 KBY 2018.2.26
+#define IDMAKE_STATE_INPUTNAME           5
+
 
 
 #define IDMAKEERR_TYPE_DONT			0//문제없음
@@ -143,13 +147,14 @@ extern XETCDOWNLOAD xEtcDownLoad;
 
 
 
-
+//회원 가입 구조체 수정 : 2018.2.23
 typedef struct
 {
 	int state;
 	int anyCnt;
 	
 	char strNickName[64];
+    char strUID[64];
 	
 	XTOUCH xTouchLoginBtn;
 	XTOUCH xTouchLoginIdMakeBtn;
@@ -158,8 +163,13 @@ typedef struct
 	XTOUCH xTouchNickName;
 	
 	XTOUCH xTouchSex[2];
-	XTOUCH xTouchAge;
-	XTOUCH xTouchArea;
+    XTOUCH xTouchHair[3];
+    XTOUCH xTouchFace[3];
+    XTOUCH xTouchArrow[2];
+    XTOUCH xTouchStar[12];
+    
+//	XTOUCH xTouchAge;
+//	XTOUCH xTouchArea;
 	
 	
 	M_Boolean isSelectArea;
@@ -179,12 +189,18 @@ typedef struct
 	int ageErr;
 	
 	int sex;
-	int age;
-	
-	int area;
 
+    int selectHair;
+    int selectFace;
+    int selectStar;
 	
-	
+    int pos;
+    
+    bool isTouchMan;
+    bool isTouchWoman;
+    bool isTouchLeftArrow;
+    bool isTouchRightArrow;
+    bool isTouchOk;
     
     XTOUCH xTouchClauseLink[2];
 
@@ -196,7 +212,11 @@ typedef struct
 
 } XIDMAKE;
 extern XIDMAKE xIdMake;
-
+///////////////////////////////////////////
+//회원가입 KBY 2018.2.26 수정
+extern XIMG imgIdMake[30];
+void idmakeFreeLoad_FP(bool isLoad);
+///////////////////////////////////////////
 extern XIMG imgLoadingBg;
 extern XIMG imgYoung;
 extern XIMG imgTitleBG;
